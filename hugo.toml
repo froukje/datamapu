@@ -1,0 +1,15 @@
+baseURL = 'https://glittery-maamoul-514695.netlify.app'
+languageCode = 'en-us'
+title = 'DataMapu'
+theme = 'ananke'
+tags = ["Data", "Data Science", "Machine Learning", "Statistics", "Math", "Visualization"]
+
+[params]
+  show_reading_time = true
+  socialInHeader = false
+  socialInFooter = true
+
+[[menu.main]]
+  name = "Articles"
+  url = "/posts/"
+  weight = 3
