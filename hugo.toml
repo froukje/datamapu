@@ -3,6 +3,7 @@ languageCode = 'en-us'
 title = 'Datamapu'
 theme = 'ananke'
 uglyURLs = true
+googleAnalytics = ""
 
 [params]
   show_reading_time = true
@@ -19,3 +20,7 @@ uglyURLs = true
   tag = "tags"
   category = "categories"
 
+[[params.social]]
+  icon  = "icon-linkedin"
+  title = "linkedin"
+  url   = "https://www.linkedin.com/in/frauke-albrecht-90ba511a2/"
