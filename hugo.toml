@@ -2,7 +2,7 @@ baseURL = 'https://datamapu.com/'
 languageCode = 'en-us'
 title = 'Datamapu'
 theme = 'ananke'
-uglyURLs = false
+uglyURLs = true
 
 [params]
   show_reading_time = true
