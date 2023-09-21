@@ -1,9 +1,8 @@
-baseURL = 'https://www.datamapu.com/'
+baseURL = 'https://datamapu.com/'
 languageCode = 'en-us'
 title = 'Datamapu'
 theme = 'ananke'
 uglyURLs = false
-tags = ["Data", "Data Science", "Machine Learning", "Statistics", "Math", "Visualization"]
 
 [params]
   show_reading_time = true
