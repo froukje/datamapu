@@ -14,3 +14,8 @@ uglyURLs = true
   name = "Articles"
   url = "/posts/"
   weight = 3
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
