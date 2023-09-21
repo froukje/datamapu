@@ -2,7 +2,7 @@
 title = 'Metrics in Classification Problems — An Overview'
 date = 2023-09-20T00:08:49+02:00
 draft = true
-featured_image = '/images/classification_metrics.gif'
+featured_image = '/images/20230920_classification_metrics/classification_metrics.gif'
 +++
 
 ## Metrics in Classification Problems - An Overview
