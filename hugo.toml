@@ -1,7 +1,8 @@
-baseURL = 'www.datamapu.com'
+baseURL = 'https://www.datamapu.com/'
 languageCode = 'en-us'
-title = 'DataMapu'
+title = 'Datamapu'
 theme = 'ananke'
+uglyURLs = false
 tags = ["Data", "Data Science", "Machine Learning", "Statistics", "Math", "Visualization"]
 
 [params]
@@ -9,6 +10,7 @@ tags = ["Data", "Data Science", "Machine Learning", "Statistics", "Math", "Visua
   socialInHeader = false
   socialInFooter = true
 
+[menu]
 [[menu.main]]
   name = "Articles"
   url = "/posts/"
