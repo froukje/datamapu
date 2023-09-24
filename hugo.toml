@@ -1,8 +1,8 @@
 baseURL = 'https://datamapu.com/'
 languageCode = 'en-us'
-title = 'Datamapu'
+title = ''
 theme = 'ananke'
-uglyURLs = true
+uglyURLs = false
 googleAnalytics = ""
 
 [params]
@@ -16,6 +16,10 @@ googleAnalytics = ""
   name = "Articles"
   url = "/posts/"
   weight = 3
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
 
 [taxonomies]
   tag = "tags"
