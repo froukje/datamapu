@@ -4,6 +4,7 @@ title = ''
 theme = 'ananke'
 uglyURLs = false
 googleAnalytics = "G-FJQERFPVYS"
+google_tag_manager = "GTM-T6CW23SC"
 
 [params]
   show_reading_time = true
