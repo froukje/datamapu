@@ -52,7 +52,7 @@ More general this looks like this.
 *Confusion matrix.*
 
 ### Metrics
-With the above concepts of TP, FN, FP, and TN we can define several metrics that evaluate binary classification problems in different aspects. In the table below you can find the most common metrics for binary classification problems, how to calculate them and when to use them.
+With the above concepts of TP, FN, FP, and TN we can define several metrics that evaluate binary classification problems in different aspects. Let's have a look at the most common metrics for binary classification problems, how to calculate them and when to use them.
 
 ![confusion matrix](/images/20230920_classification_metrics/classification4.png "Most common metrics for binary classification.")
 
