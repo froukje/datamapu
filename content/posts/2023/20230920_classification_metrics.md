@@ -25,7 +25,7 @@ A good way to start evaluating a classification problem is the so-called *confus
 ![classification table](/images/20230920_classification_metrics/cats_dogs.gif "Example true and predicted values.")
 *Example true and predicted values converted to 0s and 1s.*
 
-From this table, we can see, when our model was correct and when not. The confusion matrix is a way to illustrate these results more clearly. We can use the [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html) package to display the confusion matrix in Python. 
+From this table, we can see when our model was correct and when not. The confusion matrix is a way to illustrate these results more clearly. We can use the [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html) package to display the confusion matrix in Python. 
 
 We can then display the confusion matrix as follows:
 
@@ -40,7 +40,7 @@ disp.plot();
 ![confusion matrix](/images/20230920_classification_metrics/confusion_matrix.jpg "Confusion matrix.")
 *Confusion matrix example.*
 
-The confusion matrix shows us, the predicted labels versus the true labels, and the numbers in the matrix give the number of images that were predicted for each case. The first column, first row of the matrix (cat - cat) shows how many results predicted a cat and the real image was also a cat, The first column, second row (cat-dog) shows how many results predicted a cat, but the true label was a dog and so on. Note, that this not only divides into correct and incorrect, but also in the type of error we make. There are four possible outcomes:
+The confusion matrix shows the predicted labels versus the true labels, and the numbers in the matrix give the number of images that were predicted for each case. The first column, first row of the matrix (cat - cat) shows how many results predicted a cat and the real image was also a cat. The first column, second row (cat-dog) shows how many results predicted a cat, but the true label was a dog and so on. Note, that this not only divides into correct and incorrect, but also in the type of error we make. There are four possible outcomes:
 
 * *TP (True Positive)*: The prediction is a dog (positive) and the true image is also a dog (positive)
 * *FN (False Negative)*: The prediction is a cat (negative), but the true image is a dog (positive)
@@ -52,7 +52,7 @@ More general this looks like this.
 *Confusion matrix.*
 
 ### Metrics
-Now, finally the metrics. With the above concepts of TP, FN, FP, and TN we can define several metrics that evaluate binary classification problems in different aspects. In the table below you can find the most common metrics for binary classification problems, how to calculate them and when to use them.
+With the above concepts of TP, FN, FP, and TN we can define several metrics that evaluate binary classification problems in different aspects. In the table below you can find the most common metrics for binary classification problems, how to calculate them and when to use them.
 
 ![confusion matrix](/images/20230920_classification_metrics/classification4.png "Most common metrics for binary classification.")
 
