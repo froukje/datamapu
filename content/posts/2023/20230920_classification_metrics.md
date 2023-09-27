@@ -54,7 +54,15 @@ More general this looks like this.
 ### Metrics
 With the above concepts of TP, FN, FP, and TN we can define several metrics that evaluate binary classification problems in different aspects. Let's have a look at the most common metrics for binary classification problems, how to calculate them and when to use them.
 
-![confusion matrix](/images/20230920_classification_metrics/classification4.png "Most common metrics for binary classification.")
+
+![confusion matrix](/images/20230920_classification_metrics/accuracy.jpg "Accuracy.")
+![confusion matrix](/images/20230920_classification_metrics/recall.jpg "Recall.")
+![confusion matrix](/images/20230920_classification_metrics/precision.jpg "Precision.")
+![confusion matrix](/images/20230920_classification_metrics/true_negative_rate.jpg "True Negative Rate.")
+![confusion matrix](/images/20230920_classification_metrics/f1score.jpg "f-1-score.")
+![confusion matrix](/images/20230920_classification_metrics/fbetascore.jpg "f-beta-score.")
+
+## ROC + AUC
 
 Note: These metrics can be extended for multi-class classification. An overview can be found in this [blog](https://medium.com/r/?url=https%3A%2F%2Fwww.analyticsvidhya.com%2Fblog%2F2021%2F07%2Fmetrics-to-evaluate-your-classification-model-to-take-the-right-decisions%2F).
 
