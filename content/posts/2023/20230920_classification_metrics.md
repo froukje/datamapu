@@ -55,14 +55,22 @@ More general this looks like this.
 With the above concepts of TP, FN, FP, and TN we can define several metrics that evaluate binary classification problems in different aspects. Let's have a look at the most common metrics for binary classification problems, how to calculate them and when to use them.
 
 
-![confusion matrix](/images/20230920_classification_metrics/accuracy.jpg "Accuracy.")
-![confusion matrix](/images/20230920_classification_metrics/recall.jpg "Recall.")
-![confusion matrix](/images/20230920_classification_metrics/precision.jpg "Precision.")
-![confusion matrix](/images/20230920_classification_metrics/true_negative_rate.jpg "True Negative Rate.")
-![confusion matrix](/images/20230920_classification_metrics/f1score.jpg "f-1-score.")
-![confusion matrix](/images/20230920_classification_metrics/fbetascore.jpg "f-beta-score.")
+![accuracy](/images/20230920_classification_metrics/accuracy.jpg "Accuracy.")
+![recall](/images/20230920_classification_metrics/recall.jpg "Recall.")
+![precision](/images/20230920_classification_metrics/precision.jpg "Precision.")
+![TNR](/images/20230920_classification_metrics/true_negative_rate.jpg "True Negative Rate.")
+![f1_score](/images/20230920_classification_metrics/f1score.jpg "f-1-score.")
+![f_beta_score](/images/20230920_classification_metrics/fbetascore.jpg "f-beta-score.")
+![FPR](/images/20230920_classification_metrics/false_positive_rate.jpg "f-beta-score")
 
-## ROC + AUC
+To classify into positive and negative predictions, we need to define a threshold. Predictions below this threshold are classified as 0 (cat) and predictions above are clssified as 1 (dog). By default this value is 0.5, but we can change it. when we change the theshold, the number of TP, FN, FP, and TN change and with that the above defined metrics. When we compare Recall (True-Positive-Rate) and False-Positive-Rate for different thresholds and plot their values against each other, we get the **Receiver-Operator-Characteristics (ROC) Curve**. The ROC-Curve can help us to fnd a suited threshold for our task.
+
+![ROC](/images/20230920_classification_metrics/roc.jpg "ROC.")
+
+Using the ROC curve we can compare different classifiers. The higher the curve, the better a classifier. If the ROC curve would be the diagonal, this would equal the classifer to make random guesses. The **Area Under the Curve (AUC)** is used to meassure this value. It lies between 0 and 1. The closer it is to 1, the better the classifier. In the case of the diagonal, the AUC would equal 0.5.
+
+![AUC](/images/20230920_classification_metrics/auc.jpg "AUC.")
+
 
 Note: These metrics can be extended for multi-class classification. An overview can be found in this [blog](https://medium.com/r/?url=https%3A%2F%2Fwww.analyticsvidhya.com%2Fblog%2F2021%2F07%2Fmetrics-to-evaluate-your-classification-model-to-take-the-right-decisions%2F).
 
