@@ -11,6 +11,7 @@ google_tag_manager = "GTM-T6CW23SC"
   socialInHeader = false
   socialInFooter = true
   linkedin = "https://www.linkedin.com/in/data-mapu-0a9ba0292/"
+  twitter = "https://twitter.com/datamapu"
   favicon = "favicon.ico"
 
 [menu]
