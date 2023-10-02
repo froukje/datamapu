@@ -1,7 +1,7 @@
 +++
 title = 'Metrics for Classification Problems'
-date = 2023-09-20T00:08:49+02:00
-draft = true
+date = 2023-10-01T00:08:49+02:00
+draft = false
 featured_image = '/images/20230920_classification_metrics/classification_metrics.gif'
 tags = [ "Data Science", "Classification", "Metrics"]
 categories = [ "Data Science" ]
@@ -63,18 +63,34 @@ With the above concepts of TP, FN, FP, and TN we can define several metrics that
 ![f_beta_score](/images/20230920_classification_metrics/fbetascore.jpg "f-beta-score.")
 ![FPR](/images/20230920_classification_metrics/false_positive_rate.jpg "f-beta-score")
 
-To classify into positive and negative predictions, we need to define a threshold. Predictions below this threshold are classified as 0 (cat) and predictions above are clssified as 1 (dog). By default this value is 0.5, but we can change it. when we change the theshold, the number of TP, FN, FP, and TN change and with that the above defined metrics. When we compare Recall (True-Positive-Rate) and False-Positive-Rate for different thresholds and plot their values against each other, we get the **Receiver-Operator-Characteristics (ROC) Curve**. The ROC-Curve can help us to fnd a suited threshold for our task.
+### Classification Threshold
+
+To classify into positive and negative predictions, we need to define a threshold. Predictions below this threshold are classified as 0 (cat) and predictions above are classified as 1 (dog). By default this value is 0.5, but we can change it. When we change the threshold, the number of TP, FN, FP, and TN change and with that the above defined metrics. In the following image five different thresholds are illustrated for our example of classifying dog and cat images. The resulting change in Recall / True-Positive-Rate (TPR) and False-Positive-Rate (FPR) is shown.
+
+![TPR_FPR](/images/20230920_classification_metrics/tpr_fpr.gif "TPR-FPR.")
+*The change of Recall / True-Positive-Rate (TPR) and False-Positive-Rate (FPR) with the change of the classification threshold.*
+
+When we compare Recall / True-Positive-Rate and False-Positive-Rate for different thresholds and plot their values against each other, we get the **Receiver-Operator-Characteristics (ROC) Curve**. The ROC-Curve can help us to fnd a suited threshold for our task.
 
 ![ROC](/images/20230920_classification_metrics/roc.jpg "ROC.")
 
-Using the ROC curve we can compare different classifiers. The higher the curve, the better a classifier. If the ROC curve would be the diagonal, this would equal the classifer to make random guesses. The **Area Under the Curve (AUC)** is used to meassure this value. It lies between 0 and 1. The closer it is to 1, the better the classifier. In the case of the diagonal, the AUC would equal 0.5.
+Using the ROC curve we can compare different classifiers. The higher the curve, the better a classifier. If the ROC curve was the diagonal, this would equal the classifer to make random guesses. The **Area Under the Curve (AUC)** is used to meassure this value. It lies between 0 and 1. The closer it is to 1, the better the classifier. In the case of the diagonal, the AUC would equal 0.5.
+
 
 ![AUC](/images/20230920_classification_metrics/auc.jpg "AUC.")
 
+### Example
 
-Note: These metrics can be extended for multi-class classification. An overview can be found in this [blog](https://medium.com/r/?url=https%3A%2F%2Fwww.analyticsvidhya.com%2Fblog%2F2021%2F07%2Fmetrics-to-evaluate-your-classification-model-to-take-the-right-decisions%2F).
+In Python you can calculate all these metrics - for binary and multiple classification - using the [sklearn metrics module](https://scikit-learn.org/stable/modules/model_evaluation.html), e.g. accuracy can be calculated as follows:
 
-### Further Reading
+```
+from sklearn.metrics import accuracy_score
+acc = accuracy_score(y_true, y_pred)
+```
 
-* https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc
-* https://www.analyticsvidhya.com/blog/2021/07/metrics-to-evaluate-your-classification-model-to-take-the-right-decisions/
+For the above example of classifying cat and dog images, we achieve an accuracy of 6/10 = 0.6, because 6 images (4 dogs and 2 cats) out of 10 are correctly classified.
+
+### Summary
+
+Binary classification is a specific case of classification problems, where the data is divided into two classes. Depending on the focus of the project the classifier can be optimized towards specific metrics. The above defined metrics are the most common metrics for binary classification. If none of these suite your purpose you can of course define your own custom metric to evaluate your classifier. Further the threshold towards the data is classified can be changed in order to optimize towards a certain metric. All the above defined metrics can be generalized for multiple classification.
+
