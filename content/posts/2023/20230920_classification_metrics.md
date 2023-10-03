@@ -59,9 +59,9 @@ With the above concepts of TP, FN, FP, and TN we can define several metrics that
 ![recall](/images/20230920_classification_metrics/recall.jpg "Recall.")
 ![precision](/images/20230920_classification_metrics/precision.jpg "Precision.")
 ![TNR](/images/20230920_classification_metrics/true_negative_rate.jpg "True Negative Rate.")
+![FPR](/images/20230920_classification_metrics/false_positive_rate.jpg "f-beta-score")
 ![f1_score](/images/20230920_classification_metrics/f1score.jpg "f-1-score.")
 ![f_beta_score](/images/20230920_classification_metrics/fbetascore.jpg "f-beta-score.")
-![FPR](/images/20230920_classification_metrics/false_positive_rate.jpg "f-beta-score")
 
 ### Classification Threshold
 
