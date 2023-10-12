@@ -35,4 +35,9 @@ With the just defined concept of residuals, we can define different metrics, tha
 ![mape](/images/20231001_regression_metrics/mape.jpg)
 ![r_squared](/images/20231001_regression_metrics/r_squared.jpg)
 ![adjusted_r_squared](/images/20231001_regression_metrics/adj_r_squared.jpg)
+
+### Example
+
 https://en.wikipedia.org/wiki/Linear_regression
+
+### Summary
