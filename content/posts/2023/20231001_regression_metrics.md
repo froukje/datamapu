@@ -38,7 +38,7 @@ With the just defined concept of residuals, we can define different metrics that
 
 ### Example
 
-Let's consider the above example, considering the body mass of an animal in relation to the maximal running speed, and calculate the RMSE. In order to do that, we first need to calculate the predictions. We use the *LinearRegression* method from [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) to fit a linear regression and print the predictions.
+Let's consider the above example, relating the body mass of an animal with the maximal running speed, and calculate the RMSE. In order to do that, we first need to calculate the predictions. We use the *LinearRegression* method from [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) to fit a linear regression and print the predictions.
 
 
 ```
