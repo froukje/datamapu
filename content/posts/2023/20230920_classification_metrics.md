@@ -7,12 +7,9 @@ tags = ["Data Science", "Classification", "Metrics"]
 categories = ["Data Science"]
 +++
 
-## Metrics for Classification Problems  
-### An Overview
-
 ![classification metrics](/images/20230920_classification_metrics/classification_metrics.gif)
 
-### Classification Problems
+## Classification Problems
 
 Supervised Machine Learning projects can be divided into [regression](https://en.wikipedia.org/wiki/Regression_analysis) and [classification](https://en.wikipedia.org/wiki/Statistical_classification) problems. In regression problems, we predict a continuous variable (e.g. temperature), while in classification, we classify the data into discrete classes (e.g. classify cat and dog images). A subset of classification problems is the so-called [binary classification](https://en.wikipedia.org/wiki/Binary_classification), where only two classes are considered. An example of this is classifying e-mails as spam and no-spam or cat images versus dog images. When we consider more than two classes, we speak of [multi-class classification](https://en.wikipedia.org/wiki/Multiclass_classification). An example of this is the [MNIST](https://en.wikipedia.org/wiki/MNIST_database) dataset, where images of handwritten digits are classified, i.e. we have 10 different classes. Depending on the problem we consider, we need different metrics to evaluate our Machine Learning model. Within each of these two types of Machine Learning problems, we have to choose which of the metrics fits our needs best. This post will give an overview of the most common metrics for **binary classification** problems, what they mean, and when to use them.
 

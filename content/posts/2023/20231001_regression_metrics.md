@@ -8,12 +8,9 @@ categories = [ "Data Science" ]
 
 +++
 
-## Metrics for Regression Problems  
-### An Overview
-
 ![regression metrics](/images/20231001_regression_metrics/regression_metrics.jpg)
 
-### Regression Problems
+## Regression Problems
 
 [Regression](https://en.wikipedia.org/wiki/Regression_analysis) problems in Machine Learning are a type of supervised learning problem, where a continuous numerical variable is predicted, such as, for example, the age of a person or the price of a product. A special type is the [linear regression](https://en.wikipedia.org/wiki/Linear_regression), where a linear relationship between two ([simple linear regression](https://en.wikipedia.org/wiki/Simple_linear_regression)) or more (multiple linear regression) is analyzed. The example plots in this article will be illustrated with a simple linear regression. However the metrics introduced here are common metrics for all types of regression problems, including multiple linear regression and non-linear regression. The simple linear regression is only chosen for illustration purposes. 
  
