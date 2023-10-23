@@ -29,9 +29,7 @@ An example for a regression problem is the prediction of house prices, depending
 
 ## Unsupervised Learning
 
-In contrast to supervised learning, unsupervised learning does not need labels. 
-
-Unsupervised learning is a branch of machine learning that focuses on discovering patterns and relationships within data that lacks pre-existing labels or annotations. Unlike supervised learning, unsupervised learning algorithms do not rely on labeled examples to learn from. Instead, they aim to discover inherent structures or clusters within the data.
+In contrast to supervised learning, unsupervised learning does not need labels. With unsupervised learning the data is divided into groupd by finding relationships, patterns, or similarities between the data in each Group. As there are no labels, this is Donezk by only analyzing the data themselves. 
 
 ![unsupervised](/images/20231017_supervised_unsupervised/unsupervised.gif)
 *Fig. 3: Illustration of Unsupervised learning.*
@@ -40,12 +38,10 @@ Unsupervised learning is a branch of machine learning that focuses on discoverin
 
 1. **Clustering.** The data is categorized in different groups - called clusters by identifying patterns in the data. The number of desired clusters can be customized and the data within each cluster is related with each other. An example is the clustering of customers of a company based on different features such as age, gender, and income. This can be used to target the different groups (clusters) with individual marketing campains. 
 
-2. **Dimensionality Reduction.** Dimensionality reduction can e.g. be used to reduce the feature space and to remove unimportant features. 
+2. **Dimensionality Reduction.** Dimensionality reduction can e.g. be used to reduce the feature space and to remove unimportant features. The objective is to decrease the complexity of a dataset while keeping the most important information. It however also decreases the possibility to interprete the results.
 
-3. **Association**
+3. **Association** Association rules are used to find relationships within a dataset. A common use case is to find products that relate to the ones in your basket on online platforms.
 
 ## Summary
 
-the strengths of each approach lie in different applications. Supervised machine learning will learn the relationship between input and output through labelled training data, so is used to classify new data using these learned patterns or in predicting outputs. 
-
-Unsupervised machine learning on the other hand is useful in finding underlying patterns and relationships within unlabelled, raw data. This makes it particularly useful for exploratory data analysis, segmenting or clustering of datasets, or projects to understand how data features connect to other features for automated recommendation systems.
+Supervised and unsupervised learning are two different types of Machine Learning with different objectives. In supervised learning we try to map the input data to the labels. That is we try to find a mapping that describes this relationship. A trained model can be used to make predictions for new data, when the labels are unknown. Unsupervised learning is not used to make predictions, but to find underlying patterns in the data. It can e.g. be used for data exploration or feature space reduction.
