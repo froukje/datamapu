@@ -3,8 +3,8 @@ title = 'Metrics for Classification Problems'
 date = 2023-10-01T00:08:49+02:00
 draft = false
 featured_image = '/images/20230920_classification_metrics/classification_metrics.gif'
-tags = ["Data Science", "Classification", "Metrics"]
-categories = ["Data Science"]
+tags = ["Data Science", "Machine Learning", "Classification", "Metrics"]
+categories = ["Data Science", "Machine Learning"]
 +++
 
 ![classification metrics](/images/20230920_classification_metrics/classification_metrics.gif)
