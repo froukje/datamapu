@@ -5,6 +5,7 @@ draft = false
 featured_image = '/images/20230920_classification_metrics/classification_metrics.gif'
 tags = ["Data Science", "Machine Learning", "Classification", "Metrics"]
 categories = ["Data Science", "Machine Learning"]
+keywords = ["Data Science", "Machine Learning", "Classification", "Metrics"]
 +++
 
 ![classification metrics](/images/20230920_classification_metrics/classification_metrics.gif)
