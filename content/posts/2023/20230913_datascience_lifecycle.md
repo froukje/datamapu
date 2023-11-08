@@ -3,8 +3,8 @@ title = 'The Data Science Lifecycle'
 date = 2023-09-13T21:28:42+02:00
 draft = false
 featured_image = '/images/20230913_datascience_lifecycle/ds_lifecycle.jpg'
-tags = [ "Data Science"]
-categories = [ "Data Science" ]
+tags = [ "Data Science", "Machine Learning"]
+categories = [ "Data Science", "Machine Learning"]
 keywords = ["Data Science", "Lifecycle", "Machine Learning"]
 +++
 
