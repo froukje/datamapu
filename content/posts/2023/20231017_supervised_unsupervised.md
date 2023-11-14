@@ -14,7 +14,7 @@ In classical programming, the programmer defines specific rules which the progra
 
 ![supervised_unsupervised](/images/20231017_supervised_unsupervised/supervised_unsupervised.gif)
 *Fig. 1: Supervised and Unsupervised Learning are different types of Machine Learning.*
-## Supervised Learning
+## Supervised Learning{#supervised}
 
 Supervised learning is a technique that needs labeled data. The labels are the output that we give the model during training. The model learns a relationship between the input data and their labels. After the model is trained, this learned relationship is used to make predictions for input data, where the labels are unknown. Supervised learning can be divided into [regression](https://en.wikipedia.org/wiki/Regression_analysis) and [classification](https://en.wikipedia.org/wiki/Statistical_classification) problems. In a classification problem, we try to classify as many inputs as possible to the correct class. In a regression problem, we try to get as close as possible to the true labels with our predicted labels. A difficulty in supervised learning is that getting the labels for a dataset can be time-consuming and expensive.
 
