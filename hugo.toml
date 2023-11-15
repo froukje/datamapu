@@ -16,6 +16,7 @@ features = ["posts", "shortcodes", "related content", "comments"]
   facebook = true
   whatsapp = true
   favicon = "favicon.ico"
+  description = 'Data Science and Machine Learning Blog'
   images = ["/static/images/datamapu_logo_schmal.png"]
 [[params.ananke_socials]]
 name = "twitter"
