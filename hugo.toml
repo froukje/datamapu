@@ -5,15 +5,21 @@ theme = 'ananke'
 uglyURLs = false
 googleAnalytics = "G-FJQERFPVYS"
 google_tag_manager = "GTM-T6CW23SC"
+tags = ["data science", "machine learning", "deep learning", "python", "artificial intelligence"]
+features = ["posts", "shortcodes", "related content", "comments"]
 
 [params]
   show_reading_time = true
-  socialInHeader = false
-  socialInFooter = true
-  twitter = "https://twitter.com/datamapu"
+  socialInHeader = true
+  socialInFooter = false
   linkedin = true
-  facebook = true	
+  facebook = true
+  whatsapp = true
   favicon = "favicon.ico"
+  images = ["/static/images/datamapu_logo_schmal.png"]
+[[params.ananke_socials]]
+name = "twitter"
+url = "https://twitter.com/datamapu"
 
 [menu]
 [[menu.main]]
