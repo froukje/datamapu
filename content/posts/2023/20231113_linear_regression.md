@@ -10,51 +10,53 @@ keywords = ["Data Science", "Machine Learning", "Deep Learning", "Regression"]
 
 ## Introduction 
 
-Linear Regression is a type of [Supervised Machine Learning]({{< ref "20231017_supervised_unsupervised#supervised" >}} "Supervised Machine Learning") Algorithm, where a linear relationship between the input feature(s) and the target value is assumed. Linear Regression is a specific type of regression model, where the mapping learned by the model describes a linear function. As in all regression problem, the target variable is continuous. In a linear regression the linear relationship between one ([Simple Linear Regression]({{< ref "#slr" >}})) or more ([Multiple Linear Regression]({{< ref "#mrl" >}})) independent variable and one dependent variable is modelled.
+Linear Regression is a type of [Supervised Machine Learning]({{< ref "20231017_supervised_unsupervised#supervised" >}} "Supervised Machine Learning") Algorithm, where a linear relationship between the input feature(s) and the target value is assumed. Linear Regression is a specific type of regression model, where the mapping learned by the model describes a linear function. As in all regression problems, the target variable is continuous. In a linear regression the linear relationship between one ([Simple Linear Regression]({{< ref "#slr" >}})) or more ([Multiple Linear Regression]({{< ref "#mrl" >}})) independent variable and one dependent variable is modelled.
 
 ![regression example](/images/20231001_regression_metrics/regression_example.jpg)
 *Illustration of a simple linear regression between the body mass and the maximal running speed of an animal.*
 
 ## Simple Linear Regression{#slr}
 
-A Simple Linear Regression describes a relationship between one independent variable ($x$) and one dependent variable ($y$). This relationship is modelled by a linear equation. The objective is to find the linear line that fits the data best, in the sense of minimizing the [Mean Squared Error]({{< ref "20231001_regression_metrics" >}}) between the predicted values and the actual values. We will discuss later, how exactly this is achieved. 
+A Simple Linear Regression describes a relationship between one independent variable ($x$) and one dependent variable ($y$). This relationship is modelled by a linear equation. The objective is to find the linear line that fits the data best, in the sense of minimizing the [Mean Squared Error]({{< ref "20231001_regression_metrics" >}}) between the predicted values and the actual values. A linear regression model follows the equation $$y = a\cdot x + b.$$ In this equation $a$ is the *slope*, which represents the change of the dependent variable ($y$) depending on the independend variable ($y$) and $b$ is the *intercept*, that gives the value of the dependent variable ($y$) for the case the independent variable is zero ($x=0$). The most important terms are illustrated in the following plot.  
 
-$$\hat{y} = a\cdot x +b$$
-(image!)
+![regression terms](/images/20231113_linear_regression/linear_regression.png)
 
-### Asumptions
-
-
-
-**Linear Relationship**
-
-**Normal Distribution of Residuals**
-
-**Multicollinearity**
-
-**Autocorrelation**
-
-**Homoscedasticity**
 
 ### Gradient Descent for Linear Regression(?)
 To fine a linear model we need to estimate a slop and an interception.
 
 
-### Interpretation of Regression Coefficients
-
-The slope represents the change in the dependent variable for each unit change in the independent variable, while the intercept represents the predicted value of the dependent variable when the independent variable is zero.
-
 ## Multiple Linear Regression{#mlr}
 
 Multiple linear regression establishes the relationship between independent variables (two or more) and the corresponding dependent variable. Here, the independent variables can be either continuous or categorical.
 
-### Multicollinearity
+### Asumptions
+
+To perform a linear regression the data needs to fulfill the following criteria:
+
+**Linearity.** The dependend variabe ($x$) and the independent variability ($y$) should have a linear relationship. To determine if that is true the data can be visualized in a scatterplot. This can also be used to identify outliers, which should be removed. A linear regression is sensitive to outliers and they may adulterate the results.
+
+**Normal Distribution of Residuals.** The distribution of the residuals should be normally distributed. This assures that the model captures the main pattern of the data.
+
+(image!)
+
+**Independence.** The independent variables are dependent of each other. In other words there is no autocorrelation within the dependent data.
+
+(image!)
+
+**Homoscedasticity.** The variance of the residuals is constant. This expecially means that the number of datapoints has no impact on the variance of the residuals.
+
+(image!)
+
+**No Multicollinearity.** If more than one independent variable is used, the correlation between the different independ variables should be low. Highly correlated variables make it more difficult to determine the contribution of each variable individually.
+
 
 ### Advantages
 
 **Easy Implementation**
 
 **Interpretability**
+Slope
 
 **Scalability**
 
