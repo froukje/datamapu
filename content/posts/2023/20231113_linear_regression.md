@@ -17,18 +17,40 @@ Linear Regression is a type of [Supervised Machine Learning]({{< ref "20231017_s
 
 ## Simple Linear Regression{#slr}
 
-A Simple Linear Regression describes a relationship between one independent variable ($x$) and one dependent variable ($y$). This relationship is modelled by a linear equation. The objective is to find the linear line that fits the data best, in the sense of minimizing the [Mean Squared Error]({{< ref "20231001_regression_metrics" >}}) between the predicted values and the actual values. A linear regression model follows the equation $$y = a\cdot x + b.$$ In this equation $a$ is the *slope*, which represents the change of the dependent variable ($y$) depending on the independend variable ($y$) and $b$ is the *intercept*, that gives the value of the dependent variable ($y$) for the case the independent variable is zero ($x=0$). The most important terms are illustrated in the following plot.  
+A Simple Linear Regression describes a relationship between one independent variable ($x$) and one dependent variable ($y$). This relationship is modelled by a linear equation. The objective is to find the linear line that fits the data best, in the sense of minimizing the error between the predicted values and the actual values. A linear regression model follows the equation $$\hat{y} = a\cdot x + b.$$ In this equation $\hat{y}$ is the predicted estimate of $y$, $a$ the *slope*, which represents the change of the dependent variable ($y$) depending on the independend variable ($y$) and $b$ is the *intercept*, that gives the value of the dependent variable ($y$) for the case the independent variable is zero ($x=0$). The most important terms are illustrated in the following plot.  
+
 
 ![regression terms](/images/20231113_linear_regression/linear_regression.png)
+*Illustration of a simple linear regression.*
+### Find the best Fit
 
+As in every Machine Learning algorithm, in order to find the best fit the error between the actual values and the predicted values is minimized. This error is described by a loss function. In a linear regression the loss function is the usually the [Mean Squared Error]({{< ref "20231001_regression_metrics" >}})
 
-### Gradient Descent for Linear Regression(?)
-To fine a linear model we need to estimate a slop and an interception.
+$$MSE = \frac{1}{N}\sum_{i=1}^{N}(y_i-\hat{y_i})^2,$$
 
+with $y$ representing the actual value and $\hat{y}$ the prediction. When plugging in the equation for the linear model we get
+$$MSE = L(a, b) = \frac{1}{N}\sum_{i=1}^{N}(y_i - (a\cdot x_i +b))^2.$$
+
+To find a linear model we need to determine the slope $a$ and the intercept $b$, such that the loss function (here the MSE) is minimized. One popular minimization technique is the [Gradient Descent]({{< ref "20231102_intro_dl#gradient_descent">}}). The *Gradient Descent* is a process, in which the parameters $a$ and $b$ are iterativly updated. Starting with random values the values $a$ and $b$ are updated in each step to reach an optimized solution. To reach a minimum with this strategy, we need to update de paramters in the right direction. The gradient of a function describes the direction of the steepest ascent, that is in order to find the minimum we need to update the paramters into the direction of the negative of the gradient. To calculate the gradient, we need to calculate the partial derivatives with respect to $a$ and $b$
+
+$$\frac{\delta{L}}{\delta a}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot x_i$$
+$$\frac{\delta{L}}{\delta b}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b).$$
+
+The stepsize of the update is defined by the learning rate $\alpha$. If $\alpha$ is chosen very large the minimum may be missed, if it is very small the training may take long, as illustrated in the next plot.
+
+![gradient descent](/images/20231113_linear_regression/gradient_descent.png) 
+*Illustration of gradient Descent for different learning rates.*
+
+Note, that for a linear regression the minimum can also be calculated analytically by setting the derivatives to zero and deriving the coefficicients from these equations. This is however computationally more expensive, especially when multiple independent variables (Multiple Linear Regression) are considered. 
 
 ## Multiple Linear Regression{#mlr}
 
-Multiple linear regression establishes the relationship between independent variables (two or more) and the corresponding dependent variable. Here, the independent variables can be either continuous or categorical.
+In multiple linear regression a linear relationship two or more independent variables ($x_1$, $x_2$, $\dots$, $x_n$) and one dependent variable ($y$) is described 
+$$\hat{y} = a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n \cdot x_n.$$
+As previsouly, $\hat{y}$ estimates the dependent variable $y$.
+
+![multiple linear regression](/images/20231113_linear_regression/multiple_linear_regression.png)
+*Illustration of a multiple linear regression with two indepent variables.*
 
 ### Asumptions
 
