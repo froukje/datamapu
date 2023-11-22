@@ -40,28 +40,28 @@ The stepsize of the update is defined by the learning rate $\alpha$. The updatin
 
 $$w_{i+1} = w_{i} + \alpha \nabla L.$$
 
-If $\alpha$ is chosen very large the minimum may be missed, if it is very small the training may take long, as illustrated in the next plot.
+If $\alpha$ is chosen very large the minimum may be missed, if it is very small finding the minimum and with that the training may take long, as illustrated in the next plot.
 
 
 ![gradient descent](/images/20231113_linear_regression/gradient_descent.png) 
 *Illustration of gradient Descent for different learning rates.*
 
-Note, that for a linear regression the minimum can also be calculated analytically by setting the derivatives to zero and deriving the coefficicients from these equations. This is however computationally more expensive, especially when multiple independent variables (Multiple Linear Regression) are considered. 
+Note, that for a linear regression, the minimum can also be calculated analytically by setting the derivatives to zero and deriving the coefficients from these equations. This is however computationally more expensive, especially when multiple independent variables (Multiple Linear Regression) are considered. 
 
 ## Multiple Linear Regression{#mlr}
 
 In multiple linear regression a linear relationship two or more independent variables (input features, $x_1$, $x_2$, $\dots$, $x_n$) and one dependent variable (target value, $y$) is described 
-$$\hat{y} = a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n \cdot x_n.$$
-As previsouly, $\hat{y}$ estimates the dependent variable $y$. In a Multiple Linear Regression the independent variables can be either numerical or categorical.
+$$\hat{y} = a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n \cdot x_n.$$ 
+As previously, $\hat{y}$ estimates the dependent variable $y$. In a Multiple Linear Regression the independent variables can be either numerical or categorical.
 
 ![multiple linear regression](/images/20231113_linear_regression/multiple_linear_regression.png)
 *Illustration of a multiple linear regression with two indepent variables.*
 
 ### Asumptions
 
-To perform a linear regression the data needs to fulfill the following criteria:
+To reasonable perform a linear regression the data need to fulfill the following criteria:
 
-**Linearity.** The dependend variabe ($x$) and the independent variability ($y$) should have a linear relationship. To determine if that is true the data can be visualized in a scatterplot. This can also be used to identify outliers, which should be removed. A linear regression is sensitive to outliers and they may adulterate the results.
+**Linearity.** The dependent variable ($x$) and the independent variability ($y$) should have a linear relationship. To determine if that is true the data can be visualized in a scatterplot. This can also be used to identify outliers, which should be removed. A linear regression is sensitive to outliers and they may adulterate the results.
 
 ![linearity](/images/20231113_linear_regression/linearity.png)
 
@@ -69,11 +69,11 @@ To perform a linear regression the data needs to fulfill the following criteria:
 
 ![normal distribution](/images/20231113_linear_regression/normal_distribution.png)
 
-**Independence.** The independent variables are not dependent of each other. In other words there is no autocorrelation within the dependent data.
+**Independence.** The independent variables are not dependent of each other. In other words, there is no autocorrelation within the dependent data.
 
 ![independence](/images/20231113_linear_regression/independence.png)
 
-**Homoscedasticity.** The variance of the residuals is constant. This expecially means that the number of datapoints has no impact on the variance of the residuals.
+**Homoscedasticity.** The variance of the residuals is constant. This especially means that the number of datapoints has no impact on the variance of the residuals.
 
 ![homeoscedacity](/images/20231113_linear_regression/homeo.png)
 
@@ -83,7 +83,7 @@ To perform a linear regression the data needs to fulfill the following criteria:
 
 ### Evaluation
 
-After fitting a model, we need to evaluate it. To evaluate a linear regression the same metrics as for all regression problems can be used. Two very common ones are *Root Mean Squared Error (RMSE)* and *Mean Absolute Error (MAE)*. Both metrics are based on the difference between the predicted and the actual values, the so-called *Residuals*. The MAE is defined as the sum of the absolute values of the residuals for all data points, divided by the total number of data points. The RMSE is defined as the squre root of the sum of the squared residuals divided by the total number of data points. Both metrics avoid the elimination of errors by taking the absolute value and the square accordingly and are easy to interpret, because they carry the same units as the data. The RMSE, due to taking the square, helps to reduce large errors. A more detailed overview and description about these and other common [metrics for regression]({{< ref "20231001_regression_metrics" >}} "Metrics for Regression") is given in a separate article.
+After fitting a model, we need to evaluate it. To evaluate a linear regression the same metrics as for all regression problems can be used. Two very common ones are *Root Mean Squared Error (RMSE)* and *Mean Absolute Error (MAE)*. Both metrics are based on the difference between the predicted and the actual values, the so-called *Residuals*. The MAE is defined as the sum of the absolute values of the residuals for all data points, divided by the total number of data points. The RMSE is defined as the square root of the sum of the squared residuals divided by the total number of data points. Both metrics avoid the elimination of errors by taking the absolute value and the square accordingly and are easy to interpret because they carry the same units as the target variable. The RMSE, due to taking the square, helps to reduce large errors. A more detailed overview and description of these and other common [metrics for regression]({{< ref "20231001_regression_metrics" >}} "Metrics for Regression") is given in a separate article.
 
 ### Advantages
 
@@ -94,9 +94,9 @@ Another advantage is **easy implementation**. The Linear Regression is the simpl
 
 ### Disadvantages
 
-Linear Regression is **sensible to outliers**. That is outliers can impact a Linear Regression Model significantly and lead to misleading results. In real life relationships between variables are rarely linear, that means a Linear Regression tends to **oversimplify** this relationship.
+Linear Regression is **sensible to outliers**. That is outliers can impact a Linear Regression Model significantly and lead to misleading results. In real life relationships between variables are rarely linear, which means a Linear Regression tends to **oversimplify** this relationship.
 
-**Extrapolation** of a Linear Regression should be done with a lot of caution. The prediction of values outside of the values the model was trained on is often inappropriate, and may yield to misleading predicions, as illustrated in the following plot.. 
+**Extrapolation** of a Linear Regression should be done with a lot of caution. The prediction of values outside of the values the model was trained on is often inappropriate, and may yield misleading predicions, as illustrated in the following plot. 
 
 ![extrapolation](/images/20231113_linear_regression/extrapolation.png)
 
@@ -119,4 +119,4 @@ This yields to $a = 1.93$ for the slope, and $b = 3.23$ for the intercept. The p
 
 ## Summary
 
-Linear Regression is a simple, yet powerful tool in supervised Machine Learning. Its power is mainly its simplicity and interpretability. These two reasons make it popular in academic and business use cases. However, it is important to know the limitations. In real life most relationships are not linear and applying a Linear Regression to such data, may lead to misleading and wrong results.
+Linear Regression is a simple, yet powerful tool in supervised Machine Learning. Its power is mainly its simplicity and interpretability. These two reasons make it popular in academic and business use cases. However, it is important to know its limitations. In real life most relationships are not linear and applying a Linear Regression to such data, may lead to misleading and wrong results.
