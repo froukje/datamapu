@@ -15,6 +15,8 @@ Linear Regression is a type of [Supervised Machine Learning]({{< ref "20231017_s
 ![regression example](/images/20231001_regression_metrics/regression_example.jpg)
 *Illustration of a simple linear regression between the body mass and the maximal running speed of an animal.*
 
+
+
 ## Simple Linear Regression{#slr}
 
 A Simple Linear Regression describes a relationship between one independent variable (input feature, $x$) and one dependent variable (target value, $y$). This relationship is modeled by a linear equation. The objective is to find the linear line that fits the data best, in the sense of minimizing the error between the predicted values and the actual values. A linear regression model follows the equation $$\hat{y} = a\cdot x + b.$$ In this equation $\hat{y}$ is the predicted estimate of $y$, $a$ the *slope*, which represents the change of the dependent variable ($y$) depending on the independent variable ($x$) and $b$ is the *intercept*, that gives the value of the dependent variable ($y$) for the case the independent variable is zero ($x=0$). The most important terms are illustrated in the following plot.  
@@ -33,8 +35,8 @@ $$MSE = L(a, b) = \frac{1}{N}\sum_{i=1}^{N}(y_i - (a\cdot x_i +b))^2.$$
 
 To find a linear model we need to determine the slope $a$ and the intercept $b$, such that the loss function (here the MSE) is minimized. One popular minimization technique is the [Gradient Descent]({{< ref "20231102_intro_dl#gradient_descent">}}). The *Gradient Descent* is a process, in which the parameters $a$ and $b$ are iteratively updated. Starting with random values the values $a$ and $b$ are updated in each step to achieve an optimized solution. To reach a minimum with this strategy, the parameters have to be updated in the correct direction. The gradient of a function describes the direction of the steepest ascent, that is in order to find the minimum we need to update the parameters in the direction of the negative of the gradient. The gradient is determined by the partial derivatives with respect to $a$ and $b$
 
-$$\frac{\delta{L}}{\delta a}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot x_i$$
-$$\frac{\delta{L}}{\delta b}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b).$$
+$$\frac{\delta{L}}{\delta a}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot (-x_i)$$
+$$\frac{\delta{L}}{\delta b}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot (-1).$$
 
 The stepsize of the update is defined by the learning rate $\alpha$. The updating rule, then takes the form
 
@@ -120,3 +122,10 @@ This yields to $a = 1.93$ for the slope, and $b = 3.23$ for the intercept. The p
 ## Summary
 
 Linear Regression is a simple, yet powerful tool in supervised Machine Learning. Its power is mainly its simplicity and interpretability. These two reasons make it popular in academic and business use cases. However, it is important to know its limitations. In real life most relationships are not linear and applying a Linear Regression to such data, may lead to misleading and wrong results.
+
+## Further Links
+
+A Simple Linear Regression is performed, finding the **analytical solution for the slope and the intercept** by hand using the data from the first plot [here]({{< ref "20231123_linear_regression_example" >}} "Linear Regression Example").
+
+A more realistic **tutorial for a linear regression model**, predicting house prices in Boston using a Simple and a Multiple Linear Regression is elaborated in a notebook on [kaggle]()
+
