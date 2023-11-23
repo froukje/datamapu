@@ -1,5 +1,5 @@
 +++
-title = 'Linear Regression - Analytical Solution and Example'
+title = 'Linear Regression - Analytical Solution and Simplified Example'
 date = 2023-11-23T11:00:02+01:00
 draft = true
 featured_image = '/images/20231001_regression_metrics/regression_example.jpg'
@@ -28,12 +28,12 @@ $$MSE = L(a, b) = \frac{1}{N}\sum_{i=1}^{N}(y_i - (a\cdot x_i +b))^2.$$
 
 ## Minimize the Loss
 
-As we know from calculus a criterium required for a minimum is that the gradient is zero. The gradient is compiled by the partial derivatives. Following the chain rule, the partial derivatives of $L$ with respect to $a$ and $b$ are
+In real application optimization techniques, such as [Gradient Descent]({{< ref "20231113_linear_regression#best_fit" >}} "Gradient Descent") are used to estimate the minimum of the Loss Function. In this article, we will calculate the coefficients $a$ and $b$ analytically. As we know from calculus a criterium required for a minimum is that the gradient is zero. The gradient is compiled by the partial derivatives. Following the chain rule, the partial derivatives of $L$ with respect to $a$ and $b$ are
 
 $$\frac{\delta{L}}{\delta a}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot (-x_i)$$
 $$\frac{\delta{L}}{\delta b}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot (-1).$$
 
-Setting these equations to zero and multiplying bith sides with $-1$, we get
+Setting these equations to zero and multiplying both sides with $-1$, we get
 
 $$0 =  \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot x_i$$ 
 $$0 =  \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)$$
@@ -71,15 +71,15 @@ $$a = \frac{\sum_{i=1}^N x_i\cdot(y_i - \bar{y})}{\sum_{i=1}^Nx_i\cdot(x_i - \ba
 With that, we can calculate the coefficients $a$ and $b$ that determine the Simple Linear Regression model, we aim to develop. 
 
 Note, as we know from calculus setting the first derivative, i.e. the gradient to zero is not a sufficient condition for a minimum.
-For this example we assume that the only location with zero gradient is a minimum. Strictly speaking we would need to check all second derivatives to see if this is really a minimum. At this point it could also be a maximum or a sattle point.
+For this example we assume that the only location with zero gradient is a minimum. To be sure that this is really a minimum we would need to check all second derivatives to see if this is really a minimum. At this point it could also be a maximum or a sattle point. This is however not the scope of this article.
 
 ## Example
 
 We now use the data presented above to determine the linear relationship between the size and the speed of an animal, represented by
 
-$\hat{y} = a \cdot x + b,$
+$$\hat{y} = a \cdot x + b,$$
 
-with $\hat{y}$ estimating the speed ($y$) and $x$ being the maximal running speed. We start with calculation the means $\bar{x}$ and $\bar{y}$, with
+with $\hat{y}$ estimating the maximal running speed ($y$) and $x$ being the body mass. We start with calculating the means $\bar{x}$ and $\bar{y}$, with
 
 $$x = [1400, 400, 50, 1000, 300, 60]$$
 $$y = [45, 70, 100, 60, 90, 110].$$
@@ -97,12 +97,12 @@ which gives
 
 $$a = -0.043,$$
 
-rounded up to 3 digits. With his we can calculate
+rounded up to 3 digits. With this we can calculate
 
 $$b = \bar{y} - a\cdot\bar{x} = 79.17 + 0.043\cdot 535 = 102.175.$$
 
-The resulting linear regression model and the original data is illustreted in the following plot.
+The resulting linear regression model and the original data is illustrated in the following plot.
  
 ![regression example](/images/20231123_linear_regression_example/linear_regression_example2.png)
 
-Note, for this simplified example, we are not going to check the assumptions. This example is only for illustration purpose, the assumptions are with this few amount of data not proofable.
+Note, for this simplified example, we are not going to check the [assumptions]({{< ref "20231113_linear_regression#assumptions" >}} "Assumption Linear Regression") that need to be fulfilled for a Linear Regression. This example is only for illustration purposes, with this few amount of data statistical tests are not reasonable.

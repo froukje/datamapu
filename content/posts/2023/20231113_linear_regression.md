@@ -24,7 +24,7 @@ A Simple Linear Regression describes a relationship between one independent vari
 
 ![regression terms](/images/20231113_linear_regression/linear_regression.png)
 *Illustration of a simple linear regression.*
-### Find the best Fit
+### Find the best Fit{#best_fit}
 
 As in every Machine Learning algorithm, in order to find the best fit the error between the actual values and the predicted values is minimized. This error is described by a loss function. In a linear regression, the loss function is usually the [Mean Squared Error]({{< ref "20231001_regression_metrics" >}})
 
@@ -59,7 +59,7 @@ As previously, $\hat{y}$ estimates the dependent variable $y$. In a Multiple Lin
 ![multiple linear regression](/images/20231113_linear_regression/multiple_linear_regression.png)
 *Illustration of a multiple linear regression with two indepent variables.*
 
-### Asumptions
+### Asumptions{#assumptions}
 
 To reasonable perform a linear regression the data need to fulfill the following criteria:
 
