@@ -1,7 +1,7 @@
 +++
 title = 'Linear Regression - Analytical Solution and Simplified Example'
 date = 2023-11-23T11:00:02+01:00
-draft = true
+draft = false
 featured_image = '/images/20231001_regression_metrics/regression_example.jpg'
 tags = ["Data Science", "Machine Learning", "Regression", "Linear Regression"]
 categories = ["Data Science", "Machine Learning", "Regression"]
@@ -9,7 +9,7 @@ keywords = ["Data Science", "Machine Learning", "Deep Learning", "Regression"]
 +++
 ## Introduction
 
-In a previous article we introduced [Linear Regression]({{< ref "20231113_linear_regression" >}} "Linear Regression") in detail and more generally, showed how to find the best model and discussed its chances and limitations. In this post we are looking at a concrete example. We are going to calculate the *slope* and the *intercept* from a Simple Linear Regression analytically, looking at the example data provided in the next plot.
+In a previous article, we introduced [Linear Regression]({{< ref "20231113_linear_regression" >}} "Linear Regression") in detail and more generally, showed how to find the best model and discussed its chances and limitations. In this post, we are looking at a concrete example. We are going to calculate the *slope* and the *intercept* from a Simple Linear Regression analytically, looking at the example data provided in the next plot.
 
 ![regression example](/images/20231001_regression_metrics/regression_example.jpg)
 *Illustration of a simple linear regression between the body mass and the maximal running speed of an animal.*
@@ -22,13 +22,13 @@ $$\hat{y} = a\cdot x + b,$$
 
 with $\hat{y}$ approximating the target values $y$. In order to find this model, we need to determine the coefficients $a$ and $b$. 
 As we learned in the article about [Linear Regression]({{< ref "20231113_linear_regression" >}} "Linear Regression"),
-In order to fit a Linear Regression model, we need to minimize the error between the predictions and the actual values. In Machine Learning this error, depending on the parameters of the model is a often called the *Loss-Function*. For a Simple Linear Regression these parameters are the slope ($a$) and the intercept ($b$). Usually the [Mean Squared Error]({{< ref "20231001_regression_metrics" >}}) is used as Loss-Function in Linear Regression
+In order to fit a Linear Regression model, we need to minimize the error between the predictions and the actual values. In Machine Learning this error, depending on the parameters of the model is often called the *Loss-Function*. For a Simple Linear Regression, these parameters are the slope ($a$) and the intercept ($b$). Usually, the [Mean Squared Error]({{< ref "20231001_regression_metrics" >}}) is used as Loss-Function in Linear Regression
 
 $$MSE = L(a, b) = \frac{1}{N}\sum_{i=1}^{N}(y_i - (a\cdot x_i +b))^2.$$
 
 ## Minimize the Loss
 
-In real application optimization techniques, such as [Gradient Descent]({{< ref "20231113_linear_regression#best_fit" >}} "Gradient Descent") are used to estimate the minimum of the Loss Function. In this article, we will calculate the coefficients $a$ and $b$ analytically. As we know from calculus a criterium required for a minimum is that the gradient is zero. The gradient is compiled by the partial derivatives. Following the chain rule, the partial derivatives of $L$ with respect to $a$ and $b$ are
+In real applications optimization techniques, such as [Gradient Descent]({{< ref "20231113_linear_regression#best_fit" >}} "Gradient Descent") are used to estimate the minimum of the Loss Function. In this article, we will calculate the coefficients $a$ and $b$ analytically. As we know from calculus a criterion required for a minimum is that the gradient is zero. The gradient is compiled by the partial derivatives. Following the chain rule, the partial derivatives of $L$ with respect to $a$ and $b$ are
 
 $$\frac{\delta{L}}{\delta a}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot (-x_i)$$
 $$\frac{\delta{L}}{\delta b}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot (-1).$$
@@ -71,7 +71,7 @@ $$a = \frac{\sum_{i=1}^N x_i\cdot(y_i - \bar{y})}{\sum_{i=1}^Nx_i\cdot(x_i - \ba
 With that, we can calculate the coefficients $a$ and $b$ that determine the Simple Linear Regression model, we aim to develop. 
 
 Note, as we know from calculus setting the first derivative, i.e. the gradient to zero is not a sufficient condition for a minimum.
-For this example we assume that the only location with zero gradient is a minimum. To be sure that this is really a minimum we would need to check all second derivatives to see if this is really a minimum. At this point it could also be a maximum or a sattle point. This is however not the scope of this article.
+For this example, we assume that the only location with zero gradient is a minimum. To be sure that this is really a minimum we would need to check all second derivatives. At this point, it could also be a maximum or a saddle point. This is however not the scope of this article.
 
 ## Example
 
@@ -91,7 +91,7 @@ $$\bar{y} = \frac{45 + 70 + 100 + 60 + 90 + 110}{6} = \frac{475}{6} = 79.17.$$
 
 With that we can calculate
 
-$$a = \frac{1400\cdot (45 - 79.17) + 400\cdot (70 - 79.17) + 50\cdot (100 - 79.17) + 1000\cdot (60 - 79.17) + 300\cdot (90 - 79.17) + 60\cdot (110 - 79.17)}{1400\cdot (1400 - 535) + 400\cdot (400 - 535) + 50\cdot (50 - 535) + 1000\cdot (1000 - 535) + 300\cdot (300 - 535) + 60\cdot(60 - 535)},$$
+$${\small a = \frac{1400\cdot (45 - 79.17) + 400\cdot (70 - 79.17) + 50\cdot (100 - 79.17) + 1000\cdot (60 - 79.17) + 300\cdot (90 - 79.17) + 60\cdot (110 - 79.17)}{1400\cdot (1400 - 535) + 400\cdot (400 - 535) + 50\cdot (50 - 535) + 1000\cdot (1000 - 535) + 300\cdot (300 - 535) + 60\cdot(60 - 535)}},$$
 
 which gives
 
@@ -105,4 +105,4 @@ The resulting linear regression model and the original data is illustrated in th
  
 ![regression example](/images/20231123_linear_regression_example/linear_regression_example2.png)
 
-Note, for this simplified example, we are not going to check the [assumptions]({{< ref "20231113_linear_regression#assumptions" >}} "Assumption Linear Regression") that need to be fulfilled for a Linear Regression. This example is only for illustration purposes, with this few amount of data statistical tests are not reasonable.
+Note, for this simplified example, we are not going to check the [assumptions]({{< ref "20231113_linear_regression#assumptions" >}} "Assumption Linear Regression") that need to be fulfilled for a Linear Regression. This example is only for illustration purposes, with this little amount of data statistical tests are not reasonable.

@@ -1,7 +1,7 @@
 +++
 title = 'Linear Regression - Explained'
 date = 2023-11-13T21:20:41+01:00
-draft = true
+draft = false
 featured_image = '/images/20231113_linear_regression/linear_regression_start.png'
 tags = ["Data Science", "Machine Learning", "Regression", "Linear Regression"]
 categories = ["Data Science", "Machine Learning", "Regression"]
@@ -127,5 +127,5 @@ Linear Regression is a simple, yet powerful tool in supervised Machine Learning.
 
 A Simple Linear Regression is performed, finding the **analytical solution for the slope and the intercept** by hand using the data from the first plot [here]({{< ref "20231123_linear_regression_example" >}} "Linear Regression Example").
 
-A more realistic **tutorial for a linear regression model**, predicting house prices in Boston using a Simple and a Multiple Linear Regression is elaborated in a notebook on [kaggle]()
+A more realistic **tutorial for a linear regression model**, predicting house prices in Boston using a Simple and a Multiple Linear Regression is elaborated in a notebook on [kaggle](https://www.kaggle.com/pumalin/linear-regression-tutorial)
 
