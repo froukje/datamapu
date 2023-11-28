@@ -5,7 +5,7 @@ draft = false
 featured_image = '/images/20231113_linear_regression/linear_regression_start.png'
 tags = ["Data Science", "Machine Learning", "Regression", "Linear Regression"]
 categories = ["Data Science", "Machine Learning", "Regression"]
-keywords = ["Data Science", "Machine Learning", "Deep Learning", "Regression"]
+keywords = ["Data Science", "Machine Learning", "Deep Learning", "Regression", "Linear Regression"]
 +++
 
 ## Introduction 
