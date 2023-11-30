@@ -26,7 +26,7 @@ url = "https://twitter.com/datamapu"
 [[menu.main]]
   name = "Articles"
   url = "/posts/"
-  weight = 3
+  weight = 2
 [[menu.main]]
   name = "Home"
   url = "/"

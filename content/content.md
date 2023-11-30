@@ -29,5 +29,5 @@ Here is what you can already find here:
 
 ## Deep Learning
 
-* [Metrics for Regression Problems]({{< ref "20231102_intro_dl.md" >}} "20231102_intro_dl.md")
+* [Introduction to Deep Learning]({{< ref "20231102_intro_dl.md" >}} "20231102_intro_dl.md")
  
