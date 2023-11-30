@@ -6,7 +6,6 @@ featured_image = '/images/20230913_datascience_lifecycle/ds_lifecycle.jpg'
 tags = [ "Data Science", "Machine Learning"]
 categories = [ "Data Science", "Machine Learning"]
 keywords = ["Data Science", "Lifecycle", "Machine Learning"]
-description = 'The Data Science Lifecycle'
 images = ['/images/20230913_datascience_lifecycle/ds_lifecycle.jpg']
 +++
 
