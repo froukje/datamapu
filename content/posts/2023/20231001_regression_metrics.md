@@ -38,7 +38,7 @@ With the just defined concept of residuals, we can define different metrics that
 Let's consider the above example, relating the body mass of an animal with the maximal running speed, and calculate the RMSE. In order to do that, we first need to calculate the predictions. We use the *LinearRegression* method from [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) to fit a linear regression and print the predictions.
 
 
-```
+```Python
 from sklearn.linear_model import LinearRegression
 
 d = {'animal': ['horse', 'black rhino', 'giraffe', 'pronghorn', 'cheetah', 'wildebeest'], 
@@ -54,7 +54,7 @@ y_pred = reg.predict(x)
 
 This results is the following predictions (rounded to three decimals).
 
-```
+```Python
 y_pred = [100.047 ,  99.617,  89.284,  84.979, 59.147,  41.926]
 ```
 
@@ -64,7 +64,7 @@ Using the formula from the previous section to calculate the RMSE, we get (round
 
 In Python we can define our custom function to calculate the rmse.
 
-```
+```Python
 import numpy as np
 
 def rmse(y_true, y_pred):
@@ -74,7 +74,7 @@ def rmse(y_true, y_pred):
 
 Alternatively, we can also use [sklearn](https://scikit-learn.org/stable/modules/model_evaluation.html) to calulate the RMSE. 
 
-```
+```Python
 from sklearn.metrics import mean_squared_error
 
 mean_squared_error(y_true, y_pred, squared=False)

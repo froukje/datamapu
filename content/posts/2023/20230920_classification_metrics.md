@@ -27,7 +27,7 @@ From this table, we can see when our model was correct and when not. The confusi
 
 We can then display the confusion matrix as follows:
 
-```
+```Python
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 cm = confusion_matrix(y_true, y_pred)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm,

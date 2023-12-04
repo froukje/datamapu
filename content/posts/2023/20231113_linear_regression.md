@@ -106,7 +106,7 @@ Linear Regression is **sensible to outliers**. That is outliers can impact a Lin
 
 When implementing a Linear Regression in Python, we can use the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) library, as demonstrated in the following simplified code example. The relationship described is $y = 2\cdot x +3$, with some noise added to $y$.
 
-```
+```Python
 import numpy as np
 from sklearn.linear_model import LinearRegression
 x = np.array([1, 2, 3, 4, 5]).reshape(-1, 1)
