@@ -81,7 +81,7 @@ Using the ROC curve we can compare different classifiers. The higher the curve, 
 
 In Python you can calculate all these metrics - for binary and multiple classification - using the [sklearn metrics module](https://scikit-learn.org/stable/modules/model_evaluation.html), e.g. accuracy can be calculated as follows:
 
-```
+```Python
 from sklearn.metrics import accuracy_score
 acc = accuracy_score(y_true, y_pred)
 ```
