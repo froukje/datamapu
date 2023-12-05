@@ -9,7 +9,7 @@ keywords = ["Data Science", "Machine Learning", "Deep Learning", "Regression", "
 +++
 ## Introduction
 
-In a previous article, we introduced [Linear Regression]({{< ref "20231113_linear_regression" >}} "Linear Regression") in detail and more generally, showed how to find the best model and discussed its chances and limitations. In this post, we are looking at a concrete example. We are going to calculate the *slope* and the *intercept* from a Simple Linear Regression analytically, looking at the example data provided in the next plot.
+In a previous article, we introduced [Linear Regression]({{< ref "linear_regression" >}} "Linear Regression") in detail and more generally, showed how to find the best model and discussed its chances and limitations. In this post, we are looking at a concrete example. We are going to calculate the *slope* and the *intercept* from a Simple Linear Regression analytically, looking at the example data provided in the next plot.
 
 ![regression example](/images/20231001_regression_metrics/regression_example.jpg)
 *Illustration of a simple linear regression between the body mass and the maximal running speed of an animal.*
@@ -21,14 +21,14 @@ We aim to fit a model that describes the relationship between the body mass (ind
 $$\hat{y} = a\cdot x + b,$$
 
 with $\hat{y}$ approximating the target values $y$. In order to find this model, we need to determine the coefficients $a$ and $b$. 
-As we learned in the article about [Linear Regression]({{< ref "20231113_linear_regression" >}} "Linear Regression"),
-In order to fit a Linear Regression model, we need to minimize the error between the predictions and the actual values. In Machine Learning this error, depending on the parameters of the model is often called the *Loss-Function*. For a Simple Linear Regression, these parameters are the slope ($a$) and the intercept ($b$). Usually, the [Mean Squared Error]({{< ref "20231001_regression_metrics" >}}) is used as Loss-Function in Linear Regression
+As we learned in the article about [Linear Regression]({{< ref "linear_regression" >}} "Linear Regression"),
+In order to fit a Linear Regression model, we need to minimize the error between the predictions and the actual values. In Machine Learning this error, depending on the parameters of the model is often called the *Loss-Function*. For a Simple Linear Regression, these parameters are the slope ($a$) and the intercept ($b$). Usually, the [Mean Squared Error]({{< ref "regression_metrics" >}}) is used as Loss-Function in Linear Regression
 
 $$MSE = L(a, b) = \frac{1}{N}\sum_{i=1}^{N}(y_i - (a\cdot x_i +b))^2.$$
 
 ## Minimize the Loss
 
-In real applications optimization techniques, such as [Gradient Descent]({{< ref "20231113_linear_regression#best_fit" >}} "Gradient Descent") are used to estimate the minimum of the Loss Function. In this article, we will calculate the coefficients $a$ and $b$ analytically. As we know from calculus a criterion required for a minimum is that the gradient is zero. The gradient is compiled by the partial derivatives. Following the chain rule, the partial derivatives of $L$ with respect to $a$ and $b$ are
+In real applications optimization techniques, such as [Gradient Descent]({{< ref "linear_regression#best_fit" >}} "Gradient Descent") are used to estimate the minimum of the Loss Function. In this article, we will calculate the coefficients $a$ and $b$ analytically. As we know from calculus a criterion required for a minimum is that the gradient is zero. The gradient is compiled by the partial derivatives. Following the chain rule, the partial derivatives of $L$ with respect to $a$ and $b$ are
 
 $$\frac{\delta{L}}{\delta a}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot (-x_i)$$
 $$\frac{\delta{L}}{\delta b}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot (-1).$$
@@ -105,4 +105,4 @@ The resulting linear regression model and the original data is illustrated in th
  
 ![regression example](/images/20231123_linear_regression_example/linear_regression_example2.png)
 
-Note, for this simplified example, we are not going to check the [assumptions]({{< ref "20231113_linear_regression#assumptions" >}} "Assumption Linear Regression") that need to be fulfilled for a Linear Regression. This example is only for illustration purposes, with this little amount of data statistical tests are not reasonable.
+Note, for this simplified example, we are not going to check the [assumptions]({{< ref "linear_regression#assumptions" >}} "Assumption Linear Regression") that need to be fulfilled for a Linear Regression. This example is only for illustration purposes, with this little amount of data statistical tests are not reasonable.

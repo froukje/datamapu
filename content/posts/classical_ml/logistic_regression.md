@@ -10,14 +10,14 @@ keywords = ["Data Science", "Machine Learning", "Deep Learning", "Classification
 
 ## Introduction
 
-Logistic Regression is a [Supervised Machine Learning]({{< ref "20231017_supervised_unsupervised#supervised" >}} "Supervised Machine Learning") algorithm, where a model is developed, that relates the target variable to one or more input variables (features). However, in contrast to [Linear Regression]({{< ref "20231113_linear_regression.md" >}} "Linear Regression") the target (dependent) variable is not numerical, but [categorical](https://en.wikipedia.org/wiki/Categorical_variable). That is the target variable can be classified in different categories (e.g.: 'test passed' or 'test not passed'). An idealized example of two categories for the target variable is illustrated in the plot below. The relation described in this example is whether a test is passed or not, depending on the amount of hours studies. Note, that in real world examples the border between the two classes depending on the input feature (independ variable) will usually not be as clear as in this plot.
+Logistic Regression is a [Supervised Machine Learning]({{< ref "supervised_unsupervised#supervised" >}} "Supervised Machine Learning") algorithm, where a model is developed, that relates the target variable to one or more input variables (features). However, in contrast to [Linear Regression]({{< ref "linear_regression.md" >}} "Linear Regression") the target (dependent) variable is not numerical, but [categorical](https://en.wikipedia.org/wiki/Categorical_variable). That is the target variable can be classified in different categories (e.g.: 'test passed' or 'test not passed'). An idealized example of two categories for the target variable is illustrated in the plot below. The relation described in this example is whether a test is passed or not, depending on the amount of hours studies. Note, that in real world examples the border between the two classes depending on the input feature (independ variable) will usually not be as clear as in this plot.
 
 ![logistic regression](/images/20231202_logistic_regression/logistic_regression_simplified.png)
 *Simplified and idealized example of a logistic regression*
 
 ## Binary Logistic Regression
 
-If the target variable contains two classes we speak of a Binary Logistic Regression. The target values for binary classification are usually denominated as 0 and 1. In the previous plot 'test passed' is the class 1 and 'test not passed' is class 0. To develop a Logistic Regression model we start with the equation of a Linear Regression. We start with assuming that we only have one input feature (independend variable), that is we use the equation for a [Simple Linear Regression]({{< ref "20231113_linear_regression.md#slr" >}} "Linear Regression").
+If the target variable contains two classes we speak of a Binary Logistic Regression. The target values for binary classification are usually denominated as 0 and 1. In the previous plot 'test passed' is the class 1 and 'test not passed' is class 0. To develop a Logistic Regression model we start with the equation of a Linear Regression. We start with assuming that we only have one input feature (independend variable), that is we use the equation for a [Simple Linear Regression]({{< ref "linear_regression.md#slr" >}} "Linear Regression").
 
 $$ \hat{y} = a\cdot x + b, $$
 
@@ -42,7 +42,7 @@ This is our  final Logistic Regression model.
 ![logistic regression](/images/20231202_logistic_regression/linear_logistic.png)
 *From Linear Regression to Logistic Regression*
 
-If more than one independent variable (input feature) is considered, the input features can be numerical or categorical as in a Linear Regression. The exact same idea as described above is followed, but using the equation for [Multiple Linear Regression]({{< ref "20231113_linear_regression.md#mlr" >}} "Linear Regression") as input for the Sigmoid function
+If more than one independent variable (input feature) is considered, the input features can be numerical or categorical as in a Linear Regression. The exact same idea as described above is followed, but using the equation for [Multiple Linear Regression]({{< ref "linear_regression.md#mlr" >}} "Linear Regression") as input for the Sigmoid function
 
 $$\hat{y} = \frac{1}{1 + e^{-(a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \cdots + a_n\cdot x_n)}}.$$
 

@@ -10,7 +10,7 @@ keywords = ["Data Science", "Machine Learning", "Deep Learning", "Regression", "
 
 ## Introduction 
 
-Linear Regression is a type of [Supervised Machine Learning]({{< ref "20231017_supervised_unsupervised#supervised" >}} "Supervised Machine Learning") Algorithm, where a linear relationship between the input feature(s) and the target value is assumed. Linear Regression is a specific type of regression model, where the mapping learned by the model describes a linear function. As in all regression problems, the target variable is continuous. In a linear regression, the linear relationship between one ([Simple Linear Regression]({{< ref "#slr" >}})) or more ([Multiple Linear Regression]({{< ref "#mrl" >}})) independent variable and one dependent variable is modeled.
+Linear Regression is a type of [Supervised Machine Learning]({{< ref "supervised_unsupervised#supervised" >}} "Supervised Machine Learning") Algorithm, where a linear relationship between the input feature(s) and the target value is assumed. Linear Regression is a specific type of regression model, where the mapping learned by the model describes a linear function. As in all regression problems, the target variable is continuous. In a linear regression, the linear relationship between one ([Simple Linear Regression]({{< ref "#slr" >}})) or more ([Multiple Linear Regression]({{< ref "#mrl" >}})) independent variable and one dependent variable is modeled.
 
 ![regression example](/images/20231001_regression_metrics/regression_example.jpg)
 *Illustration of a simple linear regression between the body mass and the maximal running speed of an animal.*
@@ -26,14 +26,14 @@ A Simple Linear Regression describes a relationship between one independent vari
 *Illustration of a simple linear regression.*
 ### Find the best Fit{#best_fit}
 
-As in every Machine Learning algorithm, in order to find the best fit the error between the actual values and the predicted values is minimized. This error is described by a loss function. In a linear regression, the loss function is usually the [Mean Squared Error]({{< ref "20231001_regression_metrics" >}})
+As in every Machine Learning algorithm, in order to find the best fit the error between the actual values and the predicted values is minimized. This error is described by a loss function. In a linear regression, the loss function is usually the [Mean Squared Error]({{< ref "regression_metrics" >}})
 
 $$MSE = \frac{1}{N}\sum_{i=1}^{N}(y_i-\hat{y_i})^2,$$
 
 with $y$ representing the actual value and $\hat{y}$ the prediction. When plugging in the equation for the linear model we get
 $$MSE = L(a, b) = \frac{1}{N}\sum_{i=1}^{N}(y_i - (a\cdot x_i +b))^2.$$
 
-To find a linear model we need to determine the slope $a$ and the intercept $b$, such that the loss function (here the MSE) is minimized. One popular minimization technique is the [Gradient Descent]({{< ref "20231102_intro_dl#gradient_descent">}}). The *Gradient Descent* is a process, in which the parameters $a$ and $b$ are iteratively updated. Starting with random values the values $a$ and $b$ are updated in each step to achieve an optimized solution. To reach a minimum with this strategy, the parameters have to be updated in the correct direction. The gradient of a function describes the direction of the steepest ascent, that is in order to find the minimum we need to update the parameters in the direction of the negative of the gradient. The gradient is determined by the partial derivatives with respect to $a$ and $b$
+To find a linear model we need to determine the slope $a$ and the intercept $b$, such that the loss function (here the MSE) is minimized. One popular minimization technique is the [Gradient Descent]({{< ref "intro_dl#gradient_descent">}}). The *Gradient Descent* is a process, in which the parameters $a$ and $b$ are iteratively updated. Starting with random values the values $a$ and $b$ are updated in each step to achieve an optimized solution. To reach a minimum with this strategy, the parameters have to be updated in the correct direction. The gradient of a function describes the direction of the steepest ascent, that is in order to find the minimum we need to update the parameters in the direction of the negative of the gradient. The gradient is determined by the partial derivatives with respect to $a$ and $b$
 
 $$\frac{\delta{L}}{\delta a}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot (-x_i)$$
 $$\frac{\delta{L}}{\delta b}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot (-1).$$
@@ -85,7 +85,7 @@ To reasonable perform a linear regression the data need to fulfill the following
 
 ### Evaluation
 
-After fitting a model, we need to evaluate it. To evaluate a linear regression the same metrics as for all regression problems can be used. Two very common ones are *Root Mean Squared Error (RMSE)* and *Mean Absolute Error (MAE)*. Both metrics are based on the difference between the predicted and the actual values, the so-called *Residuals*. The MAE is defined as the sum of the absolute values of the residuals for all data points, divided by the total number of data points. The RMSE is defined as the square root of the sum of the squared residuals divided by the total number of data points. Both metrics avoid the elimination of errors by taking the absolute value and the square accordingly and are easy to interpret because they carry the same units as the target variable. The RMSE, due to taking the square, helps to reduce large errors. A more detailed overview and description of these and other common [metrics for regression]({{< ref "20231001_regression_metrics" >}} "Metrics for Regression") is given in a separate article.
+After fitting a model, we need to evaluate it. To evaluate a linear regression the same metrics as for all regression problems can be used. Two very common ones are *Root Mean Squared Error (RMSE)* and *Mean Absolute Error (MAE)*. Both metrics are based on the difference between the predicted and the actual values, the so-called *Residuals*. The MAE is defined as the sum of the absolute values of the residuals for all data points, divided by the total number of data points. The RMSE is defined as the square root of the sum of the squared residuals divided by the total number of data points. Both metrics avoid the elimination of errors by taking the absolute value and the square accordingly and are easy to interpret because they carry the same units as the target variable. The RMSE, due to taking the square, helps to reduce large errors. A more detailed overview and description of these and other common [metrics for regression]({{< ref "regression_metrics" >}} "Metrics for Regression") is given in a separate article.
 
 ### Advantages
 
@@ -125,7 +125,7 @@ Linear Regression is a simple, yet powerful tool in supervised Machine Learning.
 
 ## Further Links
 
-A Simple Linear Regression is performed, finding the **analytical solution for the slope and the intercept** by hand using the data from the first plot [here]({{< ref "20231123_linear_regression_example" >}} "Linear Regression Example").
+A Simple Linear Regression is performed, finding the **analytical solution for the slope and the intercept** by hand using the data from the first plot [here]({{< ref "linear_regression_example" >}} "Linear Regression Example").
 
 A more realistic **tutorial for a linear regression model**, predicting house prices in Boston using a Simple and a Multiple Linear Regression is elaborated in a notebook on [kaggle](https://www.kaggle.com/pumalin/linear-regression-tutorial)
 
