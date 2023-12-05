@@ -9,6 +9,7 @@ keywords = ["Data Science", "Lifecycle", "Machine Learning"]
 images = ['/images/20230913_datascience_lifecycle/ds_lifecycle.jpg']
 +++
 
+
 When we think about Data Science, we usually think about Machine Learning modelling. However, a Data Science project consists of many more steps. Whereas modelling might be the most fun part, it is important to know that this is only a fraction of the entire lifecycle of a Data Science project. When you plan a project and communicate how much time you need, you need to make sure that enough time is given for all the surrounding tasks. Let's have a look at the individual steps of a Data Science project.
 
 ![Data Science Lifecycle](/images/20230913_datascience_lifecycle/ds_lifecycle.jpg)
