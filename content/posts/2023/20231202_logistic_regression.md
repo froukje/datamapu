@@ -46,7 +46,6 @@ If more than one independent variable (input feature) is considered, the input f
 
 $$\hat{y} = \frac{1}{1 + e^{-(a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \cdots + a_n\cdot x_n)}}.$$
 
-
 ## Multinomial Logistic Regression
 
 If the target variable can take more than two classes, we speak of Multinomial Logistic Regression. By definition a Logistic Regression is designed for binary target variables. If we consider more than two target variables, we need to adapt the algorithm. This can be done by splitting the multiple classification problem into several binary classification problems. The two most common ways to do that are
@@ -85,13 +84,23 @@ Note that a disadvantage of these methods is that they require to fit multiple m
 
 ## Find Best Fit
 
-As in all supervised Machine Learning models we estimate the model parameters, in this case $a_0$, $a_1$, $\dots$, $a_n$ as parameters to optimize the model by minimizing a loss function. In the case of a Linear Regression problem this loss function is the mean suquared error (also known as least squares optimization). For a Logistic Regression, we need to define a different loss function. A common choice in this case is the *Negative Log Likelihood Function ($NLL$)*, which can be derived from the likelihood function. This is however a topic on its own and an article about the derivation can be found [here](). 
+As in all supervised Machine Learning models we estimate the model parameters, in this case $a_0$, $a_1$, $\dots$, $a_n$ as parameters to optimize the model. This is done by minimizing a loss function, which describes the error between the actual values and the predictions with respect to these parameters. In the case of a Linear Regression problem this loss function is the mean squared error (also known as least squares optimization). For a Logistic Regression, we need to define a different loss function. A common choice in this case is the *[Negative Log Likelihood Function ($NLL$)]()*, which can be derived from the likelihood function. This is however a topic on its own. You can find a separate article with a detailed explanation [here](). 
 
 ## Interpretation
 
-Logistic regression has a lot in common with linear regression, although linear regression is a technique for predicting a numerical value, not for classification problems. Both techniques model the target variable with a line (or hyperplane, depending on the number of dimensions of input. Linear regression fits the line to the data, which can be used to predict a new quantity, whereas logistic regression fits a line to best separate the two classes.
+Let's consider the defined model function
 
-The interpreation of the coefficients $a_0$, $a_1$, $\dots$, $a_n$ is not as straight forward as in the case of the Linear Regression, because the relationship is not linear any more. Only the sign of the coefficients tells us if the probability is increased or decreased.
+$$\hat{y} = \frac{1}{1 + e^{-(a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \cdots + a_n\cdot x_n)}}.$$
+
+With reformulation, we get
+
+...
+
+we can define the odds
+ 
+... calculate odds ...
+
+These describe the chances $\frac{p}{1-p}$. These chances are a measure for the separation of the two classes. That is although Linear Regression and Logistic Regression are used for different types of problems (regression vs. classification), they still have a lot in common. In both cases a line (one input feature) or a hyperplane (more than one input feature) is used. In a Linear Regression however this line / hyperplane is used to predict the target variable, while in Logistic Regression it is used to separate two classes. In Logistic Regression the interpreation of the coefficients $a_0$, $a_1$, $\dots$, $a_n$ however, is not as straight forward as in the case of the Linear Regression, because the relationship is not linear any more. Only the sign of the coefficients tells us if the probability is increased or decreased.
 
 ## Evaluation
 
