@@ -12,10 +12,13 @@ features = ["posts", "shortcodes", "related content", "comments"]
   show_reading_time = true
   socialInHeader = true
   socialInFooter = false
+  background_color_class = "bg-navy"
+  body_classes = "sans-serif bg-near-white"
   linkedin = true
   facebook = true
   whatsapp = true
   favicon = "favicon.ico"
+  site_logo = "logo_weiss.png"
   description = 'Data Science and Machine Learning Blog'
   images = ["/static/images/datamapu_logo_schmal.png"]
 [[params.ananke_socials]]

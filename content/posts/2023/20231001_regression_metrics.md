@@ -2,7 +2,7 @@
 title = 'Metrics for Regression Problems'
 date = 2023-09-30T21:24:12+02:00
 draft = false
-featured_image = '/images/20231001_regression_metrics/regression_metrics.jpg'
+featured_image = ''
 tags = [ "Data Science", "Machine Learning", "Regression", "Metrics"]
 categories = [ "Data Science", "Machine Learning"]
 keywords = ["Data Science", "Machine Learning", "Regression", "Metrics"]

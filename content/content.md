@@ -2,10 +2,9 @@
 title: Content
 omit_header_text: true
 description: Content of all Articles
-type: page
+layout: staticpage
 menu: main
-featured_image: '/images/logo_writing.png'
-
+featured_image: ''
 ---
 
 Hey, 

@@ -1,7 +1,7 @@
 +++
 title = 'Supervised versus Unsupervised Learning - Explained'
 date = 2023-10-17T09:46:31+02:00
-featured_image = '/images/20231017_supervised_unsupervised/supervised_unsupervised.gif'
+featured_image = ''
 tags = [ "Data Science", "Machine Learning"]
 categories = [ "Data Science" , "Machine Learning"]
 draft = false
