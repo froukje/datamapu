@@ -7,6 +7,7 @@ googleAnalytics = "G-FJQERFPVYS"
 google_tag_manager = "GTM-T6CW23SC"
 tags = ["data science", "machine learning", "deep learning", "python", "artificial intelligence"]
 features = ["posts", "shortcodes", "related content", "comments"]
+Paginate = 50
 
 [params]
   show_reading_time = true
