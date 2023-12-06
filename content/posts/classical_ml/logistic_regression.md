@@ -44,7 +44,7 @@ This is our  final Logistic Regression model.
 
 If more than one independent variable (input feature) is considered, the input features can be numerical or categorical as in a Linear Regression. The exact same idea as described above is followed, but using the equation for [Multiple Linear Regression]({{< ref "linear_regression.md#mlr" >}} "Linear Regression") as input for the Sigmoid function
 
-$$\hat{y} = \frac{1}{1 + e^{-(a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \cdots + a_n\cdot x_n)}}.$$
+$$\hat{y} = \frac{1}{1 + e^{-(a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n\cdot x_n)}}.$$
 
 ## Multinomial Logistic Regression
 
@@ -84,27 +84,39 @@ Note that a disadvantage of these methods is that they require to fit multiple m
 
 ## Find Best Fit
 
-As in all supervised Machine Learning models we estimate the model parameters, in this case $a_0$, $a_1$, $\dots$, $a_n$ as parameters to optimize the model. This is done by minimizing a loss function, which describes the error between the actual values and the predictions with respect to these parameters. In the case of a Linear Regression problem this loss function is the mean squared error (also known as least squares optimization). For a Logistic Regression, we need to define a different loss function. A common choice in this case is the *[Negative Log Likelihood Function ($NLL$)]()*, which can be derived from the likelihood function. This is however a topic on its own. You can find a separate article with a detailed explanation [here](). 
+As in all supervised Machine Learning models we estimate the model parameters, in this case $a_0$, $a_1$, $\dots$, $a_n$ as parameters to optimize the model. This is done by minimizing a loss function, which describes the error between the actual values and the predictions with respect to these parameters. In the case of a Linear Regression problem this loss function is the mean squared error (also known as least squares optimization). For a Logistic Regression, we need to define a different loss function. A common choice in this case is the *[Negative Log Likelihood Function ($NLL$)]()*, which can be derived from the likelihood function. This is however a topic on its own. You can find a separate article with a detailed explanation [here](). The NNL Loss ($L$) is defined as gollows 
+
+$$L(a_0, \dots, a_n) = - \sum_{i=1}^n y_i\cdot \log{\hat{y_i}},$$
+
+with $\hat{y_i} = \hat{y_i(a_0, \dots, a_n)}$.
+
+relation to cross-entropy
 
 ## Interpretation
 
-Let's consider the defined model function
+To understand Logistic Regression better, let's consider the defined model function again
 
-$$\hat{y} = \frac{1}{1 + e^{-(a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \cdots + a_n\cdot x_n)}}.$$
+$$\hat{y} = p = \frac{1}{1 + e^{-(a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n\cdot x_n)}} = \frac{1}{1 + e^{-z}},$$
 
-With reformulation, we get
+with $\hat{y} = p$ representing the probability of an event and $z=a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n\cdot x_n$. 
 
-...
+We can reformulate this equation to
 
-we can define the odds
- 
-... calculate odds ...
+$$p = \frac{e^z}{e^z\cdot(1 + e^{-z})}$$
+$$p = \frac{e^z}{1+e^z}$$
+$$p\cdot (1 + e^z) = e^z$$
+$$p = (1 - p)\cdot e^z$$
+$$\frac{p}{1-p} = e^z.$$
 
-These describe the chances $\frac{p}{1-p}$. These chances are a measure for the separation of the two classes. That is although Linear Regression and Logistic Regression are used for different types of problems (regression vs. classification), they still have a lot in common. In both cases a line (one input feature) or a hyperplane (more than one input feature) is used. In a Linear Regression however this line / hyperplane is used to predict the target variable, while in Logistic Regression it is used to separate two classes. In Logistic Regression the interpreation of the coefficients $a_0$, $a_1$, $\dots$, $a_n$ however, is not as straight forward as in the case of the Linear Regression, because the relationship is not linear any more. Only the sign of the coefficients tells us if the probability is increased or decreased.
+This last equation describe the chances $\frac{p}{1-p}$, also called *odds* of an event. These chances are a measure for the separation of the two classes. If we take the logarithm, we get
+
+$$\ln{\frac{p}{1-p}} = z = a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n\cdot x_n $$
+
+This expression is known as the 'log-odds'. That is although Linear Regression and Logistic Regression are used for different types of problems (regression vs. classification), they still have a lot in common. In both cases a line (one input feature) or a hyperplane (more than one input feature) is used. In a Linear Regression however this line / hyperplane is used to predict the target variable, while in Logistic Regression it is used to separate two classes. In Logistic Regression the interpreation of the coefficients $a_0$, $a_1$, $\dots$, $a_n$ however, is not as straight forward as in the case of the Linear Regression, because the relationship is not linear any more. Only the sign of the coefficients tells us if the probability is increased or decreased.
 
 ## Evaluation
 
-## Application
+The evaluation of a Logistic Regression model is done with any metric suitable for classification problems. In a separate article you can find an overview about the most common [metrics for classification]({{< ref "classification_metrics" >}} "Metrics for Regression") problems.
 
 ## Example
 
