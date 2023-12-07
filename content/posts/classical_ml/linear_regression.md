@@ -129,3 +129,7 @@ A Simple Linear Regression is performed, finding the **analytical solution for t
 
 A more realistic **tutorial for a linear regression model**, predicting house prices in Boston using a Simple and a Multiple Linear Regression is elaborated in a notebook on [kaggle](https://www.kaggle.com/pumalin/linear-regression-tutorial)
 
+If this blog is useful for you, I'm thankful for your support!
+{{< bmc-button slug="pumaline" >}}
+
+

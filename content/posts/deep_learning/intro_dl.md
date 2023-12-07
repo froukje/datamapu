@@ -117,3 +117,7 @@ We introduced the structure of Neural Nets and learned that it consists of a set
 How much data is needed depends on the problem we want to solve, the network, and the quality of the data.
 Generally speaking, we can say: the more data, the better.
 
+If this blog is useful for you, I'm thankful for your support!
+{{< bmc-button slug="pumaline" >}}
+
+

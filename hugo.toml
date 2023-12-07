@@ -1,7 +1,7 @@
 baseURL = 'https://datamapu.com/'
 languageCode = 'en-us'
 title = ''
-theme = 'ananke'
+theme = ['ananke', 'hugo-shortcodes']
 uglyURLs = false
 googleAnalytics = "G-FJQERFPVYS"
 google_tag_manager = "GTM-T6CW23SC"

@@ -7,7 +7,6 @@ tags = ["Data Science", "Machine Learning", "CLassification", "Logistic Regressi
 categories = ["Data Science", "Machine Learning", "Classification"]
 keywords = ["Data Science", "Machine Learning", "Deep Learning", "Classification", "Logistic Regression"]
 +++
-
 ## Introduction
 
 Logistic Regression is a [Supervised Machine Learning]({{< ref "supervised_unsupervised#supervised" >}} "Supervised Machine Learning") algorithm, where a model is developed, that relates the target variable to one or more input variables (features). However, in contrast to [Linear Regression]({{< ref "linear_regression.md" >}} "Linear Regression") the target (dependent) variable is not numerical, but [categorical](https://en.wikipedia.org/wiki/Categorical_variable). That is the target variable can be classified in different categories (e.g.: 'test passed' or 'test not passed'). An idealized example of two categories for the target variable is illustrated in the plot below. The relation described in this example is whether a test is passed or not, depending on the amount of hours studies. Note, that in real world examples the border between the two classes depending on the input feature (independ variable) will usually not be as clear as in this plot.
@@ -84,7 +83,7 @@ Note that a disadvantage of these methods is that they require to fit multiple m
 
 ## Find Best Fit
 
-As in all supervised Machine Learning models we estimate the model parameters, in this case $a_0$, $a_1$, $\dots$, $a_n$ as parameters to optimize the model. This is done by minimizing a loss function, which describes the error between the actual values and the predictions with respect to these parameters. In the case of a Linear Regression problem this loss function is the mean squared error (also known as least squares optimization). For a Logistic Regression, we need to define a different loss function. A common choice in this case is the *[Negative Log Likelihood Function ($NLL$)]()*, which can be derived from the likelihood function. This is however a topic on its own. You can find a separate article with a detailed explanation [here](). The NNL Loss ($L$) is defined as gollows 
+As in all supervised Machine Learning models we estimate the model parameters, in this case $a_0$, $a_1$, $\dots$, $a_n$ as parameters to optimize the model. This is done by minimizing a loss function, which describes the error between the actual values and the predictions with respect to these parameters. In the case of a Linear Regression problem this loss function is the mean squared error (also known as least squares optimization). For a Logistic Regression, we need to define a different loss function. A common choice in this case is the *[Negative Log Likelihood Function ($NLL$)]()*, which can be derived from the likelihood function. This is however a topic on its own. You can find a separate article with a detailed explanation [here](). The NNL Loss ($L$) is defined as follows 
 
 $$L(a_0, \dots, a_n) = - \sum_{i=1}^n y_i\cdot \log{\hat{y_i}},$$
 
@@ -96,12 +95,11 @@ relation to cross-entropy
 
 To understand Logistic Regression better, let's consider the defined model function again
 
-$$\hat{y} = p = \frac{1}{1 + e^{-(a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n\cdot x_n)}} = \frac{1}{1 + e^{-z}},$$
+$$\hat{y} = \frac{1}{1 + e^{-(a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n\cdot x_n)}} = \frac{1}{1 + e^{-z}},$$
 
-with $\hat{y} = p$ representing the probability of an event and $z=a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n\cdot x_n$. 
+with $z=a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n\cdot x_n$. Let's rename $\hat{y} = p$ to make clearer that this is the probabilty of an event. In the example given above this event is 'test passed'. With that we can reformulate this equation to
 
-We can reformulate this equation to
-
+$$p = \frac{1}{1 + e^{-z}}$$
 $$p = \frac{e^z}{e^z\cdot(1 + e^{-z})}$$
 $$p = \frac{e^z}{1+e^z}$$
 $$p\cdot (1 + e^z) = e^z$$
@@ -120,11 +118,21 @@ The evaluation of a Logistic Regression model is done with any metric suitable f
 
 ## Example
 
+In Python you can fit a Logistic Regression using the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) library. Here is a simplified example for illustration purposes:
+
 ```Python
-# some code
-echo "Hello world"
+import numpy as np
+from sklearn.linear_model import LogisticRegression
+X = np.array([1, 2, 3, 4, 5, 7]).reshape(-1, 1)
+y = np.array([0, 0, 0, 1, 1, 1]).reshape(-1,)
+clf = LogisticRegression().fit(X, y)
+y_pred = clf.predict(X)
+y_pred_proba = clf.predict_proba(X)
 ```
+The `predict_proba` method gives the probalites for each of the two classes, if we want the probabilites of a $1$, we need to address the second row of the matrix. The results for this example are ```y_pred_proba[:,1] = [0.05915596 0.15714628 0.35603106 0.62113094 0.82939351 0.97714137]```. The ```predict``` method directly gives the classes with a default threshold at $0.5$. That is probabilities below $0.5$ result in class $0$ and higher or equal to $0.5$ in class $1$. In this example we get ```y_pred = [0 0 0 1 1 1]```.
 
-Simple Python Example
+You can find a more detailed elobarated example for a Logistic Regression on [kaggle]().
 
-Kaggle Notebook
+If this blog is useful for you, I'm thankful for your support!
+{{< bmc-button slug="pumaline" >}}
+

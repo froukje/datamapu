@@ -30,5 +30,8 @@ When we think about Data Science, we usually think about Machine Learning modell
 
 Congratulations! You now know the individual steps needed in a Data Science project. These steps are not only important for you to know as a Data Scientist, but also to the person you report your results to. It is important to make clear that each of these steps needs time so that expectations of the time line are clear to everyone. 
 
+If this blog is useful for you, I'm thankful for your support!
+{{< bmc-button slug="pumaline" >}}
+
 
 

@@ -87,3 +87,8 @@ Note, if *squared=True* in the *mean_squared_error* method, the MSE is calculate
 ### Summary
 
 In this article we learned about the most often used metrics to measure the performance of regression problems and when to use them. They can be used for linear and non-linear regression and are generally based of the *Residual Error* between the true and the predicted value.
+
+If this blog is useful for you, I'm thankful for your support!
+{{< bmc-button slug="pumaline" >}}
+
+
