@@ -8,6 +8,7 @@ google_tag_manager = "GTM-T6CW23SC"
 tags = ["data science", "machine learning", "deep learning", "python", "artificial intelligence"]
 features = ["posts", "shortcodes", "related content", "comments"]
 Paginate = 50
+pygmentsCodefences = true
 
 [params]
   show_reading_time = true
@@ -49,7 +50,7 @@ url = "https://twitter.com/datamapu"
     hl_inline = false
     lineAnchors = ''
     lineNoStart = 1
-    lineNos = false
+    lineNos = true
     lineNumbersInTable = true
     noClasses = true
     noHl = false
