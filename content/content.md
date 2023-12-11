@@ -24,6 +24,7 @@ Here is what you can already find here:
 
 * [Linear Regression]({{< ref "linear_regression.md" >}} "linear_regression.md") 
 * [Linear Regression - Analytical Solution & Example]({{< ref "linear_regression_example.md" >}} "linear_regression_example.md") 
+* [Logistic Regression]({{< ref "logistic_regression.md" >}} "logistic_regression.md") 
 
 ## Deep Learning
 

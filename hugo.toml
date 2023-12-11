@@ -9,6 +9,7 @@ tags = ["data science", "machine learning", "deep learning", "python", "artifici
 features = ["posts", "shortcodes", "related content", "comments"]
 Paginate = 50
 pygmentsCodefences = true
+enableRobotsTXT = true
 
 [params]
   show_reading_time = true
@@ -23,6 +24,10 @@ pygmentsCodefences = true
   site_logo = "logo_weiss.png"
   description = 'Data Science and Machine Learning Blog'
   images = ["/static/images/datamapu_logo_schmal.png"]
+  Twitter_Image = "/images/datamapu_logo_schmal.png"
+  Twitter_Site = "@datamapu"
+  Image = "/images/datamapu_loo_schmall.png"
+
 [[params.ananke_socials]]
 name = "twitter"
 url = "https://twitter.com/datamapu"
