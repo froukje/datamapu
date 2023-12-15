@@ -53,6 +53,14 @@ The correlation coefficient measures the linear relationship between two variabl
 
 ### Embedded Methods
 
+Embedded methods use a machine learning algorithm to select the most important features. This algorithm maybe separated from the model we want to fit to our data and only used for feature selection or the exact same model can be used for prediction as well. This algorithm is just fitted once, i.e. in contrast to wrapper methods no retraining is needed.
+
+1. **Lasso regulation.** *Lasso (L1) regulation* is usually used to avoid overfitting by adding a penalty to the loss. A linear model can be used together with a L1 regulation to remove features that are not relevant. In a linear model the penalty is applied to the coefficients and L1 regularisation can set the coefficients of non-relevant features to zero. These features can then be removed.
+
+2. **Ridge regulation.**
+
+3. **Random Forest.** *Random Forests* are built as a combination of several Decision Trees. A Decision Tree is constructed by separating the data in each node such that the impurity of the following node is maximal reduced. There are different ways how to measure the impurity, especially depending whether a classification or a regression is considered. The more the impurity is decreased the more important is this feature. The most important features are thus selected at the top of the tree and the less important features are more at the bottom. By pruning the tree, i.e. setting a maximal depth we can consider the features below that depth as not important. In a Random Forest the decrease in impurity of each feature is then averaged over all trees. 
+
 < WHich is suited for which type of variables numerical - categorical -> table! >
 
 ### Conclusion
