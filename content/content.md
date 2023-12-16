@@ -19,6 +19,7 @@ Here is what you can already find here:
 * [Supervised versus Unsupervised Learning]({{< ref "supervised_unsupervised.md" >}} "supervised_unsupervised.md") 
 * [Metrics for Classification Problems]({{< ref "regression_metrics.md" >}} "regression_metrics.md") 
 * [Metrics for Regression Problems]({{< ref "classification_metrics.md" >}} "classification_metrics.md") 
+* [Feature Selection Methods]({{< ref "feature_selection.md" >}} "feature_selection.md") 
 
 ## Classical Machine Learning
 
