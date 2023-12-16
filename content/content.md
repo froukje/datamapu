@@ -11,7 +11,7 @@ Hey,
 
 This blog about Data Science and Machine Learning recently started and it will be build further.
 
-Here is what you can already find here:
+This is what you can already find here:
 
 ## Data Science Concepts
 
