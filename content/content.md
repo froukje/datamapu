@@ -11,6 +11,9 @@ Hey,
 
 This blog about Data Science and Machine Learning recently started and it will be build further.
 
+If you want to get an e-mail when a new post is published or give me feedback, write me an e-mail:
+**contact.datamapu(at)gmail.com**
+
 This is what you can already find here:
 
 ## Data Science Concepts
