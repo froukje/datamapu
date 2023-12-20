@@ -22,6 +22,15 @@ We use a dataset that contains only 10 samples. We are predicting the number of 
 
 ## Build the Tree
 
+The essential part of building a Decision Tree is finding the best split of the data to grow the tree. The split is done by a certain criterion, which depends on whether the target data is numerical or categorical. In this example we use the *Sum of Squared Errors (SSE)*, which is also the default choice in the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html) framework. The SSE for a dataset $D$, that is split into two subsets $D_1$ and $D_2$ is defined as
+
+$$SSE(D) = SSE(D_1) + SSE(D_2),$$
+
+with
+
+$$SSE(D_i) = \sum_{j=1}^N(x_j-\bar{x}_i)^2.$$
+
+
 ## Fit a Model in Python
 
 ```Python
@@ -43,7 +52,7 @@ reg = DecisionTreeRegressor()
 reg = reg.fit(X, y)
 ```
 
-We can vizualise the fitted tree using [sklearn]().
+We can visualize the fitted tree using [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html).
 
 ```Python
 from sklearn.tree import plot_tree
