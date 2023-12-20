@@ -130,7 +130,7 @@ To determine a Decision Tree for a given dataset in Python, we can use the [skle
 
 ```Python
 import pandas as pd
-from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.tree import DecisionTreeClassifier
 
 data = {'age': [23, 31, 35, 35, 42, 43, 45, 46, 46, 51], 
         'likes goats': [0, 1, 0, 0, 0, 1, 1, 1, 0, 1], 
@@ -149,6 +149,7 @@ y_pred_proba = clf.predict_proba(X)
 The class used to determine the Decision Tree is [DecisionTreeClassifier](https://scikit-learn.org/stable/modules/tree.html#tree-classification). To get the predicted categories we can use the *predict* method. In this example, the result is *y_hat = [0 1 1 0 0 1 0 1 0 1]*. Accordingly, *predict_proba* gives the probability of each category. The Decision Tree can be illustrated in Python using the [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html) class from sklearn.
 
 ```Python
+from sklearn.tree import plot_tree
 plot_tree(clf, feature_names=['age', 'likes goats', 'likes height'], fontsize=10)
 ```
 ![example in python](/images/decision_tree/dt_python.png)
