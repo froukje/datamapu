@@ -14,7 +14,7 @@ Decision Trees are a powerful, yet simple Machine Learning Model. An advantage o
 
 ## Data
 
-The Dataset we use in this post contains only 10 samples. We want to decide whether a person should go rock climbing or not, depending on whether they like height, like goats, and their age. That is the dataset contains three input features, of which two are categorical, as both have exactly two classes they are even binary and one is numerical. The target is also categorical.  
+The Dataset we use in this post contains only 10 samples. We want to decide whether a person should go rock climbing or not, depending on whether they like height, like goats, and their age. That is the dataset contains three input features, of which two are categorical, as both have exactly two classes they are even binary and one is numerical. The target variable is also categorical.  
 
 ![data](/images/decision_tree/dt_data_classification.png)
 *Data used to build a Decision Tree.*
