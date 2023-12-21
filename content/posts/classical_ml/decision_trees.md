@@ -103,9 +103,9 @@ A detailed explanation is beyond the scope of this article. More information can
 
 In this method the *variance* of 
 
-$$\sigma^2 = \frac{1}{N}\sum_{j=1}^N(x_j-\bar{x})^2$$
+$$\sigma^2_i = \frac{1}{n_i}\sum_{j=1}^{n_i}(x_j-\bar{x})^2$$
 
-is used to determine the split. The lower the variance the purer the node. If a node only contains samples of one class the variance is zero. That is in this case, we seek a low variance to find a good split. 
+is used to determine the split. In the above formular $i$ represents the subset $D_i$ with size $n_i$. The lower the variance the purer the node. If a node only contains samples of one class the variance is zero. That is in this case, we seek a low variance to find a good split. 
 
 Follow these steps to split a Decision Tree based on the reduction of variance.
 
@@ -121,8 +121,7 @@ $$SSE(D) = SSE(D_1) + SSE(D_2),$$
 
 with
 
-$$SSE(D_i) = \sum_{j=1}^N(x_j-\bar{x}_i)^2.$$
-
+$$SSE(D_i) = \frac{1}{n_i}\sum_{j=1}^{n_i}(x_j-\bar{x}_i)^2.$$
 
 ## Decision Trees in Python
 
