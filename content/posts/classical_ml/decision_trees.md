@@ -1,7 +1,7 @@
 +++
 title = 'Decision Trees - Explained'
 date = 2023-12-16T12:33:55+01:00
-draft = true
+draft = false
 featured_image = ''
 tags = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Regression", "Classification"]
 categories = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Classification", "Regression"]
@@ -101,11 +101,11 @@ A detailed explanation is beyond the scope of this article. More information can
 
 **Reduction in Variance** 
 
-In this method the *variance* of 
+In this method the *variance* 
 
 $$\sigma^2_i = \frac{1}{n_i}\sum_{j=1}^{n_i}(x_j-\bar{x})^2$$
 
-is used to determine the split. In the above formular $i$ represents the subset $D_i$ with size $n_i$. The lower the variance the purer the node. If a node only contains samples of one class the variance is zero. That is in this case, we seek a low variance to find a good split. 
+is used to determine the split. In the above formular $D_i$ represents the subset with size $n_i$. The lower the variance the purer the node. If a node only contains samples of the same value the variance is zero. That is in this case, we seek a low variance to find a good split. 
 
 Follow these steps to split a Decision Tree based on the reduction of variance.
 

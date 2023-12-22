@@ -1,7 +1,7 @@
 +++
 title = 'Decision Trees for Regression - Example'
 date = 2023-12-19T17:46:29+01:00
-draft = true
+draft = false
 featured_image = ''
 tags = ["Data Science", "Machine Learning", "Regression", "Decision Trees", "Tree Methods"]
 categories = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Regression"]
@@ -10,7 +10,7 @@ keywords = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods"
 
 ## Introduction
 
-A Decision Tree is a simple Machine Learning model that can be used for both regression and classification tasks. In [Decision Trees for Classification - Example]({{< ref "decision_tree_classification_example">}}) a Decision Tree for a classification problem is developed in detail. In this post, we consider a regression problem and build a Decision Tree step by step for a simplified dataset. Additionally, we use [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html) to fit a model to the data and compare the results. To learn about Decision Trees in a more general setup, please refer to [Decision Trees - Explained]({{< ref "decision_trees">}})
+A Decision Tree is a simple Machine Learning model that can be used for both regression and classification tasks. In the article [Decision Trees for Classification - Example]({{< ref "decision_tree_classification_example">}}) a Decision Tree for a classification problem is developed in detail. In this post, we consider a regression problem and build a Decision Tree step by step for a simplified dataset. Additionally, we use [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html) to fit a model to the data and compare the results. To learn about Decision Trees in a more general setup, please refer to [Decision Trees - Explained]({{< ref "decision_trees">}})
 
 
 ## Data
@@ -43,15 +43,15 @@ From these two features, we see that 'likes height' has a lower SSE than 'likes 
 1. Order the numerical feature in an ascending way.
 2. Calculate the mean of neighboring items. These are all possible splits.
 3. Determine the SSE for all possible splits.
-4. Choose the lowest of these SSEs as the Gini SSE of this feature.
+4. Choose the lowest of these SSEs as the SSE of this feature.
 
 ![possible splits age](/images/decision_tree/dt_splits_age_regression.png)
 *Possible splits for the numerical feature 'age'.*
 
-Now, let's calculate the Gini Impurity for each of these splits.
+Now, let's calculate the SSE for each of these splits.
 
 ![possible splits age SSE](/images/decision_tree/dt_regression_age_all_splits.drawio.png)
-*Possible splits for the numerical feature 'age'.*
+*Possible splits for the numerical feature 'age' and their corresponding SSE.*
 
 From the above results, we see that all SSE values for the feature 'age' are higher than the one for 'likes height', which was the previous best feature. Therefore 'likes height' remains the best feature to split the data and we can build the first level of our tree.
 

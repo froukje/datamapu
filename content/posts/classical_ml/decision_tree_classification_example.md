@@ -1,7 +1,7 @@
 +++
 title = 'Decision Trees for Classification - Example'
 date = 2023-12-19T09:11:46+01:00
-draft = true
+draft = false
 featured_image = ''
 tags = ["Data Science", "Machine Learning", "Classification", "Decision Trees", "Tree Methods"]
 categories = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Classification"]
@@ -21,7 +21,7 @@ The Dataset we use in this post contains only 10 samples. We want to decide whet
 
 ## Build the Tree
 
-Our target data is categorical, that is we are building a Decision Tree for a classification problem. The main step in building a Decision Tree is splitting the Data according to a splitting criterion. There exist different splitting criteria. We will use the *Gini Impurity*, which is the most common criterion and also used in the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) package as the default criterion. The Gini Impurity for a Dataset $D$ that is split into two Datasets $D_1$ and $D_2$, is defined as
+Our target data is categorical, that is we are building a Decision Tree for a classification problem. The main step in building a Decision Tree is splitting the data according to a splitting criterion. There exist different splitting criteria. We will use the *Gini Impurity*, which is the most common criterion and also used in the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) package as the default criterion. The Gini Impurity for a Dataset $D$ that is split into two Datasets $D_1$ and $D_2$, is defined as
 
 $$Gini(D) = \frac{n_1}{n} \cdot Gini(D_1) + \frac{n_2}{n} \cdot Gini(D_2),$$
 
@@ -60,7 +60,7 @@ From the above calculations, we see that all Gini Impurities for the feature 'ag
 ![first split](/images/decision_tree/dt_classification_first_split.png)
 *First split of the Decision Tree.*
  
-After this first split, one of the resulting nodes is already pure, that is no further split is possible and we have the first leaf of our tree. The second node is not pure and will be split further using the remaining dataset. We calculate the Gini Impurity for the features 'likes goats' and 'age' exactly as we did for the entire dataset.
+After this first split, one of the resulting nodes is already pure, that is no further split is possible and we have the first leaf of our tree. The second node is not pure and will be split using the remaining dataset. We calculate the Gini Impurity for the features 'likes goats' and 'age' exactly as we did for the entire dataset.
 
 ![second splits all possibilities](/images/decision_tree/dt_classification_second_split_all.drawio.png)
 *All possible splits for the second split.*

@@ -29,6 +29,9 @@ This is what you can already find here:
 * [Linear Regression]({{< ref "linear_regression.md" >}} "linear_regression.md") 
 * [Linear Regression - Analytical Solution & Example]({{< ref "linear_regression_example.md" >}} "linear_regression_example.md") 
 * [Logistic Regression]({{< ref "logistic_regression.md" >}} "logistic_regression.md") 
+* [Decision Trees - Explained]({{< ref "decision_trees.md" >}} "decision_trees.md") 
+* [Decision Trees for Classification - Example]({{< ref "decision_tree_classification_example.md" >}} "decision_tree_classification_example.md") 
+* [Decision Trees for Regression - Example]({{< ref "decision_tree_regression_example.md" >}} "decision_tree_regression_example.md") 
 
 ## Deep Learning
 
