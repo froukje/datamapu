@@ -10,7 +10,7 @@ keywords = ["Data Science", "Machine Learning", "Random Forest", "Tree Methods",
 
 ## Introduction
 
-Random Forests are a supervised Machine Learning model, that is build on Decision Trees. A main disadvantage of [Decision Trees]() is that they tend to overfit and often have difficuilties to generalize to new data. Random Forests try to overcome this weakness. They are build of a set of Decision Trees.
+Random Forests are a supervised Machine Learning model, that is build on Decision Trees. A main disadvantage of [Decision Trees]() is that they tend to overfit and often have difficuilties to generalize to new data. Random Forests try to overcome this weakness. They are build of a set of Decision Trees and their outcomes are converted into a single result.
 
 ## Build a Random Forest
 
