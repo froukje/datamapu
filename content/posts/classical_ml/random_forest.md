@@ -14,14 +14,14 @@ Random Forests are a supervised Machine Learning model, that is build on Decisio
 
 ## Build a Random Forest
 
-Consider a dataset of N samples and M features. The algorithm to build a Random Forest is as follows:
+A Random Forest is an example of an ensemble method. More precicely it is an example for *Bagging* or *Bootstrap Aggregation*. Consider a dataset of N samples and M features. The algorithm to build a Random Forest is as follows:
 
 1. Draw $n<=N$ samples without replacement (bootstrapping)
 2. At each node draw $m<<M$ of all possible features randomly. 
 3. From these $m$ drawn features select the one with the best split (see [Decision Trees - Explaine]() for a detailed explanation.)
 4. Build each tree completely without [pruning]()
 
-This algorithm is known as *Bagging* or *Bootstrap aggregation*. The final decision is then Tagen by considering the results of all trees developed. In a classification problem, the class that was predicted by most of the trees is the final decision. In a regression task, the mean of all prediction is Tagen as the final prediction. 
+The final decision is then Tagen by considering the results of all trees developed. In a classification problem, the class that was predicted by most of the trees is the final decision. In a regression task, the mean of all prediction is Tagen as the final prediction. 
 
 Each tree is build independingly and the trees are uncorrelated.
  
