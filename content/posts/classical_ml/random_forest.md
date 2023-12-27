@@ -21,15 +21,9 @@ A Random Forest is an example of an *ensemble learning method*. More precisely i
 3. From these $m_i$ drawn features select the one with the best split. To learn how to find the best split, check [Decision Trees - Explaine]() for a detailed explanation.
 4. Build each tree completely without [pruning]()
 
-Doing that results in $d$ Decision Tree models, where $d$ is a hyperparameter that we need to choose. Each tree is build independingly and may therefore give different results. The final decision is then taken by considering the results of all trees developed. In a classification problem, the class that was predicted by most of the trees is the final decision. In a regression task, the mean of all prediction is taken as the final prediction. 
+Doing that results in $d$ Decision Tree models, where $d$ is a hyperparameter that we need to choose. Each tree is build independingly and may therefore give different results. The final decision is then taken by considering the results of all trees developed. In a classification problem, the class that was predicted by most of the trees is the final decision. In a regression task, the mean of all prediction is taken as the final prediction. By not only choosing a subset of the dataset, but also a subset of the possible features a second randomness is introduced, which reduces the correlation between the individual trees. The number of features used is another hyperparamters that need to be set.
 
-In summary a bootstrapping is used to draw a random subset from the entire dataset, then a number of models is build, which results are combined using an aggregationfunction, such as mean or majority vote, which explains the name *Bootstrap Aggregation*.
-
-the trees are uncorrelated.
- 
-Random Forest consists of a number of Decision Trees. However, when building a [Decision Tree]() all possible features are considered, in a Random Forest each Tree is build of a randomly drawn subset of all features. The number of features used is one of the hyperparamters that need to be set.
-
-< link to ensemble methods >
+< IMAGE with different trees >
 
 ## Advantages & Disadvantages
 
@@ -37,4 +31,6 @@ Random Forest consists of a number of Decision Trees. However, when building a [
 ## Random Forests in Python
 
 In Python we can use the [sklearn]() library. It provides Methode for both regression and classification tasks. Below you can find an example for a simplified example for classification. 
+
 ## Summary
+In summary a bootstrapping is used to draw a random subset from the entire dataset, then a number of models is build, which results are combined using an aggregationfunction, such as mean or majority vote, which explains the name *Bootstrap Aggregation*.
