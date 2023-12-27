@@ -32,5 +32,7 @@ This will result in $d$ Decision Trees, where $d$ is a hyperparamter that we nee
 
 In Python we can use the [sklearn]() library. It provides Methode for both regression and classification tasks. Below you can find an example for a simplified example for classification. 
 
+**Hyperparamters**
+
 ## Summary
 In summary a bootstrapping is used to draw a random subset from the entire dataset, then a number of models is build, which results are combined using an aggregation function, such as mean or majority vote, which explains the name *Bootstrap Aggregation*.
