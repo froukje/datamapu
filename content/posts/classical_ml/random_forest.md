@@ -21,9 +21,10 @@ A Random Forest is an example of an ensemble learning method. More precicely it 
 3. From these $m$ drawn features select the one with the best split (see [Decision Trees - Explaine]() for a detailed explanation.)
 4. Build each tree completely without [pruning]()
 
-The final decision is then Tagen by considering the results of all trees developed. In a classification problem, the class that was predicted by most of the trees is the final decision. In a regression task, the mean of all prediction is Tagen as the final prediction. 
+Doing that results in $m$ Decision Tree models. Each tree was build independingly and may therefore give different results. 
+The final decision is then Tagen by considering the results of all trees developed. In a classification problem, the class that was predicted by most of the trees is the final decision. In a regression task, the mean of all prediction is taken as the final prediction. In summary a bootstrapping is used to draw a random subset from the entire dataset, then a number of models is build, which results are combined using an aggregationfunction, such as mean or majority vote, which explains the name *Bootstrap Aggregation*.
 
-Each tree is build independingly and the trees are uncorrelated.
+the trees are uncorrelated.
  
 Random Forest consists of a number of Decision Trees. However, when building a [Decision Tree]() all possible features are considered, in a Random Forest each Tree is build of a randomly drawn subset of all features. The number of features used is one of the hyperparamters that need to be set.
 
