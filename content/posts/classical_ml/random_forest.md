@@ -16,12 +16,12 @@ Random Forests are a supervised Machine Learning model, that is build on Decisio
 
 A Random Forest is an example of an *ensemble learning method*. More precisely it is an example for a [*Bagging* or *Bootstrap Aggregation*]() method. The individual models in the ensemble are [Decision Trees](), which are powerful supervised Machine Learning models, but prone to overfit on the training data. Decision Trees are models that have a [low bias, but a high variance](), especially when they are trained without pruning. This is aimed to be improved by using Bagging / Bootstrap Aggregation. Consider a dataset of $N$ samples and $M$ features. A Random Forest consists of $s$ Decision Trees, each of which is build as follows.
 
-1. Draw $N$ samples without replacement. This is also called [bootstrapping](). For these samples a Decision Tree is build considering the following condisions. This is the step where the variance is reduced. The variance is reduced in the underlying dataset for the Decision Tree and therewith also in the Decision Tree itself.
-2. At each node draw a subset of features randomly. That means, if at at node $i$, $M_i$ features are available, draw $m_i<<M_i$ features randomly. 
-3. From these $m_i$ drawn features select the one with the best split. To learn how to find the best split, check [Decision Trees - Explaine]() for a detailed explanation.
-4. Build each tree completely without [pruning]()
+1. Draw $N$ samples without replacement. This is also called [bootstrapping]().
+2. Draw a subset $m<<M$ of all possible features.
+3. Build a [Decision Tree]() using the data samples drawn and the $m$ features.
+4. Repeat 1-3 $d$ times.
 
-Doing that results in $d$ Decision Tree models, where $d$ is a hyperparameter that we need to choose. Each tree is build independingly and may therefore give different results. The final decision is then taken by considering the results of all trees developed. In a classification problem, the class that was predicted by most of the trees is the final decision. In a regression task, the mean of all prediction is taken as the final prediction. By not only choosing a subset of the dataset, but also a subset of the possible features a second randomness is introduced, which reduces the correlation between the individual trees. The number of features used is another hyperparamters that need to be set.
+This will result in $d$ Decision Trees, where $d$ is a hyperparamter that we need to choose. The variance compared to a single Decision Tree is reduced by using a subsample, that is drwan with replacement. This reduces the variance of the underlying dataset and therewith for the Decision Tree itself. Each tree is build independingly and may therefore give different results. The final decision is then taken by considering the results of all trees developed. In a classification problem, the class that was predicted by most of the trees is the final decision. In a regression task, the mean of all prediction is taken as the final prediction. In order to improve the decision taken by a Random Forest compared to a single Decision Tree, it is important that the individual trees are as uncorrelated as possible. By not only choosing a subset of the dataset, but also a subset of the possible features a second randomness is introduced, this reduces the correlation between the individual trees. The number of features $m$ used is another hyperparamters that need to be set.
 
 < IMAGE with different trees >
 
