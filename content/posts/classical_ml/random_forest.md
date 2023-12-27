@@ -14,7 +14,7 @@ Random Forests are a supervised Machine Learning model, that is build on Decisio
 
 ## Build a Random Forest
 
-A Random Forest is an example of an *ensemble learning method*. More precisely it is an example for a *Bagging* or *Bootstrap aggregation* method. Consider a dataset of N samples and M features. A Random Forest consists of $s$ Decision Trees, each of which is build as follows.
+A Random Forest is an example of an *ensemble learning method*. More precisely it is an example for a *Bagging* or *Bootstrap Aggregation* method. The models in the ensemble are [Decision Trees](), which powerful supervised Machine Learning models, but prone to overfit on the training data. That is they have a low bias, but a high variance. This is aimed to be improved by using Bagging / Bootstrap Aggregation. Consider a dataset of N samples and M features. A Random Forest consists of $s$ Decision Trees, each of which is build as follows.
 
 1. Draw $n<=N$ samples without replacement. This is also called [bootstrapping](). For these $n$ samples a Decision Tree is build considering the following condistions.
 2. At each node draw a subset of features randomly. That means, if at at node $i$, $M_i$ features are available, draw $m_i<<M_i$ features randomly. 
