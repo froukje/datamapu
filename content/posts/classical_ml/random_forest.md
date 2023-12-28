@@ -39,6 +39,7 @@ This will result in $d$ Decision Trees, where $d$ is a hyperparamter that we nee
 * Random Forests reduce the variance in the predictions compared to Decision Trees.
 * Random Forests can provide information about the feature importance.
 * The trees in a Random Forest are independent of each other and can be created in parallel. 
+
 **Cons**
 
 ## Random Forests in Python
