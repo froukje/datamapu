@@ -27,6 +27,15 @@ This will result in $d$ Decision Trees, where $d$ is a hyperparamter that we nee
 
 ## Advantages & Disadvantages
 
+**Pros**
+
+* Can be used for regression and classification problems 
+* Can combine categorical and numerical variables
+* Not sensitive to outliers 
+* Scaling the data is not neccessary
+* Balance bias-variance trade off
+
+**Cons**
 
 ## Random Forests in Python
 
