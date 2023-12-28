@@ -12,7 +12,7 @@ keywords = ["Data Science", "Machine Learning", "Random Forest", "Tree Methods",
 
 A Random Forests is a supervised Machine Learning model, that is build on Decision Trees. In order to understand how a Random Forest works, you should be familar with Decision Trees. You can find an introduction in a separate article: [Decision Trees - Explained](). A major disadvantage of Decision Trees is that they tend to overfit and often have difficuilties to generalize to new data. Random Forests try to overcome this weakness. They are build of a set of Decision Trees, which are combined to an ensemble model and their outcomes are converted into a single result. As Decision Trees, they can be used for classification and regression tasks.
 
-## Build a Random Forest
+## Build a Random Forest - The Algorithm 
 
 A Random Forest is an example of an [*ensemble learning method*](), that is multiple machine learning models are combined to obtain a better model ('the wisdom of crowds'). More precisely it is an example for a [*Bagging* or *Bootstrap Aggregation*]() method. The individual models in the ensemble are [Decision Trees](), which are powerful supervised Machine Learning models, but prone to overfit to the training data. Decision Trees are models that have a [low bias, but a high variance](), especially when they are trained without pruning. This is aimed to be improved by using Bagging / Bootstrap Aggregation. Consider a dataset of $N$ samples and $M$ features. 
 
