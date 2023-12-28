@@ -51,7 +51,9 @@ This will result in $d$ Decision Trees, where $d$ is a hyperparamter that we nee
 
 In Python we can use the sklearn library. It provides Methode for both regression and classification tasks. Below you can find an example for a simplified example for classification. 
 
-<CODE>
+```Python
+from sklearn
+```
 
 In this example the dataset is very small and it is only used to illustrate a Random Forest. In [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) a lot of hyperparameters exist to optimize a Random Forest. In the above example we set *n_estimators=3*, which is the number of Decision Trees used in the Random Forest. For real world examples, this number will be chosen higher, the default value in sklearn is $100$. Other important hyperparamters in sklearn, are:
 
