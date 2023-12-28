@@ -42,7 +42,7 @@ This will result in $d$ Decision Trees, where $d$ is a hyperparamter that we nee
 
 **Cons**
 
-* Rabdom Forests are less interpretable than a single Decision Tree.
+* Random Forests are less interpretable than a single Decision Tree.
 * Random Forests need a lot of memory, because several trees are stored in parallel. 
 * For a large number of trees and / or a large dataset they are expensive to train.
 * Although Random Forests are less prone to overfitting, they still may overfit if too many trees are used or the trees are too deep.
