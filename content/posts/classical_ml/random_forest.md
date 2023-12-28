@@ -32,18 +32,20 @@ This will result in $d$ Decision Trees, where $d$ is a hyperparamter that we nee
 * Random Forests can be used for regression and classification problems.
 * Random Forests are able to learn non-linear relationships.
 * Random Forests can combine categorical and numerical variables.
-* Random Forests are not sensitive to outliers and outliers. 
+* Random Forests are not sensitive to outliers and missing data. 
 * Scaling the data is not neccessary before fitting a Random Forest.
 * Random Forests balance the bias-variance trade off.
 * Random Forests reduce overfitting compared to Decision Trees.
 * Random Forests reduce the variance in the predictions compared to Decision Trees.
 * Random Forests can provide information about the feature importance.
-* The trees in a Random Forest are independent of each other and can be created in parallel. 
+* The trees in a Random Forest are independent of each other and can be created in parallel, which makes the training fester. 
 
 **Cons**
 
 * Rabdom Forests are less interpretable than a single Decision Tree.
-* Random Forests need a lot of memory and are therefore expensive to train if the dataset is lange.
+* Random Forests need a lot of memory, because several trees are stored in parallel. 
+* For a large number of trees and / or a large dataset they are expensive to train.
+* Although Random Forests are less prone to overfitting, they still may overfit if too many trees are used or the trees are too deep.
 
 ## Random Forests in Python
 
