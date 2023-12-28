@@ -54,4 +54,5 @@ In Python we can use the [sklearn]() library. It provides Methode for both regre
 **Hyperparamters**
 
 ## Summary
-In summary a bootstrapping is used to draw a random subset from the entire dataset, then a number of models is build, which results are combined using an aggregation function, such as mean or majority vote, which explains the name *Bootstrap Aggregation*.
+
+In this article we learned about Random Forests, how they are created, and there main advantages and disadvantages. Random Forests are an [ensemble Machine Learning]() model consisting of multiple [Decision Trees](). They use the strength of Decision Trees and at the same time overcome their tendency to overfit. Compared to Decision Trees, Random Forests are more robust, flexible and accurate, they loose however interpretability and are more expensive to train. 
