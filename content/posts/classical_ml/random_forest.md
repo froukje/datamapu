@@ -29,11 +29,12 @@ This will result in $d$ Decision Trees, where $d$ is a hyperparamter that we nee
 
 **Pros**
 
-* Can be used for regression and classification problems 
-* Can combine categorical and numerical variables
-* Not sensitive to outliers 
-* Scaling the data is not neccessary
-* Balance bias-variance trade off
+* Random Forests can be used for regression and classification problems.
+* Random Forests are able to learn non-linear relationships.
+* Random Forests can combine categorical and numerical variables.
+* Random Forests are not sensitive to outliers. 
+* Scaling the data is not neccessary before fitting a Random Forest.
+* Random Forests balance the bias-variance trade off.
 
 **Cons**
 
