@@ -42,6 +42,9 @@ This will result in $d$ Decision Trees, where $d$ is a hyperparamter that we nee
 
 **Cons**
 
+* Rabdom Forests are less interpretable than a single Decision Tree.
+* Random Forests need a lot of memory and are therefore expensive to train if the dataset is lange.
+
 ## Random Forests in Python
 
 In Python we can use the [sklearn]() library. It provides Methode for both regression and classification tasks. Below you can find an example for a simplified example for classification. 
