@@ -49,15 +49,22 @@ This will result in $d$ Decision Trees, where $d$ is a hyperparamter that we nee
 
 ## Random Forests in Python
 
-In Python we can use the [sklearn]() library. It provides Methode for both regression and classification tasks. Below you can find an example for a simplified example for classification. 
+In Python we can use the sklearn library. It provides Methode for both regression and classification tasks. Below you can find an example for a simplified example for classification. 
 
 <CODE>
 
-In this example the dataset is very small and it is only used to illustrate a Random Forest. In sklearn a lot of hyperparameters exist to optimize a Random Forest. In the above example we set *n_estimators=3*, which is the number of Decision Trees used in the Random Forest. For real world examples, this number will be chosen higher, the default value in sklearn is $100$. Other important hyperparamters in sklearn, are:
+In this example the dataset is very small and it is only used to illustrate a Random Forest. In [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) a lot of hyperparameters exist to optimize a Random Forest. In the above example we set *n_estimators=3*, which is the number of Decision Trees used in the Random Forest. For real world examples, this number will be chosen higher, the default value in sklearn is $100$. Other important hyperparamters in sklearn, are:
 
 **Hyperparamters**
+* *n_estimators*: Number of Decision Trees used to create the Random Forest (default: 100).
+* *criterion*: Function used to define the best split (default: Gini Impurity).
+* *max_depth*: Maximum depth of the trees (default: None, i.e. the trees are expanded until all leaves are pure).
+* *min_sample_split*: Minimum number of samples to split a node (default: 2).
+* *min_samples_leaf*: Minimum number of samples required to become a leaf node (default: 1).
+* *max_features*: Maximum number of features considered to find the best split (default: the squareroot of the total number of features).
+* *bootstrap*: Whether bootstrapping is used or not (default: True). If set to False, the entire dataset is used for each tree.
 
-For a detailed example, of how to develop a Random Forest, check the separate article [Random Forests for Classification - Example]() and for a more realistisch exampme with a larger dataset, you can find an example on [kaggle]().
+A complete list with detailed explanations of all possible hyperparamters can be found in the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) Dokumentation. For a detailed example, of how to develop a Random Forest, check the separate article [Random Forests for Classification - Example]() and for a more realistic example with a larger dataset, you can find an example on [kaggle]().
 
 ## Summary
 
