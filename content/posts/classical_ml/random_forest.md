@@ -1,4 +1,4 @@
-&   +++
++++
 title = 'Random Forests - Explained'
 date = 2023-12-26T10:57:13+01:00
 draft = true
@@ -38,6 +38,7 @@ This will result in $d$ Decision Trees, where $d$ is a hyperparamter that we nee
 * Random Forests reduce overfitting compared to Decision Trees.
 * Random Forests reduce the variance in the predictions compared to Decision Trees.
 * Random Forests can provide information about the feature importance.
+* The trees in a Random Forest are independent of each other and can be created in parallel. 
 **Cons**
 
 ## Random Forests in Python
