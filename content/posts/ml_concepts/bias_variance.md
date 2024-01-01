@@ -38,17 +38,17 @@ In general a low bias is desirable. There is, however, no recipe of how to reduc
 
 ## Variance
 
-*Variance* is a term from statistics, which measures the spread of a variable around its mean. In Machine Learning it describes the of change in the predictions, when a different subset is used for training.
-
-Mathematically the variance can be written as
+*Variance* is a term from statistics, which measures the spread of a variable around its mean. In Machine Learning it describes the of change in the predictions, when a different subset is used for training, or in other words the variability of the model's prediction. Mathematically the variance can be written as
 
 $$Variance = E[(\hat{Y} - E[\hat{Y}])^2],$$
 
-with $\hat{Y}$ the predictions produced by the Machine Learning model and $Y$ the true target values.
-
-* By the algorithm itself. If an inappropriate algorithm is chosen that is not able to capture the variance of the data.
+with $\hat{Y}$ the predictions produced by the Machine Learning model and $Y$ the true target values. 
 
 ### Possibilities to reduce the Variance
+
+A low variance is desirable. As for the bias, there is no recipe to achieve this. The following methods may help to reduce the variance.
+
+**Select a less complex model.**
 
 < IMAGE high low variance>
 
