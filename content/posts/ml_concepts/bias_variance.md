@@ -56,15 +56,13 @@ To make the model generalizable to new data, a low variance is desirable. As for
 
 **Use ensemble models.** [Ensemble learning]({{< ref "ensemble">}}) use multiple of models and aggregate them to one single prediction. Different types of ensemble models exist, [Bagging]({{< ref "ensemble#bagging">}}) is especially suited to reduce the variance. 
 
-![bias and variance](/images/bias_variance/bias_variance_1.png)
-*Underfitting and Overfitting illustrated.*
 
 ![bias and variance](/images/bias_variance/bias_variance_2.png)
 *Overview about bias and variance.*
 
 ## Bias-Variance Tradeoff
 
-Concluding the above derivations, it is in general desirable to achieve a low bias aswell as a low variance. This is however not possible, which becomes clear when we consider the general error of a Machine Learning model. Let $Y$ be the true values and $\hat{Y} the model's estimate with $Y = \hat{Y} + \epsilon$ and $\epsilon$ a normally distributed error with mean $0$ and standard deviation $\sigma$. $hat{Y}$ is depending on the dataset the model has been trained on. The expected error, that is aimed to be minimized can then be written as
+Concluding the above derivations, it is in general desirable to achieve a low bias aswell as a low variance. This is however not possible. Intuitively this is clear because a model cannot be simple and complex at the same time. Mathemaically this becomes clear when we consider the general error of a Machine Learning model. Let $Y$ be the true values and $\hat{Y}$ the model's estimate with $Y = \hat{Y} + \epsilon$ and $\epsilon$ a normally distributed error with mean $0$ and standard deviation $\sigma$. $hat{Y}$ is depending on the dataset the model has been trained on. The expected error, that is aimed to be minimized can then be written as
 
 $$E[(Y - \hat{Y})^2] = E[Y^2 - 2Y\hat{Y} + \hat{Y}^2].$$ 
 
@@ -109,6 +107,9 @@ In other words the total error in a Machine Learning model is
 $$E[(Y - \hat{Y})^2] = Bias^2 + Variance + \sigma^2,$$
 
 with $\sigma$ being the irreducible error. The total error is thus composed of the Bias, the Variance and the irreducible error.
+
+![bias and variance](/images/bias_variance/bias_variance_1.png)
+*Underfitting and Overfitting illustrated.*
 
 Bias and variance is often illustrated using a dartboard as shown in the following plot. 
 ![bias and variance](/images/bias_variance/bias_variance_3.png)
