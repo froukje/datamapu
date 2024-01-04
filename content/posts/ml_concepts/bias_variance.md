@@ -34,8 +34,6 @@ In general a low bias is desirable. There is, however, no recipe of how to reduc
 
 **Decrease regularization.** Regularization techniques are used to prevent overfitting and make the model more generalizable. This is useful if the model shows high variance, as we will see in the next section. However, if the bias is high reducing the regularization may help.
 
-< IMAGE high, low bias >
-
 ## Variance
 
 *Variance* is a term from statistics, which measures the spread of a variable around its mean. In Machine Learning it describes the of change in the predictions, when different subsets are used for training, or in other words the variability of the model's prediction. Mathematically the variance described as the expected value of the square of the difference between the predicted values and the expected value of the predictions
@@ -58,14 +56,11 @@ To make the model generalizable to new data, a low variance is desirable. As for
 
 **Use ensemble models.** [Ensemble learning]({{< ref "ensemble">}}) use multiple of models and aggregate them to one single prediction. Different types of ensemble models exist, [Bagging]({{< ref "ensemble#bagging">}}) is especially suited to reduce the variance. 
 
-< IMAGE high low variance>
+![bias and variance](/images/bias_variance/bias_variance_1.png)
+*Underfitting and Overfitting illustrated.*
 
-< Image Combinations of bias and variance>
-
-* high / high
-* high / low
-* low / high
-* low / low
+![bias and variance](/images/bias_variance/bias_variance_2.png)
+*Overview about bias and variance.*
 
 ## Bias-Variance Tradeoff
 
@@ -115,6 +110,13 @@ $$E[(Y - \hat{Y})^2] = Bias^2 + Variance + \sigma^2,$$
 
 with $\sigma$ being the irreducible error. The total error is thus composed of the Bias, the Variance and the irreducible error.
 
-< IMAGE curves> 
+Bias and variance is often illustrated using a dartboard as shown in the following plot. 
+![bias and variance](/images/bias_variance/bias_variance_3.png)
+*Overview about bias and variance.*
+
+![bias and variance](/images/bias_variance/bias_variance_4.png)
+*Overview about bias, variance, and the total error.*
 
 ## Summary
+
+Bias and Variance are different types of errors in Machine Learning. Both high bias and high variance mean that a model is not able to understand the underlying pattern of the data and are therefore not able to generalize to new unseen data. Analysing the total error of a Machine Learning model shows, that it is not possible to have both low bias and low variance. In practice it is important to balance bias and variance to achieve that the model finds the underlying pattern and generalizes well.
