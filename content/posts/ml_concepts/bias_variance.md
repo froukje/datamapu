@@ -10,9 +10,9 @@ keywords = ["Data Science", "Machine Learning", "Artificial Intelligence"]
 
 ## Introduction
 
-In Machine Learning different error sources exist. Some errors cannot be avoided, for example due to unknown variables in the system analysed. These errors are called *irreducible errors*. On the other hand *reducible errors*, are errors that can be reduced and with that the model's skill can be improved. *Bias* and *Variance* are two of the latter. They are concepts used in supervised Machine Learning to evaluate the model's output compared to the true values. For a Machine Learning model to be generalizable to new unseen data with high predictive skill, it is important that bias and variance are balanced. 
+In Machine Learning different error sources exist. Some errors cannot be avoided, for example due to unknown variables in the system analysed. These errors are called *irreducible errors*. On the other hand *reducible errors*, are errors that can be reduced to improve the model's skill. *Bias* and *Variance* are two of the latter. They are concepts used in supervised Machine Learning to evaluate the model's output compared to the true values. For a Machine Learning model to be generalizable to new unseen data with high predictive skill, it is important that bias and variance are balanced. 
 
-<IMAGE>
+< IMAGE >
 
 ## Bias
 
@@ -54,19 +54,27 @@ To make the model generalizable to new data, a low variance is desirable. As for
 
 **Use regularization.** Regularization adds an extra term to the loss function, which is used to weight features by their importance.
 
-**Use ensemble models.** [Ensemble learning]({{< ref "ensemble">}}) use multiple of models and aggregate them to one single prediction. Different types of ensemble models exist, [Bagging]({{< ref "ensemble#bagging">}}) is especially suited to reduce the variance. 
+**Use ensemble models.** In [Ensemble learning]({{< ref "ensemble">}}) multiple models are used and aggregated to one single prediction. Different types of ensemble models exist, [Bagging]({{< ref "ensemble#bagging">}}) is especially suited to reduce the variance.
 
+
+The following table shows and summarizes all possible combinations of Bias and Variance.
 
 ![bias and variance](/images/bias_variance/bias_variance_2.png)
-*Overview about bias and variance.*
+*Overview about the combinations of bias and variance.*
+
+The effect of Bias and Variance is often illustrated using a dartboard as shown in the following plot. 
+
+![bias and variance](/images/bias_variance/bias_variance_3.png)
+*Illustration of the combinations of bias and variance.*
+
 
 ## Bias-Variance Tradeoff
 
-Concluding the above derivations, it is in general desirable to achieve a low bias aswell as a low variance. This is however not possible. Intuitively this is clear because a model cannot be simple and complex at the same time. Mathemaically this becomes clear when we consider the general error of a Machine Learning model. Let $Y$ be the true values and $\hat{Y}$ the model's estimate with $Y = \hat{Y} + \epsilon$ and $\epsilon$ a normally distributed error with mean $0$ and standard deviation $\sigma$. $\hat{Y}$ is depending on the dataset the model has been trained on. The expected error, that is aimed to be minimized can then be written as
+Concluding the above derivations, it is in general desirable to achieve a low bias aswell as a low variance. This is however difficult. Intuitively this is clear because a model cannot be simple and complex at the same time. Mathematically, the bias and the variance are part of the total error of a Machine Learning model. Let $Y$ be the true values and $\hat{Y}$ the model's estimates with $Y = \hat{Y} + \epsilon$ and $\epsilon$ a normally distributed error with mean $0$ and standard deviation $\sigma$. The predictions $\hat{Y}$ are depending on the dataset the model has been trained on, while the true values $Y$ are independent on the specific dataset. The expected (squared) error, that is aimed to be minimized can then be written as
 
 $$E[(Y - \hat{Y})^2] = E[Y^2 - 2Y\hat{Y} + \hat{Y}^2].$$ 
 
-Due to the linearity of the expected value this can be written as
+Because of the linearity of the expected value this equal to
 
 $$E[(Y - \hat{Y})^2] = E[Y^2] - 2E[Y\hat{Y}] + E[\hat{Y}^2]. (1)$$
 
@@ -78,46 +86,90 @@ Since the true values $Y$ are independend of the dataset, this is equal to
 
 $$E[Y^2] = Y^2 + 2YE[\epsilon] + E[\epsilon^2].$$
 
-We assumed $\epsilon$ to have mean $0$ and standard deviation $\sigma$ this rewrites to
+We can use the following formula of the [variance](https://en.wikipedia.org/wiki/Variance) for a variable $X$
 
-$$E[Y^2] = Y^2 + \sigma^2. (2)$$
+$$Var[X] = E[(X - E[X])^2]$$ 
 
-The last term can be written as
+and reformulate it as
+
+$$Var[X] = E[X^2 - 2XE[X] + E[X]^2]$$
+$$Var[X] = E[X^2] - 2E[X]E[X] + E[X]^2$$ 
+$$Var[X] = E[X^2] - E[X]^2$$
+
+to rewrite this equation. Since we assumed $\epsilon$ to have mean $0$ and standard deviation $\sigma$ the term simplifies to
+
+$$E[Y^2] = Y^2 + 2YE[\epsilon] + Var[\epsilon] + E[\epsilon^2] = Y^2 + \sigma^2. (2)$$
+
+Using the same equation for the variance, the last term of equation (1) can be written as
 
 $$E[\hat{Y}^2] = E[\hat{Y}^2] - E[\hat{Y}]^2 + E[\hat{Y}]^2 = Var[\hat{Y}] + E[\hat{Y}]^2, (3)$$
 
-with $Var[\hat{Y}]$ the [variance](https://en.wikipedia.org/wiki/Variance) of $\hat{Y}$, which is defined as 
-
-$$Var[\hat{Y}] = E[(\hat{Y} - E[\hat{Y}])^2] = E[\hat{Y}^2 - 2\hat{Y}E[\hat{Y}] + E[\hat{Y}]^2]$$
-
-and can thus be written as
-
-$$Var[\hat{Y}] = E[\hat{Y}^2] - 2E[\hat{Y}]E[\hat{Y}] + E[\hat{Y}]^2 = E[\hat{Y}^2] - E[\hat{Y}]^2.$$
-
-Putting (2) and (3) back into equation (1) leads to
+Putting (2) and (3) back into equation (1) and using the indepence of $Y$ of the dataset, leads to
 
 $$E[(Y - \hat{Y})^2)] = Y^2 + \sigma^2 - 2YE[\hat{Y}] + Var[\hat{Y}] + E[\hat{Y}]^2.$$
 
 This can be written as
 
-$$E[(Y - \hat{Y})^2] = (E[\hat[Y] - Y)^2 + Var[\hat{Y}] + \sigma^2.$$
+$$E[(Y - \hat{Y})^2] = (Y - E[\hat{Y}])^2 + Var[\hat{Y}] + \sigma^2.$$
 
 In other words the total error in a Machine Learning model is
 
 $$E[(Y - \hat{Y})^2] = Bias^2 + Variance + \sigma^2,$$
 
-with $\sigma$ being the irreducible error. The total error is thus composed of the Bias, the Variance and the irreducible error.
+with $\sigma$ being the irreducible error. **The total error of a Machine Learning Model is thus composed of the Bias, the Variance and the irreducible error.** The difficulty of minimizing both bias and variance to find a good balance such that the model does not overfit and not underfit is known as the *Bias-Variance Tradeoff*. It can be illustrated as follows.
 
 ![bias and variance](/images/bias_variance/bias_variance_1.png)
 *Underfitting and Overfitting illustrated.*
 
-Bias and variance is often illustrated using a dartboard as shown in the following plot. 
-![bias and variance](/images/bias_variance/bias_variance_3.png)
-*Overview about bias and variance.*
+The relationship between the general error, Bias, and Variance can be illustrated as follows
 
-![bias and variance](/images/bias_variance/bias_variance_4.png)
-*Overview about bias, variance, and the total error.*
+![bias and variance](/images/bias_variance/Bias_and_variance_contributing_to_total_error.svg)
+*Source: https://commons.wikimedia.org/w/index.php?curid=105307219 (Von Bigbossfarin - Eigenes Werk, CC0)*
+
+## Example
+
+To illustrate the modelling of simple to complex models, we consider an example of polynomial function, which is modeled by polynoms of different degrees. 
+
+```Python
+import numpy as np
+
+fig, ax = plt.subplots(3, 2, figsize=(12,16))
+np.random.seed(42)
+x = np.arange(0,30,1)
+noise = np.random.normal(0, 500,x.shape[0])
+a0 = 20
+a1 = 0.3
+a2 = -25
+a3 = 1.1
+y = a0 + a1*x + a2*x**2 + a3*x*x*x
+
+# training data
+y1 = y + noise
+
+# models
+# 1. linear
+model1 = np.poly1d(np.polyfit(x, y1, 1))
+# 2. quadratic
+model2 = np.poly1d(np.polyfit(x, y1, 2))
+# 3. cubic
+model3 = np.poly1d(np.polyfit(x, y1, 3))
+# 4. degree 10
+model4 = np.poly1d(np.polyfit(x, y1, 10))
+# 5. degree 15
+model5 = np.poly1d(np.polyfit(x, y1, 15))
+# 6. degree 20
+model6 = np.poly1d(np.polyfit(x, y1, 20))
+```
+Plotting the different models against the "true model" $y = 20 + 0.3x - 25x^2 + 1.1 x^3$ shows how simple models as the linear one show a high bias and complex models as the one of degree $20$ show a high variance. The cubic model fits the true model best.
+
+![bias and variance](/images/bias_variance/model_complexity.png)
+*Example for polynomial models of different degrees.*
 
 ## Summary
 
-Bias and Variance are different types of errors in Machine Learning. Both high bias and high variance mean that a model is not able to understand the underlying pattern of the data and are therefore not able to generalize to new unseen data. Analysing the total error of a Machine Learning model shows, that it is not possible to have both low bias and low variance. In practice it is important to balance bias and variance to achieve that the model finds the underlying pattern and generalizes well.
+Bias and Variance are different types of errors in Machine Learning. Both high bias and high variance mean that a model is not able to understand the underlying pattern of the data and are therefore not able to generalize to new unseen data. In practice it is important to balance bias and variance to achieve a good model.
+
+## Further Reading
+
+Emmert-Streib F. and Dehmert M., "Evaluation of Regression Models: Model Assessment,
+Model Selection and Generalization Error", machine learning and knowledge extraction (2019), DOI: 10.3390/make1010032 
