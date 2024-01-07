@@ -12,7 +12,7 @@ keywords = ["Data Science", "Machine Learning", "Artificial Intelligence"]
 
 In Machine Learning different error sources exist. Some errors cannot be avoided, for example, due to unknown variables in the system analyzed. These errors are called *irreducible errors*. On the other hand, *reducible errors*, are errors that can be reduced to improve the model's skill. *Bias* and *Variance* are two of the latter. They are concepts used in supervised Machine Learning to evaluate the model's output compared to the true values. For a Machine Learning model to be generalizable to new unseen data with high predictive skill, it is important that bias and variance are balanced. 
 
-< IMAGE >
+
 
 ## Bias
 
@@ -119,7 +119,10 @@ $$E[(Y - \hat{Y})^2] = Bias^2 + Variance + \sigma^2,$$
 with $\sigma$ being the irreducible error. **The total error of a Machine Learning Model is thus composed of the Bias, the Variance, and the irreducible error.** The difficulty of minimizing both bias and variance to find a good balance such that the model does not overfit and not underfit is known as the *Bias-Variance Tradeoff*. It can be illustrated as follows.
 
 ![bias and variance](/images/bias_variance/bias_variance_1.png)
-*Underfitting and Overfitting illustrated.*
+*Underfitting and Overfitting illustrated for a regression problem.*
+
+![bias and variance](/images/bias_variance/bias_variance_4.png)
+*Underfitting and overfitting illustrated for a classification problem.*
 
 The relationship between the general error, Bias, and Variance can be illustrated as follows
 
