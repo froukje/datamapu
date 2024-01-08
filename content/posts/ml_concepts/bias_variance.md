@@ -68,7 +68,7 @@ The effect of Bias and Variance is often illustrated using a dartboard as shown 
 *Illustration of the combinations of bias and variance.*
 
 
-## Bias-Variance Tradeoff
+## Bias-Variance Tradeoff{#tradeoff}
 
 Concluding the above derivations, it is in general desirable to achieve a low bias as well as a low variance. This is however difficult. Intuitively this is clear because a model cannot be simple and complex at the same time. Mathematically, the bias and the variance are part of the total error of a Machine Learning model. Let $Y$ be the true values and $\hat{Y}$ the model's estimates with $Y = \hat{Y} + \epsilon$ and $\epsilon$ a normally distributed error with mean $0$ and standard deviation $\sigma$. The predictions $\hat{Y}$ depend on the dataset the model has been trained on, while the true values $Y$ are independent of the specific dataset. The expected (squared) error, that is aimed to be minimized can then be written as
 
