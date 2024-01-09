@@ -55,12 +55,10 @@ In order to improve the decision taken by a Random Forest compared to a single D
 
 ## Random Forests in Python
 
-In Python we can use the sklearn library. It provides Methode for both regression and classification tasks. Below you can find an example for a simplified example for classification. The dataset constructed only contains 10 samples for illustration. The data describes whether a person should go rock climbing depending on their age, and whether or not the person likes goats and height.  
+In Python we can use the sklearn library, which provides methods for both regression and classification tasks. Below a simplified example for a classification problem is given. The constructed dataset contains only 10 samples for illustration purposes. The data describes whether a person should go rock climbing depending on their age, and whether or not the person likes goats and height.  
 
 ```Python
 import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.ensemble import RandomForestClassifier
 
 data = {'age': [23, 31, 35, 35, 42, 43, 45, 46, 46, 51], 
         'likes goats': [0, 1, 0, 0, 0, 1, 1, 1, 0, 1], 
@@ -68,6 +66,14 @@ data = {'age': [23, 31, 35, 35, 42, 43, 45, 46, 46, 51],
         'go rock climbing': [0, 1, 1, 0, 0, 1, 0, 1, 0, 1]}
 
 df = pd.DataFrame(data)
+```
+![random forest dataset](/images/random_forest/rf_dataset.png)
+*Dataset used for the Random Forest example.*
+
+We now fit a Random Forest to the data using the *RandomForestClassifier* method provided by [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html).
+
+```Python
+from sklearn.ensemble import RandomForestClassifier
 
 X = df[['age', 'likes goats', 'likes height']].values
 y = df[['go rock climbing']].values.reshape(-1,)
