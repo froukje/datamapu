@@ -106,3 +106,7 @@ plot_tree(clf, feature_names=['age', 'likes goats', 'likes height'], fontsize=10
 ## Summary
 
 In this article, we analyzed in detail how to build a Decision Tree for a classification task, especially how to choose the best split step by step. A more realistic example of how to fit a Decision Tree to a dataset using sklearn can be found on [kaggle](https://www.kaggle.com/code/pumalin/decision-trees-tutorial).
+
+If this blog is useful for you, I'm thankful for your support!
+{{< bmc-button slug="pumaline" >}}
+
