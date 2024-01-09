@@ -85,7 +85,8 @@ tree.plot_tree(clf.estimators_[0], fontsize=6)
 
 The three trees in this Random Forest are shown in the next plot.
 
-< IMAGE >
+![random forest example](/images/random_forest/rf_example_1.png)
+*Trees in a simplified example for a Random Forest.*
 
 Let's consider an example prediction. Take the second sample from the dataset: $age = 31$, $likes goats = 1$, and $likes height = 1$. Going through the Decision Trees the predictions are: Tree 1: 1, Tree 2: 1, Tree 3: 0. The majority class is thus $1$, which is the prediction of the Random Forest. Printing the predictions of the Random Forest
 
@@ -93,6 +94,9 @@ Let's consider an example prediction. Take the second sample from the dataset: $
 print(f'Predictions: {clf.predict(X[:1])}')
 ```
 leads to *Predictions: [1]*, which confirms our manual calculations.
+
+![random forest example](/images/random_forest/rf_example_2.png)
+*Decision paths for the second sample for each tree for the example.*
 
 ## Hyperparameters
 
