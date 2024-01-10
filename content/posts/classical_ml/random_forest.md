@@ -55,7 +55,7 @@ In order to improve the decision taken by a Random Forest compared to a single D
 
 ## Random Forests in Python
 
-In Python we can use the sklearn library, which provides methods for both regression and classification tasks. Below a simplified example for a classification problem is given. The constructed dataset contains only 10 samples for illustration purposes. The data describes whether a person should go rock climbing depending on their age, and whether or not the person likes goats and height.  
+In Python we can use the sklearn library, which provides methods for both regression and classification tasks. Below a simplified example for a classification problem is given. The constructed dataset contains only 10 samples for illustration purposes. The data describes whether a person should go rock climbing or not depending on their age, and whether or not the person likes goats and height.  
 
 ```Python
 import pandas as pd
@@ -82,11 +82,11 @@ clf = RandomForestClassifier(n_estimators=3, random_state=1)
 clf.fit(X, y)
 ```
 
-In this example the dataset is very small and it is only used to illustrate a Random Forest. In [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) a lot of hyperparameters exist to optimize a Random Forest. In the above example we set *n_estimators=3*, which is the number of Decision Trees used in the Random Forest. For real world examples, this number will be chosen higher, the default value in sklearn is $100$. We can access the individual trees in the Random Forest and plot them. The first tree can be visualalized as follows.
+In this example the dataset is very small and it is only used to illustrate a Random Forest. In [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) a lot of hyperparameters exist to optimize a Random Forest. In the above example we set *n_estimators=3*, which is the number of Decision Trees used in the Random Forest. For real world examples, this number will be chosen higher, the default value in sklearn is $100$. Additionally, the *random_state* is set to make the results reproducible. We can access the individual trees in the Random Forest and plot them. The first tree can be visualized as follows.
 
 ```Python
 from sklearn import tree
-tree.plot_tree(clf.estimators_[0], fontsize=6)
+tree.plot_tree(clf.estimators_[0], fontsize=10)
 ``` 
 
 The three trees in this Random Forest are shown in the next plot.
@@ -94,21 +94,22 @@ The three trees in this Random Forest are shown in the next plot.
 ![random forest example](/images/random_forest/rf_example_1.png)
 *Trees in a simplified example for a Random Forest.*
 
-Let's consider an example prediction. Take the second sample from the dataset: $age = 31$, $likes goats = 1$, and $likes height = 1$. Going through the Decision Trees the predictions are: Tree 1: 1, Tree 2: 1, Tree 3: 0. The majority class is thus $1$, which is the prediction of the Random Forest. Printing the predictions of the Random Forest
-
-```Python
-print(f'Predictions: {clf.predict(X[:1])}')
-```
-leads to *Predictions: [1]*, which confirms our manual calculations.
+Let's consider an example prediction. Take the second sample from the dataset: age $= 31$, likes goats $= 1$, and likes height $= 1$. Going through the Decision Trees the predictions are: tree 1: 1, tree 2: 1, tree 3: 1. The majority class is thus $1$, which is thus the prediction of the Random Forest. 
 
 ![random forest example](/images/random_forest/rf_example_2.png)
 *Decision paths for the second sample for each tree for the example.*
 
-## Hyperparameters
+Using the *predict* method, we can print the predictions of the Random Forest classifier directly for this sample.
 
-We already used the hyperparamters *n_estimators* in the previous example. Sklearn offers a lot of hyperparamters, that we can use to optimize a Random Forest. Important ones are:
+```Python
+print(f'Predictions: {clf.predict(X[:1])}')
+```
+This leads to *Predictions: [1]*, confirming our manual calculations.
 
-**Hyperparamters**
+**Hyperparameters**
+
+We already used the hyperparameter *n_estimators* in the previous example. Sklearn offers a lot of hyperparameters, that we can use to optimize a Random Forest. Important ones are:
+
 * **n_estimators**: Number of Decision Trees used to create the Random Forest (default: 100).
 * **criterion**: Function used to define the best split (default: Gini Impurity).
 * **max_depth**: Maximum depth of the trees (default: None, i.e. the trees are expanded until all leaves are pure).
@@ -117,12 +118,18 @@ We already used the hyperparamters *n_estimators* in the previous example. Sklea
 * **max_features**: Maximum number of features considered to find the best split (default: the squareroot of the total number of features).
 * **bootstrap**: Whether bootstrapping is used or not (default: True). If set to False, the entire dataset is used for each tree.
 
-A complete list with detailed explanations of all possible hyperparamters can be found in the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) documentation. For a detailed example, of how to develop a Random Forest, check the separate article [Random Forests for Classification - Example](). The above shown example is onlz to illustrate how to fit a Random Forest in Python. In practice we would first divide the dataset into training, validation and test set, before fitting and evaluating the model. You can find a more realistic example with a larger dataset on [kaggle](). For regression tasks the Procedere is analogue, the used method in sklearn is called *Random Forest Regressor* and a detailed list of all hyperparamters can be found in the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html) documentation.
+A complete list with detailed explanations of all possible hyperparamters can be found in the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) documentation. For regression tasks the Procedure is analogue, the used method in sklearn is called *RandomForestRegressor* and a detailed list of all hyperparamters can be found in the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html) documentation.
 
 ## Evaluation
+
+The example above is only to illustrate how to fit a Random Forest in Python. In practice we would first divide the dataset into training, validation and test set, before fitting and evaluating the model. You can find a more realistic example with a larger dataset on [kaggle](). 
 
 The evaluation of a Random Forest model depends on whether a classification or a regression problem is considered. In any case, the common metrics can be used to evaluate the results. You can find an overview about the most common metrics in the articles [Metrics for Classification Problems]({{< ref "classification_metrics" >}}) or [Metrics for Regression Problems]({{< ref "regression_metrics">}})
 
 ## Summary
 
-In this article we learned about Random Forests, how they are created, and their main advantages and disadvantages. Random Forests are an [ensemble Machine Learning]({{< ref "ensemble">}}) model consisting of multiple [Decision Trees]({{< ref "decision_trees">}}). They use the strength of Decision Trees and at the same time overcome their tendency to overfit. Compared to Decision Trees, Random Forests are more robust, flexible and accurate, they loose however interpretability and are more expensive to train. For a deatiled Version of the above example derived by hand, please refer to the article [Random Forests for Classification - Example]() and for a more realistic example with a larger dataset, you can find an example on [kaggle]().
+In this article we learned about Random Forests, how they are created, and their main advantages and disadvantages. Random Forests are an [ensemble Machine Learning]({{< ref "ensemble">}}) model consisting of multiple [Decision Trees]({{< ref "decision_trees">}}). They use the strength of Decision Trees and at the same time overcome their tendency to overfit. Compared to Decision Trees, Random Forests are more robust, flexible and accurate, they loose however interpretability and are more expensive to train. For a more realistic example with a larger dataset, check this [kaggle]() notebook.
+
+If this blog is useful for you, I'm thankful for your support!
+{{< bmc-button slug="pumaline" >}}
+

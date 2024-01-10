@@ -175,4 +175,8 @@ Bias and Variance are different types of errors in Machine Learning. Both high b
 ## Further Reading
 
 Emmert-Streib F. and Dehmert M., "Evaluation of Regression Models: Model Assessment,
-Model Selection and Generalization Error", machine learning and knowledge extraction (2019), DOI: 10.3390/make1010032 
+Model Selection and Generalization Error", machine learning and knowledge extraction (2019), DOI: 10.3390/make1010032
+
+If this blog is useful for you, I'm thankful for your support!
+{{< bmc-button slug="pumaline" >}}
+ 
