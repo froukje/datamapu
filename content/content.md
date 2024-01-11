@@ -23,6 +23,9 @@ This is what you can already find here:
 * [Metrics for Classification Problems]({{< ref "regression_metrics.md" >}} "regression_metrics.md") 
 * [Metrics for Regression Problems]({{< ref "classification_metrics.md" >}} "classification_metrics.md") 
 * [Feature Selection Methods]({{< ref "feature_selection.md" >}} "feature_selection.md") 
+* [Bias and Variance]({{< ref "bias_variance.md" >}} "bias_variance.md")
+* [Ensemble Models - Illustrated]({{< ref "ensemble.md" >}} "ensemble.md")
+
 
 ## Classical Machine Learning
 
@@ -32,6 +35,7 @@ This is what you can already find here:
 * [Decision Trees - Explained]({{< ref "decision_trees.md" >}} "decision_trees.md") 
 * [Decision Trees for Classification - Example]({{< ref "decision_tree_classification_example.md" >}} "decision_tree_classification_example.md") 
 * [Decision Trees for Regression - Example]({{< ref "decision_tree_regression_example.md" >}} "decision_tree_regression_example.md") 
+* [Random Forests - Explained]({{< ref "random_forest.md" >}} "random_forest.md") 
 
 ## Deep Learning
 

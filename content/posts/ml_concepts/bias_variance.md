@@ -1,7 +1,7 @@
 +++
 title = 'Bias and Variance'
 date = 2024-01-01T09:39:26+01:00
-draft = true
+draft = false
 featured_image = ''
 tags = ["Data Science", "Machine Learning", "Artificial Intelligence"]
 categories = ["Data Science", "Machine Learning", "Artificial Intelligence"]
