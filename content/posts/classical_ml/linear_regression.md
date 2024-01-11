@@ -123,11 +123,7 @@ This yields to $a = 1.93$ for the slope, and $b = 3.23$ for the intercept. The p
 
 Linear Regression is a simple, yet powerful tool in supervised Machine Learning. Its power is mainly its simplicity and interpretability. These two reasons make it popular in academic and business use cases. However, it is important to know its limitations. In real life most relationships are not linear and applying a Linear Regression to such data, may lead to misleading and wrong results.
 
-## Further Links
-
-A Simple Linear Regression is performed, finding the **analytical solution for the slope and the intercept** by hand using the data from the first plot [here]({{< ref "linear_regression_example" >}} "Linear Regression Example").
-
-A more realistic **tutorial for a linear regression model**, predicting house prices in Boston using a Simple and a Multiple Linear Regression is elaborated in a notebook on [kaggle](https://www.kaggle.com/pumalin/linear-regression-tutorial)
+You can find a simplified example for a Simple Linear Regression where the **analytical solution for the slope and the intercept** is developed by hand in the separate article [Linear Regression - Analytical Solution and Simplified Example]({{< ref "linear_regression_example" >}} "Linear Regression Example"). A more realistic **tutorial for a linear regression model**, predicting house prices in Boston using a Simple and a Multiple Linear Regression is elaborated in a notebook on [kaggle](https://www.kaggle.com/pumalin/linear-regression-tutorial)
 
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}

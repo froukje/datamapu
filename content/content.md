@@ -11,8 +11,8 @@ Hey,
 
 This blog about Data Science and Machine Learning recently started and it will be build further.
 
-If you want to get an e-mail when a new post is published or give me feedback, write me an e-mail:
-**contact.datamapu(at)gmail.com**
+If you want to get an e-mail each time a new post gets published, give feedback or ideas about interesting topics that should be covered in this blog, write an e-mail to:
+**contact.datamapu@gmail.com**
 
 This is what you can already find here:
 
