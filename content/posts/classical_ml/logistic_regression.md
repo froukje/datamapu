@@ -6,6 +6,7 @@ featured_image = ''
 tags = ["Data Science", "Machine Learning", "Classification", "Logistic Regression"]
 categories = ["Data Science", "Machine Learning", "Classification"]
 keywords = ["Data Science", "Machine Learning", "Deep Learning", "Classification", "Logistic Regression"]
+images = ['/images/20231202_logistic_regression/linear_logistic.png']
 +++
 ## Introduction
 

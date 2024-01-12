@@ -6,6 +6,7 @@ featured_image = ''
 tags = ["Data Science", "Machine Learning", "Regression", "Classification"]
 categories = ["Data Science", "Machine Learning", "Classification", "Regression"]
 keywords = ["Data Science", "Machine Learning", "Classification", "Regression"]
+images = ['/images/ensemble/ensemble_methods.jpg']
 +++
 
 ## Introduction

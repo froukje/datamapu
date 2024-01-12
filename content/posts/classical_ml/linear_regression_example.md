@@ -6,6 +6,7 @@ featured_image = ''
 tags = ["Data Science", "Machine Learning", "Regression", "Linear Regression"]
 categories = ["Data Science", "Machine Learning", "Regression"]
 keywords = ["Data Science", "Machine Learning", "Deep Learning", "Regression", "Linear Regression", "analytical solution"]
+images = ['/images/20231001_regression_metrics/regression_example.jpg']
 +++
 ## Introduction
 

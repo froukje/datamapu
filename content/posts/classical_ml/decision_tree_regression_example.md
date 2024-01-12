@@ -6,6 +6,7 @@ featured_image = ''
 tags = ["Data Science", "Machine Learning", "Regression", "Decision Trees", "Tree Methods"]
 categories = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Regression"]
 keywords = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Regression"]
+images = ['/images/decision_tree/dt_regression_final.png']
 +++
 
 ## Introduction

@@ -6,6 +6,7 @@ featured_image = ''
 tags = ["Data Science", "Machine Learning", "Classification", "Decision Trees", "Tree Methods"]
 categories = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Classification"]
 keywords = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Classification"]
+images = ['/images/decision_tree/dt_example2.png']
 +++
 
 ## Introduction

@@ -6,6 +6,7 @@ featured_image = ''
 tags = ["Data Science", "Machine Learning", "Regression", "Linear Regression"]
 categories = ["Data Science", "Machine Learning", "Regression"]
 keywords = ["Data Science", "Machine Learning", "Deep Learning", "Regression", "Linear Regression"]
+images = ['/images/20231113_linear_regression/linear_regression.png']
 +++
 
 ## Introduction 
