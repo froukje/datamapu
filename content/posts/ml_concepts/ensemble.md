@@ -21,7 +21,7 @@ Bagging is often used to reduce the variance compared to a single model. The mos
 ![bagging](/images/ensemble/bagging.png)
 *Bagging illustrated.*
 
-## Boosting
+## Boosting{#boosting}
 
 In *Boosting* the individual models are trained sequentially and not in parallel. Each newly trained model builds on the previous one and aims to correct its errors. This can be done in different ways. One possibility is to give the wrongly predicted values more weight. This method is e.g. used in the AdaBoost algorithm. In the plot below, this is illustrated by a stronger color for data samples with more weight. Another possibility to achieve this is to reduce the residuals of the previous model. This is e.g. used in Gradient Boosting or XGBoost. The models combined in boosting are homogenous and so-called weak learners, which means their predictive skill is low and only slightly higher than random guessing. Considering Decision Trees as an example a weak learner is a very shallow tree or even only the stump. The stump only includes the root node and the first split. The objective is to combine a set of weak learners to a single strong learner, that is to a model with high predictive skill. Boosting is often used to achieve a larger variance and a smaller bias compared to the ones of the weak learners.
 

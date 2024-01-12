@@ -6,9 +6,6 @@ layout: staticpage
 menu: main
 featured_image: ''
 ---
-
-Hey, 
-
 This blog about Data Science and Machine Learning recently started and it will be built further.
 
 If you want to get an e-mail each time a new post gets published, give feedback or ideas about interesting topics that should be covered in this blog, write an e-mail to:

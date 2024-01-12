@@ -10,7 +10,11 @@ images = ['/images/']
 
 ## Introduction
 
+*Gradient Boosting* is a type of supervised Machine Learning algorthm that is based on [*ensemble learning*]({{< ref "/posts/ml_concepts/ensemble">}}).
+
 ## The Algorithm
+
+Gradient Boosting is as the same suggests a ensemble model that is based on [boosting]({{< ref "/posts/ml_concepts/ensemble#boosting">}}).
 
 ## Gradient Boosting in Python
 
