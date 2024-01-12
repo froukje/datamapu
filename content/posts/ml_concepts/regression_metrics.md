@@ -6,6 +6,7 @@ featured_image = ''
 tags = [ "Data Science", "Machine Learning", "Regression", "Metrics"]
 categories = [ "Data Science", "Machine Learning"]
 keywords = ["Data Science", "Machine Learning", "Regression", "Metrics"]
+images = ['/images/20231001_regression_metrics/regression_metrics.jpg.jpg']
 +++
 
 ![regression metrics](/images/20231001_regression_metrics/regression_metrics.jpg)

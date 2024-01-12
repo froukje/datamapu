@@ -6,6 +6,7 @@ featured_image = ''
 tags = ["Data Science", "Machine Learning", "Classification", "Regression"]
 categories = ["Data Science", "Machine Learning", "Classification", "Regression"]
 keywords = ["Data Science", "Machine Learning", "Deep Learning", "Classification", "Regression"]
+images = ['/images/feature_selection/selection.png']
 +++
 
 ## Introduction

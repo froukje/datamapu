@@ -6,6 +6,7 @@ featured_image = ''
 tags = ["Data Science", "Machine Learning", "Artificial Intelligence"]
 categories = ["Data Science", "Machine Learning", "Artificial Intelligence"]
 keywords = ["Data Science", "Machine Learning", "Artificial Intelligence"]
+images = ['images/bias_variance/bias_variance_4.png']
 +++
 
 ## Introduction

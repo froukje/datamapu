@@ -6,6 +6,7 @@ featured_image = ''
 tags = ["Data Science", "Machine Learning", "Classification", "Metrics"]
 categories = ["Data Science", "Machine Learning"]
 keywords = ["Data Science", "Machine Learning", "Classification", "Metrics"]
+images = ['/images/20230920_classification_metrics/classification_metrics.gif']
 +++
 
 ![classification metrics](/images/20230920_classification_metrics/classification_metrics.gif)

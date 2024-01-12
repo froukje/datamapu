@@ -6,6 +6,7 @@ tags = [ "Data Science", "Machine Learning"]
 categories = [ "Data Science" , "Machine Learning"]
 draft = false
 keywords = ["Data Science", "Machine Learning", "Supervised Learning", "Unsupervised Learning"]
+images = ['/images/20231017_supervised_unsupervised/supervised_unsupervised.gif']
 +++
 
 ## Machine Learning
