@@ -2,7 +2,6 @@
 title = 'Logistic Regression - Explained'
 date = 2023-12-02T09:31:24+01:00
 draft = false
-featured_image = ''
 tags = ["Data Science", "Machine Learning", "Classification", "Logistic Regression"]
 categories = ["Data Science", "Machine Learning", "Classification"]
 keywords = ["Data Science", "Machine Learning", "Deep Learning", "Classification", "Logistic Regression"]

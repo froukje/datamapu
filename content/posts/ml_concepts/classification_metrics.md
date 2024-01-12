@@ -2,7 +2,6 @@
 title = 'Metrics for Classification Problems'
 date = 2023-10-01T00:08:49+02:00
 draft = false
-featured_image = ''
 tags = ["Data Science", "Machine Learning", "Classification", "Metrics"]
 categories = ["Data Science", "Machine Learning"]
 keywords = ["Data Science", "Machine Learning", "Classification", "Metrics"]

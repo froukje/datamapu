@@ -2,10 +2,9 @@
 title = 'Random Forests - Explained'
 date = 2023-12-26T10:57:13+01:00
 draft = false
-featured_image = ''
-tags = ["Data Science", "Machine Learning", "Random Forest", "Tree Methods", "Regression", "Classification"]
-categories = ["Data Science", "Machine Learning", "Random Forest", "Tree Methods", "Classification", "Regression"]
-keywords = ["Data Science", "Machine Learning", "Random Forest", "Tree Methods", "Classification", "Regression"]
+tags = ["Data Science", "Machine Learning", "Random Forest", "Ensemble", "Tree Methods", "Regression", "Classification"]
+categories = ["Data Science", "Machine Learning", "Random Forest", "Ensemble", "Tree Methods", "Classification", "Regression"]
+keywords = ["Data Science", "Machine Learning", "Random Forest", "Ensemble", "Tree Methods", "Classification", "Regression"]
 images = ['/images/random_forest/random_forest2.png']
 +++
 
@@ -18,7 +17,7 @@ A Random Forest is a supervised Machine Learning model, that is built on Decisio
 
 ## Build a Random Forest - The Algorithm 
 
-A Random Forest is an example of an [*ensemble learning method*]({{< ref "ensemble">}}). Multiple Machine Learning models are combined to obtain a better model ('the wisdom of crowds'). More precisely it is an example of the [*Bagging* or *Bootstrap Aggregation*]({{< ref "ensemble#bagging">}}) method. The underlying models in a Random Forest are [Decision Trees]({{< ref "decision_trees">}}), in which individual outcomes are combined into one single prediction. Decision Trees are powerful Machine Learning models, which are easy to interpret. They have, however, one severe disadvantage, which is that they are prone to [overfit]({{< ref "bias_variance">}}). Decision Trees are an example of models that have [a low bias, but a high variance]({{< ref "bias_variance">}}), especially when they are trained without pruning. This is aimed to be improved by using Bagging / Bootstrap Aggregation. The algorithm to build a Random Forest is as follows. Consider a dataset of $N$ samples and $M$ features. 
+A Random Forest is an example of an [*ensemble learning method*]({{< ref "/posts/ml_concepts/ensemble">}}). Multiple Machine Learning models are combined to obtain a better model ('the wisdom of crowds'). More precisely it is an example of the [*Bagging* or *Bootstrap Aggregation*]({{< ref "/posts/ml_concepts/ensemble#bagging">}}) method. The underlying models in a Random Forest are [Decision Trees]({{< ref "decision_trees">}}), in which individual outcomes are combined into one single prediction. Decision Trees are powerful Machine Learning models, which are easy to interpret. They have, however, one severe disadvantage, which is that they are prone to [overfit]({{< ref "bias_variance">}}). Decision Trees are an example of models that have [a low bias, but a high variance]({{< ref "bias_variance">}}), especially when they are trained without pruning. This is aimed to be improved by using Bagging / Bootstrap Aggregation. The algorithm to build a Random Forest is as follows. Consider a dataset of $N$ samples and $M$ features. 
 
 1. Draw $N$ samples without replacement. This is also called bootstrapping.
 2. At each node use a subset $m<<M$ of all possible features.
@@ -129,7 +128,7 @@ The evaluation of a Random Forest model depends on whether a classification or a
 
 ## Summary
 
-In this article we learned about Random Forests, how they are created, and their main advantages and disadvantages. Random Forests are an [ensemble Machine Learning]({{< ref "ensemble">}}) model consisting of multiple [Decision Trees]({{< ref "decision_trees">}}). They use the strength of Decision Trees and at the same time overcome their tendency to overfit. Compared to Decision Trees, Random Forests are more robust, flexible, and accurate, they lose however interpretability and are more expensive to train. For a more realistic example with a larger dataset, check this [kaggle](https://www.kaggle.com/pumalin/random-forest-tutorial) notebook.
+In this article we learned about Random Forests, how they are created, and their main advantages and disadvantages. Random Forests are an [ensemble Machine Learning]({{< ref "/posts/ml_concepts/ensemble">}}) model consisting of multiple [Decision Trees]({{< ref "decision_trees">}}). They use the strength of Decision Trees and at the same time overcome their tendency to overfit. Compared to Decision Trees, Random Forests are more robust, flexible, and accurate, they lose however interpretability and are more expensive to train. For a more realistic example with a larger dataset, check this [kaggle](https://www.kaggle.com/pumalin/random-forest-tutorial) notebook.
 
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}

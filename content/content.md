@@ -24,7 +24,7 @@ This is what you can already find here:
 * [Metrics for Regression Problems]({{< ref "classification_metrics.md" >}} "classification_metrics.md") 
 * [Feature Selection Methods]({{< ref "feature_selection.md" >}} "feature_selection.md") 
 * [Bias and Variance]({{< ref "bias_variance.md" >}} "bias_variance.md")
-* [Ensemble Models - Illustrated]({{< ref "ensemble.md" >}} "ensemble.md")
+* [Ensemble Models - Illustrated]({{< ref "/posts/ml_concepts/ensemble.md" >}} "ensemble.md")
 
 
 ## Classical Machine Learning

@@ -2,7 +2,6 @@
 title = 'Feature Selection Methods'
 date = 2023-12-11T22:56:54+01:00
 draft = false
-featured_image = ''
 tags = ["Data Science", "Machine Learning", "Classification", "Regression"]
 categories = ["Data Science", "Machine Learning", "Classification", "Regression"]
 keywords = ["Data Science", "Machine Learning", "Deep Learning", "Classification", "Regression"]

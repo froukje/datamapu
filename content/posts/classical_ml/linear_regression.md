@@ -2,7 +2,6 @@
 title = 'Linear Regression - Explained'
 date = 2023-11-13T21:20:41+01:00
 draft = false
-featured_image = ''
 tags = ["Data Science", "Machine Learning", "Regression", "Linear Regression"]
 categories = ["Data Science", "Machine Learning", "Regression"]
 keywords = ["Data Science", "Machine Learning", "Deep Learning", "Regression", "Linear Regression"]

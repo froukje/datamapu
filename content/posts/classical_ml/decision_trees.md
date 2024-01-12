@@ -2,7 +2,6 @@
 title = 'Decision Trees - Explained'
 date = 2023-12-16T12:33:55+01:00
 draft = false
-featured_image = ''
 tags = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Regression", "Classification"]
 categories = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Classification", "Regression"]
 keywords = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Classification", "Regression"]
