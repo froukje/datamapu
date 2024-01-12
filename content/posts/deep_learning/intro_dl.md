@@ -6,12 +6,13 @@ featured_image = ''
 tags = ["Data Science", "Machine Learning", "Deep Learning", "Artificial Intelligence", "Neural Nets"]
 categories = ["Data Science", "Machine Learning", "Deep Learning", "Artificial Intelligence", "Neural Nets"]
 keywords = ["Data Science", "Machine Learning", "Deep Learning", "Artificial Intelligence", "Neural Nets"]
+images = ['/images/20230913_datascience_lifecycle/ai_ml_dl.png']
 +++
 
 In this article we will learn what Deep Learning is and understand the difference to AI and Machine Learning. Often these three terms are used interchangeable. They are however not the same. The following diagram illustrates how they are related.
 
 
-![ai_ml_dl](/images/20231102_ai_ml_dl/ai_ml_dl.jpg)
+![ai_ml_dl](/images/20231102_ai_ml_dl/ai_ml_dl.png)
 *Relation of Artificial Intelligence, Machine Learning and Deep Learning.*
 
 **Artificial Intelligence.** There are different definitions of Artificial Intelligence, but in general, they involve computers performing tasks that are usually associated with humans or other intelligent living systems. This is the definition given on Wikimedia:
