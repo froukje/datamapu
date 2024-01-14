@@ -1,5 +1,5 @@
 +++
-title = 'Ada Boost - explained'
+title = 'Ada Boost - Explained'
 date = 2024-01-14T09:22:00-03:00
 draft = true
 tags = ["Data Science", "Machine Learning", "Random Forest", "Ensemble", "Boosting", "Tree Methods", "Regression", "Classification"]
