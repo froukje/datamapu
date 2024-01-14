@@ -10,11 +10,11 @@ images = ['/images/']
 
 ## Introduction
 
-*Gradient Boosting*, also called *Gradient Boostimg Machine (GBM)* is a type of supervised Machine Learning algorthm that is based on [ensemble learning]({{< ref "/posts/ml_concepts/ensemble">}}). It consists of a series of models, each one trying to improve the errors of the previous one. Gradient Boosting can be used for Regression and Classification tasks.
+*Gradient Boosting*, also called *Gradient Boostimg Machine (GBM)* is a type of supervised Machine Learning algorthm that is based on [ensemble learning]({{< ref "/posts/ml_concepts/ensemble">}}). It consists of a sequential series of models, each one trying to improve the errors of the previous one. Gradient Boosting can be used for Regression and Classification tasks.
 
 ## The Algorithm
 
-Gradient Boosting is, as the same suggests, a ensemble model that is based on [boosting]({{< ref "/posts/ml_concepts/ensemble#boosting">}}). In boosting, an initial model is fit to the data. The most popular underlying models are [Decision Trees](), however other models, such as [Linear Regression]() are also possible. Then a second model is built on the results of the first one, with a higher focus on the inaccurate results of the first one, and so on until a series of additive models is built, which together are the ensemble model. The individual models are so-called weak learners, which means that they are simple models with low predictive skill, which is only a bit better than random chance. The idea is to combine a set of weak learners to achieve one strong learner, i.e. a model with high predictive skill. 
+Gradient Boosting is, as the same suggests, a ensemble model that is based on [boosting]({{< ref "/posts/ml_concepts/ensemble#boosting">}}). In boosting, an initial model is fit to the data. The most popular underlying models are [Decision Trees](), however other models, such as [Linear Regression]() are also possible. Then a second model is built on the results of the first one, trying to improve the inaccurate results of the first one, and so on until a series of additive models is built, which together are the ensemble model. The individual models are so-called weak learners, which means that they are simple models with low predictive skill, which is only a bit better than random chance. The idea is to combine a set of weak learners to achieve one strong learner, i.e. a model with high predictive skill. 
 
 < IMAGE BOOSTING >
 
@@ -32,14 +32,16 @@ More specifically the steps to perform Gradient Boosting are as follows.
 2. Choose a model (weak learner)
  * e.g. Decision Tree (stumps)
 
-The model is than built as follows.
+The model is then built as follows.
 
-1. Fit a model (weak learner) to the original dataset (input: X, y)
-2. Make predictions and calculate the loss and the residuals.
-3. Add the residuals to the original data.
-3. Fit a model to the residuals of the previous model. (input: X, res+y)
+1. Fit a model (weak learner) to the original dataset (input: X, y) with the chosen loss function.
+2. Make predictions and calculate the residuals (errors) between the preditions and the true observations.
+3. The improved predictions are $\hat{y} + res$
+3. Fit a model to the residuals of the previous model. (input: X, res)
 
 Repeat 2 and 3 $d$ times.
+
+The final prediction is $\hat{y} + r_1 + r_2 + \cdots + r_d$, with $r_1, r_2, \dots, r_d$ the residuals from the $d$ weak learner.
 
 < IMAGE FOR GRADIENT BOOSTING (REGRESSION + CLASSIFICATION) > 
 
@@ -48,9 +50,20 @@ The main difference between these two algorithms is that Gradient boosting has a
 
 gradient boosting hekps to reduce the bias
 
+## Advantages & Disadvantages Gradient Boosted Trees
+
+**Pros**
+
+* Can deal with missing data and outlier
+* Can deal with umerical and categorical data
+
+**Cons**
+
 ## Gradient Boosting in Python
 
 ## Summary
+
+fast & accurate
 
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
