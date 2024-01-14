@@ -2,9 +2,9 @@
 title = 'Random Forests - Explained'
 date = 2023-12-26T10:57:13+01:00
 draft = false
-tags = ["Data Science", "Machine Learning", "Random Forest", "Ensemble", "Tree Methods", "Regression", "Classification"]
-categories = ["Data Science", "Machine Learning", "Random Forest", "Ensemble", "Tree Methods", "Classification", "Regression"]
-keywords = ["Data Science", "Machine Learning", "Random Forest", "Ensemble", "Tree Methods", "Classification", "Regression"]
+tags = ["Data Science", "Machine Learning", "Random Forest", "Ensemble", "Bagging", "Tree Methods", "Regression", "Classification"]
+categories = ["Data Science", "Machine Learning", "Random Forest", "Ensemble", "Bagging", "Tree Methods", "Classification", "Regression"]
+keywords = ["Data Science", "Machine Learning", "Random Forest", "Ensemble", "Bagging", "Tree Methods", "Classification", "Regression"]
 images = ['/images/random_forest/random_forest2.png']
 +++
 

@@ -2,9 +2,9 @@
 title = 'Gradient Boosting - Explained'
 date = 2024-01-12T09:21:46-03:00
 draft = true
-tags = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Regression", "Classification"]
-categories = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Classification", "Regression"]
-keywords = ["Data Science", "Machine Learning", "Gradiend Boosting", "Ensemble", "Classification", "Regression"]
+tags = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Boosting", "Tree Methods", "Regression", "Classification"]
+categories = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Boosting", "Tree Methods", "Classification", "Regression"]
+keywords = ["Data Science", "Machine Learning", "Gradiend Boosting", "Ensemble", "Classification", "Tree Methods", "Regression"]
 images = ['/images/']
 +++
 
@@ -14,11 +14,11 @@ images = ['/images/']
 
 ## The Algorithm
 
-Gradient Boosting is, as the same suggests, a ensemble model that is based on [boosting]({{< ref "/posts/ml_concepts/ensemble#boosting">}}). In boosting, an initial model is fit to the data. The most popular underlying models are [Decision Trees](), however other models, such as [Linear Regression]() are also possible. Then a second model is built on the results of the first one, trying to improve the inaccurate results of the first one, and so on until a series of additive models is built, which together are the ensemble model. The individual models are so-called weak learners, which means that they are simple models with low predictive skill, which is only a bit better than random chance. The idea is to combine a set of weak learners to achieve one strong learner, i.e. a model with high predictive skill. 
+Gradient Boosting is, as the same suggests, a ensemble model that is based on [boosting]({{< ref "/posts/ml_concepts/ensemble#boosting">}}). In boosting, an initial model is fit to the data. Then a second model is built on the results of the first one, trying to improve the inaccurate results of the first one, and so on until a series of additive models is built, which together are the ensemble model. The individual models are so-called weak learners, which means that they are simple models with low predictive skill, that is only a bit better than random chance. The idea is to combine a set of weak learners to achieve one strong learner, i.e. a model with high predictive skill. 
 
 < IMAGE BOOSTING >
 
-When a Decision Tree is used as a base model the algorithm is called *Gradient Boosted Trees*, and only the tree stump or a shallow tree is used as a weak learner.  
+The most popular underlying models in Gradient Boosting are [Decision Trees]({{ ref "/posts/classical_ml/decision_trees">}}), however using other models, is also possible. When a Decision Tree is used as a base model the algorithm is called *Gradient Boosted Trees*, and only the tree stump or a shallow tree is used as a weak learner.  
 
 < IMAGE EXAMPLE OF STUMPS >
 
