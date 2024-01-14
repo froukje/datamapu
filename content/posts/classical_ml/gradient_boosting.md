@@ -10,7 +10,7 @@ images = ['/images/']
 
 ## Introduction
 
-*Gradient Boosting*, also called *Gradient Boostimg Machine (GBM)* is a type of supervised Machine Learning algorthm that is based on [ensemble learning]({{< ref "/posts/ml_concepts/ensemble">}}). It consists of a sequential series of models, each one trying to improve the errors of the previous one. Gradient Boosting can be used for Regression and Classification tasks.
+*Gradient Boosting*, also called *Gradient Boostimg Machine (GBM)* is a type of [supervised](supervised_unsupervised.md#supervised) Machine Learning algorthm that is based on [ensemble learning]({{< ref "/posts/ml_concepts/ensemble">}}). It consists of a sequential series of models, each one trying to improve the errors of the previous one. Gradient Boosting can be used for Regression and Classification tasks.
 
 ## The Algorithm
 
