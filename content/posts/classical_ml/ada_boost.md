@@ -36,6 +36,11 @@ As mentioned earlier the most common way of constructing AdaBoost is using [Deci
 
 * example for classification [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html)
 * plot trees / stumps
+* hyperparamters: base_estimator - default Decision Tree with deoth 1, what other hyperparamters are importrnat?
+* link to regression
+* First stump is the start of the Decision Tree build in DT classification article
+* show staged predictions
+* calculate the next stumps by hand, if too long -> extra post
 
 ## Summary
 
