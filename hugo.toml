@@ -17,9 +17,6 @@ enableRobotsTXT = true
   socialInFooter = false
   background_color_class = "bg-navy"
   body_classes = "sans-serif bg-near-white"
-  linkedin = true
-  facebook = true
-  whatsapp = true
   favicon = "favicon.ico"
   site_logo = "logo_weiss.png"
   description = 'Data Science and Machine Learning Blog'
@@ -31,6 +28,10 @@ enableRobotsTXT = true
 [[params.ananke_socials]]
 name = "twitter"
 url = "https://twitter.com/datamapu"
+[[params.ananke_socials]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/datamapu-ml-91a2622a3/"
+
 
 [menu]
 [[menu.main]]
