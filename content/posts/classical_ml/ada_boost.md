@@ -45,14 +45,55 @@ As mentioned earlier the most common way of constructing AdaBoost is using [Deci
 ![adaboost_vs_random_forest](/images/adaboost/adaboost_rf_illustrated.png)
 *AdaBoost and  Random Forest illustrated.*
 
-## Ada Boost in Python
+## AdaBoost in Python
 
-* example for classification [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html)
+The [sklearn](https://scikit-learn.org/stable/) library offers a method to fit AdaBoost in Python for both [classification](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) and [regression](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html#sklearn.ensemble.AdaBoostRegressor) problems. We will consider a simplified example for a classification task, using the following data.
+
+```Python
+import pandas as pd
+
+data = {'age': [23, 31, 35, 35, 42, 43, 45, 46, 46, 51], 
+        'likes goats': [0, 1, 0, 0, 0, 1, 1, 1, 0, 1], 
+        'likes height': [0, 1, 1, 0, 0, 1, 0, 1, 1, 1], 
+        'go rock climbing': [0, 1, 1, 0, 0, 1, 0, 1, 0, 1]}
+
+df = pd.DataFrame(data)
+```
+![adaboost_data](/images/adaboost/adaboost_data.png)
+*Example dataset to illustrate AdaBoost in Python.*
+
+We use this data to fit an AdaBoost Classifier. As this is a very simplified dataset, we use only $3$ models to build the ensemble model. This is set by the hyperparamter *n_estimators=3*. The other hyperparameters are left as the default values. That means as base models the stumps of Decision Trees are used.
+
+```Python
+X = df[['age', 'likes goats', 'likes height']].values
+y = df[['go rock climbing']].values.reshape(-1,)
+
+clf = AdaBoostClassifier(n_estimators=3, random_state=42)
+clf.fit(X, y)
+```
+
+To get the predictions we can use the methods *predict* to get the predicted classes or *predict_proba* to get the probabilities. Then we can print the score, which is the mean accuracy.
+
+```Python
+y_hat = clf.predict(X)
+y_hat_proba = clf.predict_proba(X)
+print(f"predictions: {y_hat}")
+print(f"predictions probs: {y_hat_proba[:,1]}")
+print(f"score: {clf.score(X, y)}")
+```
+
+The predictions are predictions: $[0, 1, 1, 0, 0, 1, 0, 1, 0, 1]$ and the score is $1.0$. We can also print the predictions and scores after each boosting iteration, to see how they evolve.
+
+```Python
+staged_predictions = [p for p in clf.staged_predict(X)]
+staged_score = [p for p in clf.staged_score(X, y)]
+```
+
+The predictions for the three stages are $[0, 1, 1, 0, 0, 1, 0, 1, 1, 1]$, $[0, 1, 0, 0, 0, 1, 0, 1, 0, 1]$, and $[0, 1, 1, 0, 0, 1, 0, 1, 0, 1]$. Accordingly the scores $[0.9, 0.9, 1.0].$ This shows how the predictions and the score improve over the three iterations.
+
 * plot trees / stumps
 * hyperparamters: base_estimator - default Decision Tree with deoth 1, what other hyperparamters are importrnat?
-* link to regression
 * First stump is the start of the Decision Tree build in DT classification article
-* show staged predictions
 * calculate the next stumps by hand, if too long -> extra post
 
 ## Summary
