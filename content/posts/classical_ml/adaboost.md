@@ -121,7 +121,7 @@ Comparing the first stump to the calculations in the article [Decision Trees for
 
 ## Summary
 
-In this article, we learned about AdaBoost, a sequential ensemble model, in which a sequential series of models is developed. Sequentially the errors of the developed models are evaluated and the dataset modified such that a higher focus lies on the wrongly predicted samples for the next iteration. In Python, we can use [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) to fit a AdaBoost model, which also offers some methods to explore created models and their predictions. The example used in this article, however, was very simplified and only for illustration purposes. For a more developed example for AdaBoost in Python, please refer to [kaggle](). 
+AdaBoost is a sequential ensemble model, in which a sequential series of models is developed. Sequentially the errors of the developed models are evaluated and the dataset modified such that a higher focus lies on the wrongly predicted samples for the next iteration. In Python, we can use [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) to fit a AdaBoost model, which also offers some methods to explore created models and their predictions. The example used in this article, however, was very simplified and only for illustration purposes. For a more developed example for AdaBoost in Python, please refer to [kaggle](). 
 
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
