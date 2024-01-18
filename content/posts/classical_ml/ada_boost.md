@@ -10,7 +10,7 @@ images = ['/images/adaboost/adaboost.png']
 
 ## Introduction
 
-AdaBoost is an example for an [ensemble]({{< ref "/posts/ml_concepts/ensemble.md">}}) [supervised]({{< ref "/posts/ml_concepts/supervised_unsupervised#supervised">}}) Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the [Decision Tree]({{< ref "/posts/classical_ml/decision_trees.md">}}), other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html). For a more detailed exploration of this example please refer to [AdaBoost for Classification - Example](). A more realistic example with a larger dataset is provided on [kaggle](). Accordingly, if you are interested how AdaBoost is developed for a regression task, please check the article [AdaBoost for Regression - Example](). 
+AdaBoost is an example for an [ensemble]({{< ref "/posts/ml_concepts/ensemble.md">}}) [supervised]({{< ref "/posts/ml_concepts/supervised_unsupervised#supervised">}}) Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the [Decision Tree]({{< ref "/posts/classical_ml/decision_trees.md">}}), other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html). For a more detailed exploration of this example - deriving it by hand - please refer to [AdaBoost for Classification - Example](). A more realistic example with a larger dataset is provided on [kaggle](). Accordingly, if you are interested how AdaBoost is developed for a regression task, please check the article [AdaBoost for Regression - Example](). 
 
 ![adaboost](/images/adaboost/adaboost.png)
 *AdaBoost illustrated.*
@@ -62,9 +62,11 @@ df = pd.DataFrame(data)
 ![adaboost_data](/images/adaboost/adaboost_data.png)
 *Example dataset to illustrate AdaBoost in Python.*
 
-We use this data to fit an AdaBoost Classifier. As this is a very simplified dataset, we use only $3$ models to build the ensemble model. This is set by the hyperparamter *n_estimators=3*. The other hyperparameters are left as the default values. That means as base models the stumps of Decision Trees are used.
+We use this data to fit an AdaBoost Classifier. As this is a very simplified dataset, we use only three models to build the ensemble model. This is done by setting the hyperparamter *n_estimators=3*. The other hyperparameters are left as the default values. That means as base models the stumps of Decision Trees are used.
 
 ```Python
+from sklearn.ensemble import AdaBoostClassifier
+
 X = df[['age', 'likes goats', 'likes height']].values
 y = df[['go rock climbing']].values.reshape(-1,)
 
@@ -72,31 +74,54 @@ clf = AdaBoostClassifier(n_estimators=3, random_state=42)
 clf.fit(X, y)
 ```
 
-To get the predictions we can use the methods *predict* to get the predicted classes or *predict_proba* to get the probabilities. Then we can print the score, which is the mean accuracy.
+To make predictions we can use the *predict* method, and then we can print the score, which is defined as the mean accuracy.
 
 ```Python
 y_hat = clf.predict(X)
-y_hat_proba = clf.predict_proba(X)
 print(f"predictions: {y_hat}")
-print(f"predictions probs: {y_hat_proba[:,1]}")
 print(f"score: {clf.score(X, y)}")
 ```
 
-The predictions are predictions: $[0, 1, 1, 0, 0, 1, 0, 1, 0, 1]$ and the score is $1.0$. We can also print the predictions and scores after each boosting iteration, to see how they evolve.
+The predictions are $[0, 1, 1, 0, 0, 1, 0, 1, 0, 1]$ and the score is $1.0$. That means our model predicts all samples correctly. We can also print the predictions and scores after each boosting iteration, to see how they evolve.
 
 ```Python
 staged_predictions = [p for p in clf.staged_predict(X)]
 staged_score = [p for p in clf.staged_score(X, y)]
 ```
 
-The predictions for the three stages are $[0, 1, 1, 0, 0, 1, 0, 1, 1, 1]$, $[0, 1, 0, 0, 0, 1, 0, 1, 0, 1]$, and $[0, 1, 1, 0, 0, 1, 0, 1, 0, 1]$. Accordingly the scores $[0.9, 0.9, 1.0].$ This shows how the predictions and the score improve over the three iterations.
+The predictions for the three stages are 
 
-* plot trees / stumps
-* hyperparamters: base_estimator - default Decision Tree with deoth 1, what other hyperparamters are importrnat?
-* First stump is the start of the Decision Tree build in DT classification article
-* calculate the next stumps by hand, if too long -> extra post
+stage 1: $[0, 1, 1, 0, 0, 1, 0, 1, 1, 1]$, 
+
+stage 2: $[0, 1, 0, 0, 0, 1, 0, 1, 0, 1]$, and
+
+stage 3 $[0, 1, 1, 0, 0, 1, 0, 1, 0, 1]$. 
+
+Accordingly the scores are
+
+stage 1: $0.9$,
+
+stage 2: $0.9$, and
+
+stage 3: $1.0$.
+
+ This shows how the predictions and the score improve over the three iterations. To illustrate the model we can plot the three stumps created. We can access them using the *estimators_* attribute. Note that creating the stumps contains randomness, when the modified dataset is constructed, as described above. In order to make the results reproducible the *random_seed* is set, when fitting the model.
+
+```Python
+from sklearn import tree
+
+tree.plot_tree(clf.estimators_[0], 
+	feature_names=['age', 'likes goats', 'likes height'], fontsize=10) 
+```
+
+![adaboost_stumps](/images/adaboost/adaboost_stumps.png)
+*The three stumps for the AdaBoost model of the example.*
+
+Comparing the first stump to the calculations in the article [Decision Trees for Classification - Example]({{<ref "/posts/classical_ml/decision_tree_classification_example.md">}}), in which the same dataset is used, we can see that this is exactly the beginning of the Decision Tree developed. Please find a detailed derivation of the above example, calculating it by hand in the separate article [AdaBoost for Classification - Example](). In a real project, we would of course divide our data in training, validation and test data, and then fit the model to the training data only and evaluate on validation and finaly on the test data. A more realistic example is provided on [kaggle]() 
 
 ## Summary
+
+In this article, we learned about AdaBoost, a sequential ensemble model, in which a sequential series of models is developed. Sequentially the errors of the developed models are evaluated and the dataset modified such that a higher focus lies on the wrongly predicted samples for the next iteration. In Python, we can use [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) to fit a AdaBoost model, which also offers some methods to explore created models and their predictions. The example used in this article, however, was very simplified and only for illustration purposes. For a more developed example for AdaBoost in Python, please refer to [kaggle](). 
 
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
