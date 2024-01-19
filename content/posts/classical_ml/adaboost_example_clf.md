@@ -63,7 +63,7 @@ Now, some randomness comes into play. Random numbers between $0$ and $1$ are dra
 We now use this modified dataset to create the second stump. Following the steps described in [Decision Trees for Classification - Example]({{< ref "/posts/classical_ml/decision_tree_classification_example.md">}}), we achive the following decision stump.
 
 ![adaboost_first_stump](/images/adaboost/ab_example_clf_second_stump.png)
-*The second stump, i.e. the first weak learner for our AdaBoost algorithm.*
+*The second stump, i.e. the second weak learner for our AdaBoost algorithm.*
 
 As in the first stump, one sample is misclassified, so we get the same value for alpha as for the first stump. Accordingly, the weights are the same. The following plot shows the data together with their new weights and the normalized weights.
 
@@ -82,7 +82,11 @@ We repeat the bootstrapping and draw $10$ random numbers between $0$ and $1$. Le
 
 We can now fit the third an last stump of our model to this modified dataset. The result is shown in the next plot.
 
-* Third stump
+![adaboost_first_stump](/images/adaboost/ab_example_clf_third_stump.png)
+*The third stump, i.e. the last weak learner for our AdaBoost algorithm.*
+
+Note, that this stump has a higher total error, and therefore a lower influence $\alpha$. We now use the individual trees and their calculated values for $\alpha$ to determine the final prediction. Let`s consider the sample age $= 35$, likes height $= 1$, and $likes goats $= 0$.
+ 
 * Final predictions
 
 ## Fit a Model in Python

@@ -50,7 +50,7 @@ From these two features, we see that 'likes height' has a lower SSE than 'likes 
 
 Now, let's calculate the SSE for each of these splits.
 
-![possible splits age SSE](/images/decision_tree/dt_regression_age_all_splits_.drawio.png)
+![possible splits age SSE](/images/decision_tree/dt_regression_age_all_splits.drawio.png)
 *Possible splits for the numerical feature 'age' and their corresponding SSE.*
 
 From the above results, we see that all SSE values for the feature 'age' are higher than the one for 'likes height', which was the previous best feature. Therefore 'likes height' remains the best feature to split the data and we can build the first level of our tree.
@@ -65,12 +65,12 @@ Both nodes resulting from this split are not pure and are split further. We star
 
 We start with the left-hand side and calculate the SSE for all possible splits.
 
-![left side](/images/decision_tree/dt_regression_second_split_left_.drawio.png)
+![left side](/images/decision_tree/dt_regression_second_split_left.drawio.png)
 *All possible splits for the first dataset of the second split.*
 
 The results show, that several splits lead to the same SSE. This means we could choose any of them, for the next split. We use the feature ’likes goats’. Now, we do the same for the right-hand side of the tree.
 
-![right side](/images/decision_tree/dt_regression_second_split_right_.drawio.png)
+![right side](/images/decision_tree/dt_regression_second_split_right.drawio.png)
 *All possible splits for the second dataset of the second split.*
 
 We can see, that the feature 'likes goats' results in the lowest SSE. That is we will choose this feature for the next split. We now have constructed the second level of our Decision Tree.
@@ -80,7 +80,7 @@ We can see, that the feature 'likes goats' results in the lowest SSE. That is we
 
 The resulting tree shows only one node that is not pure. Only the feature 'age' is left and two possible splits.
 
-![third split](/images/decision_tree/dt_regression_third_split_.drawio.png)
+![third split](/images/decision_tree/dt_regression_third_split.drawio.png)
 *All possible splits for the third split.*
 
 Both possible splits result in the same SSE. That means we can use any of them. We will go on with 'age = 29'. After that, only two items remain to split and we can build the final tree.
@@ -120,7 +120,7 @@ plot_tree(reg, feature_names=['age', 'likes goats', 'likes height'], fontsize=6)
 ![python example](/images/decision_tree/dt_regression_sklearn.png)
 *Decision Tree build in Python.*
 
-Note, that the notation is slightly differently, but the resulting tree is the same as the one we developed above.
+We can see that the resulting tree is the same as the one we developed above.
 
 ## Summary
 
