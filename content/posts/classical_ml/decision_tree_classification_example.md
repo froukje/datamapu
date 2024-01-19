@@ -52,7 +52,7 @@ For the feature 'age' the values are already ordered, but we still need to calcu
 Now, let's calculate the Gini Impurity for each of these splits.
 
 
-![all possiple splits age](/images/decision_tree/dt_classification_age_all_splits.drawio.png)
+![all possiple splits age](/images/decision_tree/dt_classification_age_all_splits2.drawio.png)
 *All possible splits for 'age' and their corresponding Gini Impurity.*
 
 From the above calculations, we see that all Gini Impurities for the feature 'age' are higher than the one for 'likes height', which was our previous best feature. That is 'likes height' is the feature that results in the lowest Gini Impurity of all three features and we will use it for the first split of the tree. 
@@ -62,7 +62,7 @@ From the above calculations, we see that all Gini Impurities for the feature 'ag
  
 After this first split, one of the resulting nodes is already pure, that is no further split is possible and we have the first leaf of our tree. The second node is not pure and will be split using the remaining dataset. We calculate the Gini Impurity for the features 'likes goats' and 'age' exactly as we did for the entire dataset.
 
-![second splits all possibilities](/images/decision_tree/dt_classification_second_split_all.drawio.png)
+![second splits all possibilities](/images/decision_tree/dt_classification_second_split_all2.drawio.png)
 *All possible splits for the second split.*
 
 From the above plot we see that the feature with the lowest Gini Impurity is 'likes goats'. This will thus be our second split.
@@ -72,7 +72,7 @@ From the above plot we see that the feature with the lowest Gini Impurity is 'li
 
 Now there is just one node remaining that we need to split. The final Decision Tree has the following form.
 
-![example](/images/decision_tree/dt_example2.png)
+![example](/images/decision_tree/dt_example2_.png)
 *Illustration of the final Decision Tree.*
  
 ## Fit a Model in Python
@@ -94,7 +94,7 @@ y = df[['go rock climbing']].values.reshape(-1,)
 clf = DecisionTreeClassifier()
 clf = clf.fit(X, y)
 ```
-We can visualize the fitted tree also using [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html). The tree build using sklearn is exactly the same we build by calculating the splits by hand. 
+We can visualize the fitted tree also using [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html). Note, that there are some slight differences in the notations, but the tree build using sklearn is exactly the same we build by calculating the splits by hand. 
 
 ```Python
 from sklearn.tree import plot_tree
