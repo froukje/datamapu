@@ -82,10 +82,10 @@ We repeat the bootstrapping and draw $10$ random numbers between $0$ and $1$. Le
 
 We can now fit the third an last stump of our model to this modified dataset. The result is shown in the next plot.
 
-![adaboost_first_stump](/images/adaboost/ab_example_clf_third_stump.png)
+![adaboost_first_stump](/images/adaboost/ab_example_clf_third_stump_.png)
 *The third stump, i.e. the last weak learner for our AdaBoost algorithm.*
 
-Note, that this stump has a higher total error, and therefore a lower influence $\alpha$. We now use the individual trees and their calculated values for $\alpha$ to determine the final prediction. Let`s consider the sample age $= 35$, likes height $= 1$, and $likes goats $= 0$.
+Note, that this stump has a higher total error, and therefore a lower influence $\alpha$. We now use the individual trees and their calculated values for $\alpha$ to determine the final prediction. Let`s consider the sample age $= 35$, likes height $= 1$, and likes goats $= 0$.
  
 * Final predictions
 
