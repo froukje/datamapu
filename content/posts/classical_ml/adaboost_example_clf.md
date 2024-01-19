@@ -55,7 +55,7 @@ The weights are used to create bins. The bin for the first sample is $[0, 0.056]
 ![adaboost_data_bins1](/images/adaboost/ab_example_clf_bins1.png)
 *The dataset with bins based on the weights.*
 
-Now, some randomness comes into play. Random numbers between $0$ and $1$ are drawn, then we check in which bin the random number falls, and the according data sample is selected for the new modified dataset. We draw as many numbers as the length of our dataset is, that is in this example we draw $10$ numbers. Due to the higher weight of the misclassified example, this example has a larger bin and the probabilty to draw it is higher. We align our "random numbers" with the results we achieve using [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) for comparison purposes. Let's assume we draw the numbers $[0.5, 0.01, 0.06, 0.6, 0.65, 0.3, 0.45, 0.4, 0.31]$, which leads to the selection of the samples $[8, 0, 1, 8, 8, 5, 2, 8, 7, 5]$. The modified dataset, then has the following form.
+Now, some randomness comes into play. Random numbers between $0$ and $1$ are drawn, then we check in which bin the random number falls, and the according data sample is selected for the new modified dataset. We draw as many numbers as the length of our dataset is, that is in this example we draw $10$ numbers. Due to the higher weight of the misclassified example, this example has a larger bin and the probabilty to draw it is higher. Let's assume we draw the numbers $[0.1, 0.15, 0.06, 0.5, 0.65, 0.05, 0.8, 0.7, 0.95, 0.97]$, which leads to the selection of the samples $[1, 2, 1, 8, 8, 0, 8, 8, 9, 9]$. The modified dataset, then has the following form.
 
 ![adaboost_data2](/images/adaboost/ab_clf_data_first_second_stump.png)
 *Modified dataset to build the second stump.*
@@ -67,14 +67,25 @@ We now use this modified dataset to create the second stump. Following the steps
 
 As in the first stump, one sample is misclassified, so we get the same value for alpha as for the first stump. Accordingly, the weights are the same. The following plot shows the data together with their new weights and the normalized weights.
 
-![adaboost_data_new_weights1](/images/adaboost/ab_example_clf_new_weights2.png)
+![adaboost_data_new_weights2](/images/adaboost/ab_example_clf_new_weights2.png)
 *The dataset with updated weights based on the influence $\alpha$.*
 
-We repeat the bootstrapping and draw $10$ random numbers between $0$ and $1$. Again we aligh our "random numbers" with the sklearn result we discus in the next section. Let's assume we draw the numbers $[]$, which refer to the samples $[]$, then we get the following modified dataset.
+We convert the weights into bins.
+
+![adaboost_data_new_bins2](/images/adaboost/ab_example_clf_second_stump_bins.png)
+*The modified dataset with bins based on the weights.*
+
+We repeat the bootstrapping and draw $10$ random numbers between $0$ and $1$. Let's assume we draw the numbers $[0.15, 0.95, 0.55, 0.65, 0.85, 0.04, 0.45, 0.35]$, which refer to the samples $[2, 9, 6, 9, 6, 6, 6, 0, 6, 6]$, then we get the following modified dataset.
+
+![adaboost_data_modified](/images/adaboost/ab_example_clf_modified_data_stump3.png)
+*Modified dataset based on the weights.*
 
 ## Fit a Model in Python
 
+We now fit the example in Python using [sklearn](). Note, that the results are not exactly the same due to the randomness in the bootstrapping and because slightly different hyperparamters are used in sklearn. We chose the base model to be a Decision Tree with max_depth $1$, which is the same as in sklearn. A difference, however is that in sklearn "max_features" is set to "sqrt", which means ... In our example we used all the features.
 
+difference: max_features='sqrt'
+in our example: None
 
 ## Summary
 

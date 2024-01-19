@@ -30,7 +30,7 @@ with $w_{old}$ the old or previous weight of that sample and $\alpha$ the influe
 4. **Create a weighted dataset.** The calculated weights are now used to create a new dataset. For that the calculated weights are used as bins for each sample. Let's assume we calculated the weights $w_1, w_2, \dots, w_N$, the the bin for the first sample is $0$ to $w_1$, the bin for the second sample is $w_1$ to $w_1+w_2$ and so on. Data samples are now selected by choosing $N$ random numbers between $0$ and $1$, with $N$ being the number of data samples. The for each of these random numbers, the sample is chosen in which bin the random number falls. Since wrongly predicted samples have higher weight than correctly predicted samples, there bins are larger. Therefore the probability of drawing a wrongly predicted sample is higher. The newly created dataset consists again of $N$ samples, but there are likely duplicates from the wrongly predicted samples.
 5. **Fit a model to the new dataset.** Now we start again and fit a model, equally to the first step, but this time using the modified dataset. 
 
-Repeat steps 2 to 5 $d$ times, where $d$ is the number of final weak learners of which the ensemble model is composed. It is a hyperparamter that needs to be chosen. You can find an example of these stepswith detailed calculations in the articles [AdaBoost for Classification - Example]() or [AdaBoost for Regression - Example]().
+Repeat steps 2 to 5 $d$ times, where $d$ is the number of final weak learners of which the ensemble model is composed. It is a hyperparamter that needs to be chosen. You can find an example of these stepswith detailed calculations in the articles [AdaBoost for Classification - Example]() or [AdaBoost for Regression - Example](). For the final prediction of the ensemble model, predictions of all individual models are made. In a classification task the influences of the different predictions is added and the majority is the final prediction. In a Regression ...
 
 ![influence_error](/images/adaboost/influence_error.png)
 *The influence of an individual model to the final ensemble model, depending on its total error.*
@@ -82,11 +82,12 @@ print(f"predictions: {y_hat}")
 print(f"score: {clf.score(X, y)}")
 ```
 
-The predictions are $[0, 1, 1, 0, 0, 1, 0, 1, 0, 1]$ and the score is $1.0$. That means our model predicts all samples correctly. We can also print the predictions and scores after each boosting iteration, to see how they evolve.
+The predictions are $[0, 1, 1, 0, 0, 1, 0, 1, 0, 1]$ and the score is $1.0$. That means our model predicts all samples correctly. We can also print the predictions and scores for each boosting iteration, to see how the individual models perform.
 
 ```Python
 staged_predictions = [p for p in clf.staged_predict(X)]
 staged_score = [p for p in clf.staged_score(X, y)]
+
 ```
 
 The predictions for the three stages are 
@@ -105,7 +106,13 @@ stage 2: $0.9$, and
 
 stage 3: $1.0$.
 
- This shows how the predictions and the score improve over the three iterations. To illustrate the model we can plot the three stumps created. We can access them using the *estimators_* attribute. Note that creating the stumps contains randomness, when the modified dataset is constructed, as described above. In order to make the results reproducible the *random_seed* is set, when fitting the model.
+The weights for the inndividual trees can be achieved by
+
+```Python
+clf.estimator_weights_
+```
+
+which for this example shows, that all three estimators have weight $1$. The final prediction is then achieved by adding up the weights for each class predicted amd the larger value is the final prediction. Since the weights in this case are all $1$, it is the same as the majority vote. To illustrate the model we can plot the three stumps created. We can access them using the *estimators_* attribute. Note that creating the stumps contains randomness, when the modified dataset is constructed, as described above. In order to make the results reproducible the *random_seed* is set, when fitting the model.
 
 ```Python
 from sklearn import tree
