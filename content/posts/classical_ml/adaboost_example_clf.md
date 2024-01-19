@@ -80,6 +80,9 @@ We repeat the bootstrapping and draw $10$ random numbers between $0$ and $1$. Le
 ![adaboost_data_modified](/images/adaboost/ab_example_clf_modified_data_stump3.png)
 *Modified dataset based on the weights.*
 
+* Third stump
+* Final predictions
+
 ## Fit a Model in Python
 
 We now fit the example in Python using [sklearn](). Note, that the results are not exactly the same due to the randomness in the bootstrapping and because slightly different hyperparamters are used in sklearn. We chose the base model to be a Decision Tree with max_depth $1$, which is the same as in sklearn. A difference, however is that in sklearn "max_features" is set to "sqrt", which means ... In our example we used all the features.
