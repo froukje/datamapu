@@ -12,7 +12,7 @@ images = ['/images/20230913_datascience_lifecycle//images/decision_tree/dt_termi
 
 A *Decision Tree* is a [supervised Machine Learning]({{< ref "supervised_unsupervised#supervised">}}) algorithm that can be used for both regression and classification problems. It is a non-parametric model, which means there is no specific mathematical function underlying to fit the data (in contrast to e.g. [Linear Regression]({{< ref "linear_regression">}}) or [Logistic Regression]({{< ref "logistic_regression">}})), but the algorithm only learns from the data itself. Decision Trees learn rules for decision making and used to be drawn manually before Machine Learning came up. They are hierarchical models, that have a flow-chart tree structure as the name suggests.
 
-![example for a decision tree](/images/decision_tree/dt_example.png)
+![example for a decision tree](/images/decision_tree/dt_example_.png)
 *Example for a Decision Tree.*
 
 ## Terminology

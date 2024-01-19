@@ -75,10 +75,12 @@ We convert the weights into bins.
 ![adaboost_data_new_bins2](/images/adaboost/ab_example_clf_second_stump_bins.png)
 *The modified dataset with bins based on the weights.*
 
-We repeat the bootstrapping and draw $10$ random numbers between $0$ and $1$. Let's assume we draw the numbers $[0.15, 0.95, 0.55, 0.65, 0.85, 0.04, 0.45, 0.35]$, which refer to the samples $[2, 9, 6, 9, 6, 6, 6, 0, 6, 6]$, then we get the following modified dataset.
+We repeat the bootstrapping and draw $10$ random numbers between $0$ and $1$. Let's assume we draw the numbers $[0.5, 0.06, 0.55, 0.65, 0.15, 0.25, 0.05, 0.7, 0.8, 0.3]$, which refer to the samples $[6, 1, 6, 6, 2, 4, 0, 6, 6, 5]$, then we get the following modified dataset.
 
 ![adaboost_data_modified](/images/adaboost/ab_example_clf_modified_data_stump3.png)
 *Modified dataset based on the weights.*
+
+We can now fit the third an last stump of our model to this modified dataset. The result is shown in the next plot.
 
 * Third stump
 * Final predictions
