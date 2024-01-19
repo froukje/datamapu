@@ -10,7 +10,7 @@ images = ['/images/20231113_linear_regression/linear_regression.png']
 
 ## Introduction 
 
-Linear Regression is a type of [Supervised Machine Learning]({{< ref "supervised_unsupervised#supervised" >}} "Supervised Machine Learning") Algorithm, where a linear relationship between the input feature(s) and the target value is assumed. Linear Regression is a specific type of regression model, where the mapping learned by the model describes a linear function. As in all regression problems, the target variable is continuous. In a linear regression, the linear relationship between one ([Simple Linear Regression]({{< ref "#slr" >}})) or more ([Multiple Linear Regression]({{< ref "#mrl" >}})) independent variable and one dependent variable is modeled.
+Linear Regression is a type of [Supervised Machine Learning]({{< ref "supervised_unsupervised#supervised" >}} "Supervised Machine Learning") Algorithm, where a linear relationship between the input feature(s) and the target value is assumed. Linear Regression is a specific type of regression model, where the mapping learned by the model describes a linear function. As in all regression taskss, the target variable is continuous. In a linear regression, the linear relationship between one ([Simple Linear Regression]({{< ref "#slr" >}})) or more ([Multiple Linear Regression]({{< ref "#mrl" >}})) independent variable and one dependent variable is modeled.
 
 ![regression example](/images/20231001_regression_metrics/regression_example.jpg)
 *Illustration of a simple linear regression between the body mass and the maximal running speed of an animal.*
