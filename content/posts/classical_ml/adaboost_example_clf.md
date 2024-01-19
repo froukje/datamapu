@@ -21,14 +21,17 @@ The dataset used in this example contains of only 10 samples, to make the calcul
 
 ## Build the Model
 
-We build an AdaBoost model, constructed of [Decision Trees]({{< ref "/posts/classical_ml/decision_trees.md">}}) as weak learners, because this is the most common application. The underlying trees have depth $1$, that is only the *stump* of each tree is used as a weak learner. This is also the default configuration in [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html), which you can use to fit a model in Python. We will consider three weak learners to build the ensemble Adaboost model.
+We build an AdaBoost model, constructed of [Decision Trees]({{< ref "/posts/classical_ml/decision_trees.md">}}) as weak learners, because this is the most common application. The underlying trees have depth $1$, that is only the *stump* of each tree is used as a weak learner. This is also the default configuration in [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html), which we can use to fit a model in Python. We consider three weak learners to build the ensemble Adaboost model, for demonstration purposes. 
 
 The first step in building an AdaBoost model is asigning weights to the individual data points. In the beginning, for the inital model, all datapoints get the same weight asigned, which is $\frac{1}{N}$, with $N$ the dataset size.
 
 ![adaboost_data_clf](/images/adaboost/ab_clf_data_first_stump.png)
 *Initial dataset and weights for the example.*
 
-We now start with fitting a [Decision Tree]({{< ref "/posts/classical_ml/decision_trees.md">}}) to this data, because this is our underling model. As stated earlier we will use decision stumps, that is we are only interested in the first split. As this exact same data was used in [Decision Trees for Classification - Example]({{< ref "/posts/classical_ml/decision_tree_classification_example.md">}}) to develop a Decision Tree by hand, please check there for the datails how to develop a Decision Tree and how to find the best split. Following the steps from the mentioned article the first stump is.
+We now start with fitting a [Decision Tree]({{< ref "/posts/classical_ml/decision_trees.md">}}) to this data. As stated earlier we will use decision stumps, that is we are only interested in the first split.  This exact same data was used in [Decision Trees for Classification - Example]({{< ref "/posts/classical_ml/decision_tree_classification_example.md">}}) to develop a Decision Tree by hand, please check there for the datails how to develop a Decision Tree and how to find the best split. The resulting stump is shown in the following plot. In AdaBoost each underlying model - in our case decision stumps - gets a different weight, which is the so-called *influence* $\alpha$. The influence depends on the *Total Error* of the model, which for a classification task is equal to the number of wrongly classified samples divided by the total number of samples. The influence is defined as
+
+$$\alpha =  \frac{1}{2} \ln\Big(\frac{1 - TotalError}{TotalError}\Big).$$
+
 
 ![adaboost_first_stump](/images/adaboost/ab_example_clf_first_stump.png)
 *The first stump, i.e. the first weak learner for our AdaBoost algorithm.*
@@ -50,7 +53,7 @@ accordingly. These weights still need to be normalized, so that their sum equals
 ![adaboost_data_new_weights1](/images/adaboost/ab_example_clf_new_weights1.png)
 *The dataset with updated weights based on the influence $\alpha$.*
 
-The weights are used to create bins. The bin for the first sample is $[0, 0.056]$, for the second $[0.056,0.112]$, etc..
+The weights are used to create bins. Let's assume we have the weights $w_1, w_2, \dots, w_N$, the the bin for the first sample is $[0, w_1]$, for the second sample, $[w_1, w_1+w_2]$, etc. In our example  the bin the first sample is $[0, 0.056]$, for the second $[0.056,0.112]$, etc.. The following plot shows all samples with their bins.
 
 ![adaboost_data_bins1](/images/adaboost/ab_example_clf_bins1.png)
 *The dataset with bins based on the weights.*
@@ -60,7 +63,7 @@ Now, some randomness comes into play. Random numbers between $0$ and $1$ are dra
 ![adaboost_data2](/images/adaboost/ab_clf_data_first_second_stump.png)
 *Modified dataset to build the second stump.*
 
-We now use this modified dataset to create the second stump. Following the steps described in [Decision Trees for Classification - Example]({{< ref "/posts/classical_ml/decision_tree_classification_example.md">}}), we achive the following decision stump.
+We now use this modified dataset to create the second stump. Following the steps described in [Decision Trees for Classification - Example]({{< ref "/posts/classical_ml/decision_tree_classification_example.md">}}), we achive the following decision stump. Additionally the influence $\alpha$ of this stump is calculated.
 
 ![adaboost_first_stump](/images/adaboost/ab_example_clf_second_stump.png)
 *The second stump, i.e. the second weak learner for our AdaBoost algorithm.*
@@ -80,14 +83,29 @@ We repeat the bootstrapping and draw $10$ random numbers between $0$ and $1$. Le
 ![adaboost_data_modified](/images/adaboost/ab_example_clf_modified_data_stump3.png)
 *Modified dataset based on the weights.*
 
-We can now fit the third an last stump of our model to this modified dataset. The result is shown in the next plot.
+We can now fit the third an last stump of our model to this modified dataset and calculate its influence. The result is shown in the next plot.
 
 ![adaboost_first_stump](/images/adaboost/ab_example_clf_third_stump_.png)
 *The third stump, i.e. the last weak learner for our AdaBoost algorithm.*
 
-Note, that this stump has a higher total error, and therefore a lower influence $\alpha$. We now use the individual trees and their calculated values for $\alpha$ to determine the final prediction. Let`s consider the sample age $= 35$, likes height $= 1$, and likes goats $= 0$.
- 
-* Final predictions
+Note, that this stump has a higher total error, and therefore a lower influence $\alpha$. We now use the individual trees and their calculated values for $\alpha$ to determine the final prediction. Let's consider one of the samples in the dataset. 
+
+|Feature     | Value|
+|------------|------|
+|age         | 35   |
+|likes height| 1    |
+|likes goats | 0    |
+
+We now make predictions for each of the three stumps for this sample. 
+
+![adaboost_first_stump](/images/adaboost/ab_example_clf_predictions1.png)
+*The three underlying models and their predictions for the sample.*
+
+The final prediction is achieved by adding up the influences of each tree for the predicted classes. In this example the first and the third stump predict "go rock climbing" and the secong stump predicts "don't go rock climbing". The first and the third stump have an influence of $1.099 + 0.69 = 1.789$, and the second stump has an influence of $1.099$. That means the influence for the prediction "go rock climbing" is higher and this is our final prediction.
+
+![adaboost_first_stump](/images/adaboost/ab_example_clf_predictions2.png)
+*The predictions and their influences to determine the final prediction.*
+
 
 ## Fit a Model in Python
 
