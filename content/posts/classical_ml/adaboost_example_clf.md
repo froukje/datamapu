@@ -91,7 +91,7 @@ We can now fit the third an last stump of our model to this modified dataset and
 Note, that this stump has a higher total error, and therefore a lower influence $\alpha$. We now use the individual trees and their calculated values for $\alpha$ to determine the final prediction. Let's consider one of the samples in the dataset. 
 
 |Feature     | Value|
-|------------|------|
+|:----------:|:----:|
 |age         | 35   |
 |likes height| 1    |
 |likes goats | 0    |
@@ -109,12 +109,42 @@ The final prediction is achieved by adding up the influences of each tree for th
 
 ## Fit a Model in Python
 
-We now fit the example in Python using [sklearn](). Note, that the results are not exactly the same due to the randomness in the bootstrapping and because slightly different hyperparamters are used in sklearn. We chose the base model to be a Decision Tree with max_depth $1$, which is the same as in sklearn. A difference, however is that in sklearn "max_features" is set to "sqrt", which means ... In our example we used all the features.
+We now fit the example in Python using [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html). Note, that the results are not exactly the same due to the randomness in the bootstrapping and the implementation algorithm of the estimators used in sklearn, which at the time writing this post has the default value of *SAMME.R*. To fit a model, we first define our dataset as a dataframe.
 
-difference: max_features='sqrt'
-in our example: None
+```Python
+import pandas as pd
+
+data = {'age': [23, 31, 35, 35, 42, 43, 45, 46, 46, 51],
+        'likes goats': [0, 1, 0, 0, 0, 1, 1, 1, 0, 1],
+        'likes height': [0, 1, 1, 0, 0, 1, 0, 1, 1, 1],
+        'go rock climbing': [0, 1, 1, 0, 0, 1, 0, 1, 0, 1]}
+
+df = pd.DataFrame(data)
+```
+
+We use the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) methon *AdaBoostClassifier* to fit a model to the data. According to our example, we set the hyperparameter *n_estimators=3*, which means that three Decision Tree stumps are used for the ensemble model. Note, that for a real world project, this hyperparamter would be chosen larger, the default value is $100$. The remaining hyperparamters are left as default values.
+ 
+```Python
+from sklearn.ensemble import AdaBoostClassifier
+
+X = df[['age', 'likes goats', 'likes height']].values
+y = df[['go rock climbing']].values.reshape(-1,)
+
+clf = AdaBoostClassifier(n_estimators=3, random_state=42)
+clf.fit(X, y)
+```
+
+To get the predictions, we can use the *predict* method method.
+
+```Python
+y_hat = clf.predict(X)
+```
+
+For this example, the predictions are $[0, 1, 1, 0, 0, 1, 0, 1, 0, 1]$, which means that all samples are correctly predicted. We can also print he predictions and scores of the individual models. Please check the related article [AdaBoost - Explained]({{< ref "/posts/classical_ml/adaboost.md#python">}}) for some more details about this. A more realistic example with a larger dataset is provided on [kaggle]().
 
 ## Summary
+
+In this article, we illustrated in detail how to develop an AdaBoost model for a classification task. We used a simplified example to make the calculations easy to follow. We followed the most standard way of developing an AdaBoost ensemble model, that is the underlying base models were chosen as the stumps of Decision Trees. You can find a similar example for a regression task in the related article [AdaBoost for Regression - Example]() and a detailed explanation and visualization of the algorithm in [AdaBoost - Explained]({{< ref "/posts/classical_ml/adaboost.md">}}) 
 
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}

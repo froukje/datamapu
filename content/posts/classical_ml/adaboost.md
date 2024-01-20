@@ -30,7 +30,7 @@ with $w_{old}$ the old or previous weight of that sample and $\alpha$ the influe
 4. **Create a weighted dataset.** The calculated weights are now used to create a new dataset. For that the calculated weights are used as bins for each sample. Let's assume we calculated the weights $w_1, w_2, \dots, w_N$, the the bin for the first sample is $0$ to $w_1$, the bin for the second sample is $w_1$ to $w_1+w_2$ and so on. Data samples are now selected by choosing $N$ random numbers between $0$ and $1$, with $N$ being the number of data samples. The for each of these random numbers, the sample is chosen in which bin the random number falls. Since wrongly predicted samples have higher weight than correctly predicted samples, there bins are larger. Therefore the probability of drawing a wrongly predicted sample is higher. The newly created dataset consists again of $N$ samples, but there are likely duplicates from the wrongly predicted samples.
 5. **Fit a model to the new dataset.** Now we start again and fit a model, equally to the first step, but this time using the modified dataset. 
 
-Repeat steps 2 to 5 $d$ times, where $d$ is the number of final weak learners of which the ensemble model is composed. It is a hyperparamter that needs to be chosen. You can find an example of these stepswith detailed calculations in the articles [AdaBoost for Classification - Example]() or [AdaBoost for Regression - Example](). For the final prediction of the ensemble model, predictions of all individual models are made. In a classification task the influences of the different predictions is added and the majority is the final prediction. In a Regression ...
+Repeat steps 2 to 5 $d$ times, where $d$ is the number of final weak learners of which the ensemble model is composed. It is a hyperparamter that needs to be chosen. You can find an example of these stepswith detailed calculations in the articles [AdaBoost for Classification - Example]({{< ref "/posts/classical_ml/adaboost_example_clf">}}) or [AdaBoost for Regression - Example](). For the final prediction of the ensemble model, predictions of all individual models are made. In a classification task the influences of the different predictions is added and the majority is the final prediction. In a Regression ...
 
 ![influence_error](/images/adaboost/influence_error.png)
 *The influence of an individual model to the final ensemble model, depending on its total error.*
@@ -45,7 +45,7 @@ As mentioned earlier the most common way of constructing AdaBoost is using [Deci
 ![adaboost_vs_random_forest](/images/adaboost/adaboost_rf_illustrated.png)
 *AdaBoost and  Random Forest illustrated.*
 
-## AdaBoost in Python
+## AdaBoost in Python{#python}
 
 The [sklearn](https://scikit-learn.org/stable/) library offers a method to fit AdaBoost in Python for both [classification](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) and [regression](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html#sklearn.ensemble.AdaBoostRegressor) problems. We will consider a simplified example for a classification task, using the following data.
 
@@ -112,7 +112,7 @@ The weights for the inndividual trees can be achieved by
 clf.estimator_weights_
 ```
 
-which for this example shows, that all three estimators have weight $1$. The final prediction is then achieved by adding up the weights for each class predicted amd the larger value is the final prediction. Since the weights in this case are all $1$, it is the same as the majority vote. To illustrate the model we can plot the three stumps created. We can access them using the *estimators_* attribute. Note that creating the stumps contains randomness, when the modified dataset is constructed, as described above. In order to make the results reproducible the *random_seed* is set, when fitting the model.
+which for this example shows, that all three estimators have weight $1$. Note, that sklearn gives a weight of $1$, although the individual models show Total Errors greater than $0$. This is due to a different implementation of the algorithm. By the time, writing this post the default algorithm in [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) is *SAMME.R.*. A dicussion about why the weights are $1$ can be found on [stackoverflow](https://stackoverflow.com/questions/31981453/why-estimator-weight-in-samme-r-adaboost-algorithm-is-set-to-1). The final prediction is then achieved by adding up the weights for each class predicted amd the larger value is the final prediction. Since the weights in this case are all $1$, it is the same as the majority vote. To illustrate the model we can plot the three stumps created. We can access them using the *estimators_* attribute. Note that creating the stumps contains randomness, when the modified dataset is constructed, as described above. In order to make the results reproducible the *random_seed* is set, when fitting the model.
 
 ```Python
 from sklearn import tree
@@ -128,7 +128,7 @@ Comparing the first stump to the calculations in the article [Decision Trees for
 
 ## Summary
 
-AdaBoost is a sequential ensemble model, in which a sequential series of models is developed. Sequentially the errors of the developed models are evaluated and the dataset modified such that a higher focus lies on the wrongly predicted samples for the next iteration. In Python, we can use [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) to fit a AdaBoost model, which also offers some methods to explore created models and their predictions. The example used in this article, however, was very simplified and only for illustration purposes. For a more developed example for AdaBoost in Python, please refer to [kaggle](). 
+AdaBoost is a sequential ensemble model, in which a sequential series of models is developed. Sequentially the errors of the developed models are evaluated and the dataset modified such that a higher focus lies on the wrongly predicted samples for the next iteration. In Python, we can use [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) to fit a AdaBoost model, which also offers some methods to explore created models and their predictions. It is important to note, that different implementation of this algorithm exist. Due to this and the randomness in the bootstrapping, there are some differences, when we compare the details to the model fitted using [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html). The example used in this article, however, was very simplified and only for illustration purposes. For a more developed example for AdaBoost in Python, please refer to [kaggle](). 
 
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
