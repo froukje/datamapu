@@ -14,11 +14,48 @@ AdaBoost is an ensemble model, that sequentially builds new models based on the 
 
 ## Data
 
+We use a very simplified example dataset to make the development of the model by hand easier. We use a dataset containing 10 samples. It contains the features 'age', 'likes height', and 'likes goats'. The target variable is 'climbed meters'. That is we want to estimate how many meters a person climbed depending on their age, and whether they like height and goats. For comparison purposes, we used that same dataset in the article [Decision Trees for Regression - Example]({{< ref "/posts/classical_ml/decision_tree_regression_example.md">}}). 
 
+![adaboost_reg_data](/images/adaboost/ab_example_reg_data.png)
+*The dataset used in this example.*
 
 ## Build the Model
 
-We will build a AdaBoost model from scratch using the above dataset. We use the default values, that are used in [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html), that is we use Decision Trees as underlying models with a maximum depth of three. 
+We will build a AdaBoost model from scratch using the above dataset. We use the default values, that are used in [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html), that is we use Decision Trees as underlying models with a maximum depth of three. In this post, however, we will focus on AdaBoost and not on the development of the Decision Trees. To understand the details on how to develop a Decision Tree for a regression task, please refer to the separate articles [Decision Trees - Explained]({{< ref "/posts/classical_ml/decision_trees.md">}}) or [Decision Trees for Regression - Example]({{< ref "/posts/classical_ml/decision_tree_regression_example.md">}}). 
+
+We start with asigning weights to each sample. Initially, the weights are all equal to $\frac{1}{N}$, whith $N$ the number of data samples, that is in our case the initial weights are $0.1$ for all samples.
+
+![adaboost_reg_first_tree_weights](/images/adaboost/ab_example_reg_first_tree_weights.png)
+*The dataset with weights asigned to each sample.*
+
+We now fit a Decision Tree with maximum depth of three to this dataset.
+
+![adaboost_reg_first_tree](/images/adaboost/ab_example_reg_first_tree.png)
+*The first Decision Tree of the AdaBoost model.*
+
+Now, we determine the total error, which is the number of wrongly predicted samples divided by the total number of samples. Following the decision paths of the tree, we can find that the samples age$=35$,  likes height$=0$, likes goats$=0$ and age$=42$, likes height$=0$, likes goats$=0$ lead to wrong predictions. The true target values are $300m$ and $200m$, respectivly, but the predicted value is $250m$ in both cases. The other eight samples are correctly predicted. The total error is thus $\frac{2}{10}$. The influence of this tree is therefore
+
+$$\alpha =  \frac{1}{2} \ln\Big(\frac{1 - TotalError}{TotalError}\Big)$$
+$$\alpha =  \frac{1}{2} \ln\Big(\frac{\frac{8}{10}}{\frac{2}{10}}\Big)$$
+$$\alpha =  \frac{1}{2} \ln(4) = 0.69.$$
+
+With the *influence* $\alpha$, we can now calculate the new weights
+
+$$w_{new} = w_{old}\cdot e^{\pm\alpha}.$$
+
+The sign used in the exponent depents on whether the specific sample was correctly predicted or not. For correctly predicted samples, we get
+
+$$w_{new} = 0.1\cdot e^{-0.69} = 0.05,$$
+
+and for wrongly predicted samples
+
+$$w_{new} = 0.1\cdot e^{0.69} = 0.2.$$
+
+These weights need to be normalized, which is done by dividing by their sum.
+
+![adaboost_reg_first_tree_weights](/images/adaboost/ab_example_reg_second_tree_weights.png)
+*The dataset with the updated weights asigned to each sample.*
+
 
 ## Fit a Model in Python
 

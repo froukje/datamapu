@@ -144,7 +144,7 @@ For this example, the predictions are $[0, 1, 1, 0, 0, 1, 0, 1, 0, 1]$, which me
 
 ## Summary
 
-In this article, we illustrated in detail how to develop an AdaBoost model for a classification task. We used a simplified example to make the calculations easy to follow. We followed the most standard way of developing an AdaBoost ensemble model, that is the underlying base models were chosen as the stumps of Decision Trees. You can find a similar example for a regression task in the related article [AdaBoost for Regression - Example]() and a detailed explanation and visualization of the algorithm in [AdaBoost - Explained]({{< ref "/posts/classical_ml/adaboost.md">}}) 
+In this article, we illustrated in detail how to develop an AdaBoost model for a classification task. We used a simplified example to make the calculations easy to follow. We followed the most standard way of developing an AdaBoost ensemble model, that is the underlying base models were chosen as the stumps of Decision Trees. You can find a similar example for a regression task in the related article [AdaBoost for Regression - Example]({{< ref "/posts/classical_ml/adaboost_example_reg.md">}}) and a detailed explanation and visualization of the algorithm in [AdaBoost - Explained]({{< ref "/posts/classical_ml/adaboost.md">}}) 
 
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
