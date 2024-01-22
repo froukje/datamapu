@@ -8,8 +8,8 @@ featured_image: ''
 ---
 This blog about Data Science and Machine Learning recently started and it will be built further.
 
-If you want to get an e-mail each time a new post gets published, give feedback or ideas about interesting topics that should be covered in this blog, write an e-mail to:
-**contact.datamapu@gmail.com**
+If you want to get an e-mail each time a new post gets published, give feedback or ideas about interesting topics that should be covered in this blog, write an e-mail to
+**contact.datamapu@gmail.com** or connect via [LinkedIn](https://www.linkedin.com/in/datamapu-ml-91a2622a3/) or [twitter](https://twitter.com/datamapu).
 
 This is what you can already find here:
 

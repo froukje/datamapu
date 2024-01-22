@@ -64,12 +64,12 @@ Now bootstrapping is performed to create a modified dataset, which we can use to
 ![adaboost_reg_second_tree_data](/images/adaboost/ab_example_reg_second_tree_data_modified.png)
 *Modified dataset based on the weights.*
 
-Now, we fit the second model to this modifoed dataset. The resulting model is illustrated in the next plot.
+Now, we fit the second model to this modified dataset. The resulting model is illustrated in the next plot.
 
 ![adaboost_reg_first_tree](/images/adaboost/ab_example_reg_second_tree.png)
 *The second Decision Tree of the AdaBoost model.*
 
-Following the decision paths of this tree we see that three samples are wrongly predicted. The sample age $= 45$, likes height $= 0$, and likes goats $=0$ yields $233.33m$ is predicted, but the true value is $300m$. The sample age $= 42$, likes height $= 0$, and likes goats $= 0$, which is twice in the dataset also results in a prediction of $233.33m$, but the true value is $200m$. The remaining samples are correctly predicted. The influence $\alpha$ is thus
+Following the decision paths of this tree we see that three samples are wrongly predicted. The sample age $= 45$, likes height $= 0$, and likes goats $=0$ yields $233.33m$ is predicted, but the true value is $300m$. The sample age $= 42$, likes height $= 0$, and likes goats $= 0$, which is twice in the dataset also results in a prediction of $233.33m$, but the true value is $200m$. The remaining samples are correctly predicted. The Total Error is thus $\frac{3}{10}$. The influence $\alpha$ is thus
 
 $$\alpha = \frac{1}{2} \ln\Big(\frac{1 - TotalError}{TotalError}\Big)$$
 $$\alpha =  \frac{1}{2} \ln\Big(\frac{\frac{7}{10}}{\frac{3}{10}}\Big)$$
@@ -103,12 +103,31 @@ Again, we simulate drawing 10 random numbers. Let's assume, we got the random nu
 
 Form this dataset we build the third and last model, which is shown in the following plot.
 
-[adaboost_reg_third_tree](/images/adaboost/ab_example_reg_third_tree.png)
+![adaboost_reg_third_tree](/images/adaboost/ab_example_reg_third_tree.png)
 *The third Decision Tree of the AdaBoost model.*
 
+The only thing missing now to make the final prediction is the influence $\alpha$ of this last tree. The third tree predicts one sample wrongly, which is age $= 35$, likes height $=0$, and likes goats $= 0$ leads to a prediction of $250m$, while the correct value is $300m$. The total error is thus $\frac{1}{10}$ and therefore 
 
-MAKE EXAMPLE PREDICTION
+$$\alpha = \frac{1}{2} \ln\Big(\frac{1 - TotalError}{TotalError}\Big)$$
+$$\alpha =  \frac{1}{2} \ln\Big(\frac{\frac{9}{10}}{\frac{1}{10}}\Big)$$
+$$\alpha =  \frac{1}{2} \ln(9) = 1.099.$$
 
+Let's now use the model to make a prediction. Consider the sample
+
+|Feature     | Value|
+|:----------:|:----:|
+|age         | 45   |
+|likes height| 0    |
+|likes goats | 1    |
+
+![adaboost_reg_prediction](/images/adaboost/ab_example_reg_prediction.png)
+*The final prediction for a specific sample.*
+
+To make the final prediction, we need to consider all the individual predictions of all the models. The weighted mean of these predictions is then the prediction of the constructed esemble AdaBoost model. As weights the values for the influence is used. Following the decision path of the first tree, results in a prediction of $300m$, the second tree predicts $233.33m$ and the third tree again predicts $300m$. The final prediction is than calculated as
+
+$$\hat{y} = \frac{0.69\cdot300 m+ 0.42\cdot233.33m + 1.099\cdot300m}{0.60 + 0.42 + 1.099} = 299.53m.$$
+
+The true value of this sample is $300m$.
 ## Fit a Model in Python
 
 After developing a model by hand, we will now see how to fit a AdaBoost for a regression task in Python. We can use the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) method *AdaBoostRegressor*. **Note: The fitted model in sklearn differs from our developed model, due to some randomness in the algorithm.** Randomness occurss in the underlying  *DecisionTreeRegressor* algorithm and in the boosting used in the *AdaBoostRegressor*. 
