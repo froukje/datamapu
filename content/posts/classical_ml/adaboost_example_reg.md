@@ -56,6 +56,43 @@ These weights need to be normalized, which is done by dividing by their sum.
 ![adaboost_reg_first_tree_weights](/images/adaboost/ab_example_reg_second_tree_weights.png)
 *The dataset with the updated weights asigned to each sample.*
 
+![adaboost_reg_first_tree_weights](/images/adaboost/ab_example_reg_second_tree_bins.png)
+*The dataset with the bins based on the weights for each sample.*
+
+We now simulate to draw random numbers between $0$ and $1$ to decide the indices drawn for the next modified dataset. Let's assume, the random numbers drawn are $[0.2, 0.8, 0.4, 0.3, 0.6, 0.5, 0.05, 0.1,0.25]$, which refer to the samples $[3, 6, 3, 3, 4, 4, 5, 0, 1, 3]$. The modified dataset is shown in the next plot.
+
+< IMAGE DATASET >
+
+Now, we fit the second model to this modifoed dataset. The resulting model is illustrated in the next plot.
+
+< IMAGE TREE >
+
+The weights are updated following the above formula. For the first sample, we get
+$$ .$$
+
+For the second sample
+
+$$ .$$
+
+The new weights again need to normalized. The weights for all samples are summarized in the following plot.
+
+< IMAGE DATA + WEIGHTS >
+
+From the normalized weights, we calculate the bins...
+
+< IMAGE DATA + BINS > 
+
+Again, we simulate drawing 10 random numbers. ...
+
+The modified dataset based on the bins is shown in the following plot.
+
+< IMAGE MODIFIED DATA >
+
+Form this dataset we build the third and last model, which is shown in the next plot.
+
+< IMAGE TREE >
+
+MAKE EXAMPLE PREDICTION
 
 ## Fit a Model in Python
 

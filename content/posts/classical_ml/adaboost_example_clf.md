@@ -50,7 +50,7 @@ $$w_{new} = 0.1\cdot e^{1.099} = 0.3,$$
 
 accordingly. These weights still need to be normalized, so that their sum equals $1$. This is done, by dividing by their sum. The next plot shows the dataset with the new weights.
 
-![adaboost_data_new_weights1](/images/adaboost/ab_example_clf_new_weights1.png)
+![adaboost_data_new_weights1](/images/adaboost/ab_example_clf_second_stump_data_weights.png)
 *The dataset with updated weights based on the influence $\alpha$.*
 
 The weights are used to create bins. Let's assume we have the weights $w_1, w_2, \dots, w_N$, the the bin for the first sample is $[0, w_1]$, for the second sample, $[w_1, w_1+w_2]$, etc. In our example  the bin the first sample is $[0, 0.056]$, for the second $[0.056,0.112]$, etc.. The following plot shows all samples with their bins.
@@ -68,27 +68,39 @@ We now use this modified dataset to create the second stump. Following the steps
 ![adaboost_first_stump](/images/adaboost/ab_example_clf_second_stump.png)
 *The second stump, i.e. the second weak learner for our AdaBoost algorithm.*
 
-As in the first stump, one sample is misclassified, so we get the same value for alpha as for the first stump. Accordingly, the weights are the same. The following plot shows the data together with their new weights and the normalized weights.
+As in the first stump, one sample is misclassified, so we get the same value for alpha as for the first stump. Accordingly, the weights are updated using the above formula. 
 
-![adaboost_data_new_weights2](/images/adaboost/ab_example_clf_new_weights2.png)
+$$w_{new} = w_{old}\cdot e^{\pm\alpha}.$$
+
+For the first sample, this results in
+
+$$w_{new} = 0.056 \cdot e^{-1.099} = 0.0185.$$
+
+The second sample, was the only one misclassified, so the sign in the exponent needs to be changed
+
+$$w_{new} = 0.056 \cdot e^{1.099} = 0.167.$$
+
+The following plot shows all samples together with their old weights, new weights, and the normalized weights.
+
+![adaboost_data_new_weights2](/images/adaboost/ab_example_clf_new_weights_norm.png)
 *The dataset with updated weights based on the influence $\alpha$.*
 
 We convert the weights into bins.
 
-![adaboost_data_new_bins2](/images/adaboost/ab_example_clf_second_stump_bins.png)
+![adaboost_data_new_bins2](/images/adaboost/ab_example_clf_second_stump_bins2.png)
 *The modified dataset with bins based on the weights.*
 
-We repeat the bootstrapping and draw $10$ random numbers between $0$ and $1$. Let's assume we draw the numbers $[0.5, 0.06, 0.55, 0.65, 0.15, 0.25, 0.05, 0.7, 0.8, 0.3]$, which refer to the samples $[6, 1, 6, 6, 2, 4, 0, 6, 6, 5]$, then we get the following modified dataset.
+We repeat the bootstrapping and draw $10$ random numbers between $0$ and $1$. Let's assume we draw the numbers $[0.3, 0.35, 0.1, 0.4, 0.97, 0.8, 0.9, 0.05, 0.25, 0.05]$, which refer to the samples $[4, 4, 1, 4, 9, 7, 7, 1, 3, 1]$, then we get the following modified dataset.
 
-![adaboost_data_modified](/images/adaboost/ab_example_clf_modified_data_stump3.png)
+![adaboost_data_modified](/images/adaboost/ab_example_clf_modified_data_stump3_.png)
 *Modified dataset based on the weights.*
 
 We can now fit the third an last stump of our model to this modified dataset and calculate its influence. The result is shown in the next plot.
 
-![adaboost_first_stump](/images/adaboost/ab_example_clf_third_stump_.png)
+![adaboost_first_stump](/images/adaboost/ab_example_clf_third_stump3.png)
 *The third stump, i.e. the last weak learner for our AdaBoost algorithm.*
 
-Note, that this stump has a higher total error, and therefore a lower influence $\alpha$. We now use the individual trees and their calculated values for $\alpha$ to determine the final prediction. Let's consider one of the samples in the dataset. 
+Again, one sample is misclassified, which leads to the same influence $\alpha$ as previously. Note, that this is due to the very simplified dataset considered, in a more realistic example the influences of the different models would differ. We now use the individual trees and their calculated values for $\alpha$ to determine the final prediction. Let's consider one of the samples in the dataset. 
 
 |Feature     | Value|
 |:----------:|:----:|
@@ -98,12 +110,12 @@ Note, that this stump has a higher total error, and therefore a lower influence 
 
 We now make predictions for each of the three stumps for this sample. 
 
-![adaboost_first_stump](/images/adaboost/ab_example_clf_predictions1.png)
+![adaboost_first_stump](/images/adaboost/ab_example_clf_predictions1_.png)
 *The three underlying models and their predictions for the sample.*
 
 The final prediction is achieved by adding up the influences of each tree for the predicted classes. In this example the first and the third stump predict "go rock climbing" and the secong stump predicts "don't go rock climbing". The first and the third stump have an influence of $1.099 + 0.69 = 1.789$, and the second stump has an influence of $1.099$. That means the influence for the prediction "go rock climbing" is higher and this is our final prediction.
 
-![adaboost_first_stump](/images/adaboost/ab_example_clf_predictions2.png)
+![adaboost_first_stump](/images/adaboost/ab_example_clf_predictions2_.png)
 *The predictions and their influences to determine the final prediction.*
 
 
