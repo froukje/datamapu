@@ -10,7 +10,7 @@ images = ['/images/adaboost/']
 
 ## Introduction
 
-AdaBoost is an ensemble model, that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can however also be used for Regression problems, on what we will focus in this post.
+AdaBoost is an ensemble model, that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can however also be used for Regression problems, on what we will focus in this post. This article covers the detailed calculations of a simplified example. For a general explanation of the algorithm, please refer to [AdaBoost - Explained]({{< ref "/posts/classical_ml/adaboost.md">}}).
 
 ## Data
 
@@ -21,7 +21,7 @@ We use a very simplified example dataset to make the development of the model by
 
 ## Build the Model
 
-We will build a AdaBoost model from scratch using the above dataset. We use the default values, that are used in [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html), that is we use Decision Trees as underlying models with a maximum depth of three. In this post, however, we will focus on AdaBoost and not on the development of the Decision Trees. To understand the details on how to develop a Decision Tree for a regression task, please refer to the separate articles [Decision Trees - Explained]({{< ref "/posts/classical_ml/decision_trees.md">}}) or [Decision Trees for Regression - Example]({{< ref "/posts/classical_ml/decision_tree_regression_example.md">}}). 
+We build a AdaBoost model from scratch using the above dataset. We use the default values from in [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html), that is we use Decision Trees as underlying models with a maximum depth of three. In this post, however, we will focus on AdaBoost and not on the development of the Decision Trees. To understand the details on how to develop a Decision Tree for a regression task, please refer to the separate articles [Decision Trees - Explained]({{< ref "/posts/classical_ml/decision_trees.md">}}) or [Decision Trees for Regression - Example]({{< ref "/posts/classical_ml/decision_tree_regression_example.md">}}). 
 
 We start with asigning weights to each sample. Initially, the weights are all equal to $\frac{1}{N}$, whith $N$ the number of data samples, that is in our case the initial weights are $0.1$ for all samples.
 
@@ -59,38 +59,53 @@ These weights need to be normalized, which is done by dividing by their sum.
 ![adaboost_reg_first_tree_weights](/images/adaboost/ab_example_reg_second_tree_bins.png)
 *The dataset with the bins based on the weights for each sample.*
 
-We now simulate to draw random numbers between $0$ and $1$ to decide the indices drawn for the next modified dataset. Let's assume, the random numbers drawn are $[0.2, 0.8, 0.4, 0.3, 0.6, 0.5, 0.05, 0.1,0.25]$, which refer to the samples $[3, 6, 3, 3, 4, 4, 5, 0, 1, 3]$. The modified dataset is shown in the next plot.
+Now bootstrapping is performed to create a modified dataset, which we can use to build the next model. For that, we simulate drawing random numbers between $0$ and $1$ to decide the indices taken for the modified dataset. Note, that the bins of the two wrongly predicted samples are larger due to their higher weights. The probability of getting a number in the bin of the wrongly predicted samples is thus higher and these samples will likely be higher represented in the new dataset. Let's assume, the random numbers drawn are $[0.2, 0.8, 0.4, 0.3, 0.6, 0.5, 0.05, 0.1, 0.25]$, which refer to the samples $[3, 6, 3, 3, 4, 4, 5, 0, 1, 3]$. The modified dataset is shown in the next plot.
 
-< IMAGE DATASET >
+![adaboost_reg_second_tree_data](/images/adaboost/ab_example_reg_second_tree_data_modified.png)
+*Modified dataset based on the weights.*
 
 Now, we fit the second model to this modifoed dataset. The resulting model is illustrated in the next plot.
 
-< IMAGE TREE >
+![adaboost_reg_first_tree](/images/adaboost/ab_example_reg_second_tree.png)
+*The second Decision Tree of the AdaBoost model.*
 
-The weights are updated following the above formula. For the first sample, we get
-$$ .$$
+Following the decision paths of this tree we see that three samples are wrongly predicted. The sample age $= 45$, likes height $= 0$, and likes goats $=0$ yields $233.33m$ is predicted, but the true value is $300m$. The sample age $= 42$, likes height $= 0$, and likes goats $= 0$, which is twice in the dataset also results in a prediction of $233.33m$, but the true value is $200m$. The remaining samples are correctly predicted. The influence $\alpha$ is thus
 
-For the second sample
+$$\alpha = \frac{1}{2} \ln\Big(\frac{1 - TotalError}{TotalError}\Big)$$
+$$\alpha =  \frac{1}{2} \ln\Big(\frac{\frac{7}{10}}{\frac{3}{10}}\Big)$$
+$$\alpha =  \frac{1}{2} \ln(\frac{7}{3}) = 0.42.$$
 
-$$ .$$
+The weights are then updated following the above formula. The old weights can be looked up in the previous table. For the first sample, which was correctly predicted, we get
+$$w_{new} = w_{old} \cdot e^{-\alpha},$$
+$$w_{new} = 0.0625 \cdot e^{-0.42},$$
+$$w_{new} = 0.041.$$ 
+
+The second sample was wrongly predicted, thus the sign in the exponent is positive. The new weight calculates as
+
+$$w_{new} = w_{old} \cdot e^{\alpha},$$
+$$w_{new} = 0.0625 \cdot e^{0.42},$$
+$$w_{new} = 0.095.$$
 
 The new weights again need to normalized. The weights for all samples are summarized in the following plot.
 
-< IMAGE DATA + WEIGHTS >
+![adaboost_reg_third_tree_weights](/images/adaboost/ab_example_reg_third_tree_weights.png)
+*The dataset with the updated weights asigned to each sample.*
 
-From the normalized weights, we calculate the bins...
+From the normalized weights, we calculate the bins.
 
-< IMAGE DATA + BINS > 
+![adaboost_reg_third_tree_weights](/images/adaboost/ab_example_reg_third_tree_bins.png)
+*The dataset with the asigned bins to each sample.*
 
-Again, we simulate drawing 10 random numbers. ...
+Again, we simulate drawing 10 random numbers. Let's assume, we got the random numbers $[0.8, 0.92, 0.1, 0.4, 0.6, 0.3, 0.5, 0.2, 0.35, 0.97, 0.7]$, which refer then to the samples $[6, 8, 1, 5, 5, 4, 5, 4, 9, 5]$. The modified dataset based on the bins is shown in the following plot.
 
-The modified dataset based on the bins is shown in the following plot.
+![adaboost_reg_third_tree_data](/images/adaboost/ab_example_reg_third_tree_data_modified.png)
+*Modified dataset based on the weights.*
 
-< IMAGE MODIFIED DATA >
+Form this dataset we build the third and last model, which is shown in the following plot.
 
-Form this dataset we build the third and last model, which is shown in the next plot.
+[adaboost_reg_third_tree](/images/adaboost/ab_example_reg_third_tree.png)
+*The third Decision Tree of the AdaBoost model.*
 
-< IMAGE TREE >
 
 MAKE EXAMPLE PREDICTION
 
