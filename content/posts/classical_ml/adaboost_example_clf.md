@@ -5,7 +5,7 @@ draft = true
 tags = ["Data Science", "Machine Learning", "Ensemble", "Boosting", "Tree Methods", "Classification"]
 categories = ["Data Science", "Machine Learning", "Ensemble", "Boosting", "Tree Methods", "Classification"]
 keywords = ["Data Science", "Machine Learning", "Ensemble", "Boosting", "Tree Methods", "Classification"]
-images = ['/images/adaboost/']
+images = ['/images/adaboost/adaboost.png']
 +++
 
 ## Introduction
