@@ -50,6 +50,8 @@ The main difference between these two algorithms is that Gradient boosting has a
 
 gradient boosting hekps to reduce the bias
 
+## Gradient Boosting vs. AdaBoost
+
 ## Advantages & Disadvantages Gradient Boosted Trees
 
 **Pros**
