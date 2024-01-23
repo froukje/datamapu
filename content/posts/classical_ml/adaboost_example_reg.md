@@ -10,11 +10,11 @@ images = ['/images/adaboost/']
 
 ## Introduction
 
-AdaBoost is an ensemble model, that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can however also be used for Regression problems, on what we will focus in this post. This article covers the detailed calculations of a simplified example. For a general explanation of the algorithm, please refer to [AdaBoost - Explained]({{< ref "/posts/classical_ml/adaboost.md">}}).
+AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example. For a general explanation of the algorithm, please refer to [AdaBoost - Explained]({{< ref "/posts/classical_ml/adaboost.md">}}).
 
 ## Data
 
-We use a very simplified example dataset to make the development of the model by hand easier. We use a dataset containing 10 samples. It contains the features 'age', 'likes height', and 'likes goats'. The target variable is 'climbed meters'. That is we want to estimate how many meters a person climbed depending on their age, and whether they like height and goats. For comparison purposes, we used that same dataset in the article [Decision Trees for Regression - Example]({{< ref "/posts/classical_ml/decision_tree_regression_example.md">}}). 
+We use a very simplified example dataset to make the development of the model by hand easier. We use a dataset containing 10 samples. It includes the features 'age', 'likes height', and 'likes goats'. The target variable is 'climbed meters'. That is we want to estimate how many meters a person has climbed depending on their age, and whether they like height and goats. For comparison purposes, we used that same dataset in the article [Decision Trees for Regression - Example]({{< ref "/posts/classical_ml/decision_tree_regression_example.md">}}). 
 
 ![adaboost_reg_data](/images/adaboost/ab_example_reg_data.png)
 *The dataset used in this example.*
@@ -23,10 +23,10 @@ We use a very simplified example dataset to make the development of the model by
 
 We build a AdaBoost model from scratch using the above dataset. We use the default values from in [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html), that is we use Decision Trees as underlying models with a maximum depth of three. In this post, however, we will focus on AdaBoost and not on the development of the Decision Trees. To understand the details on how to develop a Decision Tree for a regression task, please refer to the separate articles [Decision Trees - Explained]({{< ref "/posts/classical_ml/decision_trees.md">}}) or [Decision Trees for Regression - Example]({{< ref "/posts/classical_ml/decision_tree_regression_example.md">}}). 
 
-We start with asigning weights to each sample. Initially, the weights are all equal to $\frac{1}{N}$, whith $N$ the number of data samples, that is in our case the initial weights are $0.1$ for all samples.
+We start with asigning weights to each sample. Initially, the weights are all equal to $\frac{1}{N}$, with $N$ the number of data samples, that is in our case the initial weights are $0.1$ for all samples.
 
 ![adaboost_reg_first_tree_weights](/images/adaboost/ab_example_reg_first_tree_weights.png)
-*The dataset with weights asigned to each sample.*
+*The dataset with weights assigned to each sample.*
 
 We now fit a Decision Tree with maximum depth of three to this dataset.
 
@@ -43,7 +43,7 @@ With the *influence* $\alpha$, we can now calculate the new weights
 
 $$w_{new} = w_{old}\cdot e^{\pm\alpha}.$$
 
-The sign used in the exponent depents on whether the specific sample was correctly predicted or not. For correctly predicted samples, we get
+The sign used in the exponent depends on whether the specific sample was correctly predicted or not. For correctly predicted samples, we get
 
 $$w_{new} = 0.1\cdot e^{-0.69} = 0.05,$$
 
@@ -69,7 +69,7 @@ Now, we fit the second model to this modified dataset. The resulting model is il
 ![adaboost_reg_first_tree](/images/adaboost/ab_example_reg_second_tree.png)
 *The second Decision Tree of the AdaBoost model.*
 
-Following the decision paths of this tree we see that three samples are wrongly predicted. The sample age $= 45$, likes height $= 0$, and likes goats $=0$ yields $233.33m$ is predicted, but the true value is $300m$. The sample age $= 42$, likes height $= 0$, and likes goats $= 0$, which is twice in the dataset also results in a prediction of $233.33m$, but the true value is $200m$. The remaining samples are correctly predicted. The Total Error is thus $\frac{3}{10}$. The influence $\alpha$ is thus
+Following the decision paths of this tree we see that three samples are wrongly predicted. The sample age $= 45$, likes height $= 0$, and likes goats $=0$ yields $233.33m$, but the true value is $300m$. The sample age $= 42$, likes height $= 0$, and likes goats $= 0$, which is twice in the dataset also results in a prediction of $233.33m$, but the true value is $200m$. The remaining samples are correctly predicted. The Total Error is thus $\frac{3}{10}$. The influence $\alpha$ is therefore
 
 $$\alpha = \frac{1}{2} \ln\Big(\frac{1 - TotalError}{TotalError}\Big)$$
 $$\alpha =  \frac{1}{2} \ln\Big(\frac{\frac{7}{10}}{\frac{3}{10}}\Big)$$
@@ -112,7 +112,7 @@ $$\alpha = \frac{1}{2} \ln\Big(\frac{1 - TotalError}{TotalError}\Big)$$
 $$\alpha =  \frac{1}{2} \ln\Big(\frac{\frac{9}{10}}{\frac{1}{10}}\Big)$$
 $$\alpha =  \frac{1}{2} \ln(9) = 1.099.$$
 
-Let's now use the model to make a prediction. Consider the sample
+Let's now use the model to make a prediction. Consider the following sample.
 
 |Feature     | Value|
 |:----------:|:----:|
@@ -120,19 +120,20 @@ Let's now use the model to make a prediction. Consider the sample
 |likes height| 0    |
 |likes goats | 1    |
 
-![adaboost_reg_prediction](/images/adaboost/ab_example_reg_prediction.png)
-*The final prediction for a specific sample.*
-
 To make the final prediction, we need to consider all the individual predictions of all the models. The weighted mean of these predictions is then the prediction of the constructed esemble AdaBoost model. As weights the values for the influence is used. Following the decision path of the first tree, results in a prediction of $300m$, the second tree predicts $233.33m$ and the third tree again predicts $300m$. The final prediction is than calculated as
 
 $$\hat{y} = \frac{0.69\cdot300 m+ 0.42\cdot233.33m + 1.099\cdot300m}{0.60 + 0.42 + 1.099} = 299.53m.$$
 
 The true value of this sample is $300m$.
+
+![adaboost_reg_prediction](/images/adaboost/ab_example_reg_prediction.png)
+*The final prediction for a specific sample.*
+
 ## Fit a Model in Python
 
-After developing a model by hand, we will now see how to fit a AdaBoost for a regression task in Python. We can use the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) method *AdaBoostRegressor*. **Note: The fitted model in sklearn differs from our developed model, due to some randomness in the algorithm.** Randomness occurss in the underlying  *DecisionTreeRegressor* algorithm and in the boosting used in the *AdaBoostRegressor*. 
+After developing a model by hand, we will now see how to fit a AdaBoost for a regression task in Python. We can use the [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) method *AdaBoostRegressor*. **Note: The fitted model in sklearn differs from our developed model, due to some randomness in the algorithm and due to differences in the implementation of the algorithm.** Randomness occurs in the underlying  *DecisionTreeRegressor* algorithm and in the boosting used in the *AdaBoostRegressor*. The main concepts, however, remain the same.
 
-We first create a dataframe for our data
+We first create a dataframe for our data.
 
 ```Python
 import pandas as pd
@@ -145,7 +146,7 @@ data = {'age': [23, 31, 35, 35, 42, 43, 45, 46, 46, 51],
 df = pd.DataFrame(data)
 ```
 
-Now, we can fit the model. Because this example is only for illustration purposes and the dataset is very small, we limit the number of underlying Decision Trees to $3$, by setting the hyperparameter *n_estimators=3*. Note, that in a real world project, this number would usually be much higher, the default value in [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) is $100$.  
+Now, we can fit the model. Because this example is only for illustration purposes and the dataset is very small, we limit the number of underlying Decision Trees to three, by setting the hyperparameter *n_estimators=3*. Note, that in a real world project, this number would usually be much higher, the default value in [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) is $100$.  
 
 ```Python
 from sklearn.ensemble import AdaBoostRegressor
@@ -164,7 +165,7 @@ print(f"predictions: {y_hat}")
 print(f"score: {reg.score(X, y)}")
 ```
 
-This leads to the predictions $[250. 700. 600. 300. 200. 700. 300. 700. 700. 700.]$ and a score of $0.97$. Additionally, we can also print the predictions of the individual models for the three stages using the method *staged_predict*.
+This leads to the predictions $[250, 700, 600, 300, 200, 700, 300, 700, 700, 700]$ and a score of $0.97$. Additionally, we can also print the predictions of the individual models for the three stages using the method *staged_predict*.
 
 ```Python
 staged_predictions = [p for p in reg.staged_predict(X)]
@@ -172,11 +173,11 @@ staged_predictions = [p for p in reg.staged_predict(X)]
 
 This yields to
 
-stage 1: $[250., 700., 700., 250., 200., 700., 300., 700., 700., 700.]$,
+stage 1: $[250, 700, 700, 250, 200, 700, 300, 700, 700, 700]$,
 
-stage 2: $[300., 700., 600., 300., 200., 700., 300., 700., 600., 700.]$, and
+stage 2: $[300, 700, 600, 300, 200, 700, 300, 700, 600, 700]$, and
 
-stage 3: $[250., 700., 600., 300., 200., 700., 300., 700., 700., 700.]$
+stage 3: $[250, 700, 600, 300, 200, 700, 300, 700, 700, 700]$
  
 which shows that all three models yield to different predictions for some samples. The influences are called *estimator_weights_* in sklearn and can also be printed.
 
@@ -184,7 +185,7 @@ which shows that all three models yield to different predictions for some sample
 clf.estimator_weights_
 ```
 
-For this example the weights are $[1.38629436, 1.14072377, 1.26274917]$. These weights are used for the final prediction, which is achieved by calculating the weighted mean of the individual predictions, with the weights being the influences of the underlying models. Let´s consider a concrete example and make predictions for one sample of the dataset.
+For this example the weights are $[1.38629436, 1.14072377, 1.26274917]$. These weights are used for the final prediction, which is achieved by calculating the weighted mean of the individual predictions, with the weights being the influences of the underlying models. Let's consider a concrete example and make predictions for one sample of the dataset.
 
 |Feature     | Value|
 |:----------:|:----:|
@@ -221,7 +222,7 @@ which coincides with the prediction, we printed above for this sample.
 
 ## Summary
 
-In this article we developed an AdaBoost model for a Regression task by hand following the steps described in the separate articel [AdaBoost - Explained]({{< ref "/posts/classical_ml/adaboost.md">}}). Additionally a model was developed using [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html). Although both models were derived for the same dataset, the final models differ due to some randomness in the algorithm. This post focused on the application of the algorithm to a simplified regression example. For a detailed example for a classification task, please refer to the article [AdaBoost for Classification - Example]({{< ref "/posts/classical_ml/adaboost_example_clf.md">}}). 
+In this article we developed an AdaBoost model for a Regression task by hand following the steps described in the separate article [AdaBoost - Explained]({{< ref "/posts/classical_ml/adaboost.md">}}). Additionally a model was developed using [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html). Although both models were derived for the same dataset, the final models differ due to some randomness in the algorithm and different implementations of the algorithm. This post focused on the application of the algorithm to a simplified regression example. For a detailed example for a classification task, please refer to the article [AdaBoost for Classification - Example]({{< ref "/posts/classical_ml/adaboost_example_clf.md">}}). 
 
 
 If this blog is useful for you, I'm thankful for your support!
