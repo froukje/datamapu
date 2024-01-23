@@ -47,7 +47,7 @@ As mentioned earlier the most common way of constructing AdaBoost is using [Deci
 
 ## AdaBoost in Python{#python}
 
-The [sklearn](https://scikit-learn.org/stable/) library offers a method to fit AdaBoost in Python for both [classification](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) and [regression](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html#sklearn.ensemble.AdaBoostRegressor) problems. We will consider a simplified example for a classification task, using the following data, which describes whether a person should go rock climbing or not depending on their age and whether they like heights and goats.
+The [sklearn](https://scikit-learn.org/stable/) library offers a method to fit AdaBoost in Python for both [classification](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) and [regression](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html#sklearn.ensemble.AdaBoostRegressor) problems. We will consider a simplified example for a classification task, using the following data, which describes whether a person should go rock climbing or not depending on their age and whether they like height and goats.
 
 ```Python
 import pandas as pd
