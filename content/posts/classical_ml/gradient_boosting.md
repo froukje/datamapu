@@ -34,14 +34,14 @@ More specifically the steps to perform Gradient Boosting are as follows.
 
 The model is then built as follows.
 
-1. Fit a model (weak learner) to the original dataset (input: X, y) with the chosen loss function.
-2. Make predictions and calculate the residuals (errors) between the preditions and the true observations.
-3. The improved predictions are $\hat{y} + res$
+1. Make an initial prediction. The way the initial prediction is detemined depends on whether 
+2. Make predictions and calculate the residuals (errors) between the preditions and the true observations. How these residuals are calculated depends on the tyype of problem we are considering and the type of loss function used.
+3. The improved predictions are $\hat{y} + \alpha \cdot res$, with $\alpha$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. The idea behind this hyperparamter is that more small changes in the predictions lead to better results than a few large changes.
 3. Fit a model to the residuals of the previous model. (input: X, res)
 
 Repeat 2 and 3 $d$ times.
 
-The final prediction is $\hat{y} + r_1 + r_2 + \cdots + r_d$, with $r_1, r_2, \dots, r_d$ the residuals from the $d$ weak learner.
+The final prediction is $\hat{y} + \alpha \cdot r_1 + r_2 + \cdots + \alpha \cdot r_d$, with $r_1, r_2, \dots, r_d$ the residuals from the $d$ weak learner.
 
 < IMAGE FOR GRADIENT BOOSTING (REGRESSION + CLASSIFICATION) > 
 
