@@ -34,7 +34,7 @@ More specifically the steps to perform Gradient Boosting are as follows.
 
 The model is then built as follows.
 
-1. Make an initial prediction. The way the initial prediction is detemined depends on whether 
+1. Make an initial prediction. The way the initial prediction is detemined depends on whether a regression or classification task is considered. In a regression task, usually the mean of the dataset is used, while in a classification task the log odds are used as the initial prediction. (most common case)
 2. Make predictions and calculate the residuals (errors) between the preditions and the true observations. How these residuals are calculated depends on the tyype of problem we are considering and the type of loss function used.
 3. The improved predictions are $\hat{y} + \alpha \cdot res$, with $\alpha$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. The idea behind this hyperparamter is that more small changes in the predictions lead to better results than a few large changes.
 3. Fit a model to the residuals of the previous model. (input: X, res)
