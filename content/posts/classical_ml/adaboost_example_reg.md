@@ -1,11 +1,11 @@
 +++
 title = 'Adaboost for Regression - Example'
 date = 2024-01-19T23:05:44-03:00
-draft = true
+draft = false
 tags = ["Data Science", "Machine Learning", "Regression", "Ensemble", "Boosting", "Tree Methods", "Regression", "Classification"]
 categories = ["Data Science", "Machine Learning", "Regression", "Ensemble", "Boosting", "Tree Methods", "Classification", "Regression"]
 keywords = ["Data Science", "Machine Learning", "Regression", "Ensemble", "Boosting", "Tree Methods", "Classification", "Regression"]
-images = ['/images/adaboost/']
+images = ['/images/adaboost/adaboost_reg.png']
 +++
 
 ## Introduction
@@ -33,11 +33,13 @@ We now fit a Decision Tree with maximum depth of three to this dataset.
 ![adaboost_reg_first_tree](/images/adaboost/ab_example_reg_first_tree.png)
 *The first Decision Tree of the AdaBoost model.*
 
-Now, we determine the total error, which is the number of wrongly predicted samples divided by the total number of samples. Following the decision paths of the tree, we can find that the samples age$=35$,  likes height$=0$, likes goats$=0$ and age$=42$, likes height$=0$, likes goats$=0$ lead to wrong predictions. The true target values are $300m$ and $200m$, respectivly, but the predicted value is $250m$ in both cases. The other eight samples are correctly predicted. The total error is thus $\frac{2}{10}$. The influence of this tree is therefore
+Now, we determine the total error, which we define as the number of wrongly predicted samples divided by the total number of samples. Following the decision paths of the tree, we can find that the samples age$=35$,  likes height$=0$, likes goats$=0$ and age$=42$, likes height$=0$, likes goats$=0$ lead to wrong predictions. The true target values are $300m$ and $200m$, respectivly, but the predicted value is $250m$ in both cases. The other eight samples are correctly predicted. The total error is thus $\frac{2}{10}$. The influence of this tree is therefore
 
 $$\alpha =  \frac{1}{2} \ln\Big(\frac{1 - TotalError}{TotalError}\Big)$$
 $$\alpha =  \frac{1}{2} \ln\Big(\frac{\frac{8}{10}}{\frac{2}{10}}\Big)$$
 $$\alpha =  \frac{1}{2} \ln(4) = 0.69.$$
+
+**Note, that different implementation of the AdaBoost algorithm for regression exist. Usually the prediction does not need to match exactly, but a margin is given, and the prediction is counted as an error if it falls out of this margin [1].** For the sake of simplicity, we will keep this definition analogue to a classification problem. The main idea of calculating the influence of each tree remains, but the way the error is exactly calculated may differ in different implementations.
 
 With the *influence* $\alpha$, we can now calculate the new weights
 
@@ -224,6 +226,9 @@ which coincides with the prediction, we printed above for this sample.
 
 In this article we developed an AdaBoost model for a Regression task by hand following the steps described in the separate article [AdaBoost - Explained]({{< ref "/posts/classical_ml/adaboost.md">}}). Additionally a model was developed using [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html). Although both models were derived for the same dataset, the final models differ due to some randomness in the algorithm and different implementations of the algorithm. This post focused on the application of the algorithm to a simplified regression example. For a detailed example for a classification task, please refer to the article [AdaBoost for Classification - Example]({{< ref "/posts/classical_ml/adaboost_example_clf.md">}}). 
 
+## References
+
+[1] Solomatine, D.P.; Shrestha, D.L., ["AdaBoost.RT: a Boosting Algorithm for Regression Problems"](https://www.researchgate.net/publication/4116773_AdaBoostRT_A_boosting_algorithm_for_regression_problems), 2004 IEEE International Joint Conference on Neural Networks, vol.2, no., pp.1163.1168 vol.2, 25-29 July 2004, DOI: 10.1109/IJCNN.2004.1380102 
 
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}

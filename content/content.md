@@ -33,6 +33,9 @@ This is what you can already find here:
 * [Decision Trees for Classification - Example]({{< ref "decision_tree_classification_example.md" >}} "decision_tree_classification_example.md") 
 * [Decision Trees for Regression - Example]({{< ref "decision_tree_regression_example.md" >}} "decision_tree_regression_example.md") 
 * [Random Forests - Explained]({{< ref "random_forest.md" >}} "random_forest.md") 
+* [AdaBoost - Explained]({{< ref "adaboost.md" >}} "adaboost.md") 
+* [AdaBoost for Classification - Example]({{< ref "adaboost_example_clf.md" >}} "adaboost_example_clf.md") 
+* [AdaBoost for Regression - Example]({{< ref "adaboost_example_reg.md" >}} "adaboost_example_reg.md") 
 
 ## Deep Learning
 
