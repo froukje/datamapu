@@ -65,6 +65,7 @@ The algorithm was first described by Friedman (1999).
 
 * Can deal with missing data and outlier
 * Can deal with umerical and categorical data
+* flexible, any loss function can be used
 
 **Cons**
 
