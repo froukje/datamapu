@@ -32,6 +32,10 @@ For the explanation of the algorithm, we will follow the notations used in [Wiki
 
 $$r_i = - \Big[\frac{\delta L(y_i, F(x_i))}{\delta (x_i)}\Big]$$
 
+	**Case 1: Regression.** For a regression task with MSE loss this term simplifies to ... . 
+	**Case 2: Classification.** For a binary classification task using binary logarithmic loss this expression simplifies to ...
+For a detailed derivation please refer to the articles [Gradient Boosting for Regression - Example](), and [Gradient Boosting for Classification - Example](), respectively.
+
 3. The improved predictions are $\hat{y} + \alpha \cdot res$, with $\alpha$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. The idea behind this hyperparamter is that more small changes in the predictions lead to better results than a few large changes.
 3. Fit a model to the residuals of the previous model. (input: X, res)
 
