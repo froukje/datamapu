@@ -20,7 +20,7 @@ Gradient Boosting is, as the same suggests, an ensemble model that is based on [
 
 The most popular underlying models in Gradient Boosting are [Decision Trees]({{ ref "/posts/classical_ml/decision_trees">}}), however using other models, is also possible. When a Decision Tree is used as a base model the algorithm is called *Gradient Boosted Trees*, and a shallow tree is used as a weak learner. Gradient Boosing is a [supervised]() Machine Learning algorithm, that means we aim to find a mapping that approximates the target data as good as possible. This is done by minimizing a [Loss Function](), that meassures the error between the true and the predicted values. Common choices for Loss functions in the context of Gradient Boosting are the [Mean Squared Error (MSE)]() for a regression task and the [logarithmic loss]() for a classification task. It can however be any differentiable function. 
 
-Let $(x, y) = {(x_1, y_1), \dots, (x_N, y_N)} be the training data, with $x$ being the input features and $y$ the target values and $F(x)=\hat{y}$ be the mapping we want to determine to approximate the target data. The algorithm is then describes as follows.
+For the explanation of the algorithm, we will follow the notations used in [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting). Let $(x, y) = {(x_1, y_1), \dots, (x_N, y_N)} be the training data, with $x$ being the input features and $y$ the target values and $F(x)=\hat{y}$ be the mapping we want to determine to approximate the target data. The algorithm is then describes as follows.
 
 1. **Make an initial constant prediction.** The initial prediction depends on the Loss function ($L$) we choose. Mathematically this initial prediction is defined as $$F_0(x) = \hat{y}_0(x) = argmin\lim_{\gamma}\sum_{i=10}^n L(y_i, \gamma}$$
 
@@ -28,7 +28,10 @@ Let $(x, y) = {(x_1, y_1), \dots, (x_N, y_N)} be the training data, with $x$ bei
 
 	**Case 2: Classification.** In the case we are considering a classification task and use the logarithmic loss as Loss Function, we have $L(y_i, \gamma) = -\frac{1}{N}\sum_{i=1}^N\sum_{i=1}^M x_{ij} \cdot log(p_{ij})$ for a dataset of $N$ samples and $M$ classes. Accordingly for a binary classification the binary logarithmic loss is $L(y_i, \gamma) = -\frac{1}{N}\sum_{i=1}^N y_i\cdot log(p(y_i)) + (1-y_i)\cdot log(1-p(y_i)), which reduces to $F_{0}(x) = -y + p(y_i)$, with $p(y_i)$ the probabilty of $y_i$. Please find a detailed derivation in the separate article [Gradient Boosting for Classification](). 
 
-2. Make predictions and calculate the residuals (errors) between the preditions and the true observations. How these residuals are calculated depends on the tyype of problem we are considering and the type of loss function used.
+2. Make predictions and calculate the (pseudo-)residuals of the preditions and the true observations. The residuals are defined as follows. 
+
+$$r_i = - \Big[\frac{\delta L(y_i, F(x_i))}{\delta (x_i)}\Big]_{F(x) = F_{m-1}(x)$$
+
 3. The improved predictions are $\hat{y} + \alpha \cdot res$, with $\alpha$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. The idea behind this hyperparamter is that more small changes in the predictions lead to better results than a few large changes.
 3. Fit a model to the residuals of the previous model. (input: X, res)
 
