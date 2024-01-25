@@ -1,5 +1,5 @@
 +++
-title = 'Gradient Boosting - Explained'
+title = 'Gradient Boost - Explained'
 date = 2024-01-12T09:21:46-03:00
 draft = true
 tags = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Boosting", "Tree Methods", "Regression", "Classification"]
