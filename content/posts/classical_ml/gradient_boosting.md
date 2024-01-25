@@ -27,9 +27,9 @@ We follow the description given on [Wikipedia](https://en.m.wikipedia.org/wiki/G
 
 $$F_0(x) = \hat{y}_0(x) = argmin\sum_{i=10}^n L(y_i, \gamma}$$
 
-	i. When we are considering a regression task and use the MSE as Loss function, we have $L(y_i, \gamma) = (y_i - \gamma)^2 $ this expression reduces to the  mean of the target values $F_{0}(x) = \bar{y}$. That means, the initial prediction is simply the mean of the target data. Please find a detailed derivation in the separate articel [Gradiend Boosting for Regression - Example]().
+	1a. When we are considering a regression task and use the MSE as Loss function, we have $L(y_i, \gamma) = (y_i - \gamma)^2 $ this expression reduces to the  mean of the target values $F_{0}(x) = \bar{y}$. That means, the initial prediction is simply the mean of the target data. Please find a detailed derivation in the separate articel [Gradiend Boosting for Regression - Example]().
 
-	ii. In the case we are considering a classification task and use the logarithmic loss as loss function, that is $L(y_i, \gamma) = $, this expression reduces to $F_{0}(x) = $. ... Please find a detailed derivation in the separate article [Gradient Boosting for Classification](). 
+	1b. In the case we are considering a classification task and use the logarithmic loss as loss function, that is $L(y_i, \gamma) = $, this expression reduces to $F_{0}(x) = $. ... Please find a detailed derivation in the separate article [Gradient Boosting for Classification](). 
 
 2. Make predictions and calculate the residuals (errors) between the preditions and the true observations. How these residuals are calculated depends on the tyype of problem we are considering and the type of loss function used.
 3. The improved predictions are $\hat{y} + \alpha \cdot res$, with $\alpha$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. The idea behind this hyperparamter is that more small changes in the predictions lead to better results than a few large changes.
