@@ -30,7 +30,7 @@ For the explanation of the algorithm, we will follow the notations used in [Wiki
 
 2. Make predictions and calculate the (pseudo-)residuals of the preditions and the true observations. The residuals are defined as follows. 
 
-$$r_{im} = - \Big[\frac{\delta L(y_i, F(x_i))}{\delta (x_i)}\Big]_{F(x) = F_{m-1}(x)$$
+$$r_i = - \Big[\frac{\delta L(y_i, F(x_i))}{\delta (x_i)}\Big]$$
 
 3. The improved predictions are $\hat{y} + \alpha \cdot res$, with $\alpha$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. The idea behind this hyperparamter is that more small changes in the predictions lead to better results than a few large changes.
 3. Fit a model to the residuals of the previous model. (input: X, res)
