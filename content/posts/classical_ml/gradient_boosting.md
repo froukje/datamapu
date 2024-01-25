@@ -22,7 +22,7 @@ The most popular underlying models in Gradient Boosting are [Decision Trees]({{ 
 
 Let $(x, y) = {(x_1, y_1), \dots, (x_N, y_N)} be the training data, with $x$ being the input features and $y$ the target values and $F(x)=\hat{y}$ be the mapping we want to determine to approximate the target data. The algorithm is then describes as follows.
 
-1. **Make an initial constant prediction.** The initial prediction depends on the Loss function ($L$) we choose. Mathematically this initial prediction is defined as $$F_0(x) = \hat{y}_0(x) = argmin\sum_{i=10}^n L(y_i, \gamma}$$
+1. **Make an initial constant prediction.** The initial prediction depends on the Loss function ($L$) we choose. Mathematically this initial prediction is defined as $$F_0(x) = \hat{y}_0(x) = argmin\lim_{\gamma}\sum_{i=10}^n L(y_i, \gamma}$$
 
 	**Case 1: Regression.** When we are considering a regression task and use the MSE as Loss Function, we have $L(y_i, \gamma) = (y_i - \gamma)^2 $ this expression reduces to the  mean of the target values $F_{0}(x) = \bar{y}$. That means, the initial prediction is simply the mean of the target data. Please find a detailed derivation in the separate articel [Gradient Boosting for Regression - Example]().
 
