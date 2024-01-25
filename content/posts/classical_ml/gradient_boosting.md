@@ -46,7 +46,7 @@ For a detailed derivation please refer to the articles [Gradient Boosting for Re
 
 
 Repeat 2 and 4 $d$ times.
-The final prediction is $\hat{y} + \alpha \cdot r_1 + r_2 + \cdots + \alpha \cdot r_d$, with $r_1, r_2, \dots, r_d$ the residuals from the $d$ weak learner.
+The final prediction is $\hat{y} + \alpha \cdot r_1 + r_2 + \cdots + \alpha \cdot r_d$, with $r_1, r_2, \dots, r_d$ the predicted residuals from the $d$ weak learner.
 
 < IMAGE FOR GRADIENT BOOSTING (REGRESSION + CLASSIFICATION) > 
 
