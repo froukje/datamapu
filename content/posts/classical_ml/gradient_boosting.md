@@ -20,7 +20,9 @@ Gradient Boosting is, as the same suggests, an ensemble model that is based on [
 
 The most popular underlying models in Gradient Boosting are [Decision Trees]({{ ref "/posts/classical_ml/decision_trees">}}), however using other models, is also possible. When a Decision Tree is used as a base model the algorithm is called *Gradient Boosted Trees*, and a shallow tree is used as a weak learner. Gradient Boosing is a [supervised]() Machine Learning algorithm, that means we aim to find a mapping that approximates the target data as good as possible. This is done by minimizing a [Loss funtion](), that meassures the error between the true and the predicted values. Common choices for Loss functions in the context of Gradient Boosting are the [Mean Squared Error (MSE)]() for a regression task and the [logarithmic loss]() for a classification task. It can however be any differentiable function. 
 
-The algorithm was first described by Friedman (1999) and is then built as follows. Let's call the mapping we want to determine to approximate the target data $F(x)$, with $x$ the input features.
+The algorithm was first described by Friedman (1999). 
+
+We follow the description given on [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting) and will explain the single steps. Let $(x, y) = {(x_1, y_1), \dots, (x_N, y_N)} be the training data, with $x$ being the input features and $y$ the target values and $F(x)$ be the mapping we want to determine to approximate the target data.
 
 1. Make an initial constant prediction. The initial prediction depends on the Loss function ($L$), we choose. Mathematically this initial prediction is defined as 
 
