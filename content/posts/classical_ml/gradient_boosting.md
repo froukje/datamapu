@@ -18,23 +18,15 @@ Gradient Boosting is, as the same suggests, an ensemble model that is based on [
 
 < IMAGE BOOSTING >
 
-The most popular underlying models in Gradient Boosting are [Decision Trees]({{ ref "/posts/classical_ml/decision_trees">}}), however using other models, is also possible. When a Decision Tree is used as a base model the algorithm is called *Gradient Boosted Trees*, and a shallow tree is used as a weak learner.  
+The most popular underlying models in Gradient Boosting are [Decision Trees]({{ ref "/posts/classical_ml/decision_trees">}}), however using other models, is also possible. When a Decision Tree is used as a base model the algorithm is called *Gradient Boosted Trees*, and a shallow tree is used as a weak learner. Gradiend Boosing is a [supervised]() Machine Learning algorithm, that means we aim to find a mapping that approximates the target data as good as possible. This is done by minimizing a Loss funtion, that meassures the error between the true and the predicted values. Common choices for Loss functions in the context of Gradient Boosting are the [Mean Squared Error (MSE)]() for a regression task and the [logarithmic loss]() for a classification task. It can however be any differentiable function. 
 
-< IMAGE EXAMPLE OF STUMPS >
+The algorithm was first described by Friedman (1999) and is then built as follows. Let's call the mapping we want to determine to approximate the target data $F(x)$, with $x$ the input features.
 
-More specifically the steps to perform Gradient Boosting are as follows.
+1. Make an initial constant prediction. The initial prediction depends on the Loss function ($L$), we choose. Mathematically this initial prediction is defined as 
 
-1. Choose a loss function
- * must be differentible
- * For regression: e.g. MSE
- * For classification: e.g. logarithmic loss
-	
-2. Choose a model (weak learner)
- * e.g. Decision Tree (stumps)
+$$argmin\sum_{i=10}^n L(y_i, \gamma}$$
 
-The model is then built as follows.
-
-1. Make an initial prediction. The way the initial prediction is detemined depends on whether a regression or classification task is considered. In a regression task, usually the mean of the dataset is used, while in a classification task the log odds are used as the initial prediction. (most common case)
+The way the initial prediction is detemined depends on whether a regression or classification task is considered. In a regression task, usually the mean of the dataset is used, while in a classification task the log odds are used as the initial prediction. (most common case)
 2. Make predictions and calculate the residuals (errors) between the preditions and the true observations. How these residuals are calculated depends on the tyype of problem we are considering and the type of loss function used.
 3. The improved predictions are $\hat{y} + \alpha \cdot res$, with $\alpha$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. The idea behind this hyperparamter is that more small changes in the predictions lead to better results than a few large changes.
 3. Fit a model to the residuals of the previous model. (input: X, res)
