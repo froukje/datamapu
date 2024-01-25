@@ -42,7 +42,7 @@ $$r_i = - \Big[\frac{\delta L(y_i, \hat{y}_i))}{\delta \hat{y}_i}\Big]$$
 For a detailed derivation please refer to the articles [Gradient Boosting for Regression - Example](), and [Gradient Boosting for Classification - Example](), respectively.
 
 3. **Fit a model (weak learner) to the residuals.** That is train a model with the residuals as target values.
-4. **Calculate improved predictions.** The improved predictions are $\hat{y} + \alpha \cdot F_{res}$, with $\alpha$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. The learning rate $\alpha$ is a parameter that is realted with the [Bias-Variance Tradeoff](). A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. 
+4. **Calculate improved predictions.** The improved predictions are $\hat{y} + \alpha \cdot F_{res}$, with $\alpha$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. The learning rate $\alpha$ is a parameter that is realted with the [Bias-Variance Tradeoff](). A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. The idea of the learning rate is that a lot of small steps into the right direction lead to better results than one big step into the right direction. (Friedman)
 
 
 Repeat 2 and 4 $d$ times.
