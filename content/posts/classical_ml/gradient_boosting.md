@@ -71,6 +71,8 @@ The algorithm was first described by Friedman (1999).
 
 ## Gradient Boosting in Python
 
+What are default values in sklearn? max_nr_leaves, n_estimators, learning_rate
+
 ## Summary
 
 fast & accurate
