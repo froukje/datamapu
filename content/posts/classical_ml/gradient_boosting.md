@@ -1,5 +1,5 @@
 +++
-title = 'Gradient Boost - Explained'
+title = 'Gradient Boost for Regression - Explained'
 date = 2024-01-12T09:21:46-03:00
 draft = true
 tags = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Boosting", "Tree Methods", "Regression", "Classification"]
@@ -10,7 +10,7 @@ images = ['/images/']
 
 ## Introduction
 
-*Gradient Boosting*, also called *Gradient Boosting Machine (GBM)* is a type of [supervised](supervised_unsupervised.md#supervised) Machine Learning algorithm that is based on [ensemble learning]({{< ref "/posts/ml_concepts/ensemble">}}). It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we will give a general introduction and explain the algorithm. There are some differences in the details depending on whether a regression or a classification problem is considered. Please find the details explained on a simplified example in the separate articles [Gradient Boosting for Regression - Explained]() and [Gradient Boosting for Classification - Explained]().
+*Gradient Boosting*, also called *Gradient Boosting Machine (GBM)* is a type of [supervised](supervised_unsupervised.md#supervised) Machine Learning algorithm that is based on [ensemble learning]({{< ref "/posts/ml_concepts/ensemble">}}). It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive the individual steps for the most common use case, which uses Decision Trees as underlying models and the Squared Error as loss function. Please find a detailed example, where this is applied to a specific dataset in the separate article [Gradient Boosting for Regression - Example](). Gradient Boost can also be applied for classification tasks. This is coveres in the articles [Gradient Boosting for Classification - Explained]() and [Gradient Boosting for Classification - Example]().
 
 ## The Algorithm
 
