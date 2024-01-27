@@ -75,9 +75,9 @@ $$r_{im} = (y_i - F_{m-1})$$
 
 That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, the (pseudo-)residuals $r_{im}$, reduce to the difference of the actual target and the predicted value, which is also known as the [residual](). This is also the reason, why the (pseudo-)residual has this name. If we choose a different Loss Function, the expession will change accordingly. 
 
-2B. **Fit a model (Decision Tree) to the residuals.** 
+2B. **Fit a model (weak learner) to the residuals.** 
 
-The next step is to train a model with the residuals as target values, that is use the data {(x_i, r_{im})}_{i=1}^m and fit a model to it.
+The next step is to train a model with the residuals as target values, that is use the data {(x_i, r_{im})}_{i=1}^m and fit a model to it. For the special case discussed we train a Decision Tree with a restricted number of leaves.
 
 2C. **Calculate improved predictions.** 
 
