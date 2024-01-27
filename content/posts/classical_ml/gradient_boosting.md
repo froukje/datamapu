@@ -23,7 +23,7 @@ The most popular underlying models in Gradient Boosting are [Decision Trees]({{ 
 < INTUITIVE EXPLANATION > add residuals
 
 
-In this section, we will go through the individual steps of the algorithm. For the explanation of the algorithm, we will follow the notations used in [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting). We will first have a general look at each step of the algorithm and then simplify and explain it for a regression problem with a vaariation of the [Mean Squared Error]() as the [Loss Function]() and [Decision Trees]() as underlying models. For a concrete example, with all the calculations included for a specific dataset, please check [Gradien Boosting for Regression - Example](). More specifically, we use as a Loss for each sample
+In this section, we will go through the individual steps of the algorithm. For the explanation of the algorithm, we will follow the notations used in [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting). We will first have a general look at each step of the algorithm and then simplify and explain it for a regression problem with a variation of the [Mean Squared Error]() as the [Loss Function]() and [Decision Trees]() as underlying models. For a concrete example, with all the calculations included for a specific dataset, please check [Gradien Boosting for Regression - Example](). More specifically, we use as a Loss for each sample
 $$L(y_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2.$$
 The factor $\frac{1}{2}$ is included to make the calculations easier.
 
@@ -61,11 +61,19 @@ For $m=1$ to $M$:
 
 2A. **Calculate the (pseudo-)residuals of the preditions and the true observations.** 
 
-The residuals $r_{im}$ are defined as  
+The (pseudo-)residuals $r_{im}$ are defined as  
 
 $$r_{im} = - \Big[\frac{\delta L(y_i, F(x_i))}{\delta F(x_i)}\Big]_{F(x)=F_{m-1}(x),$$ for $i=1, \dots, n.$
 
-Before simplifying it for the special use case, we are considering, let's have a closer look at this expression. The residuals $r_{im}$ have two indices, the $m$ corresponds to the current model - remember we are building $M$ models. The second index $i$ corresponds to a data sample. That is the residuals are calculated for each sample individually. The right-hand side seems a bit overwhelming, but looking at it more closely, we can see that it is actually only the derivative of the Loss Function with respect to the previous prediction. The  
+Before simplifying it for the special use case, we are considering, let's have a closer look at this expression. The residuals $r_{im}$ have two indices, the $m$ corresponds to the current model - remember we are building $M$ models. The second index $i$ corresponds to a data sample. That is the residuals are calculated for each sample individually. The right-hand side seems a bit overwhelming, but looking at it more closely, we can see that it is actually only the negative derivative of the Loss Function with respect to the previous prediction. In other words, it is the negative of the Gradient of the Loss Function at the previous iteration. The (pseudo-)residual $r_{im} thus gives the direction and the magnitude to minimize the Loss Function, which shows the relation to [Gradient Descent]().  
+
+Now, let's see what we get, when we use the loss specified above. 
+
+$$r_{im} = -\Big[\frac{\delta L(y_i,F(x_i))}{\delta F(x_i)}\Big]_{F(x)=F_{m-1}(x)}$$ 
+$$r_{im} = -\frac{\delta \frac{1}{2}(y_i - F_{m-1})^2}{\delta F_{F_{m-1}}$$
+$$r_{im} = (y_i - F_{m-1})$$
+
+That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, the (pseudo-)residuals $r_{im}$, reduce to the difference of the actual target and the predicted value, which is also known as the [residual](). This is also the reason, why the (pseudo-)residual has this name.  
 
 2B. **Fit a model (Decision Tree) to the residuals.** 
 
