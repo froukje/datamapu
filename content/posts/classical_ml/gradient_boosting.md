@@ -30,6 +30,7 @@ The factor $\frac{1}{2}$ is included to make the calculations easier.
 Let ${(x_i, y_i)}_i=1^n = {(x_1, y_1), \dots, (x_n, y_n)} be the training data, with $x = x_0, \dots, x_n$  the input features and $y = y_0, \dots, y_n$ the target values and $F(x)$ be the mapping we aim to determine to approximate the target data. The algorithm is then describes as follows.
 
 1. **Make an initial constant prediction.** 
+
 The initial prediction depends on the Loss function ($L$) we choose. Mathematically this initial prediction is defined as 
 
 $$F_0(x) = argmin\lim_{\gamma}\sum_{i=10}^n L(y_i, \gamma)$$, 
@@ -54,25 +55,32 @@ That means for the special loss function we considered, we get the mean of all t
 
 $$F_0(xx) = \bar{y}.$$
 
+The next steps are repeated $M$ times, with $M$ is the number of estimators or in this special case Decision Trees. We can write the next steps in the form of a loop.
 
-2. **Make predictions ($F(x)=\hat{y}_i$).** 
+For $m=1$ to $M$:
 
-3. **Calculate the (pseudo-)residuals of the preditions and the true observations.** The residuals are defined as follows. 
+2A. **Calculate the (pseudo-)residuals of the preditions and the true observations.** 
 
-$$r_i = - \Big[\frac{\delta L(y_i, F(x_i))}{\delta F(x_i)}\Big]$$
-$$r_i = - \Big[\frac{\delta L(y_i, \hat{y}_i))}{\delta \hat{y}_i}\Big]$$
+The residuals $r_{im}$ are defined as  
 
-	**Case 1: Regression.** For a regression task with MSE loss this term simplifies to ... . 
-	**Case 2: Classification.** For a binary classification task using binary logarithmic loss this expression simplifies to ...
-For a detailed derivation please refer to the articles [Gradient Boosting for Regression - Example](), and [Gradient Boosting for Classification - Example](), respectively.
+$$r_{im} = - \Big[\frac{\delta L(y_i, F(x_i))}{\delta F(x_i)}\Big]_{F(x)=F_{m-1}(x).$$
 
-3. **Fit a model (weak learner) to the residuals.** That is train a model with the residuals as target values.
-4. **Calculate improved predictions.** The improved predictions are $\hat{y} + \alpha \cdot F_{res}$, with $\alpha$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree. The learning rate $\alpha$ is a parameter that is related with the [Bias-Variance Tradeoff](). A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.
+Before simplifying it for the special use case, we are considering, let's have a closer look at this expression. The residuals $r_{im}$ have two indices, the $m$ corresponds to the current model - remember we are building $M$ models. The second index $i$ corresponds to a data sample. That is the residuals are calculated for each sample individually. On the right-hand side of this equation we have the derivative of the Loss Function with respect to the previous prediction. 
+
+2B. **Fit a model (Decision Tree) to the residuals.** 
+
+That is train a model with the residuals as target values.
+
+2C. **Calculate improved predictions.** 
+
+The improved predictions are $\hat{y} + \alpha \cdot F_{res}$, with $\alpha$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree. The learning rate $\alpha$ is a parameter that is related with the [Bias-Variance Tradeoff](). A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.
 
 Repeat 2 and 4 $d$ times.
 The final prediction is $\hat{y} + \alpha \cdot r_1 + r_2 + \cdots + \alpha \cdot r_d$, with $r_1, r_2, \dots, r_d$ the predicted residuals from the $d$ weak learner.
 
-< IMAGE FOR GRADIENT BOOSTING (REGRESSION + CLASSIFICATION) > 
+< IMAGE FOR GRADIENT BOOSTING MAIN ALGORITHM STEPS > 
+
+< IMAGE FOR GRADIENT BOOSITING FOR REG WITH MSE>
 
 The main difference between these two algorithms is that Gradient boosting has a fixed base estimator i.e., Decision Trees whereas in AdaBoost we can change the base estimator according to our needs.
 
