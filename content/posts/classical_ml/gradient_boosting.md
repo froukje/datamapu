@@ -77,9 +77,13 @@ That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, th
 
 2B. **Fit a model (weak learner) to the residuals.** 
 
-The next step is to train a model with the residuals as target values, that is use the data {(x_i, r_{im})}_{i=1}^m and fit a model to it. For the special case discussed we train a Decision Tree with a restricted number of leaves.
+The next step is to train a model with the residuals as target values, that is use the data {(x_i, r_{im})}_{i=1}^m and fit a model to it. For the special case discussed we train a Decision Tree with a restricted number of leaves or restricted number of depth.
 
-2C. **Calculate improved predictions.** 
+2C. **Find optimized solution for the Loss Function.**
+
+
+
+2D. **Update the predictions.** 
 
 The improved predictions are $\hat{y} + \alpha \cdot F_{res}$, with $\alpha$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree. The learning rate $\alpha$ is a parameter that is related with the [Bias-Variance Tradeoff](). A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.
 
