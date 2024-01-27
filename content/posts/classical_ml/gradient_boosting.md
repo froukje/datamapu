@@ -22,13 +22,38 @@ The most popular underlying models in Gradient Boosting are [Decision Trees]({{ 
 
 < INTUITIVE EXPLANATION > add residuals
 
-In this section, we will go through the individual steps of the algorithm. For the explanation of the algorithm, we will follow the notations used in [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting). We will first have a general look at the algorithm and then simplify and explain it for a regression problem with the Squared Error as the [Loss Function]() and [Decision Trees]() as underlying models. Let ${(x, y)}_i=1^n = {(x_1, y_1), \dots, (x_N, y_N)} be the training data, with $x$ being the input features and $y$ the target values and $F(x)$ be the mapping we want to determine to approximate the target data. The algorithm is then describes as follows.
 
-1. **Make an initial constant prediction.** The initial prediction depends on the Loss function ($L$) we choose. Mathematically this initial prediction is defined as $$F_0(x) = \hat{y}_0(x) = argmin\lim_{\gamma}\sum_{i=10}^n L(y_i, \gamma}$$
+In this section, we will go through the individual steps of the algorithm. For the explanation of the algorithm, we will follow the notations used in [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting). We will first have a general look at each step of the algorithm and then simplify and explain it for a regression problem with a vaariation of the [Mean Squared Error]() as the [Loss Function]() and [Decision Trees]() as underlying models. For a concrete example, with all the calculations included for a specific dataset, please check [Gradien Boosting for Regression - Example](). More specifically, we use as a Loss for each sample
+$$L(y_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2.$$
+The factor $\frac{1}{2}$ is included to make the calculations easier.
 
-	**Case 1: Regression.** When we are considering a regression task and use the MSE as Loss Function, we have $L(y_i, \gamma) = (y_i - \gamma)^2 $ this expression reduces to the  mean of the target values $F_{0}(x) = \bar{y}$. That means, the initial prediction is simply the mean of the target data. Please find a detailed derivation in the separate articel [Gradient Boosting for Regression - Example]().
+Let ${(x_i, y_i)}_i=1^n = {(x_1, y_1), \dots, (x_n, y_n)} be the training data, with $x = x_0, \dots, x_n$  the input features and $y = y_0, \dots, y_n$ the target values and $F(x)$ be the mapping we aim to determine to approximate the target data. The algorithm is then describes as follows.
 
-	**Case 2: Classification.** In the case we are considering a classification task and use the logarithmic loss as Loss Function, we have $L(y_i, \gamma) = -\frac{1}{N}\sum_{i=1}^N\sum_{i=1}^M x_{ij} \cdot log(p_{ij})$ for a dataset of $N$ samples and $M$ classes. Accordingly for a binary classification the binary logarithmic loss is $L(y_i, \gamma) = -\frac{1}{N}\sum_{i=1}^N y_i\cdot log(p(y_i)) + (1-y_i)\cdot log(1-p(y_i)), which reduces to $F_{0}(x) = -y + p(y_i)$, with $p(y_i)$ the probabilty of $y_i$. Please find a detailed derivation in the separate article [Gradient Boosting for Classification](). 
+1. **Make an initial constant prediction.** 
+The initial prediction depends on the Loss function ($L$) we choose. Mathematically this initial prediction is defined as 
+
+$$F_0(x) = argmin\lim_{\gamma}\sum_{i=10}^n L(y_i, \gamma)$$, 
+
+where $\gamma$ are the predicted values. For the special case of $L$ being the loss Function defined above, this can be written as 
+
+$$F_0(x) = argmin\lim_{\gamma}\frac{1}{2}\sum_{i=1}^n(y_i - \gamma^2).$$ 
+
+The expression $argmin\lim_{\gamma}$, means that we want to find the value for $\gamma$ that minimizes the equation. To find the minimum, we need to take the derivative with respect to $\gamma$ and set it to zero.
+
+$$\frac{\delta}{\delta \gamma} \sum_{i=1}^n L = \frac{\delta}{\delta \gamma} \sum_{i=1}^n\frac{1}{2}(y_i - \gamma)^2$$
+$$\frac{\delta}{\delta \gamma} \sum_{i=1}^n L = -2 \sum_{i=1}^n \frac{1}{2} (y_i - \gamma)$$
+$$\frac{\delta}{\delta \gamma} \sum_{i=1}^n L = - \sum_{i=1}^n y_i + n\gamma$$
+
+We set this equal to $0$ and get
+
+$$ - \sum_{i=1}^ny_i + n\gamma = 0$$
+$$n\gamma = \sum_{i=1}^n y_i$$
+$$\gamma = \frac{1}{n}\sum_{i=1}^ny_i = \bar{y}.$$ 
+
+That means for the special loss function we considered, we get the mean of all target values as the first prediction
+
+$$F_0(xx) = \bar{y}.$$
+
 
 2. **Make predictions ($F(x)=\hat{y}_i$).** 
 
