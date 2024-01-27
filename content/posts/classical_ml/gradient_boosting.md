@@ -65,7 +65,7 @@ The residuals $r_{im}$ are defined as
 
 $$r_{im} = - \Big[\frac{\delta L(y_i, F(x_i))}{\delta F(x_i)}\Big]_{F(x)=F_{m-1}(x),$$ for $i=1, \dots, n.$
 
-Before simplifying it for the special use case, we are considering, let's have a closer look at this expression. The residuals $r_{im}$ have two indices, the $m$ corresponds to the current model - remember we are building $M$ models. The second index $i$ corresponds to a data sample. That is the residuals are calculated for each sample individually. On the right-hand side of this equation we have the derivative of the Loss Function with respect to the prediction. The  
+Before simplifying it for the special use case, we are considering, let's have a closer look at this expression. The residuals $r_{im}$ have two indices, the $m$ corresponds to the current model - remember we are building $M$ models. The second index $i$ corresponds to a data sample. That is the residuals are calculated for each sample individually. The right-hand side seems a bit overwhelming, but looking at it more closely, we can see that it is actually only the derivative of the Loss Function with respect to the previous prediction. The  
 
 2B. **Fit a model (Decision Tree) to the residuals.** 
 
