@@ -77,7 +77,7 @@ That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, th
 
 2B. **Fit a model (Decision Tree) to the residuals.** 
 
-That is train a model with the residuals as target values.
+The next step is to train a model with the residuals as target values, that is use the data {(x_i, r_{im})}_{i=1}^m and fit a model to it.
 
 2C. **Calculate improved predictions.** 
 
