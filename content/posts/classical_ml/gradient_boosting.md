@@ -81,7 +81,21 @@ The next step is to train a model with the residuals as target values, that is u
 
 2C. **Find optimized solution for the Loss Function.**
 
+The general formulation of this step is described by solving the optimization problem
 
+$$\gamma_m = \argmin\lim{\gamma}\sum_{i=1}^nL(y_i, F_{m-1}(x_i) + \gamma h_m(x_i)),$$
+
+where $h_m(x_i)$ is the just fitted model (weak learner) at $x_i$. For the case of using Decision Trees as a weak learner, $h(x_i)$ id
+
+$$h(x_i) = \sum_{j=1}^{J_m} b_{jm} 1_{R_{jm}}(x),$$
+
+whith $J_m$ the number of leaves of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. These regions are disjoint and each region relates to one constant prediction. In other words, $R_{jm}$ simply describe the predictions in each leave. The notations are illustated in the below plot.#
+
+<IMAGE WITH NOTATION FOR A DECISION TREE> R_jm, etc,
+
+With this model the equation to optimize can be reformulated  to
+
+$$\gamma_m = \argmin\lim{\gamma}\sum_{i=1}^n .$$
 
 2D. **Update the predictions.** 
 
