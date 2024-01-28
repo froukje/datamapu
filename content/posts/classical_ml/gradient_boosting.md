@@ -95,7 +95,7 @@ whith $J_m$ the number of leaves of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are
 
 With this model the equation to optimize can be reformulated  to
 
-$$\gamma_m = \argmin\lim{\gamma}\sum_{i=1}^n .$$
+$$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \iselement{R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma).$$
 
 2D. **Update the predictions.** 
 
