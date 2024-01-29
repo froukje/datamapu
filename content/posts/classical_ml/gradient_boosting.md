@@ -91,15 +91,15 @@ where $h_m(x_i)$ is the just fitted model (weak learner) at $x_i$. For the case 
 
 $$h(x_i) = \sum_{j=1}^{J_m} b_{jm} 1_{R_{jm}}(x),$$
 
-with $J_m$ the number of leaves of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. These regions are disjoint and each region relates to one constant prediction. In other words, $R_{jm}$ simply describes the predictions in each terminal nodes. The notations are illustated in the below plot.#
+with $J_m$ the number of leaves or terminal nodes of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. These regions are disjoint and each region relates to one constant prediction. In other words, $R_{jm}$ simply describe the terminal nodes and $b_{jm}$ are the prediction in the terminal node $R_{jm}$. The notations are illustated in the below plot.#
 
 <IMAGE WITH NOTATION FOR A DECISION TREE> R_jm, etc,
 
 With this model the equation to optimize can be reformulated  to
 
-$$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \isin{R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma).(1)$$
+$$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \in{R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma).(1)$$
 
-Using the specified Loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to
+Note, that the sum only goes over the elements of the region, which simplifies the notation a bit. Using the specified Loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to
 
 $$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \isin{R_{jm}} \frac{1}{2}(y_i - (F_{m-1}(x_i) + \gamma))^2.$$
 
@@ -123,9 +123,9 @@ $$F_m(x) = F_{m-1}(x) + \gamma_m h_m(x)$$
 
 That is we use our previous model $F_{m-1}$ and add the new predictions from the model fitted to the residuals. For the special case of Decision Trees as weak learners, this can be reformulated to
 
-$$F_{m}(x) = F_{m-1}(x) + \nu \sum_{j=1}^{J_m} \gamma_{jm}1(x\inR_{jm}.$$
+$$F_{m}(x) = F_{m-1}(x) + \nu \sum_{j=1}^{J_m} \gamma_{jm}1(x\inR_{jm}).$$
 
-The sum means, that we sum all values $\gamma_m$ of the terminal node $R_jm.$
+The sum means, that we sum all values $\gamma_{jm}$ of the terminal node $R_{jm}.$
 
 with $\nu$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree. The learning rate $\alpha$ is a parameter that is related with the [Bias-Variance Tradeoff](). A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.
 
