@@ -99,7 +99,7 @@ $$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \isin{R_{jm}} L(y_i, F_{m-1}(x_i) + \g
 
 Using the specified Loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to
 
-$$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \isin{R_{jm}} \frac{1}{2}(y_i - F_{m-1}(x_i))^2.$$
+$$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \isin{R_{jm}} \frac{1}{2}(y_i - (F_{m-1}(x_i) + \gamma))^2.$$
 
 As above eplained, this means that we want to minimize the right-hand term. We can do that by calculating the dericvative and setting it to zero.
 
