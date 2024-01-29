@@ -95,13 +95,23 @@ with $J_m$ the number of leaves of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are 
 
 With this model the equation to optimize can be reformulated  to
 
-$$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \isin{R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma).$$
+$$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \isin{R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma).(1)$$
 
 Using the specified Loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to
 
 $$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \isin{R_{jm}} \frac{1}{2}(y_i - (F_{m-1}(x_i) + \gamma))^2.$$
 
-As above eplained, this means that we want to minimize the right-hand term. We can do that by calculating the dericvative and setting it to zero.
+As above eplained, this means that we want to minimize the right-hand term. We can do that by calculating the derivative with respect to $\gamma$ and setting it to zero.
+
+$$\frac{\delta}{\delta \gamma}\sum_{x_i\in R_{jm}} \frac{1}{2}(y_i - F_{m-1}(x_i) - \gamma)^2 = 0$$
+$$-\sum_{x_i \in R__{jm}} (y_i - F_{m-1}(x) - \gamma) = 0$$
+$$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$
+
+with $n_j$ the number of samples in the terminal node $R_{jm}$. This leads to
+
+$$\gamma = \frac{1}{n_j}\sum_{x_i\inR_{jm}r_{im},$$
+
+with $r_{im} = y_i - F_{m-1}(x_i)$ the residual. The solution that minimizes (1) is thus the mean over all target values of the tree, we constructed using the residuals as target values.
 
 2D. **Update the predictions.** 
 
