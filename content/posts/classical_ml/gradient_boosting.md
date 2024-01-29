@@ -22,6 +22,8 @@ The most popular underlying models in Gradient Boosting are [Decision Trees]({{ 
 
 < INTUITIVE EXPLANATION > add residuals
 
+< IMAGE FOR GRADIENT BOOSTING MAIN ALGORITHM STEPS > 
+
 
 In this section, we will go through the individual steps of the algorithm. For the explanation of the algorithm, we will follow the notations used in [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting). We will first have a general look at each step of the algorithm and then simplify and explain it for a regression problem with a variation of the [Mean Squared Error]() as the [Loss Function]() and [Decision Trees]() as underlying models. For a concrete example, with all the calculations included for a specific dataset, please check [Gradien Boosting for Regression - Example](). More specifically, we use as a Loss for each sample
 $$L(y_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2.$$
@@ -89,7 +91,7 @@ where $h_m(x_i)$ is the just fitted model (weak learner) at $x_i$. For the case 
 
 $$h(x_i) = \sum_{j=1}^{J_m} b_{jm} 1_{R_{jm}}(x),$$
 
-with $J_m$ the number of leaves of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. These regions are disjoint and each region relates to one constant prediction. In other words, $R_{jm}$ simply describe the predictions in each leave. The notations are illustated in the below plot.#
+with $J_m$ the number of leaves of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. These regions are disjoint and each region relates to one constant prediction. In other words, $R_{jm}$ simply describes the predictions in each terminal nodes. The notations are illustated in the below plot.#
 
 <IMAGE WITH NOTATION FOR A DECISION TREE> R_jm, etc,
 
@@ -111,16 +113,23 @@ with $n_j$ the number of samples in the terminal node $R_{jm}$. This leads to
 
 $$\gamma = \frac{1}{n_j}\sum_{x_i\inR_{jm}r_{im},$$
 
-with $r_{im} = y_i - F_{m-1}(x_i)$ the residual. The solution that minimizes (1) is thus the mean over all target values of the tree, we constructed using the residuals as target values.
+with $r_{im} = y_i - F_{m-1}(x_i)$ the residual. The solution that minimizes (1) is thus the mean over all target values of the tree, we constructed using the residuals as target values. That is $\gamma$ is nothing but the prediction we get from our tree fitted to the residuals.
 
 2D. **Update the predictions.** 
 
-The improved predictions are $\hat{y} + \alpha \cdot F_{res}$, with $\alpha$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree. The learning rate $\alpha$ is a parameter that is related with the [Bias-Variance Tradeoff](). A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.
+The last step in this loop is to update the model.
 
-Repeat 2 and 4 $d$ times.
-The final prediction is $\hat{y} + \alpha \cdot r_1 + r_2 + \cdots + \alpha \cdot r_d$, with $r_1, r_2, \dots, r_d$ the predicted residuals from the $d$ weak learner.
+$$F_m(x) = F_{m-1}(x) + \gamma_m h_m(x)$$ 
 
-< IMAGE FOR GRADIENT BOOSTING MAIN ALGORITHM STEPS > 
+That is we use our previous model $F_{m-1}$ and add the new predictions from the model fitted to the residuals. For the special case of Decision Trees as weak learners, this can be reformulated to
+
+$$F_{m}(x) = F_{m-1}(x) + \nu \sum_{j=1}^{J_m} \gamma_{jm}1(x\inR_{jm}.$$
+
+The sum means, that we sum all values $\gamma_m$ of the terminal node $R_jm.$
+
+with $\nu$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree. The learning rate $\alpha$ is a parameter that is related with the [Bias-Variance Tradeoff](). A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.
+
+
 
 < IMAGE FOR GRADIENT BOOSITING FOR REG WITH MSE>
 
