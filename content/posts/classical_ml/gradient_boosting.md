@@ -137,15 +137,15 @@ The individual steps of algorithm for the special case of using Decision Trees a
 < IMAGE FOR GRADIENT BOOSITING FOR REG WITH MSE>
 
 
-## Gradient Boosting vs. AdaBoost
+## Gradient Boosting vs. AdaBoost (for Regression)
 
-Another ensemble model based on boosting is [AdaBoost](). Although both models share the same idea of iteratively improving the model, there are some substantial differences. A comparison of both methods, is summarized in the following table.  
+Another ensemble model based on boosting is [AdaBoost](). Although both models share the same idea of iteratively improving the model, there is a substantial difference on how the shortcommings of the developed model are defined. A comparison of both methods, is summarized in the following table.  
 
 | Gradient Boosting | AdaBoost |
 |:------------------|:---------|
 | The model is iteratively improved using [Boosting]().| The model is iteratively improved using [Boosting]().|
 | The next model is improved, by reducing the [Loss Function]() of the current weak learner.| Data samples that give wrong predictions get more weight for the next weak learner. |
-| | |
+| The most common weak learners used are pruned Decision Trees. | The most common weak learners used are pruned Decision Trees. |
 
 ## Advantages & Disadvantages Gradient Boosted Trees
 
