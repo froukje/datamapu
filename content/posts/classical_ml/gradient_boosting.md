@@ -34,7 +34,7 @@ The factor $\frac{1}{2}$ is included to make the calculations easier. For a conc
 
 Let ${(x_i, y_i)}_i=1^n = {(x_1, y_1), \dots, (x_n, y_n)} be the training data, with $x = x_0, \dots, x_n$  the input features and $y = y_0, \dots, y_n$ the target values and $F(x)$ be the mapping we aim to determine to approximate the target data. Now, we start with the first step of the algorithm defined above.
 
-**Step 1. Initialize the model with a constant value ($F_0(x)$).** 
+**Step 1 - Initialize the model with a constant value ($F_0(x)$).** 
 
 The initial prediction depends on the Loss function ($L$) we choose. Mathematically this initial prediction is defined as 
 
@@ -62,7 +62,7 @@ $$F_0(xx) = \bar{y}.$$
 
 The next steps are repeated $M$ times, with $M$ is the number of weak learners or for the special case considered, Decision Trees. We can write the next steps in the form of a loop.
 
-**Step 2. For $m=1$ to $M$:**
+**Step 2 - For $m=1$ to $M$:**
 
 **2A. Compute the (pseudo-)residuals of the preditions and the true observations.** 
 
@@ -130,7 +130,7 @@ $$F_{m}(x) = F_{m-1}(x) + \alpha \sum_{j=1}^{J_m} \gamma_{jm}1(x\inR_{jm}).$$
 
 The sum means, that we sum all values $\gamma_{jm}$ of the terminal node $R_{jm}.$ The factor $\alpha$ is the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree and is also often refered to as scaling of the models. The learning rate $\alpha$ is a parameter that is related with the [Bias-Variance Tradeoff](). A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.
 
-3. **Output final model $F_M(x)$.**
+**Step 3 - Output final model $F_M(x)$.**
 
 The individual steps of algorithm for the special case of using Decision Trees and the above specified loss, is summarized below.
 
@@ -138,6 +138,13 @@ The individual steps of algorithm for the special case of using Decision Trees a
 
 
 ## Gradient Boosting vs. AdaBoost
+
+Another ensemble model based on boosting is [AdaBoost](). Although both models share the same idea of iteratively improving the model, there are some substantial differences. A comparison of both methods, is summarized in the following table.  
+
+| Gradient Boosting | AdaBoost |
+|:------------------|:---------|
+| The model is iteratively improved using [Boosting]().| The model is iteratively improved using [Boosting]().|
+| | |
 
 In Gradient Boosting,\shortcomings" are identied by
 gradients.
