@@ -89,13 +89,19 @@ where $h_m(x_i)$ is the just fitted model (weak learner) at $x_i$. For the case 
 
 $$h(x_i) = \sum_{j=1}^{J_m} b_{jm} 1_{R_{jm}}(x),$$
 
-whith $J_m$ the number of leaves of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. These regions are disjoint and each region relates to one constant prediction. In other words, $R_{jm}$ simply describe the predictions in each leave. The notations are illustated in the below plot.#
+with $J_m$ the number of leaves of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. These regions are disjoint and each region relates to one constant prediction. In other words, $R_{jm}$ simply describe the predictions in each leave. The notations are illustated in the below plot.#
 
 <IMAGE WITH NOTATION FOR A DECISION TREE> R_jm, etc,
 
 With this model the equation to optimize can be reformulated  to
 
-$$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \iselement{R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma).$$
+$$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \isin{R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma).$$
+
+Using the specified Loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to
+
+$$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \isin{R_{jm}} \frac{1}{2}(y_i - F_{m-1}(x_i))^2.$$
+
+As above eplained, this means that we want to minimize the right-hand term. We can do that by calculating the dericvative and setting it to zero.
 
 2D. **Update the predictions.** 
 
