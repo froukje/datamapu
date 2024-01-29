@@ -139,7 +139,10 @@ The individual steps of algorithm for the special case of using Decision Trees a
 
 ## Gradient Boosting vs. AdaBoost
 
-
+In Gradient Boosting,\shortcomings" are identied by
+gradients.
+I Recall that, in Adaboost,\shortcomings" are identied by
+high-weight data points.
 
 ## Advantages & Disadvantages Gradient Boosted Trees
 
