@@ -144,7 +144,7 @@ Another ensemble model based on boosting is [AdaBoost](). Although both models s
 | Gradient Boosting | AdaBoost |
 |:------------------|:---------|
 | The model is iteratively improved using [Boosting]().| The model is iteratively improved using [Boosting]().|
-| | |
+| The next model is improved, by reducing the (pseudo-)residuals. | Data samples that give wrong predictions get more weight for the next iteration. |
 
 In Gradient Boosting,\shortcomings" are identied by
 gradients.
