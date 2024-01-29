@@ -22,7 +22,8 @@ The most popular underlying models in Gradient Boosting are [Decision Trees]({{ 
 
 < INTUITIVE EXPLANATION > add residuals
 
-In this section, we will go through the individual steps of the algorithm in detail. For the explanation of the algorithm, we will follow the notations used in [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting). The next plot shows the very general formulation of Gradient Boosting following [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting)
+In this section, we will go through the individual steps of the algorithm in detail. The algorithm was first described by Friedman (1999)[1]. 
+For the explanation, we will follow the notations used in [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting). The next plot shows the very general formulation of Gradient Boosting following [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting)
 
 < IMAGE FOR GRADIENT BOOSTING MAIN ALGORITHM STEPS > 
 
@@ -131,17 +132,14 @@ The sum means, that we sum all values $\gamma_{jm}$ of the terminal node $R_{jm}
 
 3. **Output final model $F_M(x)$.**
 
+The individual steps of algorithm for the special case of using Decision Trees and the above specified loss, is summarized below.
+
 < IMAGE FOR GRADIENT BOOSITING FOR REG WITH MSE>
-
-The main difference between these two algorithms is that Gradient boosting has a fixed base estimator i.e., Decision Trees whereas in AdaBoost we can change the base estimator according to our needs.
-
-
-gradient boosting hekps to reduce the bias
-
-The algorithm was first described by Friedman (1999). 
 
 
 ## Gradient Boosting vs. AdaBoost
+
+
 
 ## Advantages & Disadvantages Gradient Boosted Trees
 
