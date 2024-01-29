@@ -95,7 +95,7 @@ with $J_m$ the number of leaves or terminal nodes of the tree, and $R_{1m}, \dot
 
 <IMAGE WITH NOTATION FOR A DECISION TREE> R_jm, etc,
 
-With this model the equation to optimize can be reformulated  to
+For a Decision Tree as underlying model, that is for boosted trees this step is a bit modifed so that it chooses a separate optimal value $\gamma_{jm}$ for each of the tree's regions, instead of a single $\gamma _{m}$ for the whole tree. Friedman calls this the modified algorithm "TreeBoost". The coefficients $b_{jm}$ from the tree-fitting procedure can be then simply discarded and the model update rule becomes
 
 $$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \in{R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma).(1)$$
 
