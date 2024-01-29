@@ -87,7 +87,7 @@ The general formulation of this step is described by solving the optimization pr
 
 $$\gamma_m = \argmin\lim{\gamma}\sum_{i=1}^nL(y_i, F_{m-1}(x_i) + \gamma h_m(x_i)),$$
 
-where $h_m(x_i)$ is the just fitted model (weak learner) at $x_i$. For the case of using Decision Trees as a weak learner, $h(x_i)$ id
+where $h_m(x_i)$ is the just fitted model (weak learner) at $x_i$. For the case of using Decision Trees as a weak learner, $h(x_i)$ is
 
 $$h(x_i) = \sum_{j=1}^{J_m} b_{jm} 1_{R_{jm}}(x),$$
 
@@ -129,7 +129,7 @@ The sum means, that we sum all values $\gamma_{jm}$ of the terminal node $R_{jm}
 
 with $\nu$ being the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree. The learning rate $\alpha$ is a parameter that is related with the [Bias-Variance Tradeoff](). A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.
 
-
+3. **Output final model $F_M(x)$.**
 
 < IMAGE FOR GRADIENT BOOSITING FOR REG WITH MSE>
 
