@@ -103,7 +103,7 @@ $$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in{R_{jm}} L(y_i, F_{m-1
 
 Note, that the sum only goes over the elements of the region, which simplifies the notation a bit. Using the specified Loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to
 
-$$\gamma_m = \argmin\lim{\gamma}\sum_{x_i \isin{R_{jm}} \frac{1}{2}(y_i - (F_{m-1}(x_i) + \gamma))^2.$$
+$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in{R_{jm}} \frac{1}{2}(y_i - (F_{m-1}(x_i) + \gamma))^2.$$
 
 As explained above, this means that we want to minimize the right-hand term. For that we calculate the derivative with respect to $\gamma$ and set it to zero.
 
