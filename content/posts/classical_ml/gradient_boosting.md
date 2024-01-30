@@ -98,7 +98,7 @@ with $J_m$ the number of leaves or terminal nodes of the tree, and $R_{1m}, \dot
 < IMAGE WITH NOTATION FOR A DECISION TREE > R_jm, etc,
 
 For a Decision Tree as underlying model, this step is a bit modifed. A separate optimal value $\gamma_{jm}$ for each of the tree's regions is chosen, instead of a single $\gamma_{m}$ for the whole tree [1, 2]. The coefficients $b_{jm}$ can be then discarded and the equation (2a) is reformulated as
-
+$$\gamma_m = \underset{\gamma}{\text{argmin}}$$
 $$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in{R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma). (2b)$$
 
 Note, that the sum only goes over the elements of the region, which simplifies the notation a bit. Using the specified Loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to
@@ -113,7 +113,7 @@ $$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$
 
 with $n_j$ the number of samples in the terminal node $R_{jm}$. This leads to
 
-$$\gamma = \frac{1}{n_j}\sum_{x_i\inR_{jm}r_{im}, (2c)$$
+$$\gamma = \frac{1}{n_j}\sum_{x_i\in R_{jm}r_{im}, (2c)$$
 
 with $r_{im} = y_i - F_{m-1}(x_i)$ the residual. The solution that minimizes (2b) is thus the mean over all target values of the tree, we constructed using the residuals as target values. That is $\gamma$ is nothing but the prediction we get from our tree fitted to the residuals.
 
