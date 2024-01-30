@@ -93,9 +93,9 @@ where $h_m(x_i)$ is the just fitted model (weak learner) at $x_i$. For the case 
 
 $$h(x_i) = \sum_{j=1}^{J_m} b_{jm} 1_{R_{jm}}(x),$$
 
-with $J_m$ the number of leaves or terminal nodes of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. These regions refer to the terminal nodes of the Decision Tree. Because we are fitting a weak learner, that is a prined tree, the terminal nodes will consist of several predictions. Each region relates to one constant prediction, which is the mean over all values in the according node and is denoted as $b_{jm}$ in the above equation. The notations may seem a bit complicated, but once illustated, they should become more clear. An overview is givem in the below plot.
+with $J_m$ the number of leaves or terminal nodes of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. These regions refer to the terminal nodes of the Decision Tree. Because we are fitting a weak learner, that is a prined tree, the terminal nodes will consist of several predictions. Each region relates to one constant prediction, which is the mean over all values in the according node and is denoted as $b_{jm}$ in the above equation. The notations may seem a bit complicated, but once illustated, they should become more clear. An overview is given in the below plot.
 
-<IMAGE WITH NOTATION FOR A DECISION TREE> R_jm, etc,
+< IMAGE WITH NOTATION FOR A DECISION TREE > R_jm, etc,
 
 For a Decision Tree as underlying model, this step is a bit modifed. A separate optimal value $\gamma_{jm}$ for each of the tree's regions is chosen, instead of a single $\gamma_{m}$ for the whole tree [1, 2]. The coefficients $b_{jm}$ can be then discarded and the equation (2a) is reformulated as
 
