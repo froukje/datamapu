@@ -41,9 +41,9 @@ $$F_0(x) = \underset{\gamma}{\text{argmin}}\sum_{i=1}^n L(y_i, \gamma), $$
 
 where $\gamma$ are the predicted values. For the special case that $L$ is the loss Function defined above, this can be written as 
 
-$$F_0(x) = argmin\limits_{\gamma}\frac{1}{2}\sum_{i=1}^n(y_i - \gamma)^2.$$ 
+$$F_0(x) = \underset{\gamma}\text{argmin}}\frac{1}{2}\sum_{i=1}^n(y_i - \gamma)^2.$$ 
 
-The expression $argmin\lim_{\gamma}$, means that we want to find the value for $\gamma$ that minimizes the equation. To find the minimum, we need to take the derivative with respect to $\gamma$ and set it to zero.
+The expression $\underset{\gamma}\text{argmin}$, means that we want to find the value for $\gamma$ that minimizes the equation. To find the minimum, we need to take the derivative with respect to $\gamma$ and set it to zero.
 
 $$\frac{\delta}{\delta \gamma} \sum_{i=1}^n L = \frac{\delta}{\delta \gamma} \sum_{i=1}^n\frac{1}{2}(y_i - \gamma)^2$$
 $$\frac{\delta}{\delta \gamma} \sum_{i=1}^n L = -2 \sum_{i=1}^n \frac{1}{2} (y_i - \gamma)$$
