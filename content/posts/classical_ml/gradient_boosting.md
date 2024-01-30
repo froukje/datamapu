@@ -72,7 +72,7 @@ $$r_{im} = - \Big[\frac{\delta L(y_i, F(x_i))}{\delta F(x_i)}\Big]_{F(x)=F_{m-1}
 Before simplifying it for the special use case, we are considering, let's have a closer look at this expression. The residuals $r_{im}$ have two indices, the $m$ corresponds to the current model - remember we are building $M$ models. The second index $i$ corresponds to a data sample. That is the residuals are calculated for each sample individually. The right-hand side seems a bit overwhelming, but looking at it more closely, we can see that it is actually only the negative derivative of the Loss Function with respect to the previous prediction. In other words, it is the negative of the Gradient of the Loss Function at the previous iteration. The (pseudo-)residual $r_{im} thus gives the direction and the magnitude to minimize the Loss Function, which shows the relation to [Gradient Descent]().  
 
 Now, let's see what we get, when we use the loss specified above. 
-
+$$r_{im} = -\Big[ \Big] $$
 $$r_{im} = -\Big[\frac{\delta L(y_i,F(x_i))}{\delta F(x_i)}\Big]_{F(x)=F_{m-1}(x)}$$ 
 $$r_{im} = -\frac{\delta \frac{1}{2}(y_i - F_{m-1})^2}{\delta F_{F_{m-1}}$$
 $$r_{im} = (y_i - F_{m-1}) (1b)$$
