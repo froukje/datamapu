@@ -37,7 +37,7 @@ Let ${(x_i, y_i)}_{i=1}^n = {(x_1, y_1), \dots, (x_n, y_n)}$ be the training dat
 **Step 1 - Initialize the model with a constant value ($F_0(x)$).** 
 
 The initial prediction depends on the Loss function ($L$) we choose. Mathematically this initial prediction is defined as 
-$$F_0(x) = \underset{\gamma}{\operatorname{argmin}}\sum_{i=1}^n L(y_i, \gamma) $$
+$$F_0(x) = \underset{\gamma}{argmin}\sum_{i=1}^n L(y_i, \gamma) $$
 $$F_0(x) = \argmin\limits_{\gamma}\sum_{i=1}^n L(y_i, \gamma)$$, 
 
 where $\gamma$ are the predicted values. For the special case that $L$ is the loss Function defined above, this can be written as 
