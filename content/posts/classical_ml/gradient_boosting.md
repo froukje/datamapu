@@ -87,7 +87,7 @@ The next step is to train a model with the residuals as target values, that is u
 
 The general formulation of this step is described by solving the optimization problem
 
-$$\gamma_m = \argmin\lim{\gamma}\sum_{i=1}^nL(y_i, F_{m-1}(x_i) + \gamma h_m(x_i)), (2a)$$
+$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{i=1}^nL(y_i, F_{m-1}(x_i) + \gamma h_m(x_i)), (2a)$$
 
 where $h_m(x_i)$ is the just fitted model (weak learner) at $x_i$. For the case of using Decision Trees as a weak learner, $h(x_i)$ is
 
