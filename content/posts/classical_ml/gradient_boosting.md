@@ -32,7 +32,7 @@ We will now have a look at each single step. First, we will explain the general 
 $$L(y_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2.$$
 The factor $\frac{1}{2}$ is included to make the calculations easier. For a concrete example, with all the calculations included for a specific dataset, please check [Gradient Boosting for Regression - Example](). 
 
-Let ${(x_i, y_i)}_{i=1}^n = {(x_1, y_1), \dots, (x_n, y_n)}$ be the training data, with $x = x_0, \dots, x_n$  the input features and $y = y_0, \dots, y_n$ the target values and $F(x)$ be the mapping we aim to determine to approximate the target data. Now, we start with the first step of the algorithm defined above.
+Let ${(x_i, y_i)}_{i=1}^n = {(x_1, y_1), \dots, (x_n, y_n)}$ be the training data, with $x = x_0, \dots, x_n$  the input features and $y = y_0, \dots, y_n$ the target values and $F(x)$ be the mapping we aim to determine to approximate the target data. Let's start with the first step of the algorithm defined above.
 
 **Step 1 - Initialize the model with a constant value ($F_0(x)$).** 
 
