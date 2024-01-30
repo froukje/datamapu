@@ -55,7 +55,7 @@ $$ - \sum_{i=1}^ny_i + n\gamma = 0$$
 $$n\gamma = \sum_{i=1}^n y_i$$
 $$\gamma = \frac{1}{n}\sum_{i=1}^ny_i = \bar{y}.$$ 
 
-That means for the special loss function we considered, we get the mean of all target values as the first prediction
+That means for the special Loss Function we considered, we get the mean of all target values as the first prediction
 
 $$F_0(xx) = \bar{y}.$$
 
