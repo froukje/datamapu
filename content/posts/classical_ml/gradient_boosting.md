@@ -74,7 +74,7 @@ Before simplifying it for the special use case, we are considering, let's have a
 Now, let's see what we get, when we use the loss specified above. 
 
 $$r_{im} = -\Big[\frac{\delta L(y_i,F(x_i))}{\delta F(x_i)}\Big]_{F(x)=F_{m-1}(x)}$$ 
-$$r_{im} = -\frac{\delta \frac{1}{2}(y_i - F_{m-1})^2}{\delta F_{F_{m-1}}$$
+$$r_{im} = -\frac{\delta \frac{1}{2}(y_i - F_{m-1})^2}{\delta F_{m-1}}$$
 $$r_{im} = (y_i - F_{m-1}) (1b)$$
 
 That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, the (pseudo-)residuals $r_{im}$, reduce to the difference of the actual target and the predicted value, which is also known as the [residual](). This is also the reason, why the (pseudo-)residual has this name. If we choose a different Loss Function, the expession will change accordingly. 
