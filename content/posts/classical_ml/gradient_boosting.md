@@ -57,7 +57,7 @@ $$\gamma = \frac{1}{n}\sum_{i=1}^ny_i = \bar{y}.$$
 
 That means for the special Loss Function we considered, we get the mean of all target values as the first prediction
 
-$$F_0(xx) = \bar{y}.$$
+$$F_0(x) = \bar{y}.$$
 
 The next steps are repeated $M$ times, with $M$ is the number of weak learners or for the special case considered, Decision Trees. We can write the next steps in the form of a loop.
 
