@@ -113,7 +113,9 @@ $$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$
 
 with $n_j$ the number of samples in the terminal node $R_{jm}$. This leads to
 
-$$\gamma = \frac{1}{n_j}\sum_{x_i\in R_{jm}r_{im}, (2c)$$
+$$\gamma = \frac{1}{n_j}\sum_{x_i\in R_{jm}}in}{arg\,min}\)
+$$F_0(x) = \argmin\limits_{\gamma}\sum_{i=1}^n L(y_i, \gamma)$$in}{arg\,min}\)
+$$F_0(x) = \argmin\limits_{\gamma}\sum_{i=1}^n L(y_i, \gamma)$$r_{im}, (2c)$$
 
 with $r_{im} = y_i - F_{m-1}(x_i)$ the residual. The solution that minimizes (2b) is thus the mean over all target values of the tree, we constructed using the residuals as target values. That is $\gamma$ is nothing but the prediction we get from our tree fitted to the residuals.
 
