@@ -67,8 +67,7 @@ The next steps are repeated $M$ times, with $M$ is the number of weak learners o
 
 The (pseudo-)residuals $r_{im}$ are defined as  
 
-$$r_{im} = -\Big[\frac{\delta L(y_i, F(x_i)}{\delta F(x_i))} \Big]_{F(x)} $$
-$$r_{im} = - \Big[\frac{\delta L(y_i, F(x_i))}{\delta F(x_i)}\Big]_{F(x)=F_{m-1}(x)},$$ for $i=1, \dots, n. (1a)$
+$$r_{im} = - \Big[\frac{\delta L(y_i, F(x_i))}{\delta F(x_i)}\Big]\limits_{F(x)=F_{m-1}(x)},$$ for $i=1, \dots, n. (1a)$
 
 Before simplifying it for the special use case, we are considering, let's have a closer look at this expression. The residuals $r_{im}$ have two indices, the $m$ corresponds to the current model - remember we are building $M$ models. The second index $i$ corresponds to a data sample. That is the residuals are calculated for each sample individually. The right-hand side seems a bit overwhelming, but looking at it more closely, we can see that it is actually only the negative derivative of the Loss Function with respect to the previous prediction. In other words, it is the negative of the Gradient of the Loss Function at the previous iteration. The (pseudo-)residual $r_{im} thus gives the direction and the magnitude to minimize the Loss Function, which shows the relation to [Gradient Descent]().  
 
