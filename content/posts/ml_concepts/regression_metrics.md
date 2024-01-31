@@ -18,11 +18,11 @@ images = ['/images/20231001_regression_metrics/regression_metrics.jpg.jpg']
 ![regression example](/images/20231001_regression_metrics/regression_example.jpg)
 *Illustration of a simple linear regression between the body mass and the maximal running speed of an animal.*
 
-### Residuals
+### Residuals{#residual}
 
 In regression problems, the predicted results are rarely exactly the same as the true values, but lie either a bit above or below them. The difference between true and predicted values are a measure of goodness for the prediction and are defined as residuals. Metrics for regression problems are usually based on residuals. 
 ![residuals](/images/20231001_regression_metrics/residuals.jpg)
-### Metrics
+### Metrics{#metrics}
 
 With the just defined concept of residuals, we can define different metrics that are useful for different error measurements.
 

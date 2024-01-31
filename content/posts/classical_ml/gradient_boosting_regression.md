@@ -10,25 +10,25 @@ images = ['/images/']
 
 ## Introduction
 
-*Gradient Boosting*, also called *Gradient Boosting Machine (GBM)* is a type of [supervised](supervised_unsupervised.md#supervised) Machine Learning algorithm that is based on [ensemble learning]({{< ref "/posts/ml_concepts/ensemble">}}). It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the [Mean Squared Error]() as loss function. Please find a detailed example, where this is applied to a specific dataset in the separate article [Gradient Boosting for Regression - Example](). Gradient Boosting can also be applied for classification tasks. This is covered in the articles [Gradient Boosting for Classification - Explained]() and [Gradient Boosting for Classification - Example]().
+*Gradient Boosting*, also called *Gradient Boosting Machine (GBM)* is a type of [supervised]({{<ref "/posts/ml_concepts/supervised_unsupervised.md#supervised">) Machine Learning algorithm that is based on [ensemble learning]({{< ref "/posts/ml_concepts/ensemble">}}). It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the [Mean Squared Error]({{< ref "/posts/ml_concepts/regression_metrics#metrics>}}) as loss function. Please find a detailed example, where this is applied to a specific dataset in the separate article [Gradient Boosting for Regression - Example](). Gradient Boosting can also be applied for classification tasks. This is covered in the articles [Gradient Boosting for Classification - Explained]() and [Gradient Boosting for Classification - Example]().
 
 ## The Algorithm
 
 Gradient Boosting is, as the same suggests, an ensemble model that is based on [boosting]({{< ref "/posts/ml_concepts/ensemble#boosting">}}). In boosting, an initial model is fit to the data. Then a second model is built on the results of the first one, trying to improve the inaccurate results of the first one, and so on until a series of additive models is built, which together are the ensemble model. The individual models are so-called weak learners, which means that they are simple models with low predictive skill, that is only a bit better than random chance. The idea is to combine a set of weak learners to achieve one strong learner, i.e. a model with high predictive skill. 
 
-< IMAGE BOOSTING >
+![Gradient Bosting illustrated](/images/gradient_boosting/gb_illustrated.png)
+*Gradient Boosting illustrated.*
 
-The most popular underlying models in Gradient Boosting are [Decision Trees]({{ ref "/posts/classical_ml/decision_trees">}}), however using other models, is also possible. When a Decision Tree is used as a base model the algorithm is called *Gradient Boosted Trees*, and a shallow tree is used as a weak learner. Gradient Boosting is a [supervised]() Machine Learning algorithm, that means we aim to find a mapping that approximates the target data as good as possible. This is done by minimizing a [Loss Function](), that meassures the error between the true and the predicted values. Common choices for Loss functions in the context of Gradient Boosting are a variation of the [Mean Squared Error]() for a regression task and the [logarithmic loss]() for a classification task. It can however be any differentiable function. 
-
-< INTUITIVE EXPLANATION > add residuals
+The most popular underlying models in Gradient Boosting are [Decision Trees]({{ ref "/posts/classical_ml/decision_trees">}}), however using other models, is also possible. When a Decision Tree is used as a base model the algorithm is called *Gradient Boosted Trees*, and a shallow tree is used as a weak learner. Gradient Boosting is a [supervised]({{< ref "/posts/ml_concepts/supervised_unsupervised.md#supervised">) Machine Learning algorithm, that means we aim to find a mapping that approximates the target data as good as possible. This is done by minimizing a [Loss Function](), that meassures the error between the true and the predicted values. Common choices for Loss functions in the context of Gradient Boosting are a variation of the [Mean Squared Error]() for a regression task and the [logarithmic loss]() for a classification task. It can however be any differentiable function. 
 
 
 In this section, we will go through the individual steps of the algorithm in detail. The algorithm was first described by Friedman (1999)[1]. 
 For the explanation, we will follow the notations used in [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting). The next plot shows the very general formulation of Gradient Boosting following [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting)
 
-< IMAGE FOR GRADIENT BOOSTING MAIN ALGORITHM STEPS > 
+!["gradient boosting algorithm"](images/gradient_boosting_algorithm.png)
+*Gradient Boosting Algorithm. Adapted from [Wikipedia](https://en.wikipedia.org/wiki/Gradient_boosting)*
 
-We will now have a look at each single step. First, we will explain the general formulation and then modify and simplify it for a regression problem with a variation of the [Mean Squared Error]() as the [Loss Function]() and [Decision Trees]() as underlying models. More specifically, we use as a Loss for each sample
+We will now have a look at each single step. First, we will explain the general formulation and then modify and simplify it for a regression problem with a variation of the [Mean Squared Error]() as the [Loss Function]() and [Decision Trees]({{< ref "/posts/classical_ml/decision_trees.md">}}) as underlying models. More specifically, we use as a Loss for each sample
 $$L(y_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2.$$
 The factor $\frac{1}{2}$ is included to make the calculations easier. For a concrete example, with all the calculations included for a specific dataset, please check [Gradient Boosting for Regression - Example](). 
 
@@ -77,7 +77,7 @@ $$r_{im} = -\left[\frac{\delta L(y_i,F(x_i))}{\delta F(x_i)}\right] _{F(x)=F_{m-
 $$r_{im} = -\frac{\delta \frac{1}{2}(y_i - F_{m-1})^2}{\delta F_{m-1}}$$
 $$r_{im} = (y_i - F_{m-1}) (1b)$$
 
-That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, the (pseudo-)residuals $r_{im}$, reduce to the difference of the actual target and the predicted value, which is also known as the [residual](). This is also the reason, why the (pseudo-)residual has this name. If we choose a different Loss Function, the expession will change accordingly. 
+That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, the (pseudo-)residuals $r_{im}$, reduce to the difference of the actual target and the predicted value, which is also known as the [residual]({{< ref "/posts/ml_concepts/regression_metrics.md#residual>}}). This is also the reason, why the (pseudo-)residual has this name. If we choose a different Loss Function, the expession will change accordingly. 
 
 **2B. Fit a model (weak learner) closed under scaling $h_m(x)$ to the residuals.** 
 
@@ -95,7 +95,8 @@ $$h(x_i) = \sum_{j=1}^{J_m} b_{jm} 1_{R_{jm}}(x),$$
 
 with $J_m$ the number of leaves or terminal nodes of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. These regions refer to the terminal nodes of the Decision Tree. Because we are fitting a weak learner, that is a prined tree, the terminal nodes will consist of several predictions. Each region relates to one constant prediction, which is the mean over all values in the according node and is denoted as $b_{jm}$ in the above equation. The notations may seem a bit complicated, but once illustated, they should become more clear. An overview is given in the below plot.
 
-< IMAGE WITH NOTATION FOR A DECISION TREE > R_jm, etc,
+![Gradient Boosting Terminology](/images/gradient_boosting/gb_terminology.png)
+*Terminology for Gradient Boosting with Decision Trees.*
 
 For a Decision Tree as underlying model, this step is a bit modifed. A separate optimal value $\gamma_{jm}$ for each of the tree's regions is chosen, instead of a single $\gamma_{m}$ for the whole tree [1, 2]. The coefficients $b_{jm}$ can be then discarded and the equation (2a) is reformulated as
 
@@ -127,26 +128,21 @@ That is we use our previous model $F_{m-1}$ and add the new predictions from the
 
 $$F_{m}(x) = F_{m-1}(x) + \alpha \sum_{j=1}^{J_m} \gamma_{jm}1(x\in R_{jm}).$$
 
-The sum means, that we sum all values $\gamma_{jm}$ of the terminal node $R_{jm}.$ The factor $\alpha$ is the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree and is also often refered to as scaling of the models. The learning rate $\alpha$ is a parameter that is related with the [Bias-Variance Tradeoff](). A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.
+The sum means, that we sum all values $\gamma_{jm}$ of the terminal node $R_{jm}.$ The factor $\alpha$ is the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree and is also often refered to as scaling of the models. The learning rate $\alpha$ is a parameter that is related with the [Bias-Variance Tradeoff]({{< ref "/posts/ml_concepts/bias_variance.md#tradeoff>}}). A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.
 
 **Step 3 - Output final model $F_M(x)$.**
 
 The individual steps of algorithm for the special case of using Decision Trees and the above specified loss, is summarized below.
 
-< IMAGE FOR GRADIENT BOOSITING FOR REG WITH MSE>
-
+![Gradient Boostin for Regression](/images/gradient_boosting/gradient_booting_reg.png)
+*Gradient Boosting Algorithm simplified for a regression task.*
 
 ## Gradient Boosting vs. AdaBoost (for Regression)
 
-Another ensemble model based on boosting is [AdaBoost](). Although both models share the same idea of iteratively improving the model, there is a substantial difference on how the shortcommings of the developed model are defined. A comparison of both methods, is summarized in the following table.  
+Another ensemble model based on boosting is [AdaBoost]({{< ref "posts/classical_ml/adaboost.md">}}). Although both models share the same idea of iteratively improving the model, there is a substantial difference on how the shortcommings of the developed model are defined. A comparison of both methods, is summarized in the following table.  
 
-| Gradient Boosting | AdaBoost |
-|:------------------|:---------|
-| The model is iteratively improved using [Boosting]().| The model is iteratively improved using [Boosting]().|
-| The next model is improved, by reducing the [Loss Function]() of the current weak learner.| Data samples that give wrong predictions get more weight for the next weak learner. |
-| The most common weak learners used are pruned Decision Trees. | The most common weak learners used are pruned Decision Trees. |
-| Every weak learner gets the same weight for the final prediction. | Every weak learner gets different weight (influence) to the final prediction, which depends on how well it performs.|
-
+![Gradientboost vs AdaBoost](/images/gradient_boosting/gradientboost_adaboost.png)
+*Gradient Boost vs. AdaBoost.*
 ## Advantages & Disadvantages Gradient Boosted Trees
 
 **Pros**
