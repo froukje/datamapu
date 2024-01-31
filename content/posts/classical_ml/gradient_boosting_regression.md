@@ -143,15 +143,22 @@ Another ensemble model based on boosting is [AdaBoost]({{< ref "posts/classical_
 
 ![Gradientboost vs AdaBoost](/images/gradient_boosting/gradientboost_adaboost.png)
 *Gradient Boost vs. AdaBoost.*
+
 ## Advantages & Disadvantages Gradient Boosted Trees
+
+let's now see what are the main advantages and disatvantages of Gradient Boosted Trees, as this is the most common application of Gradient Boosting.
 
 **Pros**
 
-* Can deal with missing data and outlier
-* Can deal with umerical and categorical data
-* flexible, any loss function can be used
+* Gradient Boosted Trees can deal with missing data and outliers in the input features, that is data preprocessing is easier.
+* They can are flexible considering the data type of the input features and can deal with numerical and categorical data.
+* in this post we discussed Gradient Boosting for regression, it can however also be applied for classification. Details can be found in the separate articles [Gradient Boosting for Classification - Explained]() and [Gradient Boosting for Clasification - Example]().
+* They are flexible in the sense that every loss function can be used and therefore be adapted to the specified problem. 
 
 **Cons**
+
+* Gradient Boosting may be sensitive to outliers in the target data, because every new weak learner (tree) is built on the errors (residuals) of the previous weak learner. Depending on the loss function chosen, outliers may have large residuals. With the loss used in this post, which is a variation of the [Mean Squared Error]() outlier will have high residuals and the next weak learner will focus more on these outliers. Other Loss Functions like the [Mean Absolute Error]() or [Huber loss]() are less sensitive to outliers.
+* If the dataset is small or the model too large, i.e. too many weak learners are used Gradient Boosting may overfit
 
 ## Gradient Boosting in Python
 
