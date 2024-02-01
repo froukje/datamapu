@@ -162,16 +162,37 @@ let's now see what are the main advantages and disatvantages of Gradient Boosted
 
 ## Gradient Boosting in Python
 
-What are default values in sklearn? max_nr_leaves, n_estimators, learning_rate
+In Python we can use the *GradientBoostingRegressor* from [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) to perform a regression task with Gradient Boosting. Note, that the underlying weak learner in this method is not flexible, but is fixed to Decision Trees. Here we consider a very simple example, that contains only 10 data samples. It describes how many meters a person climbed depending on their age and whether they like height and goats. 
+![gradient boosting reg data](/images/gradient_boosting/gb_reg_data.png)
+*Dataset considered in this example*
+
+´´´Python
+´´´
+
+Now, we can fit a model to this data. There are several hyperparameters available that can be tuned to optimize the model. The most important once are
+
+* **loss:** Loss Function to be optimized. It can be chosen between: 'squared_error', 'absolute_error', 'huber', and 'quantile'.. 'squared_error' refers to the squared error for regression. 'absolute_error' refers to the absolute error of regression and is a robust loss function. 'huber' is a combination of the two. 'quantile' allows quantile regression (use the hyperparamter alpha to specify the quantile). Default value: 'squared_error'.
+* **learning_rate:** The contribution of each tree is defined by *learning_rate*. There is a trade-off between *learning_rate* and *n_estimators*. Values must be in the range $[0.0, \inf)$. Default value: $0.1$.
+* **n_estimators:** The number of boosting stages to perform or in other words the number of weak learners. Gradient Boosting is quite robust to over-fitting so a large number usually results in better performance. Values must be in the range $[1, \inf)$. Default value: 100.
+* **max_depth:** Maximum depth of the individual regression estimators. The maximum depth limits the number of nodes in the tree. If *None*, then nodes are expanded until all leaves are pure or until all leaves contain less than min_samples_split samples. Default value: 3.
+* **init:** an estimator object or 'zero', that is used to compute the initial predictions. The *init* estimator has to provide a *fit* and a *predict* method.If *init* is set to 'zero', the inital predictions are set to zero. Default value: *DummyEstimator*, which predicts either the average of the target value (if the *loss* is equal to 'squared_error'), or a quantile for the other losses.
+* **alpha:** The alpha-quantile of the huber Loss Function and the quantile Loss Function. $alpha$ is only needed if *loss='huber'* or *loss='quantile'*. Values must be in the range $(0.0, 1.0)$. The default value is 0.9.
+ 
+A detailed list of all hyperparamters with explanations can be found in the documentation of [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html). The pruning of the trees results from the restriction of *max_depth* in the default setup. We will keep all default values as they are for this example, except the *n_estimators* value, which we will set to three. This is done, because our example dataset is very small. In real-world project *n_estimators* is usually much higher.
+
+´´´Python
+´´´
+
+You can find a more sophisticated example on a larger dataset on [kaggle]().
 
 ## Summary
+
+In this article we discussed the algorithm of Gradient Boosting for a regression task. Gradient Boosting is an iterative Boosting algorithm that builds a new weak learner in each step that aims to reduce the Loss Function. The most common setup for this is to use Decision Trees as weak learners. We used a variant of the MSE as Loss Function and derived the algorithm for this case from the more general formulas. A simple example was chosen to demonstrate how to use Gradient Boosing in python. For a more realistic example, please check this notebook on [kaggle]().
 
 ## Further Reading
 
 [1] Friedman 1999
-[2] Wikipedia
-
-fast & accurate
+[2] Wikipedia, ["Gradient boosting"](https://en.wikipedia.org/wiki/Gradient_boosting), date of citation: January 2024
 
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
