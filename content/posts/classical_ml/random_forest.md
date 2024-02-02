@@ -21,7 +21,7 @@ A Random Forest is an example of an [*ensemble learning method*]({{< ref "/posts
 
 1. Draw $N$ samples without replacement. This is also called bootstrapping.
 2. Build a [Decision Tree]({{< ref "decision_trees">}}) using the above drawn data samples without pruning.
-3. At each node use a subset $m<<M$ of all possible features.
+3. At each node use a subset $m << M$ of all possible features.
 4. Repeat 1-3 $d$ times.
 
 This will result in $d$ Decision Trees, where $d$ is a hyperparameter that we need to choose. The variance compared to a single Decision Tree is reduced by using a subsample, that is drawn with replacement. This reduces the variance of the underlying dataset and therewith the variance of the Decision Tree itself. Each tree is built independently and may give different results. The final decision is then taken by considering the results of all trees developed and applying an aggregation function. In a classification problem, this aggregation function is the majority class, that is the class that was predicted by most of the trees is the final decision. In a regression task, the aggregation function is the mean of all predictions, which is the final prediction. 
