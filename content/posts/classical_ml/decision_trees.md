@@ -5,7 +5,7 @@ draft = false
 tags = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Regression", "Classification"]
 categories = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Classification", "Regression"]
 keywords = ["Data Science", "Machine Learning", "Decision Trees", "Tree Methods", "Classification", "Regression"]
-images = ['/images/20230913_datascience_lifecycle//images/decision_tree/dt_terminology.png']
+images = ['/images/decision_tree/dt_terminology.png']
 +++
 
 ## Introduction
