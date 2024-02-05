@@ -230,6 +230,7 @@ In this article we developed an AdaBoost model for a Regression task by hand fol
 
 [1] Solomatine, D.P.; Shrestha, D.L., ["AdaBoost.RT: a Boosting Algorithm for Regression Problems"](https://www.researchgate.net/publication/4116773_AdaBoostRT_A_boosting_algorithm_for_regression_problems), 2004 IEEE International Joint Conference on Neural Networks, vol.2, no., pp.1163.1168 vol.2, 25-29 July 2004, DOI: 10.1109/IJCNN.2004.1380102 
 
+---
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
                                      

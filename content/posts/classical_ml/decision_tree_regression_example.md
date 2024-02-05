@@ -126,6 +126,7 @@ Note, that there are some slight differences in the notation, but the resulting 
 
 In this post, we developed a Decision Tree for a regression problem step by step. The most important step in building a Decision Tree is to find the best split. We used the SSE criterion, which is suitable for numerical data and is also the default method in [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html). We then compared our results to the one we achieved using Python. 
 
+---
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
 

@@ -10,7 +10,7 @@ images = ['/images/']
 
 ## Introduction
 
-In Machine Learning Loss Functions are used to evaluate the model. It is used to compare the true target values with the predicted once and measures the error of the predictions. During the training of a model the Loss Function is aimed to be optimized to monimize the error of the predictions. The specific choice of Loss Function depends on the problem we want to solve, e.g. whether a regression or a classification task is considered. In this article we will discuss the most common once, but we can create custom Loss Functions for specific problems. We will also give an example for a custom Loss Function later in this post. The idea of using custom Loss Functions is that they focus on the specific errors we aim to minimize, the only condition they need to safisfy is that they need to be differentiable.  
+In Machine Learning Loss Functions are used to evaluate the model. They are used to compare the true target values with the predicted once and measures the error of the predictions. During the training of a model the Loss Function is aimed to be optimized to minimize the error of the predictions. The specific choice of Loss Function depends on the problem we want to solve, e.g. whether a regression or a classification task is considered. In this article we will discuss the most common once, which work very well for a lot of tasks. We can, however, also create custom Loss Functions adapted for specific problems. Custom Loss Functions help to focus on the specific errors we aim to minimize, the only condition they need to safisfy is that they need to be differentiable. We will give an example of a custom Loss function later is this post. 
 
 **Terminology**
 
@@ -18,6 +18,9 @@ The term *Loss Function* is most commonly used, however in some contexts they ar
 
 ### How are Loss Functions optimized
 
+Optimizing the Loss Function is an iterative process. Per convention Loss Functions are chosen, such that they are minimized rather than maximized.
+
+the training process that uses backpropagation to minimize the error between the actual and predicted outcome
 
 In Deep Learning the Loss Function is a function depending on the weigths and the biases and we ain to minimize it with respect to them. 
 
@@ -39,6 +42,7 @@ In Deep Learning the Loss Function is a function depending on the weigths and th
 
 ## Summary
 
+---
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
 

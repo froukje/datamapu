@@ -157,6 +157,7 @@ You can find a more detailed elabarated example for a Logistic Regression on [ka
 
 In this article we learned about Logistic Regression. Logistic Regression is a supervised Machine Learning Algorithm, that is build for binary classification, but can be extendet to multi-classification. It is based on predicting probabilites using the Sigmoid function. These probabilities are then mapped to the final target classes.
 
+---
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
 

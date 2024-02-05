@@ -68,5 +68,6 @@ Embedded methods use a machine learning algorithm to select the most important f
 
 There are three different types of feature selection methods: wrapper methods, filter methods, and embedded methods. This post explains the most common ones, but of course, there are many more. Wrapper methods can evaluate a group of features together and analyze their interaction, while filter methods consider each feature individually. They usually result in a higher model performance than filter methods.  However, wrapper methods are computationally more expensive and the feature selection is optimized for a specific model. Using a different model the results may change. Embedded methods use a dedicated machine learning model for the feature selection process and they combine both advantages of the other methods, i.e. they consider feature interactions and they are computationally lightweight.
 
+---
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}

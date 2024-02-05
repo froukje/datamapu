@@ -130,6 +130,7 @@ The evaluation of a Random Forest model depends on whether a classification or a
 
 In this article we learned about Random Forests, how they are created, and their main advantages and disadvantages. Random Forests are an [ensemble Machine Learning]({{< ref "/posts/ml_concepts/ensemble">}}) model consisting of multiple [Decision Trees]({{< ref "decision_trees">}}). They use the strength of Decision Trees and at the same time overcome their tendency to overfit. Compared to Decision Trees, Random Forests are more robust, flexible, and accurate, they lose however interpretability and are more expensive to train. For a more realistic example with a larger dataset, check this [kaggle](https://www.kaggle.com/pumalin/random-forest-tutorial) notebook.
 
+---
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
 

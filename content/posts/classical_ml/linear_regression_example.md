@@ -107,6 +107,7 @@ The resulting linear regression model and the original data is illustrated in th
 
 Note, for this simplified example, we are not going to check the [assumptions]({{< ref "linear_regression#assumptions" >}} "Assumption Linear Regression") that need to be fulfilled for a Linear Regression. This example is only for illustration purposes, with this little amount of data statistical tests are not reasonable.
 
+---
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
 

@@ -40,6 +40,7 @@ In stacking the set of models trained is heterogenous, the output of which is us
 
 In this post, we learned about the three main types of ensemble models in Machine Learning, which are Bagging, Boosting, and Stacking. However, there exist more ensemble methods than these three. Ensemble models are often used because they improve the predictive skill compared to the individual models and better generalize to new unseen data.
 
+---
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
 

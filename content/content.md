@@ -8,11 +8,8 @@ featured_image: ''
 ---
 This blog about Data Science and Machine Learning recently started and it will be built further.
 
-If you want to get an e-mail each time a new post gets published, give feedback or ideas about interesting topics that should be covered in this blog, write an e-mail to
+If you'd like to get an e-mail each time a new post gets published, give feedback or ideas about interesting topics that should be covered in this blog, write an e-mail to
 **contact.datamapu@gmail.com** or connect via [LinkedIn](https://www.linkedin.com/in/datamapu-ml-91a2622a3/) or [twitter](https://twitter.com/datamapu).
-
-If this blog is useful for you, I'm thankful for your support!
-{{< bmc-button slug="pumaline" >}}
 
 This is what you can already find here:
 
@@ -43,4 +40,9 @@ This is what you can already find here:
 ## Deep Learning
 
 * [Introduction to Deep Learning]({{< ref "intro_dl.md" >}} "intro_dl.md")
- 
+
+--- 
+If this blog is useful for you, I'm thankful for your support!
+{{< bmc-button slug="pumaline" >}}
+
+

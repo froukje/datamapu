@@ -92,6 +92,7 @@ For the above example of classifying cat and dog images, we achieve an accuracy 
 
 Binary classification is a specific case of classification problems, where the data is divided into two classes. Depending on the focus of the project the classifier can be optimized towards specific metrics. The above defined metrics are the most common metrics for binary classification. If none of these suite your purpose you can of course define your own custom metric to evaluate your classifier. Further the threshold towards the data is classified can be changed in order to optimize towards a certain metric. All the above defined metrics can be generalized for multiple classification.
 
+---
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
 

@@ -174,6 +174,7 @@ plot_tree(clf, feature_names=['age', 'likes goats', 'likes height'], fontsize=10
 
 In this article, we learned what Decision Trees are and how to build them depending on whether a regression or a classification problem is considered. We considered a selection of splitting criteria, there are of course many more. Decision Trees are powerful Machine Learning models with some major advantages such as easy interpretability and robustness against missing values. A main disadvantage of Decision Trees is that they easily overfit and have difficulties in generalizing to unseen data. In the article [Decision Tree Example for Classification]({{< ref "decision_tree_classification_example">}}), you can find a detailed calculation by hand of the above developed Decision Tree. For a more realistic example with a larger dataset, you can find a notebook on [kaggle](https://www.kaggle.com/code/pumalin/decision-trees-tutorial). In a separate article, you can find the development of a [Decision Tree Example for Regression]({{< ref "decision_tree_classification_example">}}).
 
+---
 If this blog is useful for you, I'm thankful for your support!
 {{< bmc-button slug="pumaline" >}}
 
