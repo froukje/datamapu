@@ -10,26 +10,20 @@ images = ['/images/']
 
 ## Introduction
 
-In Machine Learning Loss Functions are used to evaluate the model. They are used to compare the true target values with the predicted once and are directly related the error of the predictions. During the training of a model the Loss Function is aimed to be optimized to minimize the error of the predictions. The specific choice of Loss Function depends on the problem we want to solve, e.g. whether a regression or a classification task is considered. In this article we will discuss the most common once, which work very well for a lot of tasks. We can, however, also create custom Loss Functions adapted for specific problems. Custom Loss Functions help to focus on the specific errors we aim to minimize, the only condition they need to safisfy is that they need to be differentiable. We will give an example of a custom Loss function later is this post. 
+In Machine Learning Loss Functions are used to evaluate the model. They are used to compare the true target values with the predicted once and are directly related to the error of the predictions. During the training of a model the Loss Function is aimed to be optimized to minimize the error of the predictions. It is general convention to define a Loss Function such that it is minimized rather than maximized. The specific choice of Loss Function depends on the problem we want to solve, e.g. whether a regression or a classification task is considered. In this article we will discuss the most common once, which work very well for a lot of tasks. We can, however, also create custom Loss Functions adapted for specific problems. Custom Loss Functions help to focus on the specific errors we aim to minimize, the only condition they need to satisfy is that they need to be differentiable. We will give an example of a custom Loss Function later is this post. 
 
 **Terminology**
 
-The term *Loss Function* is most commonly used, however in some contit is also called *Error Function*.  The Loss Function is applied to each sample of the dataset, it is related to the *Cost Function* (sometimes also called *Objective Function*), which is the average of all Loss Function values. The Cost Function is therefore a measure of how the model performs on the entire dataset. The outcome of the Loss Function is called the *Loss*.
+The term *Loss Function* is most commonly used, however sometimes it is also called *Error Function*.  The outcome of the Loss Function is called *Loss*. The Loss Function is applied to each sample of the dataset, it is related to the *Cost Function* (sometimes also called *Objective Function*), which is the average of all Loss Function values. The Cost Function is therefore a measure of how the model performs on the entire dataset, while the Loss Function evaluates the Loss for each sample. 
 
-## Which ML Models use Loss Functions?
-
-Loss Functions are used in a set of Machine Learning Models to train and improve them.
-
-Yes: Gradient Boosting, Neural Net
-
-No: Decision Trees, Random Forest, AdaBoost
-
-## How are Loss Functions used during Training?
-
+## How are Loss Functions used for Training?
 Loss Functions are functions depending on the model's parameters, because it includes the predictions, which are calculated by the model. These parameters are different depending on the model type. For example, in XGBoost ...  . In a neural network these parameters are the weigths and the biases. During the training of a model we aim to change these paramters in such a way that the error (or the Loss) between the true values and the predicted values is minimized. That is we aim to minimize the Loss Function. Minimizing the Loss function is an iterative process. To approximate the minimum of a function numerically different optimization techniques exist. The most popular one is [Gradient Descent]() or a variant of it. In this post, we are not going into detail, for a detailed explanation of [Gradient Descent](), please refer to the separate article. The main idea is to use the negative of the gradient of a function at a specific point to find the direction of the steepest descent in order to move int othe direction of the minimum. This is why the Loss Function needs to be differentiable. The small steps into this direction are taken in each training step. The parameters of the model are then updated using the gradient of the Loss Function. The process is illustrated in the following plot. 
 
+< IMAGE >
 
 During the training process the Loss is calculated after each training step. If the Loss is decreasing, we know that the model is improving, while when it is increasing we know that the training is not. The Loss thus guides the model into the correct direction. 
+
+## Which Machine Learning Models don't use Loss Functions for Training?
 
 ## Examples
 
@@ -45,14 +39,23 @@ The choice of the Loss Function used, depends on the problem we are considering.
 
 **Log-Cosh-Loss**
 
+< IMAGE WITH DIFFERENT LOSS FUNCTIONS >
+
 ### Loss Functions for Classification Tasks
 
 **(Binary-)Cross Entropy**
 
 **Hinge Loss**
 
+< IMAGE WITH DIFFERENT LOSS FUNCTIONS >
 
 ### Example for a custom Loss Function
+
+### Specific Machine Learning Models and their Loss Functions
+
+Some Machine Learning Algorithm have a fixed Loss Function, while others are flexible and the Loss Function can be adapted to the specific task. The following table gives an (non-exaustive) overview about some popular Machine Learning Algorithms and their corresponding Loss Functions.
+
+< IMAGE TABLE >
 
 ## Summary
 
