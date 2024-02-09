@@ -17,8 +17,8 @@ This is what you can already find here:
 
 * [The Data Science Lifecycle]({{< ref "datascience_lifecycle.md" >}} "datascience_lifecycle.md") 
 * [Supervised versus Unsupervised Learning]({{< ref "supervised_unsupervised.md" >}} "supervised_unsupervised.md") 
-* [Metrics for Classification Problems]({{< ref "regression_metrics.md" >}} "regression_metrics.md") 
-* [Metrics for Regression Problems]({{< ref "classification_metrics.md" >}} "classification_metrics.md") 
+* [Metrics for Classification Problems]({{< ref "classification_metrics.md" >}} "regression_metrics.md") 
+* [Metrics for Regression Problems]({{< ref "regression_metrics.md" >}} "classification_metrics.md") 
 * [Feature Selection Methods]({{< ref "feature_selection.md" >}} "feature_selection.md") 
 * [Bias and Variance]({{< ref "bias_variance.md" >}} "bias_variance.md")
 * [Ensemble Models - Illustrated]({{< ref "/posts/ml_concepts/ensemble.md" >}} "ensemble.md")

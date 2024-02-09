@@ -18,13 +18,14 @@ The term *Loss Function* is most commonly used, however sometimes it is also cal
 
 ## How are Loss Functions used in Machine Learning?
 
-Loss Functions can be used in different ways for **training and evaluating** a Machine Learning Model. All Machine Learning models need to be evaluated with a metric to check how well the predictions fit the true values. These metrics can be considered as Cost Functions, because they measure the performance of the entire dataset. Examples for such evaluation metrics are e.g. the [Mean Squared Error]() for a regression task or the [Accuracy]() for a classification task. More examples for common metrics can be found in the separate articles [Metrics for Classification Problems]() and [Metrics for Regression Problems](). These metrics however, are not necessarily based on the same Loss Function that is used during the training of a model. Depending on the underlying algorithm Loss Functions are used in different way. 
+Loss Functions can be used in different ways for **training and evaluating** a Machine Learning Model. All Machine Learning models need to be evaluated with a metric to check how well the predictions fit the true values. These metrics can be considered as Cost Functions, because they measure the performance of the entire dataset. Examples for such evaluation metrics are e.g. the [Mean Squared Error]() for a regression task or the [Accuracy]() for a classification task. More examples for common metrics can be found in the separate articles [Metrics for Classification Problems]() and [Metrics for Regression Problems](). These metrics however, are not necessarily based on the same Loss Function that is used during the training of a model. Depending on the underlying algorithm Loss Functions are used in different ways. 
 
 For [Decision Trees](), Loss Functions are used to guide the construction of the tree. For classification usually the Gini-Impurity or Entropy are used as Loss Function and for regression tasks the Sum of Squared Errors. These Losses are minimized as each split of the tree. We can therefore say, that in a Decision Tree at each split the local minimum of the Loss Function is calculated. Decision Trees follow a so-called [greedy search]() and assume that the sequence of locally optimal solutions lead to a globally optimal solution. In other words they assume by choosing the lowest Loss (error) at each split, they assume the overall Loss (error) of the model is also minimized. This assumption, however, does not always hold true.
 
-Other Machine Learning models, like e.g. [Gradient Boosting]() or Neural Networks, use a global Loss Function to optimize the results. The Loss Functions are depending on the model's parameters, because the predictions are calculated based on these parameters. In a neural network these parameters are the weigths and the biases. During the training of such models we aim to change these parameters in such a way that the Loss (error) between the true values and the predicted values is minimized. That is we aim to minimize the Loss Function. This is an iterative process. To approximate the minimum of a function numerically different optimization techniques exist. The most popular one is [Gradient Descent]() or a variant of it. For a detailed explanation of [Gradient Descent](), please refer to the separate article. The main idea is to use the negative of the gradient of a function at a specific point to find the direction of the steepest descent in order to move into the direction of the minimum. That is why for such these type of models, the Loss Function needs to be differentiable. The small steps into this direction are taken in each training step. The parameters of the model are then updated using the gradient of the Loss Function. The process is illustrated in the following plot. 
+Other Machine Learning models, like e.g. [Gradient Boosting]() or [Neural Networks]({{< ref "/posts/deep_learning/intro_dl.md">}}), use a global Loss Function to optimize the results. The Loss Functions are depending on the model's parameters, because the predictions are calculated based on these parameters. In a Neural Network these parameters are the weigths and the biases. During the training of such models we aim to change these parameters in such a way that the Loss (error) between the true values and the predicted values is minimized. That is we aim to minimize the Loss Function. This is an iterative process. To approximate the minimum of a function numerically different optimization techniques exist. The most popular one is [Gradient Descent]() or a variant of it. For a detailed explanation of [Gradient Descent](), please refer to the separate article. The main idea is to use the negative of the gradient of a function at a specific point to find the direction of the steepest descent in order to move into the direction of the minimum. That is why for such these type of models, the Loss Function needs to be differentiable. The small steps into this direction are taken in each training step. The parameters of the model are then updated using the gradient of the Loss Function. The process is illustrated in the following plot. 
 
-< IMAGE >
+![ai_ml_dl](/images/20231102_ai_ml_dl/gradient_descent.gif)
+*Ilustration of Gradient Descent.*
 
 During the training process the Loss is calculated after each training step. If the Loss is decreasing, we know that the model is improving, while when it is increasing we know that the training is not. The Loss thus guides the model into the correct direction. Note, in contrast to Decision Trees the Loss is not calculated locally for a specific region, but globally. 
 
@@ -34,13 +35,51 @@ The choice of the Loss Function used, depends on the problem we are considering.
 
 ### Loss Functions for Regression Tasks
 
-**Mean Squared Error / L2-Loss**
+**Mean Absolute Error**
 
-**Mean Absolute Error / L1-Loss**
+The [Mean Absolute Error (MAE)]({{< ref "/posts/ml_concepts/regression_metrics.md#metrics">}}) or also called *L1-Loss*, is defined as
+
+$$MSA = \frac{1}{N} \sum_{i=1}^N |y_i - \hat{y}_i|,$$
+
+with $N$ the number of data samples, $y_i = (y_1, y_2, \dots, y_n)$ the true observation values, and $\hat{y}_i = (\hat{y}_1, \hat{y}_2, \dots, \hat{y}_N)$ the predicted values. The MAE is summarized in the following plot.
+
+![msa](/images/20231001_regression_metrics/mae.jpg)
+
+**Mean Squared Error**
+
+The [Mean Squared Error (MSE)]({{< ref "/posts/ml_concepts/regression_metrics.md#metrics">}}) or also called *L2-Loss*, is defined as
+
+$$MSE = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^2,$$
+
+with $N$ the number of data samples, $y_i = (y_1, y_2, \dots, y_n)$ the true observation values, and $\hat{y}_i = (\hat{y}_1, \hat{y}_2, \dots, \hat{y}_N)$ the predicted values. The MSE is summarized in the following plot.
+
+![mse](/images/20231001_regression_metrics/mse.jpg)
+
+**Mean Absolute Percentage Error**
+
+The [Mean Absolute Percentage Error (MAPE)]({{< ref "/posts/ml_concepts/regression_metrics.md#metrics">}}), is defined as
+
+$$MAPE = \frac{1}{N} \sum_{i=1}^N \frac{|y_i - \hat{y}_i|}{|y_i|} \dot 100,$$
+
+with $N$ the number of data samples, $y_i = (y_1, y_2, \dots, y_n)$ the true observation values, and $\hat{y}_i = (\hat{y}_1, \hat{y}_2, \dots, \hat{y}_N)$ the predicted values. The MAPE is summarized in the following plot.
+
+![mse](/images/20231001_regression_metrics/mape.jpg)
+
 
 **Huber Loss**
 
+The Huber Loss is defined as
+
+$$ L_{\delta} =  $$
+
+L(δ, y, f(x)) = (1/2) * (f(x) - y)^2   if |f(x) - y| <= δ
+               = δ * |f(x) - y| - (1/2) * δ^2   if |f(x) - y| > δ
+
+with ... THe Huber Loss is summerized in the following plot.
+
 **Log-Cosh-Loss**
+
+$$Logcosh(t) = \sum_{i=1}^N \log (\cosh (\hat{y}_i - y_i))$$
 
 < IMAGE WITH DIFFERENT LOSS FUNCTIONS >
 
@@ -54,11 +93,15 @@ The choice of the Loss Function used, depends on the problem we are considering.
 
 ### Example for a custom Loss Function
 
-### Specific Machine Learning Models and their Loss Functions
+## Specific Machine Learning Models and their Loss Functions
 
 Some Machine Learning Algorithm have a fixed Loss Function, while others are flexible and the Loss Function can be adapted to the specific task. The following table gives an (non-exaustive) overview about some popular Machine Learning Algorithms and their corresponding Loss Functions.
 
 < IMAGE TABLE >
+
+## Which Loss Function to Choose?
+
+Choosing an appropriate Loss Function is very importan, because it is used to evaluate and improve the model performance. It should thus reflect well the metric that is important for the project, so that errors are minimized accordingly. 
 
 ## Summary
 
