@@ -70,18 +70,27 @@ with $N$ the number of data samples, $y_i = (y_1, y_2, \dots, y_n)$ the true obs
 
 The Huber Loss is defined as
 
-$$ L_{\delta} =  $$
+![huber_loss](/images/loss_functions/huber_loss.png)
 
-L(δ, y, f(x)) = (1/2) * (f(x) - y)^2   if |f(x) - y| <= δ
-               = δ * |f(x) - y| - (1/2) * δ^2   if |f(x) - y| > δ
+with $\delta$ a hyperparameter, that specifies from which point on the loss should follow a linear curve instead a quadratic curve. The Huber Loss is summarized and illustrated for different parameters in the following plot.
 
-with ... THe Huber Loss is summerized in the following plot.
+![huber_loss](/images/loss_functions/huber_loss.gif)
+*The Huber Loss.*
 
 **Log-Cosh-Loss**
 
-$$Logcosh(t) = \sum_{i=1}^N \log (\cosh (\hat{y}_i - y_i))$$
+The Log-Cosh-Loss is very similar to the Huber loss. It also combines the advantages of both MSE and MAE. From the formular this is not as obvious as fo rthe Huber Loss, but it can be shown, that the Logcosh approximates a quadratic function, when the independent variable goes to zero and a linear function, when it goes to infinity [1].
 
-< IMAGE WITH DIFFERENT LOSS FUNCTIONS >
+$$Logcosh = \sum_{i=1}^N \log (\cosh (\hat{y}_i - y_i))$$
+
+![logcosh_loss](/images/loss_functions/logcosh_loss.png)
+*The Logcosh Loss.*
+
+There are of course much more loss functions for regression tasks, the ones listed above are just a selection. They are compared in the below plot.
+
+![loss_regression](/images/loss_functions/loss_functions_regression.png)
+*Ilustration of different loss functions for regression tasks.*
+
 
 ### Loss Functions for Classification Tasks
 
@@ -104,6 +113,10 @@ Some Machine Learning Algorithm have a fixed Loss Function, while others are fle
 Choosing an appropriate Loss Function is very importan, because it is used to evaluate and improve the model performance. It should thus reflect well the metric that is important for the project, so that errors are minimized accordingly. 
 
 ## Summary
+
+## Further Reading
+
+[1] ["Log Hyperbolic Cosine Loss Improves Variational Auto-Encoder"](https://openreview.net/pdf?id=rkglvsC9Ym), anonymous authors, 2019. 
 
 ---
 If this blog is useful for you, I'm thankful for your support!
