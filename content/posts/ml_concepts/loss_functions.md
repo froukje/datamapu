@@ -39,7 +39,7 @@ The choice of the Loss Function used, depends on the problem we are considering.
 
 The [Mean Absolute Error (MAE)]({{< ref "/posts/ml_concepts/regression_metrics.md#metrics">}}) or also called *L1-Loss*, is defined as
 
-$$MSA = \frac{1}{N} \sum_{i=1}^N |y_i - \hat{y}_i|,$$
+$$L(y, \hat{y}) = \frac{1}{N} \sum_{i=1}^N |y_i - \hat{y}_i|,$$
 
 with $N$ the number of data samples, $y_i = (y_1, y_2, \dots, y_n)$ the true observation values, and $\hat{y}_i = (\hat{y}_1, \hat{y}_2, \dots, \hat{y}_N)$ the predicted values. The MAE is summarized in the following plot.
 
@@ -49,7 +49,7 @@ with $N$ the number of data samples, $y_i = (y_1, y_2, \dots, y_n)$ the true obs
 
 The [Mean Squared Error (MSE)]({{< ref "/posts/ml_concepts/regression_metrics.md#metrics">}}) or also called *L2-Loss*, is defined as
 
-$$MSE = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^2,$$
+$$L(y, \hat{y} = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^2,$$
 
 with $N$ the number of data samples, $y_i = (y_1, y_2, \dots, y_n)$ the true observation values, and $\hat{y}_i = (\hat{y}_1, \hat{y}_2, \dots, \hat{y}_N)$ the predicted values. The MSE is summarized in the following plot.
 
@@ -59,7 +59,7 @@ with $N$ the number of data samples, $y_i = (y_1, y_2, \dots, y_n)$ the true obs
 
 The [Mean Absolute Percentage Error (MAPE)]({{< ref "/posts/ml_concepts/regression_metrics.md#metrics">}}), is defined as
 
-$$MAPE = \frac{1}{N} \sum_{i=1}^N \frac{|y_i - \hat{y}_i|}{|y_i|} \dot 100,$$
+$$L(y, \hat{y}) = \frac{1}{N} \sum_{i=1}^N \frac{|y_i - \hat{y}_i|}{|y_i|} \cdot 100,$$
 
 with $N$ the number of data samples, $y_i = (y_1, y_2, \dots, y_n)$ the true observation values, and $\hat{y}_i = (\hat{y}_1, \hat{y}_2, \dots, \hat{y}_N)$ the predicted values. The MAPE is summarized in the following plot.
 
@@ -81,7 +81,7 @@ with $\delta$ a hyperparameter, that specifies from which point on the loss shou
 
 The Log-Cosh-Loss is very similar to the Huber loss. It also combines the advantages of both MSE and MAE. From the formular this is not as obvious as fo rthe Huber Loss, but it can be shown, that the Logcosh approximates a quadratic function, when the independent variable goes to zero and a linear function, when it goes to infinity [1].
 
-$$Logcosh = \sum_{i=1}^N \log (\cosh (\hat{y}_i - y_i))$$
+$$L(y, \hat{y}) = \sum_{i=1}^N \log (\cosh (\hat{y}_i - y_i))$$
 
 ![logcosh_loss](/images/loss_functions/logcosh_loss.png)
 *The Logcosh Loss.*
@@ -94,7 +94,39 @@ There are of course much more loss functions for regression tasks, the ones list
 
 ### Loss Functions for Classification Tasks
 
+As for regression tasks, in classification we use Loss Functions to meassure the error our model makes. The difference however is, that is this case we don't have continuous target values, but categorical classes and the predictions of our model are probabilities.
+
 **(Binary-)Cross Entropy**
+
+To explain *Cross Entropy*, we start with the special case of having two classes, i.e. a binary classification. The Cross Entropy, then turns into *Binary Cross Entropy (BCE)*, which is also often called *Log Loss*. 
+
+The mathematical formulation is as follows 
+
+$$L(y, \hat{y}) = -\frac{1}{N}\sum_{i=1}^N{\Big(y_i\log(\hat{y}_i) + (1 - y_i)\log(1 - \hat{y}_i)\Big)},$$
+
+with $y = (y_1, \dots, y_N)$ the true label ($0$ or $1$) and $\hat{y} = (\hat{y}_1, \dots, \hat{y}_N)$ the predicted probability. To understand how Binary Cross Entropy works, let's consider just one sample. That means we can forget the outer sum over $i$ and have the Cost Function
+
+$$L(y_i, \hat{y}_i) = -y_i\log(\hat{y}_i) - (1 - y_i)\log(1 - \hat{y}_i.$$
+
+Let's consider two possible target outcomes. For the case $y_i = 0$, the first part of the sum vanishes and only
+
+$$L(y_i, \hat{y}_i) = - \log(1-\hat{y}_i)$$ 
+
+remains. On the other hand, for the case $y_i = 1$, the second part of the sum vanishes and only
+
+$$L(y_i, \hat{y}_i) = - \log(\hat{y_i})$$
+
+remains. These two functions are shown in the following plot.
+
+![logcosh_loss](/images/loss_functions/bce.png)
+*The Binary Cross Entropy Loss.*
+
+We know that $\hat{y}_i$ is a probability and thus can only take values between $0$ and $1$. We can see that for the case $y_i = 0$, the loss is close to $0$, when $\hat{y}_i$ is close to $0$ and it increases if $\hat{y}_i$ approaches $1$. That means the Binary Cross Entropy penalizes more the further away the predicted probability is from the true value. The same holds true if $y_i = 1$. In this case the loss is high if $\hat{y}_i$ is close to $0$ and low if it approaches $1$.
+
+The more general formulation for $M>2$ classes of the Cross Entropy is
+
+$$L(y, \hat{y}) = -\frac{1}{N}\sum_{j=1}^M\sum_{i=1}^N{y_{i,j}\log(\hat{y}_{i,j})}.$$
+
 
 **Hinge Loss**
 
