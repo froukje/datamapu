@@ -130,21 +130,39 @@ $$L(y, \hat{y}) = -\frac{1}{N}\sum_{j=1}^M\sum_{i=1}^N{y_{i,j}\log(\hat{y}_{i,j}
 
 **Hinge Loss**
 
+The *Hinge Loss* is used by Support Vector Machines (SVM). It is used to measure the distance of points to the decision boundary. It is defined as
+
+$$L(y, \hat{y}) = max(0, 1 - y_i \cdot \hat{y}_i),$$
+
+with $\hat{y} = (y_1, \dots, y_N)$ the predicted value and $$y = (y_1, \dots, y_N)$ the normalized true values. Important here is that the true values are normalized to have values $-1" and $1$. The Hinge Loss is zero, when $y_i \cdot \hat{y}_i) > 1$, which is 
+
 < IMAGE WITH DIFFERENT LOSS FUNCTIONS >
 
 ### Example for a custom Loss Function
 
+The above discussed examples are the most common ones, however we can define a Loss Function specific for our needs. We learned that the MSE penalizes outliers more than the MAE. If we want our Loss to penalize even stronger the outliers, we could for example define loss of degree $4$ as follows
+
+$$L(y, \hat{y} = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^4.$$
+
+We can also define an assymentric Loss that penalizes more negative values than positive values
+
+![asym_loss](/images/loss_functions/asym_loss_klein.png)
+
+in both cases with $\hat{y} = (y_1, \dots, y_N)$ the predicted value and $y = (y_1, \dots, y_N)$ the normalized true values. Customizing Loss Functions may help our model to learn. These were two examples for regression tasks, custom Loss Functions can however also be created for classification tasks.
+
+![custom_loss](/images/loss_functions/custom_loss.png)
+*Two examples of custom Loss Functions.*
+
 ## Specific Machine Learning Models and their Loss Functions
 
-Some Machine Learning Algorithm have a fixed Loss Function, while others are flexible and the Loss Function can be adapted to the specific task. The following table gives an (non-exaustive) overview about some popular Machine Learning Algorithms and their corresponding Loss Functions.
+Some Machine Learning Algorithm have a fixed Loss Function, while others are flexible and the Loss Function can be adapted to the specific task. The following table gives an (non-exaustive) overview about some popular Machine Learning Algorithms and their corresponding Loss Functions. Important to keep in mind is that the Loss Function needs to be differentiable if some form of [Gradient Descent]() is performed, as e.g. in Neural Netorks or [Gradient Boosting]().
 
-< IMAGE TABLE >
-
-## Which Loss Function to Choose?
-
-Choosing an appropriate Loss Function is very importan, because it is used to evaluate and improve the model performance. It should thus reflect well the metric that is important for the project, so that errors are minimized accordingly. 
+![loss_functions_examples](/images/loss_functions/loss_functions_examples.png)
+*Examples for Machine Learning models and their Loss Functions.*
 
 ## Summary
+
+Loss Functions are used to evaluate a model and to analyse if it is learning. We discussed typical Loss Functions for regression and classification tasks, and also saw two examples of customized Loss Functions. Choosing an appropriate Loss Function is very important, because it is used to evaluate and improve the model performance. It should thus reflect well the metric that is important for the project, so that errors are minimized accordingly. 
 
 ## Further Reading
 
