@@ -49,7 +49,7 @@ More general this looks like this.
 ![confusion matrix](/images/20230920_classification_metrics/confusion_matrix2.jpg "Confusion matrix.")
 *Confusion matrix.*
 
-### Metrics
+### Metrics{#metrics}
 With the above concepts of TP, FN, FP, and TN we can define several metrics that evaluate binary classification problems in different aspects. Let's have a look at the most common metrics for binary classification problems, how to calculate them and when to use them.
 
 
