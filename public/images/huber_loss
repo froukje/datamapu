@@ -1,0 +1,19 @@
+<mxfile host="app.diagrams.net" modified="2024-02-16T01:50:11.532Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="2Wvp2O3AwtvrIh6DYXnV" version="23.1.1" type="device">
+  <diagram name="Page-1" id="ChsFfwSsbs6176N5FXCv">
+    <mxGraphModel dx="2191" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="J718_GYpbknvP499N8Jk-1" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-140" y="240" width="1045" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="J718_GYpbknvP499N8Jk-4" value="&lt;div style=&quot;border-color: var(--border-color); font-size: 24px;&quot;&gt;&lt;font style=&quot;border-color: var(--border-color); font-size: 24px;&quot;&gt;$$ L_{\delta}=\&lt;/font&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;{\begin{matrix}&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;\frac{1}{2}(y - \hat{y})^{2} &amp;amp; if \left | (y - \hat{y})&amp;nbsp; \right | &amp;lt; \delta\\&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color); font-size: 24px;&quot;&gt;&lt;font style=&quot;border-color: var(--border-color); font-size: 24px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; \delta((y - \hat{y}) - \frac{1}{2} \delta) &amp;amp; otherwise&lt;/font&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;\end{matrix}$$&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color); font-size: 24px;&quot;&gt;&lt;br style=&quot;border-color: var(--border-color); color: rgb(0, 0, 0); font-family: Helvetica; font-size: 24px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="70" width="1080" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="J718_GYpbknvP499N8Jk-5" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;$$L_{\delta}=\begin$$&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="110" y="300" width="560" height="170" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

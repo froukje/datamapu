@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Random Forests - Explained | </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Introduction A Random Forest is a supervised Machine Learning model, that is built on Decision Trees. To understand how a Random Forest works, you should be familiar with Decision Trees. You can find an introduction in the separate article Decision Trees - Explained. A major disadvantage of Decision Trees is that they tend to overfit and often have difficulties to generalize to new data. Random Forests try to overcome this weakness.">
+    <meta name="generator" content="Hugo 0.123.6">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+    
+    
+      
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+
+    
+
+    
+    
+    <meta property="og:title" content="Random Forests - Explained" />
+<meta property="og:description" content="Introduction A Random Forest is a supervised Machine Learning model, that is built on Decision Trees. To understand how a Random Forest works, you should be familiar with Decision Trees. You can find an introduction in the separate article Decision Trees - Explained. A major disadvantage of Decision Trees is that they tend to overfit and often have difficulties to generalize to new data. Random Forests try to overcome this weakness." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/classical_ml/random_forest/" /><meta property="og:image" content="http://localhost:1313/images/random_forest/random_forest2.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-26T10:57:13+01:00" />
+<meta property="article:modified_time" content="2023-12-26T10:57:13+01:00" />
+
+<meta itemprop="name" content="Random Forests - Explained">
+<meta itemprop="description" content="Introduction A Random Forest is a supervised Machine Learning model, that is built on Decision Trees. To understand how a Random Forest works, you should be familiar with Decision Trees. You can find an introduction in the separate article Decision Trees - Explained. A major disadvantage of Decision Trees is that they tend to overfit and often have difficulties to generalize to new data. Random Forests try to overcome this weakness."><meta itemprop="datePublished" content="2023-12-26T10:57:13+01:00" />
+<meta itemprop="dateModified" content="2023-12-26T10:57:13+01:00" />
+<meta itemprop="wordCount" content="1463"><meta itemprop="image" content="http://localhost:1313/images/random_forest/random_forest2.png" />
+<meta itemprop="keywords" content="Data Science,Machine Learning,Random Forest,Ensemble,Bagging,Tree Methods,Regression,Classification," /><meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/images/random_forest/random_forest2.png" /><meta name="twitter:title" content="Random Forests - Explained"/>
+<meta name="twitter:description" content="Introduction A Random Forest is a supervised Machine Learning model, that is built on Decision Trees. To understand how a Random Forest works, you should be familiar with Decision Trees. You can find an introduction in the separate article Decision Trees - Explained. A major disadvantage of Decision Trees is that they tend to overfit and often have difficulties to generalize to new data. Random Forests try to overcome this weakness."/>
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+  </head>
+
+  <body class="ma0 sans-serif bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-navy">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        <img src="/logo_weiss_qualle.png" class="w100 mw5-ns" alt="" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/posts/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/" title=" page">
+              
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/content/" title="Content page">
+              Content
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+<div class="ananke-socials">
+  
+    
+    <a href="https://twitter.com/datamapu" target="_blank" rel="noopener" class="twitter ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Twitter link" aria-label="follow on Twitter——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    
+    <a href="https://www.linkedin.com/in/datamapu-ml-91a2622a3/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+      
+      <a href="https://twitter.com/share?url=http://localhost:1313/posts/classical_ml/random_forest/&amp;text=Random%20Forests%20-%20Explained" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
+        
+        <span class="icon"> <svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+        
+      </a>
+    
+      
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/classical_ml/random_forest/&amp;title=Random%20Forests%20-%20Explained" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
+        
+        <span class="icon"> <svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+        
+      </a>
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Random Forests - Explained</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2023-12-26T10:57:13+01:00">December 26, 2023</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - 7 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 1463 words </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
+<p>A Random Forest is a <a href="http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#supervised">supervised</a> Machine Learning model, that is built on Decision Trees. To understand how a Random Forest works, you should be familiar with Decision Trees. You can find an introduction in the separate article <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees - Explained</a>. A major disadvantage of Decision Trees is that they tend to overfit and often have difficulties to generalize to new data. Random Forests try to overcome this weakness. They are built of a set of Decision Trees, which are combined into an ensemble model, and their outcomes are converted into a single result. As Decision Trees, they can be used for classification and regression tasks.</p>
+<p><img src="/images/random_forest/rf_overview.png" alt="random forest">
+<em>Illustration of a Random Forest.</em></p>
+<h2 id="build-a-random-forest---the-algorithm">Build a Random Forest - The Algorithm</h2>
+<p>A Random Forest is an example of an <a href="http://localhost:1313/posts/ml_concepts/ensemble/"><em>ensemble learning method</em></a>. Multiple Machine Learning models are combined to obtain a better model (&rsquo;the wisdom of crowds&rsquo;). More precisely it is an example of the <a href="http://localhost:1313/posts/ml_concepts/ensemble/#bagging"><em>Bagging</em> or <em>Bootstrap Aggregation</em></a> method. The underlying models in a Random Forest are <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a>, in which individual outcomes are combined into one single prediction. Decision Trees are powerful Machine Learning models, which are easy to interpret. They have, however, one severe disadvantage, which is that they are prone to <a href="http://localhost:1313/posts/ml_concepts/bias_variance/">overfitting</a>. Decision Trees are an example of models that have <a href="http://localhost:1313/posts/ml_concepts/bias_variance/">a low bias, but a high variance</a>, especially when they are trained without pruning. This is aimed to be improved by using Bagging / Bootstrap Aggregation. The algorithm to build a Random Forest is as follows. Consider a dataset of $N$ samples and $M$ features.</p>
+<ol>
+<li>Draw $N$ samples without replacement. This is also called bootstrapping.</li>
+<li>Build a <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Tree</a> using the above drawn data samples without pruning.</li>
+<li>At each node use a subset $m &laquo; M$ of all possible features.</li>
+<li>Repeat 1-3 $d$ times.</li>
+</ol>
+<p>This will result in $d$ Decision Trees, where $d$ is a hyperparameter that we need to choose. The variance compared to a single Decision Tree is reduced by using a subsample, that is drawn with replacement. This reduces the variance of the underlying dataset and therewith the variance of the Decision Tree itself. Each tree is built independently and may give different results. The final decision is then taken by considering the results of all trees developed and applying an aggregation function. In a classification problem, this aggregation function is the majority class, that is the class that was predicted by most of the trees is the final decision. In a regression task, the aggregation function is the mean of all predictions, which is the final prediction.</p>
+<p><img src="/images/random_forest/random_forest2.png" alt="random forest">
+<em>Illustration of the algorithm of a Random Forest.</em></p>
+<p>To improve the decision taken by a Random Forest compared to a single Decision Tree, it is important that the individual trees are as uncorrelated as possible. By not only choosing a subset of the dataset but also a subset of the possible features a second randomness is introduced, which reduces the correlation between the individual trees. The number of features $m$ used is another hyperparameter that needs to be set.</p>
+<h2 id="advantages--disadvantages">Advantages &amp; Disadvantages</h2>
+<p><strong>Pros</strong></p>
+<ul>
+<li>Random Forests can be used for regression and classification problems.</li>
+<li>Random Forests are able to learn non-linear relationships.</li>
+<li>Random Forests can combine categorical and numerical variables.</li>
+<li>Random Forests are not sensitive to outliers and missing data.</li>
+<li>Scaling the data is not necessary before fitting a Random Forest.</li>
+<li>Random Forests balance the <a href="http://localhost:1313/posts/ml_concepts/bias_variance/#tradeoff">bias-variance tradeoff</a>.</li>
+<li>Random Forests reduce overfitting compared to Decision Trees.</li>
+<li>Random Forests reduce the variance in the predictions compared to Decision Trees.</li>
+<li>Random Forests can provide information about the feature importance.</li>
+<li>The trees in a Random Forest are independent of each other and can be created in parallel, which makes the training faster.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li>Random Forests are less interpretable than a single Decision Tree.</li>
+<li>Random Forests need a lot of memory because several trees are stored in parallel.</li>
+<li>For a large number of trees and / or a large dataset, they are expensive to train.</li>
+<li>Although Random Forests are less prone to overfitting, they still may overfit if too many trees are used or the trees are too deep.</li>
+</ul>
+<h2 id="random-forests-in-python">Random Forests in Python</h2>
+<p>In Python, we can use the sklearn library, which provides methods for both regression and classification tasks. Below a simplified example for a classification problem is given. The constructed dataset contains only 10 samples for illustration purposes. The data describes whether a person should go rock climbing or not depending on their age, and whether or not the person likes goats and height.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">pandas</span> <span style="color:#8839ef">as</span> <span style="color:#fe640b">pd</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#04a5e5;font-weight:bold">=</span> {<span style="color:#40a02b">&#39;age&#39;</span>: [<span style="color:#fe640b">23</span>, <span style="color:#fe640b">31</span>, <span style="color:#fe640b">35</span>, <span style="color:#fe640b">35</span>, <span style="color:#fe640b">42</span>, <span style="color:#fe640b">43</span>, <span style="color:#fe640b">45</span>, <span style="color:#fe640b">46</span>, <span style="color:#fe640b">46</span>, <span style="color:#fe640b">51</span>], 
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;likes goats&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>], 
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;likes height&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>], 
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;go rock climbing&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>]}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#04a5e5;font-weight:bold">=</span> pd<span style="color:#04a5e5;font-weight:bold">.</span>DataFrame(data)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/random_forest/rf_dataset.png" alt="random forest dataset">
+<em>Dataset used for the Random Forest example.</em></p>
+<p>We now fit a Random Forest to the data using the <em>RandomForestClassifier</em> method provided by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">sklearn</a>.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.ensemble</span> <span style="color:#179299">import</span> RandomForestClassifier
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;age&#39;</span>, <span style="color:#40a02b">&#39;likes goats&#39;</span>, <span style="color:#40a02b">&#39;likes height&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values
+</span></span><span style="display:flex;"><span>y <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;go rock climbing&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values<span style="color:#04a5e5;font-weight:bold">.</span>reshape(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>,)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>clf <span style="color:#04a5e5;font-weight:bold">=</span> RandomForestClassifier(n_estimators<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">3</span>, random_state<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">1</span>)
+</span></span><span style="display:flex;"><span>clf<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In this example, the dataset is very small and it is only for illustration purposes. In <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">sklearn</a> a lot of hyperparameters exist to optimize a Random Forest. In the above example, we set <em>n_estimators=3</em>, which is the number of Decision Trees used in the Random Forest. For real-world examples, this number will be chosen higher, the default value in sklearn is $100$. Additionally, the <em>random_state</em> is set to make the results reproducible. We can access the individual trees in the Random Forest and plot them. The first tree can be visualized as follows.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn</span> <span style="color:#179299">import</span> tree
+</span></span><span style="display:flex;"><span>tree<span style="color:#04a5e5;font-weight:bold">.</span>plot_tree(clf<span style="color:#04a5e5;font-weight:bold">.</span>estimators_[<span style="color:#fe640b">0</span>], fontsize<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">10</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The three trees in this Random Forest are shown in the next plot.</p>
+<p><img src="/images/random_forest/rf_example_1.png" alt="random forest example">
+<em>Trees in a simplified example for a Random Forest.</em></p>
+<p>Let&rsquo;s consider an example prediction. Take the second sample from the dataset: age $= 31$, likes goats $= 1$, and likes height $= 1$. Going through the Decision Trees the predictions are: tree 1: 1, tree 2: 1, tree 3: 1. The majority class is thus $1$, which is thus the prediction of the Random Forest.</p>
+<p><img src="/images/random_forest/rf_example_2.png" alt="random forest example">
+<em>Decision paths for the second sample for each tree for the example.</em></p>
+<p>Using the <em>predict</em> method, we can print the predictions of the Random Forest classifier directly for this sample.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#04a5e5">print</span>(<span style="color:#d20f39">f</span><span style="color:#40a02b">&#39;Predictions: </span><span style="color:#40a02b">{</span>clf<span style="color:#04a5e5;font-weight:bold">.</span>predict(X[:<span style="color:#fe640b">1</span>])<span style="color:#40a02b">}</span><span style="color:#40a02b">&#39;</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This leads to <em>Predictions: [1]</em>, confirming our manual calculations.</p>
+<p><strong>Hyperparameters</strong></p>
+<p>We already used the hyperparameter <em>n_estimators</em> in the previous example. Sklearn offers a lot of hyperparameters, that we can use to optimize a Random Forest. Important ones are:</p>
+<ul>
+<li><strong>n_estimators</strong>: Number of Decision Trees used to create the Random Forest (default: 100).</li>
+<li><strong>criterion</strong>: Function used to define the best split (default: Gini Impurity).</li>
+<li><strong>max_depth</strong>: Maximum depth of the trees (default: None, i.e. the trees are expanded until all leaves are pure).</li>
+<li><strong>min_sample_split</strong>: Minimum number of samples to split a node (default: 2).</li>
+<li><strong>min_samples_leaf</strong>: Minimum number of samples required to become a leaf node (default: 1).</li>
+<li><strong>max_features</strong>: Maximum number of features considered to find the best split (default: the squareroot of the total number of features).</li>
+<li><strong>bootstrap</strong>: Whether bootstrapping is used or not (default: True). If set to False, the entire dataset is used for each tree.</li>
+</ul>
+<p>A complete list with detailed explanations of all possible hyperparameters can be found in the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">sklearn</a> documentation. For regression tasks the Procedure is analogue, the used method in sklearn is called <em>RandomForestRegressor</em> and a detailed list of all hyperparameters can be found in the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html">sklearn</a> documentation.</p>
+<h2 id="evaluation">Evaluation</h2>
+<p>The example above is only to illustrate how to fit a Random Forest in Python. In practice, we would first divide the dataset into training, validation, and test sets, before fitting and evaluating the model. You can find a more realistic example with a larger dataset on <a href="https://www.kaggle.com/pumalin/random-forest-tutorial">kaggle</a>.</p>
+<p>The evaluation of a Random Forest model depends on whether a classification or a regression problem is considered. In any case, the common metrics can be used to evaluate the results. You can find an overview of the most common metrics in the articles <a href="http://localhost:1313/posts/ml_concepts/classification_metrics/">Metrics for Classification Problems</a> or <a href="http://localhost:1313/posts/ml_concepts/regression_metrics/">Metrics for Regression Problems</a></p>
+<h2 id="summary">Summary</h2>
+<p>In this article we learned about Random Forests, how they are created, and their main advantages and disadvantages. Random Forests are an <a href="http://localhost:1313/posts/ml_concepts/ensemble/">ensemble Machine Learning</a> model consisting of multiple <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a>. They use the strength of Decision Trees and at the same time overcome their tendency to overfit. Compared to Decision Trees, Random Forests are more robust, flexible, and accurate, they lose however interpretability and are more expensive to train. For a more realistic example with a larger dataset, check this <a href="https://www.kaggle.com/pumalin/random-forest-tutorial">kaggle</a> notebook.</p>
+<hr>
+<p>If this blog is useful for you, I&rsquo;m thankful for your support!
+
+
+
+<a class="hugo-shortcodes-bmc-button" href="https://www.buymeacoffee.com/pumaline">
+    <img src="https://img.buymeacoffee.com/button-api/?button_colour=ffdd00&amp;coffee_colour=ffffff&amp;emoji=&amp;font_colour=000000&amp;font_family=Cookie&amp;outline_colour=000000&amp;slug=pumaline&amp;text=Buy&#43;me&#43;a&#43;coffee" alt="Buy me a coffee" />
+</a>
+</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/data-science/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Data Science</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/machine-learning/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Machine Learning</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/random-forest/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Random Forest</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/ensemble/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Ensemble</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/bagging/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Bagging</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/tree-methods/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Tree Methods</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/regression/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Regression</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/classification/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Classification</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/decision_trees/">Decision Trees - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/feature_selection/">Feature Selection Methods</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/logistic_regression/">Logistic Regression - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/linear_regression_example/">Linear Regression - Analytical Solution and Simplified Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/linear_regression/">Linear Regression - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/classification_metrics/">Metrics for Classification Problems</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/regression_metrics/">Metrics for Regression Problems</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/deep_learning/intro_dl/">Introduction to Deep Learning</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/supervised_unsupervised/">Supervised versus Unsupervised Learning - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/datascience_lifecycle/">The Data Science Lifecycle</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy; 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+    
+    <a href="https://twitter.com/datamapu" target="_blank" rel="noopener" class="twitter ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Twitter link" aria-label="follow on Twitter——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    
+    <a href="https://www.linkedin.com/in/datamapu-ml-91a2622a3/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

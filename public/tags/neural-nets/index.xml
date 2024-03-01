@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Neural Nets on </title>
+    <link>http://localhost:1313/tags/neural-nets/</link>
+    <description>Recent content in Neural Nets on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Nov 2023 21:44:06 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/neural-nets/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to Deep Learning</title>
+      <link>http://localhost:1313/posts/deep_learning/intro_dl/</link>
+      <pubDate>Thu, 02 Nov 2023 21:44:06 +0100</pubDate>
+      <guid>http://localhost:1313/posts/deep_learning/intro_dl/</guid>
+      <description>In this article we will learn what Deep Learning is and understand the difference to AI and Machine Learning. Often these three terms are used interchangeable. They are however not the same. The following diagram illustrates how they are related.&#xA;Relation of Artificial Intelligence, Machine Learning and Deep Learning.&#xA;Artificial Intelligence. There are different definitions of Artificial Intelligence, but in general, they involve computers performing tasks that are usually associated with humans or other intelligent living systems.</description>
+    </item>
+  </channel>
+</rss>

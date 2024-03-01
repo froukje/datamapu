@@ -1,1 +1,110 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on Datamapu</title><link>https://datamapu.com/categories/</link><description>Recent content in Categories on Datamapu</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://datamapu.com/categories/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on </title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Feb 2024 20:55:28 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data Science</title>
+      <link>http://localhost:1313/categories/data-science/</link>
+      <pubDate>Tue, 27 Feb 2024 20:55:28 -0300</pubDate>
+      <guid>http://localhost:1313/categories/data-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deep Learning</title>
+      <link>http://localhost:1313/categories/deep-learning/</link>
+      <pubDate>Tue, 27 Feb 2024 20:55:28 -0300</pubDate>
+      <guid>http://localhost:1313/categories/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine Learning</title>
+      <link>http://localhost:1313/categories/machine-learning/</link>
+      <pubDate>Tue, 27 Feb 2024 20:55:28 -0300</pubDate>
+      <guid>http://localhost:1313/categories/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Boosting</title>
+      <link>http://localhost:1313/categories/boosting/</link>
+      <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
+      <guid>http://localhost:1313/categories/boosting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Classification</title>
+      <link>http://localhost:1313/categories/classification/</link>
+      <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
+      <guid>http://localhost:1313/categories/classification/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ensemble</title>
+      <link>http://localhost:1313/categories/ensemble/</link>
+      <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
+      <guid>http://localhost:1313/categories/ensemble/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gradient Boosting</title>
+      <link>http://localhost:1313/categories/gradient-boosting/</link>
+      <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
+      <guid>http://localhost:1313/categories/gradient-boosting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Regression</title>
+      <link>http://localhost:1313/categories/regression/</link>
+      <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
+      <guid>http://localhost:1313/categories/regression/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tree Methods</title>
+      <link>http://localhost:1313/categories/tree-methods/</link>
+      <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
+      <guid>http://localhost:1313/categories/tree-methods/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Random Forest</title>
+      <link>http://localhost:1313/categories/random-forest/</link>
+      <pubDate>Sun, 14 Jan 2024 09:22:00 -0300</pubDate>
+      <guid>http://localhost:1313/categories/random-forest/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Artificial Intelligence</title>
+      <link>http://localhost:1313/categories/artificial-intelligence/</link>
+      <pubDate>Mon, 01 Jan 2024 09:39:26 +0100</pubDate>
+      <guid>http://localhost:1313/categories/artificial-intelligence/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bagging</title>
+      <link>http://localhost:1313/categories/bagging/</link>
+      <pubDate>Tue, 26 Dec 2023 10:57:13 +0100</pubDate>
+      <guid>http://localhost:1313/categories/bagging/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Decision Trees</title>
+      <link>http://localhost:1313/categories/decision-trees/</link>
+      <pubDate>Tue, 19 Dec 2023 17:46:29 +0100</pubDate>
+      <guid>http://localhost:1313/categories/decision-trees/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Neural Nets</title>
+      <link>http://localhost:1313/categories/neural-nets/</link>
+      <pubDate>Thu, 02 Nov 2023 21:44:06 +0100</pubDate>
+      <guid>http://localhost:1313/categories/neural-nets/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

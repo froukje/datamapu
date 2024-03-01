@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Adaboost for Regression - Example | </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example.">
+    <meta name="generator" content="Hugo 0.123.6">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+    
+    
+      
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+
+    
+
+    
+    
+    <meta property="og:title" content="Adaboost for Regression - Example" />
+<meta property="og:description" content="Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/classical_ml/adaboost_example_reg/" /><meta property="og:image" content="http://localhost:1313/images/adaboost/adaboost_reg.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-19T23:05:44-03:00" />
+<meta property="article:modified_time" content="2024-01-19T23:05:44-03:00" />
+
+<meta itemprop="name" content="Adaboost for Regression - Example">
+<meta itemprop="description" content="Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example."><meta itemprop="datePublished" content="2024-01-19T23:05:44-03:00" />
+<meta itemprop="dateModified" content="2024-01-19T23:05:44-03:00" />
+<meta itemprop="wordCount" content="1955"><meta itemprop="image" content="http://localhost:1313/images/adaboost/adaboost_reg.png" />
+<meta itemprop="keywords" content="Data Science,Machine Learning,Regression,Ensemble,Boosting,Tree Methods,Regression,Classification," /><meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/images/adaboost/adaboost_reg.png" /><meta name="twitter:title" content="Adaboost for Regression - Example"/>
+<meta name="twitter:description" content="Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example."/>
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+  </head>
+
+  <body class="ma0 sans-serif bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-navy">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        <img src="/logo_weiss_qualle.png" class="w100 mw5-ns" alt="" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/posts/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/" title=" page">
+              
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/content/" title="Content page">
+              Content
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+<div class="ananke-socials">
+  
+    
+    <a href="https://twitter.com/datamapu" target="_blank" rel="noopener" class="twitter ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Twitter link" aria-label="follow on Twitter——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    
+    <a href="https://www.linkedin.com/in/datamapu-ml-91a2622a3/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+      
+      <a href="https://twitter.com/share?url=http://localhost:1313/posts/classical_ml/adaboost_example_reg/&amp;text=Adaboost%20for%20Regression%20-%20Example" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
+        
+        <span class="icon"> <svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+        
+      </a>
+    
+      
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/classical_ml/adaboost_example_reg/&amp;title=Adaboost%20for%20Regression%20-%20Example" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
+        
+        <span class="icon"> <svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+        
+      </a>
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Adaboost for Regression - Example</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-01-19T23:05:44-03:00">January 19, 2024</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - 10 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 1955 words </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
+<p>AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example. For a general explanation of the algorithm, please refer to <a href="http://localhost:1313/posts/classical_ml/adaboost/">AdaBoost - Explained</a>.</p>
+<h2 id="data">Data</h2>
+<p>We use a very simplified example dataset to make the development of the model by hand easier. We use a dataset containing 10 samples. It includes the features &lsquo;age&rsquo;, &rsquo;likes height&rsquo;, and &rsquo;likes goats&rsquo;. The target variable is &lsquo;climbed meters&rsquo;. That is we want to estimate how many meters a person has climbed depending on their age, and whether they like height and goats. For comparison purposes, we used that same dataset in the article <a href="http://localhost:1313/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>.</p>
+<p><img src="/images/adaboost/ab_example_reg_data.png" alt="adaboost_reg_data">
+<em>The dataset used in this example.</em></p>
+<h2 id="build-the-model">Build the Model</h2>
+<p>We build a AdaBoost model from scratch using the above dataset. We use the default values from in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">sklearn</a>, that is we use Decision Trees as underlying models with a maximum depth of three. In this post, however, we will focus on AdaBoost and not on the development of the Decision Trees. To understand the details on how to develop a Decision Tree for a regression task, please refer to the separate articles <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees - Explained</a> or <a href="http://localhost:1313/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>.</p>
+<p>We start with asigning weights to each sample. Initially, the weights are all equal to $\frac{1}{N}$, with $N$ the number of data samples, that is in our case the initial weights are $0.1$ for all samples.</p>
+<p><img src="/images/adaboost/ab_example_reg_first_tree_weights.png" alt="adaboost_reg_first_tree_weights">
+<em>The dataset with weights assigned to each sample.</em></p>
+<p>We now fit a Decision Tree with maximum depth of three to this dataset.</p>
+<p><img src="/images/adaboost/ab_example_reg_first_tree.png" alt="adaboost_reg_first_tree">
+<em>The first Decision Tree of the AdaBoost model.</em></p>
+<p>Now, we determine the total error, which we define as the number of wrongly predicted samples divided by the total number of samples. Following the decision paths of the tree, we can find that the samples age$=35$,  likes height$=0$, likes goats$=0$ and age$=42$, likes height$=0$, likes goats$=0$ lead to wrong predictions. The true target values are $300m$ and $200m$, respectivly, but the predicted value is $250m$ in both cases. The other eight samples are correctly predicted. The total error is thus $\frac{2}{10}$. The influence of this tree is therefore</p>
+<p>$$\alpha =  \frac{1}{2} \ln\Big(\frac{1 - TotalError}{TotalError}\Big)$$
+$$\alpha =  \frac{1}{2} \ln\Big(\frac{\frac{8}{10}}{\frac{2}{10}}\Big)$$
+$$\alpha =  \frac{1}{2} \ln(4) = 0.69.$$</p>
+<p><strong>Note, that different implementation of the AdaBoost algorithm for regression exist. Usually the prediction does not need to match exactly, but a margin is given, and the prediction is counted as an error if it falls out of this margin [1].</strong> For the sake of simplicity, we will keep this definition analogue to a classification problem. The main idea of calculating the influence of each tree remains, but the way the error is exactly calculated may differ in different implementations.</p>
+<p>With the <em>influence</em> $\alpha$, we can now calculate the new weights</p>
+<p>$$w_{new} = w_{old}\cdot e^{\pm\alpha}.$$</p>
+<p>The sign used in the exponent depends on whether the specific sample was correctly predicted or not. For correctly predicted samples, we get</p>
+<p>$$w_{new} = 0.1\cdot e^{-0.69} = 0.05,$$</p>
+<p>and for wrongly predicted samples</p>
+<p>$$w_{new} = 0.1\cdot e^{0.69} = 0.2.$$</p>
+<p>These weights need to be normalized, which is done by dividing by their sum.</p>
+<p><img src="/images/adaboost/ab_example_reg_second_tree_weights.png" alt="adaboost_reg_first_tree_weights">
+<em>The dataset with the updated weights asigned to each sample.</em></p>
+<p><img src="/images/adaboost/ab_example_reg_second_tree_bins.png" alt="adaboost_reg_first_tree_weights">
+<em>The dataset with the bins based on the weights for each sample.</em></p>
+<p>Now bootstrapping is performed to create a modified dataset, which we can use to build the next model. For that, we simulate drawing random numbers between $0$ and $1$ to decide the indices taken for the modified dataset. Note, that the bins of the two wrongly predicted samples are larger due to their higher weights. The probability of getting a number in the bin of the wrongly predicted samples is thus higher and these samples will likely be higher represented in the new dataset. Let&rsquo;s assume, the random numbers drawn are $[0.2, 0.8, 0.4, 0.3, 0.6, 0.5, 0.05, 0.1, 0.25]$, which refer to the samples $[3, 6, 3, 3, 4, 4, 5, 0, 1, 3]$. The modified dataset is shown in the next plot.</p>
+<p><img src="/images/adaboost/ab_example_reg_second_tree_data_modified.png" alt="adaboost_reg_second_tree_data">
+<em>Modified dataset based on the weights.</em></p>
+<p>Now, we fit the second model to this modified dataset. The resulting model is illustrated in the next plot.</p>
+<p><img src="/images/adaboost/ab_example_reg_second_tree.png" alt="adaboost_reg_first_tree">
+<em>The second Decision Tree of the AdaBoost model.</em></p>
+<p>Following the decision paths of this tree we see that three samples are wrongly predicted. The sample age $= 45$, likes height $= 0$, and likes goats $=0$ yields $233.33m$, but the true value is $300m$. The sample age $= 42$, likes height $= 0$, and likes goats $= 0$, which is twice in the dataset also results in a prediction of $233.33m$, but the true value is $200m$. The remaining samples are correctly predicted. The Total Error is thus $\frac{3}{10}$. The influence $\alpha$ is therefore</p>
+<p>$$\alpha = \frac{1}{2} \ln\Big(\frac{1 - TotalError}{TotalError}\Big)$$
+$$\alpha =  \frac{1}{2} \ln\Big(\frac{\frac{7}{10}}{\frac{3}{10}}\Big)$$
+$$\alpha =  \frac{1}{2} \ln(\frac{7}{3}) = 0.42.$$</p>
+<p>The weights are then updated following the above formula. The old weights can be looked up in the previous table. For the first sample, which was correctly predicted, we get
+$$w_{new} = w_{old} \cdot e^{-\alpha},$$
+$$w_{new} = 0.0625 \cdot e^{-0.42},$$
+$$w_{new} = 0.041.$$</p>
+<p>The second sample was wrongly predicted, thus the sign in the exponent is positive. The new weight calculates as</p>
+<p>$$w_{new} = w_{old} \cdot e^{\alpha},$$
+$$w_{new} = 0.0625 \cdot e^{0.42},$$
+$$w_{new} = 0.095.$$</p>
+<p>The new weights again need to normalized. The weights for all samples are summarized in the following plot.</p>
+<p><img src="/images/adaboost/ab_example_reg_third_tree_weights.png" alt="adaboost_reg_third_tree_weights">
+<em>The dataset with the updated weights asigned to each sample.</em></p>
+<p>From the normalized weights, we calculate the bins.</p>
+<p><img src="/images/adaboost/ab_example_reg_third_tree_bins.png" alt="adaboost_reg_third_tree_weights">
+<em>The dataset with the asigned bins to each sample.</em></p>
+<p>Again, we simulate drawing 10 random numbers. Let&rsquo;s assume, we got the random numbers $[0.8, 0.92, 0.1, 0.4, 0.6, 0.3, 0.5, 0.2, 0.35, 0.97, 0.7]$, which refer then to the samples $[6, 8, 1, 5, 5, 4, 5, 4, 9, 5]$. The modified dataset based on the bins is shown in the following plot.</p>
+<p><img src="/images/adaboost/ab_example_reg_third_tree_data_modified.png" alt="adaboost_reg_third_tree_data">
+<em>Modified dataset based on the weights.</em></p>
+<p>Form this dataset we build the third and last model, which is shown in the following plot.</p>
+<p><img src="/images/adaboost/ab_example_reg_third_tree.png" alt="adaboost_reg_third_tree">
+<em>The third Decision Tree of the AdaBoost model.</em></p>
+<p>The only thing missing now to make the final prediction is the influence $\alpha$ of this last tree. The third tree predicts one sample wrongly, which is age $= 35$, likes height $=0$, and likes goats $= 0$ leads to a prediction of $250m$, while the correct value is $300m$. The total error is thus $\frac{1}{10}$ and therefore</p>
+<p>$$\alpha = \frac{1}{2} \ln\Big(\frac{1 - TotalError}{TotalError}\Big)$$
+$$\alpha =  \frac{1}{2} \ln\Big(\frac{\frac{9}{10}}{\frac{1}{10}}\Big)$$
+$$\alpha =  \frac{1}{2} \ln(9) = 1.099.$$</p>
+<p>Let&rsquo;s now use the model to make a prediction. Consider the following sample.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Feature</th>
+<th style="text-align:center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">age</td>
+<td style="text-align:center">45</td>
+</tr>
+<tr>
+<td style="text-align:center">likes height</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">likes goats</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>To make the final prediction, we need to consider all the individual predictions of all the models. The weighted mean of these predictions is then the prediction of the constructed esemble AdaBoost model. As weights the values for the influence is used. Following the decision path of the first tree, results in a prediction of $300m$, the second tree predicts $233.33m$ and the third tree again predicts $300m$. The final prediction is than calculated as</p>
+<p>$$\hat{y} = \frac{0.69\cdot300 m+ 0.42\cdot233.33m + 1.099\cdot300m}{0.60 + 0.42 + 1.099} = 299.53m.$$</p>
+<p>The true value of this sample is $300m$.</p>
+<p><img src="/images/adaboost/ab_example_reg_prediction.png" alt="adaboost_reg_prediction">
+<em>The final prediction for a specific sample.</em></p>
+<h2 id="fit-a-model-in-python">Fit a Model in Python</h2>
+<p>After developing a model by hand, we will now see how to fit a AdaBoost for a regression task in Python. We can use the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">sklearn</a> method <em>AdaBoostRegressor</em>. <strong>Note: The fitted model in sklearn differs from our developed model, due to some randomness in the algorithm and due to differences in the implementation of the algorithm.</strong> Randomness occurs in the underlying  <em>DecisionTreeRegressor</em> algorithm and in the boosting used in the <em>AdaBoostRegressor</em>. The main concepts, however, remain the same.</p>
+<p>We first create a dataframe for our data.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">pandas</span> <span style="color:#8839ef">as</span> <span style="color:#fe640b">pd</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#04a5e5;font-weight:bold">=</span> {<span style="color:#40a02b">&#39;age&#39;</span>: [<span style="color:#fe640b">23</span>, <span style="color:#fe640b">31</span>, <span style="color:#fe640b">35</span>, <span style="color:#fe640b">35</span>, <span style="color:#fe640b">42</span>, <span style="color:#fe640b">43</span>, <span style="color:#fe640b">45</span>, <span style="color:#fe640b">46</span>, <span style="color:#fe640b">46</span>, <span style="color:#fe640b">51</span>], 
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;likes goats&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>], 
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;likes height&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>], 
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;climbed meters&#39;</span>: [<span style="color:#fe640b">200</span>, <span style="color:#fe640b">700</span>, <span style="color:#fe640b">600</span>, <span style="color:#fe640b">300</span>, <span style="color:#fe640b">200</span>, <span style="color:#fe640b">700</span>, <span style="color:#fe640b">300</span>, <span style="color:#fe640b">700</span>, <span style="color:#fe640b">600</span>, <span style="color:#fe640b">700</span>]}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#04a5e5;font-weight:bold">=</span> pd<span style="color:#04a5e5;font-weight:bold">.</span>DataFrame(data)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now, we can fit the model. Because this example is only for illustration purposes and the dataset is very small, we limit the number of underlying Decision Trees to three, by setting the hyperparameter <em>n_estimators=3</em>. Note, that in a real world project, this number would usually be much higher, the default value in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">sklearn</a> is $100$.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.ensemble</span> <span style="color:#179299">import</span> AdaBoostRegressor
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;age&#39;</span>, <span style="color:#40a02b">&#39;likes goats&#39;</span>, <span style="color:#40a02b">&#39;likes height&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values
+</span></span><span style="display:flex;"><span>y <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;climbed meters&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values<span style="color:#04a5e5;font-weight:bold">.</span>reshape(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>,)
+</span></span><span style="display:flex;"><span>reg <span style="color:#04a5e5;font-weight:bold">=</span> AdaBoostRegressor(n_estimators<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">3</span>, random_state<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">42</span>)
+</span></span><span style="display:flex;"><span>reg<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We can then make predictions using the <em>predict</em> method and print the <em>score</em>, which is defined as the mean accuracy.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>y_hat <span style="color:#04a5e5;font-weight:bold">=</span> reg<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
+</span></span><span style="display:flex;"><span><span style="color:#04a5e5">print</span>(<span style="color:#d20f39">f</span><span style="color:#40a02b">&#34;predictions: </span><span style="color:#40a02b">{</span>y_hat<span style="color:#40a02b">}</span><span style="color:#40a02b">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#04a5e5">print</span>(<span style="color:#d20f39">f</span><span style="color:#40a02b">&#34;score: </span><span style="color:#40a02b">{</span>reg<span style="color:#04a5e5;font-weight:bold">.</span>score(X, y)<span style="color:#40a02b">}</span><span style="color:#40a02b">&#34;</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This leads to the predictions $[250, 700, 600, 300, 200, 700, 300, 700, 700, 700]$ and a score of $0.97$. Additionally, we can also print the predictions of the individual models for the three stages using the method <em>staged_predict</em>.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>staged_predictions <span style="color:#04a5e5;font-weight:bold">=</span> [p <span style="color:#8839ef">for</span> p <span style="color:#04a5e5;font-weight:bold">in</span> reg<span style="color:#04a5e5;font-weight:bold">.</span>staged_predict(X)]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This yields to</p>
+<p>stage 1: $[250, 700, 700, 250, 200, 700, 300, 700, 700, 700]$,</p>
+<p>stage 2: $[300, 700, 600, 300, 200, 700, 300, 700, 600, 700]$, and</p>
+<p>stage 3: $[250, 700, 600, 300, 200, 700, 300, 700, 700, 700]$</p>
+<p>which shows that all three models yield to different predictions for some samples. The influences are called <em>estimator_weights_</em> in sklearn and can also be printed.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>clf<span style="color:#04a5e5;font-weight:bold">.</span>estimator_weights_
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>For this example the weights are $[1.38629436, 1.14072377, 1.26274917]$. These weights are used for the final prediction, which is achieved by calculating the weighted mean of the individual predictions, with the weights being the influences of the underlying models. Let&rsquo;s consider a concrete example and make predictions for one sample of the dataset.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Feature</th>
+<th style="text-align:center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">age</td>
+<td style="text-align:center">45</td>
+</tr>
+<tr>
+<td style="text-align:center">likes height</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">likes goats</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>We can visualize the underlying Decision Trees and follow the decision paths. For the first tree the visualization is achieved as follows.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn</span> <span style="color:#179299">import</span> tree
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tree<span style="color:#04a5e5;font-weight:bold">.</span>plot_tree(reg<span style="color:#04a5e5;font-weight:bold">.</span>estimators_[<span style="color:#fe640b">0</span>], 
+</span></span><span style="display:flex;"><span>	feature_names<span style="color:#04a5e5;font-weight:bold">=</span>[<span style="color:#40a02b">&#39;age&#39;</span>, <span style="color:#40a02b">&#39;likes goats&#39;</span>, <span style="color:#40a02b">&#39;likes height&#39;</span>], fontsize<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">8</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/adaboost/ab_example_reg_tree1.png" alt="adaboost_first_tree">
+<em>Prediction of the first tree.</em></p>
+<p><img src="/images/adaboost/ab_example_reg_tree2.png" alt="adaboost_first_tree">
+<em>Prediction of the second tree.</em></p>
+<p><img src="/images/adaboost/ab_example_reg_tree3.png" alt="adaboost_first_tree">
+<em>Prediction of the third tree.</em></p>
+<p>Combining these three predictions with the influences (estimator_weights_) leads to the final prediction</p>
+<p>$$\hat{y} = \frac{\sum w_i \cdot \hat{y}_i}{\sum w_i}$$</p>
+<p>Filling in the according numbers, this gives</p>
+<p>$$\hat{y} = \frac{1.38629436 * 300 + 1.14072377 * 300 + 1.26274917 * 300}{1.38629436 + 1.14072377 + 1.26274917} = 300,$$</p>
+<p>which coincides with the prediction, we printed above for this sample.</p>
+<h2 id="summary">Summary</h2>
+<p>In this article we developed an AdaBoost model for a Regression task by hand following the steps described in the separate article <a href="http://localhost:1313/posts/classical_ml/adaboost/">AdaBoost - Explained</a>. Additionally a model was developed using <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">sklearn</a>. Although both models were derived for the same dataset, the final models differ due to some randomness in the algorithm and different implementations of the algorithm. This post focused on the application of the algorithm to a simplified regression example. For a detailed example for a classification task, please refer to the article <a href="http://localhost:1313/posts/classical_ml/adaboost_example_clf/">AdaBoost for Classification - Example</a>.</p>
+<h2 id="references">References</h2>
+<p>[1] Solomatine, D.P.; Shrestha, D.L., <a href="https://www.researchgate.net/publication/4116773_AdaBoostRT_A_boosting_algorithm_for_regression_problems">&ldquo;AdaBoost.RT: a Boosting Algorithm for Regression Problems&rdquo;</a>, 2004 IEEE International Joint Conference on Neural Networks, vol.2, no., pp.1163.1168 vol.2, 25-29 July 2004, DOI: 10.1109/IJCNN.2004.1380102</p>
+<hr>
+<p>If this blog is useful for you, I&rsquo;m thankful for your support!
+
+
+
+<a class="hugo-shortcodes-bmc-button" href="https://www.buymeacoffee.com/pumaline">
+    <img src="https://img.buymeacoffee.com/button-api/?button_colour=ffdd00&amp;coffee_colour=ffffff&amp;emoji=&amp;font_colour=000000&amp;font_family=Cookie&amp;outline_colour=000000&amp;slug=pumaline&amp;text=Buy&#43;me&#43;a&#43;coffee" alt="Buy me a coffee" />
+</a>
+</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/data-science/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Data Science</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/machine-learning/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Machine Learning</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/ensemble/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Ensemble</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/boosting/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Boosting</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/tree-methods/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Tree Methods</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/regression/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Regression</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/classification/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Classification</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/adaboost/">AdaBoost - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/random_forest/">Random Forests - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/adaboost_example_clf/">AdaBoost for Classification - Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/decision_trees/">Decision Trees - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/ensemble/">Ensemble Models - Illustrated</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/feature_selection/">Feature Selection Methods</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/linear_regression_example/">Linear Regression - Analytical Solution and Simplified Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/linear_regression/">Linear Regression - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/regression_metrics/">Metrics for Regression Problems</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/logistic_regression/">Logistic Regression - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/classification_metrics/">Metrics for Classification Problems</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/bias_variance/">Bias and Variance</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/deep_learning/intro_dl/">Introduction to Deep Learning</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy; 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+    
+    <a href="https://twitter.com/datamapu" target="_blank" rel="noopener" class="twitter ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Twitter link" aria-label="follow on Twitter——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    
+    <a href="https://www.linkedin.com/in/datamapu-ml-91a2622a3/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

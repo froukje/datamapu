@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Decision Trees - Explained | </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Introduction A Decision Tree is a supervised Machine Learning algorithm that can be used for both regression and classification problems. It is a non-parametric model, which means there is no specific mathematical function underlying to fit the data (in contrast to e.g. Linear Regression or Logistic Regression), but the algorithm only learns from the data itself. Decision Trees learn rules for decision making and used to be drawn manually before Machine Learning came up.">
+    <meta name="generator" content="Hugo 0.123.6">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+    
+    
+      
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+
+    
+
+    
+    
+    <meta property="og:title" content="Decision Trees - Explained" />
+<meta property="og:description" content="Introduction A Decision Tree is a supervised Machine Learning algorithm that can be used for both regression and classification problems. It is a non-parametric model, which means there is no specific mathematical function underlying to fit the data (in contrast to e.g. Linear Regression or Logistic Regression), but the algorithm only learns from the data itself. Decision Trees learn rules for decision making and used to be drawn manually before Machine Learning came up." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/classical_ml/decision_trees/" /><meta property="og:image" content="http://localhost:1313/images/decision_tree/dt_terminology.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-16T12:33:55+01:00" />
+<meta property="article:modified_time" content="2023-12-16T12:33:55+01:00" />
+
+<meta itemprop="name" content="Decision Trees - Explained">
+<meta itemprop="description" content="Introduction A Decision Tree is a supervised Machine Learning algorithm that can be used for both regression and classification problems. It is a non-parametric model, which means there is no specific mathematical function underlying to fit the data (in contrast to e.g. Linear Regression or Logistic Regression), but the algorithm only learns from the data itself. Decision Trees learn rules for decision making and used to be drawn manually before Machine Learning came up."><meta itemprop="datePublished" content="2023-12-16T12:33:55+01:00" />
+<meta itemprop="dateModified" content="2023-12-16T12:33:55+01:00" />
+<meta itemprop="wordCount" content="1465"><meta itemprop="image" content="http://localhost:1313/images/decision_tree/dt_terminology.png" />
+<meta itemprop="keywords" content="Data Science,Machine Learning,Decision Trees,Tree Methods,Regression,Classification," /><meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/images/decision_tree/dt_terminology.png" /><meta name="twitter:title" content="Decision Trees - Explained"/>
+<meta name="twitter:description" content="Introduction A Decision Tree is a supervised Machine Learning algorithm that can be used for both regression and classification problems. It is a non-parametric model, which means there is no specific mathematical function underlying to fit the data (in contrast to e.g. Linear Regression or Logistic Regression), but the algorithm only learns from the data itself. Decision Trees learn rules for decision making and used to be drawn manually before Machine Learning came up."/>
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+  </head>
+
+  <body class="ma0 sans-serif bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-navy">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        <img src="/logo_weiss_qualle.png" class="w100 mw5-ns" alt="" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/posts/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/" title=" page">
+              
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/content/" title="Content page">
+              Content
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+<div class="ananke-socials">
+  
+    
+    <a href="https://twitter.com/datamapu" target="_blank" rel="noopener" class="twitter ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Twitter link" aria-label="follow on Twitter——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    
+    <a href="https://www.linkedin.com/in/datamapu-ml-91a2622a3/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+      
+      <a href="https://twitter.com/share?url=http://localhost:1313/posts/classical_ml/decision_trees/&amp;text=Decision%20Trees%20-%20Explained" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
+        
+        <span class="icon"> <svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+        
+      </a>
+    
+      
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/classical_ml/decision_trees/&amp;title=Decision%20Trees%20-%20Explained" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
+        
+        <span class="icon"> <svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+        
+      </a>
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Decision Trees - Explained</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2023-12-16T12:33:55+01:00">December 16, 2023</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - 7 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 1465 words </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
+<p>A <em>Decision Tree</em> is a <a href="http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#supervised">supervised Machine Learning</a> algorithm that can be used for both regression and classification problems. It is a non-parametric model, which means there is no specific mathematical function underlying to fit the data (in contrast to e.g. <a href="http://localhost:1313/posts/classical_ml/linear_regression/">Linear Regression</a> or <a href="http://localhost:1313/posts/classical_ml/logistic_regression/">Logistic Regression</a>), but the algorithm only learns from the data itself. Decision Trees learn rules for decision making and used to be drawn manually before Machine Learning came up. They are hierarchical models, that have a flow-chart tree structure as the name suggests.</p>
+<p><img src="/images/decision_tree/dt_example_.png" alt="example for a decision tree">
+<em>Example for a Decision Tree.</em></p>
+<h2 id="terminology">Terminology</h2>
+<p>Before diving into the details of how to build a Decision Tree, let&rsquo;s have a look at some important terms.</p>
+<p><strong>Root Node.</strong> The Root Node is the top-level node. It contains the entire dataset and represents the first decision.</p>
+<p><strong>Node.</strong> A node is also called an <em>internal node</em> or <em>decision node</em>. It represents a split into further (child) nodes or leaves.</p>
+<p><strong>Parent Node.</strong> A parent node is a node that precedes a (child) node.</p>
+<p><strong>Child Node.</strong> A child node is a node following another (parent) node.</p>
+<p><strong>Leaf.</strong> A leaf is also called a <em>terminal node</em>. It is a node at the end of a branch and has no following nodes. It represents a possible outcome of the tree, i.e. a class label or a numerical value.</p>
+<p><strong>Splitting.</strong> The process of dividing a node into two child nodes depending on a criterion and a selected feature.</p>
+<p><strong>Branches.</strong> A branch is a subset of a tree, starting at an (internal) node until the leaves.</p>
+<p><strong>Pruning.</strong> Removing a branch from a tree is called pruning. This is usually done to avoid overfitting.</p>
+<p><img src="/images/decision_tree/dt_terminology.png" alt="terminology decision tree">
+<em>Illustration of the terminology of a Decision Tree.</em></p>
+<h2 id="build-a-tree">Build a Tree</h2>
+<p>To develop a Decision Tree we start with the entire dataset and subsequently split it into smaller subsets. At each node, the dataset ($D$) is split into two subsets ($D_1$ and $D_2$) depending on the feature that best divides the labels by a specific criterion. Different splitting criteria exist, which depend on whether the labels are categorical (classification) or numerical (regression).</p>
+<h3 id="splitting-for-classification-tasks">Splitting for Classification Tasks</h3>
+<p><strong>Gini Impurity</strong></p>
+<p>The <em>Gini Impurity</em> for a split is calculated as</p>
+<p>$$Gini(D) = \frac{n_1}{n} \cdot Gini(D_1) + \frac{n_2}{n} \cdot Gini(D_2),$$</p>
+<p>with $n = n_1 + n_2$ the size of the dataset $D$, its subsets $D_1$, $D_2$, and</p>
+<p>$$Gini(D_i) = 1 - \sum_{j=1}^c p_j^2,$$</p>
+<p>the Gini Impurity of node $i$. In this equation $p_j$ is the probability that a randomly drawn sample from this node belongs to class $j$ and $c$ the number of classes. The lower the Gini Impurity, the purer the node, or in other words the better the classes are separated. The Gini Impurity is calculated using the negative of the square of the probability, which by nature is a value between 0 and 1. That is, it is highest if the samples are uniformly distributed within a node. The Gini Impurity of a pure node is zero.</p>
+<p>Follow these steps to split a Decision Tree based on Gini Impurity.</p>
+<ol>
+<li>For each possible split, create child nodes and calculate the Gini Impurity of each child node.</li>
+<li>Calculate the Gini Impurity of the split as the weighted average Gini Impurity of child nodes.</li>
+<li>Select the split with the lowest Gini Impurity.</li>
+</ol>
+<p>Repeat steps 1–3 until no further split is possible. Note that <em>possible splits</em> may be more than features if the features are not all binary. A detailed example, where all the Gini Impurities of all splits are calculated and illustrated, can be found <a href="http://localhost:1313/posts/classical_ml/decision_tree_classification_example/">here</a>.</p>
+<p><strong>Information Gain</strong></p>
+<p>The <em>Information Gain</em> is given by</p>
+<p>$$Gain(D) = 1 - Entropy(D),$$</p>
+<p>with</p>
+<p>$$Entropy(D) = \frac{n_1}{n}\cdot Entropy(D_1) + \frac{n_2}{n}\cdot Entropy(D_2)$$</p>
+<p>and</p>
+<p>$$Entropy(D_i) = -\sum_{j=1}^c p_j log_2 p_j,$$</p>
+<p>the <em>Entropy</em> of node $i$. In this equation $n = n_1 + n_2$ represent the sizes of the datasets $D$, $D_1$, and $D_2$. The <em>lower</em> the Entropy, the purer the node. Since the Entropy is subtracted from $1$, this means the <em>higher</em> the Information Gain, the purer the node.</p>
+<p>Follow these steps to split a Decision Tree based on Information Gain.</p>
+<ol>
+<li>For each possible split, create child nodes and calculate the Entropy of each child node.</li>
+<li>Calculate the Entropy of the split as the weighted average Entropy of child nodes.</li>
+<li>Select the split with the lowest Entropy or highest Information Gain, respectively.</li>
+</ol>
+<p>Repeat steps 1-3 until no further splits are possible.</p>
+<p>Note, that a disadvantage of information Gain is, that it prefers features with a large number of classes, which may bias the splitting. A possibility to overcome this is to calculate the <em>Information Gain Ratio</em> instead. This is defined as</p>
+<p>$$Gain Ratio = \frac{Gain}{-\sum_{j=1}^cp_jlog(p_j)}.$$</p>
+<p>A detailed explanation is beyond the scope of this article. More information can be found <a href="https://scientistcafe.com/ids/splitting-criteria#splitting-criteria">here</a>.</p>
+<p><img src="/images/decision_tree/impurity_entropy.png" alt="gini impurity and entropy">
+<em>Illustration of Gini Impurity and Entropy.</em></p>
+<h3 id="splitting-for-regression-tasks">Splitting for Regression Tasks</h3>
+<p><strong>Reduction in Variance</strong></p>
+<p>In this method the <em>variance</em></p>
+<p>$$\sigma^2_i = \frac{1}{n_i}\sum_{j=1}^{n_i}(x_j-\bar{x})^2$$</p>
+<p>is used to determine the split. In the above formular $D_i$ represents the subset with size $n_i$. The lower the variance the purer the node. If a node only contains samples of the same value the variance is zero. That is in this case, we seek a low variance to find a good split.</p>
+<p>Follow these steps to split a Decision Tree based on the reduction of variance.</p>
+<ol>
+<li>For each possible split, create child nodes and calculate the variance of each child node.</li>
+<li>Calculate the variance of the split as the weighted average variance of child nodes.</li>
+<li>Select the split with the lowest variance.</li>
+</ol>
+<p>Repeat steps 1-3 until no further splits are possible.</p>
+<p>Note, that an equivalent variant of calculating the reduction in variance is the calculation of the <em>Sum of Squared Errors (SEE)</em>, which is defined as</p>
+<p>$$SSE(D) = SSE(D_1) + SSE(D_2),$$</p>
+<p>with</p>
+<p>$$SSE(D_i) = \frac{1}{n_i}\sum_{j=1}^{n_i}(x_j-\bar{x}_i)^2.$$</p>
+<h2 id="decision-trees-in-python">Decision Trees in Python</h2>
+<p>To determine a Decision Tree for a given dataset in Python, we can use the <a href="https://scikit-learn.org/stable/modules/tree.html">sklearn</a> library. Both, Decision Trees for classification and regression tasks are supported. Here is a simple example for a classification problem. The splitting method used in sklearn is Gini Impurity. The task is to decide whether a person should go rock climbing or not, depending on whether the person likes height, goats, and their age, as illustrated at the beginning of this article.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">pandas</span> <span style="color:#8839ef">as</span> <span style="color:#fe640b">pd</span>
+</span></span><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.tree</span> <span style="color:#179299">import</span> DecisionTreeClassifier
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#04a5e5;font-weight:bold">=</span> {<span style="color:#40a02b">&#39;age&#39;</span>: [<span style="color:#fe640b">23</span>, <span style="color:#fe640b">31</span>, <span style="color:#fe640b">35</span>, <span style="color:#fe640b">35</span>, <span style="color:#fe640b">42</span>, <span style="color:#fe640b">43</span>, <span style="color:#fe640b">45</span>, <span style="color:#fe640b">46</span>, <span style="color:#fe640b">46</span>, <span style="color:#fe640b">51</span>], 
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;likes goats&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>], 
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;likes height&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>], 
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;go rock climbing&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>]}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#04a5e5;font-weight:bold">=</span> pd<span style="color:#04a5e5;font-weight:bold">.</span>DataFrame(data)
+</span></span><span style="display:flex;"><span>X <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;age&#39;</span>, <span style="color:#40a02b">&#39;likes goats&#39;</span>, <span style="color:#40a02b">&#39;likes height&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values
+</span></span><span style="display:flex;"><span>y <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;go rock climbing&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values<span style="color:#04a5e5;font-weight:bold">.</span>reshape(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>,)
+</span></span><span style="display:flex;"><span>clf <span style="color:#04a5e5;font-weight:bold">=</span> DecisionTreeClassifier()
+</span></span><span style="display:flex;"><span>clf <span style="color:#04a5e5;font-weight:bold">=</span> clf<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
+</span></span><span style="display:flex;"><span>y_hat <span style="color:#04a5e5;font-weight:bold">=</span> clf<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
+</span></span><span style="display:flex;"><span>y_pred_proba <span style="color:#04a5e5;font-weight:bold">=</span> clf<span style="color:#04a5e5;font-weight:bold">.</span>predict_proba(X)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The class used to determine the Decision Tree is <a href="https://scikit-learn.org/stable/modules/tree.html#tree-classification">DecisionTreeClassifier</a>. To get the predicted categories we can use the <em>predict</em> method. In this example, the result is <em>y_hat = [0 1 1 0 0 1 0 1 0 1]</em>. Accordingly, <em>predict_proba</em> gives the probability of each category. The Decision Tree can be illustrated in Python using the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html">plot_tree</a> class from sklearn.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.tree</span> <span style="color:#179299">import</span> plot_tree
+</span></span><span style="display:flex;"><span>plot_tree(clf, feature_names<span style="color:#04a5e5;font-weight:bold">=</span>[<span style="color:#40a02b">&#39;age&#39;</span>, <span style="color:#40a02b">&#39;likes goats&#39;</span>, <span style="color:#40a02b">&#39;likes height&#39;</span>], fontsize<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">10</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/decision_tree/dt_python.png" alt="example in python">
+<em>Illustration of a Decision Tree in Python.</em></p>
+<h2 id="advantages--disadvantages">Advantages &amp; Disadvantages</h2>
+<p><strong>Advantages</strong></p>
+<ul>
+<li>Decision Trees are intuitive, easy to implement, and interpret.</li>
+<li>Decision Trees are not affected by outliers, missing values, or co-linearity between features.</li>
+<li>Decision Trees can be used with numerical and categorical data</li>
+<li>The data doesn’t need to be scaled.</li>
+<li>As non-parametric algorithms, Decision Trees are very flexible.</li>
+</ul>
+<p><strong>Disadvantages</strong></p>
+<ul>
+<li>Decision Trees tend to overfit. To overcome this, pruning the tree may help.</li>
+<li>Decision Trees cannot predict continuous variables. That is also when applied to a regression problem the predictions must be separated into categories.</li>
+<li>As a non-parametric algorithm, the training of a Decision Tree may be expensive if the dataset is large.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>In this article, we learned what Decision Trees are and how to build them depending on whether a regression or a classification problem is considered. We considered a selection of splitting criteria, there are of course many more. Decision Trees are powerful Machine Learning models with some major advantages such as easy interpretability and robustness against missing values. A main disadvantage of Decision Trees is that they easily overfit and have difficulties in generalizing to unseen data. In the article <a href="http://localhost:1313/posts/classical_ml/decision_tree_classification_example/">Decision Tree Example for Classification</a>, you can find a detailed calculation by hand of the above developed Decision Tree. For a more realistic example with a larger dataset, you can find a notebook on <a href="https://www.kaggle.com/code/pumalin/decision-trees-tutorial">kaggle</a>. In a separate article, you can find the development of a <a href="http://localhost:1313/posts/classical_ml/decision_tree_classification_example/">Decision Tree Example for Regression</a>.</p>
+<hr>
+<p>If this blog is useful for you, I&rsquo;m thankful for your support!
+
+
+
+<a class="hugo-shortcodes-bmc-button" href="https://www.buymeacoffee.com/pumaline">
+    <img src="https://img.buymeacoffee.com/button-api/?button_colour=ffdd00&amp;coffee_colour=ffffff&amp;emoji=&amp;font_colour=000000&amp;font_family=Cookie&amp;outline_colour=000000&amp;slug=pumaline&amp;text=Buy&#43;me&#43;a&#43;coffee" alt="Buy me a coffee" />
+</a>
+</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/data-science/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Data Science</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/machine-learning/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Machine Learning</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/decision-trees/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Decision Trees</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/tree-methods/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Tree Methods</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/regression/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Regression</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/classification/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Classification</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/feature_selection/">Feature Selection Methods</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/logistic_regression/">Logistic Regression - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/linear_regression_example/">Linear Regression - Analytical Solution and Simplified Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/linear_regression/">Linear Regression - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/classification_metrics/">Metrics for Classification Problems</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/regression_metrics/">Metrics for Regression Problems</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/deep_learning/intro_dl/">Introduction to Deep Learning</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/supervised_unsupervised/">Supervised versus Unsupervised Learning - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/datascience_lifecycle/">The Data Science Lifecycle</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy; 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+    
+    <a href="https://twitter.com/datamapu" target="_blank" rel="noopener" class="twitter ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Twitter link" aria-label="follow on Twitter——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    
+    <a href="https://www.linkedin.com/in/datamapu-ml-91a2622a3/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

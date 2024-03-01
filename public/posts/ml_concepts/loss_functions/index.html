@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Loss Functions in Machine Learning | </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Introduction In Machine Learning Loss Functions are used to evaluate the model. They compare the true target values with the predicted ones and are directly related to the error of the predictions. During the training of a model, the Loss Function is aimed to be optimized to minimize the error of the predictions. It is a general convention to define a Loss Function such that it is minimized rather than maximized.">
+    <meta name="generator" content="Hugo 0.123.6">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+    
+    
+      
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+
+    
+
+    
+    
+    <meta property="og:title" content="Loss Functions in Machine Learning" />
+<meta property="og:description" content="Introduction In Machine Learning Loss Functions are used to evaluate the model. They compare the true target values with the predicted ones and are directly related to the error of the predictions. During the training of a model, the Loss Function is aimed to be optimized to minimize the error of the predictions. It is a general convention to define a Loss Function such that it is minimized rather than maximized." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/ml_concepts/loss_functions/" /><meta property="og:image" content="http://localhost:1313/images/loss_functions/loss_function.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-04T18:57:51-03:00" />
+<meta property="article:modified_time" content="2024-02-04T18:57:51-03:00" />
+
+<meta itemprop="name" content="Loss Functions in Machine Learning">
+<meta itemprop="description" content="Introduction In Machine Learning Loss Functions are used to evaluate the model. They compare the true target values with the predicted ones and are directly related to the error of the predictions. During the training of a model, the Loss Function is aimed to be optimized to minimize the error of the predictions. It is a general convention to define a Loss Function such that it is minimized rather than maximized."><meta itemprop="datePublished" content="2024-02-04T18:57:51-03:00" />
+<meta itemprop="dateModified" content="2024-02-04T18:57:51-03:00" />
+<meta itemprop="wordCount" content="2171"><meta itemprop="image" content="http://localhost:1313/images/loss_functions/loss_function.png" />
+<meta itemprop="keywords" content="Data Science,Machine Learning,Deep Learning," /><meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/images/loss_functions/loss_function.png" /><meta name="twitter:title" content="Loss Functions in Machine Learning"/>
+<meta name="twitter:description" content="Introduction In Machine Learning Loss Functions are used to evaluate the model. They compare the true target values with the predicted ones and are directly related to the error of the predictions. During the training of a model, the Loss Function is aimed to be optimized to minimize the error of the predictions. It is a general convention to define a Loss Function such that it is minimized rather than maximized."/>
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+  </head>
+
+  <body class="ma0 sans-serif bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-navy">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        <img src="/logo_weiss_qualle.png" class="w100 mw5-ns" alt="" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/posts/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/" title=" page">
+              
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/content/" title="Content page">
+              Content
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+<div class="ananke-socials">
+  
+    
+    <a href="https://twitter.com/datamapu" target="_blank" rel="noopener" class="twitter ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Twitter link" aria-label="follow on Twitter——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    
+    <a href="https://www.linkedin.com/in/datamapu-ml-91a2622a3/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+      
+      <a href="https://twitter.com/share?url=http://localhost:1313/posts/ml_concepts/loss_functions/&amp;text=Loss%20Functions%20in%20Machine%20Learning" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
+        
+        <span class="icon"> <svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+        
+      </a>
+    
+      
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/ml_concepts/loss_functions/&amp;title=Loss%20Functions%20in%20Machine%20Learning" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
+        
+        <span class="icon"> <svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+        
+      </a>
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Loss Functions in Machine Learning</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-02-04T18:57:51-03:00">February 4, 2024</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - 11 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 2171 words </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
+<p>In Machine Learning Loss Functions are used to evaluate the model. They compare the true target values with the predicted ones and are directly related to the error of the predictions. During the training of a model, the Loss Function is aimed to be optimized to minimize the error of the predictions. It is a general convention to define a Loss Function such that it is minimized rather than maximized. The specific choice of a Loss Function depends on the problem we want to solve, e.g. whether a regression or a classification task is considered. In this article, we will discuss the most common ones, which work very well for a lot of tasks. We can, however, also create custom Loss Functions adapted for specific problems. Custom Loss Functions help to focus on the specific errors we aim to minimize. We will have a look at examples of custom Loss Functions later in this post.</p>
+<p><img src="/images/loss_functions/loss_function.png" alt="loss_function"></p>
+<p><strong>Terminology</strong></p>
+<p>The term <em>Loss Function</em> is most commonly used, however, sometimes it is also called <em>Error Function</em>.  The outcome of the Loss Function is called <em>Loss</em>. The Loss Function is applied to each sample of the dataset, it is related to the <em>Cost Function</em> (sometimes also called <em>Objective Function</em>), which is the average of all Loss Function values. The Cost Function is therefore a measure of how the model performs on the entire dataset, while the Loss Function evaluates the Loss for each sample. In practice, however, the terms <em>Loss Function</em> and <em>Cost Function</em> are often used interchangeably.</p>
+<h2 id="how-are-loss-functions-used-in-machine-learning">How are Loss Functions used in Machine Learning?</h2>
+<p>Loss Functions can be used in different ways for <strong>training and evaluating</strong> a Machine Learning model. All Machine Learning models need to be evaluated with a metric to check how well the predictions fit the true values. These metrics can be considered as Cost Functions because they measure the performance of the entire dataset. Examples of such evaluation metrics are e.g. the <a href="http://localhost:1313/posts/ml_concepts/regression_metrics/#metrics" title="regression_metrics">Mean Squared Error</a> for a regression task or the <a href="http://localhost:1313/posts/ml_concepts/classification_metrics/#metrics" title="classification_metrics">Accuracy</a> for a classification task. More examples of common metrics can be found in the separate articles <a href="http://localhost:1313/posts/ml_concepts/classification_metrics/" title="classification_metrics">Metrics for Classification Problems</a> and <a href="http://localhost:1313/posts/ml_concepts/regression_metrics/" title="regression_metrics">Metrics for Regression Problems</a>. These, metrics however, are not necessarily based on the same Loss Function that is used during the training of a model. Depending on the underlying algorithm Loss Functions are used in different ways.</p>
+<p>For <a href="http://localhost:1313/posts/classical_ml/decision_trees/" title="decision_trees">Decision Trees</a>, Loss Functions are used to guide the construction of the tree. For classification usually the Gini-Impurity or Entropy is used as Loss Function and for regression tasks the Sum of Squared Errors. These Losses are minimized at each split of the tree. We can therefore say, that in a Decision Tree at each split the local minimum of the Loss Function is calculated. Decision Trees follow a so-called <a href="https://en.wikipedia.org/wiki/Greedy_algorithm">greedy search</a> and assume that the sequence of locally optimal solutions leads to a globally optimal solution. In other words, they assume by choosing the lowest Loss (error) at each split, the overall Loss (error) of the model is also minimized. This assumption, however, does not always hold.</p>
+<p>Other Machine Learning models, like e.g. <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/" title="gradient_boosting">Gradient Boosting</a> or <a href="http://localhost:1313/posts/deep_learning/intro_dl/" title="neural_net">Neural Networks</a>, use a global Loss Function to optimize the results. The Loss Functions are depending on the model&rsquo;s parameters because the predictions are calculated based on these parameters. In a Neural Network, these parameters are the weights and the biases. During the training of such models, we aim to change these parameters in such a way that the Loss (error) between the true values and the predicted values is minimized. That is we aim to minimize the Loss Function. This is an iterative process. To approximate the minimum of a function numerically different optimization techniques exist. The most popular one is <a href="http://localhost:1313/posts/ml_concepts/gradient_descent/" title="gradient_descent">Gradient Descent</a> or a variant of it. The main idea is to use the negative of the gradient of a function at a specific point to find the direction of the steepest descent to move into the direction of the minimum. That is why for such types of models, the Loss Function needs to be differentiable. Small steps in the direction of the minimum are taken in each training step. The parameters of the model are then updated using the gradient of the Loss Function. The process is illustrated in the following plot. For a more detailed explanation, please refer to the separate article about <a href="http://localhost:1313/posts/ml_concepts/gradient_descent/" title="gradient_descent">Gradient Descent</a>.</p>
+<p><img src="/images/20231102_ai_ml_dl/gradient_descent.gif" alt="ai_ml_dl">
+<em>Ilustration of Gradient Descent.</em></p>
+<p>During the training process the Loss is calculated after each training step. If the Loss is decreasing, we know that the model is improving, while when it is increasing we know that is not. The Loss thus guides the model into the correct direction. Note, in contrast to Decision Trees the Loss is not calculated locally for a specific region, but globally.</p>
+<h2 id="examples">Examples</h2>
+<p>The choice of the Loss Function used depends on the problem we are considering. Especially, we can divide them into two types. Loss Functions for regression tasks and Loss Functions for classification tasks. In a regression task, we aim to predict continuous values as closely as possible (e.g. a price), while in a classification task, we aim to predict the probability of a category (e.g. a grade). In the following, we will discuss the most commonly used Loss Functions for each case, and also define a customized Loss Function.</p>
+<h3 id="loss-functions-for-regression-tasks">Loss Functions for Regression Tasks</h3>
+<p><strong>Mean Absolute Error</strong></p>
+<p>The <a href="http://localhost:1313/posts/ml_concepts/regression_metrics/#metrics">Mean Absolute Error (MAE)</a> or also called <em>L1-Loss</em>, is defined as</p>
+<p>$$L(y_i, \hat{y}_i) = |y_i - \hat{y}_i|,$$</p>
+<p>and accordingly ththe cost function over all samples</p>
+<p>$$f(y, \hat{y}) = \frac{1}{N} \sum_{i=1}^N |y_i - \hat{y}_i|,$$</p>
+<p>with $N$ the number of data samples, $y_i = (y_1, y_2, \dots, y_n)$ the true observation values, and $\hat{y}_i = (\hat{y}_1, \hat{y}_2, \dots, \hat{y}_N)$ the predicted values. The MAE is summarized in the following plot.</p>
+<p><img src="/images/20231001_regression_metrics/mae.jpg" alt="msa"></p>
+<p><strong>Mean Squared Error</strong></p>
+<p>The <a href="http://localhost:1313/posts/ml_concepts/regression_metrics/#metrics">Mean Squared Error (MSE)</a> or also called <em>L2-Loss</em>, is defined as</p>
+<p>$$L(y_i, \hat{y}_i) = (y_i - \hat{y}_i)^2,$$</p>
+<p>and accordingly th ecost function over all samples</p>
+<p>$$f(y, \hat{y}) = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^2,$$</p>
+<p>with $N$ the number of data samples, $y_i = (y_1, y_2, \dots, y_n)$ the true observation values, and $\hat{y}_i = (\hat{y}_1, \hat{y}_2, \dots, \hat{y}_N)$ the predicted values. The MSE is summarized in the following plot.</p>
+<p><img src="/images/20231001_regression_metrics/mse.jpg" alt="mse"></p>
+<p><strong>Mean Absolute Percentage Error</strong></p>
+<p>The <a href="http://localhost:1313/posts/ml_concepts/regression_metrics/#metrics">Mean Absolute Percentage Error (MAPE)</a>, is defined as</p>
+<p>$$L(y, \hat{y}) = \frac{|y_i - \hat{y}_i|}{|y_i|} \cdot 100,$$</p>
+<p>and accordingly the cost function over all data samples</p>
+<p>$$f(y, \hat{y}) = \frac{1}{N} \sum_{i=1}^N \frac{|y_i - \hat{y}_i|}{|y_i|} \cdot 100,$$</p>
+<p>with $N$ the number of data samples, $y_i = (y_1, y_2, \dots, y_n)$ the true observation values, and $\hat{y}_i = (\hat{y}_1, \hat{y}_2, \dots, \hat{y}_N)$ the predicted values. The MAPE is summarized in the following plot.</p>
+<p><img src="/images/20231001_regression_metrics/mape.jpg" alt="mse"></p>
+<p><strong>Huber Loss</strong></p>
+<p>The Huber Loss is a possibility to combine the advantages of both the MSE and MAE. It is defined as</p>
+<p><img src="/images/loss_functions/huber_loss.png" alt="huber_loss"></p>
+<p>with $\delta$ a hyperparameter, that specifies from which point the loss should follow a linear curve instead of a quadratic curve. The Huber Loss is summarized and illustrated for different parameters in the following plot.</p>
+<p><img src="/images/loss_functions/huber_loss.gif" alt="huber_loss">
+<em>The Huber Loss.</em></p>
+<p><strong>Log-Cosh-Loss</strong></p>
+<p>The Log-Cosh-Loss is very similar to the Huber loss. It also combines the advantages of both MSE and MAE. From the formula this is not as obvious as for the Huber Loss, but it can be shown, that the Logcosh approximates a quadratic function, when the independent variable goes to zero and a linear function, when it goes to infinity [1].</p>
+<p>$$L(y, \hat{y}) = \sum_{i=1}^N \log (\cosh (\hat{y}_i - y_i))$$</p>
+<p><img src="/images/loss_functions/logcosh_loss.png" alt="logcosh_loss">
+<em>The Logcosh Loss.</em></p>
+<p>There are of course much more loss functions for regression tasks, the ones listed above are just a selection. They are compared in the below plot.</p>
+<p><img src="/images/loss_functions/loss_functions_regression.png" alt="loss_regression">
+<em>Ilustration of different loss functions for regression tasks.</em></p>
+<h3 id="loss-functions-for-classification-tasks">Loss Functions for Classification Tasks</h3>
+<p>As for regression tasks, in classification, we use Loss Functions to measure the error our model makes. The difference however is, that in this case, we don&rsquo;t have continuous target values, but categorical classes and the predictions of our model are probabilities.</p>
+<p><strong>(Binary-)Cross Entropy</strong></p>
+<p><em>(Binary-)Cross Entropy</em> is the most used Loss for classification problems. To explain <em>Cross Entropy</em>, we start with the special case of having two classes, i.e. a binary classification. The Cross Entropy then turns into <em>Binary Cross Entropy (BCE)</em>, which is also often called <em>Log Loss</em>.</p>
+<p>The mathematical formulation of the Cost Function is as follows</p>
+<p>$$L(y, \hat{y}) = -\frac{1}{N}\sum_{i=1}^N{\Big(y_i\log(\hat{y}_i) + (1 - y_i)\log(1 - \hat{y}_i)\Big)},$$</p>
+<p>with $y = (y_1, \dots, y_N)$ the true label ($0$ or $1$) and $\hat{y} = (\hat{y}_1, \dots, \hat{y}_N)$ the predicted probability. To understand how Binary Cross Entropy works, let&rsquo;s consider just one sample. That means we can forget the outer sum over $i$ and get the Loss Function</p>
+<p>$$L(y_i, \hat{y}_i) = -y_i\log(\hat{y}_i) - (1 - y_i)\log(1 - \hat{y}_i.$$</p>
+<p>Let&rsquo;s consider two possible target outcomes. For the case $y_i = 0$, the first part of the sum vanishes and only</p>
+<p>$$L(y_i, \hat{y}_i) = - \log(1-\hat{y}_i)$$</p>
+<p>remains. On the other hand, for the case $y_i = 1$, the second part of the sum vanishes and only</p>
+<p>$$L(y_i, \hat{y}_i) = - \log(\hat{y}_i)$$</p>
+<p>remains. These two functions are shown in the following plot.</p>
+<p><img src="/images/loss_functions/bce.png" alt="logcosh_loss">
+<em>The Binary Cross Entropy Loss.</em></p>
+<p>We know that $\hat{y}_i$ is a probability and thus can only take values between $0$ and $1$. We can see that for the case $y_i = 0$ the loss is close to $0$, when $\hat{y}_i$ is close to $0$ and it increases if $\hat{y}_i$ approaches $1$. That means the Binary Cross Entropy penalizes more the further away the predicted probability is from the true value. The same holds if $y_i = 1$. In this case, the loss is high if $\hat{y}_i$ is close to $0$ and low if it approaches $1$.</p>
+<p>The more general formulation for $M&gt;2$ classes of the Cross Entropy is</p>
+<p>$$L(y, \hat{y}) = -\frac{1}{N}\sum_{j=1}^M\sum_{i=1}^N{y_{i,j}\log(\hat{y}_{i,j})}.$$</p>
+<p><strong>Hinge Loss</strong></p>
+<p>The <em>Hinge Loss</em> is especially used by Support Vector Machines (SVM). SVM is a type of Machine Learning model, which aims to create hyperplanes (or in two dimensions decision boundaries), which can be used to separate the data points into classes. The Hinge Loss is used to measure the distance of points to the hyperplane or decision boundary.  For binary classification, it is defined as</p>
+<p>$$L(y_i, \hat{y}_i) = max(0, 1 - y_i \cdot \hat{y}_i),$$</p>
+<p>with $\hat{y}_i$ the predicted value and $y_i$ the true target value for $i = 1, 2, \dots N$. The convention is that the true values have values $-1$ and $1$. The Hinge Loss is zero, when $y_i\cdot\hat{y}_i &gt;= 1$, which is the case for $y_i = 1$ and $\hat{y}_i &gt;= 1$ or $y_i = -1$ and $\hat{y}_i &lt;= -1$. In both cases, the data point was correctly classified, thus the loss of $0$ means we are not penalizing our model. For the cases $y_i = 1$ and $\hat{y}_i &lt; 1$ and $y_i = -1$ and $\hat{y}_i &gt; -1$, $y_i \cdot \hat{y}_i &lt; 1$ and the Loss is therefore positive. The further away $\hat{y}_i$ is from the true value the more increases the loss.</p>
+<p>The Hinge Loss can be extended to multi-class classification. This is, however, not in the scope of this article. An explanation can be found on <a href="https://en.wikipedia.org/wiki/Hinge_loss">Wikipedia</a>.</p>
+<p><img src="/images/loss_functions/hinge_loss.png" alt="hinge_loss">
+<em>The Hinge Loss illustrated.</em></p>
+<h3 id="example-for-a-custom-loss-function">Example for a custom Loss Function</h3>
+<p>The above discussed examples are the most common ones, however, we can define a Loss Function specific to our needs. We learned that the MSE penalizes outliers more than the MAE. If we want our Loss to penalize even stronger the outliers, we could for example define loss of degree $4$ as follows</p>
+<p>$$L(y_i, \hat{y}_i) = (y_i - \hat{y}_i)^4.$$</p>
+<p>We can also define an assymentric Loss that penalizes more negative values than positive values</p>
+<p><img src="/images/loss_functions/asym_loss_klein.png" alt="asym_loss"></p>
+<p>in both cases with $\hat{y} = (y_1, \dots, y_N)$ the predicted value and $y = (y_1, \dots, y_N)$ the true values. Customized Loss Functions may help our model to learn. These were two examples for regression tasks, custom Loss Functions can however also be created for classification tasks.</p>
+<p><img src="/images/loss_functions/custom_loss.png" alt="custom_loss">
+<em>Two examples of custom Loss Functions.</em></p>
+<h2 id="specific-machine-learning-models-and-their-loss-functions">Specific Machine Learning Models and their Loss Functions</h2>
+<p>Some Machine Learning algorithms have a fixed Loss Function, while others are flexible and the Loss Function can be adapted to the specific task. The following table gives a (non-exhaustive) overview of some popular Machine Learning Algorithms and their corresponding Loss Functions. Important to keep in mind is that the Loss Function needs to be differentiable if some form of <a href="">Gradient Descent</a> is performed, e.g. in <a href="http://localhost:1313/posts/deep_learning/intro_dl/">Neural Networks</a> or <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/" title="gradient_boosting">Gradient Boosting</a>.</p>
+<p><img src="/images/loss_functions/loss_functions_examples.png" alt="loss_functions_examples">
+<em>Examples for Machine Learning models and their Loss Functions.</em></p>
+<h2 id="summary">Summary</h2>
+<p>Loss Functions are used to evaluate a model and to analyze if it is learning. We discussed typical Loss Functions for regression and classification tasks and also saw two examples of customized Loss Functions. Choosing an appropriate Loss Function is very important because it is used to evaluate and improve the model performance. It should thus reflect well the metric that is important for the project so that errors are minimized accordingly.</p>
+<h2 id="further-reading">Further Reading</h2>
+<p>[1] <a href="https://openreview.net/pdf?id=rkglvsC9Ym">&ldquo;Log Hyperbolic Cosine Loss Improves Variational Auto-Encoder&rdquo;</a>, anonymous authors, 2019.</p>
+<hr>
+<p>If this blog is useful for you, I&rsquo;m thankful for your support!
+
+
+
+<a class="hugo-shortcodes-bmc-button" href="https://www.buymeacoffee.com/pumaline">
+    <img src="https://img.buymeacoffee.com/button-api/?button_colour=ffdd00&amp;coffee_colour=ffffff&amp;emoji=&amp;font_colour=000000&amp;font_family=Cookie&amp;outline_colour=000000&amp;slug=pumaline&amp;text=Buy&#43;me&#43;a&#43;coffee" alt="Buy me a coffee" />
+</a>
+</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/data-science/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Data Science</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/machine-learning/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Machine Learning</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/deep-learning/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Deep Learning</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/deep_learning/intro_dl/">Introduction to Deep Learning</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/feature_selection/">Feature Selection Methods</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/logistic_regression/">Logistic Regression - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/linear_regression_example/">Linear Regression - Analytical Solution and Simplified Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/linear_regression/">Linear Regression - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/adaboost_example_reg/">Adaboost for Regression - Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/adaboost_example_clf/">AdaBoost for Classification - Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/adaboost/">AdaBoost - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/bias_variance/">Bias and Variance</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/ensemble/">Ensemble Models - Illustrated</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/random_forest/">Random Forests - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/decision_trees/">Decision Trees - Explained</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy; 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+    
+    <a href="https://twitter.com/datamapu" target="_blank" rel="noopener" class="twitter ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Twitter link" aria-label="follow on Twitter——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    
+    <a href="https://www.linkedin.com/in/datamapu-ml-91a2622a3/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

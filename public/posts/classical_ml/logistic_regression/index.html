@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Logistic Regression - Explained | </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Introduction Logistic Regression is a Supervised Machine Learning algorithm, in which a model is developed, that relates the target variable to one or more input variables (features). However, in contrast to Linear Regression the target (dependent) variable is not numerical, but categorical. That is the target variable can be classified in different categories (e.g.: &rsquo;test passed&rsquo; or &rsquo;test not passed&rsquo;). An idealized example of two categories for the target variable is illustrated in the plot below.">
+    <meta name="generator" content="Hugo 0.123.6">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+    
+    
+      
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+
+    
+
+    
+    
+    <meta property="og:title" content="Logistic Regression - Explained" />
+<meta property="og:description" content="Introduction Logistic Regression is a Supervised Machine Learning algorithm, in which a model is developed, that relates the target variable to one or more input variables (features). However, in contrast to Linear Regression the target (dependent) variable is not numerical, but categorical. That is the target variable can be classified in different categories (e.g.: &rsquo;test passed&rsquo; or &rsquo;test not passed&rsquo;). An idealized example of two categories for the target variable is illustrated in the plot below." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/classical_ml/logistic_regression/" /><meta property="og:image" content="http://localhost:1313/images/20231202_logistic_regression/linear_logistic.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-02T09:31:24+01:00" />
+<meta property="article:modified_time" content="2023-12-02T09:31:24+01:00" />
+
+<meta itemprop="name" content="Logistic Regression - Explained">
+<meta itemprop="description" content="Introduction Logistic Regression is a Supervised Machine Learning algorithm, in which a model is developed, that relates the target variable to one or more input variables (features). However, in contrast to Linear Regression the target (dependent) variable is not numerical, but categorical. That is the target variable can be classified in different categories (e.g.: &rsquo;test passed&rsquo; or &rsquo;test not passed&rsquo;). An idealized example of two categories for the target variable is illustrated in the plot below."><meta itemprop="datePublished" content="2023-12-02T09:31:24+01:00" />
+<meta itemprop="dateModified" content="2023-12-02T09:31:24+01:00" />
+<meta itemprop="wordCount" content="1988"><meta itemprop="image" content="http://localhost:1313/images/20231202_logistic_regression/linear_logistic.png" />
+<meta itemprop="keywords" content="Data Science,Machine Learning,Classification,Logistic Regression," /><meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/images/20231202_logistic_regression/linear_logistic.png" /><meta name="twitter:title" content="Logistic Regression - Explained"/>
+<meta name="twitter:description" content="Introduction Logistic Regression is a Supervised Machine Learning algorithm, in which a model is developed, that relates the target variable to one or more input variables (features). However, in contrast to Linear Regression the target (dependent) variable is not numerical, but categorical. That is the target variable can be classified in different categories (e.g.: &rsquo;test passed&rsquo; or &rsquo;test not passed&rsquo;). An idealized example of two categories for the target variable is illustrated in the plot below."/>
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+  </head>
+
+  <body class="ma0 sans-serif bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-navy">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        <img src="/logo_weiss_qualle.png" class="w100 mw5-ns" alt="" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/posts/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/" title=" page">
+              
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/content/" title="Content page">
+              Content
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+<div class="ananke-socials">
+  
+    
+    <a href="https://twitter.com/datamapu" target="_blank" rel="noopener" class="twitter ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Twitter link" aria-label="follow on Twitter——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    
+    <a href="https://www.linkedin.com/in/datamapu-ml-91a2622a3/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+      
+      <a href="https://twitter.com/share?url=http://localhost:1313/posts/classical_ml/logistic_regression/&amp;text=Logistic%20Regression%20-%20Explained" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
+        
+        <span class="icon"> <svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+        
+      </a>
+    
+      
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/classical_ml/logistic_regression/&amp;title=Logistic%20Regression%20-%20Explained" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
+        
+        <span class="icon"> <svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+        
+      </a>
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Logistic Regression - Explained</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2023-12-02T09:31:24+01:00">December 2, 2023</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - 10 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 1988 words </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
+<p>Logistic Regression is a <a href="http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#supervised" title="Supervised Machine Learning">Supervised Machine Learning</a> algorithm, in which a model is developed, that relates the target variable to one or more input variables (features). However, in contrast to <a href="http://localhost:1313/posts/classical_ml/linear_regression/" title="Linear Regression">Linear Regression</a> the target (dependent) variable is not numerical, but <a href="https://en.wikipedia.org/wiki/Categorical_variable">categorical</a>. That is the target variable can be classified in different categories (e.g.: &rsquo;test passed&rsquo; or &rsquo;test not passed&rsquo;). An idealized example of two categories for the target variable is illustrated in the plot below. The relation described in this example is whether a test is passed or not, depending on the amount of hours studied. Note, that in real world examples the border between the two classes depending on the input feature (independ variable) will usually not be as clear as in this plot.</p>
+<p><img src="/images/20231202_logistic_regression/logistic_regression_simplified.png" alt="logistic regression">
+<em>Simplified and idealized example of a logistic regression</em></p>
+<h2 id="binary-logistic-regression">Binary Logistic Regression</h2>
+<p>If the target variable contains two classes we speak of a Binary Logistic Regression. The target values for binary classification are usually denominated as 0 and 1. In the previous plot &rsquo;test passed&rsquo; is classified as 1 and &rsquo;test not passed&rsquo; is classified as 0. To develop a Logistic Regression model we start with the equation of a Linear Regression. First, we assume that we only have one input feature (independent variable), that is we use the equation for a <a href="http://localhost:1313/posts/classical_ml/linear_regression/#slr" title="Linear Regression">Simple Linear Regression</a>.</p>
+<p>$$ \hat{y} = a\cdot x + b, $$</p>
+<p>with $\hat{y}$ simulating the target values $y$ and $x$ being the input feature. Using this Linear Regression model would give us values for $\hat{y}$ ranging between $-\infty$ and $+\infty$. However, we finally want only the classes $0$ and $1$ as outputs. To achieve that we define a model that does not predict the outcome ($0$ or $1$) directly, but the probability of the event. Then this probability is mapped to the values $0$ and $1$ by defining a threshold. For probabilities below this threshold the predicted target is $0$ and for probabilities above it is $1$. Usually, this threshold is $0.5$, but it can be customized. To predict a probability the output values need to be between $0$ and $1$. A function that satisfies this is the Sigmoid function, which is defined as</p>
+<p>$$f(z) = \frac{1}{1 + e^{-z}}.$$</p>
+<p><img src="/images/20231202_logistic_regression/sigmoid.png" alt="sigmoid function">
+<em>The sigmoid Function.</em></p>
+<p>We then take our Linear Regression equation and insert it into the logistic equation. With that we get</p>
+<p>$$f(x) = \hat{y} = \frac{1}{1 + e^{-(a\cdot x + b)}},$$</p>
+<p>a Sigmoid Function depending on the parameters $a$ and $b$. How the Sigmoid Function changes depending on these parameters is illustrated below.</p>
+<p><img src="/images/20231202_logistic_regression/logistic_function.png" alt="logistic regression">
+<em>The function for Logistic Regression illustrated for different parameters.</em></p>
+<p>This is our  final Logistic Regression model.</p>
+<p><img src="/images/20231202_logistic_regression/linear_logistic.png" alt="logistic regression">
+<em>From Linear Regression to Logistic Regression</em></p>
+<p>If more than one independent variable (input feature) is considered, the input features can be numerical or categorical as in a Linear Regression. The exact same idea as described above is followed, but using the equation for <a href="http://localhost:1313/posts/classical_ml/linear_regression/#mlr" title="Linear Regression">Multiple Linear Regression</a> as input for the Sigmoid function. This results in</p>
+<p>$$\hat{y} = \frac{1}{1 + e^{-(a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n\cdot x_n)}}.$$</p>
+<h2 id="multinomial-logistic-regression">Multinomial Logistic Regression</h2>
+<p>If the target variable can take more than two classes, we speak of <em>Multinomial Logistic Regression</em>. By definition, a Logistic Regression is designed for binary target variables. If the target contains more than two classes, we need to adapt the algorithm. This can be done by splitting the multiple classification problem into several binary classification problems. The two most common ways to do that are
+the <em>One-vs-Rest</em> and <em>One-vs-One</em> strategies. As example consider predicting one of the animals dog, cat, rabbit, or ferret by specific criteria, that is we have four classes in our target data.</p>
+<p><strong>One-vs-Rest.</strong> This approach creates $m$ binary classification problems, if $m$ is the number of classes in the target data. Then each class is predicted against all the others. For the above example, four binary problems would be considered to solve the multiple classification problem.</p>
+<ul>
+<li>Classifier 1: class 1: dog, class 2: cat, rabbit, or ferret</li>
+<li>Classifier 2: class 1: cat, class 2: dog, rabbit, or ferret</li>
+<li>Classifier 3: class 1: rabbit, class 2: dog, cat, or ferret</li>
+<li>Classifier 4: class 1: ferret, class 2: dog, cat, or rabbit</li>
+</ul>
+<p>With these classifiers, we get probabilities for each category (dog, cat, rabbit, ferret) and the maximum of these probabilities is taken for the final outcome. For example, consider the following outcome:</p>
+<ul>
+<li>Classifier 1: probability for dog (class 1): 0.5, probability for cat, rabbit, or ferret (class 2): 0.5</li>
+<li>Classifier 2: probability for cat (class 1): 0.7, probability for cat, rabbit, or ferret (class 2): 0.3</li>
+<li>Classifier 3: probability for rabbit (class 1): 0.2, probability for cat, rabbit, or ferret  (class 2): 0.8</li>
+<li>Classifier 4: probability for ferret (class 1): 0.3, probability for dog, cat, or rabbit (class 2): 0.7</li>
+</ul>
+<p>In this case, the highest probability achieves classifier 2, that is the final outcome would be a probability of $0.7$ for the class &lsquo;cat&rsquo;, which would be the predicted class.</p>
+<p><strong>One-vs-One.</strong> In this approach, a binary model is fitted for each binary combination of the output classes. That is for $m$ classes $m \choose 2$ models are created. For the example with four classes this results in</p>
+<ul>
+<li>Classifier 1: class 1: dog, class 2: cat</li>
+<li>Classifier 2: class 1: dog, class 2: rabbit</li>
+<li>Classifier 3: class 1: dog, class 2: ferret</li>
+<li>Classifier 4: class 1: cat, class 2: rabbit</li>
+<li>Classifier 5: class 1: cat, class 2: ferret</li>
+<li>Classifier 6: class 1: rabbit, class 2: ferret</li>
+</ul>
+<p>To define the prediction of the multiclass classification problem from these classifiers, the number of predictions for each class is counted and the class with the highest number of correct predictions among classifiers is the final prediction. This procedure is also known as &ldquo;Voting&rdquo;.</p>
+<p>Note that a disadvantage of these methods is that they require to fit multiple models, which takes long if the dataset considered is large. For the  <em>One-vs-One</em> even more than for the <em>One-vs-Rest</em> method.</p>
+<h2 id="find-best-fit">Find Best Fit</h2>
+<p>As in all supervised Machine Learning models we estimate the model parameters, in this case, $a_0$, $a_1$, $\dots$, $a_n$ to optimize the model. This is done by minimizing a loss function, which describes the error between the actual values and the predictions with respect to these parameters. In the case of a Linear Regression problem, this loss function is the mean squared error. For a Logistic Regression, we need to define a different loss function. A common choice is the <em>Negative Log Likelihood Function ($NLL$)</em>, also called <em>Cross-Entropy-Loss</em>. The NNL Loss ($L$) is defined as follows</p>
+<p>$$L(a_0, \dots, a_n) = - \frac{1}{k}\sum_{i=1}^k\sum_{j=1}^m y_{ij}\cdot \log{\hat{y}_{ij}},$$</p>
+<p>with $\hat{y}_{ij}$ depending on tha parameters $a_0, \dots, a_n$; $m$, the number of classes, and $k$ the number of datapoints. To understand this better, let&rsquo;s consider the case of two classes. With $\hat{y}_i$ the probability of class 1 and $1-\hat{y}_i$ the probability of class 2, the previous equation then reduces to</p>
+<p>$$L = -\frac{1}{k} \sum_{i=1}^k (y_i \log{\hat{y}_i} + (1-y_i)\log{(1 - \hat{y}_i)}).$$</p>
+<p>When the data sample belongs to the first class, i.e. $y_i = 1$, the second part of the equation vanishes and only the first part remains. That is for each sample of the positive class ($y_i=1$), the value $\log{\hat{y}_i}$ is added to the loss. Accordingly for the negative class ($y_i=0$), $\log{(1 - \hat{y}_i)}$ is added to the loss. Below these two functions are illustrated. They show that the log function increasingly penalizes values as they approach probabilities of the counter class. If the true (observed) value ($y_i$) is equal to $1$, and the predicted probability ($\hat{y}_i$) is close to $1$, the loss will be low, if the predicted probability is close to $0$ the loss increases. Accordingly for a true (observed) value ($y_i$) of $0$ the loss is low if the predicted probability ($\hat{y}_i$) is close to $0$ and increases when the predicted probability is closer to $1$.</p>
+<p><img src="/images/20231202_logistic_regression/NLL.png" alt="NLL"></p>
+<p>Note, that minimizing the NLL is equally to maximizing the likelihood, which is also known as <a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation#:~:text=In%20statistics%2C%20maximum%20likelihood%20estimation,observed%20data%20is%20most%20probable">Maximum Likelihood Estimation</a>. Maximizing the likelihood is more intuitive, it is however common to minimize the loss and not to maximize it. The NNL can be derived  from the likelihood function. This is however out of the scope of this article.</p>
+<h2 id="interpretation">Interpretation</h2>
+<p>To understand Logistic Regression better, let&rsquo;s consider the defined model function again</p>
+<p>$$\hat{y} = \frac{1}{1 + e^{-(a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n\cdot x_n)}} = \frac{1}{1 + e^{-z}},$$</p>
+<p>with $z=a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n\cdot x_n$. Let&rsquo;s rename $\hat{y} = p$ to make clearer that this is the probabilty of an event. In the example given above this event is &rsquo;test passed&rsquo;. With that we can reformulate this equation to</p>
+<p>$$p = \frac{1}{1 + e^{-z}}$$
+$$p = \frac{e^z}{e^z\cdot(1 + e^{-z})}$$
+$$p = \frac{e^z}{1+e^z}$$
+$$p\cdot (1 + e^z) = e^z$$
+$$p = (1 - p)\cdot e^z$$
+$$\frac{p}{1-p} = e^z.$$</p>
+<p>This last equation describes the chances $\frac{p}{1-p}$, also called the <em>odds</em> of an event. These chances are a measure for the separation of the two classes. If we take the logarithm, we get</p>
+<p>$$\ln{\frac{p}{1-p}} = z = a_0 + a_1\cdot x_1 + a_2\cdot x_2 + \dots + a_n\cdot x_n $$</p>
+<p>This expression is known as the <em>log-odds</em>. That is, although Linear Regression and Logistic Regression are used for different types of problems (regression vs. classification), they still have a lot in common. In both cases a line (one input feature) or a hyperplane (more than one input feature) is used. In a Linear Regression however this line / hyperplane is used to predict the target variable, while in Logistic Regression it is used to separate two classes. In Logistic Regression the interpreation of the coefficients $a_0$, $a_1$, $\dots$, $a_n$ however, is not as straight forward as in the case of the Linear Regression, because the relationship is not linear any more. Only the sign of the coefficients tells us if the log-odds is increases or decreases.</p>
+<h2 id="evaluation">Evaluation</h2>
+<p>The evaluation of a Logistic Regression model can be done with any metric suitable for classification problems. The most common metrics are</p>
+<ul>
+<li>
+<p><strong>Accuracy</strong>. The fraction of correct predicted items to all items. How many items were correctly classified?</p>
+</li>
+<li>
+<p><strong>Recall</strong>. The fraction of true positive items out of all actual positive items. How many items are relevant?</p>
+</li>
+<li>
+<p><strong>Precission</strong>. The fraction of true positive items out of all positive predicted items. How many of the positive predicted items are really positive?</p>
+</li>
+<li>
+<p><strong>F1-Score</strong>. The harmonic mean of Precision and Recall.</p>
+</li>
+</ul>
+<p>Which metric is suitable depends on the considered problem. In a separate article you can find a more detailed overview and explanation about the most common <a href="http://localhost:1313/posts/ml_concepts/classification_metrics/" title="Metrics for Regression">metrics for classification</a> problems.</p>
+<h2 id="example">Example</h2>
+<p>In Python you can fit a Logistic Regression using the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">sklearn</a> library. Here is a simplified example for illustration purposes:</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">numpy</span> <span style="color:#8839ef">as</span> <span style="color:#fe640b">np</span>
+</span></span><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.linear_model</span> <span style="color:#179299">import</span> LogisticRegression
+</span></span><span style="display:flex;"><span>X <span style="color:#04a5e5;font-weight:bold">=</span> np<span style="color:#04a5e5;font-weight:bold">.</span>array([<span style="color:#fe640b">1</span>, <span style="color:#fe640b">2</span>, <span style="color:#fe640b">3</span>, <span style="color:#fe640b">4</span>, <span style="color:#fe640b">5</span>, <span style="color:#fe640b">7</span>])<span style="color:#04a5e5;font-weight:bold">.</span>reshape(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>)
+</span></span><span style="display:flex;"><span>y <span style="color:#04a5e5;font-weight:bold">=</span> np<span style="color:#04a5e5;font-weight:bold">.</span>array([<span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>])<span style="color:#04a5e5;font-weight:bold">.</span>reshape(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>,)
+</span></span><span style="display:flex;"><span>clf <span style="color:#04a5e5;font-weight:bold">=</span> LogisticRegression()<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
+</span></span><span style="display:flex;"><span>y_pred <span style="color:#04a5e5;font-weight:bold">=</span> clf<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
+</span></span><span style="display:flex;"><span>y_pred_proba <span style="color:#04a5e5;font-weight:bold">=</span> clf<span style="color:#04a5e5;font-weight:bold">.</span>predict_proba(X)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The <em>predict_proba</em> method gives the probabilites for each of the two classes, if we want the probabilites of a $1$ (positive class), we need to address the second row of the matrix. The results for this example are y_pred_proba[:,1] = [0.05915596, 0.15714628, 0.35603106, 0.62113094, 0.82939351, 0.97714137].
+The <em>predict</em> method directly gives the classes with a default threshold at $0.5$. That is probabilities below $0.5$ are classified as $0$ and higher or equal to $0.5$ are classified as $1$. In this example we get y_pred= [0, 0, 0, 1, 1, 1].</p>
+<p>You can find a more detailed elabarated example for a Logistic Regression on <a href="https://www.kaggle.com/code/pumalin/logistic-regression-tutorial">kaggle</a>.</p>
+<h2 id="summary">Summary</h2>
+<p>In this article we learned about Logistic Regression. Logistic Regression is a supervised Machine Learning Algorithm, that is build for binary classification, but can be extendet to multi-classification. It is based on predicting probabilites using the Sigmoid function. These probabilities are then mapped to the final target classes.</p>
+<hr>
+<p>If this blog is useful for you, I&rsquo;m thankful for your support!
+
+
+
+<a class="hugo-shortcodes-bmc-button" href="https://www.buymeacoffee.com/pumaline">
+    <img src="https://img.buymeacoffee.com/button-api/?button_colour=ffdd00&amp;coffee_colour=ffffff&amp;emoji=&amp;font_colour=000000&amp;font_family=Cookie&amp;outline_colour=000000&amp;slug=pumaline&amp;text=Buy&#43;me&#43;a&#43;coffee" alt="Buy me a coffee" />
+</a>
+</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/data-science/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Data Science</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/machine-learning/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Machine Learning</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/classification/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Classification</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/logistic-regression/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Logistic Regression</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/classification_metrics/">Metrics for Classification Problems</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/linear_regression_example/">Linear Regression - Analytical Solution and Simplified Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/linear_regression/">Linear Regression - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/deep_learning/intro_dl/">Introduction to Deep Learning</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/supervised_unsupervised/">Supervised versus Unsupervised Learning - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/regression_metrics/">Metrics for Regression Problems</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/datascience_lifecycle/">The Data Science Lifecycle</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy; 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+    
+    <a href="https://twitter.com/datamapu" target="_blank" rel="noopener" class="twitter ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Twitter link" aria-label="follow on Twitter——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    
+    <a href="https://www.linkedin.com/in/datamapu-ml-91a2622a3/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

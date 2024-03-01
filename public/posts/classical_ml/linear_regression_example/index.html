@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Linear Regression - Analytical Solution and Simplified Example | </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Introduction In a previous article, we introduced Linear Regression in detail and more generally, showed how to find the best model and discussed its chances and limitations. In this post, we are looking at a concrete example. We are going to calculate the slope and the intercept from a Simple Linear Regression analytically, looking at the example data provided in the next plot.
+Illustration of a simple linear regression between the body mass and the maximal running speed of an animal.">
+    <meta name="generator" content="Hugo 0.123.6">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+    
+    
+      
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+
+    
+
+    
+    
+    <meta property="og:title" content="Linear Regression - Analytical Solution and Simplified Example" />
+<meta property="og:description" content="Introduction In a previous article, we introduced Linear Regression in detail and more generally, showed how to find the best model and discussed its chances and limitations. In this post, we are looking at a concrete example. We are going to calculate the slope and the intercept from a Simple Linear Regression analytically, looking at the example data provided in the next plot.
+Illustration of a simple linear regression between the body mass and the maximal running speed of an animal." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/classical_ml/linear_regression_example/" /><meta property="og:image" content="http://localhost:1313/images/20231001_regression_metrics/regression_example.jpg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-23T11:00:02+01:00" />
+<meta property="article:modified_time" content="2023-11-23T11:00:02+01:00" />
+
+<meta itemprop="name" content="Linear Regression - Analytical Solution and Simplified Example">
+<meta itemprop="description" content="Introduction In a previous article, we introduced Linear Regression in detail and more generally, showed how to find the best model and discussed its chances and limitations. In this post, we are looking at a concrete example. We are going to calculate the slope and the intercept from a Simple Linear Regression analytically, looking at the example data provided in the next plot.
+Illustration of a simple linear regression between the body mass and the maximal running speed of an animal."><meta itemprop="datePublished" content="2023-11-23T11:00:02+01:00" />
+<meta itemprop="dateModified" content="2023-11-23T11:00:02+01:00" />
+<meta itemprop="wordCount" content="885"><meta itemprop="image" content="http://localhost:1313/images/20231001_regression_metrics/regression_example.jpg" />
+<meta itemprop="keywords" content="Data Science,Machine Learning,Regression,Linear Regression," /><meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/images/20231001_regression_metrics/regression_example.jpg" /><meta name="twitter:title" content="Linear Regression - Analytical Solution and Simplified Example"/>
+<meta name="twitter:description" content="Introduction In a previous article, we introduced Linear Regression in detail and more generally, showed how to find the best model and discussed its chances and limitations. In this post, we are looking at a concrete example. We are going to calculate the slope and the intercept from a Simple Linear Regression analytically, looking at the example data provided in the next plot.
+Illustration of a simple linear regression between the body mass and the maximal running speed of an animal."/>
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+  </head>
+
+  <body class="ma0 sans-serif bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-navy">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        <img src="/logo_weiss_qualle.png" class="w100 mw5-ns" alt="" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/posts/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/" title=" page">
+              
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/content/" title="Content page">
+              Content
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+<div class="ananke-socials">
+  
+    
+    <a href="https://twitter.com/datamapu" target="_blank" rel="noopener" class="twitter ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Twitter link" aria-label="follow on Twitter——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    
+    <a href="https://www.linkedin.com/in/datamapu-ml-91a2622a3/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+      
+      <a href="https://twitter.com/share?url=http://localhost:1313/posts/classical_ml/linear_regression_example/&amp;text=Linear%20Regression%20-%20Analytical%20Solution%20and%20Simplified%20Example" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
+        
+        <span class="icon"> <svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+        
+      </a>
+    
+      
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/classical_ml/linear_regression_example/&amp;title=Linear%20Regression%20-%20Analytical%20Solution%20and%20Simplified%20Example" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
+        
+        <span class="icon"> <svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+        
+      </a>
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Linear Regression - Analytical Solution and Simplified Example</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2023-11-23T11:00:02+01:00">November 23, 2023</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - 5 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 885 words </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
+<p>In a previous article, we introduced <a href="http://localhost:1313/posts/classical_ml/linear_regression/" title="Linear Regression">Linear Regression</a> in detail and more generally, showed how to find the best model and discussed its chances and limitations. In this post, we are looking at a concrete example. We are going to calculate the <em>slope</em> and the <em>intercept</em> from a Simple Linear Regression analytically, looking at the example data provided in the next plot.</p>
+<p><img src="/images/20231001_regression_metrics/regression_example.jpg" alt="regression example">
+<em>Illustration of a simple linear regression between the body mass and the maximal running speed of an animal.</em></p>
+<h2 id="fit-the-model">Fit the Model</h2>
+<p>We aim to fit a model that describes the relationship between the body mass (independent variable / input feature $x$) and the speed (dependent / target variable $y$) of the animals, following the equation</p>
+<p>$$\hat{y} = a\cdot x + b,$$</p>
+<p>with $\hat{y}$ approximating the target values $y$. In order to find this model, we need to determine the coefficients $a$ and $b$.
+As we learned in the article about <a href="http://localhost:1313/posts/classical_ml/linear_regression/" title="Linear Regression">Linear Regression</a>,
+In order to fit a Linear Regression model, we need to minimize the error between the predictions and the actual values. In Machine Learning this error, depending on the parameters of the model is often called the <em>Loss-Function</em>. For a Simple Linear Regression, these parameters are the slope ($a$) and the intercept ($b$). Usually, the <a href="http://localhost:1313/posts/ml_concepts/regression_metrics/">Mean Squared Error</a> is used as Loss-Function in Linear Regression</p>
+<p>$$MSE = L(a, b) = \frac{1}{N}\sum_{i=1}^{N}(y_i - (a\cdot x_i +b))^2.$$</p>
+<h2 id="minimize-the-loss">Minimize the Loss</h2>
+<p>In real applications optimization techniques, such as <a href="http://localhost:1313/posts/classical_ml/linear_regression/#best_fit" title="Gradient Descent">Gradient Descent</a> are used to estimate the minimum of the Loss Function. In this article, we will calculate the coefficients $a$ and $b$ analytically. As we know from calculus a criterion required for a minimum is that the gradient is zero. The gradient is compiled by the partial derivatives. Following the chain rule, the partial derivatives of $L$ with respect to $a$ and $b$ are</p>
+<p>$$\frac{\delta{L}}{\delta a}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot (-x_i)$$
+$$\frac{\delta{L}}{\delta b}= \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot (-1).$$</p>
+<p>Setting these equations to zero and multiplying both sides with $-1$, we get</p>
+<p>$$0 =  \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)\cdot x_i$$
+$$0 =  \frac{2}{N} \sum_{i=1}^N (y_i -a \cdot x_i - b)$$</p>
+<p>We will start with the second equation and resolve it for $b$</p>
+<p>$$\sum_{i=1}^N b = \sum_{i=1}^N y_i - a\cdot \sum_{i=1}^N x_i$$</p>
+<p>$$N \cdot b = \sum_{i=1}^N y_i - a \sum_{i=1}^N x_i$$</p>
+<p>$$b = \frac{1}{N} \sum_{i=1}^N y_i - a \frac{1}{N} \sum_{i=1}^N x_i$$</p>
+<p>$$b = \bar{y} - a\cdot \bar{x},$$</p>
+<p>with $\bar{x} = \sum_{i=1}^N x_i$ and $\bar{y} = \sum_{i=1}^N y_i$.</p>
+<p>Now, we continue with the first equation and resolve it for $a$</p>
+<p>$$0 = \sum_{i=1}^N(y_i - a\cdot x_i -b)x_i.$$</p>
+<p>We use the equation we resolved for $b$ and plug it into this equation, which leads to</p>
+<p>$$0 = \sum_{i=1}^N (y_i - a \cdot x_i - b)\cdot x_i$$</p>
+<p>$$0 = \sum_{i=1}^N (y_i - a \cdot x_i -(\bar{y} - a\cdot\bar{x}))\cdot x_i$$</p>
+<p>$$0 = \sum_{i=1}^N (y_i - \bar{y} - a\cdot(x_i - \bar{x}))\cdot x_i$$</p>
+<p>$$0 = \sum_{i=1}^N x_i (y_i - \bar{y}) - \sum_{i=1}^N a\cdot x_i\cdot(x_i - \bar{x})$$</p>
+<p>$$\sum_{i=1}^N x_i \cdot (y_i - \bar{y}) = a\cdot \sum_{i=1}^N x_i\cdot(x_i - \bar{x})$$</p>
+<p>$$a = \frac{\sum_{i=1}^N x_i\cdot(y_i - \bar{y})}{\sum_{i=1}^Nx_i\cdot(x_i - \bar{x})}.$$</p>
+<p>With that, we can calculate the coefficients $a$ and $b$ that determine the Simple Linear Regression model, we aim to develop.</p>
+<p>Note, as we know from calculus setting the first derivative, i.e. the gradient to zero is not a sufficient condition for a minimum.
+For this example, we assume that the only location with zero gradient is a minimum. To be sure that this is really a minimum we would need to check all second derivatives. At this point, it could also be a maximum or a saddle point. This is however not the scope of this article.</p>
+<h2 id="example">Example</h2>
+<p>We now use the data presented above to determine the linear relationship between the size and the speed of an animal, represented by</p>
+<p>$$\hat{y} = a \cdot x + b,$$</p>
+<p>with $\hat{y}$ estimating the maximal running speed ($y$) and $x$ being the body mass. We start with calculating the means $\bar{x}$ and $\bar{y}$, with</p>
+<p>$$x = [1400, 400, 50, 1000, 300, 60]$$
+$$y = [45, 70, 100, 60, 90, 110].$$</p>
+<p>This results in</p>
+<p>$$\bar{x} = \frac{1400 + 400 + 50 + 1000 + 300 + 60}{6} = \frac{3210}{6} = 535$$
+$$\bar{y} = \frac{45 + 70 + 100 + 60 + 90 + 110}{6} = \frac{475}{6} = 79.17.$$</p>
+<p>With that we can calculate</p>
+<p>$${\small a = \frac{1400\cdot (45 - 79.17) + 400\cdot (70 - 79.17) + 50\cdot (100 - 79.17) + 1000\cdot (60 - 79.17) + 300\cdot (90 - 79.17) + 60\cdot (110 - 79.17)}{1400\cdot (1400 - 535) + 400\cdot (400 - 535) + 50\cdot (50 - 535) + 1000\cdot (1000 - 535) + 300\cdot (300 - 535) + 60\cdot(60 - 535)}},$$</p>
+<p>which gives</p>
+<p>$$a = -0.043,$$</p>
+<p>rounded up to 3 digits. With this we can calculate</p>
+<p>$$b = \bar{y} - a\cdot\bar{x} = 79.17 + 0.043\cdot 535 = 102.175.$$</p>
+<p>The resulting linear regression model and the original data is illustrated in the following plot.</p>
+<p><img src="/images/20231123_linear_regression_example/linear_regression_example2.png" alt="regression example"></p>
+<p>Note, for this simplified example, we are not going to check the <a href="http://localhost:1313/posts/classical_ml/linear_regression/#assumptions" title="Assumption Linear Regression">assumptions</a> that need to be fulfilled for a Linear Regression. This example is only for illustration purposes, with this little amount of data statistical tests are not reasonable.</p>
+<hr>
+<p>If this blog is useful for you, I&rsquo;m thankful for your support!
+
+
+
+<a class="hugo-shortcodes-bmc-button" href="https://www.buymeacoffee.com/pumaline">
+    <img src="https://img.buymeacoffee.com/button-api/?button_colour=ffdd00&amp;coffee_colour=ffffff&amp;emoji=&amp;font_colour=000000&amp;font_family=Cookie&amp;outline_colour=000000&amp;slug=pumaline&amp;text=Buy&#43;me&#43;a&#43;coffee" alt="Buy me a coffee" />
+</a>
+</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/data-science/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Data Science</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/machine-learning/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Machine Learning</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/regression/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Regression</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/linear-regression/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Linear Regression</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/linear_regression/">Linear Regression - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/regression_metrics/">Metrics for Regression Problems</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/deep_learning/intro_dl/">Introduction to Deep Learning</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/supervised_unsupervised/">Supervised versus Unsupervised Learning - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/classification_metrics/">Metrics for Classification Problems</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/datascience_lifecycle/">The Data Science Lifecycle</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy; 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+    
+    <a href="https://twitter.com/datamapu" target="_blank" rel="noopener" class="twitter ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Twitter link" aria-label="follow on Twitter——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    
+    <a href="https://www.linkedin.com/in/datamapu-ml-91a2622a3/" target="_blank" rel="noopener" class="linkedin ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
