@@ -29,6 +29,12 @@
     <loc>http://localhost:1313/categories/machine-learning/</loc>
     <lastmod>2024-02-27T20:55:28-03:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/neural-nets/</loc>
+    <lastmod>2024-02-27T20:55:28-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/neural-nets/</loc>
+    <lastmod>2024-02-27T20:55:28-03:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/</loc>
     <lastmod>2024-02-27T20:55:28-03:00</lastmod>
   </url><url>
@@ -150,12 +156,6 @@
     <lastmod>2023-11-13T21:20:41+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/deep_learning/intro_dl/</loc>
-    <lastmod>2023-11-02T21:44:06+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/neural-nets/</loc>
-    <lastmod>2023-11-02T21:44:06+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/neural-nets/</loc>
     <lastmod>2023-11-02T21:44:06+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/ml_concepts/supervised_unsupervised/</loc>

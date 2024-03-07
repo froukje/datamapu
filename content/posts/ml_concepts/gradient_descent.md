@@ -2,9 +2,9 @@
 title = 'Gradient Descent'
 date = 2024-02-27T20:55:28-03:00
 draft = true
-tags = ["Data Science", "Machine Learning", "Deep Learning"]
-categories = ["Data Science", "Machine Learning", "Deep Learning"]
-keywords = ["Data Science", "Machine Learning", "Deep Learning"]
+tags = ["Data Science", "Machine Learning", "Deep Learning", "Neural Nets"]
+categories = ["Data Science", "Machine Learning", "Deep Learning", "Neural Nets"]
+keywords = ["Data Science", "Machine Learning", "Deep Learning", "Neural Nets"]
 images = ['/images/gradient_descent/gradient_descent.png']
 +++
 
@@ -31,7 +31,8 @@ $$w_{i+1} = w_{i} - \alpha \cdot \nabla_{w_i} L(w_i), $$
 
 with $\alpha$ the step size we take into the direction of the negative of the gradient. $\alpha$ is a hyperparameter, which is called the *learning rate*. How big the learning rate is influences the convergance of the algorithm. If the learning rate is very low, a lot of iterations are needed to get to the minimum. On the other hand, if the learning rate is too large, we may overpass the minimum. One possibility is to start with a larger learning rate and make it smaller over time. Gradient Descent does not garanty to reach a local or even global minimum. It is only certain to approach a stationary point that satisfies $\nabla_{w_i} L(w_i) = 0$.
 
-< IMAGE small vs. large learning rate >
+![gradient_descent](/images/gradient_descent/learning_rate.png)
+*Small and large learning rate illustrated.*
 
 ### Vanishing Gradients
 

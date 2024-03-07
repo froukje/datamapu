@@ -30,6 +30,13 @@
       <description></description>
     </item>
     <item>
+      <title>Neural Nets</title>
+      <link>http://localhost:1313/categories/neural-nets/</link>
+      <pubDate>Tue, 27 Feb 2024 20:55:28 -0300</pubDate>
+      <guid>http://localhost:1313/categories/neural-nets/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Boosting</title>
       <link>http://localhost:1313/categories/boosting/</link>
       <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
@@ -97,13 +104,6 @@
       <link>http://localhost:1313/categories/decision-trees/</link>
       <pubDate>Tue, 19 Dec 2023 17:46:29 +0100</pubDate>
       <guid>http://localhost:1313/categories/decision-trees/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Neural Nets</title>
-      <link>http://localhost:1313/categories/neural-nets/</link>
-      <pubDate>Thu, 02 Nov 2023 21:44:06 +0100</pubDate>
-      <guid>http://localhost:1313/categories/neural-nets/</guid>
       <description></description>
     </item>
   </channel>

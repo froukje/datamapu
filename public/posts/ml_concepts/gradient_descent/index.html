@@ -7,7 +7,7 @@
     <title>Gradient Descent | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small into the direction of the steepest descent of this point.">
-    <meta name="generator" content="Hugo 0.123.6">
+    <meta name="generator" content="Hugo 0.123.7">
     
     
     
@@ -41,8 +41,8 @@
 <meta itemprop="name" content="Gradient Descent">
 <meta itemprop="description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small into the direction of the steepest descent of this point."><meta itemprop="datePublished" content="2024-02-27T20:55:28-03:00" />
 <meta itemprop="dateModified" content="2024-02-27T20:55:28-03:00" />
-<meta itemprop="wordCount" content="529"><meta itemprop="image" content="http://localhost:1313/images/gradient_descent/gradient_descent.png" />
-<meta itemprop="keywords" content="Data Science,Machine Learning,Deep Learning," /><meta name="twitter:card" content="summary_large_image" />
+<meta itemprop="wordCount" content="527"><meta itemprop="image" content="http://localhost:1313/images/gradient_descent/gradient_descent.png" />
+<meta itemprop="keywords" content="Data Science,Machine Learning,Deep Learning,Neural Nets," /><meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="http://localhost:1313/images/gradient_descent/gradient_descent.png" /><meta name="twitter:title" content="Gradient Descent"/>
 <meta name="twitter:description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small into the direction of the steepest descent of this point."/>
 
@@ -199,7 +199,7 @@ MathJax = {
       
       
         <span class="f6 mv4 dib tracked"> - 3 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 529 words </span>
+        <span class="f6 mv4 dib tracked"> - 527 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -214,7 +214,8 @@ MathJax = {
 <p>Gradient Descent is an iterative method that aims to find the minimum of a differentiable function. In the context of Machine Learning this is usually the loss function $L = L(w_i)$, which depends on the model parameters. To find a local minimum, we start at an arbirtrary random point and move into the direction of the steepest descent at this point. Mathematically, the direction of the steepest ascent at a specific point is defined by the gradient at this point, which is also called the slope. Consequently, the direction of the steepest descent at a point is the negative of the gradient at this point. At this next point we again move a small step into the direction of the negative of the gradient. In this way we iteratievly approach the minimum. This procedure can be formulated as</p>
 <p>$$w_{i+1} = w_{i} - \alpha \cdot \nabla_{w_i} L(w_i), $$</p>
 <p>with $\alpha$ the step size we take into the direction of the negative of the gradient. $\alpha$ is a hyperparameter, which is called the <em>learning rate</em>. How big the learning rate is influences the convergance of the algorithm. If the learning rate is very low, a lot of iterations are needed to get to the minimum. On the other hand, if the learning rate is too large, we may overpass the minimum. One possibility is to start with a larger learning rate and make it smaller over time. Gradient Descent does not garanty to reach a local or even global minimum. It is only certain to approach a stationary point that satisfies $\nabla_{w_i} L(w_i) = 0$.</p>
-<p>&lt; IMAGE small vs. large learning rate &gt;</p>
+<p><img src="/images/gradient_descent/learning_rate.png" alt="gradient_descent">
+<em>Small and large learning rate illustrated.</em></p>
 <h3 id="vanishing-gradients">Vanishing Gradients</h3>
 <h2 id="variants-of-gradient-descent">Variants of Gradient Descent</h2>
 <h3 id="stochastic-gradient-descent">Stochastic Gradient Descent</h3>
@@ -243,6 +244,10 @@ MathJax = {
      <a href="/tags/deep-learning/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Deep Learning</a>
    </li>
   
+   <li class="list di">
+     <a href="/tags/neural-nets/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Neural Nets</a>
+   </li>
+  
 </ul>
 <div class="mt6 instapaper_ignoref">
       
@@ -260,11 +265,11 @@ MathJax = {
     <ul class="pa0 list">
 	   
 	     <li  class="mb2">
-          <a href="/posts/ml_concepts/loss_functions/">Loss Functions in Machine Learning</a>
+          <a href="/posts/deep_learning/intro_dl/">Introduction to Deep Learning</a>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/posts/deep_learning/intro_dl/">Introduction to Deep Learning</a>
+          <a href="/posts/ml_concepts/loss_functions/">Loss Functions in Machine Learning</a>
         </li>
 	    
 	     <li  class="mb2">
