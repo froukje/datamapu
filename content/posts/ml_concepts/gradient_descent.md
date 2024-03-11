@@ -34,7 +34,19 @@ with $\alpha$ the step size we take into the direction of the negative of the gr
 ![gradient_descent](/images/gradient_descent/learning_rate.png)
 *Small and large learning rate illustrated.*
 
-### Vanishing Gradients
+### Vanishing / Exploding Gradients
+
+When training a Neural Net, Gradient Descent is used in [backpropagation]() to optimize the weights and biases. The phenomen of *Vanishing Gradients* refers to the scenario that the gradient gets very small until it almost vanishes. In this case the Neural Net is not able to learn any more, because the gradient is used to update the weights and biases. If the gradient approaches zero, no update is happening. On the other hand the phenomen of *Exploding Gradients* refers to the scenario that the gradients keep growing while they are passing backwards through the Neural Net.
+
+In [backpropagation]() the gradient of the loss function with respect to the weights (and biases) is calculated using the chain rule
+
+$$ \nabla_{w_i} L(w_i) =  \frac{\delta L(\hat{y})}{\delta \hat{y}} \cdot \frac{\delta \hat{y}}{\delta{w_i}}, $$  
+
+where $\hat{y}$ are the predicted values and $y$ the true values. The prediction $\hat{y}$ are calculated by a forward pass through the Neural Network. This forward pass is the combination of several neurons and at each neuron the activation function is applied. For a more detailed introduction to Neural Networks and their concepts, please refer to [Introduction to Deep Learning]({{< ref "/posts/deep_learning/intro_dl.md">}}). The  reason  for vanishing gradients lies in the construction of the activation functions. For example the derivative of the Sigmoid activation function approaches zero for both positive and negative large values. A possibility to avoid this is choosing different activation funtions like ReLu. ... Exploding gradients may happen if initialized weights lead to some high loss, which keeps growing by multiplication. This can be avoided by using a proper initialization.
+
+< IMAGE OF SIGMOID AND RELU WITH DERIVATIVE >
+
+
 
 ## Variants of Gradient Descent
 

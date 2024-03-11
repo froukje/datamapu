@@ -7,7 +7,7 @@
     <title>Gradient Descent | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small into the direction of the steepest descent of this point.">
-    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="generator" content="Hugo 0.123.8">
     
     
     
@@ -41,7 +41,7 @@
 <meta itemprop="name" content="Gradient Descent">
 <meta itemprop="description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small into the direction of the steepest descent of this point."><meta itemprop="datePublished" content="2024-02-27T20:55:28-03:00" />
 <meta itemprop="dateModified" content="2024-02-27T20:55:28-03:00" />
-<meta itemprop="wordCount" content="527"><meta itemprop="image" content="http://localhost:1313/images/gradient_descent/gradient_descent.png" />
+<meta itemprop="wordCount" content="796"><meta itemprop="image" content="http://localhost:1313/images/gradient_descent/gradient_descent.png" />
 <meta itemprop="keywords" content="Data Science,Machine Learning,Deep Learning,Neural Nets," /><meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="http://localhost:1313/images/gradient_descent/gradient_descent.png" /><meta name="twitter:title" content="Gradient Descent"/>
 <meta name="twitter:description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small into the direction of the steepest descent of this point."/>
@@ -198,8 +198,8 @@ MathJax = {
 
       
       
-        <span class="f6 mv4 dib tracked"> - 3 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 527 words </span>
+        <span class="f6 mv4 dib tracked"> - 4 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 796 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -216,7 +216,12 @@ MathJax = {
 <p>with $\alpha$ the step size we take into the direction of the negative of the gradient. $\alpha$ is a hyperparameter, which is called the <em>learning rate</em>. How big the learning rate is influences the convergance of the algorithm. If the learning rate is very low, a lot of iterations are needed to get to the minimum. On the other hand, if the learning rate is too large, we may overpass the minimum. One possibility is to start with a larger learning rate and make it smaller over time. Gradient Descent does not garanty to reach a local or even global minimum. It is only certain to approach a stationary point that satisfies $\nabla_{w_i} L(w_i) = 0$.</p>
 <p><img src="/images/gradient_descent/learning_rate.png" alt="gradient_descent">
 <em>Small and large learning rate illustrated.</em></p>
-<h3 id="vanishing-gradients">Vanishing Gradients</h3>
+<h3 id="vanishing--exploding-gradients">Vanishing / Exploding Gradients</h3>
+<p>When training a Neural Net, Gradient Descent is used in <a href="">backpropagation</a> to optimize the weights and biases. The phenomen of <em>Vanishing Gradients</em> refers to the scenario that the gradient gets very small until it almost vanishes. In this case the Neural Net is not able to learn any more, because the gradient is used to update the weights and biases. If the gradient approaches zero, no update is happening. On the other hand the phenomen of <em>Exploding Gradients</em> refers to the scenario that the gradients keep growing while they are passing backwards through the Neural Net.</p>
+<p>In <a href="">backpropagation</a> the gradient of the loss function with respect to the weights (and biases) is calculated using the chain rule</p>
+<p>$$ \nabla_{w_i} L(w_i) =  \frac{\delta L(\hat{y})}{\delta \hat{y}} \cdot \frac{\delta \hat{y}}{\delta{w_i}}, $$</p>
+<p>where $\hat{y}$ are the predicted values and $y$ the true values. The prediction $\hat{y}$ are calculated by a forward pass through the Neural Network. This forward pass is the combination of several neurons and at each neuron the activation function is applied. For a more detailed introduction to Neural Networks and their concepts, please refer to <a href="http://localhost:1313/posts/deep_learning/intro_dl/">Introduction to Deep Learning</a>. The  reason  for vanishing gradients lies in the construction of the activation functions. For example the derivative of the Sigmoid activation function approaches zero for both positive and negative large values. A possibility to avoid this is choosing different activation funtions like ReLu. &hellip; Exploding gradients may happen if initialized weights lead to some high loss, which keeps growing by multiplication. This can be avoided by using a proper initialization.</p>
+<p>&lt; IMAGE OF SIGMOID AND RELU WITH DERIVATIVE &gt;</p>
 <h2 id="variants-of-gradient-descent">Variants of Gradient Descent</h2>
 <h3 id="stochastic-gradient-descent">Stochastic Gradient Descent</h3>
 <h3 id="batch-gradient-descent">Batch Gradient Descent</h3>
