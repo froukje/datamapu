@@ -6,7 +6,7 @@
     
     <title>Gradient Descent | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small into the direction of the steepest descent of this point.">
+    <meta name="description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point.">
     <meta name="generator" content="Hugo 0.123.8">
     
     
@@ -32,19 +32,19 @@
     
     
     <meta property="og:title" content="Gradient Descent" />
-<meta property="og:description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small into the direction of the steepest descent of this point." />
+<meta property="og:description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/posts/ml_concepts/gradient_descent/" /><meta property="og:image" content="http://localhost:1313/images/gradient_descent/gradient_descent.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-02-27T20:55:28-03:00" />
 <meta property="article:modified_time" content="2024-02-27T20:55:28-03:00" />
 
 <meta itemprop="name" content="Gradient Descent">
-<meta itemprop="description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small into the direction of the steepest descent of this point."><meta itemprop="datePublished" content="2024-02-27T20:55:28-03:00" />
+<meta itemprop="description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point."><meta itemprop="datePublished" content="2024-02-27T20:55:28-03:00" />
 <meta itemprop="dateModified" content="2024-02-27T20:55:28-03:00" />
-<meta itemprop="wordCount" content="914"><meta itemprop="image" content="http://localhost:1313/images/gradient_descent/gradient_descent.png" />
+<meta itemprop="wordCount" content="1648"><meta itemprop="image" content="http://localhost:1313/images/gradient_descent/gradient_descent.png" />
 <meta itemprop="keywords" content="Data Science,Machine Learning,Deep Learning,Neural Nets," /><meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="http://localhost:1313/images/gradient_descent/gradient_descent.png" /><meta name="twitter:title" content="Gradient Descent"/>
-<meta name="twitter:description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small into the direction of the steepest descent of this point."/>
+<meta name="twitter:description" content="Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point."/>
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -198,12 +198,12 @@ MathJax = {
 
       
       
-        <span class="f6 mv4 dib tracked"> - 5 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 914 words </span>
+        <span class="f6 mv4 dib tracked"> - 8 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 1648 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
-<p>Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/" title="gradient_boosting">Gradient Boosting</a> or <a href="http://localhost:1313/posts/deep_learning/intro_dl/">Neural Networks</a> to minimize the <a href="http://localhost:1313/posts/ml_concepts/loss_functions/">Loss Function</a>. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small into the direction of the steepest descent of this point. Then take another small step into the direction of the steepest descent of the next point and so on. The direction of the steepest descent is determined using the gradient of the function, so its name <em>Gradient Descent</em>.</p>
+<p>Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/" title="gradient_boosting">Gradient Boosting</a> or <a href="http://localhost:1313/posts/deep_learning/intro_dl/">Neural Networks</a> to minimize the <a href="http://localhost:1313/posts/ml_concepts/loss_functions/">Loss Function</a>. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point. Then take another small step into the direction of the steepest descent of the next point and so on. The direction of the steepest descent is determined using the gradient of the function, so its name <em>Gradient Descent</em>.</p>
 <p><img src="/images/gradient_descent/gradient_descent.png" alt="gradient_descent">
 <em>Gradient Descent illustrated.</em></p>
 <h2 id="intuition">Intuition</h2>
@@ -211,22 +211,46 @@ MathJax = {
 <p><img src="/images/gradient_descent/mountain1_small.jpg" alt="gradient_descent">
 <em>Gradient Descent intuition.</em></p>
 <h2 id="definition">Definition</h2>
-<p>Gradient Descent is an iterative method that aims to find the minimum of a differentiable function. In the context of Machine Learning this is usually the loss function $L = L(w_i)$, which depends on the model parameters. To find a local minimum, we start at an arbirtrary random point and move into the direction of the steepest descent at this point. Mathematically, the direction of the steepest ascent at a specific point is defined by the gradient at this point, which is also called the slope. Consequently, the direction of the steepest descent at a point is the negative of the gradient at this point. At this next point we again move a small step into the direction of the negative of the gradient. In this way we iteratievly approach the minimum. This procedure can be formulated as</p>
+<p>Gradient Descent is an iterative method that aims to find the minimum of a differentiable function. In the context of Machine Learning this is usually the loss function $L = L(w_i)$, which depends on the model parameters. To find a local minimum, we start at an arbirtrary random point and move into the direction of the steepest descent at this point. Mathematically, the direction of the steepest ascent at a specific point is defined by the gradient at this point, which is also called the slope. Consequently, the direction of the steepest descent at a point is the negative of the gradient at this point. Taking this small step we reach a new point on our loss function. At this next point we again move a small step into the direction of the negative of the gradient. In this way we iteratievly approach the minimum. This procedure can be formulated as</p>
 <p>$$w_{i+1} = w_{i} - \alpha \cdot \nabla_{w_i} L(w_i), $$</p>
 <p>with $\alpha$ the step size we take into the direction of the negative of the gradient. $\alpha$ is a hyperparameter, which is called the <em>learning rate</em>. How big the learning rate is influences the convergance of the algorithm. If the learning rate is very low, a lot of iterations are needed to get to the minimum. On the other hand, if the learning rate is too large, we may overpass the minimum. One possibility is to start with a larger learning rate and make it smaller over time. Gradient Descent does not garanty to reach a local or even global minimum. It is only certain to approach a stationary point that satisfies $\nabla_{w_i} L(w_i) = 0$.</p>
 <p><img src="/images/gradient_descent/learning_rate.png" alt="gradient_descent">
 <em>Small and large learning rate illustrated.</em></p>
-<h3 id="vanishing--exploding-gradients">Vanishing / Exploding Gradients</h3>
+<h2 id="variants-of-gradient-descent">Variants of Gradient Descent</h2>
+<h3 id="batch-gradient-descent">Batch Gradient Descent</h3>
+<p>In the previous definition, we didn&rsquo;t talk about how to apply Gradient Descent in practice. When we train a Neural Net we have a defined training dataset, which we train for a certain number of <em>epochs</em>. Training for one <em>epoch</em> means that the entire training dataset was processed by the Neural Network (forward and backward pass) once. The most classical variant of Gradient Descent is also sometimes called <em>Batch Gradient Descent</em>. In this case the entire training dataset is processed by a forward pass through the Neural Net. Then the Gradients of the loss function of all samples from the training dataset are calculated. The weights $w_{i+1}$ are then updated using the mean of the Gradients of the entire training dataset. Since the entire training data was used, the model was trained for one epoch after applying Gradient Descent once. This strategy gives the most accurate estimate of the direction of the minimum, is however cost intensive. In pseudocode, this can be written as</p>
+<pre tabindex="0"><code>for m in range(nr of epochs):
+	calculate the derivative of the loss function for all samples in the dataset
+	take the mean of all these derivatives
+	update the weights w = w - learning rate * mean of all derivatives
+</code></pre><h3 id="stochastic-gradient-descent">Stochastic Gradient Descent</h3>
+<p>In <em>Stochastic Gradient Descent</em>, the samples of the training data are considered individually. For each sample the Gradient is calculated and this Gradient is used to update the weights. If the training data consists of $N$ samples, $N$ updates of the weights are done until the model was trained for one epoch. That means the individual step to update the weights is much faster, the accuracy however reduces and the convergence is slow. Stochastic Gradient Descent can be formulated as</p>
+<p>$$w_{i+1} = w_{i} - \alpha \cdot \nabla_{w_i} L(x^i, y^i, w_i).$$</p>
+<p>The difference to the above formulation of (Batch-)Gradient Descent is that in this case the Gradient depends on the individual input $x^i$ and target data points $y^i$. In pseudocode Stochastic Gradient Descent can be written as</p>
+<pre tabindex="0"><code>for m in range(nr of epochs):
+	for n in range(nr of training samples):
+        	calculate the derivative of the loss function for each sample n
+        	update the weights w = w - learning rate * derivative of sample n
+</code></pre><h3 id="mini-batch-gradient-descent">Mini-Batch Gradient Descent</h3>
+<p><em>Mini-Batch Gradient Descent</em> is a compromise of the above two variants and very commonly used. In this case a subset (Mini-Batch) is used and processed through the Neural Network. The Gradients of these Mini-Batches are then calculated and the mean is taken to update the weight. Then the next Mini-Batch is processed through the forward pass of the Neural Net and the mean of the Gradient is used to update the weight. This process is repeated until the entire dataset wwas used, then the Neural Net has been trained for one epoch. Common Mini-Batch sizes ($b$) are powers of $2$, like $b = 16, 32, 64, \dots$. In this case the model was trained for one epoch after $\frac{N}{b}$ updates, if $N$ is the number of training samples.The number of batches needed to complete one training epoch are called <em>iterations</em>. Mini-Batch Gradient Descent can be formulated as</p>
+<p>$$w_{i+1} = w_{i} - \alpha \cdot \nabla_{w_i} L(x^{i,i+b}, y^{i,i+b}, w_i).$$</p>
+<p>In this case the Gradient depends on the Batch size $b$. Gradient Descent is thus Mini-Batch Gradient Descent, with the Batch size $b$ equal to the size of th eentire dataset $N$. In pseudocode Mini-Batch Gradient Descent can be written as</p>
+<pre tabindex="0"><code>for m in range(nr of epochs):
+	for b in range(nr of batches):
+        	calculate the derivative of the loss function for all samples in the batch
+        	take the mean of all these derivatives
+        	update the weights w = w - learning rate * mean of all derivatives
+</code></pre><p><img src="/images/gradient_descent/convergence.png" alt="convergence">
+<em>Illustration of the Convergence for (Batch) Gradient Descent, Stochastic Gradient Descent, and Mini-Batch Gradient Descent.</em></p>
+<h2 id="vanishing--exploding-gradients">Vanishing / Exploding Gradients</h2>
 <p>When training a Neural Net, Gradient Descent is used in <a href="">backpropagation</a> to optimize the weights and biases. The phenomen of <em>Vanishing Gradients</em> refers to the scenario that the gradient gets very small until it almost vanishes. In this case the Neural Net is not able to learn any more, because the gradient is used to update the weights and biases. If the gradient approaches zero, no update is happening. On the other hand the phenomen of <em>Exploding Gradients</em> refers to the scenario that the gradients keep growing while they are passing backwards through the Neural Net.</p>
 <p>In <a href="">backpropagation</a> the gradient of the loss function with respect to the weights (and biases) is calculated. For that the partial derivatives of the Loss Function with respect to each weight need to be calculated using the chain rule</p>
 <p>$$ \frac{\delta L(w_i)}{\delta w_i} =  \frac{\delta L(\hat{y})}{\delta \hat{y}} \cdot \frac{\delta \hat{y}}{\delta{w_i}}, $$</p>
 <p>where $\hat{y}$ are the predicted values, $y$ the true values and $w_i$ the weights. The prediction $\hat{y}$ are calculated by a forward pass through the Neural Network. This forward pass is the combination of several neurons and at each neuron the activation function is applied. For a more detailed introduction to Neural Networks and their concepts, please refer to <a href="http://localhost:1313/posts/deep_learning/intro_dl/">Introduction to Deep Learning</a>. One reason  for vanishing gradients lies in the construction of the activation functions. For example the derivative of the Sigmoid activation function approaches zero for both positive and negative large values. A possibility to avoid this is choosing different activation funtions like ReLu or a variant of it. In the next plot both the Sigmoid and the ReLU activation function are shown together with their derivatives to make the different behaviour of their derivatives clear. Another way to reduce the vanishing gradient problem is to use proper weight initialization. Different types of weight initialization have been developed. We will not go into further details here, for more information, please refer to <a href="https://towardsdatascience.com/weight-initialization-techniques-in-neural-networks-26c649eb3b78">this article</a>. Also Batch Normalization may help to reduce the vanishing gradient problem. In Batch Normalization each data batch is normalized before each new layer. Exploding gradients may happen if initialized weights lead to some high loss, which keeps growing by multiplication. This can also be avoided by using a proper initialization.</p>
 <p><img src="/images/gradient_descent/activation_function.png" alt="loss_functions">
 <em>Illustration of the Sigmoid and the ReLU activation functions and their derivatives.</em></p>
-<h2 id="variants-of-gradient-descent">Variants of Gradient Descent</h2>
-<h3 id="stochastic-gradient-descent">Stochastic Gradient Descent</h3>
-<h3 id="batch-gradient-descent">Batch Gradient Descent</h3>
 <h2 id="summary">Summary</h2>
+<p>Gradient Descent is an technique to numerically approach the minimum of a given function. In the context of Machine Learning we use Gradient Descent for training a model, e.g. a Neural Net. In this case the Gradient of the loss function is used to optimize the weights of the model. Different variants of Gradient Descent exist, in practice often the Mini-batch Gradient Descent is used, where subsets (batches) of the training dataset are used to update the weights. This is less computational expensive than the classical variant of (Batch-)Gradient Descent.</p>
 <hr>
 <p>If this blog is useful for you, I&rsquo;m thankful for your support!
 
