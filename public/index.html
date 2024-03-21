@@ -7,7 +7,7 @@
     <title></title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Data Science and Machine Learning Blog">
-    <meta name="generator" content="Hugo 0.123.8">
+    <meta name="generator" content="Hugo 0.124.0">
     
     
     
@@ -40,7 +40,6 @@
 <meta property="og:description" content="Data Science and Machine Learning Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://localhost:1313/" /><meta property="og:image" content="http://localhost:1313/static/images/datamapu_logo_schmal.png" />
-
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Data Science and Machine Learning Blog"><meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="http://localhost:1313/static/images/datamapu_logo_schmal.png" /><meta name="twitter:title" content=""/>
@@ -187,6 +186,34 @@ Welcome to my blog about Data Science and Machine Learning.-->
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/ml_concepts/backpropagation/" class="color-inherit dim link">
+            Backpropagation - Step by Step
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          Introduction Example: 1 Neuron Example: 2 Neurons Example: Small Network General Formulation Summary Appendix Derivative of the Sigmoid Function The Sigmoid Function is defined as
+$$\sigma(x) = \frac{1}{1 + e^{-x}}$$
+The derivative can be derived using the chain rule
+$$\sigma\prime(x) = \frac{\delta}{\delta x} \sigma(x) = \frac{\delta}{\delta x} (1 + e^{-x})^{-1} = -(1 + e^{-x})^{-2} \frac{\delta}{\delta x}(1 + e^{-x}).$$
+In the last expression we applied the outer derivative, calculating the inner derivative again needs the chain rule.
+        </div>
+          <a href="/posts/ml_concepts/backpropagation/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/ml_concepts/gradient_descent/" class="color-inherit dim link">
             Gradient Descent
             </a>
@@ -227,36 +254,18 @@ Welcome to my blog about Data Science and Machine Learning.-->
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/classical_ml/gradient_boosting_regression/" class="color-inherit dim link">
-            Gradient Boost for Regression - Explained
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          Introduction Gradient Boosting, also called Gradient Boosting Machine (GBM) is a type of supervised Machine Learning algorithm that is based on ensemble learning. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the Mean Squared Error as loss function.
-        </div>
-          <a href="/posts/classical_ml/gradient_boosting_regression/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/classical_ml/gradient_boosting_regression/" class="link black dim">
+              Gradient Boost for Regression - Explained
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/classical_ml/adaboost_example_reg/" class="link black dim">
@@ -273,12 +282,6 @@ Welcome to my blog about Data Science and Machine Learning.-->
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/time_series/breakpoints/" class="link black dim">
               Breakpoints
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/posts/classical_ml/adaboost/" class="link black dim">
-              AdaBoost - Explained
             </a>
           </h2>
         

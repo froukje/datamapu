@@ -13,7 +13,7 @@
       <link>http://localhost:1313/posts/ml_concepts/gradient_descent/</link>
       <pubDate>Tue, 27 Feb 2024 20:55:28 -0300</pubDate>
       <guid>http://localhost:1313/posts/ml_concepts/gradient_descent/</guid>
-      <description>Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small into the direction of the steepest descent of this point.</description>
+      <description>Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point.</description>
     </item>
     <item>
       <title>Introduction to Deep Learning</title>

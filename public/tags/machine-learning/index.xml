@@ -6,14 +6,21 @@
     <description>Recent content in Machine Learning on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Feb 2024 20:55:28 -0300</lastBuildDate>
+    <lastBuildDate>Wed, 20 Mar 2024 22:49:06 -0300</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Backpropagation - Step by Step</title>
+      <link>http://localhost:1313/posts/ml_concepts/backpropagation/</link>
+      <pubDate>Wed, 20 Mar 2024 22:49:06 -0300</pubDate>
+      <guid>http://localhost:1313/posts/ml_concepts/backpropagation/</guid>
+      <description>Introduction Example: 1 Neuron Example: 2 Neurons Example: Small Network General Formulation Summary Appendix Derivative of the Sigmoid Function The Sigmoid Function is defined as&#xA;$$\sigma(x) = \frac{1}{1 + e^{-1}}$$&#xA;The derivative is then&#xA;$$\sigma\prime(x)$$&#xA;If this blog is useful for you, I&amp;rsquo;m thankful for your support! </description>
+    </item>
     <item>
       <title>Gradient Descent</title>
       <link>http://localhost:1313/posts/ml_concepts/gradient_descent/</link>
       <pubDate>Tue, 27 Feb 2024 20:55:28 -0300</pubDate>
       <guid>http://localhost:1313/posts/ml_concepts/gradient_descent/</guid>
-      <description>Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small into the direction of the steepest descent of this point.</description>
+      <description>Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point.</description>
     </item>
     <item>
       <title>Loss Functions in Machine Learning</title>

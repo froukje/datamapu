@@ -6,8 +6,15 @@
     <description>Recent content in Artificial Intelligence on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 2024 09:39:26 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 20 Mar 2024 22:49:06 -0300</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Backpropagation - Step by Step</title>
+      <link>http://localhost:1313/posts/ml_concepts/backpropagation/</link>
+      <pubDate>Wed, 20 Mar 2024 22:49:06 -0300</pubDate>
+      <guid>http://localhost:1313/posts/ml_concepts/backpropagation/</guid>
+      <description>Introduction Example: 1 Neuron Example: 2 Neurons Example: Small Network General Formulation Summary Appendix Derivative of the Sigmoid Function The Sigmoid Function is defined as&#xA;$$\sigma(x) = \frac{1}{1 + e^{-1}}$$&#xA;The derivative is then&#xA;$$\sigma\prime(x)$$&#xA;If this blog is useful for you, I&amp;rsquo;m thankful for your support! </description>
+    </item>
     <item>
       <title>Bias and Variance</title>
       <link>http://localhost:1313/posts/ml_concepts/bias_variance/</link>
