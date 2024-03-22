@@ -7,7 +7,7 @@
     <title></title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Data Science and Machine Learning Blog">
-    <meta name="generator" content="Hugo 0.124.0">
+    <meta name="generator" content="Hugo 0.124.1">
     
     
     
@@ -169,10 +169,10 @@ MathJax = {
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       Introduction Example: 1 Neuron Example: 2 Neurons Example: Small Network General Formulation Summary Appendix Derivative of the Sigmoid Function The Sigmoid Function is defined as
-$$\sigma(x) = \frac{1}{1 + e^{-1}}$$
-The derivative is then
-$$\sigma\prime(x)$$
-If this blog is useful for you, I&rsquo;m thankful for your support! 
+$$\sigma(x) = \frac{1}{1 + e^{-x}}$$
+The derivative can be derived using the chain rule
+$$\sigma\prime(x) = \frac{\delta}{\delta x} \sigma(x) = \frac{\delta}{\delta x} (1 + e^{-x})^{-1} = -(1 + e^{-x})^{-2} \frac{\delta}{\delta x}(1 + e^{-x}).$$
+In the last expression we applied the outer derivative, calculating the inner derivative again needs the chain rule.
     </div>
   </div>
 </div>

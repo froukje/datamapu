@@ -6,12 +6,8 @@
     
     <title>Backpropagation - Step by Step | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Introduction Example: 1 Neuron Example: 2 Neurons Example: Small Network General Formulation Summary Appendix Derivative of the Sigmoid Function The Sigmoid Function is defined as
-$$\sigma(x) = \frac{1}{1 &#43; e^{-x}}$$
-The derivative can be derived using the chain rule
-$$\sigma\prime(x) = \frac{\delta}{\delta x} \sigma(x) = \frac{\delta}{\delta x} (1 &#43; e^{-x})^{-1} = -(1 &#43; e^{-x})^{-2} \frac{\delta}{\delta x}(1 &#43; e^{-x}).$$
-In the last expression we applied the outer derivative, calculating the inner derivative again needs the chain rule.">
-    <meta name="generator" content="Hugo 0.124.0">
+    <meta name="description" content="Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details.">
+    <meta name="generator" content="Hugo 0.124.1">
     
     
     
@@ -36,30 +32,18 @@ In the last expression we applied the outer derivative, calculating the inner de
     
     
     <meta property="og:title" content="Backpropagation - Step by Step" />
-<meta property="og:description" content="Introduction Example: 1 Neuron Example: 2 Neurons Example: Small Network General Formulation Summary Appendix Derivative of the Sigmoid Function The Sigmoid Function is defined as
-$$\sigma(x) = \frac{1}{1 &#43; e^{-x}}$$
-The derivative can be derived using the chain rule
-$$\sigma\prime(x) = \frac{\delta}{\delta x} \sigma(x) = \frac{\delta}{\delta x} (1 &#43; e^{-x})^{-1} = -(1 &#43; e^{-x})^{-2} \frac{\delta}{\delta x}(1 &#43; e^{-x}).$$
-In the last expression we applied the outer derivative, calculating the inner derivative again needs the chain rule." />
+<meta property="og:description" content="Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/posts/ml_concepts/backpropagation/" /><meta property="og:image" content="http://localhost:1313/images/backpropagation/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-03-20T22:49:06-03:00" />
 <meta property="article:modified_time" content="2024-03-20T22:49:06-03:00" />
 <meta itemprop="name" content="Backpropagation - Step by Step">
-<meta itemprop="description" content="Introduction Example: 1 Neuron Example: 2 Neurons Example: Small Network General Formulation Summary Appendix Derivative of the Sigmoid Function The Sigmoid Function is defined as
-$$\sigma(x) = \frac{1}{1 &#43; e^{-x}}$$
-The derivative can be derived using the chain rule
-$$\sigma\prime(x) = \frac{\delta}{\delta x} \sigma(x) = \frac{\delta}{\delta x} (1 &#43; e^{-x})^{-1} = -(1 &#43; e^{-x})^{-2} \frac{\delta}{\delta x}(1 &#43; e^{-x}).$$
-In the last expression we applied the outer derivative, calculating the inner derivative again needs the chain rule."><meta itemprop="datePublished" content="2024-03-20T22:49:06-03:00" />
+<meta itemprop="description" content="Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details."><meta itemprop="datePublished" content="2024-03-20T22:49:06-03:00" />
 <meta itemprop="dateModified" content="2024-03-20T22:49:06-03:00" />
-<meta itemprop="wordCount" content="184"><meta itemprop="image" content="http://localhost:1313/images/backpropagation/" />
+<meta itemprop="wordCount" content="579"><meta itemprop="image" content="http://localhost:1313/images/backpropagation/" />
 <meta itemprop="keywords" content="Data Science,Machine Learning,Artificial Intelligence," /><meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="http://localhost:1313/images/backpropagation/" /><meta name="twitter:title" content="Backpropagation - Step by Step"/>
-<meta name="twitter:description" content="Introduction Example: 1 Neuron Example: 2 Neurons Example: Small Network General Formulation Summary Appendix Derivative of the Sigmoid Function The Sigmoid Function is defined as
-$$\sigma(x) = \frac{1}{1 &#43; e^{-x}}$$
-The derivative can be derived using the chain rule
-$$\sigma\prime(x) = \frac{\delta}{\delta x} \sigma(x) = \frac{\delta}{\delta x} (1 &#43; e^{-x})^{-1} = -(1 &#43; e^{-x})^{-2} \frac{\delta}{\delta x}(1 &#43; e^{-x}).$$
-In the last expression we applied the outer derivative, calculating the inner derivative again needs the chain rule."/>
+<meta name="twitter:description" content="Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details."/>
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -213,12 +197,28 @@ MathJax = {
 
       
       
-        <span class="f6 mv4 dib tracked"> - One minute read </span>
-        <span class="f6 mv4 dib tracked"> - 184 words </span>
+        <span class="f6 mv4 dib tracked"> - 3 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 579 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
+<p>A neural network consists of a set  of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that <em>Backpropagation</em> is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details.</p>
+<p><strong>Main Concepts of Training a Neural Net</strong></p>
+<p>Before starting with the first example, let&rsquo;s quickly go through the main ideas of the training process of a neural net. The first thing we need, when we want to train a neural net is the <em>training data</em>. The training data consists of pairs of <em>inputs</em> and <em>labels</em>. The inputs are also called <em>features</em> and usually written as $X = (x_1, \dots, x_n)$, with $n$ the number of data samples. The labels are the expected outcomes - or true values - they are usually denoted as $y = (y_1, \dots, y_n)$. Training a neural net is an iterative process over a certain number of <em>epochs</em>. In each epoch the training data is processed through the network in a so-called <em>forward pass</em>, which results in the model output. Then the error - <em>loss</em> - of model output compared to the true values is calculated to evaluate the model. Finally, in the backward pass - the <em>backpropagation</em> - <a href="http://localhost:1313/posts/ml_concepts/gradient_descent/" title="gradient_descent">gradient descent</a> is used to update the model parameters and reduce the loss. For a general and more detailed introduction to Deep Learning terms and concepts, please refer to <a href="http://localhost:1313/posts/deep_learning/intro_dl/" title="intro_dl">Introduction to Deep Learning</a>.</p>
+<p>Throughout the examples of this post, we use the following training data, activation function and loss.</p>
+<p><strong>Training Data</strong></p>
+<p>We use the following data with $x = (x_1, x_2)$ the inputs and $y = (y_1, y_2)$ the labels.</p>
+<p>$$x_1 = 0.5, x_2 = 1$$
+$$y_1 = 1.5, y_2 = 2$$</p>
+<p><strong>Activation Function</strong></p>
+<p>As activation function, we use the <em>Sigmoid function</em></p>
+<p>$$\sigma(x) = \frac{1}{1 + e^{-x}}.$$</p>
+<p><strong>Loss Function</strong></p>
+<p>As loss function we use the <em>Mean Squared Error</em></p>
+<p>$$L(y, \hat{y} = \frac{1}{2}\big((y_1 - \hat{y}_1) + (y_2 - \hat{y}_2)\big),$$</p>
+<p>with $y = (y_1, y_2)$ the labels and $\hat{y} = (\hat{y}_1, \hat{y}_2)$ the predicted labels.</p>
 <h2 id="example-1-neuron">Example: 1 Neuron</h2>
+<p>To illustrate how backpropagation works, we start with the most simple neural network, which only constists of one single neuron.</p>
 <h2 id="example-2-neurons">Example: 2 Neurons</h2>
 <h2 id="example-small-network">Example: Small Network</h2>
 <h2 id="general-formulation">General Formulation</h2>
