@@ -13,7 +13,7 @@
       <link>http://localhost:1313/posts/ml_concepts/backpropagation/</link>
       <pubDate>Wed, 20 Mar 2024 22:49:06 -0300</pubDate>
       <guid>http://localhost:1313/posts/ml_concepts/backpropagation/</guid>
-      <description>Introduction Example: 1 Neuron Example: 2 Neurons Example: Small Network General Formulation Summary Appendix Derivative of the Sigmoid Function The Sigmoid Function is defined as&#xA;$$\sigma(x) = \frac{1}{1 + e^{-x}}$$&#xA;The derivative can be derived using the chain rule&#xA;$$\sigma\prime(x) = \frac{\delta}{\delta x} \sigma(x) = \frac{\delta}{\delta x} (1 + e^{-x})^{-1} = -(1 + e^{-x})^{-2} \frac{\delta}{\delta x}(1 + e^{-x}).$$&#xA;In the last expression we applied the outer derivative, calculating the inner derivative again needs the chain rule.</description>
+      <description>Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details.</description>
     </item>
     <item>
       <title>Bias and Variance</title>

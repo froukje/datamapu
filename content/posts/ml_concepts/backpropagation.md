@@ -35,13 +35,26 @@ $$\sigma(x) = \frac{1}{1 + e^{-x}}.$$
 
 As loss function we use the *Mean Squared Error*
 
-$$L(y, \hat{y} = \frac{1}{2}\big((y_1 - \hat{y}_1) + (y_2 - \hat{y}_2)\big),$$
+$$L(y, \hat{y}) = \frac{1}{2}\big((y_1 - \hat{y}_1) + (y_2 - \hat{y}_2)\big),$$
 
 with $y = (y_1, y_2)$ the labels and $\hat{y} = (\hat{y}_1, \hat{y}_2)$ the predicted labels.
 
 ## Example: 1 Neuron
 
 To illustrate how backpropagation works, we start with the most simple neural network, which only constists of one single neuron. 
+
+< EXAMPLE IMAGE >
+
+For the following calculations, we assume the initial weight to be $w = 0.3$ and the initial bias to be $b = 0.1$. Further the learning rate is set to$\alpha = 0.1$. This values are chosen arbitrary for illustration purposes.
+
+We can calculate the forward pass through this network as
+
+$$\hat{y} = \sigma(wx + b),$$
+$$\hat{y} = \frac{1}{1 + e^{-(wx+b)}}$$.
+
+Using the dataset defined above, we get for $x_1 = 0.5$
+
+$$\hat{y}_1 = \frac{1}{1 + e^{-0.3\cdot 0.5 - 0.1}} = \frac{1}{1 + e^{-0.05}} = \frac{1}{1 + e^{0.05}} \approx 0.51$$
 
 
 ## Example: 2 Neurons

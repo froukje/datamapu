@@ -76,7 +76,7 @@
       <link>http://localhost:1313/posts/classical_ml/linear_regression/</link>
       <pubDate>Mon, 13 Nov 2023 21:20:41 +0100</pubDate>
       <guid>http://localhost:1313/posts/classical_ml/linear_regression/</guid>
-      <description>Introduction Linear Regression is a type of Supervised Machine Learning Algorithm, where a linear relationship between the input feature(s) and the target value is assumed. Linear Regression is a specific type of regression model, where the mapping learned by the model describes a linear function. As in all regression taskss, the target variable is continuous. In a linear regression, the linear relationship between one (Simple Linear Regression) or more (Multiple Linear Regression) independent variable and one dependent variable is modeled.</description>
+      <description>Introduction Linear Regression is a type of Supervised Machine Learning Algorithm, where a linear relationship between the input feature(s) and the target value is assumed. Linear Regression is a specific type of regression model, where the mapping learned by the model describes a linear function. As in all regression tasks, the target variable is continuous. In a linear regression, the linear relationship between one (Simple Linear Regression) or more (Multiple Linear Regression) independent variable and one dependent variable is modeled.</description>
     </item>
   </channel>
 </rss>
