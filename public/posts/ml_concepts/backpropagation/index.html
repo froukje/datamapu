@@ -40,7 +40,7 @@
 <meta itemprop="name" content="Backpropagation - Step by Step">
 <meta itemprop="description" content="Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details."><meta itemprop="datePublished" content="2024-03-20T22:49:06-03:00" />
 <meta itemprop="dateModified" content="2024-03-20T22:49:06-03:00" />
-<meta itemprop="wordCount" content="684"><meta itemprop="image" content="http://localhost:1313/images/backpropagation/" />
+<meta itemprop="wordCount" content="694"><meta itemprop="image" content="http://localhost:1313/images/backpropagation/" />
 <meta itemprop="keywords" content="Data Science,Machine Learning,Artificial Intelligence," /><meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="http://localhost:1313/images/backpropagation/" /><meta name="twitter:title" content="Backpropagation - Step by Step"/>
 <meta name="twitter:description" content="Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details."/>
@@ -198,7 +198,7 @@ MathJax = {
       
       
         <span class="f6 mv4 dib tracked"> - 4 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 684 words </span>
+        <span class="f6 mv4 dib tracked"> - 694 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -220,13 +220,15 @@ $$y_1 = 1.5, y_2 = 2$$</p>
 <h2 id="example-1-neuron">Example: 1 Neuron</h2>
 <p>To illustrate how backpropagation works, we start with the most simple neural network, which only constists of one single neuron.</p>
 <p><img src="/images/backpropagation/one_neuron.png" alt="one_neuron">
-<em>Illustration of Backpropagation in a Neural Network consisting of a single Neuron.</em></p>
+<em>Illustration of a Neural Network consisting of a single Neuron.</em></p>
 <p>For the following calculations, we assume the initial weight to be $w = 0.3$ and the initial bias to be $b = 0.1$. Further the learning rate is set to$\alpha = 0.1$. This values are chosen arbitrary for illustration purposes.</p>
 <p>We can calculate the forward pass through this network as</p>
 <p>$$\hat{y} = \sigma(wx + b),$$
 $$\hat{y} = \frac{1}{1 + e^{-(wx+b)}}$$.</p>
 <p>Using the dataset defined above, we get for $x_1 = 0.5$</p>
 <p>$$\hat{y}_1 = \frac{1}{1 + e^{-0.3\cdot 0.5 - 0.1}} = \frac{1}{1 + e^{-0.05}} = \frac{1}{1 + e^{0.05}} \approx 0.51$$</p>
+<p><img src="/images/backpropagation/one_neuron_back.png" alt="one_neuron">
+<em>Illustration of Backpropagation in a Neural Network consisting of a single Neuron.</em></p>
 <h2 id="example-2-neurons">Example: 2 Neurons</h2>
 <ul>
 <li>in a row</li>
