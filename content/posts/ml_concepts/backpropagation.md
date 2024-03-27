@@ -46,7 +46,9 @@ To illustrate how backpropagation works, we start with the most simple neural ne
 ![one_neuron](/images/backpropagation/one_neuron.png)
 *Illustration of a Neural Network consisting of a single Neuron.*
 
-For the following calculations, we assume the initial weight to be $w = 0.3$ and the initial bias to be $b = 0.1$. Further the learning rate is set to$\alpha = 0.1$. This values are chosen arbitrary for illustration purposes.
+For the following calculations, we assume the initial weight to be $w = 0.3$ and the initial bias to be $b = 0.1$. Further the learning rate is set to $\alpha = 0.1$. This values are chosen arbitrary for illustration purposes.
+
+**The Forward Pass**
 
 We can calculate the forward pass through this network as
 
@@ -56,6 +58,9 @@ $$\hat{y} = \frac{1}{1 + e^{-(wx+b)}}$$.
 Using the dataset defined above, we get for $x_1 = 0.5$
 
 $$\hat{y}_1 = \frac{1}{1 + e^{-0.3\cdot 0.5 - 0.1}} = \frac{1}{1 + e^{-0.05}} = \frac{1}{1 + e^{0.05}} \approx 0.51$$
+
+
+**The Backward Pass**
 
 ![one_neuron](/images/backpropagation/one_neuron_back.png)
 *Illustration of Backpropagation in a Neural Network consisting of a single Neuron.*
