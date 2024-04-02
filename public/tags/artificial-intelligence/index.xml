@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Artificial Intelligence on </title>
-    <link>http://localhost:43771/tags/artificial-intelligence/</link>
+    <link>http://localhost:1313/tags/artificial-intelligence/</link>
     <description>Recent content in Artificial Intelligence on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 31 Mar 2024 20:21:50 -0300</lastBuildDate>
-    <atom:link href="http://localhost:43771/tags/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Backpropagation Step by Step</title>
-      <link>http://localhost:43771/posts/deep_learning/backpropagation/</link>
+      <link>http://localhost:1313/posts/deep_learning/backpropagation/</link>
       <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
-      <guid>http://localhost:43771/posts/deep_learning/backpropagation/</guid>
+      <guid>http://localhost:1313/posts/deep_learning/backpropagation/</guid>
       <description>Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details.</description>
     </item>
     <item>
       <title>Backpropagation - Step by Step</title>
-      <link>http://localhost:43771/posts/ml_concepts/backpropagation2/</link>
+      <link>http://localhost:1313/posts/ml_concepts/backpropagation2/</link>
       <pubDate>Wed, 20 Mar 2024 22:49:06 -0300</pubDate>
-      <guid>http://localhost:43771/posts/ml_concepts/backpropagation2/</guid>
+      <guid>http://localhost:1313/posts/ml_concepts/backpropagation2/</guid>
       <description>Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details.</description>
     </item>
     <item>
       <title>Bias and Variance</title>
-      <link>http://localhost:43771/posts/ml_concepts/bias_variance/</link>
+      <link>http://localhost:1313/posts/ml_concepts/bias_variance/</link>
       <pubDate>Mon, 01 Jan 2024 09:39:26 +0100</pubDate>
-      <guid>http://localhost:43771/posts/ml_concepts/bias_variance/</guid>
+      <guid>http://localhost:1313/posts/ml_concepts/bias_variance/</guid>
       <description>Introduction In Machine Learning different error sources exist. Some errors cannot be avoided, for example, due to unknown variables in the system analyzed. These errors are called irreducible errors. On the other hand, reducible errors, are errors that can be reduced to improve the model&amp;rsquo;s skill. Bias and Variance are two of the latter. They are concepts used in supervised Machine Learning to evaluate the model&amp;rsquo;s output compared to the true values.</description>
     </item>
     <item>
       <title>Introduction to Deep Learning</title>
-      <link>http://localhost:43771/posts/deep_learning/intro_dl/</link>
+      <link>http://localhost:1313/posts/deep_learning/intro_dl/</link>
       <pubDate>Thu, 02 Nov 2023 21:44:06 +0100</pubDate>
-      <guid>http://localhost:43771/posts/deep_learning/intro_dl/</guid>
+      <guid>http://localhost:1313/posts/deep_learning/intro_dl/</guid>
       <description>In this article we will learn what Deep Learning is and understand the difference to AI and Machine Learning. Often these three terms are used interchangeable. They are however not the same. The following diagram illustrates how they are related.&#xA;Relation of Artificial Intelligence, Machine Learning and Deep Learning.&#xA;Artificial Intelligence. There are different definitions of Artificial Intelligence, but in general, they involve computers performing tasks that are usually associated with humans or other intelligent living systems.</description>
     </item>
   </channel>

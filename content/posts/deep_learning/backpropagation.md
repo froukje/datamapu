@@ -124,12 +124,141 @@ With this simple example we illustrated one forward and one backward pass. It is
 
 ## 2. Example
 
-The second example we consider is a Neural Net, that consists of two neurons after each other, as illustrated in the following plot.
+The second example we consider is a Neural Net, that consists of two neurons after each other, as illustrated in the following plot. Note, that the illustration is slighly different. We skipped the last error towards $\hat{y}$, because the second neuron's output after applying the activation function is equal to $\hat{y}$. Also for consistency of the notation, we added $a^{(1)}$, which is equal to the input $x$. In this case we have two weights $(w^{(1)}, w^{(2)})$ and two biases $(b^{(1)}, b^{(2)})$. We set $w^{(1)} = 0.3$, $w^{(2)} = 0.2$, $b^{(1)} = 0.1$, and $b^{(2)} = 0.4$. As in the first example, these numbers are chosen arbitrarily.
 
 ![two_neurons](/images/backpropagation/two_neurons.png)
 *A Neural Net with two layers, each consisting of one neuron.*
 
-## Example: Shallow Network
+**The Forward Pass**
+
+The forward pass is calculated as follows
+
+$$\hat{y} = a^{(3)} = \sigma(z^{(3)}) = \sigma(w^{(2)} a^{(2)} + b^{(2)}),$$
+with
+$$a^{(2)} = \sigma(z^{(2)}) = \sigma(w^{(1)} a^{(1)} + b^{(1)}) = \sigma(w^{(1)} x + b^{(1)}).$$
+
+Together this leads to
+
+$$\hat{y} = \sigma\big(w^{(2)}\cdot \sigma(w^{(1)} \cdot x + b^{(1)}) + b^{(2)}\big).$$
+
+Using the values define above, we get
+
+$$\hat{y} = \sigma\Big(0.2\cdot \big(\sigma(0.3 \cdot 0.5 + 0.1)\big) + 0.4\Big) = \sigma\big(0.2\cdot \sigma(0.25) + 0.4\big)$$
+$$\hat{y} = \sigma\big(0.2\cdot \frac{1}{1 + e^{-0.25}} +0.4\big) \approx \sigma(0.2\cdot 0.56 + 0.4)$$
+$$\hat{y} \approx \sigma(0.512) = \frac{1}{1 + e^{-0.512}} = 0.625.$$
+
+The loss in this case is
+
+$$L(y, \hat{y}) = \frac{1}{2} (1.5 - 0.625)^2 = 0.38.$$
+
+**The Backward Pass**
+
+In the backward pass, we want to update all the four model parameters - the two weights and the two biases.
+
+$$w^{(1)}_{new} = w^{(1)} - \alpha \frac{\delta L}{\delta w^{(1)}}$$
+
+$$b^{(1)}_{new} = b^{(1)} - \alpha \frac{\delta L}{\delta b^{(1)}}$$
+
+$$w^{(2)}_{new} = w^{(2)} - \alpha \frac{\delta L}{\delta w^{(2)}}$$
+
+$$b^{(2)}_{new} = b^{(2)} - \alpha \frac{\delta L}{\delta b^{(2)}}$$
+
+For $w^{(2)}$ and $b^{(2)}$, the calculations are analogue to the ones in the first example. Following the steps shown above, we get
+
+$$\frac{\delta L}{\delta w^{(2)}} = \frac{\delta L}{\delta \hat{y}} \frac{\delta \hat{y}}{\delta z^{(3)}} \frac{\delta z^{(3)}}{\delta w^{(2)}} = (-0.875) \cdot 0.235 \cdot 0.5 = -0.103$$
+
+$$\frac{\delta L}{\delta b^{(2)}} = \frac{\delta L}{\delta \hat{y}} \frac{\delta \hat{y}}{\delta z^{(3)}} \frac{\delta z^{(3)}}{\delta b^{(2)}} = (-0.875)\cdot 0.235 = -0.205$$
+
+We will now focus on the remaining two. The idea is exactly the same, only we now have to apply the chain-rule several times
+
+$$\frac{\delta L}{\delta w^{(1)}} = \frac{\delta L}{\delta \hat{y}} \frac{\delta \hat{y}}{\delta z^{(3)}} \frac{\delta z^{(3)}}{\delta a^{(2)}} \frac{\delta a^{(2)}}{\delta z^{(2)}} \frac{\delta z^{(2)}}{\delta w^{(1)}},$$
+
+and 
+
+$$\frac{\delta L}{\delta b^{(1)}} = \frac{\delta L}{\delta \hat{y}} \frac{\delta \hat{y}}{\delta z^{(3)}} \frac{\delta z^{(3)}}{\delta a^{(2)}} \frac{\delta a^{(2)}}{\delta z^{(2)}} \frac{\delta z^{(2)}}{\delta b^{(1)}},$$
+
+as illustrated in the following plots.
+
+![two_neurons_back](/images/backpropagation/two_neurons_back.png)
+![two_neurons_back](/images/backpropagation/two_neurons_back2.png)
+*Backpropagation illustrated.*
+
+Calculting the individual derivatives, we get
+
+$$\frac{\delta L}{\delta \hat{y}} = -(y - \hat{y})$$
+
+$$\frac{\delta \hat{y}}{\delta z^{(3)}} = \frac{\delta}{\delta z^{(3)}} \sigma(z^{(3)}) = \sigma(z^{(3)}) \big(1- \sigma(z^{(3)})\big)$$
+
+$$\frac{\delta z^{(3)}}{\delta a^{(2)}} = \frac{\delta}{\delta a^{(2)}}w^{(2)} a^{(2)} + b^{(2)} = w^{(2)}$$
+
+$$\frac{\delta a^{(2)}}{\delta z^{(2)}} = \frac{\delta}{\delta z^{(2)}} \sigma(z^{(2)}) = \sigma(z^{(2)}) \big(1- \sigma(z^{(2)})\big)$$
+
+$$\frac{\delta z^{(2)}}{\delta w^{(1)}} = \frac{\delta}{\delta w^{(1)}}w^{(1)} x + b^{(1)} = a^{(1)}$$
+
+$$\frac{\delta z^{(2)}}{\delta b^{(1)}} = \frac{\delta}{\delta b^{(1)}}w^{(1)} x + b^{(1)} = 1$$
+
+For the detailed development of the derivative of the sigmoid function, please check the appendix of this post.
+With the values defined, we get for the first equation
+
+$$\frac{\delta L}{\delta \hat{y}} = -(y - \hat{y}) = -(1.5 - 0.625) = -0.875.$$
+
+For the second equation
+
+$$\frac{\delta \hat{y}}{\delta z^{(3)}} = \sigma(z^{(3)}) \big(1- \sigma(z^{(3)})\big),$$
+
+with $z^{(3)}$ calculated as
+
+$$z^{(3)} = w^{(2)} a^{(2)} + b^{(2)} = \sigma(w^{(1)} a^{(1)} + b^{(1)}) = \sigma(w^{(1)} x + b^{(1)}) = \sigma(0.25) \approx 0.56,$$
+
+we get
+
+$$\frac{\delta \hat{y}}{\delta z^{(3)}} = \frac{1}{1 + e^{-0.56}}\big(1 - \frac{1}{1 + e^{-0.56}}\big) \approx  0.64 \cdot (1 - 0.64) = 0.23.$$
+
+For the third equation, we get
+
+$$\frac{\delta z^{(3)}}{\delta a^{(2)}} = w^{(2)} = 0.2$$
+
+The fourth equation leads to
+
+$$\frac{\delta a^{(2)}}{\delta z^{(2)}} = \sigma(z^{(2)}) \big(1- \sigma(z^{(2)})\big),$$
+
+with
+
+$$z^{(2)} = w^{(1)} a^{(1)} + b^{(1)}) = w^{(1)} x + b^{(1)} = 0.3\cdot 0.5 + 0.1 = 0.25.$$
+
+Replacing this in the above equation leads to
+
+$$\frac{\delta a^{(2)}}{\delta z^{(2)}} = \sigma(0.25) \big(1 - \sigma(0.25)\big) \approx 0.56 \cdot (1 - 0.56) \approx 0.25,$$
+
+The fifth equation gives
+
+$$\frac{\delta z^{(2)}}{\delta w^{(1)}} = x = 0.5,$$
+
+and the last equation is always equal to $1$.
+
+Putting the derivatives back together, we get
+
+$$\frac{\delta L}{\delta w^{(1)}} = (-0.875)\cdot 0.23 \cdot 0.2 \cdot 0.25 \cdot 0.5 \approx -0.005,$$
+
+and
+
+$$\frac{\delta L}{\delta b^{(1)}} = (-0.875)\cdot 0.23 \cdot 0.2 \cdot 0.25 \cdot 1 \approx -0.01$$
+
+With that we can update the weights
+
+$$w^{(1)}_{new} = 0.3 - 0.1 \cdot (-0.005) = 0.3005$$
+
+$$b^{(1)}_{new} = 0.1 - 0.1 \cdot (-0.01) = 0.101$$
+
+$$w^{(2)}_{new} = 0.2 - 0.1 \cdot (-0.103) = 0.2103$$
+
+$$b^{(2)}_{new} = 0.4 - 0.1 \cdot (-0.205) = 0.3795$$
+
+## 3. Example
+
+In this example, we will consider a neural net, that consists of two neurons in the hidden layer. For this example, we are not going to do the deatiled calculations, but we will only have a look at the equations that need to be calculated.
+
+# Example: Shallow Network
 
 ## General Formulation
 
