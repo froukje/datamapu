@@ -256,9 +256,74 @@ $$b^{(2)}_{new} = 0.4 - 0.1 \cdot (-0.205) = 0.3795$$
 
 ## 3. Example
 
-In this example, we will consider a neural net, that consists of two neurons in the hidden layer. For this example, we are not going to do the deatiled calculations, but we will only have a look at the equations that need to be calculated.
+In this example, we will consider a neural net, that consists of two neurons in the hidden layer. We are not going to cover his in detail, as all the calculations needed have already been derived in the previous two examples, but we will have a look at the equations that need to be calculated. For illustration purposes the bias term is illustrated as one vector for each layer, i.e. in the below plot $b^{(1)} = (b^{(1)}_1, b^{(1)_2})$.
 
-# Example: Shallow Network
+![two_neurons2](/images/backpropagation/two_neurons2.png)
+*Example with two neurons in one layer.*
+
+**Forward Pass**
+
+In the forward pass we now have to consider the sum of the two neurons in the layer. It is calculated as
+
+$$\hat{y} = a^{(3)} = \sigma(z^{(3)}) = \sigma\big(w^{(2)}_1\cdot a^{(2)}_1 + b^{(2)} + w^{(2)}_2 \cdot a^{(2)}_2 + b^{(2)}\big),$$
+
+with
+
+$$a^{(2)}_1 = \sigma(z^{(2)}_1) = \sigma\big(a^{(1)}_1 x + b^{(1)}_1 \big) = \frac{1}{1 + e^{-(a^{(1)}_1 x + b^{(1)}_1)}},$$
+
+$$a^{(2)}_1 = \sigma(z^{(2)}_2) = \sigma\big(a^{(1)}_2 x + b^{(1)}_2 \big) = \frac{1}{1 + e^{-(a^{(1)}_2 x + b^{(1)}_2)}},$$
+
+this leads to
+
+$$\hat{y} = \frac{1}{1 + e^{-(w^{(2)}_1\cdot a^{(2)}_1 + b^{(2)} + w^{(2)}_2 \cdot a^{(2)}_2 + b^{(2)})}}$$
+$$\hat{y} = \frac{1}{1 + e^{-\Big(w^{(2)}_1\cdot \Big(\frac{1}{1 + e^{-(a^{(1)}_1 x + b^{(1)}_1)}}\Big) + b^{(2)} + w^{(2)}_2 \cdot \Big(\frac{1}{1 + e^{-(a^{(1)}_2 x + b^{(1)}_2)}}\Big) + b^{(2)})\Big)}},$$
+
+which is the predicted value.
+
+**Backward Pass**
+
+For the backward pass we need to calculate the partial derivatives as follows
+
+$$w^{(1)}_{1,new} = w^{(1)}_1 - \alpha \frac{\delta L}{\delta w^{(1)}_1}$$
+
+$$w^{(1)}_{2,new} = w^{(1)}_2 - \alpha \frac{\delta L}{\delta w^{(1)}_2}$$
+
+$$b^{(1)}_{1,new} = b^{(1)} - \alpha \frac{\delta L}{\delta b^{(1)}_1}$$
+
+$$b^{(1)}_{2,new} = b^{(1)} - \alpha \frac{\delta L}{\delta b^{(1)}_2}$$
+
+$$w^{(2)}_{1,new} = w^{(1)}_1 - \alpha \frac{\delta L}{\delta w^{(2)}_1}$$
+
+$$w^{(2)}_{2,new} = w^{(1)}_2 - \alpha \frac{\delta L}{\delta w^{(2)}_2}$$
+
+$$b^{(2)}_{1,new} = b^{(2)}_1 - \alpha \frac{\delta L}{\delta b^{(2)}_1}$$
+
+$$b^{(2)}_{2,new} = b^{(2)}_2 - \alpha \frac{\delta L}{\delta b^{(2)}_2}$$
+
+We can calculate all the partial derivatives as shown in the above two examples. The calculations for $\frac{\delta L}{\delta w^{(2)}_1}$, $\frac{\delta L}{\delta w^{(2)}_2}$, and $\frac{\delta L}{\delta b^{(2)}}$ are as the ones shown in the first example. Further $\frac{\delta L}{\delta w^{(1)}_1}$, $\frac{\delta L}{\delta b^{(1)}_2}$, $\frac{\delta L}{\delta w^{(b)}_1}$, and $\frac{\delta L}{\delta w^{(2)}_2}$ are calculated analgue to example 2. The calculations of the latter are illustrated in the below plot. 
+
+$$\frac{\delta L}{\delta w^{(1)}_1} = \frac{\delta L}{\delta \hat{y}} \frac{\delta \hat{y}}{\delta z^{(3)}} \frac{\delta z^{(3)}}{\delta a^{(2)}_1} \frac{\delta a^{(2)}_1}{\delta z^{(2)}_1} \frac{\delta z^{(2)}_1}{\delta w^{(1)}_1},$$
+
+$$\frac{\delta L}{\delta w^{(1)}_2} = \frac{\delta L}{\delta \hat{y}} \frac{\delta \hat{y}}{\delta z^{(3)}} \frac{\delta z^{(3)}}{\delta a^{(2)}_1} \frac{\delta a^{(2)}_1}{\delta z^{(2)}_1} \frac{\delta z^{(2)}_1}{\delta w^{(1)}_2},$$
+
+$$\frac{\delta L}{\delta b^{(1)}_1} = \frac{\delta L}{\delta \hat{y}} \frac{\delta \hat{y}}{\delta z^{(3)}} \frac{\delta z^{(3)}}{\delta a^{(2)}_1} \frac{\delta a^{(2)}_1}{\delta z^{(2)}_1} \frac{\delta z^{(2)}_1}{\delta b^{(1)}_1},$$
+
+$$\frac{\delta L}{\delta b^{(1)}_2} = \frac{\delta L}{\delta \hat{y}} \frac{\delta \hat{y}}{\delta z^{(3)}} \frac{\delta z^{(3)}}{\delta a^{(2)}_1} \frac{\delta a^{(2)}_1}{\delta z^{(2)}_1} \frac{\delta z^{(2)}_1}{\delta b^{(1)}_2},$$
+
+![two_neurons_back](/images/backpropagation/two_neurons2_back.png)
+*Backpropagation illustrated for the weights.*
+
+![two_neurons_back](/images/backpropagation/two_neurons2_back2.png)
+*Backpropagation illustrated for the biases.*
+
+We can see that even for this very small and simple neural net, the calculations easily get overwhelming.
+
+## Example: Shallow Network
+
+In this last example we consider a shallow neural net, that consists of three hidden layers, each consisting of several neurons. As in the previous example, the bias terms are illustrated as vectors for the entire layer, i.e. $b^{(1)} = (b^{(1)}_1, b^{(1)}_2)$, $b^{(2)} = (b^{(2)}_1, b^{(2)}_2, b^{(2)}_3)$, $b^{(3)} = (b^{(3)}_1, b^{(3)}_2)$
+
+![shallow_net](/images/backpropagation/shallow_net.png)
+*Illustration of a shallow neural net.*
 
 ## General Formulation
 

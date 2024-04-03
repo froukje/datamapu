@@ -40,7 +40,7 @@
 <meta itemprop="name" content="Backpropagation Step by Step">
 <meta itemprop="description" content="Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details."><meta itemprop="datePublished" content="2024-03-31T20:21:50-03:00" />
 <meta itemprop="dateModified" content="2024-03-31T20:21:50-03:00" />
-<meta itemprop="wordCount" content="1984"><meta itemprop="image" content="http://localhost:1313/images/backpropagation/" />
+<meta itemprop="wordCount" content="2450"><meta itemprop="image" content="http://localhost:1313/images/backpropagation/" />
 <meta itemprop="keywords" content="Data Science,Machine Learning,Artificial Intelligence," /><meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="http://localhost:1313/images/backpropagation/" /><meta name="twitter:title" content="Backpropagation Step by Step"/>
 <meta name="twitter:description" content="Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details."/>
@@ -197,8 +197,8 @@ MathJax = {
 
       
       
-        <span class="f6 mv4 dib tracked"> - 10 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 1984 words </span>
+        <span class="f6 mv4 dib tracked"> - 12 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 2450 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -338,8 +338,43 @@ With the values defined, we get for the first equation</p>
 <p>$$w^{(2)}_{new} = 0.2 - 0.1 \cdot (-0.103) = 0.2103$$</p>
 <p>$$b^{(2)}_{new} = 0.4 - 0.1 \cdot (-0.205) = 0.3795$$</p>
 <h2 id="3-example">3. Example</h2>
-<p>In this example, we will consider a neural net, that consists of two neurons in the hidden layer. For this example, we are not going to do the deatiled calculations, but we will only have a look at the equations that need to be calculated.</p>
-<h1 id="example-shallow-network">Example: Shallow Network</h1>
+<p>In this example, we will consider a neural net, that consists of two neurons in the hidden layer. We are not going to cover his in detail, as all the calculations needed have already been derived in the previous two examples, but we will have a look at the equations that need to be calculated. For illustration purposes the bias term is illustrated as one vector for each layer, i.e. in the below plot $b^{(1)} = (b^{(1)}_1, b^{(1)_2})$.</p>
+<p><img src="/images/backpropagation/two_neurons2.png" alt="two_neurons2">
+<em>Example with two neurons in one layer.</em></p>
+<p><strong>Forward Pass</strong></p>
+<p>In the forward pass we now have to consider the sum of the two neurons in the layer. It is calculated as</p>
+<p>$$\hat{y} = a^{(3)} = \sigma(z^{(3)}) = \sigma\big(w^{(2)}_1\cdot a^{(2)}_1 + b^{(2)} + w^{(2)}_2 \cdot a^{(2)}_2 + b^{(2)}\big),$$</p>
+<p>with</p>
+<p>$$a^{(2)}_1 = \sigma(z^{(2)}_1) = \sigma\big(a^{(1)}_1 x + b^{(1)}_1 \big) = \frac{1}{1 + e^{-(a^{(1)}_1 x + b^{(1)}_1)}},$$</p>
+<p>$$a^{(2)}_1 = \sigma(z^{(2)}_2) = \sigma\big(a^{(1)}_2 x + b^{(1)}_2 \big) = \frac{1}{1 + e^{-(a^{(1)}_2 x + b^{(1)}_2)}},$$</p>
+<p>this leads to</p>
+<p>$$\hat{y} = \frac{1}{1 + e^{-(w^{(2)}_1\cdot a^{(2)}_1 + b^{(2)} + w^{(2)}_2 \cdot a^{(2)}_2 + b^{(2)})}}$$
+$$\hat{y} = \frac{1}{1 + e^{-\Big(w^{(2)}_1\cdot \Big(\frac{1}{1 + e^{-(a^{(1)}_1 x + b^{(1)}_1)}}\Big) + b^{(2)} + w^{(2)}_2 \cdot \Big(\frac{1}{1 + e^{-(a^{(1)}_2 x + b^{(1)}_2)}}\Big) + b^{(2)})\Big)}},$$</p>
+<p>which is the predicted value.</p>
+<p><strong>Backward Pass</strong></p>
+<p>For the backward pass we need to calculate the partial derivatives as follows</p>
+<p>$$w^{(1)}_{1,new} = w^{(1)}_1 - \alpha \frac{\delta L}{\delta w^{(1)}_1}$$</p>
+<p>$$w^{(1)}_{2,new} = w^{(1)}_2 - \alpha \frac{\delta L}{\delta w^{(1)}_2}$$</p>
+<p>$$b^{(1)}_{1,new} = b^{(1)} - \alpha \frac{\delta L}{\delta b^{(1)}_1}$$</p>
+<p>$$b^{(1)}_{2,new} = b^{(1)} - \alpha \frac{\delta L}{\delta b^{(1)}_2}$$</p>
+<p>$$w^{(2)}_{1,new} = w^{(1)}_1 - \alpha \frac{\delta L}{\delta w^{(2)}_1}$$</p>
+<p>$$w^{(2)}_{2,new} = w^{(1)}_2 - \alpha \frac{\delta L}{\delta w^{(2)}_2}$$</p>
+<p>$$b^{(2)}_{1,new} = b^{(2)}_1 - \alpha \frac{\delta L}{\delta b^{(2)}_1}$$</p>
+<p>$$b^{(2)}_{2,new} = b^{(2)}_2 - \alpha \frac{\delta L}{\delta b^{(2)}_2}$$</p>
+<p>We can calculate all the partial derivatives as shown in the above two examples. The calculations for $\frac{\delta L}{\delta w^{(2)}_1}$, $\frac{\delta L}{\delta w^{(2)}_2}$, and $\frac{\delta L}{\delta b^{(2)}}$ are as the ones shown in the first example. Further $\frac{\delta L}{\delta w^{(1)}_1}$, $\frac{\delta L}{\delta b^{(1)}_2}$, $\frac{\delta L}{\delta w^{(b)}_1}$, and $\frac{\delta L}{\delta w^{(2)}_2}$ are calculated analgue to example 2. The calculations of the latter are illustrated in the below plot.</p>
+<p>$$\frac{\delta L}{\delta w^{(1)}_1} = \frac{\delta L}{\delta \hat{y}} \frac{\delta \hat{y}}{\delta z^{(3)}} \frac{\delta z^{(3)}}{\delta a^{(2)}_1} \frac{\delta a^{(2)}_1}{\delta z^{(2)}_1} \frac{\delta z^{(2)}_1}{\delta w^{(1)}_1},$$</p>
+<p>$$\frac{\delta L}{\delta w^{(1)}_2} = \frac{\delta L}{\delta \hat{y}} \frac{\delta \hat{y}}{\delta z^{(3)}} \frac{\delta z^{(3)}}{\delta a^{(2)}_1} \frac{\delta a^{(2)}_1}{\delta z^{(2)}_1} \frac{\delta z^{(2)}_1}{\delta w^{(1)}_2},$$</p>
+<p>$$\frac{\delta L}{\delta b^{(1)}_1} = \frac{\delta L}{\delta \hat{y}} \frac{\delta \hat{y}}{\delta z^{(3)}} \frac{\delta z^{(3)}}{\delta a^{(2)}_1} \frac{\delta a^{(2)}_1}{\delta z^{(2)}_1} \frac{\delta z^{(2)}_1}{\delta b^{(1)}_1},$$</p>
+<p>$$\frac{\delta L}{\delta b^{(1)}_2} = \frac{\delta L}{\delta \hat{y}} \frac{\delta \hat{y}}{\delta z^{(3)}} \frac{\delta z^{(3)}}{\delta a^{(2)}_1} \frac{\delta a^{(2)}_1}{\delta z^{(2)}_1} \frac{\delta z^{(2)}_1}{\delta b^{(1)}_2},$$</p>
+<p><img src="/images/backpropagation/two_neurons2_back.png" alt="two_neurons_back">
+<em>Backpropagation illustrated for the weights.</em></p>
+<p><img src="/images/backpropagation/two_neurons2_back2.png" alt="two_neurons_back">
+<em>Backpropagation illustrated for the biases.</em></p>
+<p>We can see that even for this very small and simple neural net, the calculations easily get overwhelming.</p>
+<h2 id="example-shallow-network">Example: Shallow Network</h2>
+<p>In this last example we consider a shallow neural net, that consists of three hidden layers, each consisting of several neurons. As in the previous example, the bias terms are illustrated as vectors for the entire layer, i.e. $b^{(1)} = (b^{(1)}_1, b^{(1)}_2)$, $b^{(2)} = (b^{(2)}_1, b^{(2)}_2, b^{(2)}_3)$, $b^{(3)} = (b^{(3)}_1, b^{(3)}_2)$</p>
+<p><img src="/images/backpropagation/shallow_net.png" alt="shallow_net">
+<em>Illustration of a shallow neural net.</em></p>
 <h2 id="general-formulation">General Formulation</h2>
 <h2 id="summary">Summary</h2>
 <h2 id="appendix">Appendix</h2>
