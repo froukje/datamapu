@@ -256,7 +256,7 @@ $$b^{(2)}_{new} = 0.4 - 0.1 \cdot (-0.205) = 0.3795$$
 
 ## 3. Example
 
-In this example, we will consider a neural net, that consists of two neurons in the hidden layer. We are not going to cover his in detail, as all the calculations needed have already been derived in the previous two examples, but we will have a look at the equations that need to be calculated. For illustration purposes the bias term is illustrated as one vector for each layer, i.e. in the below plot $b^{(1)} = (b^{(1)}_1, b^{(1)_2})$.
+In this example, we will consider a neural net, that consists of two neurons in the hidden layer. We are not going to cover his in detail, as all the calculations needed have already been derived in the previous two examples, but we will have a look at the equations that need to be calculated. For illustration purposes the bias term is illustrated as one vector for each layer, i.e. in the below plot $b^{(2)} = (b^{(2)}_1, b^{(2)}_2)$.
 
 ![two_neurons2](/images/backpropagation/two_neurons2.png)
 *Example with two neurons in one layer.*
@@ -269,14 +269,20 @@ $$\hat{y} = a^{(3)} = \sigma(z^{(3)}) = \sigma\big(w^{(2)}_1\cdot a^{(2)}_1 + b^
 
 with
 
-$$a^{(2)}_1 = \sigma(z^{(2)}_1) = \sigma\big(a^{(1)}_1 x + b^{(1)}_1 \big) = \frac{1}{1 + e^{-(a^{(1)}_1 x + b^{(1)}_1)}},$$
+$$a^{(2)}_1 = \sigma(z^{(2)}_1) = \sigma\big(a^{(1)}_1 x + b^{(1)} \big) = \frac{1}{1 + e^{-(a^{(1)}_1 x + b^{(1)})}},$$
 
-$$a^{(2)}_1 = \sigma(z^{(2)}_2) = \sigma\big(a^{(1)}_2 x + b^{(1)}_2 \big) = \frac{1}{1 + e^{-(a^{(1)}_2 x + b^{(1)}_2)}},$$
+$$a^{(2)}_1 = \sigma(z^{(2)}_2) = \sigma\big(a^{(1)}_2 x + b^{(1)} \big) = \frac{1}{1 + e^{-(a^{(1)}_2 x + b^{(1)})}},$$
 
 this leads to
 
-$$\hat{y} = \frac{1}{1 + e^{-(w^{(2)}_1\cdot a^{(2)}_1 + b^{(2)} + w^{(2)}_2 \cdot a^{(2)}_2 + b^{(2)})}}$$
-$$\hat{y} = \frac{1}{1 + e^{-\Big(w^{(2)}_1\cdot \Big(\frac{1}{1 + e^{-(a^{(1)}_1 x + b^{(1)}_1)}}\Big) + b^{(2)} + w^{(2)}_2 \cdot \Big(\frac{1}{1 + e^{-(a^{(1)}_2 x + b^{(1)}_2)}}\Big) + b^{(2)})\Big)}},$$
+$$\hat{y} = \frac{1}{1 + e^{-(w^{(2)}_1\cdot a^{(2)}_1 + b^{(2)}_1 + w^{(2)}_2 \cdot a^{(2)}_2 + b^{(2)}_2)}}$$
+$$\hat{y} = \frac{1}{1 + e^{-\Big(w^{(2)}_1\cdot \Big(\frac{1}{1 + e^{-(a^{(1)}_1 x + b^{(1)})}}\Big) + b^{(2)}_1 + w^{(2)}_2 \cdot \Big(\frac{1}{1 + e^{-(a^{(1)}_2 x + b^{(1)})}}\Big) + b^{(2)}_2)\Big)}},$$
+
+with 
+
+$$a^{(1)}_i = w^{(2)}_{i1} \cdot a^{(2)}_1 + b^{(2)}_1 + w^{(2)}_{i2} \cdot a^{(2)}_2 + b^{(2)}_2 $$,
+
+for $i = 1, 2$.
 
 which is the predicted value.
 
@@ -320,10 +326,40 @@ We can see that even for this very small and simple neural net, the calculations
 
 ## Example: Shallow Network
 
-In this last example we consider a shallow neural net, that consists of three hidden layers, each consisting of several neurons. As in the previous example, the bias terms are illustrated as vectors for the entire layer, i.e. $b^{(1)} = (b^{(1)}_1, b^{(1)}_2)$, $b^{(2)} = (b^{(2)}_1, b^{(2)}_2, b^{(2)}_3)$, $b^{(3)} = (b^{(3)}_1, b^{(3)}_2)$
+In this last example we consider a shallow neural net, that consists of three hidden layers, each consisting of several neurons. As in the previous example, the bias terms are illustrated as vectors for the entire layer, i.e. $b^{(1)} = (b^{(1)}_1, b^{(1)}_2)$, $b^{(2)} = (b^{(2)}_1, b^{(2)}_2)$, $b^{(3)} = (b^{(3)}_1, b^{(3)}_2, b^{(3)}_3)$. A difference in this example compared to the previous ones is that this neural net has two outputs $\hat{y} = (\hat{y}_1, \hat{y}_2)$, which changes the loss / total error. 
 
 ![shallow_net](/images/backpropagation/shallow_net.png)
 *Illustration of a shallow neural net.*
+
+We will not go through the calculations in detail for this example. The idea of the forward and backward pass is the same as in the previous examples, and we will only sketch them.
+
+**Forward Pass**
+
+The forward pass is again a combination of the individual layers. We are not going to write out the entire equation, because this would be too long.
+
+$$\hat{y}_1 = a^{(1)}_4 = \sigma (z^{(1)}_4) $$
+
+![shallow_net](/images/backpropagation/shallow_net1.png)
+
+$$\sigma(z^{(1)}_4) = \sigma(w_{11}^{(3)}\cdot a^{(3)}_1 + b^{(3)}_1 + w_{12}^{(3)}\cdot a^{(3)}_2 + b^{(3)}_2 + w_{13}^{(3)}\cdot a^{(3)}_3 + b^{(3)}_3)$$
+
+with 
+
+$$a^{(3)}_i = \sigma (z^{(2)}_i)$$
+
+![shallow_net](/images/backpropagation/shallow_net2.png)
+
+$$\sigma(z^{(2)}_i) = \sigma(w_{i1}^{(2)}\cdot a^{(2)}_1 + b^{(2)}_1 + w_{i2}^{(2)}\cdot a^{(2)}_2 + b^{(2)}_2)$$
+
+and accordingly
+
+$$a^{(2)}_i = \sigma (z^{(1)}_i)$$
+
+$$\sigma(z^{(1)}_i) = \sigma(w_{i1}^{(1)}\cdot a^{(1)}_1 + b^{(1)}_1 + w_{i2}^{(1)}\cdot a^{(1)}_2 + b^{(1)}_2).$$
+
+Now, to calcultate $\hat{y}_1$ all these equations need to be inserted in each other and accordingly for $\hat{y}_2$
+
+**Backward Pass**
 
 ## General Formulation
 
