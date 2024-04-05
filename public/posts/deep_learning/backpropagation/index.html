@@ -40,7 +40,7 @@
 <meta itemprop="name" content="Backpropagation Step by Step">
 <meta itemprop="description" content="Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details."><meta itemprop="datePublished" content="2024-03-31T20:21:50-03:00" />
 <meta itemprop="dateModified" content="2024-03-31T20:21:50-03:00" />
-<meta itemprop="wordCount" content="2638"><meta itemprop="image" content="http://localhost:1313/images/backpropagation/" />
+<meta itemprop="wordCount" content="2796"><meta itemprop="image" content="http://localhost:1313/images/backpropagation/" />
 <meta itemprop="keywords" content="Data Science,Machine Learning,Artificial Intelligence," /><meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="http://localhost:1313/images/backpropagation/" /><meta name="twitter:title" content="Backpropagation Step by Step"/>
 <meta name="twitter:description" content="Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details."/>
@@ -197,8 +197,8 @@ MathJax = {
 
       
       
-        <span class="f6 mv4 dib tracked"> - 13 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 2638 words </span>
+        <span class="f6 mv4 dib tracked"> - 14 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 2796 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -393,7 +393,19 @@ $$\hat{y} = \frac{1}{1 + e^{-\Big(w^{(2)}_1\cdot \Big(\frac{1}{1 + e^{-(a^{(1)}_
 <p>$$\sigma(z^{(1)}<em>i) = \sigma(w</em>{i1}^{(1)}\cdot a^{(1)}_1 + b^{(1)}<em>1 + w</em>{i2}^{(1)}\cdot a^{(1)}_2 + b^{(1)}_2).$$</p>
 <p>Now, to calcultate $\hat{y}_1$ all these equations need to be inserted in each other and accordingly for $\hat{y}_2$</p>
 <p><strong>Backward Pass</strong></p>
+<p>In the backward pass all the weights $w_{ij}^(k)$,  with $i$, $j$, $k$ indicating the position need to be updated.</p>
+<p>$$w_{ij, new}^(k) = w_{ij}^(k) - \alpha \frac{\delta L }{\delta w_{ij}^(k)}$$</p>
+<p>The concept is the same - building the partial derivative using the chain rule walking backwards through the neural net. In thin case the loss or total error is a bit more complicated, because two outputs $\hat{y}_1$ and $\hat{y}_2$ and therefore the total error is composed of the sum of the two errors.</p>
+<p>$\frac{\delta L}{\delta w_{11}^(1)} =</p>
 <h2 id="general-formulation">General Formulation</h2>
+<p><strong>Forward Pass</strong></p>
+<p>In the examples, we have seen, that the forward pass can be recursivly described over the layers.</p>
+<p>For $i$ in the range of the number of layers $n$:</p>
+<p>The output of each neuron $j$ in layer $i$ is</p>
+<p>$$a^{(i)}<em>j = \sigma \Big(\sum_k w^{(i-1)}</em>{i-1,k} a^{(i-1)_j}_k + b^{(i-1)}_j\Big),$$</p>
+<p>with $k$ taking the sum over the number of neurons in the layer $i-i$.</p>
+<p><strong>Backpropagation</strong></p>
+<p>$$\frac{\delta L}{\delta w_{ij}} = \frac{\delta L}{\delta a^{(i)}} \sigma\prime (a^{\big(i\big)})a^{(i-1)}_j$$</p>
 <h2 id="summary">Summary</h2>
 <h2 id="appendix">Appendix</h2>
 <h3 id="derivative-of-the-sigmoid-function">Derivative of the Sigmoid Function</h3>

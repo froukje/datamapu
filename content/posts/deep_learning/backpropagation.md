@@ -361,7 +361,31 @@ Now, to calcultate $\hat{y}_1$ all these equations need to be inserted in each o
 
 **Backward Pass**
 
+In the backward pass all the weights $w_{ij}^(k)$,  with $i$, $j$, $k$ indicating the position need to be updated.
+
+$$w_{ij, new}^(k) = w_{ij}^(k) - \alpha \frac{\delta L }{\delta w_{ij}^(k)}$$
+
+The concept is the same - building the partial derivative using the chain rule walking backwards through the neural net. In thin case the loss or total error is a bit more complicated, because two outputs $\hat{y}_1$ and $\hat{y}_2$ and therefore the total error is composed of the sum of the two errors.
+
+$\frac{\delta L}{\delta w_{11}^(1)} = 
+
 ## General Formulation
+
+**Forward Pass**
+
+In the examples, we have seen, that the forward pass can be recursivly described over the layers. 
+
+For $i$ in the range of the number of layers $n$:
+
+The output of each neuron $j$ in layer $i$ is
+
+$$a^{(i)}_j = \sigma \Big(\sum_k w^{(i-1)}_{i-1,k} a^{(i-1)_j}_k + b^{(i-1)}_j\Big),$$ 
+
+with $k$ taking the sum over the number of neurons in the layer $i-i$.
+
+**Backpropagation**
+
+$$\frac{\delta L}{\delta w_{ij}} = \frac{\delta L}{\delta a^{(i)}} \sigma\prime (a^{\big(i\big)})a^{(i-1)}_j$$
 
 ## Summary
 
