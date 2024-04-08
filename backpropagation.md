@@ -10,7 +10,7 @@ images = ['images/backpropagation/backpropagation_main.png']
 
 ## Introduction
 
-A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that *Backpropagation* is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, the last one will only illustrate the equations that need to be calculated. We will not go into the general formulation of the backpropagation algorithm, but will give some further readings at the end.
+A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that *Backpropagation* is used. In this post, we discuss how backpropagation works, and explain it in detail for four simple examples. The first two examples will contain all the calculations, the last two will only illustrate the equations that need to be calculated. Additionally, the general formulation is shown, but without going into details.
 
 ![backpropagation](/images/backpropagation/backpropagation_main.gif)
 
@@ -20,10 +20,12 @@ This post is quite long because of the detailed examples. In case you want to sk
 * [1. Example: One Neuron]({{< ref "#one_neuron">}} "one_neuron")
 * [2. Example: Two Neurons]({{< ref "#two_neurons">}} "two_neurons")
 * [3. Example: Two Neurons in a Layer]({{< ref "#two_neurons_layer">}} "two_neurons_layer")
+* [4. Example: Shallow Neural Net]({{< ref "#shallow_net">}} "shallow_net")
+* [General Formulation]({{< ref "#general_formulation">}} "general_formulation")
 
 **Main Concepts of Training a Neural Net**
 
-Before starting with the first example, let's quickly go through the main ideas of the training process of a neural net. The first thing we need, when we want to train a neural net is the *training data*. The training data consists of pairs of *inputs* and *labels*. The inputs are also called *features* and are usually written as $X = (x_1, \dots, x_n)$, with $n$ the number of data samples. The labels are the expected outcomes - or true values - and they are usually denoted as $y = (y_1, \dots, y_n)$. Training a neural net is an iterative process over a certain number of *epochs*. In each epoch, the training data is processed through the network in a so-called *forward pass*, which results in the model output. Then the error - *loss* - of model output compared to the true values is calculated to evaluate the model. Finally, in the backward pass - the *backpropagation* - [Gradient Descent]({{< ref "gradient_descent">}} "gradient_descent") is used to update the model parameters and reduce the loss. Note, that in practice, generally no pure gradient descent is used, but a variant of it. However, for illustration purposes we will use gradient descent in this post. Important to understand is that some optimization algorithm is used to update the weights and biases. For a general and more detailed introduction to Deep Learning terms and concepts, please refer to [Introduction to Deep Learning]({{< ref "/posts/deep_learning/intro_dl.md">}} "intro_dl").
+Before starting with the first example, let's quickly go through the main ideas of the training process of a neural net. The first thing we need, when we want to train a neural net is the *training data*. The training data consists of pairs of *inputs* and *labels*. The inputs are also called *features* and are usually written as $X = (x_1, \dots, x_n)$, with $n$ the number of data samples. The labels are the expected outcomes - or true values - and they are usually denoted as $y = (y_1, \dots, y_n)$. Training a neural net is an iterative process over a certain number of *epochs*. In each epoch, the training data is processed through the network in a so-called *forward pass*, which results in the model output. Then the error - *loss* - of model output compared to the true values is calculated to evaluate the model. Finally, in the backward pass - the *backpropagation* - [gradient descent]({{< ref "gradient_descent">}} "gradient_descent") is used to update the model parameters and reduce the loss. Note, that in practice, generally no pure gradient descent is used, but a variant of it. However, for illustration purposes we will use gradient descent in this post. Important to understand is that some optimization algorithm is used to update the weights and biases. For a general and more detailed introduction to Deep Learning terms and concepts, please refer to [Introduction to Deep Learning]({{< ref "/posts/deep_learning/intro_dl.md">}} "intro_dl").
 
 If not mentioned differently, we use the following data, activation function, and loss throughout the examples of this post.
 
@@ -41,7 +43,7 @@ $$\sigma(x) = \frac{1}{1 + e^{-x}}.$$
 
 As loss function, we use the *Sum of the Squared Error*, defined as 
 
-$$L(y, \hat{y}) = \frac{1}{2}\sum_{p=1}^n(y_p - \hat{y}_p)^2,$$
+$$L(y, \hat{y}) = \frac{1}{2}\sum_{i=1}^n(y_i - \hat{y}_i)^2,$$
 
 with $y_i = (y_1, \dots, y_n)$ the labels and $\hat{y} = (\hat{y}_1, \dots, \hat{y}_n)$ the predicted labels, and $n$ the number of samples. In the examples considered in this post, we are only considering one-dimensional data, which means $n=1$ and the formula simplifies to
 
@@ -329,37 +331,87 @@ $$\frac{\delta L}{\delta b^{(1)}_2} = \frac{\delta L}{\delta \hat{y}} \frac{\del
 ![two_neurons_back](/images/backpropagation/two_neurons2_back2.png)
 *Backpropagation illustrated for the biases.*
 
-We can see that even for this very small and simple neural net, the calculations easily get overwhelming. 
+We can see that even for this very small and simple neural net, the calculations easily get overwhelming.
 
-**Note**
+## 4. Example: Shallow Neural Net{#shallow_net}
 
-In the above considered examples the data used was one-dimensional, which makes the calculations easier. If the output has $n>1$ dimensions, the loss function becomes a sum 
+In this last example we consider a shallow neural net, that consists of three hidden layers, each consisting of several neurons. As in the previous example, the bias terms are illustrated as vectors for the entire layer, i.e. $b^{(1)} = (b^{(1)}_1, b^{(1)}_2)$, $b^{(2)} = (b^{(2)}_1, b^{(2)}_2)$, $b^{(3)} = (b^{(3)}_1, b^{(3)}_2, b^{(3)}_3)$. A difference in this example compared to the previous ones is that this neural net has two outputs $\hat{y} = (\hat{y}_1, \hat{y}_2)$, which changes the loss / total error. 
 
-$$L(y, \hat{y}) = \frac{1}{2}\sum_{p=1}^n(y_p - \hat{y}_p)^2.$$
+![shallow_net](/images/backpropagation/shallow_net.png)
+*Illustration of a shallow neural net.*
 
-The partial derivative of $L$ can then be written as
+We will not go through the calculations in detail for this example. The idea of the forward and backward pass is the same as in the previous examples, and we will only sketch them.
 
-$$\frac{\delta L}{\delta w_{ij}^{(k)}} = \sum_{p=1}^n \frac{\delta L_p}{\delta w_{ij}^{(k)}},$$
+**Forward Pass**
 
-with
+The forward pass is again a combination of the individual layers. We are not going to write out the entire equation, because this would be too long.
 
-$$L_p = \frac{1}{2}(y_p - \hat{y}_p)^2.$$
+
+$$\hat{y}_1 = a^{(1)}_4 = \sigma (z^{(1)}_4) $$
+
+$$\sigma(z_4^{(1)}) = \sigma\big(w_{11}^{(3)}\cdot a_1^{(3)} + b_1^{(3)} + w_{12}^{(3)}\cdot a_2^{(3)} + b_2^{(3)}+ w_{13}^{(3)}\cdot a_3^{(3)} + b_3^{(3)}\big)$$
+
+with 
+
+$$a^{(3)}_i = \sigma (z^{(2)}_i)$$
+
+$$\sigma(z_i^{(2)}) = \sigma(w_{i1}^{(2)}\cdot a_1^{(2)} + b_1^{(1)} + w_{i2}^{(2)}\cdot a_2^{(2)} + b_2^{(2)})$$
+
+and accordingly
+
+$$a^{(2)}_i = \sigma (z^{(1)}_i)$$
+
+$$\sigma(z_i^{(1)}) = \sigma(w_{i1}^{(1)}\cdot a_1^{(1)} + b_1^{(1)} + w_{i2}^{(1)}\cdot a_2^{(1)} + b_2^{(1)})$$
+
+To calculate $\hat{y}_1$ all these equations need to be inserted into each other and accordingly for $\hat{y}_2$
+
+**Backward Pass**
+
+In the backward pass all the weights $w_{ij}^{(k)}$, and biases $b_{i}^{(k)}$  with $i$, $j$, $k$ indicating the position need to be updated.
+
+$$w_{ij, new}^{(k)} = w_{ij}^{(k)} - \alpha \frac{\delta L }{\delta w_{ij}^{(k)}}$$
+
+$$b_{i, new}^{(k)} = b_{i}^{(k)} - \alpha \frac{\delta L }{\delta b_{i}^{(k)}}$$
+
+The concept is the same - building the partial derivative using the chain rule walking backwards through the neural net. In this case the loss or total error is a bit more complicated, because two outputs $\hat{y}_1$ and $\hat{y}_2$ and therefore the total error is composed of the sum of the two errors. Let's consider one example.
+
+$$\frac{\delta L}{\delta w_{11}^{(1)}} = \frac{\delta L}{\delta \hat{y}} \frac{\delta\hat{y}}{\delta z^{(4)}}\frac{\delta z^{(4)}}{\delta a^{(3)}}\frac{\delta z^{(3)}}{\delta a^{(2)}}\frac{\delta a^{(2)}}{\delta z_1^{(2)}}\frac{\delta z_1^{(2)}}{\delta w_{11}^{(1)}}$$ 
+
+Let's have a look at the individual derivatives of the above equation.
+
+$$\frac{\delta L}{\delta \hat{y}} = \frac{\delta L_1}{\delta \hat{y}} + \frac{\delta L_2}{\delta \hat{y}}$$
+
+## General Formulation{#general_formulation}
+
+**Forward Pass**
+
+In the examples, we have seen, that the forward pass can be recursively described over the layers. 
+
+For $i$ in the range of the number of layers $n$:
+
+The output of each neuron $j$ in layer $i$ is
+
+$$a_j^{(i)} = \sigma \Big(\sum_k w^{(i-1)}_{i-1,k} a^{(i-1)_j}_k + b^{(i-1)}_j\Big),$$ 
+
+with $k$ taking the sum over the number of neurons in the layer $i-1$.
+
+**Backpropagation**
+
+The backpropagation is done by calculating all needed partial derivatives. 
+
+$$\frac{\delta L}{\delta w_{ij}} = \frac{\delta L}{\delta a^{(i)}} \sigma\prime (a^{\big(i\big)})a^{(i-1)}_j$$
+
 ## Summary
-
-To train a neural network the weights and biases need to be optimized. This is done using *backpropagation*. In this post we calculated the backpropagation algorithm for some simplified examples in detail. [Gradient Descent]({{< ref "gradient_descent">}} "gradient_descent") is used to update the model parameters. The general concept of calculating the gradient is calculating the partial derivatives of the loss function using the chain rule. 
 
 ## Further Reading
 
-More general formulations of the backpropagation algorithm can be found in the following links.
-
-* [Wikipedia](https://en.wikipedia.org/wiki/Backpropagation)
-* [Neural Networks and Deep Learning - How the backpropagation algorithm works, Michael Nielsen](http://neuralnetworksanddeeplearning.com/chap2.html)
+* [Neural Networks and Deep Learning - How the backpropagation algorithm works, Michael Nielsen](http://neuralnetworksanddeeplearning.com/chap2.html
 * [Brilliant - Backpropagation](https://brilliant.org/wiki/backpropagation/#:~:text=Backpropagation%2C%20short%20for%20%22backward%20propagation,to%20the%20neural%20network's%20weights.)
-* [Backpropagation, Jorge Leonel](https://medium.com/@jorgesleonel/backpropagation-cc81e9c772fd)
+
 
 ## Appendix
 
-**Derivative of the Sigmoid Functioni**
+### Derivative of the Sigmoid Function
 
 The *Sigmoid Function* is defined as
 

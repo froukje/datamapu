@@ -6,7 +6,9 @@ layout: staticpage
 menu: main
 featured_image: ''
 ---
-This blog about Data Science and Machine Learning recently started and it will be built further.
+This blog about Data Science and Machine Learning recently started and it will be built further. 
+
+The next entries are planned about Gradient Boosting and will be online in May 2024.
 
 If you'd like to get an e-mail each time a new post gets published, give feedback or ideas about interesting topics that should be covered in this blog, write an e-mail to
 **contact.datamapu@gmail.com** or connect via [LinkedIn](https://www.linkedin.com/in/datamapu-ml-91a2622a3/) or [twitter](https://twitter.com/datamapu).
