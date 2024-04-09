@@ -215,7 +215,7 @@ MathJax = {
 <p>During the training process the Loss is calculated after each training step. If the Loss is decreasing, we know that the model is improving, while when it is increasing we know that is not. The Loss thus guides the model into the correct direction. Note, in contrast to Decision Trees the Loss is not calculated locally for a specific region, but globally.</p>
 <h2 id="examples">Examples</h2>
 <p>The choice of the Loss Function used depends on the problem we are considering. Especially, we can divide them into two types. Loss Functions for regression tasks and Loss Functions for classification tasks. In a regression task, we aim to predict continuous values as closely as possible (e.g. a price), while in a classification task, we aim to predict the probability of a category (e.g. a grade). In the following, we will discuss the most commonly used Loss Functions for each case, and also define a customized Loss Function.</p>
-<h3 id="loss-functions-for-regression-tasks">Loss Functions for Regression Tasks</h3>
+<h3 id="loss_reg">Loss Functions for Regression Tasks</h3>
 <p><strong>Mean Absolute Error</strong></p>
 <p>The <a href="http://localhost:1313/posts/ml_concepts/regression_metrics/#metrics">Mean Absolute Error (MAE)</a> or also called <em>L1-Loss</em>, is defined as</p>
 <p>$$L(y_i, \hat{y}_i) = |y_i - \hat{y}_i|,$$</p>
@@ -251,7 +251,7 @@ MathJax = {
 <p>There are of course much more loss functions for regression tasks, the ones listed above are just a selection. They are compared in the below plot.</p>
 <p><img src="/images/loss_functions/loss_functions_regression.png" alt="loss_regression">
 <em>Ilustration of different loss functions for regression tasks.</em></p>
-<h3 id="loss-functions-for-classification-tasks">Loss Functions for Classification Tasks</h3>
+<h3 id="loss_class">Loss Functions for Classification Tasks</h3>
 <p>As for regression tasks, in classification, we use Loss Functions to measure the error our model makes. The difference however is, that in this case, we don&rsquo;t have continuous target values, but categorical classes and the predictions of our model are probabilities.</p>
 <p><strong>(Binary-)Cross Entropy</strong></p>
 <p><em>(Binary-)Cross Entropy</em> is the most used Loss for classification problems. To explain <em>Cross Entropy</em>, we start with the special case of having two classes, i.e. a binary classification. The Cross Entropy then turns into <em>Binary Cross Entropy (BCE)</em>, which is also often called <em>Log Loss</em>.</p>

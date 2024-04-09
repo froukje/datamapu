@@ -10,7 +10,7 @@ images = ['/images/']
 
 ## Introduction
 
-*Gradient Boosting*, also called *Gradient Boosting Machine (GBM)* is a type of [supervised]({{< ref "/posts/ml_concepts/supervised_unsupervised#supervised">}}) Machine Learning algorithm that is based on [ensemble learning]({{< ref "/posts/ml_concepts/ensemble">}}). It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the [Mean Squared Error]({{< ref "/posts/ml_concepts/regression_metrics#metrics">}}) as loss function. Please find a detailed example, where this is applied to a specific dataset in the separate article [Gradient Boosting for Regression - Example](). Gradient Boosting can also be applied for classification tasks. This is covered in the articles [Gradient Boosting for Classification - Explained]() and [Gradient Boosting for Classification - Example]().
+*Gradient Boosting*, also called *Gradient Boosting Machine (GBM)* is a type of [supervised]({{< ref "/posts/ml_concepts/supervised_unsupervised#supervised">}}) Machine Learning algorithm that is based on [ensemble learning]({{< ref "/posts/ml_concepts/ensemble">}}). It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the [Mean Squared Error (MSE)]({{< ref "/posts/ml_concepts/regression_metrics#metrics">}}) as loss function. Please find a detailed example, where this is applied to a specific dataset in the separate article [Gradient Boosting for Regression - Example](). Gradient Boosting can also be applied for classification tasks. This is covered in the articles [Gradient Boosting for Classification - Explained]() and [Gradient Boosting for Classification - Example]().
 
 ## The Algorithm
 
@@ -19,27 +19,27 @@ Gradient Boosting is, as the same suggests, an ensemble model that is based on [
 ![Gradient Bosting illustrated](/images/gradient_boosting/gb_illustrated.png)
 *Gradient Boosting illustrated.*
 
-The most popular underlying models in Gradient Boosting are [Decision Trees]({{< ref "/posts/classical_ml/decision_trees" >}}), however using other models, is also possible. When a Decision Tree is used as a base model the algorithm is called *Gradient Boosted Trees*, and a shallow tree is used as a weak learner. Gradient Boosting is a [supervised]({{< ref "/posts/ml_concepts/supervised_unsupervised.md#supervised" >}}) Machine Learning algorithm, that means we aim to find a mapping that approximates the target data as good as possible. This is done by minimizing a [Loss Function](), that meassures the error between the true and the predicted values. Common choices for Loss functions in the context of Gradient Boosting are a variation of the [Mean Squared Error]() for a regression task and the [logarithmic loss]() for a classification task. It can however be any differentiable function. 
+The most popular underlying models in Gradient Boosting are [Decision Trees]({{< ref "/posts/classical_ml/decision_trees" >}}), however using other models, is also possible. When a Decision Tree is used as a base model the algorithm is called *Gradient Boosted Trees*, and a shallow tree is used as a weak learner. Gradient Boosting is a [supervised]({{< ref "/posts/ml_concepts/supervised_unsupervised.md#supervised" >}}) Machine Learning algorithm, that means we aim to find a mapping that approximates the target data as good as possible. This is done by minimizing a [Loss Function]({{< ref "/posts/ml_concepts/loss_functions.md" >}}), that meassures the error between the true and the predicted values. Common choices for Loss functions in the context of Gradient Boosting are a variation of the [Mean Squared Error]({{< ref "/posts/ml_concepts/loss_functions.md#loss_reg">}}) for a regression task and the [logarithmic loss]({{< ref "/posts/ml_concepts/loss_functions.md#loss_class" >}}) for a classification task. It can however be any differentiable function. 
 
 
 In this section, we will go through the individual steps of the algorithm in detail. The algorithm was first described by Friedman (1999)[1]. 
-For the explanation, we will follow the notations used in [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting). The next plot shows the very general formulation of Gradient Boosting following [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting)
+For the explanation, we will follow the notations used in [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting). The next plot shows the very general formulation of Gradient Boosting following [Wikipedia](https://en.m.wikipedia.org/wiki/Gradient_boosting).
 
 !["gradient boosting algorithm"](/images/gradient_boosting/gradient_boosting_algorithm.png)
-*Gradient Boosting Algorithm. Adapted from [Wikipedia](https://en.wikipedia.org/wiki/Gradient_boosting)*
+*Gradient Boosting Algorithm. Adapted from [Wikipedia](https://en.wikipedia.org/wiki/Gradient_boosting).*
 
-**We will now have a look at each single step.** First, we will explain the general formulation and then modify and simplify it for a regression problem with a variation of the [Mean Squared Error]() as the [Loss Function]() and [Decision Trees]({{< ref "/posts/classical_ml/decision_trees.md" >}}) as underlying models. More specifically, we use as a Loss for each sample
+**We will now have a look at each single step.** First, we will explain the general formulation and then modify and simplify it for a regression problem with a variation of the [Mean Squared Error]({{< ref "/posts/ml_concepts/loss_functions.md#loss_reg">}}) as the [Loss Function]({{< ref "/posts/ml_concepts/loss_functions.md">}}) and [Decision Trees]({{< ref "/posts/classical_ml/decision_trees.md" >}}) as underlying models. More specifically, we use as a Loss for each sample
 $$L(y_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2.$$
 The factor $\frac{1}{2}$ is included to make the calculations easier. For a concrete example, with all the calculations included for a specific dataset, please check [Gradient Boosting for Regression - Example](). 
 
 Let $\{(x_i, y_i)\}_{i=1}^n = \{(x_1, y_1), \dots, (x_n, y_n)\}$ be the training data, with $x = x_0, \dots, x_n$  the input features and $y = y_0, \dots, y_n$ the target values and $F(x)$ be the mapping we aim to determine to approximate the target data. Let's start with the first step of the algorithm defined above.
 
-**Step 1 - Initialize the model with a constant value** ($F_0(x)$). 
+**Step 1 - Initialize the model with a constant value -** $F_0(x)$. 
 
-The initial prediction depends on the Loss function ($L$) we choose. Mathematically this initial prediction is defined as 
+The initial prediction depends on the loss function ($L$) we choose. Mathematically this initial prediction is defined as 
 $$F_0(x) = \underset{\gamma}{\text{argmin}}\sum_{i=1}^n L(y_i, \gamma), $$
 
-where $\gamma$ are the predicted values. For the special case that $L$ is the loss Function defined above, this can be written as 
+where $\gamma$ are the predicted values. For the special case that $L$ is the loss function defined above, this can be written as 
 
 $$F_0(x) = \underset{\gamma}{\text{argmin}}\frac{1}{2}\sum_{i=1}^n(y_i - \gamma)^2.$$ 
 
@@ -55,7 +55,7 @@ $$ - \sum_{i=1}^ny_i + n\gamma = 0$$
 $$n\gamma = \sum_{i=1}^n y_i$$
 $$\gamma = \frac{1}{n}\sum_{i=1}^ny_i = \bar{y}.$$ 
 
-That means for the special Loss Function we considered, we get the mean of all target values as the first prediction
+That means for the special loss function we considered, we get the mean of all target values as the first prediction
 
 $$F_0(x) = \bar{y}.$$
 
@@ -70,7 +70,7 @@ The (pseudo-)residuals $r_{im}$ are defined as
 
 for $i=1, \dots, n. (1a)$
 
-Before simplifying it for the special use case, we are considering, let's have a closer look at this expression. The residuals $r_{im}$ have two indices, the $m$ corresponds to the current model - remember we are building $M$ models. The second index $i$ corresponds to a data sample. That is the residuals are calculated for each sample individually. The right-hand side seems a bit overwhelming, but looking at it more closely, we can see that it is actually only the negative derivative of the Loss Function with respect to the previous prediction. In other words, it is the negative of the Gradient of the Loss Function at the previous iteration. The (pseudo-)residual $r_{im}$ thus gives the direction and the magnitude to minimize the Loss Function, which shows the relation to [Gradient Descent]().  
+Before simplifying it for the special use case, we are considering, let's have a closer look at this expression. The residuals $r_{im}$ have two indices, the $m$ corresponds to the current model - remember we are building $M$ models. The second index $i$ corresponds to a data sample. That is the residuals are calculated for each sample individually. The right-hand side seems a bit overwhelming, but looking at it more closely, we can see that it is actually only the negative derivative of the Loss Function with respect to the previous prediction. In other words, it is the negative of the Gradient of the Loss Function at the previous iteration. The (pseudo-)residual $r_{im}$ thus gives the direction and the magnitude to minimize the loss function, which shows the relation to [Gradient Descent]({{< ref "/posts/ml_concepts/gradient_descent.md">}}).  
 
 Now, let's see what we get, when we use the loss specified above. Using formula (1a), and $L(y_i, F(x_i)) = \frac{1}{2}(y_i - F_{m-1})$ simplifies the above equation to  
 
@@ -78,7 +78,7 @@ $$r_{im} = -\frac{\delta \frac{1}{2}(y_i - F_{m-1})^2}{\delta F_{m-1}}$$
 
 $$r_{im} = (y_i - F_{m-1}) (1b)$$
 
-That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, the (pseudo-)residuals $r_{im}$, reduce to the difference of the actual target and the predicted value, which is also known as the [residual]({{< ref "/posts/ml_concepts/regression_metrics.md#residual">}}). This is also the reason, why the (pseudo-)residual has this name. If we choose a different Loss Function, the expession will change accordingly. 
+That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, the (pseudo-)residuals $r_{im}$, reduce to the difference of the actual target and the predicted value, which is also known as the [residual]({{< ref "/posts/ml_concepts/regression_metrics.md#residual">}}). This is also the reason, why the (pseudo-)residual has this name. If we choose a different loss function, the expession will change accordingly. 
 
 **2B. Fit a model (weak learner) closed under scaling $h_m(x)$ to the residuals.** 
 
@@ -94,7 +94,7 @@ where $h_m(x_i)$ is the just fitted model (weak learner) at $x_i$. For the case 
 
 $$h(x_i) = \sum_{j=1}^{J_m} b_{jm} 1_{R_{jm}}(x),$$
 
-with $J_m$ the number of leaves or terminal nodes of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. These regions refer to the terminal nodes of the Decision Tree. Because we are fitting a weak learner, that is a prined tree, the terminal nodes will consist of several predictions. Each region relates to one constant prediction, which is the mean over all values in the according node and is denoted as $b_{jm}$ in the above equation. The notations may seem a bit complicated, but once illustated, they should become more clear. An overview is given in the below plot.
+with $J_m$ the number of leaves or terminal nodes of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. These regions refer to the terminal nodes of the Decision Tree. Because we are fitting a weak learner, that is a pruned tree, the terminal nodes will consist of several predictions. Each region relates to one constant prediction, which is the mean over all values in the according node and is denoted as $b_{jm}$ in the above equation. The notations may seem a bit complicated, but once illustated, they should become more clear. An overview is given in the below plot.
 
 ![Gradient Boosting Terminology](/images/gradient_boosting/gb_terminology.png)
 *Terminology for Gradient Boosting with Decision Trees.*
@@ -103,7 +103,7 @@ For a Decision Tree as underlying model, this step is a bit modifed. A separate 
 
 $$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma). (2b)$$
 
-Note, that the sum only goes over the elements of the region, which simplifies the notation a bit. Using the specified Loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to
+Note, that the sum only goes over the elements of the region, which simplifies the notation a bit. Using the specified loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to
 
 $$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} \frac{1}{2}(y_i - (F_{m-1}(x_i) + \gamma))^2.$$
 

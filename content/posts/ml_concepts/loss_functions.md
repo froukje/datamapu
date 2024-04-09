@@ -35,7 +35,7 @@ During the training process the Loss is calculated after each training step. If 
 
 The choice of the Loss Function used depends on the problem we are considering. Especially, we can divide them into two types. Loss Functions for regression tasks and Loss Functions for classification tasks. In a regression task, we aim to predict continuous values as closely as possible (e.g. a price), while in a classification task, we aim to predict the probability of a category (e.g. a grade). In the following, we will discuss the most commonly used Loss Functions for each case, and also define a customized Loss Function. 
 
-### Loss Functions for Regression Tasks
+### Loss Functions for Regression Tasks{#loss_reg}
 
 **Mean Absolute Error**
 
@@ -106,7 +106,7 @@ There are of course much more loss functions for regression tasks, the ones list
 *Ilustration of different loss functions for regression tasks.*
 
 
-### Loss Functions for Classification Tasks
+### Loss Functions for Classification Tasks{#loss_class}
 
 As for regression tasks, in classification, we use Loss Functions to measure the error our model makes. The difference however is, that in this case, we don't have continuous target values, but categorical classes and the predictions of our model are probabilities.
 

@@ -10,10 +10,17 @@
     <atom:link href="http://localhost:1313/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Backpropagation Step by Step</title>
+      <link>http://localhost:1313/backpropagation/</link>
+      <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
+      <guid>http://localhost:1313/backpropagation/</guid>
+      <description>Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for four simple examples. The first two examples will contain all the calculations, the last two will only illustrate the equations that need to be calculated.</description>
+    </item>
+    <item>
+      <title>Backpropagation Step by Step</title>
       <link>http://localhost:1313/posts/deep_learning/backpropagation/</link>
       <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
       <guid>http://localhost:1313/posts/deep_learning/backpropagation/</guid>
-      <description>Introduction A neural network consists of a set of parameters - the weights and biases - that define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. In order to achieve that Backpropagation is used. In this post we discuss how backpropagation works, and explain it in detail for different examples. We additionally show the general formulation, but without going into details.</description>
+      <description>Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, the last one will only illustrate the equations that need to be calculated.</description>
     </item>
     <item>
       <title>Gradient Descent</title>

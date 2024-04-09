@@ -11,6 +11,12 @@
     <loc>http://localhost:1313/categories/artificial-intelligence/</loc>
     <lastmod>2024-03-31T20:21:50-03:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/backpropagation/</loc>
+    <lastmod>2024-03-31T20:21:50-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/backpropagation/</loc>
+    <lastmod>2024-03-31T20:21:50-03:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/deep_learning/backpropagation/</loc>
     <lastmod>2024-03-31T20:21:50-03:00</lastmod>
   </url><url>
@@ -21,6 +27,12 @@
     <lastmod>2024-03-31T20:21:50-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/data-science/</loc>
+    <lastmod>2024-03-31T20:21:50-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/deep-learning/</loc>
+    <lastmod>2024-03-31T20:21:50-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/deep-learning/</loc>
     <lastmod>2024-03-31T20:21:50-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/machine-learning/</loc>
@@ -34,12 +46,6 @@
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
     <lastmod>2024-03-31T20:21:50-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/deep-learning/</loc>
-    <lastmod>2024-02-27T20:55:28-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/deep-learning/</loc>
-    <lastmod>2024-02-27T20:55:28-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/ml_concepts/gradient_descent/</loc>
     <lastmod>2024-02-27T20:55:28-03:00</lastmod>
