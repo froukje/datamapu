@@ -3,7 +3,61 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2024-03-31T20:21:50-03:00</lastmod>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/boosting/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/boosting/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/data-science/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/data-science/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/ensemble/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/ensemble/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/gradient-boosting/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/gradient-boosting/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/machine-learning/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/machine-learning/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/regression/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/regression/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/tree-methods/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/tree-methods/</loc>
+    <lastmod>2024-04-09T22:55:13-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/artificial-intelligence/</loc>
     <lastmod>2024-03-31T20:21:50-03:00</lastmod>
@@ -20,31 +74,10 @@
     <loc>http://localhost:1313/posts/deep_learning/backpropagation/</loc>
     <lastmod>2024-03-31T20:21:50-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2024-03-31T20:21:50-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/data-science/</loc>
-    <lastmod>2024-03-31T20:21:50-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/data-science/</loc>
-    <lastmod>2024-03-31T20:21:50-03:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/deep-learning/</loc>
     <lastmod>2024-03-31T20:21:50-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/deep-learning/</loc>
-    <lastmod>2024-03-31T20:21:50-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/machine-learning/</loc>
-    <lastmod>2024-03-31T20:21:50-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/machine-learning/</loc>
-    <lastmod>2024-03-31T20:21:50-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2024-03-31T20:21:50-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2024-03-31T20:21:50-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/ml_concepts/gradient_descent/</loc>
@@ -59,43 +92,13 @@
     <loc>http://localhost:1313/posts/ml_concepts/loss_functions/</loc>
     <lastmod>2024-02-04T18:57:51-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/boosting/</loc>
-    <lastmod>2024-01-31T09:21:46-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/boosting/</loc>
-    <lastmod>2024-01-31T09:21:46-03:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/classification/</loc>
     <lastmod>2024-01-31T09:21:46-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/classification/</loc>
     <lastmod>2024-01-31T09:21:46-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ensemble/</loc>
-    <lastmod>2024-01-31T09:21:46-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/ensemble/</loc>
-    <lastmod>2024-01-31T09:21:46-03:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/posts/classical_ml/gradient_boosting_regression/</loc>
-    <lastmod>2024-01-31T09:21:46-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/gradient-boosting/</loc>
-    <lastmod>2024-01-31T09:21:46-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/gradient-boosting/</loc>
-    <lastmod>2024-01-31T09:21:46-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/regression/</loc>
-    <lastmod>2024-01-31T09:21:46-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/regression/</loc>
-    <lastmod>2024-01-31T09:21:46-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/tree-methods/</loc>
-    <lastmod>2024-01-31T09:21:46-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/tree-methods/</loc>
     <lastmod>2024-01-31T09:21:46-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/classical_ml/adaboost_example_reg/</loc>

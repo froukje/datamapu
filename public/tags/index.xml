@@ -6,8 +6,57 @@
     <description>Recent content in Tags on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Mar 2024 20:21:50 -0300</lastBuildDate>
+    <lastBuildDate>Tue, 09 Apr 2024 22:55:13 -0300</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Boosting</title>
+      <link>http://localhost:1313/tags/boosting/</link>
+      <pubDate>Tue, 09 Apr 2024 22:55:13 -0300</pubDate>
+      <guid>http://localhost:1313/tags/boosting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Science</title>
+      <link>http://localhost:1313/tags/data-science/</link>
+      <pubDate>Tue, 09 Apr 2024 22:55:13 -0300</pubDate>
+      <guid>http://localhost:1313/tags/data-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ensemble</title>
+      <link>http://localhost:1313/tags/ensemble/</link>
+      <pubDate>Tue, 09 Apr 2024 22:55:13 -0300</pubDate>
+      <guid>http://localhost:1313/tags/ensemble/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gradient Boosting</title>
+      <link>http://localhost:1313/tags/gradient-boosting/</link>
+      <pubDate>Tue, 09 Apr 2024 22:55:13 -0300</pubDate>
+      <guid>http://localhost:1313/tags/gradient-boosting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine Learning</title>
+      <link>http://localhost:1313/tags/machine-learning/</link>
+      <pubDate>Tue, 09 Apr 2024 22:55:13 -0300</pubDate>
+      <guid>http://localhost:1313/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Regression</title>
+      <link>http://localhost:1313/tags/regression/</link>
+      <pubDate>Tue, 09 Apr 2024 22:55:13 -0300</pubDate>
+      <guid>http://localhost:1313/tags/regression/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tree Methods</title>
+      <link>http://localhost:1313/tags/tree-methods/</link>
+      <pubDate>Tue, 09 Apr 2024 22:55:13 -0300</pubDate>
+      <guid>http://localhost:1313/tags/tree-methods/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Artificial Intelligence</title>
       <link>http://localhost:1313/tags/artificial-intelligence/</link>
@@ -23,24 +72,10 @@
       <description></description>
     </item>
     <item>
-      <title>Data Science</title>
-      <link>http://localhost:1313/tags/data-science/</link>
-      <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
-      <guid>http://localhost:1313/tags/data-science/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Deep Learning</title>
       <link>http://localhost:1313/tags/deep-learning/</link>
       <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
       <guid>http://localhost:1313/tags/deep-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Machine Learning</title>
-      <link>http://localhost:1313/tags/machine-learning/</link>
-      <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
-      <guid>http://localhost:1313/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>
@@ -51,45 +86,10 @@
       <description></description>
     </item>
     <item>
-      <title>Boosting</title>
-      <link>http://localhost:1313/tags/boosting/</link>
-      <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
-      <guid>http://localhost:1313/tags/boosting/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Classification</title>
       <link>http://localhost:1313/tags/classification/</link>
       <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
       <guid>http://localhost:1313/tags/classification/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ensemble</title>
-      <link>http://localhost:1313/tags/ensemble/</link>
-      <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
-      <guid>http://localhost:1313/tags/ensemble/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Gradient Boosting</title>
-      <link>http://localhost:1313/tags/gradient-boosting/</link>
-      <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
-      <guid>http://localhost:1313/tags/gradient-boosting/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Regression</title>
-      <link>http://localhost:1313/tags/regression/</link>
-      <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
-      <guid>http://localhost:1313/tags/regression/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tree Methods</title>
-      <link>http://localhost:1313/tags/tree-methods/</link>
-      <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
-      <guid>http://localhost:1313/tags/tree-methods/</guid>
       <description></description>
     </item>
     <item>
