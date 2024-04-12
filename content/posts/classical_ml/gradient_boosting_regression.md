@@ -208,7 +208,11 @@ from sklearn.ensemble import GradientBoostingRegressor
 
 X = df[['age', 'likes goats', 'likes height']].values
 y = df[['climbed meters']].values.reshape(-1,)
-reg = GradientBoostingRegressor(n_estimators=3, random_state=42)
+reg = GradientBoostingRegressor(
+	n_estimators=20, 
+	max_depth=3, 
+    	random_state=42
+	)
 reg.fit(X, y)
 ```
 
@@ -219,7 +223,8 @@ y_pred = reg.predict(X)
 score = reg.score(X, y)
 ```
 
-This leads to the predictions $[422.975, 554.2, 527.1, 437.475 427.025 554.2, 441.525 554.2, 527.1, 554.2]$ and a score of $0.46$. These predictions are not really great, that is our model is not able to capture the pattern of the data. For this simplified example, we will not go deeper, you can find a more detailed example on a larger dataset on [kaggle](https://www.kaggle.com/pumalin/gradient-boosting-tutorial).
+
+This leads to the predictions $[246.61867662, 675.68466908, 587.84233454, 313.49422481, 249.1343498, 675.68466908, 312.32940335, 675.68466908, 587.84233454, 675.68466908]$ and a score of $0.98$. For this simplified example, we will not go deeper, you can find a more detailed example on a larger dataset on [kaggle](https://www.kaggle.com/pumalin/gradient-boosting-tutorial).
 
 ## Summary
 
