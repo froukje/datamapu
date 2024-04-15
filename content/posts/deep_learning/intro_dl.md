@@ -119,7 +119,8 @@ How much data is needed depends on the problem we want to solve, the network, an
 Generally speaking, we can say: the more data, the better.
 
 ---
-If this blog is useful for you, I'm thankful for your support!
+If this blog is useful for you, please consider supporting.
+
 {{< bmc-button slug="pumaline" >}}
 
 

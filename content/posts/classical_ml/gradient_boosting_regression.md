@@ -14,7 +14,7 @@ images = ['/images/gradient_boosting/gb_intro.png']
 
 ## The Algorithm
 
-Gradient Boosting is, as the same suggests, an ensemble model that is based on [boosting]({{< ref "/posts/ml_concepts/ensemble#boosting" >}}). In boosting, an initial model is fit to the data. Then a second model is built on the results of the first one, trying to improve the inaccurate results of the first one, and so on until a series of additive models is built, which together are the ensemble model. The individual models are so-called weak learners, which means that they are simple models with low predictive skill, that is only a bit better than random chance. The idea is to combine a set of weak learners to achieve one strong learner, i.e. a model with high predictive skill. 
+Gradient Boosting is, as the name suggests, an ensemble model that is based on [boosting]({{< ref "/posts/ml_concepts/ensemble#boosting" >}}). In boosting, an initial model is fit to the data. Then a second model is built on the results of the first one, trying to improve the inaccurate results of the first one, and so on until a series of additive models is built, which together are the ensemble model. The individual models are so-called weak learners, which means that they are simple models with low predictive skill, that is only a bit better than random chance. The idea is to combine a set of weak learners to achieve one strong learner, i.e. a model with high predictive skill. 
 
 ![Gradient Bosting illustrated](/images/gradient_boosting/gb_illustrated.png)
 *Gradient Boosting illustrated.*
@@ -158,7 +158,7 @@ let's now see what are the main advantages and disatvantages of Gradient Boosted
 
 **Cons**
 
-* Gradient Boosting may be sensitive to outliers in the target data, because every new weak learner (tree) is built on the errors (residuals) of the previous weak learner. Depending on the loss function chosen, outliers may have large residuals. With the loss used in this post, which is a variation of the [Mean Squared Error]() outlier will have high residuals and the next weak learner will focus more on these outliers. Other Loss Functions like the [Mean Absolute Error]() or [Huber loss]() are less sensitive to outliers.
+* Gradient Boosting may be sensitive to outliers in the target data, because every new weak learner (tree) is built on the errors (residuals) of the previous weak learner. Depending on the loss function chosen, outliers may have large residuals. With the loss used in this post, which is a variation of the [Mean Squared Error]({{< ref "/posts/ml_concepts/loss_functions.md#loss">}}) outlier will have high residuals and the next weak learner will focus more on these outliers. Other Loss Functions like the [Mean Absolute Error]({{< ref "/posts/ml_concepts/loss_functions.md#loss">}}) or [Huber loss]({{< ref "/posts/ml_concepts/loss_functions.md#loss">}}) are less sensitive to outliers.
 * If the dataset is small or the model too large, i.e. too many weak learners are used Gradient Boosting may overfit
 
 ## Gradient Boosting in Python
@@ -236,6 +236,7 @@ In this article we discussed the algorithm of Gradient Boosting for a regression
 * [2] Wikipedia, ["Gradient boosting"](https://en.wikipedia.org/wiki/Gradient_boosting), date of citation: January 2024
 
 ---
-If this blog is useful for you, I'm thankful for your support!
+If this blog is useful for you, please consider supporting.
+
 {{< bmc-button slug="pumaline" >}}
 

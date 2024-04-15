@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=37583&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -39,10 +39,10 @@
     <meta property="og:title" content="Tags" />
 <meta property="og:description" content="Data Science and Machine Learning Blog" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/tags/" /><meta property="og:image" content="http://localhost:1313/static/images/datamapu_logo_schmal.png" />
+<meta property="og:url" content="http://localhost:37583/tags/" /><meta property="og:image" content="http://localhost:37583/static/images/datamapu_logo_schmal.png" />
 <meta itemprop="name" content="Tags">
 <meta itemprop="description" content="Data Science and Machine Learning Blog"><meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/static/images/datamapu_logo_schmal.png" /><meta name="twitter:title" content="Tags"/>
+<meta name="twitter:image" content="http://localhost:37583/static/images/datamapu_logo_schmal.png" /><meta name="twitter:title" content="Tags"/>
 <meta name="twitter:description" content="Data Science and Machine Learning Blog"/>
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -169,12 +169,27 @@ MathJax = {
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/gradient_boosting_classification/" class="link black dim">
+        Gradient Boost for Classification - Explained
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction Gradient Boosting is an ensemble learning machine learning model, that - as the name suggests - is based on boosting. An ensemble model based on boosting refers to a model that sequentially builds models that try to improve the errors the previous model. These individual models are so-called weak learners, which means models which have a low predictive skill. The ensemble of these weak learners build the final model with a high predictive skill.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
       <a href="/posts/classical_ml/gradient_boosting_regression_example/" class="link black dim">
         Gradient Boost for Regression - Example
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction In this post we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We will calculate the individual steps defined and explained in the seperate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
+      Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
 Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats.
     </div>
   </div>
@@ -243,10 +258,213 @@ Data We will use a simplified dataset consisting of only 10 samples, which descr
         
       
         <h2 class="f1">
+          <a href="/tags/classification/" class="link blue hover-black">
+            Tag: Classification
+          </a>
+        </h2>
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/gradient_boosting_classification/" class="link black dim">
+        Gradient Boost for Classification - Explained
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction Gradient Boosting is an ensemble learning machine learning model, that - as the name suggests - is based on boosting. An ensemble model based on boosting refers to a model that sequentially builds models that try to improve the errors the previous model. These individual models are so-called weak learners, which means models which have a low predictive skill. The ensemble of these weak learners build the final model with a high predictive skill.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/gradient_boosting_regression/" class="link black dim">
+        Gradient Boost for Regression - Explained
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction Gradient Boosting, also called Gradient Boosting Machine (GBM) is a type of supervised Machine Learning algorithm that is based on ensemble learning. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the Mean Squared Error (MSE) as loss function.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/adaboost_example_reg/" class="link black dim">
+        Adaboost for Regression - Example
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/adaboost_example_clf/" class="link black dim">
+        AdaBoost for Classification - Example
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/adaboost/" class="link black dim">
+        AdaBoost - Explained
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction AdaBoost is an example of an ensemble supervised Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the Decision Tree, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using sklearn.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/ml_concepts/ensemble/" class="link black dim">
+        Ensemble Models - Illustrated
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction In Ensemble Learning multiple Machine Learning models are combined into one single prediction to improve the predictive skill. The individual models can be of different types or the same. Ensemble learning is based on &ldquo;the wisdom of the crowds&rdquo;, which assumes that the expected value of multiple estimates is more accurate than a single estimate. Ensemble learning can be used for regression or classification tasks. Three main types of Ensemble Learning method are most common.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/random_forest/" class="link black dim">
+        Random Forests - Explained
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction A Random Forest is a supervised Machine Learning model, that is built on Decision Trees. To understand how a Random Forest works, you should be familiar with Decision Trees. You can find an introduction in the separate article Decision Trees - Explained. A major disadvantage of Decision Trees is that they tend to overfit and often have difficulties to generalize to new data. Random Forests try to overcome this weakness.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/decision_tree_classification_example/" class="link black dim">
+        Decision Trees for Classification - Example
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction Decision Trees are a powerful, yet simple Machine Learning Model. An advantage of their simplicity is that we can build and understand them step by step. In this post, we are looking at a simplified example to build an entire Decision Tree by hand for a classification task. After calculating the tree, we will use the sklearn package and compare the results. To learn how to build a Decision Tree for a regression problem, please refer to the article Decision Trees for Regression - Example.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/decision_trees/" class="link black dim">
+        Decision Trees - Explained
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction A Decision Tree is a supervised Machine Learning algorithm that can be used for both regression and classification problems. It is a non-parametric model, which means there is no specific mathematical function underlying to fit the data (in contrast to e.g. Linear Regression or Logistic Regression), but the algorithm only learns from the data itself. Decision Trees learn rules for decision making and used to be drawn manually before Machine Learning came up.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/ml_concepts/feature_selection/" class="link black dim">
+        Feature Selection Methods
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction Feature Selection is the process of determining the most suitable subset of the total number of available features for modeling. It helps to understand which features contribute most to the target data. This is usefull to
+Improve Model Performance. Redundant and irrelevant features may be misleading for the model. Additionally, if the feature space is too large compared to the sample size. This is called the curse of dimensionality and may reduce the model&rsquo;s performance.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/logistic_regression/" class="link black dim">
+        Logistic Regression - Explained
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction Logistic Regression is a Supervised Machine Learning algorithm, in which a model is developed, that relates the target variable to one or more input variables (features). However, in contrast to Linear Regression the target (dependent) variable is not numerical, but categorical. That is the target variable can be classified in different categories (e.g.: &rsquo;test passed&rsquo; or &rsquo;test not passed&rsquo;). An idealized example of two categories for the target variable is illustrated in the plot below.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/ml_concepts/classification_metrics/" class="link black dim">
+        Metrics for Classification Problems
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Classification Problems Supervised Machine Learning projects can be divided into regression and classification problems. In regression problems, we predict a continuous variable (e.g. temperature), while in classification, we classify the data into discrete classes (e.g. classify cat and dog images). A subset of classification problems is the so-called binary classification, where only two classes are considered. An example of this is classifying e-mails as spam and no-spam or cat images versus dog images.
+    </div>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
           <a href="/tags/data-science/" class="link blue hover-black">
             Tag: Data Science
           </a>
         </h2>
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/gradient_boosting_classification/" class="link black dim">
+        Gradient Boost for Classification - Explained
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction Gradient Boosting is an ensemble learning machine learning model, that - as the name suggests - is based on boosting. An ensemble model based on boosting refers to a model that sequentially builds models that try to improve the errors the previous model. These individual models are so-called weak learners, which means models which have a low predictive skill. The ensemble of these weak learners build the final model with a high predictive skill.
+    </div>
+  </div>
+</div>
+
         
           <div class="relative w-100 mb4 bg-white nested-copy-line-height">
   <div class="bg-white mb3 pa4 gray overflow-hidden">
@@ -257,7 +475,7 @@ Data We will use a simplified dataset consisting of only 10 samples, which descr
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction In this post we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We will calculate the individual steps defined and explained in the seperate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
+      Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
 Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats.
     </div>
   </div>
@@ -625,12 +843,27 @@ Fig. 1: Supervised and Unsupervised Learning are different types of Machine Lear
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/gradient_boosting_classification/" class="link black dim">
+        Gradient Boost for Classification - Explained
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction Gradient Boosting is an ensemble learning machine learning model, that - as the name suggests - is based on boosting. An ensemble model based on boosting refers to a model that sequentially builds models that try to improve the errors the previous model. These individual models are so-called weak learners, which means models which have a low predictive skill. The ensemble of these weak learners build the final model with a high predictive skill.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
       <a href="/posts/classical_ml/gradient_boosting_regression_example/" class="link black dim">
         Gradient Boost for Regression - Example
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction In this post we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We will calculate the individual steps defined and explained in the seperate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
+      Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
 Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats.
     </div>
   </div>
@@ -723,12 +956,27 @@ Data We will use a simplified dataset consisting of only 10 samples, which descr
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/gradient_boosting_classification/" class="link black dim">
+        Gradient Boost for Classification - Explained
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction Gradient Boosting is an ensemble learning machine learning model, that - as the name suggests - is based on boosting. An ensemble model based on boosting refers to a model that sequentially builds models that try to improve the errors the previous model. These individual models are so-called weak learners, which means models which have a low predictive skill. The ensemble of these weak learners build the final model with a high predictive skill.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
       <a href="/posts/classical_ml/gradient_boosting_regression_example/" class="link black dim">
         Gradient Boost for Regression - Example
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction In this post we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We will calculate the individual steps defined and explained in the seperate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
+      Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
 Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats.
     </div>
   </div>
@@ -761,12 +1009,27 @@ Data We will use a simplified dataset consisting of only 10 samples, which descr
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/gradient_boosting_classification/" class="link black dim">
+        Gradient Boost for Classification - Explained
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction Gradient Boosting is an ensemble learning machine learning model, that - as the name suggests - is based on boosting. An ensemble model based on boosting refers to a model that sequentially builds models that try to improve the errors the previous model. These individual models are so-called weak learners, which means models which have a low predictive skill. The ensemble of these weak learners build the final model with a high predictive skill.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
       <a href="/posts/classical_ml/gradient_boosting_regression_example/" class="link black dim">
         Gradient Boost for Regression - Example
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction In this post we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We will calculate the individual steps defined and explained in the seperate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
+      Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
 Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats.
     </div>
   </div>
@@ -1134,12 +1397,27 @@ Fig. 1: Supervised and Unsupervised Learning are different types of Machine Lear
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/gradient_boosting_classification/" class="link black dim">
+        Gradient Boost for Classification - Explained
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction Gradient Boosting is an ensemble learning machine learning model, that - as the name suggests - is based on boosting. An ensemble model based on boosting refers to a model that sequentially builds models that try to improve the errors the previous model. These individual models are so-called weak learners, which means models which have a low predictive skill. The ensemble of these weak learners build the final model with a high predictive skill.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
       <a href="/posts/classical_ml/gradient_boosting_regression_example/" class="link black dim">
         Gradient Boost for Regression - Example
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction In this post we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We will calculate the individual steps defined and explained in the seperate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
+      Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
 Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats.
     </div>
   </div>
@@ -1324,12 +1602,27 @@ Illustration of a simple linear regression between the body mass and the maximal
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
+      <a href="/posts/classical_ml/gradient_boosting_classification/" class="link black dim">
+        Gradient Boost for Classification - Explained
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Introduction Gradient Boosting is an ensemble learning machine learning model, that - as the name suggests - is based on boosting. An ensemble model based on boosting refers to a model that sequentially builds models that try to improve the errors the previous model. These individual models are so-called weak learners, which means models which have a low predictive skill. The ensemble of these weak learners build the final model with a high predictive skill.
+    </div>
+  </div>
+</div>
+
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
       <a href="/posts/classical_ml/gradient_boosting_regression_example/" class="link black dim">
         Gradient Boost for Regression - Example
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction In this post we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We will calculate the individual steps defined and explained in the seperate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
+      Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
 Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats.
     </div>
   </div>
@@ -1687,179 +1980,6 @@ Artificial Intelligence. There are different definitions of Artificial Intellige
         
       
         <h2 class="f1">
-          <a href="/tags/classification/" class="link blue hover-black">
-            Tag: Classification
-          </a>
-        </h2>
-        
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/classical_ml/gradient_boosting_regression/" class="link black dim">
-        Gradient Boost for Regression - Explained
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction Gradient Boosting, also called Gradient Boosting Machine (GBM) is a type of supervised Machine Learning algorithm that is based on ensemble learning. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the Mean Squared Error (MSE) as loss function.
-    </div>
-  </div>
-</div>
-
-        
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/classical_ml/adaboost_example_reg/" class="link black dim">
-        Adaboost for Regression - Example
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example.
-    </div>
-  </div>
-</div>
-
-        
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/classical_ml/adaboost_example_clf/" class="link black dim">
-        AdaBoost for Classification - Example
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail.
-    </div>
-  </div>
-</div>
-
-        
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/classical_ml/adaboost/" class="link black dim">
-        AdaBoost - Explained
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction AdaBoost is an example of an ensemble supervised Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the Decision Tree, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using sklearn.
-    </div>
-  </div>
-</div>
-
-        
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/ml_concepts/ensemble/" class="link black dim">
-        Ensemble Models - Illustrated
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction In Ensemble Learning multiple Machine Learning models are combined into one single prediction to improve the predictive skill. The individual models can be of different types or the same. Ensemble learning is based on &ldquo;the wisdom of the crowds&rdquo;, which assumes that the expected value of multiple estimates is more accurate than a single estimate. Ensemble learning can be used for regression or classification tasks. Three main types of Ensemble Learning method are most common.
-    </div>
-  </div>
-</div>
-
-        
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/classical_ml/random_forest/" class="link black dim">
-        Random Forests - Explained
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction A Random Forest is a supervised Machine Learning model, that is built on Decision Trees. To understand how a Random Forest works, you should be familiar with Decision Trees. You can find an introduction in the separate article Decision Trees - Explained. A major disadvantage of Decision Trees is that they tend to overfit and often have difficulties to generalize to new data. Random Forests try to overcome this weakness.
-    </div>
-  </div>
-</div>
-
-        
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/classical_ml/decision_tree_classification_example/" class="link black dim">
-        Decision Trees for Classification - Example
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction Decision Trees are a powerful, yet simple Machine Learning Model. An advantage of their simplicity is that we can build and understand them step by step. In this post, we are looking at a simplified example to build an entire Decision Tree by hand for a classification task. After calculating the tree, we will use the sklearn package and compare the results. To learn how to build a Decision Tree for a regression problem, please refer to the article Decision Trees for Regression - Example.
-    </div>
-  </div>
-</div>
-
-        
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/classical_ml/decision_trees/" class="link black dim">
-        Decision Trees - Explained
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction A Decision Tree is a supervised Machine Learning algorithm that can be used for both regression and classification problems. It is a non-parametric model, which means there is no specific mathematical function underlying to fit the data (in contrast to e.g. Linear Regression or Logistic Regression), but the algorithm only learns from the data itself. Decision Trees learn rules for decision making and used to be drawn manually before Machine Learning came up.
-    </div>
-  </div>
-</div>
-
-        
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/ml_concepts/feature_selection/" class="link black dim">
-        Feature Selection Methods
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction Feature Selection is the process of determining the most suitable subset of the total number of available features for modeling. It helps to understand which features contribute most to the target data. This is usefull to
-Improve Model Performance. Redundant and irrelevant features may be misleading for the model. Additionally, if the feature space is too large compared to the sample size. This is called the curse of dimensionality and may reduce the model&rsquo;s performance.
-    </div>
-  </div>
-</div>
-
-        
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/classical_ml/logistic_regression/" class="link black dim">
-        Logistic Regression - Explained
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction Logistic Regression is a Supervised Machine Learning algorithm, in which a model is developed, that relates the target variable to one or more input variables (features). However, in contrast to Linear Regression the target (dependent) variable is not numerical, but categorical. That is the target variable can be classified in different categories (e.g.: &rsquo;test passed&rsquo; or &rsquo;test not passed&rsquo;). An idealized example of two categories for the target variable is illustrated in the plot below.
-    </div>
-  </div>
-</div>
-
-        
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/ml_concepts/classification_metrics/" class="link black dim">
-        Metrics for Classification Problems
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Classification Problems Supervised Machine Learning projects can be divided into regression and classification problems. In regression problems, we predict a continuous variable (e.g. temperature), while in classification, we classify the data into discrete classes (e.g. classify cat and dog images). A subset of classification problems is the so-called binary classification, where only two classes are considered. An example of this is classifying e-mails as spam and no-spam or cat images versus dog images.
-    </div>
-  </div>
-</div>
-
-        
-      
-        <h2 class="f1">
           <a href="/tags/random-forest/" class="link blue hover-black">
             Tag: Random Forest
           </a>
@@ -2073,7 +2193,7 @@ Illustration of a simple linear regression between the body mass and the maximal
     </main>
     <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:37583/" >
     &copy; 
   </a>
     <div>

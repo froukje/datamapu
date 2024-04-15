@@ -178,6 +178,7 @@ Emmert-Streib F. and Dehmert M., "Evaluation of Regression Models: Model Assessm
 Model Selection and Generalization Error", machine learning and knowledge extraction (2019), DOI: 10.3390/make1010032
 
 ---
-If this blog is useful for you, I'm thankful for your support!
+If this blog is useful for you, please consider supporting.
+
 {{< bmc-button slug="pumaline" >}}
  

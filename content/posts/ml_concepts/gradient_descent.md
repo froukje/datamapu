@@ -102,6 +102,7 @@ where $\hat{y}$ are the predicted values, $y$ the true values and $w_i$ the weig
 Gradient Descent is an technique to numerically approach the minimum of a given function. In the context of Machine Learning we use Gradient Descent for training a model, e.g. a Neural Net. In this case the Gradient of the loss function is used to optimize the weights of the model. Different variants of Gradient Descent exist, in practice often the Mini-batch Gradient Descent is used, where subsets (batches) of the training dataset are used to update the weights. This is less computational expensive than the classical variant of (Batch-)Gradient Descent.
 
 ---
-If this blog is useful for you, I'm thankful for your support!
+If this blog is useful for you, please consider supporting.
+
 {{< bmc-button slug="pumaline" >}}
 

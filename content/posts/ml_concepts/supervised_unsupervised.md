@@ -48,7 +48,8 @@ In contrast to supervised learning, unsupervised learning does not need labels. 
 Supervised and unsupervised learning are two different types of Machine Learning with different objectives. In supervised learning, we try to map the input data to the labels. That is, we try to find a map that describes this relationship. A trained model can be used to make predictions for new data, when the labels are unknown. Unsupervised learning is not used to make predictions, but to find underlying patterns in the data. It can e.g. be used for data exploration or feature space reduction.
 
 ---
-If this blog is useful for you, I'm thankful for your support!
+If this blog is useful for you, please consider supporting.
+
 {{< bmc-button slug="pumaline" >}}
 
 

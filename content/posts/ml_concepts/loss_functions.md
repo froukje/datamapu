@@ -186,6 +186,7 @@ Loss Functions are used to evaluate a model and to analyze if it is learning. We
 [1] ["Log Hyperbolic Cosine Loss Improves Variational Auto-Encoder"](https://openreview.net/pdf?id=rkglvsC9Ym), anonymous authors, 2019. 
 
 ---
-If this blog is useful for you, I'm thankful for your support!
+If this blog is useful for you, please consider supporting.
+
 {{< bmc-button slug="pumaline" >}}
 

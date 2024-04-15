@@ -36,7 +36,8 @@ When we think about Data Science, we usually think about Machine Learning modeli
 In this post, we learned about the individual steps in a Data Science / Machine Learning project and that it consists of much more than only modelling. These steps are not only important to know for the Data Scientist, but also to the person the results are reported to. It is important to make clear that each of these steps needs time so that expectations of the time line are clear to everyone. 
 
 ---
-If this blog is useful for you, I'm thankful for your support!
+If this blog is useful for you, please consider supporting.
+
 {{< bmc-button slug="pumaline" >}}
 
 

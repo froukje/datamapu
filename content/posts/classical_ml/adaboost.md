@@ -133,6 +133,7 @@ Comparing the first stump to the calculations in the article [Decision Trees for
 AdaBoost is an ensemble model, in which a sequential series of models is developed. Sequentially the errors of the developed models are evaluated and the dataset is modified such that a higher focus lies on the wrongly predicted samples for the next iteration. In Python, we can use [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) to fit an AdaBoost model, which also offers some methods to explore the created models and their predictions. It is important to note, that different implementations of this algorithm exist. Due to this and the randomness in the bootstrapping, there are some differences, when we compare the details to the model fitted using [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html). The example used in this article was very simplified and only for illustration purposes. For a more developed example in Python, please refer to [kaggle](https://www.kaggle.com/pumalin/adaboost-tutorial). 
 
 ---
-If this blog is useful for you, I'm thankful for your support!
+If this blog is useful for you, please consider supporting.
+
 {{< bmc-button slug="pumaline" >}}
 

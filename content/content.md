@@ -44,7 +44,8 @@ This is what you can already find here:
 * [Introduction to Deep Learning]({{< ref "intro_dl.md" >}} "intro_dl.md")
 
 --- 
-If this blog is useful for you, I'm thankful for your support!
+If this blog is useful for you, please consider supporting.
+
 {{< bmc-button slug="pumaline" >}}
 
 

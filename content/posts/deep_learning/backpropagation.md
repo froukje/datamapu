@@ -390,6 +390,7 @@ $$\sigma\prime(x) = \sigma(x)\cdot(1 - \sigma(x)).$$
 
 
 ---
-If this blog is useful for you, I'm thankful for your support!
+If this blog is useful for you, please consider supporting.
+
 {{< bmc-button slug="pumaline" >}}
 

@@ -5,7 +5,7 @@ draft = true
 tags = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Boosting", "Tree Methods", "Regression"]
 categories = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Boosting", "Tree Methods", "Regression"]
 keywords = ["Data Science", "Machine Learning", "Gradiend Boosting", "Ensemble", "Tree Methods", "Regression"]
-images = ['/images/']
+images = ['/images/gradient_boosting/gb_example_intro.png']
 +++
 
 ## Introduction
@@ -26,15 +26,15 @@ We build a Gradient Boost model with pruned Decision Trees as weak learners usin
 ![Gradient Boosting for Regression](/images/gradient_boosting/gradient_boosting_algorithm_reg.png)
 *Gradient Boosting Algorithm simplified for a regression task.*
 
-**Step 1 - Initialize the model with a constant value -** $F_0(x) = \bar{y}$. 
+**Step 1 - Initialize the model with a constant value -** $F_0(X) = \bar{y}$. 
 
 The initialization  of the model is done by taking the means of all target values ($y = $ "climbed meters"). In our case
 
-$$F_0(x) = \frac{1}{10}(200 + 700 + 600 + 300 + 200 + 700 + 300 + 700 + 600 + 700) = 500.$$
+$$F_0(X) = \frac{1}{10}(200 + 700 + 600 + 300 + 200 + 700 + 300 + 700 + 600 + 700) = 500.$$
 
 To evaluate how the model evolves, we calculate the [mean squared error (MSE)]({{< ref "/posts/ml_concepts/loss_functions.md#loss_reg">}}) after each iteration.
 
-$$MSE(y, F_0(x)) = \frac{1}{10}((200 - 500)^2 + (700 - 500)^2 + (600 - 500)^2 + $$
+$$MSE(y, F_0(X)) = \frac{1}{10}((200 - 500)^2 + (700 - 500)^2 + (600 - 500)^2 + $$
 $$(300 - 500)^2 + (200 - 500)^2 + (700 - 500)^2 + (300 - 500)^2 + $$
 $$(700 - 500)^2 + (600 - 500)^2 + (700 - 500)^2) = 44 000$$
 
@@ -50,7 +50,7 @@ The second step is a loop, which sequentially updates the model by fitting a wea
 
 With $x$ the input features "age", "likes height", and "likes oats", given in the previous table, we compute the residual as a vector
 
-$$r_1 = y - F_0(x) = ((200 - 500), (700 - 500), (600 - 500), (300 - 500), $$
+$$r_1 = y - F_0(X) = ((200 - 500), (700 - 500), (600 - 500), (300 - 500), $$
 $$(200 - 500), (700 - 500), (300 - 500), (700 - 500), (600 - 500), (700 - 500))$$
 
 This results in
@@ -69,16 +69,16 @@ We will not develop the Decision Tree in detail but will use the result from [sk
 
 The next step is to update the model with the new prediction from the weak learner. 
 
-$$F_1(x) = F_0(x) + pred_1 = ((500 - 300), (500 + 200), (500 + 100), (500 + -200),$$ 
+$$F_1(X) = F_0(x) + pred_1 = ((500 - 300), (500 + 200), (500 + 100), (500 + -200),$$ 
 $$(500 -250), (500 + 200), (500 - 250), (500 - 200), (500 + 100), (500 + 200))$$
 
 This results in
 
-$$F_1(x) = (200, 700, 600, 300, 250, 700, 250, 700, 600, 700).$$
+$$F_1(X) = (200, 700, 600, 300, 250, 700, 250, 700, 600, 700).$$
 
 The MSE of these new predictions are
 
-$$MSE(y, F_1(x)) = \frac{1}{10}((200 - 200)^2 + (700 - 700)^2 + (600 - 600)^2 + $$
+$$MSE(y, F_1(X)) = \frac{1}{10}((200 - 200)^2 + (700 - 700)^2 + (600 - 600)^2 + $$
 $$(300 - 300)^2 + (200 - 250)^2 + (700 - 700)^2 + (300 - 250)^2 + $$
 $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 500$$
 
@@ -92,7 +92,7 @@ In this second loop the same steps as in the first one are performed.
 
 We start with computing the residuals between the target values ($y$ = "climbed meters") and the current prediction.
 
-$$r_2 = y - F_1(x) = ((200 - 200), (700 - 700), (600 - 600), (300 - 300), $$
+$$r_2 = y - F_1(X) = ((200 - 200), (700 - 700), (600 - 600), (300 - 300), $$
 $$(200 - 250), (700 - 700), (300 - 250), (700 - 700), (600 - 600), (700 - 700))$$
 
 This results in
@@ -110,16 +110,16 @@ We fit a Decision Tree to the newly calculated residuals $r_2$i and the target v
 
 The current model is updated using the predictions obtained from the above Decision Tree.
 
-$$F_2(x) = F_1(x) + pred_2 = ((200 + 0), (700 + 0), (600 + 0), (300 + 0), $$
+$$F_2(X) = F_1(X) + pred_2 = ((200 + 0), (700 + 0), (600 + 0), (300 + 0), $$
 $$(250 - 50), (700 + 0), (250 + 50), (700 + 0), (600 + 0), (700 + 0))$$
 
 This results in
 
-$$F_2(x) = (200, 700, 600, 300, 200, 700, 300, 700, 600, 700).$$
+$$F_2(X) = (200, 700, 600, 300, 200, 700, 300, 700, 600, 700).$$
 
 The MSE of this updated prediction is
 
-$$MSE(y, F_2(x)) = \frac{1}{10}((200 - 200)^2 + (700 - 700)^2 + (600 - 600)^2 + $$
+$$MSE(y, F_2(X)) = \frac{1}{10}((200 - 200)^2 + (700 - 700)^2 + (600 - 600)^2 + $$
 $$(300 - 300)^2 + (200 - 200)^2 + (700 - 700)^2 + (300 - 300)^2 + $$
 $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$
 
@@ -129,11 +129,22 @@ That is we see another reduction in the error. Because of the simplicity of the 
 
 The result of this last step in the loop, then defines the final model.
 
-$$F_2(x) = F_0(x) + F_1(x) + pred_2$$
+$$F_2(X) = F_0(X) + F_1(X) + pred_2$$
 
 For $x$ the input features given in the above table, this is
 
-$$F_2(x) = (200, 700, 600, 300, 200, 700, 300, 700, 600, 700).$$
+$$F_2(X) = (200, 700, 600, 300, 200, 700, 300, 700, 600, 700).$$
+
+!["final model"](/images/gradient_boosting/gb_example_intro.png)
+*Final model.*
+
+**Note, that usually an additional hyperparameter is used in Gradient Boosting, which is the *learning rate*. The learning rate determines the contribution of the trees. That is the predictions are scaled by the learning rate before adding them.** In the above example, we thus used a learning rate of $1$, usually the learning rate is smaller, in [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) the default value is $0.1$.
+
+Including a learning rate $\alpha$ the formular for the final model is
+
+$$F_n(X) = F_0(X) + \alpha \big(\sum_i=1^{n-1} F_i(X) + pred_n),$$
+
+with $n$ the number of weak learners.
 
 ## Fit a Model in Python
 
@@ -183,6 +194,7 @@ In this case this leads to a perfect predictions $[200, 700, 600, 300, 200, 700,
 In this post, we calculated the individual steps for a Gradient Boosting model for a regression problem. We saw how updating the model by creating an ensemble model improves the results. This example was on purpose chosen for a very simple dataset in order to follow the calculations and understand each step. A more general description and explanatiopn of the algorithm is given in the separate article [Gradient Boost for Regression - Explained]({{< ref "/posts/classical_ml/gradient_boosting_regression.md">}}).
 
 ---
-If this blog is useful for you, I'm thankful for your support!
+If this blog is useful for you, please consider supporting.
+
 {{< bmc-button slug="pumaline" >}}
 

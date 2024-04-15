@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=37583&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -34,15 +34,15 @@
     <meta property="og:title" content="Gradient Boost for Regression - Explained" />
 <meta property="og:description" content="Introduction Gradient Boosting, also called Gradient Boosting Machine (GBM) is a type of supervised Machine Learning algorithm that is based on ensemble learning. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the Mean Squared Error (MSE) as loss function." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/" /><meta property="og:image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:37583/posts/classical_ml/gradient_boosting_regression/" /><meta property="og:image" content="http://localhost:37583/images/gradient_boosting/gb_intro.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-01-31T09:21:46-03:00" />
 <meta property="article:modified_time" content="2024-01-31T09:21:46-03:00" />
 <meta itemprop="name" content="Gradient Boost for Regression - Explained">
 <meta itemprop="description" content="Introduction Gradient Boosting, also called Gradient Boosting Machine (GBM) is a type of supervised Machine Learning algorithm that is based on ensemble learning. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the Mean Squared Error (MSE) as loss function."><meta itemprop="datePublished" content="2024-01-31T09:21:46-03:00" />
 <meta itemprop="dateModified" content="2024-01-31T09:21:46-03:00" />
-<meta itemprop="wordCount" content="2809"><meta itemprop="image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png" />
+<meta itemprop="wordCount" content="2794"><meta itemprop="image" content="http://localhost:37583/images/gradient_boosting/gb_intro.png" />
 <meta itemprop="keywords" content="Data Science,Machine Learning,Gradient Boosting,Ensemble,Boosting,Tree Methods,Regression,Classification," /><meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png" /><meta name="twitter:title" content="Gradient Boost for Regression - Explained"/>
+<meta name="twitter:image" content="http://localhost:37583/images/gradient_boosting/gb_intro.png" /><meta name="twitter:title" content="Gradient Boost for Regression - Explained"/>
 <meta name="twitter:description" content="Introduction Gradient Boosting, also called Gradient Boosting Machine (GBM) is a type of supervised Machine Learning algorithm that is based on ensemble learning. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the Mean Squared Error (MSE) as loss function."/>
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -168,7 +168,7 @@ MathJax = {
   <div id="sharing" class="mt3 ananke-socials">
     
       
-      <a href="https://twitter.com/share?url=http://localhost:1313/posts/classical_ml/gradient_boosting_regression/&amp;text=Gradient%20Boost%20for%20Regression%20-%20Explained" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
+      <a href="https://twitter.com/share?url=http://localhost:37583/posts/classical_ml/gradient_boosting_regression/&amp;text=Gradient%20Boost%20for%20Regression%20-%20Explained" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
         
         <span class="icon"> <svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
 </span>
@@ -176,7 +176,7 @@ MathJax = {
       </a>
     
       
-      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/classical_ml/gradient_boosting_regression/&amp;title=Gradient%20Boost%20for%20Regression%20-%20Explained" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:37583/posts/classical_ml/gradient_boosting_regression/&amp;title=Gradient%20Boost%20for%20Regression%20-%20Explained" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
         
         <span class="icon"> <svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
@@ -198,23 +198,23 @@ MathJax = {
       
       
         <span class="f6 mv4 dib tracked"> - 14 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 2809 words </span>
+        <span class="f6 mv4 dib tracked"> - 2794 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
-<p><em>Gradient Boosting</em>, also called <em>Gradient Boosting Machine (GBM)</em> is a type of <a href="http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#supervised">supervised</a> Machine Learning algorithm that is based on <a href="http://localhost:1313/posts/ml_concepts/ensemble/">ensemble learning</a>. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the <a href="http://localhost:1313/posts/ml_concepts/regression_metrics/#metrics">Mean Squared Error (MSE)</a> as loss function. Please find a detailed example, where this is applied to a specific dataset in the separate article <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/">Gradient Boosting for Regression - Example</a>. Gradient Boosting can also be applied for classification tasks. This is covered in the articles <a href="">Gradient Boosting for Classification - Explained</a> and <a href="">Gradient Boosting for Classification - Example</a>.</p>
+<p><em>Gradient Boosting</em>, also called <em>Gradient Boosting Machine (GBM)</em> is a type of <a href="http://localhost:37583/posts/ml_concepts/supervised_unsupervised/#supervised">supervised</a> Machine Learning algorithm that is based on <a href="http://localhost:37583/posts/ml_concepts/ensemble/">ensemble learning</a>. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the <a href="http://localhost:37583/posts/ml_concepts/regression_metrics/#metrics">Mean Squared Error (MSE)</a> as loss function. Please find a detailed example, where this is applied to a specific dataset in the separate article <a href="http://localhost:37583/posts/classical_ml/gradient_boosting_regression_example/">Gradient Boosting for Regression - Example</a>. Gradient Boosting can also be applied for classification tasks. This is covered in the articles <a href="">Gradient Boosting for Classification - Explained</a> and <a href="">Gradient Boosting for Classification - Example</a>.</p>
 <h2 id="the-algorithm">The Algorithm</h2>
-<p>Gradient Boosting is, as the same suggests, an ensemble model that is based on <a href="http://localhost:1313/posts/ml_concepts/ensemble/#boosting">boosting</a>. In boosting, an initial model is fit to the data. Then a second model is built on the results of the first one, trying to improve the inaccurate results of the first one, and so on until a series of additive models is built, which together are the ensemble model. The individual models are so-called weak learners, which means that they are simple models with low predictive skill, that is only a bit better than random chance. The idea is to combine a set of weak learners to achieve one strong learner, i.e. a model with high predictive skill.</p>
+<p>Gradient Boosting is, as the name suggests, an ensemble model that is based on <a href="http://localhost:37583/posts/ml_concepts/ensemble/#boosting">boosting</a>. In boosting, an initial model is fit to the data. Then a second model is built on the results of the first one, trying to improve the inaccurate results of the first one, and so on until a series of additive models is built, which together are the ensemble model. The individual models are so-called weak learners, which means that they are simple models with low predictive skill, that is only a bit better than random chance. The idea is to combine a set of weak learners to achieve one strong learner, i.e. a model with high predictive skill.</p>
 <p><img src="/images/gradient_boosting/gb_illustrated.png" alt="Gradient Bosting illustrated">
 <em>Gradient Boosting illustrated.</em></p>
-<p>The most popular underlying models in Gradient Boosting are <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a>, however using other models, is also possible. When a Decision Tree is used as a base model the algorithm is called <em>Gradient Boosted Trees</em>, and a shallow tree is used as a weak learner. Gradient Boosting is a <a href="http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#supervised">supervised</a> Machine Learning algorithm, that means we aim to find a mapping that approximates the target data as good as possible. This is done by minimizing a <a href="http://localhost:1313/posts/ml_concepts/loss_functions/">loss function</a>, that meassures the error between the true and the predicted values. Common choices for Loss functions in the context of Gradient Boosting are a variation of the <a href="http://localhost:1313/posts/ml_concepts/loss_functions/#loss_reg">mean squared error</a> for a regression task and the <a href="http://localhost:1313/posts/ml_concepts/loss_functions/#loss_class">logarithmic loss</a> for a classification task. It can however be any differentiable function.</p>
+<p>The most popular underlying models in Gradient Boosting are <a href="http://localhost:37583/posts/classical_ml/decision_trees/">Decision Trees</a>, however using other models, is also possible. When a Decision Tree is used as a base model the algorithm is called <em>Gradient Boosted Trees</em>, and a shallow tree is used as a weak learner. Gradient Boosting is a <a href="http://localhost:37583/posts/ml_concepts/supervised_unsupervised/#supervised">supervised</a> Machine Learning algorithm, that means we aim to find a mapping that approximates the target data as good as possible. This is done by minimizing a <a href="http://localhost:37583/posts/ml_concepts/loss_functions/">loss function</a>, that meassures the error between the true and the predicted values. Common choices for Loss functions in the context of Gradient Boosting are a variation of the <a href="http://localhost:37583/posts/ml_concepts/loss_functions/#loss_reg">mean squared error</a> for a regression task and the <a href="http://localhost:37583/posts/ml_concepts/loss_functions/#loss_class">logarithmic loss</a> for a classification task. It can however be any differentiable function.</p>
 <p>In this section, we will go through the individual steps of the algorithm in detail. The algorithm was first described by Friedman (1999)[1].
 For the explanation, we will follow the notations used in <a href="https://en.m.wikipedia.org/wiki/Gradient_boosting">Wikipedia</a>. The next plot shows the very general formulation of Gradient Boosting following <a href="https://en.m.wikipedia.org/wiki/Gradient_boosting">Wikipedia</a>.</p>
 <p><img src="/images/gradient_boosting/gradient_boosting_algorithm.png" alt="&ldquo;gradient boosting algorithm&rdquo;">
 <em>Gradient Boosting Algorithm. Adapted from <a href="https://en.wikipedia.org/wiki/Gradient_boosting">Wikipedia</a>.</em></p>
-<p><strong>We will now have a look at each single step.</strong> First, we will explain the general formulation and then modify and simplify it for a regression problem with a variation of the <a href="http://localhost:1313/posts/ml_concepts/loss_functions/#loss_reg">mean squared error</a> as the <a href="http://localhost:1313/posts/ml_concepts/loss_functions/">loss function</a> and <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a> as underlying models. More specifically, we use as a Loss for each sample
+<p><strong>We will now have a look at each single step.</strong> First, we will explain the general formulation and then modify and simplify it for a regression problem with a variation of the <a href="http://localhost:37583/posts/ml_concepts/loss_functions/#loss_reg">mean squared error</a> as the <a href="http://localhost:37583/posts/ml_concepts/loss_functions/">loss function</a> and <a href="http://localhost:37583/posts/classical_ml/decision_trees/">Decision Trees</a> as underlying models. More specifically, we use as a Loss for each sample
 $$L(y_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2.$$
-The factor $\frac{1}{2}$ is included to make the calculations easier. For a concrete example, with all the calculations included for a specific dataset, please check <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/">Gradient Boosting for Regression - Example</a>.</p>
+The factor $\frac{1}{2}$ is included to make the calculations easier. For a concrete example, with all the calculations included for a specific dataset, please check <a href="http://localhost:37583/posts/classical_ml/gradient_boosting_regression_example/">Gradient Boosting for Regression - Example</a>.</p>
 <p>Let ${(x_i, y_i)}_{i=1}^n = {(x_1, y_1), \dots, (x_n, y_n)}$ be the training data, with $x = x_0, \dots, x_n$  the input features and $y = y_0, \dots, y_n$ the target values and $F(x)$ be the mapping we aim to determine to approximate the target data. Let&rsquo;s start with the first step of the algorithm defined above.</p>
 <p><strong>Step 1 - Initialize the model with a constant value -</strong> $F_0(x)$.</p>
 <p>The initial prediction depends on the loss function ($L$) we choose. Mathematically this initial prediction is defined as
@@ -237,11 +237,11 @@ $$\gamma = \frac{1}{n}\sum_{i=1}^ny_i = \bar{y}.$$</p>
 <p>The (pseudo-)residuals $r_{im}$ are defined as<br>
 <img src="/images/gradient_boosting/pseudo_residual.drawio.png" alt="pseudo_residual"></p>
 <p>for $i=1, \dots, n. (1a)$</p>
-<p>Before simplifying it for the special use case, we are considering, let&rsquo;s have a closer look at this expression. The residuals $r_{im}$ have two indices, the $m$ corresponds to the current model - remember we are building $M$ models. The second index $i$ corresponds to a data sample. That is the residuals are calculated for each sample individually. The right-hand side seems a bit overwhelming, but looking at it more closely, we can see that it is actually only the negative derivative of the Loss Function with respect to the previous prediction. In other words, it is the negative of the Gradient of the Loss Function at the previous iteration. The (pseudo-)residual $r_{im}$ thus gives the direction and the magnitude to minimize the loss function, which shows the relation to <a href="http://localhost:1313/posts/ml_concepts/gradient_descent/">Gradient Descent</a>.</p>
+<p>Before simplifying it for the special use case, we are considering, let&rsquo;s have a closer look at this expression. The residuals $r_{im}$ have two indices, the $m$ corresponds to the current model - remember we are building $M$ models. The second index $i$ corresponds to a data sample. That is the residuals are calculated for each sample individually. The right-hand side seems a bit overwhelming, but looking at it more closely, we can see that it is actually only the negative derivative of the Loss Function with respect to the previous prediction. In other words, it is the negative of the Gradient of the Loss Function at the previous iteration. The (pseudo-)residual $r_{im}$ thus gives the direction and the magnitude to minimize the loss function, which shows the relation to <a href="http://localhost:37583/posts/ml_concepts/gradient_descent/">Gradient Descent</a>.</p>
 <p>Now, let&rsquo;s see what we get, when we use the loss specified above. Using formula (1a), and $L(y_i, F(x_i)) = \frac{1}{2}(y_i - F_{m-1})$ simplifies the above equation to</p>
 <p>$$r_{im} = -\frac{\delta \frac{1}{2}(y_i - F_{m-1})^2}{\delta F_{m-1}}$$</p>
 <p>$$r_{im} = (y_i - F_{m-1}) (1b)$$</p>
-<p>That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, the (pseudo-)residuals $r_{im}$, reduce to the difference of the actual target and the predicted value, which is also known as the <a href="http://localhost:1313/posts/ml_concepts/regression_metrics/#residual">residual</a>. This is also the reason, why the (pseudo-)residual has this name. If we choose a different loss function, the expession will change accordingly.</p>
+<p>That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, the (pseudo-)residuals $r_{im}$, reduce to the difference of the actual target and the predicted value, which is also known as the <a href="http://localhost:37583/posts/ml_concepts/regression_metrics/#residual">residual</a>. This is also the reason, why the (pseudo-)residual has this name. If we choose a different loss function, the expession will change accordingly.</p>
 <p><strong>2B. Fit a model (weak learner) closed under scaling $h_m(x)$ to the residuals.</strong></p>
 <p>The next step is to train a model with the residuals as target values, that is use the data ${(x_i, r_{im})}_{i=1}^m$ and fit a model to it. For the special case discussed we train a Decision Tree with a restricted number of leaves or restricted number of depth.</p>
 <p><strong>2C. Find optimized solution $\gamma_m$ for the Loss Function.</strong></p>
@@ -268,13 +268,13 @@ $$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$</p>
 <p>$$F_m(x) = F_{m-1}(x) + \gamma_m h_m(x)$$</p>
 <p>That is we use our previous model $F_{m-1}$ and add the new predictions from the model fitted to the residuals. For the special case of Decision Trees as weak learners, this can be reformulated to</p>
 <p>$$F_{m}(x) = F_{m-1}(x) + \alpha \sum_{j=1}^{J_m} \gamma_{jm}1(x\in R_{jm}).$$</p>
-<p>The sum means, that we sum all values $\gamma_{jm}$ of the terminal node $R_{jm}.$ The factor $\alpha$ is the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree and is also often refered to as scaling of the models. The learning rate $\alpha$ is a parameter that is related with the <a href="http://localhost:1313/posts/ml_concepts/bias_variance/#tradeoff">Bias-Variance Tradeoff</a>. A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.</p>
+<p>The sum means, that we sum all values $\gamma_{jm}$ of the terminal node $R_{jm}.$ The factor $\alpha$ is the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree and is also often refered to as scaling of the models. The learning rate $\alpha$ is a parameter that is related with the <a href="http://localhost:37583/posts/ml_concepts/bias_variance/#tradeoff">Bias-Variance Tradeoff</a>. A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.</p>
 <p><strong>Step 3 - Output final model $F_M(x)$.</strong></p>
 <p>The individual steps of algorithm for the special case of using Decision Trees and the above specified loss, is summarized below.</p>
 <p><img src="/images/gradient_boosting/gradient_boosting_algorithm_reg.png" alt="Gradient Boosting for Regression">
 <em>Gradient Boosting Algorithm simplified for a regression task.</em></p>
 <h2 id="gradient-boosting-vs-adaboost-for-regression">Gradient Boosting vs. AdaBoost (for Regression)</h2>
-<p>Another ensemble model based on boosting is <a href="http://localhost:1313/posts/classical_ml/adaboost/">AdaBoost</a>. Although both models share the same idea of iteratively improving the model, there is a substantial difference on how the shortcommings of the developed model are defined. A comparison of both methods, is summarized in the following table.</p>
+<p>Another ensemble model based on boosting is <a href="http://localhost:37583/posts/classical_ml/adaboost/">AdaBoost</a>. Although both models share the same idea of iteratively improving the model, there is a substantial difference on how the shortcommings of the developed model are defined. A comparison of both methods, is summarized in the following table.</p>
 <p><img src="/images/gradient_boosting/gradientboost_adaboost.png" alt="Gradientboost vs AdaBoost">
 <em>Gradient Boost vs. AdaBoost.</em></p>
 <h2 id="pros--cons-of-gradient-boosted-trees">Pros &amp; Cons of Gradient Boosted Trees</h2>
@@ -288,7 +288,7 @@ $$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$</p>
 </ul>
 <p><strong>Cons</strong></p>
 <ul>
-<li>Gradient Boosting may be sensitive to outliers in the target data, because every new weak learner (tree) is built on the errors (residuals) of the previous weak learner. Depending on the loss function chosen, outliers may have large residuals. With the loss used in this post, which is a variation of the <a href="">Mean Squared Error</a> outlier will have high residuals and the next weak learner will focus more on these outliers. Other Loss Functions like the <a href="">Mean Absolute Error</a> or <a href="">Huber loss</a> are less sensitive to outliers.</li>
+<li>Gradient Boosting may be sensitive to outliers in the target data, because every new weak learner (tree) is built on the errors (residuals) of the previous weak learner. Depending on the loss function chosen, outliers may have large residuals. With the loss used in this post, which is a variation of the <a href="http://localhost:37583/posts/ml_concepts/loss_functions/#loss">Mean Squared Error</a> outlier will have high residuals and the next weak learner will focus more on these outliers. Other Loss Functions like the <a href="http://localhost:37583/posts/ml_concepts/loss_functions/#loss">Mean Absolute Error</a> or <a href="http://localhost:37583/posts/ml_concepts/loss_functions/#loss">Huber loss</a> are less sensitive to outliers.</li>
 <li>If the dataset is small or the model too large, i.e. too many weak learners are used Gradient Boosting may overfit</li>
 </ul>
 <h2 id="gradient-boosting-in-python">Gradient Boosting in Python</h2>
@@ -348,19 +348,27 @@ $$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$</p>
 <p>A detailed list of all hyperparamters with explanations can be found in the documentation of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">sklearn</a>. The pruning of the trees results from the restriction of <em>max_depth</em> in the default setup. We will keep all default values as they are for this example, except the <em>n_estimators</em> value, which we will set to three. This is done, because our example dataset is very small. In real-world project <em>n_estimators</em> is usually much higher.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">6
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.ensemble</span> <span style="color:#179299">import</span> GradientBoostingRegressor
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>X <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;age&#39;</span>, <span style="color:#40a02b">&#39;likes goats&#39;</span>, <span style="color:#40a02b">&#39;likes height&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values
 </span></span><span style="display:flex;"><span>y <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;climbed meters&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values<span style="color:#04a5e5;font-weight:bold">.</span>reshape(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>,)
-</span></span><span style="display:flex;"><span>reg <span style="color:#04a5e5;font-weight:bold">=</span> GradientBoostingRegressor(n_estimators<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">3</span>, random_state<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">42</span>)
+</span></span><span style="display:flex;"><span>reg <span style="color:#04a5e5;font-weight:bold">=</span> GradientBoostingRegressor(
+</span></span><span style="display:flex;"><span>	n_estimators<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">20</span>, 
+</span></span><span style="display:flex;"><span>	max_depth<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">3</span>, 
+</span></span><span style="display:flex;"><span>    	random_state<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">42</span>
+</span></span><span style="display:flex;"><span>	)
 </span></span><span style="display:flex;"><span>reg<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
 </span></span></code></pre></td></tr></table>
 </div>
@@ -375,7 +383,7 @@ $$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$</p>
 </span></span><span style="display:flex;"><span>score <span style="color:#04a5e5;font-weight:bold">=</span> reg<span style="color:#04a5e5;font-weight:bold">.</span>score(X, y)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>This leads to the predictions $[422.975, 554.2, 527.1, 437.475 427.025 554.2, 441.525 554.2, 527.1, 554.2]$ and a score of $0.46$. These predictions are not really great, that is our model is not able to capture the pattern of the data. For this simplified example, we will not go deeper, you can find a more detailed example on a larger dataset on <a href="https://www.kaggle.com/pumalin/gradient-boosting-tutorial">kaggle</a>.</p>
+</div><p>This leads to the predictions $[246.61867662, 675.68466908, 587.84233454, 313.49422481, 249.1343498, 675.68466908, 312.32940335, 675.68466908, 587.84233454, 675.68466908]$ and a score of $0.98$. For this simplified example, we will not go deeper, you can find a more detailed example on a larger dataset on <a href="https://www.kaggle.com/pumalin/gradient-boosting-tutorial">kaggle</a>.</p>
 <h2 id="summary">Summary</h2>
 <p>In this article we discussed the algorithm of Gradient Boosting for a regression task. Gradient Boosting is an iterative Boosting algorithm that builds a new weak learner in each step that aims to reduce the Loss Function. The most common setup for this is to use Decision Trees as weak learners. We used a variant of the MSE as Loss Function and derived the algorithm for this case from the more general formulas. A simple example was chosen to demonstrate how to use Gradient Boosing in python. For a more realistic example, please check this notebook on <a href="https://www.kaggle.com/pumalin/gradient-boosting-tutorial">kaggle</a>.</p>
 <h2 id="further-reading">Further Reading</h2>
@@ -384,14 +392,14 @@ $$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$</p>
 <li>[2] Wikipedia, <a href="https://en.wikipedia.org/wiki/Gradient_boosting">&ldquo;Gradient boosting&rdquo;</a>, date of citation: January 2024</li>
 </ul>
 <hr>
-<p>If this blog is useful for you, I&rsquo;m thankful for your support!
+<p>If this blog is useful for you, please consider supporting.</p>
 
 
 
 <a class="hugo-shortcodes-bmc-button" href="https://www.buymeacoffee.com/pumaline">
     <img src="https://img.buymeacoffee.com/button-api/?button_colour=ffdd00&amp;coffee_colour=ffffff&amp;emoji=&amp;font_colour=000000&amp;font_family=Cookie&amp;outline_colour=000000&amp;slug=pumaline&amp;text=Buy&#43;me&#43;a&#43;coffee" alt="Buy me a coffee" />
 </a>
-</p>
+
 <ul class="pa0">
   
    <li class="list di">
@@ -512,7 +520,7 @@ $$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$</p>
     </main>
     <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:37583/" >
     &copy; 
   </a>
     <div>

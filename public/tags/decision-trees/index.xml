@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Decision Trees on </title>
-    <link>http://localhost:1313/tags/decision-trees/</link>
+    <link>http://localhost:37583/tags/decision-trees/</link>
     <description>Recent content in Decision Trees on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 19 Dec 2023 17:46:29 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/decision-trees/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:37583/tags/decision-trees/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Decision Trees for Regression - Example</title>
-      <link>http://localhost:1313/posts/classical_ml/decision_tree_regression_example/</link>
+      <link>http://localhost:37583/posts/classical_ml/decision_tree_regression_example/</link>
       <pubDate>Tue, 19 Dec 2023 17:46:29 +0100</pubDate>
-      <guid>http://localhost:1313/posts/classical_ml/decision_tree_regression_example/</guid>
+      <guid>http://localhost:37583/posts/classical_ml/decision_tree_regression_example/</guid>
       <description>Introduction A Decision Tree is a simple Machine Learning model that can be used for both regression and classification tasks. In the article Decision Trees for Classification - Example a Decision Tree for a classification problem is developed in detail. In this post, we consider a regression problem and build a Decision Tree step by step for a simplified dataset. Additionally, we use sklearn to fit a model to the data and compare the results.</description>
     </item>
     <item>
       <title>Decision Trees for Classification - Example</title>
-      <link>http://localhost:1313/posts/classical_ml/decision_tree_classification_example/</link>
+      <link>http://localhost:37583/posts/classical_ml/decision_tree_classification_example/</link>
       <pubDate>Tue, 19 Dec 2023 09:11:46 +0100</pubDate>
-      <guid>http://localhost:1313/posts/classical_ml/decision_tree_classification_example/</guid>
+      <guid>http://localhost:37583/posts/classical_ml/decision_tree_classification_example/</guid>
       <description>Introduction Decision Trees are a powerful, yet simple Machine Learning Model. An advantage of their simplicity is that we can build and understand them step by step. In this post, we are looking at a simplified example to build an entire Decision Tree by hand for a classification task. After calculating the tree, we will use the sklearn package and compare the results. To learn how to build a Decision Tree for a regression problem, please refer to the article Decision Trees for Regression - Example.</description>
     </item>
     <item>
       <title>Decision Trees - Explained</title>
-      <link>http://localhost:1313/posts/classical_ml/decision_trees/</link>
+      <link>http://localhost:37583/posts/classical_ml/decision_trees/</link>
       <pubDate>Sat, 16 Dec 2023 12:33:55 +0100</pubDate>
-      <guid>http://localhost:1313/posts/classical_ml/decision_trees/</guid>
+      <guid>http://localhost:37583/posts/classical_ml/decision_trees/</guid>
       <description>Introduction A Decision Tree is a supervised Machine Learning algorithm that can be used for both regression and classification problems. It is a non-parametric model, which means there is no specific mathematical function underlying to fit the data (in contrast to e.g. Linear Regression or Logistic Regression), but the algorithm only learns from the data itself. Decision Trees learn rules for decision making and used to be drawn manually before Machine Learning came up.</description>
     </item>
   </channel>

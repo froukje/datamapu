@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Metrics on </title>
-    <link>http://localhost:1313/tags/metrics/</link>
+    <link>http://localhost:37583/tags/metrics/</link>
     <description>Recent content in Metrics on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 01 Oct 2023 00:08:49 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/metrics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:37583/tags/metrics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Metrics for Classification Problems</title>
-      <link>http://localhost:1313/posts/ml_concepts/classification_metrics/</link>
+      <link>http://localhost:37583/posts/ml_concepts/classification_metrics/</link>
       <pubDate>Sun, 01 Oct 2023 00:08:49 +0200</pubDate>
-      <guid>http://localhost:1313/posts/ml_concepts/classification_metrics/</guid>
+      <guid>http://localhost:37583/posts/ml_concepts/classification_metrics/</guid>
       <description>Classification Problems Supervised Machine Learning projects can be divided into regression and classification problems. In regression problems, we predict a continuous variable (e.g. temperature), while in classification, we classify the data into discrete classes (e.g. classify cat and dog images). A subset of classification problems is the so-called binary classification, where only two classes are considered. An example of this is classifying e-mails as spam and no-spam or cat images versus dog images.</description>
     </item>
     <item>
       <title>Metrics for Regression Problems</title>
-      <link>http://localhost:1313/posts/ml_concepts/regression_metrics/</link>
+      <link>http://localhost:37583/posts/ml_concepts/regression_metrics/</link>
       <pubDate>Sat, 30 Sep 2023 21:24:12 +0200</pubDate>
-      <guid>http://localhost:1313/posts/ml_concepts/regression_metrics/</guid>
+      <guid>http://localhost:37583/posts/ml_concepts/regression_metrics/</guid>
       <description>Regression Problems Regression problems in Machine Learning are a type of supervised learning problem, where a continuous numerical variable is predicted, such as, for example, the age of a person or the price of a product. A special type is the Linear Regression, where a linear relationship between two (Simple Linear Regression or more (Multiple Linear Regression) is analyzed. The example plots in this article will be illustrated with a simple linear regression.</description>
     </item>
   </channel>

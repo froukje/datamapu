@@ -126,7 +126,8 @@ Linear Regression is a simple, yet powerful tool in supervised Machine Learning.
 You can find a simplified example for a Simple Linear Regression where the **analytical solution for the slope and the intercept** is developed by hand in the separate article [Linear Regression - Analytical Solution and Simplified Example]({{< ref "linear_regression_example" >}} "Linear Regression Example"). A more realistic **tutorial for a linear regression model**, predicting house prices in Boston using a Simple and a Multiple Linear Regression is elaborated in a notebook on [kaggle](https://www.kaggle.com/pumalin/linear-regression-tutorial)
 
 ---
-If this blog is useful for you, I'm thankful for your support!
+If this blog is useful for you, please consider supporting.
+
 {{< bmc-button slug="pumaline" >}}
 
 
