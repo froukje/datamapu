@@ -14,7 +14,7 @@ Logistic Regression is a [Supervised Machine Learning]({{< ref "supervised_unsup
 ![logistic regression](/images/20231202_logistic_regression/logistic_regression_simplified.png)
 *Simplified and idealized example of a logistic regression*
 
-## Binary Logistic Regression
+## Binary Logistic Regression{#sigmoid}
 
 If the target variable contains two classes we speak of a Binary Logistic Regression. The target values for binary classification are usually denominated as 0 and 1. In the previous plot 'test passed' is classified as 1 and 'test not passed' is classified as 0. To develop a Logistic Regression model we start with the equation of a Linear Regression. First, we assume that we only have one input feature (independent variable), that is we use the equation for a [Simple Linear Regression]({{< ref "linear_regression.md#slr" >}} "Linear Regression").
 

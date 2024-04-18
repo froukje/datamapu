@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linear Regression on </title>
-    <link>http://localhost:37583/tags/linear-regression/</link>
+    <link>http://localhost:1313/tags/linear-regression/</link>
     <description>Recent content in Linear Regression on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo 0.125.0</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 23 Nov 2023 11:00:02 +0100</lastBuildDate>
-    <atom:link href="http://localhost:37583/tags/linear-regression/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/linear-regression/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linear Regression - Analytical Solution and Simplified Example</title>
-      <link>http://localhost:37583/posts/classical_ml/linear_regression_example/</link>
+      <link>http://localhost:1313/posts/classical_ml/linear_regression_example/</link>
       <pubDate>Thu, 23 Nov 2023 11:00:02 +0100</pubDate>
-      <guid>http://localhost:37583/posts/classical_ml/linear_regression_example/</guid>
+      <guid>http://localhost:1313/posts/classical_ml/linear_regression_example/</guid>
       <description>Introduction In a previous article, we introduced Linear Regression in detail and more generally, showed how to find the best model and discussed its chances and limitations. In this post, we are looking at a concrete example. We are going to calculate the slope and the intercept from a Simple Linear Regression analytically, looking at the example data provided in the next plot.&#xA;Illustration of a simple linear regression between the body mass and the maximal running speed of an animal.</description>
     </item>
     <item>
       <title>Linear Regression - Explained</title>
-      <link>http://localhost:37583/posts/classical_ml/linear_regression/</link>
+      <link>http://localhost:1313/posts/classical_ml/linear_regression/</link>
       <pubDate>Mon, 13 Nov 2023 21:20:41 +0100</pubDate>
-      <guid>http://localhost:37583/posts/classical_ml/linear_regression/</guid>
+      <guid>http://localhost:1313/posts/classical_ml/linear_regression/</guid>
       <description>Introduction Linear Regression is a type of Supervised Machine Learning Algorithm, where a linear relationship between the input feature(s) and the target value is assumed. Linear Regression is a specific type of regression model, where the mapping learned by the model describes a linear function. As in all regression tasks, the target variable is continuous. In a linear regression, the linear relationship between one (Simple Linear Regression) or more (Multiple Linear Regression) independent variable and one dependent variable is modeled.</description>
     </item>
   </channel>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=37583&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
 Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats.">
-    <meta name="generator" content="Hugo 0.124.1">
+    <meta name="generator" content="Hugo 0.125.0">
     
     
     
@@ -32,22 +32,34 @@ Data We will use a simplified dataset consisting of only 10 samples, which descr
 
     
     
-    <meta property="og:title" content="Gradient Boost for Regression - Example" />
-<meta property="og:description" content="Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
-Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:37583/posts/classical_ml/gradient_boosting_regression_example/" /><meta property="og:image" content="http://localhost:37583/images/gradient_boosting/gb_example_intro.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-04-09T22:55:13-03:00" />
-<meta property="article:modified_time" content="2024-04-09T22:55:13-03:00" />
-<meta itemprop="name" content="Gradient Boost for Regression - Example">
-<meta itemprop="description" content="Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
-Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats."><meta itemprop="datePublished" content="2024-04-09T22:55:13-03:00" />
-<meta itemprop="dateModified" content="2024-04-09T22:55:13-03:00" />
-<meta itemprop="wordCount" content="1593"><meta itemprop="image" content="http://localhost:37583/images/gradient_boosting/gb_example_intro.png" />
-<meta itemprop="keywords" content="Data Science,Machine Learning,Gradient Boosting,Ensemble,Boosting,Tree Methods,Regression," /><meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:37583/images/gradient_boosting/gb_example_intro.png" /><meta name="twitter:title" content="Gradient Boost for Regression - Example"/>
+    <meta property="og:url" content="http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/">
+  <meta property="og:title" content="Gradient Boost for Regression - Example">
+  <meta property="og:description" content="Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
+Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-04-09T22:55:13-03:00">
+    <meta property="article:modified_time" content="2024-04-09T22:55:13-03:00">
+    <meta property="article:tag" content="Data Science">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="Gradient Boosting">
+    <meta property="article:tag" content="Ensemble">
+    <meta property="article:tag" content="Boosting">
+    <meta property="article:tag" content="Tree Methods">
+    <meta property="og:image" content="http://localhost:1313/images/gradient_boosting/gb_example_intro.png">
+
+  <meta itemprop="name" content="Gradient Boost for Regression - Example">
+  <meta itemprop="description" content="Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
+Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats.">
+  <meta itemprop="datePublished" content="2024-04-09T22:55:13-03:00">
+  <meta itemprop="dateModified" content="2024-04-09T22:55:13-03:00">
+  <meta itemprop="wordCount" content="1593">
+  <meta itemprop="image" content="http://localhost:1313/images/gradient_boosting/gb_example_intro.png">
+  <meta itemprop="keywords" content="Data Science,Machine Learning,Gradiend Boosting,Ensemble,Tree Methods,Regression"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/images/gradient_boosting/gb_example_intro.png"><meta name="twitter:title" content="Gradient Boost for Regression - Example">
 <meta name="twitter:description" content="Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
-Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats."/>
+Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -172,7 +184,7 @@ MathJax = {
   <div id="sharing" class="mt3 ananke-socials">
     
       
-      <a href="https://twitter.com/share?url=http://localhost:37583/posts/classical_ml/gradient_boosting_regression_example/&amp;text=Gradient%20Boost%20for%20Regression%20-%20Example" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
+      <a href="https://twitter.com/share?url=http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/&amp;text=Gradient%20Boost%20for%20Regression%20-%20Example" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
         
         <span class="icon"> <svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
 </span>
@@ -180,7 +192,7 @@ MathJax = {
       </a>
     
       
-      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:37583/posts/classical_ml/gradient_boosting_regression_example/&amp;title=Gradient%20Boost%20for%20Regression%20-%20Example" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/&amp;title=Gradient%20Boost%20for%20Regression%20-%20Example" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
         
         <span class="icon"> <svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
@@ -206,19 +218,19 @@ MathJax = {
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
-<p>In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post <a href="http://localhost:37583/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>. Please refer to this post for a more general and detailed explanation of the algorithm.</p>
+<p>In this post, we will go through the development of a Gradient Boosting model for a regression problem considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>. Please refer to this post for a more general and detailed explanation of the algorithm.</p>
 <h2 id="data">Data</h2>
-<p>We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats. We used that same data in previous posts, such as <a href="http://localhost:37583/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>, and <a href="http://localhost:37583/posts/classical_ml/adaboost_example_reg/">Adaboost for Regression - Example</a>.</p>
+<p>We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether or not they like height, and whether or not they like goats. We used that same data in previous posts, such as <a href="http://localhost:1313/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>, and <a href="http://localhost:1313/posts/classical_ml/adaboost_example_reg/">Adaboost for Regression - Example</a>.</p>
 <p><img src="/images/gradient_boosting/data.png" alt="&ldquo;data&rdquo;">
 <em>The data used in this post.</em></p>
 <h2 id="build-the-model">Build the Model</h2>
-<p>We build a Gradient Boost model with pruned Decision Trees as weak learners using the above dataset. For that we follow the steps summarized in the following plot. For a more detailed explanation please refer to <a href="http://localhost:37583/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>.</p>
+<p>We build a Gradient Boost model with pruned Decision Trees as weak learners using the above dataset. For that we follow the steps summarized in the following plot. For a more detailed explanation please refer to <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>.</p>
 <p><img src="/images/gradient_boosting/gradient_boosting_algorithm_reg.png" alt="Gradient Boosting for Regression">
 <em>Gradient Boosting Algorithm simplified for a regression task.</em></p>
 <p><strong>Step 1 - Initialize the model with a constant value -</strong> $F_0(X) = \bar{y}$.</p>
 <p>The initialization  of the model is done by taking the means of all target values ($y = $ &ldquo;climbed meters&rdquo;). In our case</p>
 <p>$$F_0(X) = \frac{1}{10}(200 + 700 + 600 + 300 + 200 + 700 + 300 + 700 + 600 + 700) = 500.$$</p>
-<p>To evaluate how the model evolves, we calculate the <a href="http://localhost:37583/posts/ml_concepts/loss_functions/#loss_reg">mean squared error (MSE)</a> after each iteration.</p>
+<p>To evaluate how the model evolves, we calculate the <a href="http://localhost:1313/posts/ml_concepts/loss_functions/#loss_reg">mean squared error (MSE)</a> after each iteration.</p>
 <p>$$MSE(y, F_0(X)) = \frac{1}{10}((200 - 500)^2 + (700 - 500)^2 + (600 - 500)^2 + $$
 $$(300 - 500)^2 + (200 - 500)^2 + (700 - 500)^2 + (300 - 500)^2 + $$
 $$(700 - 500)^2 + (600 - 500)^2 + (700 - 500)^2) = 44 000$$</p>
@@ -234,7 +246,7 @@ $$(200 - 500), (700 - 500), (300 - 500), (700 - 500), (600 - 500), (700 - 500))$
 <p>$$r_1 = (-300, 200, 100, -200, -300, 200, -200, 200, 100, 200).$$</p>
 <p><strong>2B. anc 2C. Fit a model (weak learner) to the residuals and find the optimized solution.</strong></p>
 <p>Now we fit a Decision Tree to the residuals ($r_1$) with the original target values. In this example, we set <em>max_depth=3</em> in the Decision Tree to prune it.
-We will not develop the Decision Tree in detail but will use the result from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html">sklearn</a>. To follow a step by step example of building a Decision Tree for Regression, please refer to the separate article <a href="http://localhost:37583/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>.</p>
+We will not develop the Decision Tree in detail but will use the result from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html">sklearn</a>. To follow a step by step example of building a Decision Tree for Regression, please refer to the separate article <a href="http://localhost:1313/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>.</p>
 <p><img src="/images/gradient_boosting/gb_first_tree.png" alt="&ldquo;first tree&rdquo;">
 <em>First Decision Tree, i.e. first weak learner</em></p>
 <p><strong>2D. Update the model.</strong></p>
@@ -308,7 +320,7 @@ $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$</p>
 </span></span><span style="display:flex;"><span>df <span style="color:#04a5e5;font-weight:bold">=</span> pd<span style="color:#04a5e5;font-weight:bold">.</span>DataFrame(data)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>There are several hyperparameters that can be changed in the gradient boosting model of sklearn. A full list can be found in the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">sklearn documentation</a>. In this example we will change the hyperparameters <em>n_estimators</em>, which defines the number of Decision Trees used as weak learners, <em>max_depth</em>, which defines the maximal depth of the Decision Trees, and the <em>learning_rate</em>, which defines the weight of each tree. The learning rate is a hyperparameter that we did not use in the algorithm above. The idea is similar as in the algorithm of <a href="http://localhost:37583/posts/classical_ml/adaboost/">Adaboost</a> to give a weight to the weak learner. That is in the calculations above this weight was set to $1$. With the hyperparameters as used in the above example, we fit the model as follows.</p>
+</div><p>There are several hyperparameters that can be changed in the gradient boosting model of sklearn. A full list can be found in the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">sklearn documentation</a>. In this example we will change the hyperparameters <em>n_estimators</em>, which defines the number of Decision Trees used as weak learners, <em>max_depth</em>, which defines the maximal depth of the Decision Trees, and the <em>learning_rate</em>, which defines the weight of each tree. The learning rate is a hyperparameter that we did not use in the algorithm above. The idea is similar as in the algorithm of <a href="http://localhost:1313/posts/classical_ml/adaboost/">Adaboost</a> to give a weight to the weak learner. That is in the calculations above this weight was set to $1$. With the hyperparameters as used in the above example, we fit the model as follows.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
@@ -350,7 +362,7 @@ $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$</p>
 </div>
 </div><p>In this case this leads to a perfect predictions $[200, 700, 600, 300, 200, 700, 300, 700, 600, 700]$ and a score of $1$. You can find a more detailed example on a larger dataset on <a href="https://www.kaggle.com/pumalin/gradient-boosting-tutorial">kaggle</a>.</p>
 <h2 id="summary">Summary</h2>
-<p>In this post, we calculated the individual steps for a Gradient Boosting model for a regression problem. We saw how updating the model by creating an ensemble model improves the results. This example was on purpose chosen for a very simple dataset in order to follow the calculations and understand each step. A more general description and explanatiopn of the algorithm is given in the separate article <a href="http://localhost:37583/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>.</p>
+<p>In this post, we calculated the individual steps for a Gradient Boosting model for a regression problem. We saw how updating the model by creating an ensemble model improves the results. This example was on purpose chosen for a very simple dataset in order to follow the calculations and understand each step. A more general description and explanatiopn of the algorithm is given in the separate article <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>.</p>
 <hr>
 <p>If this blog is useful for you, please consider supporting.</p>
 
@@ -476,7 +488,7 @@ $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$</p>
     </main>
     <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:37583/" >
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
     &copy; 
   </a>
     <div>
