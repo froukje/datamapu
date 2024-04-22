@@ -82,7 +82,7 @@ That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, th
 
 **2B. Fit a model (weak learner) closed under scaling $h_m(x)$ to the residuals.** 
 
-The next step is to train a model with the residuals as target values, that is use the data $\{(x_i, r_{im})\}_{i=1}^m$ and fit a model to it. For the special case discussed we train a Decision Tree with a restricted number of leaves or restricted number of depth.
+The next step is to train a model with the residuals as target values, that is use the data $\{(x_i, r_{im})\}_{i=1}^n$ and fit a model to it. For the special case discussed we train a Decision Tree with a restricted number of leaves or restricted number of depth.
 
 **2C. Find optimized solution $\gamma_m$ for the Loss Function.**
 
@@ -103,7 +103,7 @@ For a Decision Tree as underlying model, this step is a bit modifed. A separate 
 
 $$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma). (2b)$$
 
-Note, that the sum only goes over the elements of the region, which simplifies the notation a bit. Using the specified loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to
+Note, that the sum is only taken over the elements of the region, which simplifies the notation a bit. Using the specified loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to
 
 $$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} \frac{1}{2}(y_i - (F_{m-1}(x_i) + \gamma))^2.$$
 

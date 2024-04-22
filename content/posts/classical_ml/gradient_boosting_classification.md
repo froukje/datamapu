@@ -24,9 +24,9 @@ In the following the algorithm is described for the general case. The notation i
 
 Let's have a look at the individual steps. The [log-loss]({{< ref "/posts/ml_concepts/loss_functions.md#log_class">}}), which we use for the special case of a binary classification is defined as
 
-$$L\big(y_i, p\big) = - y_i\cdot \log p\big) - (1 - y_i)\cdot \log\big(1 - p\big),$$ 
+$$L\big(y_i, p_i\big) = - y_i\cdot \log p_i - (1 - y_i)\cdot \log\big(1 - p_i\big),$$ 
 
-with $y_i$ the true values and $p$ the predicted propabilities. To assure that $p$ represent propabilities, we use the [sigmoid]({{< ref "/posts/classical_ml/logistic_regression.md#sigmoid" >}}) function convert the output to values between $0$ and $1$
+with $y_i$ the true values and $p_i$ the predicted propabilities. To assure that $p$ represent propabilities, we use the [sigmoid]({{< ref "/posts/classical_ml/logistic_regression.md#sigmoid" >}}) function convert the model output to values between $0$ and $1$, i.e. $p_i = \sigma\big(F_{m-1}(x_i)\big)$.
 
 $$L\big(y_i, \gamma\big) = - y_i\cdot \log\big(\sigma(\gamma)\big) - (1 - y_i)\cdot \log\big(1 - \sigma(\gamma)\big),$$ 
 
@@ -116,42 +116,74 @@ for  $i = 1, \dots, n$.
 
 That is we need to calculate the derivative of the loss function with respect to the predictions. 
 
-With the loss function $L(y_i, p)$ defined above, where $p$ are the propabilities after applying the sigmoid function, $p=\sigma(y_i)$, this turns into
+With the loss function $L(y_i, p_i)$ defined above, where $p$ are the propabilities after applying the sigmoid function, $p_i= \sigma\big(F_{m-1}(x_i)\big) = \sigma(y_i)$, this turns into
 
-$$r_{im} = -\frac{\delta L(y_i, p)}{\delta \gamma}$$
+$$r_{im} = -\frac{\delta L(y_i, p_i)}{\delta \gamma}$$
 
 To calculate this derivative we need to use the chain-rule
 
-$$\frac{\delta L}{\delta \gamma} = \frac{\delta L}{\delta p}\frac{\delta p}{\delta \gamma}.$$
+$$\frac{\delta L}{\delta \gamma} = \frac{\delta L}{\delta p_i}\frac{\delta p_i}{\delta \gamma}.$$
 
-We calculate the first derivative $\frac{\delta L}{\delta p}$.
+We calculate the first derivative $\frac{\delta L}{\delta p_i}$.
 
-$$\frac{\delta L}{\delta p} = \frac{\delta\Big(-y_i\cdot \log p - (1 - y_i)\cdot \log(1 - p)\Big)}{\delta p},$$
-$$\frac{\delta L}{\delta p} = \frac{-y_i\cdot\delta \log p}{\delta p} - \frac{(1 - y_i)\cdot\delta \log\big(1 - p\big)}{\delta p}$$
+$$\frac{\delta L}{\delta p_i} = \frac{\delta\Big(-y_i\cdot \log p_i - (1 - y_i)\cdot \log(1 - p_i)\Big)}{\delta p_i},$$
+$$\frac{\delta L}{\delta p_i} = \frac{-y_i\cdot\delta \log p_i}{\delta p_i} - \frac{(1 - y_i)\cdot\delta \log\big(1 - p_i\big)}{\delta p_i}$$
 
 Using the derivative of the logarithm as above, this leads to
 
-$$\frac{\delta L}{\delta p} = - \frac{y_i}{p} + \frac{1 - y_i}{1 - p}$$
+$$\frac{\delta L}{\delta p_i} = - \frac{y_i}{p_i} + \frac{1 - y_i}{1 - p_i}$$
 
 For the second part of the derivative we again need the [derivative of the sigmoid function]({{< ref "/posts/deep_learning/backpropagation.md#appendix" >}}).
 
-$\frac{\delta p}{\delta \gamma} = \frac{\delta \sigma (\gamma)}{\delta \gamma} = \sigma (\gamma) \cdot \big(1 - \sigma (\gamma)\big) = p\cdot(1-p)$$
+$\frac{\delta p_i}{\delta \gamma} = \frac{\delta \sigma (\gamma)}{\delta \gamma} = \sigma (\gamma) \cdot \big(1 - \sigma (\gamma)\big) = p_i\cdot(1-p_i)$$
 
 Now, we can calculate the derivative $\frac{\delta L}{\delta \gamma}$ as
 
-$$\frac{\delta L}{\delta \gamma} = -\Big(\frac{y_i}{p} - \frac{1 - y_i}{1 - p}\Big)\cdot p \cdot (1 - p)$$
-$$\frac{\delta L}{\delta \gamma} = -\big(y_i (1 - p) - (1 - y_i) p\big)$$
-$$\frac{\delta L}{\delta \gamma} = p - y_i$$
+$$\frac{\delta L}{\delta \gamma} = -\Big(\frac{y_i}{p_i} - \frac{1 - y_i}{1 - p}\Big)\cdot p_i \cdot (1 - p_i)$$
+$$\frac{\delta L}{\delta \gamma} = -\big(y_i (1 - p_i) - (1 - y_i) p_i\big)$$
+$$\frac{\delta L}{\delta \gamma} = p_i - y_i$$
 
 That is the (pseudo-)residuals are given as
 
-$$r_{im} = - (p^{m-1} - y_i),$$
+$$r_{im} = - (p_i^{m-1} - y_i),$$
+$$r_{im} = y_i - p_i^{m-1}$$
 
-with $p^{m-1}$ the propabilities of the previous weak learner.
+with $p_i^{m-1}$ the propabilities of the previous weak learner.
 
 **2B. Fit a model (weak learner) closed after scaling $h_m(x)$.**
 
+In this step we fit a weak model to the input features and the residuals $(x_i, r_{im})_{i=1}^n$. The weak model in our special case is a Decision Tree for classification, which is pruned by the number of trees or leaves.
+
 **2C. Find an optimized solution $\gamma_m$ for the loss function.**
+
+In this step the optimization problem
+
+$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{i=1}^nL(y_i, F_{m-1}(x_i) + \gamma h_m(x_i)), (2a)$$
+
+where $h_m(x_i)$ is the just fitted model (weak learner) at $x_i$ needs to be solved. The derivation for the special case of Decision Trees this can be rewritten as
+
+$$h(x_i) = \sum_{j=1}^{J_m} b_{jm} 1_{R_{jm}}(x),$$
+
+where $J_m$ is the number of leaves or terminal nodes of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. The regions refer to the terminal nodes of the Decision Tree. We use a pruned Decision Tree, that is the terminal nodes will contain several different predictions. The prediction for each region is calculated denoted as $b_{jm}$ in the above equation. The formulation is illustrated in the following plot, which should make the concept of the *regions* clear.
+
+![Gradient Boosting Terminology](/images/gradient_boosting/gb_terminology.png)
+*Terminology for Gradient Boosting with Decision Trees.*
+
+The final prediction for each leaf is a bit more complicated than in the case of a regression, where it is the mean of all possible outcomes.
+
+$b_{jm} =\frac{\sum r}{\sum p_i^{m-i}\cdot(1 - p_i^{m-1})}$
+
+...
+
+As explained on [Wikipdia](https://en.wikipedia.org/wiki/Gradient_boosting) [1] and [Friedman (1999)](https://statweb.stanford.edu/~jhf/ftp/trebst.pdf) [2] for a Decision Tree as underlying model, this step is a bit modifed. Individual optimal values $\gamma_{jm}$ for each region $j$ is chosen, instead of a single $\gamma_{m}$ for the whole tree. The coefficients $b_{jm}$ can be then discarded and the previous equation can be rewritten as
+
+$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma).$$
+
+Note, that the sumation is only over the elements of the region, which simplifies the equation. Using the log-loss $L\big(y_i, p\big) = - y_i\cdot \log p - (1 - y_i)\cdot \log\big(1 - p\big)$, this convert into
+
+$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L\big(y_i, p_i\big) = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} \Big(- y_i\cdot \log p_i - (1 - y_i)\cdot \log\big(1 - p_i\big)\Big),$$
+
+with $p_i = \sigma \big(F_{m-1}(x_i)\big).$
 
 **2D. Update the model.**
 
@@ -166,6 +198,11 @@ with $p^{m-1}$ the propabilities of the previous weak learner.
 Derive $-log\big(\frac{x}{y}\big) = log\big(\frac{y}{x}\big)$:
 
 $$-log \big(\frac{x}{y}\big) = - \big(log(x) - log(y)\big) = log(y) - log(x) = log\big(\frac{y}{x}\big)$$
+
+## Further Reading
+
+* [1] Friedman, J.H. (1999), ["Greedy Function Approximation: A Gradient Boosting Machine"](https://statweb.stanford.edu/~jhf/ftp/trebst.pdf)
+* [2] Wikipedia, ["Gradient boosting"](https://en.wikipedia.org/wiki/Gradient_boosting), date of citation: January 2024
 
 If this blog is useful for you, please consider supporting.
 

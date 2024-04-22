@@ -51,7 +51,7 @@
   <meta itemprop="description" content="Introduction Gradient Boosting, also called Gradient Boosting Machine (GBM) is a type of supervised Machine Learning algorithm that is based on ensemble learning. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the Mean Squared Error (MSE) as loss function.">
   <meta itemprop="datePublished" content="2024-01-31T09:21:46-03:00">
   <meta itemprop="dateModified" content="2024-01-31T09:21:46-03:00">
-  <meta itemprop="wordCount" content="2794">
+  <meta itemprop="wordCount" content="2795">
   <meta itemprop="image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Gradiend Boosting,Ensemble,Classification,Tree Methods,Regression"><meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png"><meta name="twitter:title" content="Gradient Boost for Regression - Explained">
@@ -210,7 +210,7 @@ MathJax = {
       
       
         <span class="f6 mv4 dib tracked"> - 14 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 2794 words </span>
+        <span class="f6 mv4 dib tracked"> - 2795 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -255,7 +255,7 @@ $$\gamma = \frac{1}{n}\sum_{i=1}^ny_i = \bar{y}.$$</p>
 <p>$$r_{im} = (y_i - F_{m-1}) (1b)$$</p>
 <p>That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, the (pseudo-)residuals $r_{im}$, reduce to the difference of the actual target and the predicted value, which is also known as the <a href="http://localhost:1313/posts/ml_concepts/regression_metrics/#residual">residual</a>. This is also the reason, why the (pseudo-)residual has this name. If we choose a different loss function, the expession will change accordingly.</p>
 <p><strong>2B. Fit a model (weak learner) closed under scaling $h_m(x)$ to the residuals.</strong></p>
-<p>The next step is to train a model with the residuals as target values, that is use the data ${(x_i, r_{im})}_{i=1}^m$ and fit a model to it. For the special case discussed we train a Decision Tree with a restricted number of leaves or restricted number of depth.</p>
+<p>The next step is to train a model with the residuals as target values, that is use the data ${(x_i, r_{im})}_{i=1}^n$ and fit a model to it. For the special case discussed we train a Decision Tree with a restricted number of leaves or restricted number of depth.</p>
 <p><strong>2C. Find optimized solution $\gamma_m$ for the Loss Function.</strong></p>
 <p>The general formulation of this step is described by solving the optimization problem</p>
 <p>$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{i=1}^nL(y_i, F_{m-1}(x_i) + \gamma h_m(x_i)), (2a)$$</p>
@@ -266,7 +266,7 @@ $$\gamma = \frac{1}{n}\sum_{i=1}^ny_i = \bar{y}.$$</p>
 <em>Terminology for Gradient Boosting with Decision Trees.</em></p>
 <p>For a Decision Tree as underlying model, this step is a bit modifed. A separate optimal value $\gamma_{jm}$ for each of the tree&rsquo;s regions is chosen, instead of a single $\gamma_{m}$ for the whole tree [1, 2]. The coefficients $b_{jm}$ can be then discarded and the equation (2a) is reformulated as</p>
 <p>$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma). (2b)$$</p>
-<p>Note, that the sum only goes over the elements of the region, which simplifies the notation a bit. Using the specified loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to</p>
+<p>Note, that the sum is only taken over the elements of the region, which simplifies the notation a bit. Using the specified loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to</p>
 <p>$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} \frac{1}{2}(y_i - (F_{m-1}(x_i) + \gamma))^2.$$</p>
 <p>As explained above, this means that we want to minimize the right-hand term. For that we calculate the derivative with respect to $\gamma$ and set it to zero.</p>
 <p>$$\frac{\delta}{\delta \gamma}\sum_{x_i\in R_{jm}} \frac{1}{2}(y_i - F_{m-1}(x_i) - \gamma)^2 = 0$$
