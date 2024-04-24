@@ -34,7 +34,7 @@ with $\gamma$ the predicted values and $p = \sigma(\gamma) = \frac{1}{1 + e^{-\g
 
 With $\{(x_i, y_i)\}_{i=1}^n = \{(x_1, y_1), \dots, (x_n, y_n)\}$ be the training data, with $x = x_0, \dots, x_n$  the input features and $y = y_0, \dots, y_n$ the target values, the algorithm is as follows.
 
-**Step 1 - Initialize the model with a constant value**
+#### Step 1 - Initialize the model with a constant value
 
 The first initialization of the model is given by
 
@@ -105,9 +105,9 @@ This expression refers to *log of the odds* of the target variable, which is use
 
 The next step is performed $M$ times, where $M$ refers to the number of weak learners used.
 
-**Step 2 - for $m = 1$ to $M$**
+#### Step 2 - for $m = 1$ to $M$
 
-**2A. Compute (pseudo-)residuals of the predictions and the true values.**
+#### 2A. Compute (pseudo-)residuals of the predictions and the true values.
 
 The (pseudo-) residuals are defined as
 ![pseudo_residual](/images/gradient_boosting/pseudo_residual.drawio.png)
@@ -150,11 +150,11 @@ $$r_{im} = y_i - p_i^{m-1}$$
 
 with $p_i^{m-1}$ the propabilities of the previous weak learner.
 
-**2B. Fit a model (weak learner) closed after scaling $h_m(x)$.**
+#### 2B. Fit a model (weak learner) closed after scaling $h_m(x)$.
 
 In this step we fit a weak model to the input features and the residuals $(x_i, r_{im})_{i=1}^n$. The weak model in our special case is a Decision Tree for classification, which is pruned by the number of trees or leaves.
 
-**2C. Find an optimized solution $\gamma_m$ for the loss function.**
+#### 2C. Find an optimized solution $\gamma_m$ for the loss function.
 
 In this step the optimization problem
 
@@ -162,32 +162,53 @@ $$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{i=1}^nL(y_i, F_{m-1}(x_i) + \
 
 where $h_m(x_i)$ is the just fitted model (weak learner) at $x_i$ needs to be solved. The derivation for the special case of Decision Trees this can be rewritten as
 
-$$h(x_i) = \sum_{j=1}^{J_m} b_{jm} 1_{R_{jm}}(x),$$
+$$h(x_i) = \sum_{j=1}^{J_m} b_{jm} 1_{R_{jm}}(x), (2b)$$
 
-where $J_m$ is the number of leaves or terminal nodes of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. The regions refer to the terminal nodes of the Decision Tree. We use a pruned Decision Tree, that is the terminal nodes will contain several different predictions. The prediction for each region is calculated denoted as $b_{jm}$ in the above equation. The formulation is illustrated in the following plot, which should make the concept of the *regions* clear.
+where $J_m$ is the number of leaves or terminal nodes of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called *regions*. The regions refer to the terminal nodes of the Decision Tree. We use a pruned Decision Tree, that is the terminal nodes will very likely contain several different samples. The prediction for each region is denoted as $b_{jm}$ in the above equation. We will have a look at how these predictions are determined in a bit. The formulation is illustrated in the following plot, which should make the concept of the *regions* clear.
 
 ![Gradient Boosting Terminology](/images/gradient_boosting/gb_terminology.png)
 *Terminology for Gradient Boosting with Decision Trees.*
 
-The final prediction for each leaf is a bit more complicated than in the case of a regression, where it is the mean of all possible outcomes.
+Now, let's consider the predictions $b_{jm}$ of each region. In a regression problem the final prediction is determined as the mean of the individual samples in each leaf (region). For a classification problem this is a bit different. One possibility would be to use the majority class, that is the class that appears mostly in each leaf. However, for Gradient Boosting usually a different method is chosen, which is the weighted average of the samples in each leaf (region)
 
-$b_{jm} =\frac{\sum r}{\sum p_i^{m-i}\cdot(1 - p_i^{m-1})}$
+$b_{jm} =\frac{\sum_{i\in R_{jm}} r_{im}}{|R_{jm}|}, (2c)$
 
-...
+with $|R_{jm}|$ the number of samples in $R_{jm}$, and $r_{im}$ the residual for sample $i$.
 
-As explained on [Wikipdia](https://en.wikipedia.org/wiki/Gradient_boosting) [1] and [Friedman (1999)](https://statweb.stanford.edu/~jhf/ftp/trebst.pdf) [2] for a Decision Tree as underlying model, this step is a bit modifed. Individual optimal values $\gamma_{jm}$ for each region $j$ is chosen, instead of a single $\gamma_{m}$ for the whole tree. The coefficients $b_{jm}$ can be then discarded and the previous equation can be rewritten as
+Coming back to equation (2a), we want to find $\gamma_m$ that minimizes the loss function. As explained on [Wikipdia](https://en.wikipedia.org/wiki/Gradient_boosting) [1] and [Friedman (1999)](https://statweb.stanford.edu/~jhf/ftp/trebst.pdf) [2] for a Decision Tree as underlying model, this step is a bit modifed. Individual optimal values $\gamma_{jm}$ for each region $j$ are chosen, instead of a single $\gamma_{m}$ for the whole tree. The coefficients $b_{jm}$ can be then discarded and equation (2a) can be rewritten as
 
-$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma).$$
+$$\gamma_{jm} = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma).$$
 
-Note, that the sumation is only over the elements of the region, which simplifies the equation. Using the log-loss $L\big(y_i, p\big) = - y_i\cdot \log p - (1 - y_i)\cdot \log\big(1 - p\big)$, this convert into
+Note, that the sumation is only over the elements of the region. For the special case we are considering with the log-loss $L\big(y_i, p\big) = - y_i\cdot \log p - (1 - y_i)\cdot \log\big(1 - p\big)$, equation (2a) converts into
 
-$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L\big(y_i, p_i\big) = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} \Big(- y_i\cdot \log p_i - (1 - y_i)\cdot \log\big(1 - p_i\big)\Big),$$
+$$\gamma_{jm} = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L\big(y_i, p_i\big) = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} \Big(- y_i\cdot \log p_i - (1 - y_i)\cdot \log\big(1 - p_i\big)\Big),$$
 
 with $p_i = \sigma \big(F_{m-1}(x_i)\big).$
 
-**2D. Update the model.**
+In order to solve for this we would need to calculate the derivative with respect to $\gamma$ and set it to $0$. Here it becomes a bit more complex than in the case of a regression problem. We are not going into detail here, but the solution of this optimization problem is usually approximated by
 
-**Step 3 - Output final model $F_M(X)$.**
+$$\gamma_m \approx \frac{\sum_{i=1}^n r_{im}h_m(x_i)}{\sum_{i=1}^n |h_m(x_i)| (1 - |h_m(x_i)|}),$$
+
+with $r_{im} = y_i - p_i$ the (pseudo-)residuals.
+
+#### 2D. Update the model.
+
+This step is the same as in [Gradient Boosting for Regression - Explained]({{< ref "/posts/classical_ml/gradient_boosting_regression.md#step2d" >}}). We update our model $F_{m}$ using the previous model $F_{m-1}$ and the weak learner $h_m(x)$ fitted to the residuals developed during this loop. The general formulation 
+
+$$F_m(x) = F_{m-1}(x) + \gamma_m h_m(x)$$
+
+can be rewritten for the special case of Decision Trees as weak learner to 
+
+$$F_{m}(x) = F_{m-1}(x) + \alpha \sum_{j=1}^{J_m} \gamma_{jm}1(x\in R_{jm}).$$
+
+In this equation $\alpha$ is the *learning rate* or *step size* that determines the influence of the weak learners. The learning rate $\alpha$ is a hyperparameter and is a number between 0 and 1. The choice of the learning rate is important to tackle the [Bias-Variance Tradeoff]({{< ref "/posts/ml_concepts/bias_variance.md#tradeoff">}}). A learning rate close to $1$ usually reduces the bias but introduces a higher variance and can vice versa. A lower learnng rate may help to reduce overfitting.
+
+#### Step 3 - Output final model $F_M(X)$.
+
+The individual steps of algorithm for the special case of using Decision Trees and the above specified loss, is summarized below.
+
+![Gradient Boosting for Classification](/images/gradient_boosting/gradient_boosting_algorithm_class.png)
+*Gradient Boosting Algorithm simplified for a binary classification task.*
 
 ## Gradient Boosting in Python
 

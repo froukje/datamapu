@@ -34,7 +34,7 @@ The factor $\frac{1}{2}$ is included to make the calculations easier. For a conc
 
 Let $\{(x_i, y_i)\}_{i=1}^n = \{(x_1, y_1), \dots, (x_n, y_n)\}$ be the training data, with $x = x_0, \dots, x_n$  the input features and $y = y_0, \dots, y_n$ the target values and $F(x)$ be the mapping we aim to determine to approximate the target data. Let's start with the first step of the algorithm defined above.
 
-**Step 1 - Initialize the model with a constant value -** $F_0(x)$. 
+#### Step 1 - Initialize the model with a constant value - $F_0(x)$. 
 
 The initial prediction depends on the loss function ($L$) we choose. Mathematically this initial prediction is defined as 
 $$F_0(x) = \underset{\gamma}{\text{argmin}}\sum_{i=1}^n L(y_i, \gamma), $$
@@ -61,9 +61,9 @@ $$F_0(x) = \bar{y}.$$
 
 The next steps are repeated $M$ times, with $M$ is the number of weak learners or for the special case considered, Decision Trees. We can write the next steps in the form of a loop.
 
-**Step 2 - For $m=1$ to $M$:**
+#### Step 2 - For $m=1$ to $M$:
 
-**2A. Compute the (pseudo-)residuals of the preditions and the true observations.** 
+#### 2A. Compute the (pseudo-)residuals of the preditions and the true observations.
 
 The (pseudo-)residuals $r_{im}$ are defined as  
 ![pseudo_residual](/images/gradient_boosting/pseudo_residual.drawio.png)
@@ -80,11 +80,11 @@ $$r_{im} = (y_i - F_{m-1}) (1b)$$
 
 That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, the (pseudo-)residuals $r_{im}$, reduce to the difference of the actual target and the predicted value, which is also known as the [residual]({{< ref "/posts/ml_concepts/regression_metrics.md#residual">}}). This is also the reason, why the (pseudo-)residual has this name. If we choose a different loss function, the expession will change accordingly. 
 
-**2B. Fit a model (weak learner) closed under scaling $h_m(x)$ to the residuals.** 
+#### 2B. Fit a model (weak learner) closed under scaling $h_m(x)$ to the residuals. 
 
 The next step is to train a model with the residuals as target values, that is use the data $\{(x_i, r_{im})\}_{i=1}^n$ and fit a model to it. For the special case discussed we train a Decision Tree with a restricted number of leaves or restricted number of depth.
 
-**2C. Find optimized solution $\gamma_m$ for the Loss Function.**
+#### 2C. Find optimized solution $\gamma_m$ for the Loss Function.
 
 The general formulation of this step is described by solving the optimization problem
 
@@ -101,11 +101,11 @@ with $J_m$ the number of leaves or terminal nodes of the tree, and $R_{1m}, \dot
 
 For a Decision Tree as underlying model, this step is a bit modifed. A separate optimal value $\gamma_{jm}$ for each of the tree's regions is chosen, instead of a single $\gamma_{m}$ for the whole tree [1, 2]. The coefficients $b_{jm}$ can be then discarded and the equation (2a) is reformulated as
 
-$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma). (2b)$$
+$$\gamma_{jm} = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma). (2b)$$
 
-Note, that the sum is only taken over the elements of the region, which simplifies the notation a bit. Using the specified loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to
+Note, that the sum is only taken over the elements of the region. For the special case we are considering using the specified loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, (2a) reduces to
 
-$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} \frac{1}{2}(y_i - (F_{m-1}(x_i) + \gamma))^2.$$
+$$\gamma_{m} = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} \frac{1}{2}(y_i - (F_{m-1}(x_i) + \gamma))^2.$$
 
 As explained above, this means that we want to minimize the right-hand term. For that we calculate the derivative with respect to $\gamma$ and set it to zero.
 
@@ -119,7 +119,7 @@ $$\gamma = \frac{1}{n_j}\sum_{x_i\in R_{jm}}r_{im}, (2c)$$
 
 with $r_{im} = y_i - F_{m-1}(x_i)$ the residual. The solution that minimizes (2b) is thus the mean over all target values of the tree, we constructed using the residuals as target values. That is $\gamma$ is nothing but the prediction we get from our tree fitted to the residuals.
 
-**2D. Update the model.** 
+#### 2D. Update the model.{#step2d} 
 
 The last step in this loop is to update the model.
 
@@ -131,7 +131,7 @@ $$F_{m}(x) = F_{m-1}(x) + \alpha \sum_{j=1}^{J_m} \gamma_{jm}1(x\in R_{jm}).$$
 
 The sum means, that we sum all values $\gamma_{jm}$ of the terminal node $R_{jm}.$ The factor $\alpha$ is the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree and is also often refered to as scaling of the models. The learning rate $\alpha$ is a parameter that is related with the [Bias-Variance Tradeoff]({{< ref "/posts/ml_concepts/bias_variance.md#tradeoff">}}). A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.
 
-**Step 3 - Output final model $F_M(x)$.**
+#### Step 3 - Output final model $F_M(x)$.
 
 The individual steps of algorithm for the special case of using Decision Trees and the above specified loss, is summarized below.
 
