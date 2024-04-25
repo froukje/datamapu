@@ -212,6 +212,49 @@ The individual steps of algorithm for the special case of using Decision Trees a
 
 ## Gradient Boosting in Python
 
+To perform gradient boosting for classification in Python, we can use [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html). The *GradientBoostinClassifer* method can be used for binary and multiple classification tasks. The weak learners in sklearn are Decision Trees and cannot be changed. Let`s consider a simple dataset, consiting of 10 data sample.
+
+![gradient boosting class data](/images/gradient_boosting/gb_class_data.png)
+*Dataset considered in this example*
+ 
+In python we can read this data as a pandas dataframe.
+
+```Python
+import pandas as pd
+
+data = {'age': [23, 31, 35, 35, 42, 43, 45, 46, 46, 51], 
+        'likes goats': [0, 1, 0, 0, 0, 1, 1, 1, 0, 1], 
+        'likes height': [0, 1, 1, 0, 0, 1, 0, 1, 1, 1], 
+        'go rock climbing': [0, 1, 1, 0, 0, 1, 0, 1, 0, 1]}
+
+df = pd.DataFrame(data)
+```
+
+Now we can fit a model to the data
+
+< HYPERPARAMETERS >
+
+```Python
+from sklearn.ensemble import GradientBoostingClassifier
+
+X = df[['age', 'likes goats', 'likes height']].values
+y = df[['go rock climbing']].values.reshape(-1,)
+clf = GradientBoostingClassifier(
+    n_estimators=3, 
+    max_depth=2, 
+    random_state=42
+    )
+clf.fit(X, y)
+```
+
+To make the predictions and calculate the score, we can also use sklearn methods
+
+```Python
+y_pred = clf.predict(X)
+score = clf.score(X, y)
+```
+<DISCUSS RESULTS>
+
 ## Summary
 
 ## Appendix

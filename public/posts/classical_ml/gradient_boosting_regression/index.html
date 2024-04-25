@@ -7,7 +7,7 @@
     <title>Gradient Boost for Regression - Explained | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Introduction Gradient Boosting, also called Gradient Boosting Machine (GBM) is a type of supervised Machine Learning algorithm that is based on ensemble learning. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the Mean Squared Error (MSE) as loss function.">
-    <meta name="generator" content="Hugo 0.125.1">
+    <meta name="generator" content="Hugo 0.125.3">
     
     
     
@@ -51,7 +51,7 @@
   <meta itemprop="description" content="Introduction Gradient Boosting, also called Gradient Boosting Machine (GBM) is a type of supervised Machine Learning algorithm that is based on ensemble learning. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the Mean Squared Error (MSE) as loss function.">
   <meta itemprop="datePublished" content="2024-01-31T09:21:46-03:00">
   <meta itemprop="dateModified" content="2024-01-31T09:21:46-03:00">
-  <meta itemprop="wordCount" content="2795">
+  <meta itemprop="wordCount" content="2796">
   <meta itemprop="image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Gradiend Boosting,Ensemble,Classification,Tree Methods,Regression"><meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png"><meta name="twitter:title" content="Gradient Boost for Regression - Explained">
@@ -210,7 +210,7 @@ MathJax = {
       
       
         <span class="f6 mv4 dib tracked"> - 14 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 2795 words </span>
+        <span class="f6 mv4 dib tracked"> - 2796 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -228,7 +228,7 @@ For the explanation, we will follow the notations used in <a href="https://en.m.
 $$L(y_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2.$$
 The factor $\frac{1}{2}$ is included to make the calculations easier. For a concrete example, with all the calculations included for a specific dataset, please check <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/">Gradient Boosting for Regression - Example</a>.</p>
 <p>Let ${(x_i, y_i)}_{i=1}^n = {(x_1, y_1), \dots, (x_n, y_n)}$ be the training data, with $x = x_0, \dots, x_n$  the input features and $y = y_0, \dots, y_n$ the target values and $F(x)$ be the mapping we aim to determine to approximate the target data. Let&rsquo;s start with the first step of the algorithm defined above.</p>
-<p><strong>Step 1 - Initialize the model with a constant value -</strong> $F_0(x)$.</p>
+<h4 id="step-1---initialize-the-model-with-a-constant-value---f_0x">Step 1 - Initialize the model with a constant value - $F_0(x)$.</h4>
 <p>The initial prediction depends on the loss function ($L$) we choose. Mathematically this initial prediction is defined as
 $$F_0(x) = \underset{\gamma}{\text{argmin}}\sum_{i=1}^n L(y_i, \gamma), $$</p>
 <p>where $\gamma$ are the predicted values. For the special case that $L$ is the loss function defined above, this can be written as</p>
@@ -244,8 +244,8 @@ $$\gamma = \frac{1}{n}\sum_{i=1}^ny_i = \bar{y}.$$</p>
 <p>That means for the special loss function we considered, we get the mean of all target values as the first prediction</p>
 <p>$$F_0(x) = \bar{y}.$$</p>
 <p>The next steps are repeated $M$ times, with $M$ is the number of weak learners or for the special case considered, Decision Trees. We can write the next steps in the form of a loop.</p>
-<p><strong>Step 2 - For $m=1$ to $M$:</strong></p>
-<p><strong>2A. Compute the (pseudo-)residuals of the preditions and the true observations.</strong></p>
+<h4 id="step-2---for-m1-to-m">Step 2 - For $m=1$ to $M$:</h4>
+<h4 id="2a-compute-the-pseudo-residuals-of-the-preditions-and-the-true-observations">2A. Compute the (pseudo-)residuals of the preditions and the true observations.</h4>
 <p>The (pseudo-)residuals $r_{im}$ are defined as<br>
 <img src="/images/gradient_boosting/pseudo_residual.drawio.png" alt="pseudo_residual"></p>
 <p>for $i=1, \dots, n. (1a)$</p>
@@ -254,9 +254,9 @@ $$\gamma = \frac{1}{n}\sum_{i=1}^ny_i = \bar{y}.$$</p>
 <p>$$r_{im} = -\frac{\delta \frac{1}{2}(y_i - F_{m-1})^2}{\delta F_{m-1}}$$</p>
 <p>$$r_{im} = (y_i - F_{m-1}) (1b)$$</p>
 <p>That is, for the special Loss $L(x_i, F(x_i)) = \frac{1}{2}(y_i - F(x_i))^2$, the (pseudo-)residuals $r_{im}$, reduce to the difference of the actual target and the predicted value, which is also known as the <a href="http://localhost:1313/posts/ml_concepts/regression_metrics/#residual">residual</a>. This is also the reason, why the (pseudo-)residual has this name. If we choose a different loss function, the expession will change accordingly.</p>
-<p><strong>2B. Fit a model (weak learner) closed under scaling $h_m(x)$ to the residuals.</strong></p>
+<h4 id="2b-fit-a-model-weak-learner-closed-under-scaling-h_mx-to-the-residuals">2B. Fit a model (weak learner) closed under scaling $h_m(x)$ to the residuals.</h4>
 <p>The next step is to train a model with the residuals as target values, that is use the data ${(x_i, r_{im})}_{i=1}^n$ and fit a model to it. For the special case discussed we train a Decision Tree with a restricted number of leaves or restricted number of depth.</p>
-<p><strong>2C. Find optimized solution $\gamma_m$ for the Loss Function.</strong></p>
+<h4 id="2c-find-optimized-solution-gamma_m-for-the-loss-function">2C. Find optimized solution $\gamma_m$ for the Loss Function.</h4>
 <p>The general formulation of this step is described by solving the optimization problem</p>
 <p>$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{i=1}^nL(y_i, F_{m-1}(x_i) + \gamma h_m(x_i)), (2a)$$</p>
 <p>where $h_m(x_i)$ is the just fitted model (weak learner) at $x_i$. For the case of using Decision Trees as a weak learner, $h(x_i)$ is</p>
@@ -265,9 +265,9 @@ $$\gamma = \frac{1}{n}\sum_{i=1}^ny_i = \bar{y}.$$</p>
 <p><img src="/images/gradient_boosting/gb_terminology.png" alt="Gradient Boosting Terminology">
 <em>Terminology for Gradient Boosting with Decision Trees.</em></p>
 <p>For a Decision Tree as underlying model, this step is a bit modifed. A separate optimal value $\gamma_{jm}$ for each of the tree&rsquo;s regions is chosen, instead of a single $\gamma_{m}$ for the whole tree [1, 2]. The coefficients $b_{jm}$ can be then discarded and the equation (2a) is reformulated as</p>
-<p>$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma). (2b)$$</p>
-<p>Note, that the sum is only taken over the elements of the region, which simplifies the notation a bit. Using the specified loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, this reduces to</p>
-<p>$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} \frac{1}{2}(y_i - (F_{m-1}(x_i) + \gamma))^2.$$</p>
+<p>$$\gamma_{jm} = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma). (2b)$$</p>
+<p>Note, that the sum is only taken over the elements of the region. For the special case we are considering using the specified loss $L(y_i, F_{m-1}(x_i)) = \frac{1}{2}(y_i - F_{m-1}(x_i))^2$, (2a) reduces to</p>
+<p>$$\gamma_{m} = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} \frac{1}{2}(y_i - (F_{m-1}(x_i) + \gamma))^2.$$</p>
 <p>As explained above, this means that we want to minimize the right-hand term. For that we calculate the derivative with respect to $\gamma$ and set it to zero.</p>
 <p>$$\frac{\delta}{\delta \gamma}\sum_{x_i\in R_{jm}} \frac{1}{2}(y_i - F_{m-1}(x_i) - \gamma)^2 = 0$$
 $$-\sum_{x_i \in R_{jm}} (y_i - F_{m-1}(x) - \gamma) = 0$$
@@ -275,13 +275,13 @@ $$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$</p>
 <p>with $n_j$ the number of samples in the terminal node $R_{jm}$. This leads to</p>
 <p>$$\gamma = \frac{1}{n_j}\sum_{x_i\in R_{jm}}r_{im}, (2c)$$</p>
 <p>with $r_{im} = y_i - F_{m-1}(x_i)$ the residual. The solution that minimizes (2b) is thus the mean over all target values of the tree, we constructed using the residuals as target values. That is $\gamma$ is nothing but the prediction we get from our tree fitted to the residuals.</p>
-<p><strong>2D. Update the model.</strong></p>
+<h4 id="step2d">2D. Update the model.</h4>
 <p>The last step in this loop is to update the model.</p>
 <p>$$F_m(x) = F_{m-1}(x) + \gamma_m h_m(x)$$</p>
 <p>That is we use our previous model $F_{m-1}$ and add the new predictions from the model fitted to the residuals. For the special case of Decision Trees as weak learners, this can be reformulated to</p>
 <p>$$F_{m}(x) = F_{m-1}(x) + \alpha \sum_{j=1}^{J_m} \gamma_{jm}1(x\in R_{jm}).$$</p>
 <p>The sum means, that we sum all values $\gamma_{jm}$ of the terminal node $R_{jm}.$ The factor $\alpha$ is the learning rate, which is a hyperparamter between $0$ and $1$ that needs to be chosen. It determines the contribution of each tree and is also often refered to as scaling of the models. The learning rate $\alpha$ is a parameter that is related with the <a href="http://localhost:1313/posts/ml_concepts/bias_variance/#tradeoff">Bias-Variance Tradeoff</a>. A learning rate closer to $1$ usually reduces the bias, but increases the variance and vice versa. That is we choose a lower learning rate to reduce the variance and overfitting.</p>
-<p><strong>Step 3 - Output final model $F_M(x)$.</strong></p>
+<h4 id="step-3---output-final-model-f_mx">Step 3 - Output final model $F_M(x)$.</h4>
 <p>The individual steps of algorithm for the special case of using Decision Trees and the above specified loss, is summarized below.</p>
 <p><img src="/images/gradient_boosting/gradient_boosting_algorithm_reg.png" alt="Gradient Boosting for Regression">
 <em>Gradient Boosting Algorithm simplified for a regression task.</em></p>
