@@ -97,7 +97,7 @@ $$-\gamma = \log\Big(\frac{1-p}{p}\Big).$$
 
 Using logarithmic transformations we get
 
-$$\gamma = log\Big(\frac{p}{1-p}\Big).$$
+$$\gamma = \log\Big(\frac{p}{1-p}\Big).$$
 
 The last transformation is explained in more detail in the appendix. 
 
@@ -189,7 +189,7 @@ In order to solve for this we would need to calculate the derivative with respec
 
 $$\gamma_m \approx \frac{\sum_{i=1}^n r_{im}h_m(x_i)}{\sum_{i=1}^n |h_m(x_i)| (1 - |h_m(x_i)|}),$$
 
-with $r_{im} = y_i - p_i$ the (pseudo-)residuals.
+with $r_{im} = y_i - p_i^{m-1}$ the (pseudo-)residuals.
 
 #### 2D. Update the model.
 
@@ -207,17 +207,17 @@ In this equation $\alpha$ is the *learning rate* or *step size* that determines 
 
 The individual steps of algorithm for the special case of using Decision Trees and the above specified loss, is summarized below.
 
-![Gradient Boosting for Classification](/images/gradient_boosting/gradient_boosting_algorithm_class.png)
+![Gradient Boosting for Classification](/images/gradient_boosting/gradient_boosting_class.png)
 *Gradient Boosting Algorithm simplified for a binary classification task.*
 
 ## Gradient Boosting in Python
 
-To perform gradient boosting for classification in Python, we can use [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html). The *GradientBoostinClassifer* method can be used for binary and multiple classification tasks. The weak learners in sklearn are Decision Trees and cannot be changed. Let`s consider a simple dataset, consiting of 10 data sample.
+To perform gradient boosting for classification in Python, we can use [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html). The *GradientBoostinClassifer* method can be used for binary and multiple classification tasks. The weak learners in sklearn are Decision Trees and cannot be changed. Let's consider a simple dataset, consiting of 10 data samples. It is the same dataset we use in [Decision Trees for Classification - Example]({{< ref "decision_tree_classification_example">}}).
 
 ![gradient boosting class data](/images/gradient_boosting/gb_class_data.png)
 *Dataset considered in this example*
  
-In python we can read this data as a pandas dataframe.
+In Python we can read this data as a pandas dataframe.
 
 ```Python
 import pandas as pd
@@ -230,9 +230,8 @@ data = {'age': [23, 31, 35, 35, 42, 43, 45, 46, 46, 51],
 df = pd.DataFrame(data)
 ```
 
-Now we can fit a model to the data
+Now we can fit a model to the data. The *GradientBoostingClassifier* method from sklearn offers a set of hyperparameters that can be changed to optimize the model. For this example, we set only two hyperparameters. The first one is the number of weak learners - *n_estimators*. In the implementation of sklearn the weak learners are always Decision Trees. This can not be changed. For this simple dataset we choose $3$ weak learners. The second hyperparamter we set is *max_depth*, which is the maximal depth of the Decision Trees. In this example, we set it to $2$. For a complete guide of all possible hyperparameters, please refer to the documentation of [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html).
 
-< HYPERPARAMETERS >
 
 ```Python
 from sklearn.ensemble import GradientBoostingClassifier
@@ -241,21 +240,23 @@ X = df[['age', 'likes goats', 'likes height']].values
 y = df[['go rock climbing']].values.reshape(-1,)
 clf = GradientBoostingClassifier(
     n_estimators=3, 
-    max_depth=2, 
-    random_state=42
+    max_depth=2
     )
 clf.fit(X, y)
 ```
 
-To make the predictions and calculate the score, we can also use sklearn methods
+To make the predictions and calculate the score, which in this case is the mean accuracy of all samples, we can also use sklearn methods
 
 ```Python
 y_pred = clf.predict(X)
 score = clf.score(X, y)
 ```
-<DISCUSS RESULTS>
+
+For this simplified example, we receive the predictions $[0, 1, 0, 0, 0, 1, 0, 1, 0, 1]$ and a score of $0.9$. 
 
 ## Summary
+
+In this article we discussed the Gradient Boosting algorithm for the special case of a binary classification. Gradient Boosting is a powerful ensemble learning method, which is in general based on Decision Trees, however other weak learners are possible. The optimization of the loss function in this case is approximated
 
 ## Appendix
 

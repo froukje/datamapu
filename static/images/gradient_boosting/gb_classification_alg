@@ -1,0 +1,13 @@
+<mxfile host="app.diagrams.net" modified="2024-04-26T01:20:11.424Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="ihs3yaQ-Bx9C-PdV_fhs" version="23.1.5" type="device">
+  <diagram name="Seite-1" id="0YElupQ_fQOhfGOeR_S1">
+    <mxGraphModel dx="1364" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="MscTyrkPSAdr6-wxniou-1" value="Input:&lt;br&gt;1&amp;nbsp; Training data set \((x_i, y_i)_i^{n}\)&lt;div&gt;2. The differentiable Loss Function \(L(y_i, p_i) = - y_i\cdot log p_i - (1 - y_i) \log(1 - p_i)\)&lt;/div&gt;&lt;div&gt;3.&amp;nbsp; Number of iterations (weak learners) \(M\)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Algorithm&lt;/div&gt;&lt;div&gt;Step 1 - Initialize the model with a constant value \(F_0(x) = \log\Big(\frac{p}{1-p}\Big).\)&lt;/div&gt;&lt;div&gt;Step 2 - For \(m = 1, \dots, M\)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;2A: Compute the residuals of the predictions and the true values&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; \(r_{im} = y_i - p_i^{m-1}\)for \(i = 1, \dots, n\)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;2B: Fit a pruned Decision Tree (weak learner) to the residuals, i.e. use the training dataset \(x_i, r_{im})&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;2C: Find an optimized solution \(\gamma_m\) of the Loss Function&lt;/div&gt;&lt;div&gt;$$\gamma_m&amp;nbsp; = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma)$$&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;2D: Update the model: \(F_m(x) = F_{m-1}(x) + \alpha \sum \gamma_{mj} 1(x\in R_{jm}\)&lt;/div&gt;&lt;div&gt;Step 3 - Output the final model \(F_M(x)\)&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="180" y="230" width="540" height="410" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
