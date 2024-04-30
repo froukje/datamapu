@@ -2,9 +2,9 @@
 title = 'Gradient Boost for Regression - Explained'
 date = 2024-01-31T09:21:46-03:00
 draft = true
-tags = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Boosting", "Tree Methods", "Regression", "Classification"]
-categories = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Boosting", "Tree Methods", "Classification", "Regression"]
-keywords = ["Data Science", "Machine Learning", "Gradiend Boosting", "Ensemble", "Classification", "Tree Methods", "Regression"]
+tags = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Boosting", "Tree Methods", "Regression"]
+categories = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Boosting", "Tree Methods", "Regression"]
+keywords = ["Data Science", "Machine Learning", "Gradiend Boosting", "Ensemble", "Tree Methods", "Regression"]
 images = ['/images/gradient_boosting/gb_intro.png']
 +++
 

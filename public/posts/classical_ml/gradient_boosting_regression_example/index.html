@@ -227,7 +227,7 @@ MathJax = {
 <p>We build a Gradient Boost model with pruned Decision Trees as weak learners using the above dataset. For that we follow the steps summarized in the following plot. For a more detailed explanation please refer to <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>.</p>
 <p><img src="/images/gradient_boosting/gradient_boosting_algorithm_reg.png" alt="Gradient Boosting for Regression">
 <em>Gradient Boosting Algorithm simplified for a regression task.</em></p>
-<p><strong>Step 1 - Initialize the model with a constant value -</strong> $F_0(X) = \bar{y}$.</p>
+<h4 id="step-1---initialize-the-model-with-a-constant-value---f_0x--bary">Step 1 - Initialize the model with a constant value - $F_0(X) = \bar{y}$.</h4>
 <p>The initialization  of the model is done by taking the means of all target values ($y = $ &ldquo;climbed meters&rdquo;). In our case</p>
 <p>$$F_0(X) = \frac{1}{10}(200 + 700 + 600 + 300 + 200 + 700 + 300 + 700 + 600 + 700) = 500.$$</p>
 <p>To evaluate how the model evolves, we calculate the <a href="http://localhost:1313/posts/ml_concepts/loss_functions/#loss_reg">mean squared error (MSE)</a> after each iteration.</p>
@@ -235,10 +235,10 @@ MathJax = {
 $$(300 - 500)^2 + (200 - 500)^2 + (700 - 500)^2 + (300 - 500)^2 + $$
 $$(700 - 500)^2 + (600 - 500)^2 + (700 - 500)^2) = 44 000$$</p>
 <p>The MSE of this first estimate is $44 000$ m.</p>
-<p><strong>Step 2 - For $m=1$ to $M=2$:</strong></p>
+<h4 id="step-2---for-m1-to-m2">Step 2 - For $m=1$ to $M=2$:</h4>
 <p>The second step is a loop, which sequentially updates the model by fitting a weak learner, in our case a pruned Decision Tree to the residual of the target values and the previous predictions. The number of loops is the number of weak learners considered. Because the data considered in this post is so simple, we will only loop twice, i.e. $M=2$.</p>
-<p><strong>First loop $M=1$</strong></p>
-<p><strong>2A. Compute the residuals of the preditions and the true observations.</strong></p>
+<h4 id="first-loop-m1">First loop $M=1$</h4>
+<h4 id="2a-compute-the-residuals-of-the-preditions-and-the-true-observations">2A. Compute the residuals of the preditions and the true observations.</h4>
 <p>With $x$ the input features &ldquo;age&rdquo;, &ldquo;likes height&rdquo;, and &ldquo;likes oats&rdquo;, given in the previous table, we compute the residual as a vector</p>
 <p>$$r_1 = y - F_0(X) = ((200 - 500), (700 - 500), (600 - 500), (300 - 500), $$
 $$(200 - 500), (700 - 500), (300 - 500), (700 - 500), (600 - 500), (700 - 500))$$</p>
@@ -260,19 +260,19 @@ $$(500 -250), (500 + 200), (500 - 250), (500 - 200), (500 + 100), (500 + 200))$$
 $$(300 - 300)^2 + (200 - 250)^2 + (700 - 700)^2 + (300 - 250)^2 + $$
 $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 500$$</p>
 <p>We can see that the error after this first update reduced to $500$ m.</p>
-<p><strong>Second loop $M=2$</strong></p>
+<h4 id="second-loop-m2">Second loop $M=2$</h4>
 <p>In this second loop the same steps as in the first one are performed.</p>
-<p><strong>2A. Compute the residuals of the preditions and the true observations.</strong></p>
+<h4 id="2a-compute-the-residuals-of-the-preditions-and-the-true-observations-1">2A. Compute the residuals of the preditions and the true observations.</h4>
 <p>We start with computing the residuals between the target values ($y$ = &ldquo;climbed meters&rdquo;) and the current prediction.</p>
 <p>$$r_2 = y - F_1(X) = ((200 - 200), (700 - 700), (600 - 600), (300 - 300), $$
 $$(200 - 250), (700 - 700), (300 - 250), (700 - 700), (600 - 600), (700 - 700))$$</p>
 <p>This results in</p>
 <p>$$r_2 = (0, 0, 0, 0, -50, 0, -50, 0, 0, 0).$$</p>
-<p><strong>2B. and 2C. Fit a model (weak learner) to the residuals and find the optimized solution.</strong></p>
+<h4 id="2b-and-2c-fit-a-model-weak-learner-to-the-residuals-and-find-the-optimized-solution">2B. and 2C. Fit a model (weak learner) to the residuals and find the optimized solution.</h4>
 <p>We fit a Decision Tree to the newly calculated residuals $r_2$i and the target values.</p>
 <p><img src="/images/gradient_boosting/gb_second_tree.png" alt="&ldquo;second tree&rdquo;">
 <em>Second Decision Tree, i.e. second weak learner</em></p>
-<p><strong>2D. Update the model.</strong></p>
+<h4 id="2d-update-the-model">2D. Update the model.</h4>
 <p>The current model is updated using the predictions obtained from the above Decision Tree.</p>
 <p>$$F_2(X) = F_1(X) + pred_2 = ((200 + 0), (700 + 0), (600 + 0), (300 + 0), $$
 $$(250 - 50), (700 + 0), (250 + 50), (700 + 0), (600 + 0), (700 + 0))$$</p>
@@ -283,7 +283,7 @@ $$(250 - 50), (700 + 0), (250 + 50), (700 + 0), (600 + 0), (700 + 0))$$</p>
 $$(300 - 300)^2 + (200 - 200)^2 + (700 - 700)^2 + (300 - 300)^2 + $$
 $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$</p>
 <p>That is we see another reduction in the error. Because of the simplicity of the data, in this case, the error is already $0$ m after two iterations. In real-world projects with more complex data, the number of weak learners is much higher. The default value in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">sklearn</a> is $100$.</p>
-<p><strong>Step 3 - Output final model $F_M(x)$.</strong></p>
+<h4 id="step-3---output-final-model-f_mx">Step 3 - Output final model $F_M(x)$.</h4>
 <p>The result of this last step in the loop, then defines the final model.</p>
 <p>$$F_2(X) = F_0(X) + F_1(X) + pred_2$$</p>
 <p>For $x$ the input features given in the above table, this is</p>
@@ -471,11 +471,11 @@ $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$</p>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/posts/deep_learning/backpropagation/">Backpropagation Step by Step</a>
+          <a href="/backpropagation/">Backpropagation Step by Step</a>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/backpropagation/">Backpropagation Step by Step</a>
+          <a href="/posts/deep_learning/backpropagation/">Backpropagation Step by Step</a>
         </li>
 	    
     </ul>

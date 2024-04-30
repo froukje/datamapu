@@ -26,7 +26,7 @@ We build a Gradient Boost model with pruned Decision Trees as weak learners usin
 ![Gradient Boosting for Regression](/images/gradient_boosting/gradient_boosting_algorithm_reg.png)
 *Gradient Boosting Algorithm simplified for a regression task.*
 
-**Step 1 - Initialize the model with a constant value -** $F_0(X) = \bar{y}$. 
+#### Step 1 - Initialize the model with a constant value - $F_0(X) = \bar{y}$. 
 
 The initialization  of the model is done by taking the means of all target values ($y = $ "climbed meters"). In our case
 
@@ -40,13 +40,13 @@ $$(700 - 500)^2 + (600 - 500)^2 + (700 - 500)^2) = 44 000$$
 
 The MSE of this first estimate is $44 000$ m.
 
-**Step 2 - For $m=1$ to $M=2$:**
+#### Step 2 - For $m=1$ to $M=2$:
 
 The second step is a loop, which sequentially updates the model by fitting a weak learner, in our case a pruned Decision Tree to the residual of the target values and the previous predictions. The number of loops is the number of weak learners considered. Because the data considered in this post is so simple, we will only loop twice, i.e. $M=2$. 
 
-**First loop $M=1$**
+#### First loop $M=1$
 
-**2A. Compute the residuals of the preditions and the true observations.**
+#### 2A. Compute the residuals of the preditions and the true observations.
 
 With $x$ the input features "age", "likes height", and "likes oats", given in the previous table, we compute the residual as a vector
 
@@ -84,11 +84,11 @@ $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 500$$
 
 We can see that the error after this first update reduced to $500$ m.
 
-**Second loop $M=2$**
+#### Second loop $M=2$
 
 In this second loop the same steps as in the first one are performed.
 
-**2A. Compute the residuals of the preditions and the true observations.**
+#### 2A. Compute the residuals of the preditions and the true observations.
 
 We start with computing the residuals between the target values ($y$ = "climbed meters") and the current prediction.
 
@@ -99,14 +99,14 @@ This results in
 
 $$r_2 = (0, 0, 0, 0, -50, 0, -50, 0, 0, 0).$$
 
-**2B. and 2C. Fit a model (weak learner) to the residuals and find the optimized solution.**
+#### 2B. and 2C. Fit a model (weak learner) to the residuals and find the optimized solution.
 
 We fit a Decision Tree to the newly calculated residuals $r_2$i and the target values.
 
 !["second tree"](/images/gradient_boosting/gb_second_tree.png)
 *Second Decision Tree, i.e. second weak learner*
 
-**2D. Update the model.**
+#### 2D. Update the model.
 
 The current model is updated using the predictions obtained from the above Decision Tree.
 
@@ -125,7 +125,7 @@ $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$
 
 That is we see another reduction in the error. Because of the simplicity of the data, in this case, the error is already $0$ m after two iterations. In real-world projects with more complex data, the number of weak learners is much higher. The default value in [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) is $100$.
 
-**Step 3 - Output final model $F_M(x)$.**
+#### Step 3 - Output final model $F_M(x)$.
 
 The result of this last step in the loop, then defines the final model.
 

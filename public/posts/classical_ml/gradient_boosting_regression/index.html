@@ -53,7 +53,7 @@
   <meta itemprop="dateModified" content="2024-01-31T09:21:46-03:00">
   <meta itemprop="wordCount" content="2796">
   <meta itemprop="image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png">
-  <meta itemprop="keywords" content="Data Science,Machine Learning,Gradiend Boosting,Ensemble,Classification,Tree Methods,Regression"><meta name="twitter:card" content="summary_large_image">
+  <meta itemprop="keywords" content="Data Science,Machine Learning,Gradiend Boosting,Ensemble,Tree Methods,Regression"><meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png"><meta name="twitter:title" content="Gradient Boost for Regression - Explained">
 <meta name="twitter:description" content="Introduction Gradient Boosting, also called Gradient Boosting Machine (GBM) is a type of supervised Machine Learning algorithm that is based on ensemble learning. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the Mean Squared Error (MSE) as loss function.">
 
@@ -442,10 +442,6 @@ $$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$</p>
      <a href="/tags/regression/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Regression</a>
    </li>
   
-   <li class="list di">
-     <a href="/tags/classification/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Classification</a>
-   </li>
-  
 </ul>
 <div class="mt6 instapaper_ignoref">
       
@@ -479,15 +475,15 @@ $$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$</p>
         </li>
 	    
 	     <li  class="mb2">
+          <a href="/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>
+        </li>
+	    
+	     <li  class="mb2">
           <a href="/posts/classical_ml/decision_trees/">Decision Trees - Explained</a>
         </li>
 	    
 	     <li  class="mb2">
           <a href="/posts/ml_concepts/ensemble/">Ensemble Models - Illustrated</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>
         </li>
 	    
 	     <li  class="mb2">
@@ -499,10 +495,6 @@ $$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$</p>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/posts/classical_ml/logistic_regression/">Logistic Regression - Explained</a>
-        </li>
-	    
-	     <li  class="mb2">
           <a href="/posts/classical_ml/linear_regression_example/">Linear Regression - Analytical Solution and Simplified Example</a>
         </li>
 	    
@@ -511,15 +503,19 @@ $$-n_j \gamma = \sum_{x_i\in R_{jm}}(y_i - F_{m-1}(x_i)),$$</p>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/posts/ml_concepts/classification_metrics/">Metrics for Classification Problems</a>
-        </li>
-	    
-	     <li  class="mb2">
           <a href="/posts/ml_concepts/regression_metrics/">Metrics for Regression Problems</a>
         </li>
 	    
 	     <li  class="mb2">
           <a href="/posts/ml_concepts/bias_variance/">Bias and Variance</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/logistic_regression/">Logistic Regression - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/deep_learning/intro_dl/">Introduction to Deep Learning</a>
         </li>
 	    
     </ul>
