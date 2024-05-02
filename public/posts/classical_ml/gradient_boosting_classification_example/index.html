@@ -6,9 +6,7 @@
     
     <title>Gradient Boost for Classification Example | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Introduction Data The data used in this post.
-Build the Model Gradient Boosting Algorithm simplified for a binary classification task.
-Step 1 - Initialize the model with a constant value - $F_0(X) = \log\Big(\frac{p}{1-p}\Big)$. Step 2 - For $m=1$ to $M=2$: First loop $M=1$ 2A. Compute the residuals of the preditions and the true observations. Second loop $M=2$ 2A. Compute the residuals of the preditions and the true observations 2B. and 2C.">
+    <meta name="description" content="Introduction In this post we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each individual step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to Gradient Boost for Classification - Explained and Gradient Boost for Regression - Explained. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.">
     <meta name="generator" content="Hugo 0.125.4">
     
     
@@ -35,9 +33,7 @@ Step 1 - Initialize the model with a constant value - $F_0(X) = \log\Big(\frac{p
     
     <meta property="og:url" content="http://localhost:1313/posts/classical_ml/gradient_boosting_classification_example/">
   <meta property="og:title" content="Gradient Boost for Classification Example">
-  <meta property="og:description" content="Introduction Data The data used in this post.
-Build the Model Gradient Boosting Algorithm simplified for a binary classification task.
-Step 1 - Initialize the model with a constant value - $F_0(X) = \log\Big(\frac{p}{1-p}\Big)$. Step 2 - For $m=1$ to $M=2$: First loop $M=1$ 2A. Compute the residuals of the preditions and the true observations. Second loop $M=2$ 2A. Compute the residuals of the preditions and the true observations 2B. and 2C.">
+  <meta property="og:description" content="Introduction In this post we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each individual step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to Gradient Boost for Classification - Explained and Gradient Boost for Regression - Explained. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -49,21 +45,17 @@ Step 1 - Initialize the model with a constant value - $F_0(X) = \log\Big(\frac{p
     <meta property="article:tag" content="Ensemble">
     <meta property="article:tag" content="Boosting">
     <meta property="article:tag" content="Tree Methods">
-    <meta property="og:image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png">
+    <meta property="og:image" content="http://localhost:1313/images/gradient_boosting/gb_clf_final.png">
 
   <meta itemprop="name" content="Gradient Boost for Classification Example">
-  <meta itemprop="description" content="Introduction Data The data used in this post.
-Build the Model Gradient Boosting Algorithm simplified for a binary classification task.
-Step 1 - Initialize the model with a constant value - $F_0(X) = \log\Big(\frac{p}{1-p}\Big)$. Step 2 - For $m=1$ to $M=2$: First loop $M=1$ 2A. Compute the residuals of the preditions and the true observations. Second loop $M=2$ 2A. Compute the residuals of the preditions and the true observations 2B. and 2C.">
+  <meta itemprop="description" content="Introduction In this post we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each individual step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to Gradient Boost for Classification - Explained and Gradient Boost for Regression - Explained. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.">
   <meta itemprop="datePublished" content="2024-04-28T17:01:32-03:00">
   <meta itemprop="dateModified" content="2024-04-28T17:01:32-03:00">
-  <meta itemprop="wordCount" content="112">
-  <meta itemprop="image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png">
+  <meta itemprop="wordCount" content="1498">
+  <meta itemprop="image" content="http://localhost:1313/images/gradient_boosting/gb_clf_final.png">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Gradiend Boosting,Ensemble,Classification,Tree Methods"><meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png"><meta name="twitter:title" content="Gradient Boost for Classification Example">
-<meta name="twitter:description" content="Introduction Data The data used in this post.
-Build the Model Gradient Boosting Algorithm simplified for a binary classification task.
-Step 1 - Initialize the model with a constant value - $F_0(X) = \log\Big(\frac{p}{1-p}\Big)$. Step 2 - For $m=1$ to $M=2$: First loop $M=1$ 2A. Compute the residuals of the preditions and the true observations. Second loop $M=2$ 2A. Compute the residuals of the preditions and the true observations 2B. and 2C.">
+<meta name="twitter:image" content="http://localhost:1313/images/gradient_boosting/gb_clf_final.png"><meta name="twitter:title" content="Gradient Boost for Classification Example">
+<meta name="twitter:description" content="Introduction In this post we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each individual step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to Gradient Boost for Classification - Explained and Gradient Boost for Regression - Explained. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -217,28 +209,152 @@ MathJax = {
 
       
       
-        <span class="f6 mv4 dib tracked"> - One minute read </span>
-        <span class="f6 mv4 dib tracked"> - 112 words </span>
+        <span class="f6 mv4 dib tracked"> - 8 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 1498 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
+<p>In this post we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each individual step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification/">Gradient Boost for Classification - Explained</a> and <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.</p>
 <h2 id="data">Data</h2>
+<p>The dataset used for this example contains 10 samples and describes the task whether a person should go rock climbing depending on their age, and whether the person likes height and goats. The same dataset was used in the articles <a href="http://localhost:1313/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>, and <a href="http://localhost:1313/posts/classical_ml/adaboost_example_clf/">Adaboost for Classification - Example</a>.</p>
 <p><img src="/images/gradient_boosting/gb_class_data.png" alt="&ldquo;data&rdquo;">
 <em>The data used in this post.</em></p>
 <h2 id="build-the-model">Build the Model</h2>
+<p>We build a Gradient Boosting model using pruned Decision Trees as weak learners for the above dataset. The steps to be performed are summarized in the plot below. For a more detailed explanation please refer to <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification/">Gradient Boost for Classification - Explained</a>.</p>
 <p><img src="/images/gradient_boosting/gradient_boosting_class.png" alt="Gradient Boosting for Classification">
 <em>Gradient Boosting Algorithm simplified for a binary classification task.</em></p>
 <h4 id="step-1---initialize-the-model-with-a-constant-value---f_0x--logbigfracp1-pbig">Step 1 - Initialize the model with a constant value - $F_0(X) = \log\Big(\frac{p}{1-p}\Big)$.</h4>
+<p>For the first initialization we need the probability of &ldquo;go rock climbing&rdquo;. In the above dataset we have five $1$s and five $0$s, and a total dataset size of ten samples. That is the probabilty of &ldquo;going rock climbing&rdquo; is $\frac{5}{10} = 0.5$. With that we can calculate</p>
+<p>$$F_0(X) = \log\Big(\frac{P(y=1)}{P(y=0)}\Big) =\log\Big(\frac{0.5}{0.5}\Big) = 0.$$</p>
+<p>The initial log-loss in this case is $0$, which means that the chances of both outcomes of the target variable are equal. The initial predictions are thus
+$$F_0(X) = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]$$</p>
+<p>In order to check the performance of our model we use the accuracy score. To see how the model evolves over the steps, we will calculate the accuracy after each step. For the initial predictions, we first calculate the probabilities.</p>
+<p>$$p_0 = \frac{1}{1 + e^{-F_0(X)}} = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]$$</p>
+<p>As a threshold for predicting a $1$ we use $0.5$, that is in this case, the predictions are</p>
+<p>$$\hat{y}_0 = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]$$.</p>
+<p>The <a href="http://localhost:1313/posts/ml_concepts/classification_metrics/#metrics">accuracy</a> is calculated as the fraction of the correct predicted values and the total number of samples</p>
+<p>$$accuracy = \frac{5}{10} = 0.5$$</p>
 <h4 id="step-2---for-m1-to-m2">Step 2 - For $m=1$ to $M=2$:</h4>
 <h4 id="first-loop-m1">First loop $M=1$</h4>
 <h4 id="2a-compute-the-residuals-of-the-preditions-and-the-true-observations">2A. Compute the residuals of the preditions and the true observations.</h4>
+<p>The residuals are calculated as</p>
+<p>$$r_1 = y - p_0 = [-0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5]$$</p>
+<h4 id="2b-and-2c-fit-a-model-weak-learner-to-the-residuals-and-find-the-optimized-solution">2B. and 2C. Fit a model (weak learner) to the residuals and find the optimized solution.</h4>
+<p>In this step we use the above calculated residuals to fit a Decision Tree. We prune the tree to use it as a weak learner, for that we use a maximum depth of $2$. We don&rsquo;t develop the Decision Tree by hand, but will use the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html">sklearn</a> method <em>DecisionTreeClassifier</em>. For a step by step example of building a Decision Tree for Classification, please refer to the separate article <a href="http://localhost:1313/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>.</p>
+<p><img src="/images/gradient_boosting/gb_first_tree_clf.png" alt="&ldquo;first tree&rdquo;">
+<em>First Decision Tree, i.e. first weak learner</em></p>
+<p>The resulting predictions are</p>
+<p>$$pred_1(X) = [-0.5,  0.5,  0. , -0.5, -0.5,  0.5, -0.5,  0.5,  0. ,  0.5]$$</p>
+<h4 id="2d-update-the-model">2D. Update the model.</h4>
+<p>We update the model using the predictions of the above developed Decision Tree. We use a learning rate of $\alpha = 0.3$ for this example. This results in the updated model</p>
+<p>$$F_1(X) = F_0(X) + 0.3 * pred_1(X).$$</p>
+<p>Using the calculated numbers, this leads to</p>
+<p>$$F_1(X) = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] + 0.3 \cdot [-0.5,  0.5,  0. , -0.5, -0.5,  0.5, -0.5,  0.5,  0. ,  0.5]$$
+$$F_1(X) = [-0.15, 0.15, 0, -0.15, -0.15, 0.15, -0.15, 0.15, 0, 0.15]$$</p>
+<p>The probabilies resulting from these log-loss are</p>
+<p>$$p_1 = \frac{1}{1 + e^{-F_1(X)}} = [0.46, 0.54, 0.5, 0.46, 0.46, 0.54, 0.46, 0.54, 0.5, 0.54]$$</p>
+<p>With the threshold of $0.5$ this leads to the probabilities</p>
+<p>$$\hat{y}_2(X) = [0, 1, 1, 0, 0, 1, 0, 1, 1, 1]$$</p>
+<p>The accuracy after this step is</p>
+<p>$$accuracy = \frac{9}{10} = 0.9.$$</p>
 <h4 id="second-loop-m2">Second loop $M=2$</h4>
 <h4 id="2a-compute-the-residuals-of-the-preditions-and-the-true-observations-1">2A. Compute the residuals of the preditions and the true observations</h4>
-<h4 id="2b-and-2c-fit-a-model-weak-learner-to-the-residuals-and-find-the-optimized-solution">2B. and 2C. Fit a model (weak learner) to the residuals and find the optimized solution.</h4>
-<h4 id="2d-update-the-model">2D. Update the model.</h4>
+<p>The residuals are calculated as</p>
+<p>$$r_2 = y - p_1 = [-0.46, 0.46, 0.5, -0.46, -0.46, 0.46, -0.46,  0.46, -0.5,  0.46]$$</p>
+<h4 id="2b-and-2c-fit-a-model-weak-learner-to-the-residuals-and-find-the-optimized-solution-1">2B. and 2C. Fit a model (weak learner) to the residuals and find the optimized solution.</h4>
+<p>Now we fit the second Decision Tree with the residuals $r_2$ calculated above.</p>
+<p><img src="/images/gradient_boosting/gb_second_tree_clf.png" alt="&ldquo;second tree&rdquo;">
+<em>Second Decision Tree, i.e. second weak learner</em></p>
+<p>The resulting predictions are</p>
+<p>$$pred_2(X) = [-0.46,  0.46,  0, -0.46, -0.46, 0.46, -0.46,  0.46,  0,  0.46]$$</p>
+<h4 id="2d-update-the-model-1">2D. Update the model.</h4>
+<p>We update the model using the predictions of the above developed Decision Tree with a learning rate of $0.3$. This results in the updated model</p>
+<p>$$F_2(X) = F_1(X) + 0.3 * pred_2(X).$$</p>
+<p>Using the calculated numbers, this leads to</p>
+<p>$$F_2(X) = [-0.15, 0.15, 0, -0.15, -0.15, 0.15, -0.15, 0.15, 0, 0.15] + $$
+$$0.3 \cdot [-0.46,  0.46,  0, -0.46, -0.46, 0.46, -0.46,  0.46,  0,  0.46]$$
+$$F_2(X) = [-0.29,  0.29,  0, -0.29, -0.29, 0.29, -0.29,  0.29,  0, 0.29]$$</p>
+<p>The probabilies resulting from these log-loss are</p>
+<p>$$p_2 = \frac{1}{1 + e^{-F_2(X)}} = [0.43, 0.57, 0.5, 0.43, 0.43, 0.57, 0.43, 0.57, 0.5, 0.57]$$</p>
+<p>With the threshold of $0.5$ this leads to the probabilities</p>
+<p>$$\hat{y}_3 = [0, 1, 1, 0, 0, 1, 0, 1, 1, 1]$$</p>
+<p>The accuracy after this step is</p>
+<p>$$accuracy = \frac{9}{10} = 0.9.$$</p>
+<p>That is, this second step didn&rsquo;t improve the accuracy of our model.</p>
 <h4 id="step-3---output-final-model-f_mx">Step 3 - Output final model $F_M(x)$.</h4>
+<p>The final model then in defined by the output of the last step.</p>
+<p>$$F_2(X) = F_0(X) + \alpha F_1(X) + \alpha pred_2$$</p>
+<p>For $x$ the input features given in the above table, this is</p>
+<p>$$F_2(X) = [-0.29,  0.29,  0, -0.29, -0.29, 0.29, -0.29,  0.29,  0, 0.29].$$</p>
+<p><img src="/images/gradient_boosting/gb_example_clf_final.png" alt="&ldquo;final model&rdquo;">
+<em>Final model.</em></p>
+<p>Accordingly the final probabilities $p_2$ and predictions $\hat{y}_3$ as calculated above.</p>
 <h2 id="fit-a-model-in-python">Fit a Model in Python</h2>
+<p>In this section, we will show how to fit a <em>GradientBoostingClassifier</em> from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">sklearn</a> library to the above data. In sklearn the weak learners are fixed to Decision Trees and cannot be changed. The <em>GradientBoostingClassifier</em> offers a set of hyperparameters, that can be changed and tested in order to improve the model. Note, that we are considering is a very simplified example. In this case we set the number of weak learners (<em>n_estimators</em>) to $2$, the maximal depth (<em>max_depth</em>) of the Decision Trees to $2$, and the <em>learning_rate</em>=$0.3$. For real-world data usually hyperparameters would be chosen differently, the default values in sklearn are <em>n_estimators</em>$=100$, <em>max_depth</em>=3$, and the <em>learning_rate</em>=$0.1$. For a complete list of available hyperparameters, please refer to the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">sklearn documentation</a>.</p>
+<p>We read the data into a Pandas dataframe.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">pandas</span> <span style="color:#8839ef">as</span> <span style="color:#fe640b">pd</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#04a5e5;font-weight:bold">=</span> {<span style="color:#40a02b">&#39;age&#39;</span>: [<span style="color:#fe640b">23</span>, <span style="color:#fe640b">31</span>, <span style="color:#fe640b">35</span>, <span style="color:#fe640b">35</span>, <span style="color:#fe640b">42</span>, <span style="color:#fe640b">43</span>, <span style="color:#fe640b">45</span>, <span style="color:#fe640b">46</span>, <span style="color:#fe640b">46</span>, <span style="color:#fe640b">51</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;likes goats&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;likes height&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;go rock climbing&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>]}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#04a5e5;font-weight:bold">=</span> pd<span style="color:#04a5e5;font-weight:bold">.</span>DataFrame(data)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now we can fit the model using the above defined hyperparameters.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.ensemble</span> <span style="color:#179299">import</span> GradientBoostingClassifier
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;age&#39;</span>, <span style="color:#40a02b">&#39;likes goats&#39;</span>, <span style="color:#40a02b">&#39;likes height&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values
+</span></span><span style="display:flex;"><span>y <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;go rock climbing&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values<span style="color:#04a5e5;font-weight:bold">.</span>reshape(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>,)
+</span></span><span style="display:flex;"><span>clf <span style="color:#04a5e5;font-weight:bold">=</span> GradientBoostingClassifier(
+</span></span><span style="display:flex;"><span>    n_estimators<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>,
+</span></span><span style="display:flex;"><span>    max_depth<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>,
+</span></span><span style="display:flex;"><span>    learning_rate<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">0.3</span>	
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>clf<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We can use the <em>predict</em> method to get the predictions and the <em>score</em> method to calculate the accuracy.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>y_pred <span style="color:#04a5e5;font-weight:bold">=</span> clf<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
+</span></span><span style="display:flex;"><span>score <span style="color:#04a5e5;font-weight:bold">=</span> clf<span style="color:#04a5e5;font-weight:bold">.</span>score(X, y)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We get the predictions $[0, 1, 0, 0, 0, 1, 0, 1, 0, 1]$ and a score of $0.9$. A more detailed example applying Gradient Boosting in Python can be found on <a href="https://www.kaggle.com/code/pumalin/gradient-boosting-tutorial">kaggle</a> - this is an example for a regression problem. The application to a classification problem however is the same, we only need to change the <em>GradientBoostingRegressor</em> to the <em>GradientBoostingClassifier</em> and change the metrics to evaluate the model.</p>
 <h2 id="summary">Summary</h2>
+<p>In this post we went through the calculations of the individual steps to build a Gradient Boosting model for a binary classification problem. A simple example was chosen to make explicit calculations feasible. Later, we showed how to fit a model using Python. In real world example libraries like <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">sklearn</a> are used to develop such models. The development is usually not as straight forward as in this simplified example, but a lot of hyperparameters are (systematically) tested to optimize the solution. For a more detailed explanation of the algorithm, please refer to the related articles <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification/">Gradient Boost for Classification - Explained</a>, <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>, <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/">Gradient Boost for Regression - Example</a>. For a more practical approach, please check the notebook on <a href="https://www.kaggle.com/code/pumalin/gradient-boosting-tutorial">kaggle</a>, where a Gradient Boosting model for a regression problem is developed.</p>
 <hr>
 <p>If this blog is useful for you, please consider supporting.</p>
 
@@ -351,7 +467,7 @@ MathJax = {
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/posts/deep_learning/backpropagation/">Backpropagation Step by Step</a>
+          <a href="/backpropagation/">Backpropagation Step by Step</a>
         </li>
 	    
     </ul>

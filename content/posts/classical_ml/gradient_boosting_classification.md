@@ -256,7 +256,7 @@ For this simplified example, we receive the predictions $[0, 1, 0, 0, 0, 1, 0, 1
 
 ## Summary
 
-In this article, we discussed the Gradient Boosting algorithm for the special case of a binary classification. Gradient Boosting is a powerful ensemble learning method, which is in general based on Decision Trees, however, other weak learners are possible. In this case, the optimization of the loss function is approximated, in contrast to the Gradient Boosting for regression algorithm, where an analytical solution can be found relatively easily. In practice, [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html) can be used to develop and evaluate Gradient Boosting models in Python.
+In this article, we discussed the Gradient Boosting algorithm for the special case of a binary classification. Gradient Boosting is a powerful ensemble learning method, which is in general based on Decision Trees, however, other weak learners are possible. In this case, the optimization of the loss function is approximated, in contrast to the Gradient Boosting for regression algorithm, where an analytical solution can be found relatively easily. In practice, [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html) can be used to develop and evaluate Gradient Boosting models in Python. For a more detailed example in Python on a larger dataset, please refer to this notebook on [kaggle]([kaggle](https://www.kaggle.com/code/pumalin/gradient-boosting-tutorial), which however describes a regression problem. Adjusting the model and the evaluation metric the application to a classification problem is similar.
 
 
 ## Appendix

@@ -50,12 +50,12 @@ The second step is a loop, which sequentially updates the model by fitting a wea
 
 With $x$ the input features "age", "likes height", and "likes oats", given in the previous table, we compute the residual as a vector
 
-$$r_1 = y - F_0(X) = ((200 - 500), (700 - 500), (600 - 500), (300 - 500), $$
-$$(200 - 500), (700 - 500), (300 - 500), (700 - 500), (600 - 500), (700 - 500))$$
+$$r_1 = y - F_0(X) = [(200 - 500), (700 - 500), (600 - 500), (300 - 500), $$
+$$(200 - 500), (700 - 500), (300 - 500), (700 - 500), (600 - 500), (700 - 500)]$$
 
 This results in
 
-$$r_1 = (-300, 200, 100, -200, -300, 200, -200, 200, 100, 200).$$
+$$r_1 = [-300, 200, 100, -200, -300, 200, -200, 200, 100, 200].$$
 
 **2B. anc 2C. Fit a model (weak learner) to the residuals and find the optimized solution.**
 
@@ -69,12 +69,12 @@ We will not develop the Decision Tree in detail but will use the result from [sk
 
 The next step is to update the model with the new prediction from the weak learner. 
 
-$$F_1(X) = F_0(x) + pred_1 = ((500 - 300), (500 + 200), (500 + 100), (500 + -200),$$ 
-$$(500 -250), (500 + 200), (500 - 250), (500 - 200), (500 + 100), (500 + 200))$$
+$$F_1(X) = F_0(x) + pred_1 = [(500 - 300), (500 + 200), (500 + 100), (500 + -200),$$ 
+$$(500 -250), (500 + 200), (500 - 250), (500 - 200), (500 + 100), (500 + 200)]$$
 
 This results in
 
-$$F_1(X) = (200, 700, 600, 300, 250, 700, 250, 700, 600, 700).$$
+$$F_1(X) = [200, 700, 600, 300, 250, 700, 250, 700, 600, 700].$$
 
 The MSE of these new predictions are
 
@@ -92,12 +92,12 @@ In this second loop the same steps as in the first one are performed.
 
 We start with computing the residuals between the target values ($y$ = "climbed meters") and the current prediction.
 
-$$r_2 = y - F_1(X) = ((200 - 200), (700 - 700), (600 - 600), (300 - 300), $$
-$$(200 - 250), (700 - 700), (300 - 250), (700 - 700), (600 - 600), (700 - 700))$$
+$$r_2 = y - F_1(X) = [(200 - 200), (700 - 700), (600 - 600), (300 - 300), $$
+$$(200 - 250), (700 - 700), (300 - 250), (700 - 700), (600 - 600), (700 - 700)]$$
 
 This results in
 
-$$r_2 = (0, 0, 0, 0, -50, 0, -50, 0, 0, 0).$$
+$$r_2 = [0, 0, 0, 0, -50, 0, -50, 0, 0, 0].$$
 
 #### 2B. and 2C. Fit a model (weak learner) to the residuals and find the optimized solution.
 
@@ -110,12 +110,12 @@ We fit a Decision Tree to the newly calculated residuals $r_2$i and the target v
 
 The current model is updated using the predictions obtained from the above Decision Tree.
 
-$$F_2(X) = F_1(X) + pred_2 = ((200 + 0), (700 + 0), (600 + 0), (300 + 0), $$
-$$(250 - 50), (700 + 0), (250 + 50), (700 + 0), (600 + 0), (700 + 0))$$
+$$F_2(X) = F_1(X) + pred_2 = [(200 + 0), (700 + 0), (600 + 0), (300 + 0), $$
+$$(250 - 50), (700 + 0), (250 + 50), (700 + 0), (600 + 0), (700 + 0)]$$
 
 This results in
 
-$$F_2(X) = (200, 700, 600, 300, 200, 700, 300, 700, 600, 700).$$
+$$F_2(X) = [200, 700, 600, 300, 200, 700, 300, 700, 600, 700].$$
 
 The MSE of this updated prediction is
 
@@ -133,7 +133,7 @@ $$F_2(X) = F_0(X) + F_1(X) + pred_2$$
 
 For $x$ the input features given in the above table, this is
 
-$$F_2(X) = (200, 700, 600, 300, 200, 700, 300, 700, 600, 700).$$
+$$F_2(X) = [200, 700, 600, 300, 200, 700, 300, 700, 600, 700].$$
 
 !["final model"](/images/gradient_boosting/gb_example_intro.png)
 *Final model.*
@@ -142,7 +142,7 @@ $$F_2(X) = (200, 700, 600, 300, 200, 700, 300, 700, 600, 700).$$
 
 Including a learning rate $\alpha$ the formular for the final model is
 
-$$F_n(X) = F_0(X) + \alpha \big(\sum_i=1^{n-1} F_i(X) + pred_n),$$
+$$F_n(X) = F_0(X) + \alpha \big(\sum_{i=1}^{n-1} F_i(X) + pred_n),$$
 
 with $n$ the number of weak learners.
 

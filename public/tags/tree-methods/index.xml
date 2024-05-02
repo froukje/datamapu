@@ -6,8 +6,15 @@
     <description>Recent content in Tree Methods on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Apr 2024 20:45:19 -0300</lastBuildDate>
+    <lastBuildDate>Sun, 28 Apr 2024 17:01:32 -0300</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/tree-methods/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gradient Boost for Classification Example</title>
+      <link>http://localhost:1313/posts/classical_ml/gradient_boosting_classification_example/</link>
+      <pubDate>Sun, 28 Apr 2024 17:01:32 -0300</pubDate>
+      <guid>http://localhost:1313/posts/classical_ml/gradient_boosting_classification_example/</guid>
+      <description>Introduction Data The data used in this post.&#xA;Build the Model Gradient Boosting Algorithm simplified for a binary classification task.&#xA;Step 1 - Initialize the model with a constant value - $F_0(X) = \log\Big(\frac{p}{1-p}\Big)$. Step 2 - For $m=1$ to $M=2$: First loop $M=1$ 2A. Compute the residuals of the preditions and the true observations. Second loop $M=2$ 2A. Compute the residuals of the preditions and the true observations 2B. and 2C.</description>
+    </item>
     <item>
       <title>Gradient Boost for Classification - Explained</title>
       <link>http://localhost:1313/posts/classical_ml/gradient_boosting_classification/</link>
