@@ -50,7 +50,12 @@ $$accuracy = \frac{5}{10} = 0.5$$
 
 #### Step 2 - For $m=1$ to $M=2$:
 
+In this step we sequentially fit weak learners (pruned Decision Trees) to the residuals. The number of loops is the number of weak learners considered. Because the data considered in this post is so simple, we will only loop twice, i.e. 
+.
+
 #### First loop $M=1$
+
+Fit the first Decision Tree.
 
 #### 2A. Compute the residuals of the preditions and the true observations.
 
@@ -93,6 +98,8 @@ The accuracy after this step is
 $$accuracy = \frac{9}{10} = 0.9.$$
 
 #### Second loop $M=2$
+
+Fit the second Decision Tree.
 
 #### 2A. Compute the residuals of the preditions and the true observations
 

@@ -51,7 +51,7 @@
   <meta itemprop="description" content="Introduction In this post, we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each single step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to Gradient Boost for Classification - Explained and Gradient Boost for Regression - Explained. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.">
   <meta itemprop="datePublished" content="2024-04-28T17:01:32-03:00">
   <meta itemprop="dateModified" content="2024-04-28T17:01:32-03:00">
-  <meta itemprop="wordCount" content="1496">
+  <meta itemprop="wordCount" content="1548">
   <meta itemprop="image" content="http://localhost:1313/images/gradient_boosting/gb_clf_final.png">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Gradiend Boosting,Ensemble,Classification,Tree Methods"><meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://localhost:1313/images/gradient_boosting/gb_clf_final.png"><meta name="twitter:title" content="Gradient Boost for Classification Example">
@@ -210,7 +210,7 @@ MathJax = {
       
       
         <span class="f6 mv4 dib tracked"> - 8 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 1496 words </span>
+        <span class="f6 mv4 dib tracked"> - 1548 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -235,7 +235,10 @@ $$F_0(X) = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]$$</p>
 <p>The <a href="http://localhost:1313/posts/ml_concepts/classification_metrics/#metrics">accuracy</a> is calculated as the fraction of the correct predicted values and the total number of samples</p>
 <p>$$accuracy = \frac{5}{10} = 0.5$$</p>
 <h4 id="step-2---for-m1-to-m2">Step 2 - For $m=1$ to $M=2$:</h4>
+<p>In this step we sequentially fit weak learners (pruned Decision Trees) to the residuals. The number of loops is the number of weak learners considered. Because the data considered in this post is so simple, we will only loop twice, i.e.
+.</p>
 <h4 id="first-loop-m1">First loop $M=1$</h4>
+<p>Fit the first Decision Tree.</p>
 <h4 id="2a-compute-the-residuals-of-the-preditions-and-the-true-observations">2A. Compute the residuals of the preditions and the true observations.</h4>
 <p>The residuals are calculated as</p>
 <p>$$r_1 = y - p_0 = [-0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5]$$</p>
@@ -258,6 +261,7 @@ $$F_1(X) = [-0.15, 0.15, 0, -0.15, -0.15, 0.15, -0.15, 0.15, 0, 0.15]$$</p>
 <p>The accuracy after this step is</p>
 <p>$$accuracy = \frac{9}{10} = 0.9.$$</p>
 <h4 id="second-loop-m2">Second loop $M=2$</h4>
+<p>Fit the second Decision Tree.</p>
 <h4 id="2a-compute-the-residuals-of-the-preditions-and-the-true-observations-1">2A. Compute the residuals of the preditions and the true observations</h4>
 <p>The residuals are calculated as</p>
 <p>$$r_2 = y - p_1 = [-0.46, 0.46, 0.5, -0.46, -0.46, 0.46, -0.46,  0.46, -0.5,  0.46]$$</p>
