@@ -13,7 +13,7 @@
       <link>http://localhost:1313/posts/classical_ml/gradient_boosting_classification_example/</link>
       <pubDate>Sun, 28 Apr 2024 17:01:32 -0300</pubDate>
       <guid>http://localhost:1313/posts/classical_ml/gradient_boosting_classification_example/</guid>
-      <description>Introduction In this post we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each individual step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to Gradient Boost for Classification - Explained and Gradient Boost for Regression - Explained. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.</description>
+      <description>Introduction In this post, we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each single step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to Gradient Boost for Classification - Explained and Gradient Boost for Regression - Explained. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.</description>
     </item>
     <item>
       <title>Gradient Boost for Classification - Explained</title>

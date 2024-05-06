@@ -51,7 +51,7 @@
   <meta itemprop="description" content="Introduction Gradient Boosting is an ensemble machine learning model, that - as the name suggests - is based on boosting. An ensemble model based on boosting refers to a model that sequentially builds models, and the new model depends on the previous model. In Gradient Boosting these models are built such that they improve the error of the previous model. These individual models are so-called weak learners, which means they have low predictive skills.">
   <meta itemprop="datePublished" content="2024-04-14T20:45:19-03:00">
   <meta itemprop="dateModified" content="2024-04-14T20:45:19-03:00">
-  <meta itemprop="wordCount" content="2391">
+  <meta itemprop="wordCount" content="2385">
   <meta itemprop="image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Gradiend Boosting,Ensemble,Classification,Tree Methods,Regression"><meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://localhost:1313/images/gradient_boosting/gb_intro.png"><meta name="twitter:title" content="Gradient Boost for Classification - Explained">
@@ -210,18 +210,18 @@ MathJax = {
       
       
         <span class="f6 mv4 dib tracked"> - 12 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 2391 words </span>
+        <span class="f6 mv4 dib tracked"> - 2385 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><hr>
 <h2 id="introduction">Introduction</h2>
-<p>Gradient Boosting is an <a href="http://localhost:1313/posts/ml_concepts/ensemble/">ensemble</a> machine learning model, that - as the name suggests - is based on <a href="http://localhost:1313/posts/ml_concepts/ensemble/#boosting">boosting</a>. An ensemble model based on boosting refers to a model that sequentially builds models, and the new model depends on the previous model. In Gradient Boosting these models are built such that they improve the error of the previous model. These individual models are so-called weak learners, which means they have low predictive skills. The ensemble of these weak learners builds the final model, which is a strong learner with a high predictive skill. In this post, we will go through the algorithm of Gradient Boosting in general and then concretize the individual steps for a classification task using <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a> as weak learners and the log-loss function. There will be some overlapping with the article <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boosting for Regression - Explained</a>, where a detailed explanation of Gradient Boosting is given, which is then applied to a regression problem. However, in this article, we will not go into the details of the general formulation, for that please refer to the previously mentioned post. If you are interested in a concrete example with the detailed calculations, please refer to <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/">Gradient Boosting for Regression - Example</a> for a regression problem and <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification_example/">Gradient Boosting for Classification - Example</a> for a classification problem.</p>
+<p>Gradient Boosting is an <a href="http://localhost:1313/posts/ml_concepts/ensemble/">ensemble</a> machine learning model, that - as the name suggests - is based on <a href="http://localhost:1313/posts/ml_concepts/ensemble/#boosting">boosting</a>. An ensemble model based on boosting refers to a model that sequentially builds models, and the new model depends on the previous model. In Gradient Boosting these models are built such that they improve the error of the previous model. These individual models are so-called weak learners, which means they have low predictive skills. The ensemble of these weak learners builds the final model, which is a strong learner with a high predictive skill. In this post, we go through the algorithm of Gradient Boosting in general and then concretize the individual steps for a classification task using <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a> as weak learners and the log-loss function. There will be some overlapping with the article <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boosting for Regression - Explained</a>, where a detailed explanation of Gradient Boosting is given, which is then applied to a regression problem. However, in this article, do not go into the details of the general formulation, for that please refer to the previously mentioned post. If you are interested in a concrete example with detailed calculations, please refer to <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/">Gradient Boosting for Regression - Example</a> for a regression problem and <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification_example/">Gradient Boosting for Classification - Example</a> for a classification problem.</p>
 <h2 id="the-algorithm">The Algorithm</h2>
-<p>Gradient Boosting is a <a href="http://localhost:1313/posts/ml_concepts/ensemble/#boosting">boosting</a> algorithm that aims to build a series of weak learners, which together act as a strong learner. In Gradient Boosting the objective is to improve the error of the preceeding model by minimizing its loss function using <a href="http://localhost:1313/posts/ml_concepts/gradient_descent/">Gradient Descent</a>. That means the weak learners are build up on the error and not up on the targets themselves as in other boosting algorithm like <a href="http://localhost:1313/posts/classical_ml/adaboost/">AdaBoost</a>.</p>
-<p>In the following, the algorithm is described for the general case. The notation is adapted from <a href="https://en.m.wikipedia.org/wiki/Gradient_boosting">Wikipedia</a>. The general case is explained in <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boosting for Regression - Explained</a>, in this post, we apply them to the special case of a binary classification using Decision Trees as weak learners and the log-loss as <a href="http://localhost:1313/posts/ml_concepts/loss_functions/">loss function</a>.</p>
+<p>Gradient Boosting is a <a href="http://localhost:1313/posts/ml_concepts/ensemble/#boosting">boosting</a> algorithm that aims to build a series of weak learners, which together act as a strong learner. In Gradient Boosting the objective is to improve the error of the preceeding model by minimizing its loss function using <a href="http://localhost:1313/posts/ml_concepts/gradient_descent/">Gradient Descent</a>. That means the weak learners are built up on the error and not up on the targets themselves as in other boosting algorithms like <a href="http://localhost:1313/posts/classical_ml/adaboost/">AdaBoost</a>.</p>
+<p>In the following, the algorithm is described for the general case. The notation is adapted from <a href="https://en.m.wikipedia.org/wiki/Gradient_boosting">Wikipedia</a>. The general case is explained in <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boosting for Regression - Explained</a>, in this post, we apply them to the special case of a binary classification using Decision Trees as weak learners and the log-loss as a <a href="http://localhost:1313/posts/ml_concepts/loss_functions/">loss function</a>.</p>
 <p><img src="/images/gradient_boosting/gradient_boosting_algorithm.png" alt="&ldquo;gradient boosting algorithm&rdquo;">
 <em>Gradient Boosting Algorithm. Adapted from <a href="https://en.wikipedia.org/wiki/Gradient_boosting">Wikipedia</a>.</em></p>
-<p>Let&rsquo;s have a look at the individual steps, for the special case of a binary classification. As loss function, we use the <a href="http://localhost:1313/posts/ml_concepts/loss_functions/#log_class">log-loss</a>, which is defined as</p>
+<p>Let&rsquo;s look at the individual steps, for the special case of a binary classification. As loss function, we use the <a href="http://localhost:1313/posts/ml_concepts/loss_functions/#log_class">log-loss</a>, which is defined as</p>
 <p>$$L\big(y_i, p_i\big) = - y_i\cdot \log p_i - (1 - y_i)\cdot \log\big(1 - p_i\big),$$</p>
 <p>with $y_i$ the true values and $p_i$ the predicted propabilities. To ensure that $p_i$ represent probabilities, we use the <a href="http://localhost:1313/posts/classical_ml/logistic_regression/#sigmoid">sigmoid</a> function to convert the model output to values between $0$ and $1$, i.e. $p_i = \sigma\big(F_{m-1}(x_i)\big)$. With that, we can rewrite the loss function, depending on the model output</p>
 <p>$$L\big(y_i, \gamma\big) = - y_i\cdot \log\big(\sigma(\gamma)\big) - (1 - y_i)\cdot \log\big(1 - \sigma(\gamma)\big),$$</p>
@@ -231,13 +231,13 @@ MathJax = {
 <p>The first initialization of the model is given by</p>
 <p>$$F_0(x) = \underset{\gamma}{\text{argmin}}\sum_{i=1}^n L(y_i, \gamma). $$</p>
 <p>Using the log-loss as formulated above, this turns into</p>
-<p>$$F_0(x) = \underset{\gamma}{\text{argmin}}\sum_{i=1}^n \big(- y_i\cdot log\big(\sigma(\gamma)\big) - (1 - y_i)\cdot log\big(1 - \sigma(\gamma)\big)\big), $$</p>
+<p>$$F_0(x) = \underset{\gamma}{\text{argmin}}\sum_{i=1}^n \big(- y_i\cdot \log\big(\sigma(\gamma)\big) - (1 - y_i)\cdot \log\big(1 - \sigma(\gamma)\big)\big), $$</p>
 <p>The expression $\underset{\gamma}{\textit{argmin}}$ refers to finding the value $\gamma$ which minimizes the equation. To find a minimum, we need to set the derivative equal to $0$. Let&rsquo;s calculate the derivative with respect to $\gamma$.</p>
-<p>$$\frac{\delta}{\delta \gamma} \sum_{i=1}^n L = \frac{\delta}{\delta \gamma}\sum_{i=1}^n\Big( - y_i\cdot log\big(\sigma(\gamma)\big) - (1 - y_i)\cdot log\big(1 - \sigma(\gamma)\big) \Big).$$</p>
+<p>$$\frac{\delta}{\delta \gamma} \sum_{i=1}^n L = \frac{\delta}{\delta \gamma}\sum_{i=1}^n\Big( - y_i\cdot \log\big(\sigma(\gamma)\big) - (1 - y_i)\cdot \log\big(1 - \sigma(\gamma)\big) \Big).$$</p>
 <p>To calculate this derivative, we need to use the <a href="https://en.wikipedia.org/wiki/Chain_rule">chain rule</a> and we need to remember the <a href="https://www.cuemath.com/calculus/derivative-of-log-x/">derivative of the logarithm</a>, which is.</p>
 <p>$$\frac{d}{dz} \log(z) = \frac{1}{z}$$</p>
 <p>together with the chain rule</p>
-<p>$$\frac{d}{dz} log(f(z)) = \frac{1}{f(z)} f&rsquo;(z).$$</p>
+<p>$$\frac{d}{dz} \log(f(z)) = \frac{1}{f(z)} f&rsquo;(z).$$</p>
 <p>Note, that this is the derivative of the natural logarithm. If the logarithm is to a different base the derivative changes. Further, we need the derivative of the sigmoid function, which is</p>
 <p>$$\sigma\prime(z) = \sigma(z)\cdot(1 - \sigma(z)).$$</p>
 <p>The derivation of this equation can be found <a href="http://localhost:1313/posts/deep_learning/backpropagation/#appendix">here</a>.</p>
@@ -245,7 +245,7 @@ MathJax = {
 <p>$$\frac{\delta}{\delta \gamma} \sum_{i=1}^n L = \sum_{i=1}^n\Big(- y_i \frac{1}{\sigma(\gamma)}\sigma(\gamma)\big(1 - \sigma(\gamma)\big) - (1 - y_i)\frac{1}{1 - \sigma(\gamma)}\big(-\sigma(\gamma)(1 - \sigma(\gamma) \big)\Big).$$</p>
 <p>This can be simplified to</p>
 <p>$$\frac{\delta}{\delta \gamma} \sum_{i=1}^n L = \sum_{i=1}^n\Big(- y_i(1 - \sigma(\gamma)) + (1 - y_i) \sigma(\gamma)\Big)$$
-$$\frac{\delta}{\delta \gamma} \sum_{i=1}^n L = \sum_{i=1}^n\Big(- y_i + y_i \sigma(\gamma)) + \sigma(\gamma) - y_i \sigma(\gamma)\Big)$$
+$$\frac{\delta}{\delta \gamma} \sum_{i=1}^n L = \sum_{i=1}^n\Big(- y_i + y_i \sigma(\gamma) + \sigma(\gamma) - y_i \sigma(\gamma)\Big)$$
 $$\frac{\delta}{\delta \gamma} \sum_{i=1}^n L = \sum_{i=1}^n\Big(\sigma(\gamma) - y_i\Big).$$</p>
 <p>Now we set the derivative to $0$ to find the minimum</p>
 <p>$$0 = \sum_{i=1}^n\Big(\sigma(\gamma) - y_i\Big).$$</p>
@@ -253,7 +253,7 @@ $$\frac{\delta}{\delta \gamma} \sum_{i=1}^n L = \sum_{i=1}^n\Big(\sigma(\gamma) 
 <p>$$\sum_{i=1}^n\sigma(\gamma) = \sum_{i=1}^n y_i.$$</p>
 <p>$$n\sigma(\gamma) = \sum_{i=1}^n y_i.$$</p>
 <p>$$\sigma(\gamma) = \frac{1}{n}\sum_{i=1}^n y_i.$$</p>
-<p>The right-hand site of this equation corresponds to the propapility of the positive class $p = \frac{1}{n}\sum_{i=1}^n y_i$. Using $\sigma(\gamma) = \frac{1}{1 + e^{-\gamma}}$, we get</p>
+<p>The right-hand side of this equation corresponds to the probability of the positive class $p = \frac{1}{n}\sum_{i=1}^n y_i$. Using $\sigma(\gamma) = \frac{1}{1 + e^{-\gamma}}$, we get</p>
 <p>$$p = \frac{1}{1 + e^{-\gamma}}$$
 $$\frac{1}{p} = 1 + e^{-\gamma}$$
 $$e^{-\gamma} = \frac{1}{p} - 1.$$</p>
@@ -264,7 +264,7 @@ $$-\gamma = \log\Big(\frac{1-p}{p}\Big).$$</p>
 <p>$$\gamma = \log\Big(\frac{p}{1-p}\Big).$$</p>
 <p>The last transformation is explained in more detail in the <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification/#appendix">appendix</a>.</p>
 <p><strong>This expression refers to the <em>log of the odds</em> of the target variable, which is used to initialize the model for the specific case of a binary classification.</strong></p>
-<p>The next step is performed $M$ times, in which $M$ refers to the number of weak learners used.</p>
+<p>The next step is performed $M$ times, where $M$ refers to the number of weak learners used.</p>
 <h4 id="step-2---for-m--1-to-m">Step 2 - for $m = 1$ to $M$</h4>
 <h4 id="2a-compute-pseudo-residuals-of-the-predictions-and-the-true-values">2A. Compute (pseudo-)residuals of the predictions and the true values.</h4>
 <p>The (pseudo-) residuals are defined as
@@ -272,7 +272,7 @@ $$-\gamma = \log\Big(\frac{1-p}{p}\Big).$$</p>
 <p>for  $i = 1, \dots, n$.</p>
 <p>That is we need to calculate the derivative of the loss function with respect to the predictions.</p>
 <p>With the loss function $L(y_i, p_i)$ defined above, where $p$ are the probabilities after applying the sigmoid function, $p_i= \sigma\big(F_{m-1}(x_i)\big) = \sigma(y_i)$, this turns into</p>
-<p>$$r_{im} = -\frac{\delta L(y_i, p_i)}{\delta \gamma}$$</p>
+<p>$$r_{im} = -\frac{\delta L(y_i, p_i)}{\delta \gamma}.$$</p>
 <p>To calculate this derivative we need to use the chain-rule</p>
 <p>$$\frac{\delta L}{\delta \gamma} = \frac{\delta L}{\delta p_i}\frac{\delta p_i}{\delta \gamma}.$$</p>
 <p>We calculate the first derivative $\frac{\delta L}{\delta p_i}$.</p>
@@ -297,15 +297,15 @@ $$r_{im} = y_i^{m-1} - p_i^{m-1}$$</p>
 <p>$$\gamma_m = \underset{\gamma}{\text{argmin}}\sum_{i=1}^nL(y_i, F_{m-1}(x_i) + \gamma h_m(x_i)), (2a)$$</p>
 <p>where $h_m(x_i)$ is the just fitted model (weak learner) at $x_i$ needs to be solved. The derivation for the special case of Decision Trees can be rewritten as</p>
 <p>$$h(x_i) = \sum_{j=1}^{J_m} b_{jm} 1_{R_{jm}}(x), (2b)$$</p>
-<p>where $J_m$ is the number of leaves or terminal nodes of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called <em>regions</em>. The regions refer to the terminal nodes of the Decision Tree. We use a pruned Decision Tree, that is the terminal nodes will very likely contain several different samples. The prediction for each region $j$ is denoted as $b_{jm}$ in the above equation. We will have a look at how these predictions are determined in a bit. The formulation is illustrated in the following plot, which should make the concept of the <em>regions</em> clearer.</p>
+<p>where $J_m$ is the number of leaves or terminal nodes of the tree, and $R_{1m}, \dots R_{J_{m}m}$ are so-called <em>regions</em>. The regions refer to the terminal nodes of the Decision Tree. We use a pruned Decision Tree, that is the terminal nodes will very likely contain several different samples. The prediction for each region $j$ is denoted as $b_{jm}$ in the above equation. We will look at how these predictions are determined in a bit. The formulation is illustrated in the following plot, which should make the concept of the <em>regions</em> clearer.</p>
 <p><img src="/images/gradient_boosting/gb_terminology.png" alt="Gradient Boosting Terminology">
 <em>Terminology for Gradient Boosting with Decision Trees.</em></p>
-<p>Now, let&rsquo;s consider the predictions $b_{jm}$ of each region $j$. In a regression problem, the final prediction is determined as the mean of the individual samples in each leaf (region). For a classification problem, this is a bit different. One possibility would be to use the majority class, that is the class that appears mostly in each leaf. However, for Gradient Boosting usually, a different method is chosen, which is the weighted average of the samples in each leaf (region). In this case, in which we predict the residuals, this defined as</p>
+<p>Now, let&rsquo;s consider the predictions $b_{jm}$ of each region $j$. In a regression problem, the final prediction is determined as the mean of the individual samples in each leaf (region). For a classification problem, this is a bit different. One possibility would be to use the majority class, that is the class that appears mostly in each leaf. However, for Gradient Boosting usually, a different method is chosen, which is the weighted average of the samples in each leaf (region). In this case, in which we predict the residuals, this is defined as</p>
 <p>$b_{jm} =\frac{\sum_{i\in R_{jm}} r_{im}}{|R_{jm}|}, (2c)$</p>
 <p>with $|R_{jm}|$ the number of samples in $R_{jm}$, and $r_{im}$ the residual for sample $i$.</p>
-<p>Coming back to equation (2a), we aim to find $\gamma_m$ that minimizes the loss function. As explained in <a href="https://en.wikipedia.org/wiki/Gradient_boosting">Wikipdia</a> [1] and <a href="https://statweb.stanford.edu/~jhf/ftp/trebst.pdf">Friedman (1999)</a> [2] for a Decision Tree as underlying model, this step is a bit modifed. Individual optimal values $\gamma_{jm}$ for each region $j$ are chosen, instead of a single $\gamma_{m}$ for the whole tree. The coefficients $b_{jm}$ can be then discarded and equation (2a) can be rewritten as</p>
+<p>Coming back to equation (2a), we aim to find $\gamma_m$ that minimizes the loss function. As explained in <a href="https://en.wikipedia.org/wiki/Gradient_boosting">Wikipedia</a> [1] and <a href="https://statweb.stanford.edu/~jhf/ftp/trebst.pdf">Friedman (1999)</a> [2] for a Decision Tree as an underlying model, this step is a bit modified. Individual optimal values $\gamma_{jm}$ for each region $j$ are chosen, instead of a single $\gamma_{m}$ for the whole tree. The coefficients $b_{jm}$ can then be discarded and equation (2a) can be rewritten as</p>
 <p>$$\gamma_{jm} = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma).$$</p>
-<p>Note, that the sumation is only over the elements of the region. Using the log-loss $L\big(y_i, p\big) = - y_i\cdot \log p - (1 - y_i)\cdot \log\big(1 - p\big)$, equation (2a) converts into</p>
+<p>Note, that the summation is only over the elements of the region. Using the log-loss $L\big(y_i, p\big) = - y_i\cdot \log p - (1 - y_i)\cdot \log\big(1 - p\big)$, equation (2a) converts into</p>
 <p>$$\gamma_{jm} = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} L\big(y_i, p_i\big) = \underset{\gamma}{\text{argmin}}\sum_{x_i \in R_{jm}} \Big(- y_i\cdot \log p_i - (1 - y_i)\cdot \log\big(1 - p_i\big)\Big),$$</p>
 <p>with $p_i = \sigma \big(F_{m-1}(x_i)\big).$</p>
 <p>To solve for this we would need to calculate the derivative with respect to $\gamma$ and set it to $0$. Here it becomes a bit more complex than in the case of a regression problem. We are not going into detail here, but the solution of this optimization problem is usually approximated by</p>
@@ -322,10 +322,10 @@ $$r_{im} = y_i^{m-1} - p_i^{m-1}$$</p>
 <p><img src="/images/gradient_boosting/gradient_boosting_class.png" alt="Gradient Boosting for Classification">
 <em>Gradient Boosting Algorithm simplified for a binary classification task.</em></p>
 <h2 id="gradient-boosting-in-python">Gradient Boosting in Python</h2>
-<p>To perform gradient boosting for classification in Python, we can use <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">sklearn</a>. The <em>GradientBoostingClassifer</em> method can be used for binary and multiple classification tasks. The weak learners in sklearn are Decision Trees and cannot be changed. Let&rsquo;s consider a simple dataset, consiting of 10 data samples. It is the same dataset we use in <a href="http://localhost:1313/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>.</p>
+<p>To perform gradient boosting for classification in Python, we can use <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">sklearn</a>. The <em>GradientBoostingClassifer</em> method can be used for binary and multiple classification tasks. The weak learners in sklearn are Decision Trees and cannot be changed. Let&rsquo;s consider a simple dataset, consisting of 10 data samples. It is the same dataset we use in <a href="http://localhost:1313/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>.</p>
 <p><img src="/images/gradient_boosting/gb_class_data.png" alt="gradient boosting class data">
 <em>Dataset considered in this example</em></p>
-<p>In Python we can read this data as a pandas dataframe.</p>
+<p>In Python we can read this data into a pandas dataframe.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
@@ -373,7 +373,7 @@ $$r_{im} = y_i^{m-1} - p_i^{m-1}$$</p>
 </span></span><span style="display:flex;"><span>clf<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>To make the predictions and calculate the score, which in this case is the mean accuracy of all samples, we can also use sklearn</p>
+</div><p>To make the predictions and calculate the score, which in this case is the mean accuracy of all samples, we can also use sklearn.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
@@ -386,7 +386,7 @@ $$r_{im} = y_i^{m-1} - p_i^{m-1}$$</p>
 </div>
 </div><p>For this simplified example, we receive the predictions $[0, 1, 0, 0, 0, 1, 0, 1, 0, 1]$ and a score of $0.9$.</p>
 <h2 id="summary">Summary</h2>
-<p>In this article, we discussed the Gradient Boosting algorithm for the special case of a binary classification. Gradient Boosting is a powerful ensemble learning method, which is in general based on Decision Trees, however, other weak learners are possible. In this case, the optimization of the loss function is approximated, in contrast to the Gradient Boosting for regression algorithm, where an analytical solution can be found relatively easily. In practice, <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">sklearn</a> can be used to develop and evaluate Gradient Boosting models in Python. For a more detailed example in Python on a larger dataset, please refer to this notebook on [kaggle](<a href="https://www.kaggle.com/code/pumalin/gradient-boosting-tutorial">kaggle</a>, which however describes a regression problem. Adjusting the model and the evaluation metric the application to a classification problem is similar.</p>
+<p>In this article, we discussed the Gradient Boosting algorithm for the special case of a binary classification. Gradient Boosting is a powerful ensemble learning method, which is in general based on Decision Trees. However, other weak learners are possible. In this case, the optimization of the loss function is approximated, in contrast to the Gradient Boosting for regression algorithm, where an analytical solution can be found relatively easily. In practice, <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">sklearn</a> can be used to develop and evaluate Gradient Boosting models in Python. For a more detailed example in Python on a larger dataset, please refer to this notebook on <a href="https://www.kaggle.com/code/pumalin/gradient-boosting-tutorial">kaggle</a>, which describes a regression problem. Adjusting the model and the evaluation metric the application to a classification problem is similar.</p>
 <h2 id="appendix">Appendix</h2>
 <p>Derive $-log\big(\frac{x}{y}\big) = log\big(\frac{y}{x}\big)$:</p>
 <p>$$-log \big(\frac{x}{y}\big) = - \big(log(x) - log(y)\big) = log(y) - log(x) = log\big(\frac{y}{x}\big)$$</p>
