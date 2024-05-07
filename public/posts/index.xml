@@ -48,7 +48,7 @@
       <link>http://localhost:1313/posts/ml_concepts/loss_functions/</link>
       <pubDate>Sun, 04 Feb 2024 18:57:51 -0300</pubDate>
       <guid>http://localhost:1313/posts/ml_concepts/loss_functions/</guid>
-      <description>Introduction In Machine Learning Loss Functions are used to evaluate the model. They compare the true target values with the predicted ones and are directly related to the error of the predictions. During the training of a model, the Loss Function is aimed to be optimized to minimize the error of the predictions. It is a general convention to define a Loss Function such that it is minimized rather than maximized.</description>
+      <description>Introduction In Machine Learning loss functions are used to evaluate the model. They compare the true target values with the predicted ones and are directly related to the error of the predictions. During the training of a model, the loss function is aimed to be optimized to minimize the error of the predictions. It is a general convention to define a loss function such that it is minimized rather than maximized.</description>
     </item>
     <item>
       <title>Gradient Boost for Regression - Explained</title>

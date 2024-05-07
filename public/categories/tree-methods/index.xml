@@ -34,7 +34,7 @@
       <link>http://localhost:1313/posts/classical_ml/gradient_boosting_regression/</link>
       <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
       <guid>http://localhost:1313/posts/classical_ml/gradient_boosting_regression/</guid>
-      <description>Introduction Gradient Boosting, also called Gradient Boosting Machine (GBM) is a type of supervised Machine Learning algorithm that is based on ensemble learning. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post we introduce the algorithm and then explain it in detail for a regression task. We will have a look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the Mean Squared Error (MSE) as loss function.</description>
+      <description>Introduction Gradient Boosting, also called Gradient Boosting Machine (GBM) is a type of supervised Machine Learning algorithm that is based on ensemble learning. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post, we introduce the algorithm and then explain it in detail for a regression task. We will look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the Mean Squared Error (MSE) as loss function.</description>
     </item>
     <item>
       <title>Adaboost for Regression - Example</title>

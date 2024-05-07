@@ -10,30 +10,30 @@ images = ['/images/loss_functions/loss_function.png']
 
 ## Introduction
 
-In Machine Learning Loss Functions are used to evaluate the model. They compare the true target values with the predicted ones and are directly related to the error of the predictions. During the training of a model, the Loss Function is aimed to be optimized to minimize the error of the predictions. It is a general convention to define a Loss Function such that it is minimized rather than maximized. The specific choice of a Loss Function depends on the problem we want to solve, e.g. whether a regression or a classification task is considered. In this article, we will discuss the most common ones, which work very well for a lot of tasks. We can, however, also create custom Loss Functions adapted for specific problems. Custom Loss Functions help to focus on the specific errors we aim to minimize. We will have a look at examples of custom Loss Functions later in this post. 
+In Machine Learning loss functions are used to evaluate the model. They compare the true target values with the predicted ones and are directly related to the error of the predictions. During the training of a model, the loss function is aimed to be optimized to minimize the error of the predictions. It is a general convention to define a loss function such that it is minimized rather than maximized. The specific choice of a loss function depends on the problem we want to solve, e.g. whether a regression or a classification task is considered. In this article, we will discuss the most common ones, which work very well for a lot of tasks. We can, however, also create custom loss functions adapted for specific problems. Custom loss functions help to focus on the specific errors we aim to minimize. We will look at examples of custom loss functions later in this post. 
 
 ![loss_function](/images/loss_functions/loss_function.png)
 
 **Terminology**
 
-The term *Loss Function* is most commonly used, however, sometimes it is also called *Error Function*.  The outcome of the Loss Function is called *Loss*. The Loss Function is applied to each sample of the dataset, it is related to the *Cost Function* (sometimes also called *Objective Function*), which is the average of all Loss Function values. The Cost Function is therefore a measure of how the model performs on the entire dataset, while the Loss Function evaluates the Loss for each sample. In practice, however, the terms *Loss Function* and *Cost Function* are often used interchangeably. 
+The term *Loss Function* is most commonly used, however, sometimes it is also called *Error Function*.  The outcome of the loss function is called *Loss*. The loss function is applied to each sample of the dataset, it is related to the *Cost Function* (sometimes also called *Objective Function*), which is the average of all loss function values. The cost function is therefore a measure of how the model performs on the entire dataset, while the loss function evaluates the loss for each sample. In practice, however, the terms *Loss Function* and *Cost Function* are often used interchangeably. 
 
 ## How are Loss Functions used in Machine Learning?
 
-Loss Functions can be used in different ways for **training and evaluating** a Machine Learning model. All Machine Learning models need to be evaluated with a metric to check how well the predictions fit the true values. These metrics can be considered as Cost Functions because they measure the performance of the entire dataset. Examples of such evaluation metrics are e.g. the [Mean Squared Error]({{< ref "regression_metrics#metrics" >}} "regression_metrics") for a regression task or the [Accuracy]({{< ref "classification_metrics#metrics" >}} "classification_metrics") for a classification task. More examples of common metrics can be found in the separate articles [Metrics for Classification Problems]({{< ref "classification_metrics">}} "classification_metrics") and [Metrics for Regression Problems]({{< ref "regression_metrics">}} "regression_metrics"). These, metrics however, are not necessarily based on the same Loss Function that is used during the training of a model. Depending on the underlying algorithm Loss Functions are used in different ways. 
+Loss functions can be used in different ways for **training and evaluating** a Machine Learning model. All Machine Learning models need to be evaluated with a metric to check how well the predictions fit the true values. These metrics can be considered as cost functions because they measure the performance of the entire dataset. Examples of such evaluation metrics are e.g. the [Mean Squared Error]({{< ref "regression_metrics#metrics" >}} "regression_metrics") for a regression task or the [Accuracy]({{< ref "classification_metrics#metrics" >}} "classification_metrics") for a classification task. More examples of common metrics can be found in the separate articles [Metrics for Classification Problems]({{< ref "classification_metrics">}} "classification_metrics") and [Metrics for Regression Problems]({{< ref "regression_metrics">}} "regression_metrics"). These metrics, however, are not necessarily based on the same loss function that is used during the training of a model. Depending on the underlying algorithm loss functions are used in different ways. 
 
-For [Decision Trees]({{< ref "decision_trees">}} "decision_trees"), Loss Functions are used to guide the construction of the tree. For classification usually the Gini-Impurity or Entropy is used as Loss Function and for regression tasks the Sum of Squared Errors. These Losses are minimized at each split of the tree. We can therefore say, that in a Decision Tree at each split the local minimum of the Loss Function is calculated. Decision Trees follow a so-called [greedy search](https://en.wikipedia.org/wiki/Greedy_algorithm) and assume that the sequence of locally optimal solutions leads to a globally optimal solution. In other words, they assume by choosing the lowest Loss (error) at each split, the overall Loss (error) of the model is also minimized. This assumption, however, does not always hold.
+For [Decision Trees]({{< ref "decision_trees">}} "decision_trees"), loss functions are used to guide the construction of the tree. For classification usually the Gini-Impurity or Entropy is used as loss function and for regression tasks the Sum of Squared Errors. These losses are minimized at each split of the tree. We can therefore say, that in a Decision Tree at each split the local minimum of the loss function is calculated. Decision Trees follow a so-called [greedy search](https://en.wikipedia.org/wiki/Greedy_algorithm) and assume that the sequence of locally optimal solutions leads to a globally optimal solution. In other words, they assume by choosing the lowest loss (error) at each split, the overall loss (error) of the model is also minimized. This assumption, however, does not always hold.
 
-Other Machine Learning models, like e.g. [Gradient Boosting]({{< ref "gradient_boosting_regression">}} "gradient_boosting") or [Neural Networks]({{< ref "/posts/deep_learning/intro_dl.md">}} "neural_net"), use a global Loss Function to optimize the results. The Loss Functions are depending on the model's parameters because the predictions are calculated based on these parameters. In a Neural Network, these parameters are the weights and the biases. During the training of such models, we aim to change these parameters in such a way that the Loss (error) between the true values and the predicted values is minimized. That is we aim to minimize the Loss Function. This is an iterative process. To approximate the minimum of a function numerically different optimization techniques exist. The most popular one is [Gradient Descent]({{< ref "/posts/ml_concepts/gradient_descent.md">}} "gradient_descent") or a variant of it. The main idea is to use the negative of the gradient of a function at a specific point to find the direction of the steepest descent to move into the direction of the minimum. That is why for such types of models, the Loss Function needs to be differentiable. Small steps in the direction of the minimum are taken in each training step. The parameters of the model are then updated using the gradient of the Loss Function. The process is illustrated in the following plot. For a more detailed explanation, please refer to the separate article about [Gradient Descent]({{< ref "gradient_descent">}} "gradient_descent").
+Other Machine Learning models, like e.g. [Gradient Boosting]({{< ref "gradient_boosting_regression">}} "gradient_boosting") or [Neural Networks]({{< ref "/posts/deep_learning/intro_dl.md">}} "neural_net"), use a global loss function to optimize results. The loss functions depend on the model's parameters because the predictions are calculated based on these parameters. In a Neural Network, these parameters are the weights and the biases. During the training of such models, we aim to change these parameters such that the loss (error) between the true values and the predicted values is minimized. That is we aim to minimize the loss function. This is an iterative process. To approximate the minimum of a function numerically different optimization techniques exist. The most popular one is [Gradient Descent]({{< ref "/posts/ml_concepts/gradient_descent.md">}} "gradient_descent") or a variant of it. The main idea is to use the negative of the gradient of a function at a specific point to find the direction of the steepest descent to move into the direction of the minimum. That is why for such types of models, the loss function needs to be differentiable. Small steps in the direction of the minimum are taken in each training step. The parameters of the model are then updated using the gradient of the loss function. The process is illustrated in the following plot. For a more detailed explanation, please refer to the separate article about [Gradient Descent]({{< ref "gradient_descent">}} "gradient_descent").
 
 ![ai_ml_dl](/images/20231102_ai_ml_dl/gradient_descent.gif)
 *Ilustration of Gradient Descent.*
 
-During the training process the Loss is calculated after each training step. If the Loss is decreasing, we know that the model is improving, while when it is increasing we know that is not. The Loss thus guides the model into the correct direction. Note, in contrast to Decision Trees the Loss is not calculated locally for a specific region, but globally. 
+During the training process, the loss is calculated after each training step. If the loss decreases, we know that the model is improving, while when it increases we know that is not. The loss thus guides the model in the correct direction. Note, in contrast to Decision Trees the Loss is not calculated locally for a specific region, but globally. 
 
 ## Examples
 
-The choice of the Loss Function used depends on the problem we are considering. Especially, we can divide them into two types. Loss Functions for regression tasks and Loss Functions for classification tasks. In a regression task, we aim to predict continuous values as closely as possible (e.g. a price), while in a classification task, we aim to predict the probability of a category (e.g. a grade). In the following, we will discuss the most commonly used Loss Functions for each case, and also define a customized Loss Function. 
+The choice of the loss function used depends on the problem we are considering. Especially, we can divide them into two types. Loss functions for regression tasks and loss functions for classification tasks. In a regression task, we aim to predict continuous values as closely as possible (e.g. a price), while in a classification task, we aim to predict the probability of a category (e.g. a grade). In the following, we will discuss the most commonly used loss functions for each case, and also define a customized loss function. 
 
 ### Loss Functions for Regression Tasks{#loss_reg}
 
@@ -43,7 +43,7 @@ The [Mean Absolute Error (MAE)]({{< ref "/posts/ml_concepts/regression_metrics.m
 
 $$L(y_i, \hat{y}_i) = |y_i - \hat{y}_i|,$$
 
-and accordingly ththe cost function over all samples
+and accordingly the cost function over all samples
 
 $$f(y, \hat{y}) = \frac{1}{N} \sum_{i=1}^N |y_i - \hat{y}_i|,$$
 
@@ -57,7 +57,7 @@ The [Mean Squared Error (MSE)]({{< ref "/posts/ml_concepts/regression_metrics.md
 
 $$L(y_i, \hat{y}_i) = (y_i - \hat{y}_i)^2,$$
 
-and accordingly th ecost function over all samples
+and accordingly the cost function over all samples
 
 $$f(y, \hat{y}) = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^2,$$
 
@@ -93,7 +93,7 @@ with $\delta$ a hyperparameter, that specifies from which point the loss should 
 
 **Log-Cosh-Loss**
 
-The Log-Cosh-Loss is very similar to the Huber loss. It also combines the advantages of both MSE and MAE. From the formula this is not as obvious as for the Huber Loss, but it can be shown, that the Logcosh approximates a quadratic function, when the independent variable goes to zero and a linear function, when it goes to infinity [1].
+The Log-Cosh-Loss is very similar to the Huber loss. It also combines the advantages of both MSE and MAE. From the formula, this is not as obvious as for the Huber loss, but it can be shown, that the Logcosh approximates a quadratic function when the independent variable goes to zero and a linear function when it goes to infinity [1].
 
 $$L(y, \hat{y}) = \sum_{i=1}^N \log (\cosh (\hat{y}_i - y_i))$$
 
@@ -108,17 +108,17 @@ There are of course much more loss functions for regression tasks, the ones list
 
 ### Loss Functions for Classification Tasks{#loss_class}
 
-As for regression tasks, in classification, we use Loss Functions to measure the error our model makes. The difference however is, that in this case, we don't have continuous target values, but categorical classes and the predictions of our model are probabilities.
+As for regression tasks, in classification, we use loss functions to measure the error our model makes. The difference however is, that in this case, we don't have continuous target values, but categorical classes and the predictions of our model are probabilities.
 
 **(Binary-)Cross Entropy**
 
-*(Binary-)Cross Entropy* is the most used Loss for classification problems. To explain *Cross Entropy*, we start with the special case of having two classes, i.e. a binary classification. The Cross Entropy then turns into *Binary Cross Entropy (BCE)*, which is also often called *Log Loss*. 
+*(Binary-)Cross Entropy* is the most used loss for classification problems. To explain *Cross Entropy*, we start with the special case of having two classes, i.e. a binary classification. The Cross Entropy then turns into *Binary Cross Entropy (BCE)*, which is also often called *Log Loss*. 
 
 The mathematical formulation of the Cost Function is as follows 
 
 $$L(y, \hat{y}) = -\frac{1}{N}\sum_{i=1}^N{\Big(y_i\log(\hat{y}_i) + (1 - y_i)\log(1 - \hat{y}_i)\Big)},$$
 
-with $y = (y_1, \dots, y_N)$ the true label ($0$ or $1$) and $\hat{y} = (\hat{y}_1, \dots, \hat{y}_N)$ the predicted probability. To understand how Binary Cross Entropy works, let's consider just one sample. That means we can forget the outer sum over $i$ and get the Loss Function
+with $y = (y_1, \dots, y_N)$ the true label ($0$ or $1$) and $\hat{y} = (\hat{y}_1, \dots, \hat{y}_N)$ the predicted probability. To understand how Binary Cross Entropy works, let's consider just one sample. That means we can forget the outer sum over $i$ and get the loss function
 
 $$L(y_i, \hat{y}_i) = -y_i\log(\hat{y}_i) - (1 - y_i)\log(1 - \hat{y}_i).$$
 
@@ -165,21 +165,21 @@ We can also define an assymentric Loss that penalizes more negative values than 
 
 ![asym_loss](/images/loss_functions/asym_loss_klein.png)
 
-in both cases with $\hat{y} = (y_1, \dots, y_N)$ the predicted value and $y = (y_1, \dots, y_N)$ the true values. Customized Loss Functions may help our model to learn. These were two examples for regression tasks, custom Loss Functions can however also be created for classification tasks.
+in both cases with $\hat{y} = (y_1, \dots, y_N)$ the predicted value and $y = (y_1, \dots, y_N)$ the true values. Customized loss functions may help our model to learn. These were two examples for regression tasks, custom loss functions can however also be created for classification tasks.
 
 ![custom_loss](/images/loss_functions/custom_loss.png)
 *Two examples of custom Loss Functions.*
 
 ## Specific Machine Learning Models and their Loss Functions
 
-Some Machine Learning algorithms have a fixed Loss Function, while others are flexible and the Loss Function can be adapted to the specific task. The following table gives a (non-exhaustive) overview of some popular Machine Learning Algorithms and their corresponding Loss Functions. Important to keep in mind is that the Loss Function needs to be differentiable if some form of [Gradient Descent]() is performed, e.g. in [Neural Networks]({{< ref "/posts/deep_learning/intro_dl.md">}}) or [Gradient Boosting]({{< ref "gradient_boosting_regression">}} "gradient_boosting").
+Some Machine Learning algorithms have a fixed loss function, while others are flexible and the loss function can be adapted to the specific task. The following table gives a (non-exhaustive) overview of some popular Machine Learning algorithms and their corresponding loss functions. Important to keep in mind is that the loss function needs to be differentiable if some form of [Gradient Descent]() is performed, e.g. in [Neural Networks]({{< ref "/posts/deep_learning/intro_dl.md">}}) or [Gradient Boosting]({{< ref "gradient_boosting_regression">}} "gradient_boosting").
 
 ![loss_functions_examples](/images/loss_functions/loss_functions_examples.png)
 *Examples for Machine Learning models and their Loss Functions.*
 
 ## Summary
 
-Loss Functions are used to evaluate a model and to analyze if it is learning. We discussed typical Loss Functions for regression and classification tasks and also saw two examples of customized Loss Functions. Choosing an appropriate Loss Function is very important because it is used to evaluate and improve the model performance. It should thus reflect well the metric that is important for the project so that errors are minimized accordingly. 
+Loss functions are used to evaluate a model and to analyze if it is learning. We discussed typical loss functions for regression and classification tasks and also saw two examples of customized loss functions. Choosing an appropriate loss function is very important because it is used to evaluate and improve the model performance. It should thus reflect well the metric that is important for the project so that errors are minimized accordingly. 
 
 ## Further Reading
 
