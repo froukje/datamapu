@@ -6,7 +6,7 @@
     
     <title>Backpropagation Step by Step | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, the last one will only illustrate the equations that need to be calculated.">
+    <meta name="description" content="Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, for the last one we will only illustrate the equations that need to be calculated.">
     <meta name="generator" content="Hugo 0.125.6">
     
     
@@ -33,7 +33,7 @@
     
     <meta property="og:url" content="http://localhost:1313/posts/deep_learning/backpropagation/">
   <meta property="og:title" content="Backpropagation Step by Step">
-  <meta property="og:description" content="Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, the last one will only illustrate the equations that need to be calculated.">
+  <meta property="og:description" content="Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, for the last one we will only illustrate the equations that need to be calculated.">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -47,14 +47,14 @@
     <meta property="og:image" content="http://localhost:1313/images/backpropagation/backpropagation_main.png">
 
   <meta itemprop="name" content="Backpropagation Step by Step">
-  <meta itemprop="description" content="Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, the last one will only illustrate the equations that need to be calculated.">
+  <meta itemprop="description" content="Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, for the last one we will only illustrate the equations that need to be calculated.">
   <meta itemprop="datePublished" content="2024-03-31T20:21:50-03:00">
   <meta itemprop="dateModified" content="2024-03-31T20:21:50-03:00">
-  <meta itemprop="wordCount" content="2636">
+  <meta itemprop="wordCount" content="2637">
   <meta itemprop="image" content="http://localhost:1313/images/backpropagation/backpropagation_main.png">
   <meta itemprop="keywords" content="Backpropagation,Data Science,Machine Learning,Artificial Intelligence,Deep Learning"><meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://localhost:1313/images/backpropagation/backpropagation_main.png"><meta name="twitter:title" content="Backpropagation Step by Step">
-<meta name="twitter:description" content="Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, the last one will only illustrate the equations that need to be calculated.">
+<meta name="twitter:description" content="Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, for the last one we will only illustrate the equations that need to be calculated.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -209,20 +209,20 @@ MathJax = {
       
       
         <span class="f6 mv4 dib tracked"> - 13 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 2636 words </span>
+        <span class="f6 mv4 dib tracked"> - 2637 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
-<p>A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that <em>Backpropagation</em> is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, the last one will only illustrate the equations that need to be calculated. We will not go into the general formulation of the backpropagation algorithm, but will give some further readings at the end.</p>
+<p>A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that <em>Backpropagation</em> is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, for the last one we will only illustrate the equations that need to be calculated. We will not go into the general formulation of the backpropagation algorithm but will give some further readings at the end.</p>
 <p><img src="/images/backpropagation/backpropagation_main.gif" alt="backpropagation"></p>
-<p>This post is quite long because of the detailed examples. In case you want to skip some parts, this is the content.</p>
+<p>This post is quite long because of the detailed examples. If you want to skip some parts, these are the links to the examples.</p>
 <ul>
 <li><a href="#one_neuron" title="one_neuron">1. Example: One Neuron</a></li>
 <li><a href="#two_neurons" title="two_neurons">2. Example: Two Neurons</a></li>
 <li><a href="#two_neurons_layer" title="two_neurons_layer">3. Example: Two Neurons in a Layer</a></li>
 </ul>
 <p><strong>Main Concepts of Training a Neural Net</strong></p>
-<p>Before starting with the first example, let&rsquo;s quickly go through the main ideas of the training process of a neural net. The first thing we need, when we want to train a neural net is the <em>training data</em>. The training data consists of pairs of <em>inputs</em> and <em>labels</em>. The inputs are also called <em>features</em> and are usually written as $X = (x_1, \dots, x_n)$, with $n$ the number of data samples. The labels are the expected outcomes - or true values - and they are usually denoted as $y = (y_1, \dots, y_n)$. Training a neural net is an iterative process over a certain number of <em>epochs</em>. In each epoch, the training data is processed through the network in a so-called <em>forward pass</em>, which results in the model output. Then the error - <em>loss</em> - of model output compared to the true values is calculated to evaluate the model. Finally, in the backward pass - the <em>backpropagation</em> - <a href="http://localhost:1313/posts/ml_concepts/gradient_descent/" title="gradient_descent">Gradient Descent</a> is used to update the model parameters and reduce the loss. Note, that in practice, generally no pure gradient descent is used, but a variant of it. However, for illustration purposes we will use gradient descent in this post. Important to understand is that some optimization algorithm is used to update the weights and biases. For a general and more detailed introduction to Deep Learning terms and concepts, please refer to <a href="http://localhost:1313/posts/deep_learning/intro_dl/" title="intro_dl">Introduction to Deep Learning</a>.</p>
+<p>Before starting with the first example, let&rsquo;s quickly go through the main ideas of the training process of a neural net. The first thing we need, when we want to train a neural net is the <em>training data</em>. The training data consists of pairs of <em>inputs</em> and <em>labels</em>. The inputs are also called <em>features</em> and are usually written as $X = (x_1, \dots, x_n)$, with $n$ the number of data samples. The labels are the expected outcomes - or true values - and they are usually denoted as $y = (y_1, \dots, y_n)$. Training a neural net is an iterative process over a certain number of <em>epochs</em>. In each epoch, the training data is processed through the network in a so-called <em>forward pass</em>, which results in the model output. Then the error - <em>loss</em> - of model output compared to the true values is calculated to evaluate the model. Finally, in the backward pass - the <em>backpropagation</em> - <a href="http://localhost:1313/posts/ml_concepts/gradient_descent/" title="gradient_descent">Gradient Descent</a> is used to update the model parameters and reduce the loss. Note, that in practice, generally no pure gradient descent is used, but a variant of it. We are not going into detail here, but important to understand is that some optimization algorithm is used to update the weights and biases. For a general and more detailed introduction to Deep Learning terms and concepts, please refer to <a href="http://localhost:1313/posts/deep_learning/intro_dl/" title="intro_dl">Introduction to Deep Learning</a>.</p>
 <p>If not mentioned differently, we use the following data, activation function, and loss throughout the examples of this post.</p>
 <p><strong>Training Data</strong></p>
 <p>We consider the most simple situation with one-dimensional input data and just one sample $x = 0.5$ and labels $y = 1$.</p>
@@ -236,9 +236,9 @@ MathJax = {
 <p>$$L(y, \hat{y}) = \frac{1}{2} (y - \hat{y})^2.$$</p>
 <h2 id="one_neuron">1. Example: One Neuron</h2>
 <p>To illustrate how backpropagation works, we start with the most simple neural network, which only consists of one single neuron.</p>
-<p><img src="/images/backpropagation/one_neuron.png" alt="one_neuron">
+<p><img src="/images/backpropagation/one_neuron_.png" alt="one_neuron">
 <em>Illustration of a Neural Network consisting of a single Neuron.</em></p>
-<p>In this simple neural net, $z(x) = w\cdot x + b$ represents the linear part of the neuron, $a$ the activation function, which we chose to be the sigmoid function, i.e. $a = \sigma(z) = \frac{1}{1 + e^{-z}}$. For the following calculations, we assume the initial weight $w = 0.3$ and the initial bias $b = 0.1$. Further, the learning rate is set to $\alpha = 0.1$. These values are chosen arbitrarily for illustration purposes.</p>
+<p>In this simple neural net, $z(x) = w\cdot x + b$ represents the linear part of the neuron and $a$ the activation function, which we chose to be the sigmoid function, i.e. $a = \sigma(z) = \frac{1}{1 + e^{-z}}$. For the following calculations, we assume the initial weight $w = 0.3$ and the initial bias $b = 0.1$. Further, the learning rate is set to $\alpha = 0.1$. These values are chosen arbitrarily for illustration purposes.</p>
 <p><strong>The Forward Pass</strong></p>
 <p>We can calculate the forward pass through this network as</p>
 <p>$$\hat{y} = \sigma(z)$$
@@ -251,7 +251,7 @@ $$\hat{y} = \frac{1}{1 + e^{-(wx+b)}}$$.</p>
 <p><img src="/images/backpropagation/one_neuron_forward.png" alt="one_neuron_forward">
 <em>Forward pass through the neural net.</em></p>
 <p><strong>The Backward Pass</strong></p>
-<p>To update the weight and the bias we use <a href="http://localhost:1313/posts/ml_concepts/gradient_descent/" title="gradient_descent">gradient descent</a>, that is</p>
+<p>To update the weight and the bias we use <a href="http://localhost:1313/posts/ml_concepts/gradient_descent/" title="gradient_descent">Gradient Descent</a>, that is</p>
 <p>$$w_{new} = w - \alpha \frac{\delta L}{\delta w}$$
 $$b_{new} = b - \alpha \frac{\delta L}{\delta b},$$</p>
 <p>with $\alpha = 0.1$ the learning rate. That is we need to calculate the partial derivatives of $L$ with respect to $w$ and $b$ to get the new weight and bias. This can be done using the chain rule and is illustrated in the plots below.</p>
@@ -265,7 +265,7 @@ $$\frac{\delta L}{\delta b} = \frac{\delta L }{\delta \hat{y}} \frac{\delta \hat
 $$\frac{\delta \hat{y}}{\delta z} = \frac{\delta}{\delta z} \sigma(z) = \sigma(z)\cdot \big(1 - \sigma(z)\big),$$
 $$\frac{\delta z}{\delta w} = \frac{\delta}{\delta w} (w\cdot x + b) = x,$$
 $$\frac{\delta z}{\delta b} = \frac{\delta}{\delta b} (w\cdot x + b) = 1.$$</p>
-<p>Please find the detailed calculation of the derivative of the sigmoid function in the appendix of this post.</p>
+<p>Please find the detailed calculation of the derivative of the sigmoid function in the <a href="#appendix">appendix</a> of this post.</p>
 <p>For the data we are considering, we get for the first equation</p>
 <p>$$\frac{\delta L}{\delta \hat{y}} = - (y - \hat{y}) = - (1.5 - 0.56) = -0.94.$$</p>
 <p>The second equation leads to
@@ -326,7 +326,7 @@ $$\hat{y} \approx \sigma(0.512) = \frac{1}{1 + e^{-0.512}} = 0.625.$$</p>
 <p>$$\frac{\delta a^{(2)}}{\delta z^{(2)}} = \frac{\delta}{\delta z^{(2)}} \sigma(z^{(2)}) = \sigma(z^{(2)}) \big(1- \sigma(z^{(2)})\big)$$</p>
 <p>$$\frac{\delta z^{(2)}}{\delta w^{(1)}} = \frac{\delta}{\delta w^{(1)}}w^{(1)} x + b^{(1)} = a^{(1)}$$</p>
 <p>$$\frac{\delta z^{(2)}}{\delta b^{(1)}} = \frac{\delta}{\delta b^{(1)}}w^{(1)} x + b^{(1)} = 1$$</p>
-<p>For the detailed development of the derivative of the sigmoid function, please check the appendix of this post.
+<p>For the detailed development of the derivative of the sigmoid function, please check the <a href="#appendix">appendix</a> of this post.
 With the values defined, we get for the first equation</p>
 <p>$$\frac{\delta L}{\delta \hat{y}} = -(y - \hat{y}) = -(1.5 - 0.625) = -0.875.$$</p>
 <p>For the second equation</p>

@@ -1,7 +1,7 @@
 +++
 title = 'Loss Functions in Machine Learning'
 date = 2024-02-04T18:57:51-03:00
-draft = true
+draft = false
 tags = ["Data Science", "Machine Learning", "Deep Learning"]
 categories = ["Data Science", "Machine Learning", "Deep Learning"]
 keywords = ["Data Science", "Machine Learning", "Deep Learning"]

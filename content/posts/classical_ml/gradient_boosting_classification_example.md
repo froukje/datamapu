@@ -1,7 +1,7 @@
 +++
 title = 'Gradient Boost for Classification Example'
 date = 2024-04-28T17:01:32-03:00
-draft = true
+draft = false
 tags = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Boosting", "Tree Methods", "Classification"]
 categories = ["Data Science", "Machine Learning", "Gradient Boosting", "Ensemble", "Boosting", "Tree Methods", "Classification"]
 keywords = ["Data Science", "Machine Learning", "Gradiend Boosting", "Ensemble", "Classification", "Tree Methods"]

@@ -41,14 +41,14 @@
       <link>http://localhost:1313/posts/deep_learning/backpropagation/</link>
       <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
       <guid>http://localhost:1313/posts/deep_learning/backpropagation/</guid>
-      <description>Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, the last one will only illustrate the equations that need to be calculated.</description>
+      <description>Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, for the last one we will only illustrate the equations that need to be calculated.</description>
     </item>
     <item>
       <title>Gradient Descent</title>
       <link>http://localhost:1313/posts/ml_concepts/gradient_descent/</link>
       <pubDate>Tue, 27 Feb 2024 20:55:28 -0300</pubDate>
       <guid>http://localhost:1313/posts/ml_concepts/gradient_descent/</guid>
-      <description>Introduction Gradient Descent is a mathematical optimization technique, which is used to find local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point.</description>
+      <description>Introduction Gradient Descent is a mathematical optimization technique, which is used to find the local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point.</description>
     </item>
     <item>
       <title>Loss Functions in Machine Learning</title>
@@ -202,7 +202,7 @@
       <link>http://localhost:1313/content/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/content/</guid>
-      <description>This blog about Data Science and Machine Learning recently started and it will be built further.&#xA;The next entries are planned about Gradient Boosting and will be online in May 2024.&#xA;If you&amp;rsquo;d like to get an e-mail each time a new post gets published, give feedback or ideas about interesting topics that should be covered in this blog, write an e-mail to contact.datamapu@gmail.com or connect via LinkedIn or twitter.</description>
+      <description>This blog about Data Science and Machine Learning recently started and it will be built further.&#xA;If you&amp;rsquo;d like to get an e-mail each time a new post gets published, give feedback or ideas about interesting topics that should be covered in this blog, write an e-mail to contact.datamapu@gmail.com or connect via LinkedIn or twitter.&#xA;This is what you can already find here:&#xA;Data Science Concepts The Data Science Lifecycle Supervised versus Unsupervised Learning Metrics for Classification Problems Metrics for Regression Problems Feature Selection Methods Bias and Variance Ensemble Models - Illustrated Loss Functions in Machine Learning Gradient Descent Classical Machine Learning Linear Regression Linear Regression - Analytical Solution &amp;amp; Example Logistic Regression Decision Trees - Explained Decision Trees for Classification - Example Decision Trees for Regression - Example Random Forests - Explained AdaBoost - Explained AdaBoost for Classification - Example AdaBoost for Regression - Example Gradient Boost for Regression - Explained Gradient Boost for Regression - Example Gradient Boost for Classification - Explained Gradient Boost for Classification - Example Deep Learning Introduction to Deep Learning Backpropagation - Step by Step If this blog is useful for you, please consider supporting.</description>
     </item>
   </channel>
 </rss>
