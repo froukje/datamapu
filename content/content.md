@@ -46,7 +46,7 @@ This is what you can already find here:
 ## Deep Learning
 
 * [Introduction to Deep Learning]({{< ref "intro_dl.md" >}} "intro_dl.md")
-* [Backpropagation - Step by Step]({{< ref "backpropagation.md" >}} "backpropagation.md")
+* [Backpropagation - Step by Step]({{< ref "/posts/deep_learning/backpropagation.md" >}} "backpropagation.md")
 
 --- 
 If this blog is useful for you, please consider supporting.
