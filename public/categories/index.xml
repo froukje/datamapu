@@ -2,108 +2,108 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on </title>
-    <link>http://localhost:40185/categories/</link>
+    <link>http://localhost:1313/categories/</link>
     <description>Recent content in Categories on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Apr 2024 17:01:32 -0300</lastBuildDate>
-    <atom:link href="http://localhost:40185/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 May 2024 20:55:43 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Boosting</title>
-      <link>http://localhost:40185/categories/boosting/</link>
+      <link>http://localhost:1313/categories/boosting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/boosting/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Classification</title>
-      <link>http://localhost:40185/categories/classification/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/classification/</guid>
+      <guid>http://localhost:1313/categories/boosting/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Science</title>
-      <link>http://localhost:40185/categories/data-science/</link>
+      <link>http://localhost:1313/categories/data-science/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/data-science/</guid>
+      <guid>http://localhost:1313/categories/data-science/</guid>
       <description></description>
     </item>
     <item>
       <title>Ensemble</title>
-      <link>http://localhost:40185/categories/ensemble/</link>
+      <link>http://localhost:1313/categories/ensemble/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/ensemble/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Gradient Boosting</title>
-      <link>http://localhost:40185/categories/gradient-boosting/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/gradient-boosting/</guid>
+      <guid>http://localhost:1313/categories/ensemble/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine Learning</title>
-      <link>http://localhost:40185/categories/machine-learning/</link>
+      <link>http://localhost:1313/categories/machine-learning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/machine-learning/</guid>
+      <guid>http://localhost:1313/categories/machine-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Tree Methods</title>
-      <link>http://localhost:40185/categories/tree-methods/</link>
+      <link>http://localhost:1313/categories/tree-methods/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/tree-methods/</guid>
+      <guid>http://localhost:1313/categories/tree-methods/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Classification</title>
+      <link>http://localhost:1313/categories/classification/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/classification/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gradient Boosting</title>
+      <link>http://localhost:1313/categories/gradient-boosting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/gradient-boosting/</guid>
       <description></description>
     </item>
     <item>
       <title>Regression</title>
-      <link>http://localhost:40185/categories/regression/</link>
+      <link>http://localhost:1313/categories/regression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/regression/</guid>
+      <guid>http://localhost:1313/categories/regression/</guid>
       <description></description>
     </item>
     <item>
       <title>Artificial Intelligence</title>
-      <link>http://localhost:40185/categories/artificial-intelligence/</link>
+      <link>http://localhost:1313/categories/artificial-intelligence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/artificial-intelligence/</guid>
+      <guid>http://localhost:1313/categories/artificial-intelligence/</guid>
       <description></description>
     </item>
     <item>
       <title>Deep Learning</title>
-      <link>http://localhost:40185/categories/deep-learning/</link>
+      <link>http://localhost:1313/categories/deep-learning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/deep-learning/</guid>
+      <guid>http://localhost:1313/categories/deep-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Neural Nets</title>
-      <link>http://localhost:40185/categories/neural-nets/</link>
+      <link>http://localhost:1313/categories/neural-nets/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/neural-nets/</guid>
+      <guid>http://localhost:1313/categories/neural-nets/</guid>
       <description></description>
     </item>
     <item>
       <title>Random Forest</title>
-      <link>http://localhost:40185/categories/random-forest/</link>
+      <link>http://localhost:1313/categories/random-forest/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/random-forest/</guid>
+      <guid>http://localhost:1313/categories/random-forest/</guid>
       <description></description>
     </item>
     <item>
       <title>Bagging</title>
-      <link>http://localhost:40185/categories/bagging/</link>
+      <link>http://localhost:1313/categories/bagging/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/bagging/</guid>
+      <guid>http://localhost:1313/categories/bagging/</guid>
       <description></description>
     </item>
     <item>
       <title>Decision Trees</title>
-      <link>http://localhost:40185/categories/decision-trees/</link>
+      <link>http://localhost:1313/categories/decision-trees/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:40185/categories/decision-trees/</guid>
+      <guid>http://localhost:1313/categories/decision-trees/</guid>
       <description></description>
     </item>
   </channel>

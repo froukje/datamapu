@@ -4,10 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Gradient Boost for Regression - Example | </title>
+    <title>Gradient Boosting Variants - sklearn vs. XGBoost vs. LightGBM vs. CatBoost | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem, considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
-Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether they like height, and whether they like goats.">
+    <meta name="description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only a higher than random guessing. Together, they form a strong learner with high predictive skill. In this article, we discuss the different implementations of Gradient Boosting. We give a high-level overview of the differences for a more in depth understanding, further literature is given.">
     <meta name="generator" content="Hugo 0.126.1">
     
     
@@ -32,36 +31,31 @@ Data We will use a simplified dataset consisting of only 10 samples, which descr
 
     
     
-    <meta property="og:url" content="http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/">
-  <meta property="og:title" content="Gradient Boost for Regression - Example">
-  <meta property="og:description" content="Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem, considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
-Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether they like height, and whether they like goats.">
+    <meta property="og:url" content="http://localhost:1313/posts/classical_ml/gradient_boosting_variants/">
+  <meta property="og:title" content="Gradient Boosting Variants - sklearn vs. XGBoost vs. LightGBM vs. CatBoost">
+  <meta property="og:description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only a higher than random guessing. Together, they form a strong learner with high predictive skill. In this article, we discuss the different implementations of Gradient Boosting. We give a high-level overview of the differences for a more in depth understanding, further literature is given.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-04-09T22:55:13-03:00">
-    <meta property="article:modified_time" content="2024-04-09T22:55:13-03:00">
+    <meta property="article:published_time" content="2024-05-08T20:55:43-03:00">
+    <meta property="article:modified_time" content="2024-05-08T20:55:43-03:00">
     <meta property="article:tag" content="Data Science">
     <meta property="article:tag" content="Machine Learning">
-    <meta property="article:tag" content="Gradient Boosting">
-    <meta property="article:tag" content="Ensemble">
     <meta property="article:tag" content="Boosting">
     <meta property="article:tag" content="Tree Methods">
-    <meta property="og:image" content="http://localhost:1313/images/gradient_boosting/gb_example_intro.png">
+    <meta property="og:image" content="http://localhost:1313/images/">
 
-  <meta itemprop="name" content="Gradient Boost for Regression - Example">
-  <meta itemprop="description" content="Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem, considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
-Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether they like height, and whether they like goats.">
-  <meta itemprop="datePublished" content="2024-04-09T22:55:13-03:00">
-  <meta itemprop="dateModified" content="2024-04-09T22:55:13-03:00">
-  <meta itemprop="wordCount" content="1581">
-  <meta itemprop="image" content="http://localhost:1313/images/gradient_boosting/gb_example_intro.png">
-  <meta itemprop="keywords" content="Data Science,Machine Learning,Gradiend Boosting,Ensemble,Tree Methods,Regression">
+  <meta itemprop="name" content="Gradient Boosting Variants - sklearn vs. XGBoost vs. LightGBM vs. CatBoost">
+  <meta itemprop="description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only a higher than random guessing. Together, they form a strong learner with high predictive skill. In this article, we discuss the different implementations of Gradient Boosting. We give a high-level overview of the differences for a more in depth understanding, further literature is given.">
+  <meta itemprop="datePublished" content="2024-05-08T20:55:43-03:00">
+  <meta itemprop="dateModified" content="2024-05-08T20:55:43-03:00">
+  <meta itemprop="wordCount" content="814">
+  <meta itemprop="image" content="http://localhost:1313/images/">
+  <meta itemprop="keywords" content="Data Science,Machine Learning,Ensemble,Boosting,Tree Methods">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:1313/images/gradient_boosting/gb_example_intro.png">
-  <meta name="twitter:title" content="Gradient Boost for Regression - Example">
-  <meta name="twitter:description" content="Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem, considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.
-Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether they like height, and whether they like goats.">
+  <meta name="twitter:image" content="http://localhost:1313/images/">
+  <meta name="twitter:title" content="Gradient Boosting Variants - sklearn vs. XGBoost vs. LightGBM vs. CatBoost">
+  <meta name="twitter:description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only a higher than random guessing. Together, they form a strong learner with high predictive skill. In this article, we discuss the different implementations of Gradient Boosting. We give a high-level overview of the differences for a more in depth understanding, further literature is given.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -186,7 +180,7 @@ MathJax = {
   <div id="sharing" class="mt3 ananke-socials">
     
       
-      <a href="https://twitter.com/share?url=http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/&amp;text=Gradient%20Boost%20for%20Regression%20-%20Example" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
+      <a href="https://twitter.com/share?url=http://localhost:1313/posts/classical_ml/gradient_boosting_variants/&amp;text=Gradient%20Boosting%20Variants%20-%20sklearn%20vs.%20XGBoost%20vs.%20LightGBM%20vs.%20CatBoost" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
         
         <span class="icon"> <svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
 </span>
@@ -194,7 +188,7 @@ MathJax = {
       </a>
     
       
-      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/&amp;title=Gradient%20Boost%20for%20Regression%20-%20Example" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/classical_ml/gradient_boosting_variants/&amp;title=Gradient%20Boosting%20Variants%20-%20sklearn%20vs.%20XGBoost%20vs.%20LightGBM%20vs.%20CatBoost" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
         
         <span class="icon"> <svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
@@ -206,99 +200,37 @@ MathJax = {
   </div>
 
 
-      <h1 class="f1 athelas mt3 mb1">Gradient Boost for Regression - Example</h1>
+      <h1 class="f1 athelas mt3 mb1">Gradient Boosting Variants - sklearn vs. XGBoost vs. LightGBM vs. CatBoost</h1>
       
       
       
-      <time class="f6 mv4 dib tracked" datetime="2024-04-09T22:55:13-03:00">April 9, 2024</time>
+      <time class="f6 mv4 dib tracked" datetime="2024-05-08T20:55:43-03:00">May 8, 2024</time>
       
 
       
       
-        <span class="f6 mv4 dib tracked"> - 8 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 1581 words </span>
+        <span class="f6 mv4 dib tracked"> - 4 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 814 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
-<p>In this post, we will go through the development of a Gradient Boosting model for a regression problem, considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>. Please refer to this post for a more general and detailed explanation of the algorithm.</p>
-<h2 id="data">Data</h2>
-<p>We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether they like height, and whether they like goats. We used that same data in previous posts, such as <a href="http://localhost:1313/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>, and <a href="http://localhost:1313/posts/classical_ml/adaboost_example_reg/">Adaboost for Regression - Example</a>.</p>
-<p><img src="/images/gradient_boosting/data.png" alt="&ldquo;data&rdquo;">
-<em>The data used in this post.</em></p>
-<h2 id="build-the-model">Build the Model</h2>
-<p>We build a Gradient Boost model with pruned Decision Trees as weak learners using the above dataset. For that, we follow the steps summarized in the following plot. For a more detailed explanation please refer to <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>.</p>
-<p><img src="/images/gradient_boosting/gradient_boosting_algorithm_reg.png" alt="Gradient Boosting for Regression">
-<em>Gradient Boosting Algorithm simplified for a regression task.</em></p>
-<h4 id="step-1---initialize-the-model-with-a-constant-value---f_0x--bary">Step 1 - Initialize the model with a constant value - $F_0(X) = \bar{y}$.</h4>
-<p>The initialization  of the model is done by taking the means of all target values ($y = $ &ldquo;climbed meters&rdquo;). In our case</p>
-<p>$$F_0(X) = \frac{1}{10}(200 + 700 + 600 + 300 + 200 + 700 + 300 + 700 + 600 + 700) = 500.$$</p>
-<p>To evaluate how the model evolves, we calculate the <a href="http://localhost:1313/posts/ml_concepts/loss_functions/#loss_reg">mean squared error (MSE)</a> after each iteration.</p>
-<p>$$MSE(y, F_0(X)) = \frac{1}{10}((200 - 500)^2 + (700 - 500)^2 + (600 - 500)^2 + $$
-$$(300 - 500)^2 + (200 - 500)^2 + (700 - 500)^2 + (300 - 500)^2 + $$
-$$(700 - 500)^2 + (600 - 500)^2 + (700 - 500)^2) = 44 000$$</p>
-<p>The MSE of this first estimate is $44 000$ m.</p>
-<h4 id="step-2---for-m1-to-m2">Step 2 - For $m=1$ to $M=2$:</h4>
-<p>The second step is a loop, which sequentially updates the model by fitting a weak learner, in our case a pruned Decision Tree to the residual of the target values and the previous predictions. The number of loops is the number of weak learners considered. Because the data considered in this post is so simple, we will only loop twice, i.e. $M=2$.</p>
-<h4 id="first-loop-m1">First loop $M=1$</h4>
-<h4 id="2a-compute-the-residuals-of-the-preditions-and-the-true-observations">2A. Compute the residuals of the preditions and the true observations.</h4>
-<p>With $X$ the input features &ldquo;age&rdquo;, &ldquo;likes height&rdquo;, and &ldquo;likes oats&rdquo;, given in the previous table, we compute the residual as a vector</p>
-<p>$$r_1 = y - F_0(X) = [(200 - 500), (700 - 500), (600 - 500), (300 - 500), $$
-$$(200 - 500), (700 - 500), (300 - 500), (700 - 500), (600 - 500), (700 - 500)]$$</p>
-<p>This results in</p>
-<p>$$r_1 = [-300, 200, 100, -200, -300, 200, -200, 200, 100, 200].$$</p>
-<p><strong>2B. anc 2C. Fit a model (weak learner) to the residuals and find the optimized solution.</strong></p>
-<p>Now we fit a Decision Tree to the residuals ($r_1$) with the original target values. In this example, we set <em>max_depth=3</em> in the Decision Tree to prune it.
-We will not develop the Decision Tree in detail but will use the result from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html">sklearn</a>. To follow a step-by-step example of building a Decision Tree for Regression, please refer to the separate article <a href="http://localhost:1313/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>.</p>
-<p><img src="/images/gradient_boosting/gb_first_tree.png" alt="&ldquo;first tree&rdquo;">
-<em>First Decision Tree, i.e. first weak learner</em></p>
-<p><strong>2D. Update the model.</strong></p>
-<p>The next step is to update the model with the new prediction from the weak learner.</p>
-<p>$$F_1(X) = F_0(x) + pred_1 = [(500 - 300), (500 + 200), (500 + 100), (500 + -200),$$
-$$(500 -250), (500 + 200), (500 - 250), (500 - 200), (500 + 100), (500 + 200)]$$</p>
-<p>This results in</p>
-<p>$$F_1(X) = [200, 700, 600, 300, 250, 700, 250, 700, 600, 700].$$</p>
-<p>The MSE of these new predictions are</p>
-<p>$$MSE(y, F_1(X)) = \frac{1}{10}((200 - 200)^2 + (700 - 700)^2 + (600 - 600)^2 + $$
-$$(300 - 300)^2 + (200 - 250)^2 + (700 - 700)^2 + (300 - 250)^2 + $$
-$$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 500$$</p>
-<p>We can see that the error after this first update reduced to $500$ m.</p>
-<h4 id="second-loop-m2">Second loop $M=2$</h4>
-<p>In this second loop the same steps as in the first one are performed.</p>
-<h4 id="2a-compute-the-residuals-of-the-preditions-and-the-true-observations-1">2A. Compute the residuals of the preditions and the true observations.</h4>
-<p>We start with computing the residuals between the target values ($y$ = &ldquo;climbed meters&rdquo;) and the current prediction.</p>
-<p>$$r_2 = y - F_1(X) = [(200 - 200), (700 - 700), (600 - 600), (300 - 300), $$
-$$(200 - 250), (700 - 700), (300 - 250), (700 - 700), (600 - 600), (700 - 700)]$$</p>
-<p>This results in</p>
-<p>$$r_2 = [0, 0, 0, 0, -50, 0, -50, 0, 0, 0].$$</p>
-<h4 id="2b-and-2c-fit-a-model-weak-learner-to-the-residuals-and-find-the-optimized-solution">2B. and 2C. Fit a model (weak learner) to the residuals and find the optimized solution.</h4>
-<p>We fit a Decision Tree to the newly calculated residuals $r_2$ and the target values.</p>
-<p><img src="/images/gradient_boosting/gb_second_tree.png" alt="&ldquo;second tree&rdquo;">
-<em>Second Decision Tree, i.e. second weak learner</em></p>
-<h4 id="2d-update-the-model">2D. Update the model.</h4>
-<p>The current model is updated using the predictions obtained from the above Decision Tree.</p>
-<p>$$F_2(X) = F_1(X) + pred_2 = [(200 + 0), (700 + 0), (600 + 0), (300 + 0), $$
-$$(250 - 50), (700 + 0), (250 + 50), (700 + 0), (600 + 0), (700 + 0)]$$</p>
-<p>This results in</p>
-<p>$$F_2(X) = [200, 700, 600, 300, 200, 700, 300, 700, 600, 700].$$</p>
-<p>The MSE of this updated prediction is</p>
-<p>$$MSE(y, F_2(X)) = \frac{1}{10}((200 - 200)^2 + (700 - 700)^2 + (600 - 600)^2 + $$
-$$(300 - 300)^2 + (200 - 200)^2 + (700 - 700)^2 + (300 - 300)^2 + $$
-$$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$</p>
-<p>That is we see another reduction in the error. Because of the simplicity of the data, in this case, the error is already $0$ m after two iterations. In real-world projects with more complex data, the number of weak learners is much higher. The default value in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">sklearn</a> is $100$.</p>
-<h4 id="step-3---output-final-model-f_mx">Step 3 - Output final model $F_M(x)$.</h4>
-<p>The result of this last step in the loop, then defines the final model.</p>
-<p>$$F_2(X) = F_0(X) + F_1(X) + pred_2$$</p>
-<p>For $x$ the input features given in the above table, this is</p>
-<p>$$F_2(X) = [200, 700, 600, 300, 200, 700, 300, 700, 600, 700].$$</p>
-<p><img src="/images/gradient_boosting/gb_example_intro.png" alt="&ldquo;final model&rdquo;">
-<em>Final model.</em></p>
-<p><strong>Note, that usually an additional hyperparameter is used in Gradient Boosting, which is the <em>learning rate</em>. The learning rate determines the contribution of the trees. That is the predictions are scaled by the learning rate before adding them.</strong> In the above example, we thus used a learning rate of $1$, usually the learning rate is smaller, in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">sklearn</a> the default value is $0.1$.</p>
-<p>Including a learning rate $\alpha$ the formular for the final model is</p>
-<p>$$F_n(X) = F_0(X) + \alpha \big(\sum_{i=1}^{n-1} F_i(X) + pred_n),$$</p>
-<p>with $n$ the number of weak learners.</p>
-<h2 id="fit-a-model-in-python">Fit a Model in Python</h2>
-<p>Python&rsquo;s sklearn library provides a <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">gradient boosting</a> package. We can use this library to fit a simple model to our example data. You can find a more complex example with a more realistic dataset on <a href="https://www.kaggle.com/pumalin/gradient-boosting-tutorial">kaggle</a>.</p>
-<p>Let&rsquo;s read the data as a Pandas dataframe.</p>
+<p>Gradient Boosting is an ensemble model which is built of a sequential series of shallow <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a>. The single trees are weak learners and have little predictive skill, that is only a higher than random guessing. Together, they form a strong learner with high predictive skill. In this article, we discuss the different implementations of <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boosting</a>. We give a high-level overview of the differences for a more in depth understanding, further literature is given.</p>
+<h2 id="background">Background</h2>
+<p><strong>Gradient Boosting in sklearn</strong></p>
+<p><strong>XGBoost</strong></p>
+<p><strong>LightGBM</strong></p>
+<p><strong>CatBoost</strong></p>
+<h2 id="performance">Performance</h2>
+<h2 id="feature-handling">Feature Handling</h2>
+<h2 id="tree-growths">Tree Growths</h2>
+<h2 id="accuracy">Accuracy</h2>
+<h2 id="ease-of-use">Ease of Use</h2>
+<h2 id="scalability-and-deployment">Scalability and Deployment</h2>
+<h2 id="code-examples">Code Examples</h2>
+<p>In this section a brief example of each method is given for a classification task. The dataset used is described in the plot below. The example used here is very simple and only for illustration purposes.
+<img src="/images/gradient_boosting/gb_class_data.png" alt="&ldquo;data&rdquo;">
+<em>The data used for the following examples.</em></p>
+<p>We read this data into a Pandas dataframe</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
@@ -316,12 +248,14 @@ $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$</p>
 </span></span><span style="display:flex;"><span>data <span style="color:#04a5e5;font-weight:bold">=</span> {<span style="color:#40a02b">&#39;age&#39;</span>: [<span style="color:#fe640b">23</span>, <span style="color:#fe640b">31</span>, <span style="color:#fe640b">35</span>, <span style="color:#fe640b">35</span>, <span style="color:#fe640b">42</span>, <span style="color:#fe640b">43</span>, <span style="color:#fe640b">45</span>, <span style="color:#fe640b">46</span>, <span style="color:#fe640b">46</span>, <span style="color:#fe640b">51</span>],
 </span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;likes goats&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>],
 </span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;likes height&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>],
-</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;climbed meters&#39;</span>: [<span style="color:#fe640b">200</span>, <span style="color:#fe640b">700</span>, <span style="color:#fe640b">600</span>, <span style="color:#fe640b">300</span>, <span style="color:#fe640b">200</span>, <span style="color:#fe640b">700</span>, <span style="color:#fe640b">300</span>, <span style="color:#fe640b">700</span>, <span style="color:#fe640b">600</span>, <span style="color:#fe640b">700</span>]}
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#39;go rock climbing&#39;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">0</span>, <span style="color:#fe640b">1</span>]}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>df <span style="color:#04a5e5;font-weight:bold">=</span> pd<span style="color:#04a5e5;font-weight:bold">.</span>DataFrame(data)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>There are several hyperparameters that can be changed in the gradient boosting model of sklearn. A full list can be found in the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">sklearn documentation</a>. In this example, we change the hyperparameters <em>n_estimators</em>, which defines the number of Decision Trees used as weak learners, <em>max_depth</em>, which defines the maximal depth of the Decision Trees, and the <em>learning_rate</em>, which defines the weight of each tree. The learning rate is a hyperparameter that we did not use in the algorithm above. The idea is similar as in the algorithm of <a href="http://localhost:1313/posts/classical_ml/adaboost/">Adaboost</a> to give a weight to the weak learner. That is in the calculations above, this weight was set to $1$. With the hyperparameters as used in the above example, we fit the model as follows.</p>
+</div><p><strong>Gradient Boosting in sklearn</strong></p>
+<p>For the <strong>installation</strong> of sklearn please check the oficial <a href="https://scikit-learn.org/stable/install.html">documentation</a>. You have different options using conda or pip, that may differ depending on your operating system. You can find all details there.
+To use the <em>GradientBoostingClassifier</em>, we first need to import it from sklearn. When we have the input features ($X$) and the target data ($y$) defined, we can fit the model. First we need to instatiate it and then following the concept of training machine Learning models in sklearn, we can use the <em>fit</em> method. The process is illustrated in the following code snipped. In this example, three hyperparameters are set: <em>n_estimators</em>, which describes the number of trees used, <em>max_depth</em>; which is the depth of the single trees; and the <em>learning_rate</em>, which defines the weight of each tree. A full list of hyperparameters, that can be changed to optimize the model can be found in the documentation of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">GradientBoostingRegressor</a> and the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">GradientBoostingClassification</a> methods.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
@@ -334,36 +268,68 @@ $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$</p>
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 8
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 9
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">11
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.ensemble</span> <span style="color:#179299">import</span> GradientBoostingRegressor
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.ensemble</span> <span style="color:#179299">import</span> GradientBoostingClassifier
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>X <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;age&#39;</span>, <span style="color:#40a02b">&#39;likes goats&#39;</span>, <span style="color:#40a02b">&#39;likes height&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values
-</span></span><span style="display:flex;"><span>y <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;climbed meters&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values<span style="color:#04a5e5;font-weight:bold">.</span>reshape(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>,)
-</span></span><span style="display:flex;"><span>reg <span style="color:#04a5e5;font-weight:bold">=</span> GradientBoostingRegressor(
-</span></span><span style="display:flex;"><span>	n_estimators<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>, 
-</span></span><span style="display:flex;"><span>	max_depth<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">3</span>, 
-</span></span><span style="display:flex;"><span>	learning_rate<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">1</span>, 
-</span></span><span style="display:flex;"><span>	random_state<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">42</span>
-</span></span><span style="display:flex;"><span>	)
-</span></span><span style="display:flex;"><span>reg<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
+</span></span><span style="display:flex;"><span>y <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;go rock climbing&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values<span style="color:#04a5e5;font-weight:bold">.</span>reshape(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>,)
+</span></span><span style="display:flex;"><span>clf <span style="color:#04a5e5;font-weight:bold">=</span> GradientBoostingClassifier(
+</span></span><span style="display:flex;"><span>    n_estimators<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>,
+</span></span><span style="display:flex;"><span>    max_depth<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>,
+</span></span><span style="display:flex;"><span>    learning_rate<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">0.3</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>clf<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Using the <em>predict</em> method gives us the predictions. We also calculate the <em>score</em> of the prediction. The <em>score</em> in this case is the <a href="https://en.wikipedia.org/wiki/Coefficient_of_determination">Coefficient of Determination</a> often abbreviated as $R^2$.</p>
+</div><p>We can use the <em>predict</em> method  to get the predictions and the <em>score</em> method to calculate the accuracy.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>y_pred <span style="color:#04a5e5;font-weight:bold">=</span> reg<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
-</span></span><span style="display:flex;"><span>score <span style="color:#04a5e5;font-weight:bold">=</span> reg<span style="color:#04a5e5;font-weight:bold">.</span>score(X, y)
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>y_pred <span style="color:#04a5e5;font-weight:bold">=</span> clf<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
+</span></span><span style="display:flex;"><span>score <span style="color:#04a5e5;font-weight:bold">=</span> clf<span style="color:#04a5e5;font-weight:bold">.</span>score(X, y)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>In this case this leads to a perfect predictions $[200, 700, 600, 300, 200, 700, 300, 700, 600, 700]$ and a score of $1$. A more detailed example using a larger dataset can be found on <a href="https://www.kaggle.com/pumalin/gradient-boosting-tutorial">kaggle</a>.</p>
+</div><p>For this example, the predictions $[0, 1, 0, 0, 0, 1, 0, 1, 0, 1]$ and the score $0.9$. A more detailed example of applying Gradient Boosting in Python to a Regression task can be found on <a href="https://www.kaggle.com/code/pumalin/gradient-boosting-tutorial">kaggle</a>.</p>
+<p><strong>XGBoost</strong></p>
+<p><strong>LightGBM</strong></p>
+<p><strong>CatBoost</strong></p>
+<h2 id="gradient-boosting-with-sklearn">Gradient Boosting with sklearn</h2>
+<h2 id="xgboost">XGBoost</h2>
+<p>&ldquo;XGBoost (eXtreme Gradient Boosting) is a machine learning algorithm that focuses on computation speed and model performance. It was introduced by Tianqi Chen and is currently a part of a wider toolkit by DMLC (Distributed Machine Learning Community). The algorithm can be used for both regression and classification tasks and has been designed to work with large and complicated datasets.&rdquo;</p>
+<p>The model supports the following kinds of boosting:</p>
+<p>Gradient Boosting as controlled by the learning rate</p>
+<p>Stochastic Gradient Boosting that leverages sub-sampling at a row, column or column per split levels</p>
+<p>Regularized Gradient Boosting using L1 (Lasso) and L2 (Ridge) regularization</p>
+<p>Some of the other features that are offered from a system performance point of view are:</p>
+<p>Using a cluster of machines to train a model using distributed computing</p>
+<p>Utilization of all the available cores of a CPU during tree construction for parallelization</p>
+<p>Out-of-core computing when working with datasets that do not fit into memory</p>
+<p>Making the best use of hardware with cache optimization</p>
+<p>In addition to the above the framework:</p>
+<p>Accepts multiple types of input data</p>
+<p>Works well with sparse input data for tree and linear booster</p>
+<p>Supports the use of customized objective and evaluation functions</p>
+<p>&lt; explain histogram based algorithm &gt;</p>
+<ul>
+<li>Level-wise tree growth</li>
+</ul>
+<p>&lt; image level-wise growth&gt;</p>
+<h2 id="lightgbt">LightGBT</h2>
+<p>developed by Microsoft (reference)</p>
+<p>histogram-based algorithm that performs bucketing of values (also requires lesser memory)</p>
+<p>Also compatible with large and complex datasets but is much faster during training
+Support for both parallel learning and GPU learning</p>
+<p>&ldquo;In contrast to the level-wise (horizontal) growth in XGBoost, LightGBM carries out leaf-wise (vertical) growth that results in more loss reduction and in turn higher accuracy while being faster. But this may also result in overfitting on the training data which could be handled using the max-depth parameter that specifies where the splitting would occur. Hence, XGBoost is capable of building more robust models than LightGBM.&rdquo;</p>
+<p>&lt; imgare leave-wise growth &gt;</p>
+<p><a href="https://neptune.ai/blog/xgboost-vs-lightgbm#:~:text=In%20contrast%20to%20the%20level,higher%20accuracy%20while%20being%20faster">https://neptune.ai/blog/xgboost-vs-lightgbm#:~:text=In%20contrast%20to%20the%20level,higher%20accuracy%20while%20being%20faster</a>.</p>
+<h2 id="catboost">CatBoost</h2>
+<p><a href="https://catboost.ai/">https://catboost.ai/</a></p>
+<p><a href="https://www.geeksforgeeks.org/catboost-ml/">https://www.geeksforgeeks.org/catboost-ml/</a></p>
 <h2 id="summary">Summary</h2>
-<p>In this post, we calculated the individual steps for a Gradient Boosting model for a regression problem. We saw how updating the model by creating an ensemble model improves the results. This example was chosen on purpose for a very simple dataset in order to follow the calculations and understand each step. A more general description and explanation of the algorithm is given in the separate article <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>.</p>
 <hr>
 <p>If this blog is useful for you, please consider supporting.</p>
 
@@ -384,23 +350,11 @@ $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$</p>
    </li>
   
    <li class="list di">
-     <a href="/tags/gradient-boosting/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Gradient Boosting</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/ensemble/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Ensemble</a>
-   </li>
-  
-   <li class="list di">
      <a href="/tags/boosting/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Boosting</a>
    </li>
   
    <li class="list di">
      <a href="/tags/tree-methods/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Tree Methods</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/regression/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Regression</a>
    </li>
   
 </ul>
@@ -420,19 +374,7 @@ $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$</p>
     <ul class="pa0 list">
 	   
 	     <li  class="mb2">
-          <a href="/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>
-        </li>
-	    
-	     <li  class="mb2">
           <a href="/posts/classical_ml/adaboost_example_reg/">Adaboost for Regression - Example</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/posts/classical_ml/adaboost/">AdaBoost - Explained</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/posts/classical_ml/random_forest/">Random Forests - Explained</a>
         </li>
 	    
 	     <li  class="mb2">
@@ -440,15 +382,31 @@ $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$</p>
         </li>
 	    
 	     <li  class="mb2">
+          <a href="/posts/classical_ml/adaboost/">AdaBoost - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/gradient_boosting_classification_example/">Gradient Boost for Classification Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/gradient_boosting_classification/">Gradient Boost for Classification - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/gradient_boosting_regression_example/">Gradient Boost for Regression - Example</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/classical_ml/random_forest/">Random Forests - Explained</a>
+        </li>
+	    
+	     <li  class="mb2">
           <a href="/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/posts/classical_ml/decision_trees/">Decision Trees - Explained</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/posts/ml_concepts/ensemble/">Ensemble Models - Illustrated</a>
         </li>
 	    
 	     <li  class="mb2">
@@ -456,19 +414,11 @@ $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$</p>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/posts/ml_concepts/feature_selection/">Feature Selection Methods</a>
+          <a href="/posts/classical_ml/decision_trees/">Decision Trees - Explained</a>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/posts/classical_ml/linear_regression_example/">Linear Regression - Analytical Solution and Simplified Example</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/posts/classical_ml/linear_regression/">Linear Regression - Explained</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/posts/ml_concepts/regression_metrics/">Metrics for Regression Problems</a>
+          <a href="/posts/deep_learning/backpropagation/">Backpropagation Step by Step</a>
         </li>
 	    
 	     <li  class="mb2">
@@ -476,7 +426,11 @@ $$(700 - 700)^2 + (600 - 600)^2 + (700 - 700)^2) = 0$$</p>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/posts/deep_learning/backpropagation/">Backpropagation Step by Step</a>
+          <a href="/posts/ml_concepts/gradient_descent/">Gradient Descent</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/ml_concepts/loss_functions/">Loss Functions in Machine Learning</a>
         </li>
 	    
     </ul>
