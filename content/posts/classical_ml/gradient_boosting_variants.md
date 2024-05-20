@@ -84,14 +84,54 @@ For this example, the predictions $[0, 1, 0, 0, 0, 1, 0, 1, 0, 1]$ and the score
 
 **XGBoost**
 
+The **installation** is described in detail in the [XGBboost](https://xgboost.readthedocs.io/en/stable/install.html) documentaion.  	
+
+To use the *XGBoostClassifier*, we need to import this method. The procedure is the same as for the *sklearn* model. We instantiate the model and then use the *fit* and *predict* method. A detailed list of all possible parameters can be found in the [XGBoost documentation](https://xgboost.readthedocs.io/en/stable/parameter.html). There are three types of parameters: general parameters, booster parameters and task parameters. The following gives a brief explanation of each category, but is not an exastive list.
+
+* *General parameters* define which booster is used. By default this is a *Gradient Boosting Tree*; the same as in the sklearn method, other options are *dart* and *gblinear*. The methods *gbtree* and *dart* are tree based models, *gblinear* is a linear model. Other parameters set here refer to the device used (cpu oder gpu), the number of threads used for training, verbosity and several more.
+* *Booster parameters* depend on which booster method is used. For a Tree Booster, we can e.g. choose the number of estimators (*n_estimators*), the learning rate (*learning_rate* or *eta*), the maximal depth of the trees (*max_depth*), and many more. Further the type of tree method to use, which can be changed to optimize the speed. 
+* *Learning task parameters* depend on the task to be solved. The objective function and the evaluation metrics are defined here, which depen on whether we consider a regression or a clissification task. Ther is a wide variety of pre-defined objective functions and metrics for both types of problems are available, but we can also define custom functions. For more details, please refer to this [post](https://medium.com/@pumaline/loss-functions-in-xgboost-c89885b57346).
+
+```Python
+from xgboost import XGBClassifier
+
+X = df[['age', 'likes goats', 'likes height']].values
+y = df[['go rock climbing']].values.reshape(-1,)
+
+bst = XGBClassifier(
+	n_estimators=2, 
+	max_depth=2, 
+	learning_rate=1, 
+	objective='binary:logistic')
+bst.fit(X, y)
+preds = bst.predict(X)
+```
+
+For this example we get the predictions $[0, 1, 1, 0, 0, 1, 0, 1, 1, 1]$.
 
 **LightGBM**
 
+A guide for the **installation** can be found on the [LightGBM](https://lightgbm.readthedocs.io/en/stable/Python-Intro.html) documentation. 
+
+```Python
+import lightgbm as lgb
+
+train_data = lgb.Dataset(X, label=y)
+```
+
+early stopping and cross validation are easily implemented.
+
 **CatBoost**
 
+```Python
+from catboost import CatBoostClassifier
+model = CatBoostClassifier(iterations=2,
+                          learning_rate=1,
+                          depth=2)
+model.fit(X, y)
+model.predict(X)
+```
 
-
-## Gradient Boosting with sklearn
 
 ## XGBoost
 

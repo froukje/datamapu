@@ -49,7 +49,7 @@
   <meta itemprop="description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only a higher than random guessing. Together, they form a strong learner with high predictive skill. In this article, we discuss the different implementations of Gradient Boosting. We give a high-level overview of the differences for a more in depth understanding, further literature is given.">
   <meta itemprop="datePublished" content="2024-05-08T20:55:43-03:00">
   <meta itemprop="dateModified" content="2024-05-08T20:55:43-03:00">
-  <meta itemprop="wordCount" content="814">
+  <meta itemprop="wordCount" content="1184">
   <meta itemprop="image" content="http://localhost:1313/images/">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Ensemble,Boosting,Tree Methods">
   <meta name="twitter:card" content="summary_large_image">
@@ -209,8 +209,8 @@ MathJax = {
 
       
       
-        <span class="f6 mv4 dib tracked"> - 4 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 814 words </span>
+        <span class="f6 mv4 dib tracked"> - 6 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 1184 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -295,10 +295,79 @@ To use the <em>GradientBoostingClassifier</em>, we first need to import it from 
 </div>
 </div><p>For this example, the predictions $[0, 1, 0, 0, 0, 1, 0, 1, 0, 1]$ and the score $0.9$. A more detailed example of applying Gradient Boosting in Python to a Regression task can be found on <a href="https://www.kaggle.com/code/pumalin/gradient-boosting-tutorial">kaggle</a>.</p>
 <p><strong>XGBoost</strong></p>
+<p>The <strong>installation</strong> is described in detail in the <a href="https://xgboost.readthedocs.io/en/stable/install.html">XGBboost</a> documentaion.</p>
+<p>To use the <em>XGBoostClassifier</em>, we need to import this method. The procedure is the same as for the <em>sklearn</em> model. We instantiate the model and then use the <em>fit</em> and <em>predict</em> method. A detailed list of all possible parameters can be found in the <a href="https://xgboost.readthedocs.io/en/stable/parameter.html">XGBoost documentation</a>. There are three types of parameters: general parameters, booster parameters and task parameters. The following gives a brief explanation of each category, but is not an exastive list.</p>
+<ul>
+<li><em>General parameters</em> define which booster is used. By default this is a <em>Gradient Boosting Tree</em>; the same as in the sklearn method, other options are <em>dart</em> and <em>gblinear</em>. The methods <em>gbtree</em> and <em>dart</em> are tree based models, <em>gblinear</em> is a linear model. Other parameters set here refer to the device used (cpu oder gpu), the number of threads used for training, verbosity and several more.</li>
+<li><em>Booster parameters</em> depend on which booster method is used. For a Tree Booster, we can e.g. choose the number of estimators (<em>n_estimators</em>), the learning rate (<em>learning_rate</em> or <em>eta</em>), the maximal depth of the trees (<em>max_depth</em>), and many more. Further the type of tree method to use, which can be changed to optimize the speed.</li>
+<li><em>Learning task parameters</em> depend on the task to be solved. The objective function and the evaluation metrics are defined here, which depen on whether we consider a regression or a clissification task. Ther is a wide variety of pre-defined objective functions and metrics for both types of problems are available, but we can also define custom functions. For more details, please refer to this <a href="https://medium.com/@pumaline/loss-functions-in-xgboost-c89885b57346">post</a>.</li>
+</ul>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">xgboost</span> <span style="color:#179299">import</span> XGBClassifier
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;age&#39;</span>, <span style="color:#40a02b">&#39;likes goats&#39;</span>, <span style="color:#40a02b">&#39;likes height&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values
+</span></span><span style="display:flex;"><span>y <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;go rock climbing&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values<span style="color:#04a5e5;font-weight:bold">.</span>reshape(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>,)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bst <span style="color:#04a5e5;font-weight:bold">=</span> XGBClassifier(
+</span></span><span style="display:flex;"><span>	n_estimators<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>, 
+</span></span><span style="display:flex;"><span>	max_depth<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>, 
+</span></span><span style="display:flex;"><span>	learning_rate<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">1</span>, 
+</span></span><span style="display:flex;"><span>	objective<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#40a02b">&#39;binary:logistic&#39;</span>)
+</span></span><span style="display:flex;"><span>bst<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
+</span></span><span style="display:flex;"><span>preds <span style="color:#04a5e5;font-weight:bold">=</span> bst<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>For this example we get the predictions $[0, 1, 1, 0, 0, 1, 0, 1, 1, 1]$.</p>
 <p><strong>LightGBM</strong></p>
+<p>A guide for the <strong>installation</strong> can be found on the <a href="https://lightgbm.readthedocs.io/en/stable/Python-Intro.html">LightGBM</a> documentation.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">lightgbm</span> <span style="color:#8839ef">as</span> <span style="color:#fe640b">lgb</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>train_data <span style="color:#04a5e5;font-weight:bold">=</span> lgb<span style="color:#04a5e5;font-weight:bold">.</span>Dataset(X, label<span style="color:#04a5e5;font-weight:bold">=</span>y)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>early stopping and cross validation are easily implemented.</p>
 <p><strong>CatBoost</strong></p>
-<h2 id="gradient-boosting-with-sklearn">Gradient Boosting with sklearn</h2>
-<h2 id="xgboost">XGBoost</h2>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">catboost</span> <span style="color:#179299">import</span> CatBoostClassifier
+</span></span><span style="display:flex;"><span>model <span style="color:#04a5e5;font-weight:bold">=</span> CatBoostClassifier(iterations<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>,
+</span></span><span style="display:flex;"><span>                          learning_rate<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">1</span>,
+</span></span><span style="display:flex;"><span>                          depth<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>)
+</span></span><span style="display:flex;"><span>model<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
+</span></span><span style="display:flex;"><span>model<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="xgboost">XGBoost</h2>
 <p>&ldquo;XGBoost (eXtreme Gradient Boosting) is a machine learning algorithm that focuses on computation speed and model performance. It was introduced by Tianqi Chen and is currently a part of a wider toolkit by DMLC (Distributed Machine Learning Community). The algorithm can be used for both regression and classification tasks and has been designed to work with large and complicated datasets.&rdquo;</p>
 <p>The model supports the following kinds of boosting:</p>
 <p>Gradient Boosting as controlled by the learning rate</p>
@@ -418,11 +487,11 @@ Support for both parallel learning and GPU learning</p>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/posts/deep_learning/backpropagation/">Backpropagation Step by Step</a>
+          <a href="/backpropagation/">Backpropagation Step by Step</a>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/backpropagation/">Backpropagation Step by Step</a>
+          <a href="/posts/deep_learning/backpropagation/">Backpropagation Step by Step</a>
         </li>
 	    
 	     <li  class="mb2">
