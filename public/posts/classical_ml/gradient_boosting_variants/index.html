@@ -49,7 +49,7 @@
   <meta itemprop="description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only a higher than random guessing. Together, they form a strong learner with high predictive skill. In this article, we discuss the different implementations of Gradient Boosting. We give a high-level overview of the differences for a more in depth understanding, further literature is given.">
   <meta itemprop="datePublished" content="2024-05-08T20:55:43-03:00">
   <meta itemprop="dateModified" content="2024-05-08T20:55:43-03:00">
-  <meta itemprop="wordCount" content="1184">
+  <meta itemprop="wordCount" content="1493">
   <meta itemprop="image" content="http://localhost:1313/images/">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Ensemble,Boosting,Tree Methods">
   <meta name="twitter:card" content="summary_large_image">
@@ -209,8 +209,8 @@ MathJax = {
 
       
       
-        <span class="f6 mv4 dib tracked"> - 6 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 1184 words </span>
+        <span class="f6 mv4 dib tracked"> - 8 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 1493 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -218,17 +218,49 @@ MathJax = {
 <h2 id="background">Background</h2>
 <p><strong>Gradient Boosting in sklearn</strong></p>
 <p><strong>XGBoost</strong></p>
+<p>&ldquo;XGBoost (eXtreme Gradient Boosting) is a machine learning algorithm that focuses on computation speed and model performance. It was introduced by Tianqi Chen and is currently a part of a wider toolkit by DMLC (Distributed Machine Learning Community). The algorithm can be used for both regression and classification tasks and has been designed to work with large and complicated datasets.&rdquo;</p>
 <p><strong>LightGBM</strong></p>
+<p>developed by Microsoft (reference)</p>
+<p>histogram-based algorithm that performs bucketing of values (also requires lesser memory)</p>
+<p>Also compatible with large and complex datasets but is much faster during training
+Support for both parallel learning and GPU learning</p>
 <p><strong>CatBoost</strong></p>
 <h2 id="performance">Performance</h2>
+<p><strong>Gradient Boosting in sklearn</strong></p>
+<p><strong>XGBoost</strong></p>
+<p><strong>LightGBM</strong></p>
 <h2 id="feature-handling">Feature Handling</h2>
+<p><strong>Gradient Boosting in sklearn</strong></p>
+<p><strong>XGBoost</strong></p>
+<p><strong>LightGBM</strong></p>
+<p><strong>CatBoost</strong></p>
 <h2 id="tree-growths">Tree Growths</h2>
+<p><strong>Gradient Boosting in sklearn</strong></p>
+<ul>
+<li>mention hist-based model</li>
+</ul>
+<p><strong>XGBoost</strong></p>
+<p><strong>LightGBM</strong></p>
+<p>&ldquo;In contrast to the level-wise (horizontal) growth in XGBoost, LightGBM carries out leaf-wise (vertical) growth that results in more loss reduction and in turn higher accuracy while being faster. But this may also result in overfitting on the training data which could be handled using the max-depth parameter that specifies where the splitting would occur. Hence, XGBoost is capable of building more robust models than LightGBM.&rdquo;</p>
+<p><strong>CatBoost</strong></p>
 <h2 id="accuracy">Accuracy</h2>
+<p><strong>Gradient Boosting in sklearn</strong></p>
+<p><strong>XGBoost</strong></p>
+<p><strong>LightGBM</strong></p>
+<p><strong>CatBoost</strong></p>
 <h2 id="ease-of-use">Ease of Use</h2>
+<p><strong>Gradient Boosting in sklearn</strong></p>
+<p><strong>XGBoost</strong></p>
+<p><strong>LightGBM</strong></p>
+<p><strong>CatBoost</strong></p>
 <h2 id="scalability-and-deployment">Scalability and Deployment</h2>
+<p><strong>Gradient Boosting in sklearn</strong></p>
+<p><strong>XGBoost</strong></p>
+<p><strong>LightGBM</strong></p>
+<p><strong>CatBoost</strong></p>
 <h2 id="code-examples">Code Examples</h2>
-<p>In this section a brief example of each method is given for a classification task. The dataset used is described in the plot below. The example used here is very simple and only for illustration purposes.
-<img src="/images/gradient_boosting/gb_class_data.png" alt="&ldquo;data&rdquo;">
+<p>In this section a brief example of each method is given for a classification task, however all models have variants for regression problems. The dataset used is described in the plot below. The example used here is very simple and only for illustration purposes. More detailed examples on a larger dataset can be found on <a href="https://www.kaggle.com/work/code">kaggle</a>.</p>
+<p><img src="/images/gradient_boosting/gb_class_data.png" alt="&ldquo;data&rdquo;">
 <em>The data used for the following examples.</em></p>
 <p>We read this data into a Pandas dataframe</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -254,8 +286,8 @@ MathJax = {
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>Gradient Boosting in sklearn</strong></p>
-<p>For the <strong>installation</strong> of sklearn please check the oficial <a href="https://scikit-learn.org/stable/install.html">documentation</a>. You have different options using conda or pip, that may differ depending on your operating system. You can find all details there.
-To use the <em>GradientBoostingClassifier</em>, we first need to import it from sklearn. When we have the input features ($X$) and the target data ($y$) defined, we can fit the model. First we need to instatiate it and then following the concept of training machine Learning models in sklearn, we can use the <em>fit</em> method. The process is illustrated in the following code snipped. In this example, three hyperparameters are set: <em>n_estimators</em>, which describes the number of trees used, <em>max_depth</em>; which is the depth of the single trees; and the <em>learning_rate</em>, which defines the weight of each tree. A full list of hyperparameters, that can be changed to optimize the model can be found in the documentation of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">GradientBoostingRegressor</a> and the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">GradientBoostingClassification</a> methods.</p>
+<p>For the <strong>installation</strong> of sklearn please check the official <a href="https://scikit-learn.org/stable/install.html">documentation</a>. You have different options using conda or pip, that may differ depending on your operating system. You can find all details there.
+To use the <em>GradientBoostingClassifier</em>, we need to import it from sklearn. With the input features $X$ and the target data $y$ defined, we can fit the model. First we need to instatiate it and then following the concept of training machine Learning models in sklearn, we can use the <em>fit</em> method. The process is illustrated in the following code snipped. In this example, three hyperparameters are set: <em>n_estimators</em>, which describes the number of trees used, <em>max_depth</em>; which is the depth of the single trees; and the <em>learning_rate</em>, which defines the weight of each tree. A full list of hyperparameters, that can be changed to optimize the model can be found in the documentation of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">GradientBoostingRegressor</a> and the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">GradientBoostingClassification</a> methods.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
@@ -293,14 +325,14 @@ To use the <em>GradientBoostingClassifier</em>, we first need to import it from 
 </span></span><span style="display:flex;"><span>score <span style="color:#04a5e5;font-weight:bold">=</span> clf<span style="color:#04a5e5;font-weight:bold">.</span>score(X, y)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>For this example, the predictions $[0, 1, 0, 0, 0, 1, 0, 1, 0, 1]$ and the score $0.9$. A more detailed example of applying Gradient Boosting in Python to a Regression task can be found on <a href="https://www.kaggle.com/code/pumalin/gradient-boosting-tutorial">kaggle</a>.</p>
+</div><p>A more detailed example of applying Gradient Boosting in Python to a Regression task can be found on <a href="https://www.kaggle.com/code/pumalin/gradient-boosting-tutorial">kaggle</a>.</p>
 <p><strong>XGBoost</strong></p>
 <p>The <strong>installation</strong> is described in detail in the <a href="https://xgboost.readthedocs.io/en/stable/install.html">XGBboost</a> documentaion.</p>
-<p>To use the <em>XGBoostClassifier</em>, we need to import this method. The procedure is the same as for the <em>sklearn</em> model. We instantiate the model and then use the <em>fit</em> and <em>predict</em> method. A detailed list of all possible parameters can be found in the <a href="https://xgboost.readthedocs.io/en/stable/parameter.html">XGBoost documentation</a>. There are three types of parameters: general parameters, booster parameters and task parameters. The following gives a brief explanation of each category, but is not an exastive list.</p>
+<p>To use the <em>XGBoostClassifier</em>, we need to import this method. The procedure is the same as for the <em>sklearn</em> model. We instantiate the model and then use the <em>fit</em> and <em>predict</em> method. A detailed list of all possible parameters can be found in the <a href="https://xgboost.readthedocs.io/en/stable/parameter.html">XGBoost documentation</a>. There are three types of parameters: general parameters, booster parameters and task parameters. The following gives a brief explanation of each category, but is not an exaustive list.</p>
 <ul>
 <li><em>General parameters</em> define which booster is used. By default this is a <em>Gradient Boosting Tree</em>; the same as in the sklearn method, other options are <em>dart</em> and <em>gblinear</em>. The methods <em>gbtree</em> and <em>dart</em> are tree based models, <em>gblinear</em> is a linear model. Other parameters set here refer to the device used (cpu oder gpu), the number of threads used for training, verbosity and several more.</li>
 <li><em>Booster parameters</em> depend on which booster method is used. For a Tree Booster, we can e.g. choose the number of estimators (<em>n_estimators</em>), the learning rate (<em>learning_rate</em> or <em>eta</em>), the maximal depth of the trees (<em>max_depth</em>), and many more. Further the type of tree method to use, which can be changed to optimize the speed.</li>
-<li><em>Learning task parameters</em> depend on the task to be solved. The objective function and the evaluation metrics are defined here, which depen on whether we consider a regression or a clissification task. Ther is a wide variety of pre-defined objective functions and metrics for both types of problems are available, but we can also define custom functions. For more details, please refer to this <a href="https://medium.com/@pumaline/loss-functions-in-xgboost-c89885b57346">post</a>.</li>
+<li><em>Learning task parameters</em> depend on the task to be solved. The objective function and the evaluation metrics are defined here, which depend on whether we consider a regression or a clissification task. There is a wide variety of pre-defined objective functions and metrics for both types of problems are available, but we can also define custom functions. For more details, please refer to this <a href="https://medium.com/@pumaline/loss-functions-in-xgboost-c89885b57346">post</a>.</li>
 </ul>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -332,43 +364,72 @@ To use the <em>GradientBoostingClassifier</em>, we first need to import it from 
 </span></span><span style="display:flex;"><span>preds <span style="color:#04a5e5;font-weight:bold">=</span> bst<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>For this example we get the predictions $[0, 1, 1, 0, 0, 1, 0, 1, 1, 1]$.</p>
+</div><p><em>XGBoost</em> also allows to use callbacks, such as <em>early stopping</em>, or customized callbacks. A more detailed example using XGBoost with different parameters and callbacks on a larger dataset can be found on <a href="">kaggle</a>.</p>
+<p>&lt; kaggle NOTEBOOK &gt;</p>
 <p><strong>LightGBM</strong></p>
 <p>A guide for the <strong>installation</strong> can be found on the <a href="https://lightgbm.readthedocs.io/en/stable/Python-Intro.html">LightGBM</a> documentation.</p>
+<p>As in the previous models, we define the input features $X$ and the target value $y$, then we instantiate the model, fit it to the data, and make predictions. A full list of possible parameters can be found in the <a href="https://lightgbm.readthedocs.io/en/stable/Parameters.html">documentation</a>. We can define a large set of different types of parameters, considering the core functionality, the control of the learning, the dataset, the metrics and more. Similar to <em>XGBoost</em>, <em>LightGBM</em> allows us to choose between different boosting methods. The default method are Gradient Boosting Trees In this example we set the number of estimators (<em>n_estimators</em>), the maximal depth of the Decision Trees (<em>max_depth</em>), the learning rate (<em>learning_rate</em>), and the maximal number of leaves (<em>num_leaves</em>).</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">11
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">lightgbm</span> <span style="color:#8839ef">as</span> <span style="color:#fe640b">lgb</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>train_data <span style="color:#04a5e5;font-weight:bold">=</span> lgb<span style="color:#04a5e5;font-weight:bold">.</span>Dataset(X, label<span style="color:#04a5e5;font-weight:bold">=</span>y)
+</span></span><span style="display:flex;"><span>X <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;age&#39;</span>, <span style="color:#40a02b">&#39;likes goats&#39;</span>, <span style="color:#40a02b">&#39;likes height&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values
+</span></span><span style="display:flex;"><span>y <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;go rock climbing&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values<span style="color:#04a5e5;font-weight:bold">.</span>reshape(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>,)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>clf <span style="color:#04a5e5;font-weight:bold">=</span> lgb<span style="color:#04a5e5;font-weight:bold">.</span>LGBMClassifier(n_estimators<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>,
+</span></span><span style="display:flex;"><span>                         max_depth<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">5</span>,
+</span></span><span style="display:flex;"><span>                         learning_rate<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">1</span>,
+</span></span><span style="display:flex;"><span>                         num_leaves<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">3</span>)
+</span></span><span style="display:flex;"><span>clf<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
+</span></span><span style="display:flex;"><span>clf<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>early stopping and cross validation are easily implemented.</p>
+</div><p><em>LightGBM</em> allows an easy implementation of e.g. early stopping and cross validation using callbacks. For a more detailed example on a larger dataset, please check this <a href="">kaggle</a> notebook.</p>
+<p>&lt; kaggle NOTEBOOK &gt;</p>
 <p><strong>CatBoost</strong></p>
+<p>Using <em>CatBoost</em>, the procedure of training and predicting is the same as in the previous examples: instantiate the model, fit it to the data, and make predictions. A full list of all possible parameters is in the <a href="https://catboost.ai/en/docs/concepts/python-reference_catboostclassifier">documentation</a>. For this example, we set <em>iterations</em>, which refers to the number of trees trained, the <em>learning_rate</em>, and the <em>depth</em>, which defines the maximal depth of the Decision Trees.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">6
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">catboost</span> <span style="color:#179299">import</span> CatBoostClassifier
-</span></span><span style="display:flex;"><span>model <span style="color:#04a5e5;font-weight:bold">=</span> CatBoostClassifier(iterations<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;age&#39;</span>, <span style="color:#40a02b">&#39;likes goats&#39;</span>, <span style="color:#40a02b">&#39;likes height&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values
+</span></span><span style="display:flex;"><span>y <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#39;go rock climbing&#39;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values<span style="color:#04a5e5;font-weight:bold">.</span>reshape(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>,)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>clf <span style="color:#04a5e5;font-weight:bold">=</span> CatBoostClassifier(iterations<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>,
 </span></span><span style="display:flex;"><span>                          learning_rate<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">1</span>,
 </span></span><span style="display:flex;"><span>                          depth<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>)
-</span></span><span style="display:flex;"><span>model<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
-</span></span><span style="display:flex;"><span>model<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
+</span></span><span style="display:flex;"><span>clf<span style="color:#04a5e5;font-weight:bold">.</span>fit(X, y)
+</span></span><span style="display:flex;"><span>clf<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="xgboost">XGBoost</h2>
-<p>&ldquo;XGBoost (eXtreme Gradient Boosting) is a machine learning algorithm that focuses on computation speed and model performance. It was introduced by Tianqi Chen and is currently a part of a wider toolkit by DMLC (Distributed Machine Learning Community). The algorithm can be used for both regression and classification tasks and has been designed to work with large and complicated datasets.&rdquo;</p>
+</div><p>For a more realistic example on a larger dataset, please refer to this <a href="">kaggle</a> notebook.</p>
+<p>&lt; kaggle NOTEBOOK &gt;</p>
+<h2 id="xgboost">XGBoost</h2>
 <p>The model supports the following kinds of boosting:</p>
 <p>Gradient Boosting as controlled by the learning rate</p>
 <p>Stochastic Gradient Boosting that leverages sub-sampling at a row, column or column per split levels</p>
@@ -382,18 +443,7 @@ To use the <em>GradientBoostingClassifier</em>, we first need to import it from 
 <p>Accepts multiple types of input data</p>
 <p>Works well with sparse input data for tree and linear booster</p>
 <p>Supports the use of customized objective and evaluation functions</p>
-<p>&lt; explain histogram based algorithm &gt;</p>
-<ul>
-<li>Level-wise tree growth</li>
-</ul>
-<p>&lt; image level-wise growth&gt;</p>
 <h2 id="lightgbt">LightGBT</h2>
-<p>developed by Microsoft (reference)</p>
-<p>histogram-based algorithm that performs bucketing of values (also requires lesser memory)</p>
-<p>Also compatible with large and complex datasets but is much faster during training
-Support for both parallel learning and GPU learning</p>
-<p>&ldquo;In contrast to the level-wise (horizontal) growth in XGBoost, LightGBM carries out leaf-wise (vertical) growth that results in more loss reduction and in turn higher accuracy while being faster. But this may also result in overfitting on the training data which could be handled using the max-depth parameter that specifies where the splitting would occur. Hence, XGBoost is capable of building more robust models than LightGBM.&rdquo;</p>
-<p>&lt; imgare leave-wise growth &gt;</p>
 <p><a href="https://neptune.ai/blog/xgboost-vs-lightgbm#:~:text=In%20contrast%20to%20the%20level,higher%20accuracy%20while%20being%20faster">https://neptune.ai/blog/xgboost-vs-lightgbm#:~:text=In%20contrast%20to%20the%20level,higher%20accuracy%20while%20being%20faster</a>.</p>
 <h2 id="catboost">CatBoost</h2>
 <p><a href="https://catboost.ai/">https://catboost.ai/</a></p>
