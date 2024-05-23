@@ -1,5 +1,5 @@
 +++
-title = 'Gradient Boosting Variants - sklearn vs. XGBoost vs. LightGBM vs. CatBoost'
+title = 'Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost'
 date = 2024-05-08T20:55:43-03:00
 draft = true
 tags = ["Data Science", "Machine Learning", "Boosting", "Tree Methods"]
@@ -17,20 +17,19 @@ Gradient Boosting is an ensemble model which is built of a sequential series of 
 
 **Gradient Boosting in sklearn**
 
+Gradient Boosting is one of many available Machine Learning algorithms available in [sklearn](https://scikit-learn.org/stable/), which is short for scikit-learn. It started as a Google summer of code project started by David Cournapeau and was originally called scikits.learn. The first version was published in 2010 by the contributors Fabian Pedregosa, Gaël Varoquaux, Alexandre Gramfort and Vincent Michel, from the French Institute for Research in Computer Science and Automation in Saclay, France. Nowadays it is one of the most extensive and used libraries in Machine Learning. 
+
 **XGBoost**
 
-"XGBoost (eXtreme Gradient Boosting) is a machine learning algorithm that focuses on computation speed and model performance. It was introduced by Tianqi Chen and is currently a part of a wider toolkit by DMLC (Distributed Machine Learning Community). The algorithm can be used for both regression and classification tasks and has been designed to work with large and complicated datasets."
+XGBoost stands for eXtreme Gradient Boosting and is an algorithm optimizing computation speed and model performance. XGBoost was first developed by Tianqi Chen. It became popular and famous for many winning solutions in Machine Learning competitions. It can be used as a separated library, but nowadays also an integration in sklearn exists. XGBoosts algorithm is capable to handle large datasets.
 
 **LightGBM**
 
-developed by Microsoft (reference)
-
-histogram-based algorithm that performs bucketing of values (also requires lesser memory)
-
-Also compatible with large and complex datasets but is much faster during training
-Support for both parallel learning and GPU learning
+LightGBM is shirt for Light Gradient-Boosting Machine and was developed by Microsoft. It has similar advantages as XGBoost and also able to handle large datasets. The main difference between LighGBM and XGBoost is the way the trees are build. In LightGBM the trees are not grown level-wise, but leave-wise. We will discuss this in more detail later.
 
 **CatBoost**
+
+CatBoost was developed by Yandex, a russion technology company and has a special focus on how categorical values are treated in Gradient Boosting. It was developed in 2016 and was based on previous projects focussing on Gradient Boosting algorithms. It was first released open-source in 2017.
 
 ## Performance
 
@@ -55,6 +54,8 @@ Support for both parallel learning and GPU learning
 **Gradient Boosting in sklearn**
 
 * mention hist-based model 
+
+histogram-based algorithm that performs bucketing of values (also requires lesser memory)
 
 **XGBoost**
 
