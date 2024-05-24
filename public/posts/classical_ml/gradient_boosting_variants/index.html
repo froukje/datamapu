@@ -6,7 +6,7 @@
     
     <title>Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only a higher than random guessing. Together, they form a strong learner with high predictive skill. In this article, we discuss the different implementations of Gradient Boosting. We give a high-level overview of the differences for a more in depth understanding, further literature is given.">
+    <meta name="description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only slightly higher than random guessing. Together, they form a strong learner with high predictive skill. For a more detailed explanatione, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss differet implementations of Gradient Boosting.">
     <meta name="generator" content="Hugo 0.126.1">
     
     
@@ -33,7 +33,7 @@
     
     <meta property="og:url" content="http://localhost:1313/posts/classical_ml/gradient_boosting_variants/">
   <meta property="og:title" content="Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost">
-  <meta property="og:description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only a higher than random guessing. Together, they form a strong learner with high predictive skill. In this article, we discuss the different implementations of Gradient Boosting. We give a high-level overview of the differences for a more in depth understanding, further literature is given.">
+  <meta property="og:description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only slightly higher than random guessing. Together, they form a strong learner with high predictive skill. For a more detailed explanatione, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss differet implementations of Gradient Boosting.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -46,16 +46,16 @@
     <meta property="og:image" content="http://localhost:1313/images/">
 
   <meta itemprop="name" content="Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost">
-  <meta itemprop="description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only a higher than random guessing. Together, they form a strong learner with high predictive skill. In this article, we discuss the different implementations of Gradient Boosting. We give a high-level overview of the differences for a more in depth understanding, further literature is given.">
+  <meta itemprop="description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only slightly higher than random guessing. Together, they form a strong learner with high predictive skill. For a more detailed explanatione, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss differet implementations of Gradient Boosting.">
   <meta itemprop="datePublished" content="2024-05-08T20:55:43-03:00">
   <meta itemprop="dateModified" content="2024-05-08T20:55:43-03:00">
-  <meta itemprop="wordCount" content="1654">
+  <meta itemprop="wordCount" content="1677">
   <meta itemprop="image" content="http://localhost:1313/images/">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Ensemble,Boosting,Tree Methods">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/images/">
   <meta name="twitter:title" content="Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost">
-  <meta name="twitter:description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only a higher than random guessing. Together, they form a strong learner with high predictive skill. In this article, we discuss the different implementations of Gradient Boosting. We give a high-level overview of the differences for a more in depth understanding, further literature is given.">
+  <meta name="twitter:description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only slightly higher than random guessing. Together, they form a strong learner with high predictive skill. For a more detailed explanatione, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss differet implementations of Gradient Boosting.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -210,24 +210,20 @@ MathJax = {
       
       
         <span class="f6 mv4 dib tracked"> - 8 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 1654 words </span>
+        <span class="f6 mv4 dib tracked"> - 1677 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
-<p>Gradient Boosting is an ensemble model which is built of a sequential series of shallow <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a>. The single trees are weak learners and have little predictive skill, that is only a higher than random guessing. Together, they form a strong learner with high predictive skill. In this article, we discuss the different implementations of <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boosting</a>. We give a high-level overview of the differences for a more in depth understanding, further literature is given.</p>
+<p>Gradient Boosting is an ensemble model which is built of a sequential series of shallow <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a>. The single trees are weak learners and have little predictive skill, that is only slightly higher than random guessing. Together, they form a strong learner with high predictive skill. For a more detailed explanatione, please refer to the post <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boosting for Regression - Explained</a>. In this article, we will discuss differet implementations of Gradient Boosting. The focus is to give a high-level overview of different implementations and discuss the differences. For a more in depth understanding of each framework, further literature is given.</p>
 <h2 id="background">Background</h2>
 <p><strong>Gradient Boosting in sklearn</strong></p>
-<p>Gradient Boosting is one of many available Machine Learning algorithms available in <a href="https://scikit-learn.org/stable/">sklearn</a>, which is short for scikit-learn. It started as a Google summer of code project started by David Cournapeau and was originally called scikits.learn. The first version was published in 2010 by the contributors Fabian Pedregosa, Gaël Varoquaux, Alexandre Gramfort and Vincent Michel, from the French Institute for Research in Computer Science and Automation in Saclay, France. Nowadays it is one of the most extensive and used libraries in Machine Learning.</p>
+<p>Gradient Boosting is one of many available Machine Learning algorithms available in <a href="https://scikit-learn.org/stable/">sklearn</a>, which is short for scikit-learn, which started as a Google summer of code project by David Cournapeau and was originally called scikits.learn. The first version was published in 2010 by the contributors Fabian Pedregosa, Gaël Varoquaux, Alexandre Gramfort and Vincent Michel, from the French Institute for Research in Computer Science and Automation in Saclay, France. Nowadays it is one of the most extensive and used libraries in Machine Learning.</p>
 <p><strong>XGBoost</strong></p>
-<p>XGBoost stands for eXtreme Gradient Boosting and is an algorithm optimizing computation speed and model performance. XGBoost was first developed by Tianqi Chen. It became popular and famous for many winning solutions in Machine Learning competitions. It can be used as a separated library, but nowadays also an integration in sklearn exists. XGBoosts algorithm is capable to handle large datasets.</p>
+<p>XGBoost stands for eXtreme Gradient Boosting and is an algorithm focussing on optimizing computation speed and model performance. XGBoost was first developed by Tianqi Chen. It became popular and famous for many winning solutions in Machine Learning competitions. It can be used as a separated library, but also an integration in sklearn exists. The XGBoosts algorithm is capable to handle large and complex datasets.</p>
 <p><strong>LightGBM</strong></p>
-<p>LightGBM is shirt for Light Gradient-Boosting Machine and was developed by Microsoft. It has similar advantages as XGBoost and also able to handle large datasets. The main difference between LighGBM and XGBoost is the way the trees are build. In LightGBM the trees are not grown level-wise, but leave-wise. We will discuss this in more detail later.</p>
+<p>LightGBM is short for Light Gradient-Boosting Machine and was developed by Microsoft. It has similar advantages as XGBoost and also able to handle large and complex datasets. The main difference between LightGBM and XGBoost is the way the trees are built. In LightGBM the trees are not grown level-wise, but leave-wise.</p>
 <p><strong>CatBoost</strong></p>
-<p>CatBoost was developed by Yandex, a russion technology company and has a special focus on how categorical values are treated in Gradient Boosting. It was developed in 2016 and was based on previous projects focussing on Gradient Boosting algorithms. It was first released open-source in 2017.</p>
-<h2 id="performance">Performance</h2>
-<p><strong>Gradient Boosting in sklearn</strong></p>
-<p><strong>XGBoost</strong></p>
-<p><strong>LightGBM</strong></p>
+<p>CatBoost was developed by Yandex, a Russian technology company and has a special focus on how categorical values are treated in Gradient Boosting. It was developed in 2016 and was based on previous projects focussing on Gradient Boosting algorithms. It was first released open-source in 2017.</p>
 <h2 id="feature-handling">Feature Handling</h2>
 <p><strong>Gradient Boosting in sklearn</strong></p>
 <p><strong>XGBoost</strong></p>
@@ -248,6 +244,10 @@ MathJax = {
 <p><strong>XGBoost</strong></p>
 <p><strong>LightGBM</strong></p>
 <p><strong>CatBoost</strong></p>
+<h2 id="performance">Performance</h2>
+<p><strong>Gradient Boosting in sklearn</strong></p>
+<p><strong>XGBoost</strong></p>
+<p><strong>LightGBM</strong></p>
 <h2 id="ease-of-use">Ease of Use</h2>
 <p><strong>Gradient Boosting in sklearn</strong></p>
 <p><strong>XGBoost</strong></p>
@@ -537,11 +537,11 @@ To use the <em>GradientBoostingClassifier</em>, we need to import it from sklear
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/posts/deep_learning/backpropagation/">Backpropagation Step by Step</a>
+          <a href="/backpropagation/">Backpropagation Step by Step</a>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/backpropagation/">Backpropagation Step by Step</a>
+          <a href="/posts/deep_learning/backpropagation/">Backpropagation Step by Step</a>
         </li>
 	    
 	     <li  class="mb2">

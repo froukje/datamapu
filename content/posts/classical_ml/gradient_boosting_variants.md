@@ -11,37 +11,37 @@ images = ['/images/']
 
 ## Introduction
 
-Gradient Boosting is an ensemble model which is built of a sequential series of shallow [Decision Trees]({{< ref "/posts/classical_ml/decision_trees.md" >}}). The single trees are weak learners and have little predictive skill, that is only a higher than random guessing. Together, they form a strong learner with high predictive skill. In this article, we discuss the different implementations of [Gradient Boosting]({{< ref "/posts/classical_ml/gradient_boosting_regression.md" >}}). We give a high-level overview of the differences for a more in depth understanding, further literature is given.
+Gradient Boosting is an ensemble model which is built of a sequential series of shallow [Decision Trees]({{< ref "/posts/classical_ml/decision_trees.md" >}}). The single trees are weak learners and have little predictive skill, that is only slightly higher than random guessing. Together, they form a strong learner with high predictive skill. For a more detailed explanatione, please refer to the post [Gradient Boosting for Regression - Explained]({{< ref "/posts/classical_ml/gradient_boosting_regression.md" >}}). In this article, we will discuss differet implementations of Gradient Boosting. The focus is to give a high-level overview of different implementations and discuss the differences. For a more in depth understanding of each framework, further literature is given.
 
 ## Background
 
 **Gradient Boosting in sklearn**
 
-Gradient Boosting is one of many available Machine Learning algorithms available in [sklearn](https://scikit-learn.org/stable/), which is short for scikit-learn. It started as a Google summer of code project started by David Cournapeau and was originally called scikits.learn. The first version was published in 2010 by the contributors Fabian Pedregosa, Gaël Varoquaux, Alexandre Gramfort and Vincent Michel, from the French Institute for Research in Computer Science and Automation in Saclay, France. Nowadays it is one of the most extensive and used libraries in Machine Learning. 
+Gradient Boosting is one of many available Machine Learning algorithms available in [sklearn](https://scikit-learn.org/stable/), which is short for scikit-learn, which started as a Google summer of code project by David Cournapeau and was originally called scikits.learn. The first version was published in 2010 by the contributors Fabian Pedregosa, Gaël Varoquaux, Alexandre Gramfort and Vincent Michel, from the French Institute for Research in Computer Science and Automation in Saclay, France. Nowadays it is one of the most extensive and used libraries in Machine Learning. 
 
 **XGBoost**
 
-XGBoost stands for eXtreme Gradient Boosting and is an algorithm optimizing computation speed and model performance. XGBoost was first developed by Tianqi Chen. It became popular and famous for many winning solutions in Machine Learning competitions. It can be used as a separated library, but nowadays also an integration in sklearn exists. XGBoosts algorithm is capable to handle large datasets.
+XGBoost stands for eXtreme Gradient Boosting and is an algorithm focussing on optimizing computation speed and model performance. XGBoost was first developed by Tianqi Chen. It became popular and famous for many winning solutions in Machine Learning competitions. It can be used as a separated library, but also an integration in sklearn exists. The XGBoosts algorithm is capable to handle large and complex datasets.
 
 **LightGBM**
 
-LightGBM is shirt for Light Gradient-Boosting Machine and was developed by Microsoft. It has similar advantages as XGBoost and also able to handle large datasets. The main difference between LighGBM and XGBoost is the way the trees are build. In LightGBM the trees are not grown level-wise, but leave-wise. We will discuss this in more detail later.
+LightGBM is short for Light Gradient-Boosting Machine and was developed by Microsoft. It has similar advantages as XGBoost and also able to handle large and complex datasets. The main difference between LightGBM and XGBoost is the way the trees are built. In LightGBM the trees are not grown level-wise, but leave-wise.
 
 **CatBoost**
 
-CatBoost was developed by Yandex, a russion technology company and has a special focus on how categorical values are treated in Gradient Boosting. It was developed in 2016 and was based on previous projects focussing on Gradient Boosting algorithms. It was first released open-source in 2017.
-
-## Performance
-
-**Gradient Boosting in sklearn**
-
-**XGBoost**
-
-**LightGBM**
+CatBoost was developed by Yandex, a Russian technology company and has a special focus on how categorical values are treated in Gradient Boosting. It was developed in 2016 and was based on previous projects focussing on Gradient Boosting algorithms. It was first released open-source in 2017.
 
 ## Feature Handling
 
 **Gradient Boosting in sklearn**
+
+*Numerical Features:* Gradient Boosting in sklearn expects numerical input. 
+
+*Categorical Features:* Gradient Boosting in sklearn does not natively categorical features. They need to be encoded using e.g. one-hot encoding or label-encoding.
+
+*Missing Values:* Gradient Boosting in sklearn does not handle missing values. Missing values need to be removed or imputed prior to training the model.
+
+Note, that the method *HistGradientBoostingClassifier* another Gradient Boosting method implemented in sklearn. This method is able to [handle missing values](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html) and [categorical values](https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_categorical.html).
 
 **XGBoost**
 
@@ -75,6 +75,15 @@ histogram-based algorithm that performs bucketing of values (also requires lesse
 **LightGBM**
 
 **CatBoost**
+
+## Performance
+
+**Gradient Boosting in sklearn**
+
+**XGBoost**
+
+**LightGBM**
+
 
 ## Ease of Use
 
