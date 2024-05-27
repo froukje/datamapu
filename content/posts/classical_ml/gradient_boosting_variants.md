@@ -15,56 +15,139 @@ Gradient Boosting is an ensemble model which is built of a sequential series of 
 
 ## Background
 
-**Gradient Boosting in sklearn**
+### Gradient Boosting in sklearn
 
 Gradient Boosting is one of many available Machine Learning algorithms available in [sklearn](https://scikit-learn.org/stable/), which is short for scikit-learn, which started as a Google summer of code project by David Cournapeau and was originally called scikits.learn. The first version was published in 2010 by the contributors Fabian Pedregosa, Gaël Varoquaux, Alexandre Gramfort and Vincent Michel, from the French Institute for Research in Computer Science and Automation in Saclay, France. Nowadays it is one of the most extensive and used libraries in Machine Learning. 
 
-**XGBoost**
+### XGBoost
 
 XGBoost stands for eXtreme Gradient Boosting and is an algorithm focussing on optimizing computation speed and model performance. XGBoost was first developed by Tianqi Chen. It became popular and famous for many winning solutions in Machine Learning competitions. It can be used as a separated library, but also an integration in sklearn exists. The XGBoosts algorithm is capable to handle large and complex datasets.
 
-**LightGBM**
+### LightGBM
 
 LightGBM is short for Light Gradient-Boosting Machine and was developed by Microsoft. It has similar advantages as XGBoost and also able to handle large and complex datasets. The main difference between LightGBM and XGBoost is the way the trees are built. In LightGBM the trees are not grown level-wise, but leave-wise.
 
-**CatBoost**
+### CatBoost
 
 CatBoost was developed by Yandex, a Russian technology company and has a special focus on how categorical values are treated in Gradient Boosting. It was developed in 2016 and was based on previous projects focussing on Gradient Boosting algorithms. It was first released open-source in 2017.
 
 ## Feature Handling
 
-**Gradient Boosting in sklearn**
+### Gradient Boosting in sklearn
 
-*Numerical Features:* Gradient Boosting in sklearn expects numerical input. 
+1. [GradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) / [GradientBoostingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)
 
-*Categorical Features:* Gradient Boosting in sklearn does not natively categorical features. They need to be encoded using e.g. one-hot encoding or label-encoding.
+**Numerical Features:** Gradient Boosting in sklearn expects numerical input. 
 
-*Missing Values:* Gradient Boosting in sklearn does not handle missing values. Missing values need to be removed or imputed prior to training the model.
+**Categorical Features:** Gradient Boosting in sklearn does not natively support categorical features. They need to be encoded using e.g. one-hot encoding or label-encoding.
 
-Note, that the method *HistGradientBoostingClassifier* another Gradient Boosting method implemented in sklearn. This method is able to [handle missing values](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html) and [categorical values](https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_categorical.html).
+**Missing Values:** Gradient Boosting in sklearn does not handle missing values. Missing values need to be removed or imputed prior to training the model.
 
-**XGBoost**
+2. [HistGradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html) / [HistGradientBoostingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html)
 
-**LightGBM**
+Hostgram-based Gradient Boosting by sklearn was inspired by LightGBM.
 
-**CatBoost**
+**Numerical & Categorical Features:** The Histogram-based Gradient Booster natively supports numerical and categorical features. For more details, please check the [documentation](https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_categorical.html).
+
+**Missing Values:** The Histogram-based Gradient Booster is able to handle missing values natively. More explanations can be found in the [documentation](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html). 
+
+### XGBoost
+
+**Numerical Features:** XGBoost supports directly numerical data.
+
+**Categorical Features:** Both the native environment and the sklearn interface support categorical features using the parameter *enable_categorical*. Examples for both interfaces can be found in the [documentation](https://xgboost.readthedocs.io/en/stable/tutorials/categorical.html). 
+
+**Missing Values:** XGBoost natively supports missing values. Note, that the treatment of missing values differ with the booster type used. For more explanataions, please refer to the [documentation](https://xgboost.readthedocs.io/en/stable/faq.html#how-to-deal-with-missing-values). 
+
+### LightGBM
+
+**Numerical Features:** LightGBM supports numerical data.
+
+**Categorical Features:** LightGBM has built-in support for categorical features. Categorical features can be specified using the parameter *categorical_feature*. For more details, please refer to the [documentation](https://lightgbm.readthedocs.io/en/stable/Advanced-Topics.html#categorical-feature-support).
+
+**Missing Values:** LightGBM natively supports the handling of missing values. It can be disabled using the parameter *use_missing=false*. More information is available in the [documentation](https://lightgbm.readthedocs.io/en/stable/Advanced-Topics.html#missing-value-handle).
+
+### CatBoost
+
+**Numerical Features:**  CatBoost supports numerical data.
+
+**Categorical Features:** CatBoost is specifically designed to handle categorical features without needing to preprocess them into numerical formats. How this transformation is done, is described in the [documentation](https://catboost.ai/en/docs/concepts/algorithm-main-stages_cat-to-numberic)
+
+**Missing Values:** CatBoost has robust handling for missing values, treating them as a separate category or using specific strategies for imputation during training. How missing values are treated depends on the feature type. More details can be found in the [documentation](https://catboost.ai/en/docs/concepts/algorithm-missing-values-processing)
+
+![feature handling](/images/gradient_boosting/gb_variants_1.png)
+*Feature handling in the different implementations.*
+
 
 ## Tree Growths
 
-**Gradient Boosting in sklearn**
+### Gradient Boosting in sklearn
 
-* mention hist-based model 
+1. [GradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) / [GradientBoostingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)
+
+Level-wise Growth: Trees are grown level by level, where all nodes at a given depth are expanded before moving to the next level.
+Splitting Criterion: Uses criteria like Mean Squared Error (MSE) for regression tasks or log-loss for classification tasks to determine the best splits.
+Depth Control: Tree depth is typically controlled by parameters like max_depth or max_leaf_nodes.
+
+Characteristics:
+
+Produces balanced trees.
+Can be slower and more memory-intensive due to examining many potential splits across the entire dataset.
+Requires careful tuning of parameters to balance bias and variance.
+
+2. [HistGradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html) / [HistGradientBoostingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html)
+
+Histogram-based Growth: Utilizes histograms to approximate the data distribution, which speeds up the process of finding optimal splits.
+Binning: Continuous features are binned into discrete bins, which reduces the number of split points to evaluate.
+Level-wise Growth: Similar to traditional gradient boosting in scikit-learn, it grows trees level by level.
+
+Characteristics:
+
+Faster training compared to traditional gradient boosting due to reduced computational complexity.
+Handles large datasets more efficiently by reducing the number of potential split points.
+Balances between speed and accuracy by approximating continuous data with histograms.
 
 histogram-based algorithm that performs bucketing of values (also requires lesser memory)
 
-**XGBoost**
+### XGBoost
 
+Level-wise Growth: Trees are grown level by level, ensuring balanced tree structures.
+Regularization: Includes L1 and L2 regularization to prevent overfitting.
+Optimal Split Finding: Utilizes advanced algorithms to efficiently find the best splits.
+Pruning: Implements a technique called "pruning" where splits are undone if they do not result in a positive gain.
 
-**LightGBM**
+Characteristics:
+
+Balanced between complexity and computational efficiency.
+Strong regularization techniques to improve generalization.
+Supports parallel processing, enhancing training speed.
+
+### LightGBM
+
+Leaf-wise Growth: Instead of growing level by level, LightGBM grows the tree by expanding the leaf with the highest potential for reducing the loss function.
+Gradient-based One-Side Sampling (GOSS): Prioritizes instances with larger gradients to improve efficiency.
+Exclusive Feature Bundling (EFB): Combines mutually exclusive features to reduce the number of features considered for splits.
+
+Characteristics:
+
+Generally faster and more efficient, especially on large datasets.
+Produces deeper and more complex trees, which can improve accuracy but also risk overfitting.
+Highly optimized for performance with techniques like GOSS and EFB.
 
 "In contrast to the level-wise (horizontal) growth in XGBoost, LightGBM carries out leaf-wise (vertical) growth that results in more loss reduction and in turn higher accuracy while being faster. But this may also result in overfitting on the training data which could be handled using the max-depth parameter that specifies where the splitting would occur. Hence, XGBoost is capable of building more robust models than LightGBM."
 
-**CatBoost**
+
+### CatBoost
+
+Symmetric Tree Growth: All leaves at a given depth are split in the same way, resulting in a symmetric tree structure.
+Ordered Boosting: Uses ordered boosting to reduce overfitting and improve the accuracy of the model.
+Categorical Feature Handling: Handles categorical features natively and efficiently without the need for preprocessing.
+
+Characteristics:
+
+Produces balanced and symmetric trees, leading to efficient training and inference.
+Robust against overfitting with ordered boosting and other regularization techniques.
+Performs well with default parameters, requiring less hyperparameter tuning.
 
 ## Accuracy
 
