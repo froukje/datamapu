@@ -81,11 +81,17 @@ Hostgram-based Gradient Boosting by sklearn was inspired by LightGBM.
 
 ## Tree Growths
 
+Traditionally Decision Trees are grown level-wise. That means first a level is developed completely, such that all leaves are grown before moving to the next level. An alternative approach is leaf-wise tree growth. In this case, this criterion is relaxed and the tree is grown by the biggest gain of all possible splits considering all leaves, which may result in unsymetric, irregular trees of larger depth. The different methods are illustrated in the plot below. The leaf-wise tree is build using the global best split, while the level-wise growth only uses a local minimum for the next split, also leaf-wise growth is computationally more efficient and less memory intensive. The next plot shows an overview of the growth tyoe used in the different methods. 
+
+![tree growth](/images/gradient_boosting/tree_growth.png)
+*Level-wise and leaf-wise Tree Growth illustrated.*
+
 ### Gradient Boosting in sklearn
 
 1. [GradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) / [GradientBoostingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)
 
-Level-wise Growth: Trees are grown level by level, where all nodes at a given depth are expanded before moving to the next level.
+In the Gradient Boosting algorithm of sklearn the trees are grown level-wise. 
+
 Splitting Criterion: Uses criteria like Mean Squared Error (MSE) for regression tasks or log-loss for classification tasks to determine the best splits.
 Depth Control: Tree depth is typically controlled by parameters like max_depth or max_leaf_nodes.
 
@@ -98,7 +104,9 @@ Requires careful tuning of parameters to balance bias and variance.
 2. [HistGradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html) / [HistGradientBoostingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html)
 
 Histogram-based Growth: Utilizes histograms to approximate the data distribution, which speeds up the process of finding optimal splits.
+
 Binning: Continuous features are binned into discrete bins, which reduces the number of split points to evaluate.
+
 Level-wise Growth: Similar to traditional gradient boosting in scikit-learn, it grows trees level by level.
 
 Characteristics:
@@ -112,8 +120,11 @@ histogram-based algorithm that performs bucketing of values (also requires lesse
 ### XGBoost
 
 Level-wise Growth: Trees are grown level by level, ensuring balanced tree structures.
+
 Regularization: Includes L1 and L2 regularization to prevent overfitting.
+
 Optimal Split Finding: Utilizes advanced algorithms to efficiently find the best splits.
+
 Pruning: Implements a technique called "pruning" where splits are undone if they do not result in a positive gain.
 
 Characteristics:
@@ -124,7 +135,8 @@ Supports parallel processing, enhancing training speed.
 
 ### LightGBM
 
-Leaf-wise Growth: Instead of growing level by level, LightGBM grows the tree by expanding the leaf with the highest potential for reducing the loss function.
+**Leaf-wise Growth:** Instead of growing level by level, LightGBM grows the tree by expanding the leaf with the highest potential for reducing the loss function.
+
 Gradient-based One-Side Sampling (GOSS): Prioritizes instances with larger gradients to improve efficiency.
 Exclusive Feature Bundling (EFB): Combines mutually exclusive features to reduce the number of features considered for splits.
 
@@ -139,7 +151,7 @@ Highly optimized for performance with techniques like GOSS and EFB.
 
 ### CatBoost
 
-Symmetric Tree Growth: All leaves at a given depth are split in the same way, resulting in a symmetric tree structure.
+**Symmetric Tree Growth:** All leaves at a given depth are split in the same way, resulting in a symmetric tree structure.
 Ordered Boosting: Uses ordered boosting to reduce overfitting and improve the accuracy of the model.
 Categorical Feature Handling: Handles categorical features natively and efficiently without the need for preprocessing.
 
@@ -166,27 +178,6 @@ Performs well with default parameters, requiring less hyperparameter tuning.
 **XGBoost**
 
 **LightGBM**
-
-
-## Ease of Use
-
-**Gradient Boosting in sklearn**
-
-**XGBoost**
-
-**LightGBM**
-
-**CatBoost**
-
-## Scalability and Deployment
-
-**Gradient Boosting in sklearn**
-
-**XGBoost**
-
-**LightGBM**
-
-**CatBoost**
 
 ## Code Examples
 
@@ -354,6 +345,9 @@ https://www.geeksforgeeks.org/catboost-ml/
 
 ## Summary
 
+## Literature
+
+[1] Haithm H. Alshari et al., "Comparison of Gradient Boosting Decision Tree Algorithms for CPU Performance", Journal of Institue Of Science and Technology, Volume 37, Issue 1, 2021
 ---
 If this blog is useful for you, please consider supporting.
 

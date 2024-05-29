@@ -49,7 +49,7 @@
   <meta itemprop="description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only slightly higher than random guessing. Together, they form a strong learner with high predictive skill. For a more detailed explanatione, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss differet implementations of Gradient Boosting.">
   <meta itemprop="datePublished" content="2024-05-08T20:55:43-03:00">
   <meta itemprop="dateModified" content="2024-05-08T20:55:43-03:00">
-  <meta itemprop="wordCount" content="2408">
+  <meta itemprop="wordCount" content="2536">
   <meta itemprop="image" content="http://localhost:1313/images/">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Ensemble,Boosting,Tree Methods">
   <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@ MathJax = {
       
       
         <span class="f6 mv4 dib tracked"> - 12 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 2408 words </span>
+        <span class="f6 mv4 dib tracked"> - 2536 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -253,12 +253,15 @@ MathJax = {
 <p><img src="/images/gradient_boosting/gb_variants_1.png" alt="feature handling">
 <em>Feature handling in the different implementations.</em></p>
 <h2 id="tree-growths">Tree Growths</h2>
+<p>Traditionally Decision Trees are grown level-wise. That means first a level is developed completely, such that all leaves are grown before moving to the next level. An alternative approach is leaf-wise tree growth. In this case, this criterion is relaxed and the tree is grown by the biggest gain of all possible splits considering all leaves, which may result in unsymetric, irregular trees of larger depth. The different methods are illustrated in the plot below. The leaf-wise tree is build using the global best split, while the level-wise growth only uses a local minimum for the next split, also leaf-wise growth is computationally more efficient and less memory intensive. The next plot shows an overview of the growth tyoe used in the different methods.</p>
+<p><img src="/images/gradient_boosting/tree_growth.png" alt="tree growth">
+<em>Level-wise and leaf-wise Tree Growth illustrated.</em></p>
 <h3 id="gradient-boosting-in-sklearn-2">Gradient Boosting in sklearn</h3>
 <ol>
 <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">GradientBoostingRegressor</a> / <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">GradientBoostingClassifier</a></li>
 </ol>
-<p>Level-wise Growth: Trees are grown level by level, where all nodes at a given depth are expanded before moving to the next level.
-Splitting Criterion: Uses criteria like Mean Squared Error (MSE) for regression tasks or log-loss for classification tasks to determine the best splits.
+<p>In the Gradient Boosting algorithm of sklearn the trees are grown level-wise.</p>
+<p>Splitting Criterion: Uses criteria like Mean Squared Error (MSE) for regression tasks or log-loss for classification tasks to determine the best splits.
 Depth Control: Tree depth is typically controlled by parameters like max_depth or max_leaf_nodes.</p>
 <p>Characteristics:</p>
 <p>Produces balanced trees.
@@ -267,26 +270,26 @@ Requires careful tuning of parameters to balance bias and variance.</p>
 <ol start="2">
 <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html">HistGradientBoostingRegressor</a> / <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html">HistGradientBoostingClassifier</a></li>
 </ol>
-<p>Histogram-based Growth: Utilizes histograms to approximate the data distribution, which speeds up the process of finding optimal splits.
-Binning: Continuous features are binned into discrete bins, which reduces the number of split points to evaluate.
-Level-wise Growth: Similar to traditional gradient boosting in scikit-learn, it grows trees level by level.</p>
+<p>Histogram-based Growth: Utilizes histograms to approximate the data distribution, which speeds up the process of finding optimal splits.</p>
+<p>Binning: Continuous features are binned into discrete bins, which reduces the number of split points to evaluate.</p>
+<p>Level-wise Growth: Similar to traditional gradient boosting in scikit-learn, it grows trees level by level.</p>
 <p>Characteristics:</p>
 <p>Faster training compared to traditional gradient boosting due to reduced computational complexity.
 Handles large datasets more efficiently by reducing the number of potential split points.
 Balances between speed and accuracy by approximating continuous data with histograms.</p>
 <p>histogram-based algorithm that performs bucketing of values (also requires lesser memory)</p>
 <h3 id="xgboost-2">XGBoost</h3>
-<p>Level-wise Growth: Trees are grown level by level, ensuring balanced tree structures.
-Regularization: Includes L1 and L2 regularization to prevent overfitting.
-Optimal Split Finding: Utilizes advanced algorithms to efficiently find the best splits.
-Pruning: Implements a technique called &ldquo;pruning&rdquo; where splits are undone if they do not result in a positive gain.</p>
+<p>Level-wise Growth: Trees are grown level by level, ensuring balanced tree structures.</p>
+<p>Regularization: Includes L1 and L2 regularization to prevent overfitting.</p>
+<p>Optimal Split Finding: Utilizes advanced algorithms to efficiently find the best splits.</p>
+<p>Pruning: Implements a technique called &ldquo;pruning&rdquo; where splits are undone if they do not result in a positive gain.</p>
 <p>Characteristics:</p>
 <p>Balanced between complexity and computational efficiency.
 Strong regularization techniques to improve generalization.
 Supports parallel processing, enhancing training speed.</p>
 <h3 id="lightgbm-2">LightGBM</h3>
-<p>Leaf-wise Growth: Instead of growing level by level, LightGBM grows the tree by expanding the leaf with the highest potential for reducing the loss function.
-Gradient-based One-Side Sampling (GOSS): Prioritizes instances with larger gradients to improve efficiency.
+<p><strong>Leaf-wise Growth:</strong> Instead of growing level by level, LightGBM grows the tree by expanding the leaf with the highest potential for reducing the loss function.</p>
+<p>Gradient-based One-Side Sampling (GOSS): Prioritizes instances with larger gradients to improve efficiency.
 Exclusive Feature Bundling (EFB): Combines mutually exclusive features to reduce the number of features considered for splits.</p>
 <p>Characteristics:</p>
 <p>Generally faster and more efficient, especially on large datasets.
@@ -294,7 +297,7 @@ Produces deeper and more complex trees, which can improve accuracy but also risk
 Highly optimized for performance with techniques like GOSS and EFB.</p>
 <p>&ldquo;In contrast to the level-wise (horizontal) growth in XGBoost, LightGBM carries out leaf-wise (vertical) growth that results in more loss reduction and in turn higher accuracy while being faster. But this may also result in overfitting on the training data which could be handled using the max-depth parameter that specifies where the splitting would occur. Hence, XGBoost is capable of building more robust models than LightGBM.&rdquo;</p>
 <h3 id="catboost-2">CatBoost</h3>
-<p>Symmetric Tree Growth: All leaves at a given depth are split in the same way, resulting in a symmetric tree structure.
+<p><strong>Symmetric Tree Growth:</strong> All leaves at a given depth are split in the same way, resulting in a symmetric tree structure.
 Ordered Boosting: Uses ordered boosting to reduce overfitting and improve the accuracy of the model.
 Categorical Feature Handling: Handles categorical features natively and efficiently without the need for preprocessing.</p>
 <p>Characteristics:</p>
@@ -310,16 +313,6 @@ Performs well with default parameters, requiring less hyperparameter tuning.</p>
 <p><strong>Gradient Boosting in sklearn</strong></p>
 <p><strong>XGBoost</strong></p>
 <p><strong>LightGBM</strong></p>
-<h2 id="ease-of-use">Ease of Use</h2>
-<p><strong>Gradient Boosting in sklearn</strong></p>
-<p><strong>XGBoost</strong></p>
-<p><strong>LightGBM</strong></p>
-<p><strong>CatBoost</strong></p>
-<h2 id="scalability-and-deployment">Scalability and Deployment</h2>
-<p><strong>Gradient Boosting in sklearn</strong></p>
-<p><strong>XGBoost</strong></p>
-<p><strong>LightGBM</strong></p>
-<p><strong>CatBoost</strong></p>
 <h2 id="code-examples">Code Examples</h2>
 <p>In this section a brief example of each method is given for a classification task, however all models have variants for regression problems. The dataset used is described in the plot below. The example used here is very simple and only for illustration purposes. More detailed examples on a larger dataset can be found on <a href="https://www.kaggle.com/work/code">kaggle</a>.</p>
 <p><img src="/images/gradient_boosting/gb_class_data.png" alt="&ldquo;data&rdquo;">
@@ -511,7 +504,8 @@ To use the <em>GradientBoostingClassifier</em>, we need to import it from sklear
 <p><a href="https://catboost.ai/">https://catboost.ai/</a></p>
 <p><a href="https://www.geeksforgeeks.org/catboost-ml/">https://www.geeksforgeeks.org/catboost-ml/</a></p>
 <h2 id="summary">Summary</h2>
-<hr>
+<h2 id="literature">Literature</h2>
+<h2 id="1-haithm-h-alshari-et-al-comparison-of-gradient-boosting-decision-tree-algorithms-for-cpu-performance-journal-of-institue-of-science-and-technology-volume-37-issue-1-2021">[1] Haithm H. Alshari et al., &ldquo;Comparison of Gradient Boosting Decision Tree Algorithms for CPU Performance&rdquo;, Journal of Institue Of Science and Technology, Volume 37, Issue 1, 2021</h2>
 <p>If this blog is useful for you, please consider supporting.</p>
 
 
@@ -599,11 +593,11 @@ To use the <em>GradientBoostingClassifier</em>, we need to import it from sklear
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/posts/deep_learning/backpropagation/">Backpropagation Step by Step</a>
+          <a href="/backpropagation/"></a>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/backpropagation/">Backpropagation Step by Step</a>
+          <a href="/posts/deep_learning/backpropagation/">Backpropagation Step by Step</a>
         </li>
 	    
 	     <li  class="mb2">

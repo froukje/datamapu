@@ -5,7 +5,7 @@ draft = false
 tags = ["Backpropagation", "Data Science", "Machine Learning", "Artificial Intelligence", "Deep Learning"]
 categories = ["Data Science", "Machine Learning", "Artificial Intelligence", "Deep Learning"]
 keywords = ["Backpropagation", "Data Science", "Machine Learning", "Artificial Intelligence", "Deep Learning"]
-images = ['images/backpropagation/backpropagation_main.png']
+images = ['images/backpropagation/backpropagation_main1.png']
 +++
 
 ## Introduction

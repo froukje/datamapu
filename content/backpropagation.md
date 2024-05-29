@@ -1,11 +1,10 @@
 +++
-title = 'Backpropagation Step by Step'
+title = ''
 date = 2024-03-31T20:21:50-03:00
 draft = true
 tags = ["Backpropagation", "Data Science", "Machine Learning", "Artificial Intelligence", "Deep Learning"]
 categories = ["Data Science", "Machine Learning", "Artificial Intelligence", "Deep Learning"]
 keywords = ["Backpropagation", "Data Science", "Machine Learning", "Artificial Intelligence", "Deep Learning"]
-images = ['images/backpropagation/backpropagation_main.png']
 +++
 
 ## Introduction
