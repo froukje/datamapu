@@ -81,7 +81,7 @@ Hostgram-based Gradient Boosting by sklearn was inspired by LightGBM.
 
 ## Tree Growths
 
-Traditionally Decision Trees are grown level-wise. That means first a level is developed completely, such that all leaves are grown before moving to the next level. An alternative approach is leaf-wise tree growth. In this case, this criterion is relaxed and the tree is grown by the biggest gain of all possible splits considering all leaves, which may result in unsymetric, irregular trees of larger depth. The different methods are illustrated in the plot below. The leaf-wise tree is build using the global best split, while the level-wise growth only uses a local minimum for the next split, also leaf-wise growth is computationally more efficient and less memory intensive. The next plot shows an overview of the growth tyoe used in the different methods. 
+Traditionally Decision Trees are grown level-wise. That means first a level is developed completely, such that all leaves are grown before moving to the next level. An alternative approach is leaf-wise tree growth. In this case, this criterion is relaxed and the tree is grown by the highest loss reduction considering of all leaves, which may result in unsymetric, irregular trees of larger depth. The different methods are illustrated in the plot below. The leaf-wise tree is build using the global best split, while the level-wise growth only uses a local minimum for the next split, also leaf-wise growth is computationally more efficient and less memory intensive. The next plot shows an overview of the growth type used in the different methods. 
 
 ![tree growth](/images/gradient_boosting/tree_growth.png)
 *Level-wise and leaf-wise Tree Growth illustrated.*
@@ -90,94 +90,29 @@ Traditionally Decision Trees are grown level-wise. That means first a level is d
 
 1. [GradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) / [GradientBoostingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)
 
-In the Gradient Boosting algorithm of sklearn the trees are grown level-wise. 
-
-Splitting Criterion: Uses criteria like Mean Squared Error (MSE) for regression tasks or log-loss for classification tasks to determine the best splits.
-Depth Control: Tree depth is typically controlled by parameters like max_depth or max_leaf_nodes.
-
-Characteristics:
-
-Produces balanced trees.
-Can be slower and more memory-intensive due to examining many potential splits across the entire dataset.
-Requires careful tuning of parameters to balance bias and variance.
+In the Gradient Boosting algorithm of sklearn the trees are grown level-wise, that is they are grown level by level, expanding all nodes at a given depth before moving deeper.	This produces balanced trees and can be slower and more memory-intensive. 
 
 2. [HistGradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html) / [HistGradientBoostingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html)
 
-Histogram-based Growth: Utilizes histograms to approximate the data distribution, which speeds up the process of finding optimal splits.
+In HistGradientBossting histograms are used to approximate the data distributions, then the trees are grown level by level. This algorithm is faster and more efficient with large datasets compared to traditional Gradient Boosting.
 
-Binning: Continuous features are binned into discrete bins, which reduces the number of split points to evaluate.
-
-Level-wise Growth: Similar to traditional gradient boosting in scikit-learn, it grows trees level by level.
-
-Characteristics:
-
-Faster training compared to traditional gradient boosting due to reduced computational complexity.
-Handles large datasets more efficiently by reducing the number of potential split points.
-Balances between speed and accuracy by approximating continuous data with histograms.
-
-histogram-based algorithm that performs bucketing of values (also requires lesser memory)
 
 ### XGBoost
 
-Level-wise Growth: Trees are grown level by level, ensuring balanced tree structures.
-
-Regularization: Includes L1 and L2 regularization to prevent overfitting.
-
-Optimal Split Finding: Utilizes advanced algorithms to efficiently find the best splits.
-
-Pruning: Implements a technique called "pruning" where splits are undone if they do not result in a positive gain.
-
-Characteristics:
-
-Balanced between complexity and computational efficiency.
-Strong regularization techniques to improve generalization.
-Supports parallel processing, enhancing training speed.
+The trees in XGBoost are also grown level-wise, but advanced algorithms are used to find the optimal split and regularization, which improves computational efficiency. XGBoost offers the possibilty to use histogram based splitting.
 
 ### LightGBM
 
-**Leaf-wise Growth:** Instead of growing level by level, LightGBM grows the tree by expanding the leaf with the highest potential for reducing the loss function.
-
-Gradient-based One-Side Sampling (GOSS): Prioritizes instances with larger gradients to improve efficiency.
-Exclusive Feature Bundling (EFB): Combines mutually exclusive features to reduce the number of features considered for splits.
-
-Characteristics:
-
-Generally faster and more efficient, especially on large datasets.
-Produces deeper and more complex trees, which can improve accuracy but also risk overfitting.
-Highly optimized for performance with techniques like GOSS and EFB.
-
-"In contrast to the level-wise (horizontal) growth in XGBoost, LightGBM carries out leaf-wise (vertical) growth that results in more loss reduction and in turn higher accuracy while being faster. But this may also result in overfitting on the training data which could be handled using the max-depth parameter that specifies where the splitting would occur. Hence, XGBoost is capable of building more robust models than LightGBM."
-
+In LightGBM the trees are grown leaf-wise. This produces unbalanced and deeper trees, but is in general faster and more efficient.
 
 ### CatBoost
 
-**Symmetric Tree Growth:** All leaves at a given depth are split in the same way, resulting in a symmetric tree structure.
-Ordered Boosting: Uses ordered boosting to reduce overfitting and improve the accuracy of the model.
-Categorical Feature Handling: Handles categorical features natively and efficiently without the need for preprocessing.
+CatBoost uses symmetric tree grows. Symmetric trees are grown by splitting all leaves at the same depth identically.	
 
-Characteristics:
 
-Produces balanced and symmetric trees, leading to efficient training and inference.
-Robust against overfitting with ordered boosting and other regularization techniques.
-Performs well with default parameters, requiring less hyperparameter tuning.
+## GPU Support
 
-## Accuracy
-
-**Gradient Boosting in sklearn**
-
-**XGBoost**
-
-**LightGBM**
-
-**CatBoost**
-
-## Performance
-
-**Gradient Boosting in sklearn**
-
-**XGBoost**
-
-**LightGBM**
+The implementations of XGBoost, LightGBM, and CatBoost support GPU usage, which inhances performance and speed on large datasets compared to the sklearn implementations.
 
 ## Code Examples
 
@@ -301,53 +236,15 @@ For a more realistic example on a larger dataset, please refer to this [kaggle](
 
 < kaggle NOTEBOOK >
 
-## XGBoost
-
-
-The model supports the following kinds of boosting:
-
-Gradient Boosting as controlled by the learning rate
-
-Stochastic Gradient Boosting that leverages sub-sampling at a row, column or column per split levels
-
-Regularized Gradient Boosting using L1 (Lasso) and L2 (Ridge) regularization 
-
-
-Some of the other features that are offered from a system performance point of view are:
-
-Using a cluster of machines to train a model using distributed computing
-
-Utilization of all the available cores of a CPU during tree construction for parallelization
-
-Out-of-core computing when working with datasets that do not fit into memory
-
-Making the best use of hardware with cache optimization
-
-
-In addition to the above the framework:
-
-Accepts multiple types of input data
-
-Works well with sparse input data for tree and linear booster
-
-Supports the use of customized objective and evaluation functions
-
-## LightGBT
-
-
-https://neptune.ai/blog/xgboost-vs-lightgbm#:~:text=In%20contrast%20to%20the%20level,higher%20accuracy%20while%20being%20faster.
-
-## CatBoost
-
-https://catboost.ai/
-
-https://www.geeksforgeeks.org/catboost-ml/
 
 ## Summary
 
-## Literature
+Gradient Boosting is a popular and performant algorithm for both classification and regression tasks. In this post we compared different implementations of this algorithm, comparing the method the individual trees are grown, but also their ability to handle categorical features and missing values. Main characteristics are that LightGBM uses a leaf-wise tree growth strategy in contrast to the other algorithm and CatBoost was specifically designed to handle categorical features. However other algorithms also offer a native support for categorical features. The implementations of XGBoost, LightGBM, and CatBoost additionally support the usage on a GOU, which makes them especially suitable for large datasets.
 
-[1] Haithm H. Alshari et al., "Comparison of Gradient Boosting Decision Tree Algorithms for CPU Performance", Journal of Institue Of Science and Technology, Volume 37, Issue 1, 2021
+## Further Reading
+
+* Haithm H. Alshari et al., ["Comparison of Gradient Boosting Decision Tree Algorithms for CPU Performance"](https://www.researchgate.net/publication/351133481_Comparison_of_Gradient_Boosting_Decision_Tree_Algorithms_for_CPU_Performance), Journal of Institute Of Science and Technology, Volume 37, Issue 1, 2021
+
 ---
 If this blog is useful for you, please consider supporting.
 
