@@ -42,7 +42,7 @@ This is what you can already find here:
 * [Gradient Boost for Regression - Example]({{< ref "gradient_boosting_regression_example.md" >}} "gradient_boosting_regression_example.md") 
 * [Gradient Boost for Classification - Explained]({{< ref "gradient_boosting_classification.md" >}} "gradient_boosting_classification.md") 
 * [Gradient Boost for Classification - Example]({{< ref "gradient_boosting_classification_example.md" >}} "gradient_boosting_classification_example.md") 
-* [Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost]({{< ref "gradient_boosting_variantse.md" >}} "gradient_boosting_variants.md") 
+* [Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost]({{< ref "gradient_boosting_variants.md" >}} "gradient_boosting_variants.md") 
 
 ## Deep Learning
 
