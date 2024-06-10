@@ -5,7 +5,7 @@ draft = false
 tags = ["Data Science", "Machine Learning", "Boosting", "Tree Methods"]
 categories = ["Data Science", "Machine Learning", "Ensemble", "Boosting", "Tree Methods"]
 keywords = ["Data Science", "Machine Learning", "Ensemble", "Boosting", "Tree Methods"]
-images = ['/images/']
+images = ['/images/gradient_boosting/gb_variants.png']
 
 +++
 
