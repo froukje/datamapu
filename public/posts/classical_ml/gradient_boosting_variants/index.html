@@ -6,8 +6,8 @@
     
     <title>Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only slightly higher than random guessing. Together, they form a strong learner with high predictive skill. For a more detailed explanatione, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss differet implementations of Gradient Boosting.">
-    <meta name="generator" content="Hugo 0.126.1">
+    <meta name="description" content="Introduction Gradient Boosting is an ensemble model of a sequential series of shallow Decision Trees. The single trees are weak learners with little predictive skill, but together, they form a strong learner with high predictive skill. For a more detailed explanation, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss different implementations of Gradient Boosting. The focus is to give a high-level overview of different implementations and discuss the differences.">
+    <meta name="generator" content="Hugo 0.127.0">
     
     
     
@@ -33,7 +33,7 @@
     
     <meta property="og:url" content="http://localhost:1313/posts/classical_ml/gradient_boosting_variants/">
   <meta property="og:title" content="Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost">
-  <meta property="og:description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only slightly higher than random guessing. Together, they form a strong learner with high predictive skill. For a more detailed explanatione, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss differet implementations of Gradient Boosting.">
+  <meta property="og:description" content="Introduction Gradient Boosting is an ensemble model of a sequential series of shallow Decision Trees. The single trees are weak learners with little predictive skill, but together, they form a strong learner with high predictive skill. For a more detailed explanation, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss different implementations of Gradient Boosting. The focus is to give a high-level overview of different implementations and discuss the differences.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -46,16 +46,16 @@
     <meta property="og:image" content="http://localhost:1313/images/">
 
   <meta itemprop="name" content="Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost">
-  <meta itemprop="description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only slightly higher than random guessing. Together, they form a strong learner with high predictive skill. For a more detailed explanatione, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss differet implementations of Gradient Boosting.">
+  <meta itemprop="description" content="Introduction Gradient Boosting is an ensemble model of a sequential series of shallow Decision Trees. The single trees are weak learners with little predictive skill, but together, they form a strong learner with high predictive skill. For a more detailed explanation, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss different implementations of Gradient Boosting. The focus is to give a high-level overview of different implementations and discuss the differences.">
   <meta itemprop="datePublished" content="2024-05-08T20:55:43-03:00">
   <meta itemprop="dateModified" content="2024-05-08T20:55:43-03:00">
-  <meta itemprop="wordCount" content="2168">
+  <meta itemprop="wordCount" content="2143">
   <meta itemprop="image" content="http://localhost:1313/images/">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Ensemble,Boosting,Tree Methods">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/images/">
   <meta name="twitter:title" content="Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost">
-  <meta name="twitter:description" content="Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only slightly higher than random guessing. Together, they form a strong learner with high predictive skill. For a more detailed explanatione, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss differet implementations of Gradient Boosting.">
+  <meta name="twitter:description" content="Introduction Gradient Boosting is an ensemble model of a sequential series of shallow Decision Trees. The single trees are weak learners with little predictive skill, but together, they form a strong learner with high predictive skill. For a more detailed explanation, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss different implementations of Gradient Boosting. The focus is to give a high-level overview of different implementations and discuss the differences.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -210,20 +210,20 @@ MathJax = {
       
       
         <span class="f6 mv4 dib tracked"> - 11 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 2168 words </span>
+        <span class="f6 mv4 dib tracked"> - 2143 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
-<p>Gradient Boosting is an ensemble model which is built of a sequential series of shallow <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a>. The single trees are weak learners and have little predictive skill, that is only slightly higher than random guessing. Together, they form a strong learner with high predictive skill. For a more detailed explanatione, please refer to the post <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boosting for Regression - Explained</a>. In this article, we will discuss differet implementations of Gradient Boosting. The focus is to give a high-level overview of different implementations and discuss the differences. For a more in depth understanding of each framework, further literature is given.</p>
+<p>Gradient Boosting is an ensemble model of a sequential series of shallow <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a>. The single trees are weak learners with little predictive skill, but together, they form a strong learner with high predictive skill. For a more detailed explanation, please refer to the post <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boosting for Regression - Explained</a>. In this article, we will discuss different implementations of Gradient Boosting. The focus is to give a high-level overview of different implementations and discuss the differences. For a more in-depth understanding of each framework, further literature is given.</p>
 <h2 id="background">Background</h2>
 <h3 id="gradient-boosting-in-sklearn">Gradient Boosting in sklearn</h3>
-<p>Gradient Boosting is one of many available Machine Learning algorithms available in <a href="https://scikit-learn.org/stable/">sklearn</a>, which is short for scikit-learn, which started as a Google summer of code project by David Cournapeau and was originally called scikits.learn. The first version was published in 2010 by the contributors Fabian Pedregosa, Gaël Varoquaux, Alexandre Gramfort and Vincent Michel, from the French Institute for Research in Computer Science and Automation in Saclay, France. Nowadays it is one of the most extensive and used libraries in Machine Learning.</p>
+<p>Gradient Boosting is one of many available Machine Learning algorithms available in <a href="https://scikit-learn.org/stable/">sklearn</a>, which is short for scikit-learn. sklearn started as a Google summer of code project by David Cournapeau and was originally called scikits.learn. The first version was published in 2010 by the contributors Fabian Pedregosa, Gaël Varoquaux, Alexandre Gramfort, and Vincent Michel, from the French Institute for Research in Computer Science and Automation in Saclay, France. Nowadays it is one of the most extensive and used libraries in Machine Learning.</p>
 <h3 id="xgboost">XGBoost</h3>
-<p>XGBoost stands for eXtreme Gradient Boosting and is an algorithm focussing on optimizing computation speed and model performance. XGBoost was first developed by Tianqi Chen. It became popular and famous for many winning solutions in Machine Learning competitions. It can be used as a separated library, but also an integration in sklearn exists. The XGBoosts algorithm is capable to handle large and complex datasets.</p>
+<p><a href="https://xgboost.readthedocs.io/en/stable/">XGBoost</a> stands for eXtreme Gradient Boosting and is an algorithm focusing on optimizing computation speed and model performance. XGBoost was first developed by Tianqi Chen. It became popular and famous for many winning solutions in Machine Learning competitions. XGBoost can be used as a separate library, but also as an integration in sklearn. This makes it easy to combine the variety of methods available in sklearn. The XGBoosts algorithm is capable of handling large and complex datasets.</p>
 <h3 id="lightgbm">LightGBM</h3>
-<p>LightGBM is short for Light Gradient-Boosting Machine and was developed by Microsoft. It has similar advantages as XGBoost and also able to handle large and complex datasets. The main difference between LightGBM and XGBoost is the way the trees are built. In LightGBM the trees are not grown level-wise, but leave-wise.</p>
+<p><a href="https://lightgbm.readthedocs.io/en/stable/">LightGBM</a> is short for Light Gradient-Boosting Machine, and was developed by Microsoft. It has similar advantages as XGBoost and is also able to handle large and complex datasets. The main difference between LightGBM and XGBoost is the way the trees are built. In LightGBM the trees are not grown level-wise, but leave-wise.</p>
 <h3 id="catboost">CatBoost</h3>
-<p>CatBoost was developed by Yandex, a Russian technology company and has a special focus on how categorical values are treated in Gradient Boosting. It was developed in 2016 and was based on previous projects focussing on Gradient Boosting algorithms. It was first released open-source in 2017.</p>
+<p><a href="https://catboost.ai/">CatBoost</a> was developed by Yandex, a Russian technology company and has a special focus on how categorical values are treated in Gradient Boosting. It was developed in 2016 and was based on previous projects focussing on Gradient Boosting algorithms. It was first released open-source in 2017.</p>
 <h2 id="feature-handling">Feature Handling</h2>
 <h3 id="gradient-boosting-in-sklearn-1">Gradient Boosting in sklearn</h3>
 <ol>
@@ -231,17 +231,17 @@ MathJax = {
 </ol>
 <p><strong>Numerical Features:</strong> Gradient Boosting in sklearn expects numerical input.</p>
 <p><strong>Categorical Features:</strong> Gradient Boosting in sklearn does not natively support categorical features. They need to be encoded using e.g. one-hot encoding or label-encoding.</p>
-<p><strong>Missing Values:</strong> Gradient Boosting in sklearn does not handle missing values. Missing values need to be removed or imputed prior to training the model.</p>
+<p><strong>Missing Values:</strong> Gradient Boosting in sklearn does not handle missing values. Missing values need to be removed or imputed before training the model.</p>
 <ol start="2">
 <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html">HistGradientBoostingRegressor</a> / <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html">HistGradientBoostingClassifier</a></li>
 </ol>
-<p>Hostgram-based Gradient Boosting by sklearn was inspired by LightGBM.</p>
+<p>Histogram-based Gradient Boosting by sklearn was inspired by LightGBM.</p>
 <p><strong>Numerical &amp; Categorical Features:</strong> The Histogram-based Gradient Booster natively supports numerical and categorical features. For more details, please check the <a href="https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_categorical.html">documentation</a>.</p>
-<p><strong>Missing Values:</strong> The Histogram-based Gradient Booster is able to handle missing values natively. More explanations can be found in the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html">documentation</a>.</p>
+<p><strong>Missing Values:</strong> The Histogram-based Gradient Booster can handle missing values natively. More explanations can be found in the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html">documentation</a>.</p>
 <h3 id="xgboost-1">XGBoost</h3>
 <p><strong>Numerical Features:</strong> XGBoost supports directly numerical data.</p>
-<p><strong>Categorical Features:</strong> Both the native environment and the sklearn interface support categorical features using the parameter <em>enable_categorical</em>. Examples for both interfaces can be found in the <a href="https://xgboost.readthedocs.io/en/stable/tutorials/categorical.html">documentation</a>.</p>
-<p><strong>Missing Values:</strong> XGBoost natively supports missing values. Note, that the treatment of missing values differ with the booster type used. For more explanataions, please refer to the <a href="https://xgboost.readthedocs.io/en/stable/faq.html#how-to-deal-with-missing-values">documentation</a>.</p>
+<p><strong>Categorical Features:</strong> Both the native environment and the sklearn interface support categorical features using the parameter <em>enable_categorical</em>. Examples of both interfaces can be found in the <a href="https://xgboost.readthedocs.io/en/stable/tutorials/categorical.html">documentation</a>.</p>
+<p><strong>Missing Values:</strong> XGBoost natively supports missing values. Note, that the treatment of missing values differs with the booster type used. For more explanations, please refer to the <a href="https://xgboost.readthedocs.io/en/stable/faq.html#how-to-deal-with-missing-values">documentation</a>.</p>
 <h3 id="lightgbm-1">LightGBM</h3>
 <p><strong>Numerical Features:</strong> LightGBM supports numerical data.</p>
 <p><strong>Categorical Features:</strong> LightGBM has built-in support for categorical features. Categorical features can be specified using the parameter <em>categorical_feature</em>. For more details, please refer to the <a href="https://lightgbm.readthedocs.io/en/stable/Advanced-Topics.html#categorical-feature-support">documentation</a>.</p>
@@ -253,7 +253,7 @@ MathJax = {
 <p><img src="/images/gradient_boosting/gb_variants_1.png" alt="feature handling">
 <em>Feature handling in the different implementations.</em></p>
 <h2 id="tree-growths">Tree Growths</h2>
-<p>Traditionally Decision Trees are grown level-wise. That means first a level is developed completely, such that all leaves are grown before moving to the next level. An alternative approach is leaf-wise tree growth. In this case, this criterion is relaxed and the tree is grown by the highest loss reduction considering of all leaves, which may result in unsymetric, irregular trees of larger depth. The different methods are illustrated in the plot below. The leaf-wise tree is build using the global best split, while the level-wise growth only uses a local minimum for the next split, also leaf-wise growth is computationally more efficient and less memory intensive. The next plot shows an overview of the growth type used in the different methods.</p>
+<p>Traditionally Decision Trees are grown level-wise. That means first a level is developed completely, such that all leaves are grown before moving to the next level. An alternative approach is leaf-wise tree growth. In this case, this criterion is relaxed and the tree is grown with the highest loss reduction considering all leaves, which may result in unsymmetric, irregular trees of larger depth. The different methods are illustrated in the plot below. The leaf-wise tree is built using the global best split, while the level-wise growth only uses a local minimum for the next split, also leaf-wise growth is computationally more efficient and less memory intensive.</p>
 <p><img src="/images/gradient_boosting/tree_growth.png" alt="tree growth">
 <em>Level-wise and leaf-wise Tree Growth illustrated.</em></p>
 <h3 id="gradient-boosting-in-sklearn-2">Gradient Boosting in sklearn</h3>
@@ -264,17 +264,17 @@ MathJax = {
 <ol start="2">
 <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html">HistGradientBoostingRegressor</a> / <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html">HistGradientBoostingClassifier</a></li>
 </ol>
-<p>In HistGradientBossting histograms are used to approximate the data distributions, then the trees are grown level by level. This algorithm is faster and more efficient with large datasets compared to traditional Gradient Boosting.</p>
+<p>In HistGradientBossting histograms are used to approximate the data distributions, and then the trees are grown level by level. This algorithm is faster and more efficient with large datasets compared to traditional Gradient Boosting.</p>
 <h3 id="xgboost-2">XGBoost</h3>
-<p>The trees in XGBoost are also grown level-wise, but advanced algorithms are used to find the optimal split and regularization, which improves computational efficiency. XGBoost offers the possibilty to use histogram based splitting.</p>
+<p>The trees in XGBoost are also grown level-wise, but advanced algorithms are used to find the optimal split and regularization, which improves computational efficiency. XGBoost offers the possibility to use histogram-based splitting.</p>
 <h3 id="lightgbm-2">LightGBM</h3>
 <p>In LightGBM the trees are grown leaf-wise. This produces unbalanced and deeper trees, but is in general faster and more efficient.</p>
 <h3 id="catboost-2">CatBoost</h3>
-<p>CatBoost uses symmetric tree grows. Symmetric trees are grown by splitting all leaves at the same depth identically.</p>
+<p>CatBoost uses symmetric tree growth. Symmetric trees are grown by splitting all leaves at the same depth identically.</p>
 <h2 id="gpu-support">GPU Support</h2>
-<p>The implementations of XGBoost, LightGBM, and CatBoost support GPU usage, which inhances performance and speed on large datasets compared to the sklearn implementations.</p>
+<p>The implementations of XGBoost, LightGBM, and CatBoost support GPU usage, which enhances performance and speed on large datasets compared to the sklearn implementations.</p>
 <h2 id="code-examples">Code Examples</h2>
-<p>In this section a brief example of each method is given for a classification task, however all models have variants for regression problems. The dataset used is described in the plot below. The example used here is very simple and only for illustration purposes. More detailed examples on a larger dataset can be found on <a href="https://www.kaggle.com/work/code">kaggle</a>.</p>
+<p>In this section a brief example of each method is given for a classification task, however, all models have variants for regression problems. The dataset used is described in the plot below. The example used here is very simple and only for illustration purposes. More detailed examples on a larger dataset can be found on <a href="https://www.kaggle.com/work/code">kaggle</a>.</p>
 <p><img src="/images/gradient_boosting/gb_class_data.png" alt="&ldquo;data&rdquo;">
 <em>The data used for the following examples.</em></p>
 <p>We read this data into a Pandas dataframe</p>
@@ -301,8 +301,8 @@ MathJax = {
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>Gradient Boosting in sklearn</strong></p>
-<p>For the <strong>installation</strong> of sklearn please check the official <a href="https://scikit-learn.org/stable/install.html">documentation</a>. You have different options using conda or pip, that may differ depending on your operating system. You can find all details there.
-To use the <em>GradientBoostingClassifier</em>, we need to import it from sklearn. With the input features $X$ and the target data $y$ defined, we can fit the model. First we need to instatiate it and then following the concept of training machine Learning models in sklearn, we can use the <em>fit</em> method. The process is illustrated in the following code snipped. In this example, three hyperparameters are set: <em>n_estimators</em>, which describes the number of trees used, <em>max_depth</em>; which is the depth of the single trees; and the <em>learning_rate</em>, which defines the weight of each tree. A full list of hyperparameters, that can be changed to optimize the model can be found in the documentation of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">GradientBoostingRegressor</a> and the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">GradientBoostingClassification</a> methods.</p>
+<p>For the <strong>installation</strong> of sklearn please check the official <a href="https://scikit-learn.org/stable/install.html">documentation</a>. We have different options using conda or pip, which may differ depending on your operating system. All details can be found there.
+To use the <em>GradientBoostingClassifier</em>, we need to import it from sklearn. With the input features $X$ and the target data $y$ defined, we can fit the model. First, we need to instantiate it and then following the concept of training Machine Learning models in sklearn, we can use the <em>fit</em> method. The process is illustrated in the following code snipped. In this example, three hyperparameters are set: <em>n_estimators</em>, which describes the number of trees used, <em>max_depth</em>; which is the depth of the single trees; and the <em>learning_rate</em>, which defines the weight of each tree. A full list of hyperparameters, that can be changed to optimize the model can be found in the documentation of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html">GradientBoostingRegressor</a> and the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">GradientBoostingClassification</a> methods.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
@@ -342,12 +342,12 @@ To use the <em>GradientBoostingClassifier</em>, we need to import it from sklear
 </div>
 </div><p>A more detailed example of applying Gradient Boosting in Python to a Regression task can be found on <a href="https://www.kaggle.com/code/pumalin/gradient-boosting-tutorial">kaggle</a>.</p>
 <p><strong>XGBoost</strong></p>
-<p>The <strong>installation</strong> is described in detail in the <a href="https://xgboost.readthedocs.io/en/stable/install.html">XGBboost</a> documentaion.</p>
-<p>To use the <em>XGBoostClassifier</em>, we need to import this method. The procedure is the same as for the <em>sklearn</em> model. We instantiate the model and then use the <em>fit</em> and <em>predict</em> method. A detailed list of all possible parameters can be found in the <a href="https://xgboost.readthedocs.io/en/stable/parameter.html">XGBoost documentation</a>. There are three types of parameters: general parameters, booster parameters and task parameters. The following gives a brief explanation of each category, but is not an exaustive list.</p>
+<p>The <strong>installation</strong> is described in detail in the <a href="https://xgboost.readthedocs.io/en/stable/install.html">XGBoost</a> documentation.</p>
+<p>To use the <em>XGBoostClassifier</em>, we need to import this method. The procedure is the same as for the <em>sklearn</em> model. We instantiate the model and then use the <em>fit</em> and <em>predict</em> method. A detailed list of all possible parameters can be found in the <a href="https://xgboost.readthedocs.io/en/stable/parameter.html">XGBoost documentation</a>. There are three types of parameters: general parameters, booster parameters, and task parameters. The following gives a brief explanation of each category but is not an exhaustive list.</p>
 <ul>
-<li><em>General parameters</em> define which booster is used. By default this is a <em>Gradient Boosting Tree</em>; the same as in the sklearn method, other options are <em>dart</em> and <em>gblinear</em>. The methods <em>gbtree</em> and <em>dart</em> are tree based models, <em>gblinear</em> is a linear model. Other parameters set here refer to the device used (cpu oder gpu), the number of threads used for training, verbosity and several more.</li>
-<li><em>Booster parameters</em> depend on which booster method is used. For a Tree Booster, we can e.g. choose the number of estimators (<em>n_estimators</em>), the learning rate (<em>learning_rate</em> or <em>eta</em>), the maximal depth of the trees (<em>max_depth</em>), and many more. Further the type of tree method to use, which can be changed to optimize the speed.</li>
-<li><em>Learning task parameters</em> depend on the task to be solved. The objective function and the evaluation metrics are defined here, which depend on whether we consider a regression or a clissification task. There is a wide variety of pre-defined objective functions and metrics for both types of problems are available, but we can also define custom functions. For more details, please refer to this <a href="https://medium.com/@pumaline/loss-functions-in-xgboost-c89885b57346">post</a>.</li>
+<li><em>General parameters</em> define which booster is used. By default this is a <em>Gradient Boosting Tree</em>; the same as in the sklearn method, other options are <em>dart</em> and <em>gblinear</em>. The methods <em>gbtree</em> and <em>dart</em> are tree-based models, <em>gblinear</em> is a linear model. Other parameters set here refer to the device used (cpu or gpu), the number of threads used for training, verbosity, and several more.</li>
+<li><em>Booster parameters</em> depend on which booster method is used. For a Tree Booster, we can e.g. choose the number of estimators (<em>n_estimators</em>), the learning rate (<em>learning_rate</em> or <em>eta</em>), the maximal depth of the trees (<em>max_depth</em>), and many more. Further, the type of tree method to use can be changed to optimize the speed.</li>
+<li><em>Learning task parameters</em> depend on the task to be solved. The objective function and the evaluation metrics are defined here, which depend on whether we consider a regression or a classification task. There is a wide variety of pre-defined objective functions and metrics for both types of problems are available, but we can also define custom functions. For more details, please refer to this <a href="https://medium.com/@pumaline/loss-functions-in-xgboost-c89885b57346">post</a>.</li>
 </ul>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -379,11 +379,10 @@ To use the <em>GradientBoostingClassifier</em>, we need to import it from sklear
 </span></span><span style="display:flex;"><span>preds <span style="color:#04a5e5;font-weight:bold">=</span> bst<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><em>XGBoost</em> also allows to use callbacks, such as <em>early stopping</em>, or customized callbacks. A more detailed example using XGBoost with different parameters and callbacks on a larger dataset can be found on <a href="">kaggle</a>.</p>
-<p>&lt; kaggle NOTEBOOK &gt;</p>
+</div><p><em>XGBoost</em> also allows the use of callbacks, such as <em>early stopping</em>, or customized callbacks. A more detailed example using XGBoost with different parameters and callbacks on a larger dataset can be found on <a href="https://www.kaggle.com/code/pumalin/xgboost-tutorial">kaggle</a>.</p>
 <p><strong>LightGBM</strong></p>
-<p>A guide for the <strong>installation</strong> can be found on the <a href="https://lightgbm.readthedocs.io/en/stable/Python-Intro.html">LightGBM</a> documentation.</p>
-<p>As in the previous models, we define the input features $X$ and the target value $y$, then we instantiate the model, fit it to the data, and make predictions. A full list of possible parameters can be found in the <a href="https://lightgbm.readthedocs.io/en/stable/Parameters.html">documentation</a>. We can define a large set of different types of parameters, considering the core functionality, the control of the learning, the dataset, the metrics and more. Similar to <em>XGBoost</em>, <em>LightGBM</em> allows us to choose between different boosting methods. The default method are Gradient Boosting Trees In this example we set the number of estimators (<em>n_estimators</em>), the maximal depth of the Decision Trees (<em>max_depth</em>), the learning rate (<em>learning_rate</em>), and the maximal number of leaves (<em>num_leaves</em>).</p>
+<p>A guide for the <strong>installation</strong> can be found in the <a href="https://lightgbm.readthedocs.io/en/stable/Python-Intro.html">LightGBM</a> documentation.</p>
+<p>As in the previous models, we define the input features $X$ and the target value $y$, then we instantiate the model, fit it to the data, and make predictions. A full list of possible parameters can be found in the <a href="https://lightgbm.readthedocs.io/en/stable/Parameters.html">documentation</a>. We can define a large set of different types of parameters, considering the core functionality, the control of the learning, the dataset, the metrics, and more. Similar to <em>XGBoost</em>, <em>LightGBM</em> allows us to choose between different boosting methods. The default method is Gradient Boosting Trees In this example we set the number of estimators (<em>n_estimators</em>), the maximal depth of the Decision Trees (<em>max_depth</em>), the learning rate (<em>learning_rate</em>), and the maximal number of leaves (<em>num_leaves</em>).</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
@@ -412,8 +411,7 @@ To use the <em>GradientBoostingClassifier</em>, we need to import it from sklear
 </span></span><span style="display:flex;"><span>clf<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><em>LightGBM</em> allows an easy implementation of e.g. early stopping and cross validation using callbacks. For a more detailed example on a larger dataset, please check this <a href="">kaggle</a> notebook.</p>
-<p>&lt; kaggle NOTEBOOK &gt;</p>
+</div><p><em>LightGBM</em> allows an easy implementation of e.g. early stopping and cross validation using callbacks. For a more detailed example on a larger dataset, please check this <a href="https://www.kaggle.com/code/pumalin/lightgbm-tutorial">kaggle</a> notebook.</p>
 <p><strong>CatBoost</strong></p>
 <p>Using <em>CatBoost</em>, the procedure of training and predicting is the same as in the previous examples: instantiate the model, fit it to the data, and make predictions. A full list of all possible parameters is in the <a href="https://catboost.ai/en/docs/concepts/python-reference_catboostclassifier">documentation</a>. For this example, we set <em>iterations</em>, which refers to the number of trees trained, the <em>learning_rate</em>, and the <em>depth</em>, which defines the maximal depth of the Decision Trees.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -442,10 +440,9 @@ To use the <em>GradientBoostingClassifier</em>, we need to import it from sklear
 </span></span><span style="display:flex;"><span>clf<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>For a more realistic example on a larger dataset, please refer to this <a href="">kaggle</a> notebook.</p>
-<p>&lt; kaggle NOTEBOOK &gt;</p>
+</div><p>For a more realistic example on a larger dataset, please refer to this <a href="https://www.kaggle.com/code/pumalin/catboost-tutorial">kaggle</a> notebook, which describes a regression problem.</p>
 <h2 id="summary">Summary</h2>
-<p>Gradient Boosting is a popular and performant algorithm for both classification and regression tasks. In this post we compared different implementations of this algorithm, comparing the method the individual trees are grown, but also their ability to handle categorical features and missing values. Main characteristics are that LightGBM uses a leaf-wise tree growth strategy in contrast to the other algorithm and CatBoost was specifically designed to handle categorical features. However other algorithms also offer a native support for categorical features. The implementations of XGBoost, LightGBM, and CatBoost additionally support the usage on a GOU, which makes them especially suitable for large datasets.</p>
+<p>Gradient Boosting is a popular and performant algorithm for both classification and regression tasks. In this post we compared different implementations of this algorithm, comparing the method the individual trees are grown, but also their ability to handle categorical features and missing values. The main characteristics are that LightGBM uses a leaf-wise tree growth strategy in contrast to the other algorithm and CatBoost was specifically designed to handle categorical features. However other algorithms also offer native support for categorical features. The implementations of XGBoost, LightGBM, and CatBoost additionally support the usage of a GPU, which makes them especially suitable for large datasets.</p>
 <h2 id="further-reading">Further Reading</h2>
 <ul>
 <li>Haithm H. Alshari et al., <a href="https://www.researchgate.net/publication/351133481_Comparison_of_Gradient_Boosting_Decision_Tree_Algorithms_for_CPU_Performance">&ldquo;Comparison of Gradient Boosting Decision Tree Algorithms for CPU Performance&rdquo;</a>, Journal of Institute Of Science and Technology, Volume 37, Issue 1, 2021</li>
