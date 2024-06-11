@@ -109,6 +109,23 @@ In LightGBM the trees are grown leaf-wise. This produces unbalanced and deeper t
 
 CatBoost uses symmetric tree growth. Symmetric trees are grown by splitting all leaves at the same depth identically.	
 
+## Overfitting
+
+### sklearn
+
+Traditional Gradient Boosting and Histogram-based Gradient Boosting both use regularization, learning rate adjustment, subsampling, and early stopping to combat overfitting. However, Histogram-based Gradient Boosting's binning process adds an extra layer of complexity reduction and efficiency, making it particularly effective for large datasets.
+
+### XGBoost
+
+Combines regularization, shrinkage, early stopping, and tree pruning.
+
+### LightGBM
+
+Employs leaf-wise growth with depth limits, regularization, and early stopping.
+
+### CatBoost
+
+CatBoost uses [Ordered Boosting](https://www.geeksforgeeks.org/catboost-algorithms/) and regularization to prevent overfitting.
 
 ## GPU Support
 

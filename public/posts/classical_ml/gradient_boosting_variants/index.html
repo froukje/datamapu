@@ -49,7 +49,7 @@
   <meta itemprop="description" content="Introduction Gradient Boosting is an ensemble model of a sequential series of shallow Decision Trees. The single trees are weak learners with little predictive skill, but together, they form a strong learner with high predictive skill. For a more detailed explanation, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss different implementations of Gradient Boosting. The focus is to give a high-level overview of different implementations and discuss the differences.">
   <meta itemprop="datePublished" content="2024-05-08T20:55:43-03:00">
   <meta itemprop="dateModified" content="2024-05-08T20:55:43-03:00">
-  <meta itemprop="wordCount" content="2143">
+  <meta itemprop="wordCount" content="2217">
   <meta itemprop="image" content="http://localhost:1313/images/gradient_boosting/gb_variants.png">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Ensemble,Boosting,Tree Methods">
   <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@ MathJax = {
       
       
         <span class="f6 mv4 dib tracked"> - 11 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 2143 words </span>
+        <span class="f6 mv4 dib tracked"> - 2217 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -271,6 +271,15 @@ MathJax = {
 <p>In LightGBM the trees are grown leaf-wise. This produces unbalanced and deeper trees, but is in general faster and more efficient.</p>
 <h3 id="catboost-2">CatBoost</h3>
 <p>CatBoost uses symmetric tree growth. Symmetric trees are grown by splitting all leaves at the same depth identically.</p>
+<h2 id="overfitting">Overfitting</h2>
+<h3 id="sklearn">sklearn</h3>
+<p>Traditional Gradient Boosting and Histogram-based Gradient Boosting both use regularization, learning rate adjustment, subsampling, and early stopping to combat overfitting. However, Histogram-based Gradient Boosting&rsquo;s binning process adds an extra layer of complexity reduction and efficiency, making it particularly effective for large datasets.</p>
+<h3 id="xgboost-3">XGBoost</h3>
+<p>Combines regularization, shrinkage, early stopping, and tree pruning.</p>
+<h3 id="lightgbm-3">LightGBM</h3>
+<p>Employs leaf-wise growth with depth limits, regularization, and early stopping.</p>
+<h3 id="catboost-3">CatBoost</h3>
+<p>CatBoost uses <a href="https://www.geeksforgeeks.org/catboost-algorithms/">Ordered Boosting</a> and regularization to prevent overfitting.</p>
 <h2 id="gpu-support">GPU Support</h2>
 <p>The implementations of XGBoost, LightGBM, and CatBoost support GPU usage, which enhances performance and speed on large datasets compared to the sklearn implementations.</p>
 <h2 id="code-examples">Code Examples</h2>
