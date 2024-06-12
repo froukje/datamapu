@@ -13,7 +13,7 @@
       <link>http://localhost:1313/posts/classical_ml/gradient_boosting_variants/</link>
       <pubDate>Wed, 08 May 2024 20:55:43 -0300</pubDate>
       <guid>http://localhost:1313/posts/classical_ml/gradient_boosting_variants/</guid>
-      <description>Introduction Gradient Boosting is an ensemble model which is built of a sequential series of shallow Decision Trees. The single trees are weak learners and have little predictive skill, that is only slightly higher than random guessing. Together, they form a strong learner with high predictive skill. For a more detailed explanatione, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss differet implementations of Gradient Boosting.</description>
+      <description>Introduction Gradient Boosting is an ensemble model of a sequential series of shallow Decision Trees. The single trees are weak learners with little predictive skill, but together, they form a strong learner with high predictive skill. For a more detailed explanation, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss different implementations of Gradient Boosting. The focus is to give a high-level overview of different implementations and discuss the differences.</description>
     </item>
     <item>
       <title>Gradient Boost for Classification Example</title>

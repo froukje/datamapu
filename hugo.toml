@@ -32,6 +32,9 @@ url = "https://twitter.com/datamapu"
 name = "linkedin"
 url = "https://www.linkedin.com/in/datamapu-ml-91a2622a3/"
 
+[[params.newsletter_groups]]
+id = "23802988805359509"
+name = "Newsletter"
 
 [menu]
 [[menu.main]]
