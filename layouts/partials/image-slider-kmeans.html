@@ -1,0 +1,55 @@
+<div id="image-container">
+    <button id="prev-btn" class="nav-btn">← </button>
+    <img src="/images/kmeans/2_clusters.png" id="current-image" alt="image">
+    <button id="next-btn" class="nav-btn">→</button>
+    <div id="dot-container" class="dot-container"></div>
+</div>
+
+<script>
+var images = ["/images/kmeans/2_clusters.png", "/images/kmeans/3_clusters.png"];
+var currentIndex = 0;
+var imgElement = document.getElementById("current-image");
+var dotContainer = document.getElementById("dot-container");
+
+// Create dots for each image
+images.forEach(function(image, index) {
+    var dot = document.createElement("span");
+    dot.className = "dot";
+    dot.addEventListener("click", function() {
+        showImage(index);
+    });
+    dotContainer.appendChild(dot);
+});
+
+var dots = document.getElementsByClassName("dot");
+
+function showImage(index) {
+    imgElement.src = images[index];
+    currentIndex = index;
+    updateDots();
+}
+
+function updateDots() {
+    for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+    }
+    dots[currentIndex].classList.add("active");
+}
+
+document.getElementById("prev-btn").addEventListener("click", function() {
+    if (currentIndex > 0) {
+        showImage(currentIndex - 1);
+    }
+});
+
+document.getElementById("next-btn").addEventListener("click", function() {
+    if (currentIndex < images.length - 1) {
+        showImage(currentIndex + 1);
+    }
+});
+
+// Initialize the first image and dots
+showImage(currentIndex);
+</script>
+
+<link rel="stylesheet" href="/css/style.css">
