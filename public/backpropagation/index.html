@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=46267&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=46689&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -31,7 +31,7 @@
 
     
     
-    <meta property="og:url" content="http://localhost:46267/backpropagation/">
+    <meta property="og:url" content="http://localhost:46689/backpropagation/">
   <meta property="og:description" content="Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for four simple examples. The first two examples will contain all the calculations, the last two will only illustrate the equations that need to be calculated.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -43,16 +43,16 @@
     <meta property="article:tag" content="Data Science">
     <meta property="article:tag" content="Machine Learning">
     <meta property="article:tag" content="Machine Learning">
-    <meta property="og:image" content="http://localhost:46267/static/images/datamapu_logo_schmal.png">
+    <meta property="og:image" content="http://localhost:46689/static/images/datamapu_logo_schmal.png">
 
   <meta itemprop="description" content="Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for four simple examples. The first two examples will contain all the calculations, the last two will only illustrate the equations that need to be calculated.">
   <meta itemprop="datePublished" content="2024-03-31T20:21:50-03:00">
   <meta itemprop="dateModified" content="2024-03-31T20:21:50-03:00">
   <meta itemprop="wordCount" content="2949">
-  <meta itemprop="image" content="http://localhost:46267/static/images/datamapu_logo_schmal.png">
+  <meta itemprop="image" content="http://localhost:46689/static/images/datamapu_logo_schmal.png">
   <meta itemprop="keywords" content="Backpropagation,Data Science,Machine Learning,Artificial Intelligence,Deep Learning">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:46267/static/images/datamapu_logo_schmal.png">
+  <meta name="twitter:image" content="http://localhost:46689/static/images/datamapu_logo_schmal.png">
   <meta name="twitter:description" content="Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for four simple examples. The first two examples will contain all the calculations, the last two will only illustrate the equations that need to be calculated.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -174,7 +174,7 @@ MathJax = {
 <li><a href="#general_formulation" title="general_formulation">General Formulation</a></li>
 </ul>
 <p><strong>Main Concepts of Training a Neural Net</strong></p>
-<p>Before starting with the first example, let&rsquo;s quickly go through the main ideas of the training process of a neural net. The first thing we need, when we want to train a neural net is the <em>training data</em>. The training data consists of pairs of <em>inputs</em> and <em>labels</em>. The inputs are also called <em>features</em> and are usually written as $X = (x_1, \dots, x_n)$, with $n$ the number of data samples. The labels are the expected outcomes - or true values - and they are usually denoted as $y = (y_1, \dots, y_n)$. Training a neural net is an iterative process over a certain number of <em>epochs</em>. In each epoch, the training data is processed through the network in a so-called <em>forward pass</em>, which results in the model output. Then the error - <em>loss</em> - of model output compared to the true values is calculated to evaluate the model. Finally, in the backward pass - the <em>backpropagation</em> - <a href="http://localhost:46267/posts/ml_concepts/gradient_descent/" title="gradient_descent">gradient descent</a> is used to update the model parameters and reduce the loss. Note, that in practice, generally no pure gradient descent is used, but a variant of it. However, for illustration purposes we will use gradient descent in this post. Important to understand is that some optimization algorithm is used to update the weights and biases. For a general and more detailed introduction to Deep Learning terms and concepts, please refer to <a href="http://localhost:46267/posts/deep_learning/intro_dl/" title="intro_dl">Introduction to Deep Learning</a>.</p>
+<p>Before starting with the first example, let&rsquo;s quickly go through the main ideas of the training process of a neural net. The first thing we need, when we want to train a neural net is the <em>training data</em>. The training data consists of pairs of <em>inputs</em> and <em>labels</em>. The inputs are also called <em>features</em> and are usually written as $X = (x_1, \dots, x_n)$, with $n$ the number of data samples. The labels are the expected outcomes - or true values - and they are usually denoted as $y = (y_1, \dots, y_n)$. Training a neural net is an iterative process over a certain number of <em>epochs</em>. In each epoch, the training data is processed through the network in a so-called <em>forward pass</em>, which results in the model output. Then the error - <em>loss</em> - of model output compared to the true values is calculated to evaluate the model. Finally, in the backward pass - the <em>backpropagation</em> - <a href="http://localhost:46689/posts/ml_concepts/gradient_descent/" title="gradient_descent">gradient descent</a> is used to update the model parameters and reduce the loss. Note, that in practice, generally no pure gradient descent is used, but a variant of it. However, for illustration purposes we will use gradient descent in this post. Important to understand is that some optimization algorithm is used to update the weights and biases. For a general and more detailed introduction to Deep Learning terms and concepts, please refer to <a href="http://localhost:46689/posts/deep_learning/intro_dl/" title="intro_dl">Introduction to Deep Learning</a>.</p>
 <p>If not mentioned differently, we use the following data, activation function, and loss throughout the examples of this post.</p>
 <p><strong>Training Data</strong></p>
 <p>We consider the most simple situation with one-dimensional input data and just one sample $x = 0.5$ and labels $y = 1$.</p>
@@ -203,7 +203,7 @@ $$\hat{y} = \frac{1}{1 + e^{-(wx+b)}}$$.</p>
 <p><img src="/images/backpropagation/one_neuron_forward.png" alt="one_neuron_forward">
 <em>Forward pass through the neural net.</em></p>
 <p><strong>The Backward Pass</strong></p>
-<p>To update the weight and the bias we use <a href="http://localhost:46267/posts/ml_concepts/gradient_descent/" title="gradient_descent">gradient descent</a>, that is</p>
+<p>To update the weight and the bias we use <a href="http://localhost:46689/posts/ml_concepts/gradient_descent/" title="gradient_descent">gradient descent</a>, that is</p>
 <p>$$w_{new} = w - \alpha \frac{\delta L}{\delta w}$$
 $$b_{new} = b - \alpha \frac{\delta L}{\delta b},$$</p>
 <p>with $\alpha = 0.1$ the learning rate. That is we need to calculate the partial derivatives of $L$ with respect to $w$ and $b$ to get the new weight and bias. This can be done using the chain rule and is illustrated in the plots below.</p>
@@ -419,7 +419,7 @@ $$\sigma\prime(x) = \sigma(x)\cdot(1 - \sigma(x)).$$</p>
     </main>
     <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:46267/" >
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:46689/" >
     &copy; 
   </a>
     <div>

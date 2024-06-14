@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Boosting on </title>
-    <link>http://localhost:46267/categories/boosting/</link>
+    <link>http://localhost:46689/categories/boosting/</link>
     <description>Recent content in Boosting on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 08 May 2024 20:55:43 -0300</lastBuildDate>
-    <atom:link href="http://localhost:46267/categories/boosting/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:46689/categories/boosting/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost</title>
-      <link>http://localhost:46267/posts/classical_ml/gradient_boosting_variants/</link>
+      <link>http://localhost:46689/posts/classical_ml/gradient_boosting_variants/</link>
       <pubDate>Wed, 08 May 2024 20:55:43 -0300</pubDate>
-      <guid>http://localhost:46267/posts/classical_ml/gradient_boosting_variants/</guid>
+      <guid>http://localhost:46689/posts/classical_ml/gradient_boosting_variants/</guid>
       <description>Introduction Gradient Boosting is an ensemble model of a sequential series of shallow Decision Trees. The single trees are weak learners with little predictive skill, but together, they form a strong learner with high predictive skill. For a more detailed explanation, please refer to the post Gradient Boosting for Regression - Explained. In this article, we will discuss different implementations of Gradient Boosting. The focus is to give a high-level overview of different implementations and discuss the differences.</description>
     </item>
     <item>
       <title>Gradient Boost for Classification Example</title>
-      <link>http://localhost:46267/posts/classical_ml/gradient_boosting_classification_example/</link>
+      <link>http://localhost:46689/posts/classical_ml/gradient_boosting_classification_example/</link>
       <pubDate>Sun, 28 Apr 2024 17:01:32 -0300</pubDate>
-      <guid>http://localhost:46267/posts/classical_ml/gradient_boosting_classification_example/</guid>
+      <guid>http://localhost:46689/posts/classical_ml/gradient_boosting_classification_example/</guid>
       <description>Introduction In this post, we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each single step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to Gradient Boost for Classification - Explained and Gradient Boost for Regression - Explained. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.</description>
     </item>
     <item>
       <title>Gradient Boost for Classification - Explained</title>
-      <link>http://localhost:46267/posts/classical_ml/gradient_boosting_classification/</link>
+      <link>http://localhost:46689/posts/classical_ml/gradient_boosting_classification/</link>
       <pubDate>Sun, 14 Apr 2024 20:45:19 -0300</pubDate>
-      <guid>http://localhost:46267/posts/classical_ml/gradient_boosting_classification/</guid>
+      <guid>http://localhost:46689/posts/classical_ml/gradient_boosting_classification/</guid>
       <description>Introduction Gradient Boosting is an ensemble machine learning model, that - as the name suggests - is based on boosting. An ensemble model based on boosting refers to a model that sequentially builds models, and the new model depends on the previous model. In Gradient Boosting these models are built such that they improve the error of the previous model. These individual models are so-called weak learners, which means they have low predictive skills.</description>
     </item>
     <item>
       <title>Gradient Boost for Regression - Example</title>
-      <link>http://localhost:46267/posts/classical_ml/gradient_boosting_regression_example/</link>
+      <link>http://localhost:46689/posts/classical_ml/gradient_boosting_regression_example/</link>
       <pubDate>Tue, 09 Apr 2024 22:55:13 -0300</pubDate>
-      <guid>http://localhost:46267/posts/classical_ml/gradient_boosting_regression_example/</guid>
+      <guid>http://localhost:46689/posts/classical_ml/gradient_boosting_regression_example/</guid>
       <description>Introduction In this post, we will go through the development of a Gradient Boosting model for a regression problem, considering a simplified example. We calculate the individual steps in detail, which are defined and explained in the separate post Gradient Boost for Regression - Explained. Please refer to this post for a more general and detailed explanation of the algorithm.&#xA;Data We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether they like height, and whether they like goats.</description>
     </item>
     <item>
       <title>Gradient Boost for Regression - Explained</title>
-      <link>http://localhost:46267/posts/classical_ml/gradient_boosting_regression/</link>
+      <link>http://localhost:46689/posts/classical_ml/gradient_boosting_regression/</link>
       <pubDate>Wed, 31 Jan 2024 09:21:46 -0300</pubDate>
-      <guid>http://localhost:46267/posts/classical_ml/gradient_boosting_regression/</guid>
+      <guid>http://localhost:46689/posts/classical_ml/gradient_boosting_regression/</guid>
       <description>Introduction Gradient Boosting, also called Gradient Boosting Machine (GBM) is a type of supervised Machine Learning algorithm that is based on ensemble learning. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post, we introduce the algorithm and then explain it in detail for a regression task. We will look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the Mean Squared Error (MSE) as loss function.</description>
     </item>
     <item>
       <title>Adaboost for Regression - Example</title>
-      <link>http://localhost:46267/posts/classical_ml/adaboost_example_reg/</link>
+      <link>http://localhost:46689/posts/classical_ml/adaboost_example_reg/</link>
       <pubDate>Fri, 19 Jan 2024 23:05:44 -0300</pubDate>
-      <guid>http://localhost:46267/posts/classical_ml/adaboost_example_reg/</guid>
+      <guid>http://localhost:46689/posts/classical_ml/adaboost_example_reg/</guid>
       <description>Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example.</description>
     </item>
     <item>
       <title>AdaBoost for Classification - Example</title>
-      <link>http://localhost:46267/posts/classical_ml/adaboost_example_clf/</link>
+      <link>http://localhost:46689/posts/classical_ml/adaboost_example_clf/</link>
       <pubDate>Wed, 17 Jan 2024 22:08:14 -0300</pubDate>
-      <guid>http://localhost:46267/posts/classical_ml/adaboost_example_clf/</guid>
+      <guid>http://localhost:46689/posts/classical_ml/adaboost_example_clf/</guid>
       <description>Introduction AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail.</description>
     </item>
     <item>
       <title>AdaBoost - Explained</title>
-      <link>http://localhost:46267/posts/classical_ml/adaboost/</link>
+      <link>http://localhost:46689/posts/classical_ml/adaboost/</link>
       <pubDate>Sun, 14 Jan 2024 09:22:00 -0300</pubDate>
-      <guid>http://localhost:46267/posts/classical_ml/adaboost/</guid>
+      <guid>http://localhost:46689/posts/classical_ml/adaboost/</guid>
       <description>Introduction AdaBoost is an example of an ensemble supervised Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the Decision Tree, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using sklearn.</description>
     </item>
   </channel>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=46267&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=46689&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -31,7 +31,7 @@
 
     
     
-    <meta property="og:url" content="http://localhost:46267/posts/classical_ml/adaboost_example_clf/">
+    <meta property="og:url" content="http://localhost:46689/posts/classical_ml/adaboost_example_clf/">
   <meta property="og:title" content="AdaBoost for Classification - Example">
   <meta property="og:description" content="Introduction AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail.">
   <meta property="og:locale" content="en_us">
@@ -45,17 +45,17 @@
     <meta property="article:tag" content="Boosting">
     <meta property="article:tag" content="Tree Methods">
     <meta property="article:tag" content="Classification">
-    <meta property="og:image" content="http://localhost:46267/images/adaboost/adaboost.png">
+    <meta property="og:image" content="http://localhost:46689/images/adaboost/adaboost.png">
 
   <meta itemprop="name" content="AdaBoost for Classification - Example">
   <meta itemprop="description" content="Introduction AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail.">
   <meta itemprop="datePublished" content="2024-01-17T22:08:14-03:00">
   <meta itemprop="dateModified" content="2024-01-17T22:08:14-03:00">
   <meta itemprop="wordCount" content="1589">
-  <meta itemprop="image" content="http://localhost:46267/images/adaboost/adaboost.png">
+  <meta itemprop="image" content="http://localhost:46689/images/adaboost/adaboost.png">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Ensemble,Boosting,Tree Methods,Classification">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:46267/images/adaboost/adaboost.png">
+  <meta name="twitter:image" content="http://localhost:46689/images/adaboost/adaboost.png">
   <meta name="twitter:title" content="AdaBoost for Classification - Example">
   <meta name="twitter:description" content="Introduction AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail.">
 
@@ -182,7 +182,7 @@ MathJax = {
   <div id="sharing" class="mt3 ananke-socials">
     
       
-      <a href="https://twitter.com/share?url=http://localhost:46267/posts/classical_ml/adaboost_example_clf/&amp;text=AdaBoost%20for%20Classification%20-%20Example" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
+      <a href="https://twitter.com/share?url=http://localhost:46689/posts/classical_ml/adaboost_example_clf/&amp;text=AdaBoost%20for%20Classification%20-%20Example" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
         
         <span class="icon"> <svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
 </span>
@@ -190,7 +190,7 @@ MathJax = {
       </a>
     
       
-      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:46267/posts/classical_ml/adaboost_example_clf/&amp;title=AdaBoost%20for%20Classification%20-%20Example" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:46689/posts/classical_ml/adaboost_example_clf/&amp;title=AdaBoost%20for%20Classification%20-%20Example" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
         
         <span class="icon"> <svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
@@ -216,17 +216,17 @@ MathJax = {
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
-<p>AdaBoost is an <a href="http://localhost:46267/posts/ml_concepts/ensemble/">ensemble</a> model that is based on <a href="http://localhost:46267/posts/ml_concepts/ensemble/#boosting">Boosting</a>. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article <a href="http://localhost:46267/posts/classical_ml/adaboost/">AdaBoost - Explained</a>. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail. A detailed example of a regression task is given in the article <a href="http://localhost:46267/posts/classical_ml/adaboost_example_reg/">AdaBoost for Regression - Example</a>.</p>
+<p>AdaBoost is an <a href="http://localhost:46689/posts/ml_concepts/ensemble/">ensemble</a> model that is based on <a href="http://localhost:46689/posts/ml_concepts/ensemble/#boosting">Boosting</a>. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article <a href="http://localhost:46689/posts/classical_ml/adaboost/">AdaBoost - Explained</a>. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail. A detailed example of a regression task is given in the article <a href="http://localhost:46689/posts/classical_ml/adaboost_example_reg/">AdaBoost for Regression - Example</a>.</p>
 <h2 id="data">Data</h2>
-<p>The dataset used in this example contains only 10 samples, to make the calculations by hand more feasible. It describes the problem of whether a person should go rock climbing or not, depending on their age, and whether the person likes height and goats. This dataset was also in the article <a href="http://localhost:46267/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>, which makes comparisons easier. The data is described in the plot below.</p>
+<p>The dataset used in this example contains only 10 samples, to make the calculations by hand more feasible. It describes the problem of whether a person should go rock climbing or not, depending on their age, and whether the person likes height and goats. This dataset was also in the article <a href="http://localhost:46689/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>, which makes comparisons easier. The data is described in the plot below.</p>
 <p><img src="/images/adaboost/adaboost_data.png" alt="adaboost_data_clf">
 <em>Dataset used to develop an AdaBoost model.</em></p>
 <h2 id="build-the-model">Build the Model</h2>
-<p>We build an AdaBoost model, constructed of <a href="http://localhost:46267/posts/classical_ml/decision_trees/">Decision Trees</a> as weak learners because this is the most common application. The underlying trees have depth one, that is only the <em>stump</em> of each tree is used as a weak learner. This is also the default configuration in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html">sklearn</a>, which we can use to fit a model in Python. Our ensemble model will consist of three weak learners. This number is chosen low for demonstration purposes.</p>
+<p>We build an AdaBoost model, constructed of <a href="http://localhost:46689/posts/classical_ml/decision_trees/">Decision Trees</a> as weak learners because this is the most common application. The underlying trees have depth one, that is only the <em>stump</em> of each tree is used as a weak learner. This is also the default configuration in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html">sklearn</a>, which we can use to fit a model in Python. Our ensemble model will consist of three weak learners. This number is chosen low for demonstration purposes.</p>
 <p>The first step in building an AdaBoost model is assigning weights to the individual data points. In the beginning, for the initial model, all data points get the same weight assigned, which is $\frac{1}{N}$, with $N$ the dataset size.</p>
 <p><img src="/images/adaboost/ab_clf_data_first_stump.png" alt="adaboost_data_clf">
 <em>Initial dataset and weights for the example.</em></p>
-<p>We now start with fitting a <a href="http://localhost:46267/posts/classical_ml/decision_trees/">Decision Tree</a> to this data. As stated earlier we will use decision stumps, that is we are only interested in the first split.  The same data was used in <a href="http://localhost:46267/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a> to develop a Decision Tree by hand, please check there for the details on how to develop a Decision Tree and how to find the best split. The resulting stump is shown in the following plot. In AdaBoost, each underlying model - in our case decision stumps - gets a different weight, which is the so-called <em>influence</em> $\alpha$. The influence depends on the <em>Total Error</em> of the model, which is equal to the number of wrongly classified samples divided by the total number of samples. The influence is defined as</p>
+<p>We now start with fitting a <a href="http://localhost:46689/posts/classical_ml/decision_trees/">Decision Tree</a> to this data. As stated earlier we will use decision stumps, that is we are only interested in the first split.  The same data was used in <a href="http://localhost:46689/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a> to develop a Decision Tree by hand, please check there for the details on how to develop a Decision Tree and how to find the best split. The resulting stump is shown in the following plot. In AdaBoost, each underlying model - in our case decision stumps - gets a different weight, which is the so-called <em>influence</em> $\alpha$. The influence depends on the <em>Total Error</em> of the model, which is equal to the number of wrongly classified samples divided by the total number of samples. The influence is defined as</p>
 <p>$$\alpha =  \frac{1}{2} \ln\Big(\frac{1 - TotalError}{TotalError}\Big).$$</p>
 <p><img src="/images/adaboost/ab_example_clf_first_stump.png" alt="adaboost_first_stump">
 <em>The first stump, i.e. the first weak learner for our AdaBoost algorithm.</em></p>
@@ -245,7 +245,7 @@ MathJax = {
 <p>Now, some randomness comes into play. Random numbers between $0$ and $1$ are drawn, then we check in which bin the random number falls, and the according data sample is selected for the new modified dataset. We draw as many numbers as the length of our dataset is, that is in this example we draw $10$ numbers. Due to the higher weight of the misclassified example, this example has a larger bin, and the probability of drawing it is higher. Let&rsquo;s assume we draw the numbers $[0.1, 0.15, 0.06, 0.5, 0.65, 0.05, 0.8, 0.7, 0.95, 0.97]$, which leads to the selection of the samples $[1, 2, 1, 8, 8, 0, 8, 8, 9, 9]$. The modified dataset then has the following form.</p>
 <p><img src="/images/adaboost/ab_clf_data_first_second_stump.png" alt="adaboost_data2">
 <em>Modified dataset to build the second stump.</em></p>
-<p>We now use this modified dataset to create the second stump. Following the steps described in <a href="http://localhost:46267/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>, we achieve the following decision stump. Additionally, the influence $\alpha$ of this stump is calculated.</p>
+<p>We now use this modified dataset to create the second stump. Following the steps described in <a href="http://localhost:46689/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>, we achieve the following decision stump. Additionally, the influence $\alpha$ of this stump is calculated.</p>
 <p><img src="/images/adaboost/ab_example_clf_second_stump.png" alt="adaboost_first_stump">
 <em>The second stump, i.e. the second weak learner for our AdaBoost algorithm.</em></p>
 <p>As in the first stump, one sample is misclassified, so we get the same value for alpha as for the first stump. Accordingly, the weights are updated using the above formula.</p>
@@ -349,9 +349,9 @@ MathJax = {
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>y_hat <span style="color:#04a5e5;font-weight:bold">=</span> clf<span style="color:#04a5e5;font-weight:bold">.</span>predict(X)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>For this example, the predictions are $[0, 1, 1, 0, 0, 1, 0, 1, 0, 1]$, which means that all samples are correctly predicted. We can also print the predictions and scores of the individual models. Please check the related article <a href="http://localhost:46267/posts/classical_ml/adaboost/#python">AdaBoost - Explained</a> for some more details about this. A more realistic example with a larger dataset is provided on <a href="https://www.kaggle.com/pumalin/adaboost-tutorial">kaggle</a>.</p>
+</div><p>For this example, the predictions are $[0, 1, 1, 0, 0, 1, 0, 1, 0, 1]$, which means that all samples are correctly predicted. We can also print the predictions and scores of the individual models. Please check the related article <a href="http://localhost:46689/posts/classical_ml/adaboost/#python">AdaBoost - Explained</a> for some more details about this. A more realistic example with a larger dataset is provided on <a href="https://www.kaggle.com/pumalin/adaboost-tutorial">kaggle</a>.</p>
 <h2 id="summary">Summary</h2>
-<p>In this article, we illustrated in detail how to develop an AdaBoost model for a classification task. We used a simplified example to make the calculations easy to follow. We followed the most standard way of developing an AdaBoost ensemble model, that is the underlying base models were chosen as the stumps of Decision Trees. You can find a similar example for a regression task in the related article <a href="http://localhost:46267/posts/classical_ml/adaboost_example_reg/">AdaBoost for Regression - Example</a> and a detailed explanation and visualization of the algorithm in <a href="http://localhost:46267/posts/classical_ml/adaboost/">AdaBoost - Explained</a>.</p>
+<p>In this article, we illustrated in detail how to develop an AdaBoost model for a classification task. We used a simplified example to make the calculations easy to follow. We followed the most standard way of developing an AdaBoost ensemble model, that is the underlying base models were chosen as the stumps of Decision Trees. You can find a similar example for a regression task in the related article <a href="http://localhost:46689/posts/classical_ml/adaboost_example_reg/">AdaBoost for Regression - Example</a> and a detailed explanation and visualization of the algorithm in <a href="http://localhost:46689/posts/classical_ml/adaboost/">AdaBoost - Explained</a>.</p>
 <hr>
 <p>If this blog is useful for you, please consider supporting.</p>
 
@@ -1380,7 +1380,7 @@ MathJax = {
     </main>
     <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:46267/" >
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:46689/" >
     &copy; 
   </a>
     <div>

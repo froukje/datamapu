@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unsupervised on </title>
-    <link>http://localhost:46267/categories/unsupervised/</link>
+    <link>http://localhost:46689/categories/unsupervised/</link>
     <description>Recent content in Unsupervised on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 13 Jun 2024 21:10:46 -0300</lastBuildDate>
-    <atom:link href="http://localhost:46267/categories/unsupervised/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:46689/categories/unsupervised/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding K-Means Clustering</title>
-      <link>http://localhost:46267/posts/classical_ml/kmeans/</link>
+      <link>http://localhost:46689/posts/classical_ml/kmeans/</link>
       <pubDate>Thu, 13 Jun 2024 21:10:46 -0300</pubDate>
-      <guid>http://localhost:46267/posts/classical_ml/kmeans/</guid>
+      <guid>http://localhost:46689/posts/classical_ml/kmeans/</guid>
       <description>Introduction K-Means is an example for a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.</description>
     </item>
   </channel>
