@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Deep Learning on </title>
-    <link>http://localhost:46689/categories/deep-learning/</link>
+    <link>http://localhost:1313/categories/deep-learning/</link>
     <description>Recent content in Deep Learning on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 31 Mar 2024 20:21:50 -0300</lastBuildDate>
-    <atom:link href="http://localhost:46689/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>http://localhost:46689/backpropagation/</link>
+      <link>http://localhost:1313/backpropagation/</link>
       <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
-      <guid>http://localhost:46689/backpropagation/</guid>
+      <guid>http://localhost:1313/backpropagation/</guid>
       <description>Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for four simple examples. The first two examples will contain all the calculations, the last two will only illustrate the equations that need to be calculated.</description>
     </item>
     <item>
       <title>Backpropagation Step by Step</title>
-      <link>http://localhost:46689/posts/deep_learning/backpropagation/</link>
+      <link>http://localhost:1313/posts/deep_learning/backpropagation/</link>
       <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
-      <guid>http://localhost:46689/posts/deep_learning/backpropagation/</guid>
+      <guid>http://localhost:1313/posts/deep_learning/backpropagation/</guid>
       <description>Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, for the last one we will only illustrate the equations that need to be calculated.</description>
     </item>
     <item>
       <title>Gradient Descent</title>
-      <link>http://localhost:46689/posts/ml_concepts/gradient_descent/</link>
+      <link>http://localhost:1313/posts/ml_concepts/gradient_descent/</link>
       <pubDate>Tue, 27 Feb 2024 20:55:28 -0300</pubDate>
-      <guid>http://localhost:46689/posts/ml_concepts/gradient_descent/</guid>
+      <guid>http://localhost:1313/posts/ml_concepts/gradient_descent/</guid>
       <description>Introduction Gradient Descent is a mathematical optimization technique, which is used to find the local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point.</description>
     </item>
     <item>
       <title>Loss Functions in Machine Learning</title>
-      <link>http://localhost:46689/posts/ml_concepts/loss_functions/</link>
+      <link>http://localhost:1313/posts/ml_concepts/loss_functions/</link>
       <pubDate>Sun, 04 Feb 2024 18:57:51 -0300</pubDate>
-      <guid>http://localhost:46689/posts/ml_concepts/loss_functions/</guid>
+      <guid>http://localhost:1313/posts/ml_concepts/loss_functions/</guid>
       <description>Introduction In Machine Learning loss functions are used to evaluate the model. They compare the true target values with the predicted ones and are directly related to the error of the predictions. During the training of a model, the loss function is aimed to be optimized to minimize the error of the predictions. It is a general convention to define a loss function such that it is minimized rather than maximized.</description>
     </item>
     <item>
       <title>Introduction to Deep Learning</title>
-      <link>http://localhost:46689/posts/deep_learning/intro_dl/</link>
+      <link>http://localhost:1313/posts/deep_learning/intro_dl/</link>
       <pubDate>Thu, 02 Nov 2023 21:44:06 +0100</pubDate>
-      <guid>http://localhost:46689/posts/deep_learning/intro_dl/</guid>
+      <guid>http://localhost:1313/posts/deep_learning/intro_dl/</guid>
       <description>In this article we will learn what Deep Learning is and understand the difference to AI and Machine Learning. Often these three terms are used interchangeable. They are however not the same. The following diagram illustrates how they are related.&#xA;Relation of Artificial Intelligence, Machine Learning and Deep Learning.&#xA;Artificial Intelligence. There are different definitions of Artificial Intelligence, but in general, they involve computers performing tasks that are usually associated with humans or other intelligent living systems.</description>
     </item>
   </channel>

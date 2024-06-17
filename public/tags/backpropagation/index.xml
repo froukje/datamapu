@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Backpropagation on </title>
-    <link>http://localhost:46689/tags/backpropagation/</link>
+    <link>http://localhost:1313/tags/backpropagation/</link>
     <description>Recent content in Backpropagation on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 31 Mar 2024 20:21:50 -0300</lastBuildDate>
-    <atom:link href="http://localhost:46689/tags/backpropagation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/backpropagation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>http://localhost:46689/backpropagation/</link>
+      <link>http://localhost:1313/backpropagation/</link>
       <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
-      <guid>http://localhost:46689/backpropagation/</guid>
+      <guid>http://localhost:1313/backpropagation/</guid>
       <description>Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for four simple examples. The first two examples will contain all the calculations, the last two will only illustrate the equations that need to be calculated.</description>
     </item>
     <item>
       <title>Backpropagation Step by Step</title>
-      <link>http://localhost:46689/posts/deep_learning/backpropagation/</link>
+      <link>http://localhost:1313/posts/deep_learning/backpropagation/</link>
       <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
-      <guid>http://localhost:46689/posts/deep_learning/backpropagation/</guid>
+      <guid>http://localhost:1313/posts/deep_learning/backpropagation/</guid>
       <description>Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, for the last one we will only illustrate the equations that need to be calculated.</description>
     </item>
   </channel>
