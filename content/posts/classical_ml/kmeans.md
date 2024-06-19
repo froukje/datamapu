@@ -115,7 +115,11 @@ This method is favored because it provides a more detailed and rigorous evaluati
 
 **Other Methods**
 
-< While the Elbow Method and Silhouette Score are the most popular, other methods like the Gap Statistic, Davies-Bouldin Index, and Information Criterion Approaches (BIC/AIC) are also valuable and can be used in specific contexts where their advantages may be more relevant. However, their complexity and computational demands can limit their use in everyday applications compared to the more straightforward Elbow Method and Silhouette Score. >
+The Elbow method and the Silhouette Score are the most popular and the most straight forward methods. There are however several other methods, that are more complex. We are not going to explain them here, but only name a few and link to a reference.
+
+* Gap Statistic
+* Davies-Bouldin Index
+* Information Criterion Approaches (BIC/AIC) 
 
 ## Applications
 
