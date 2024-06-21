@@ -6,7 +6,7 @@
     
     <title>Understanding K-Means Clustering | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Introduction K-Means is an example for a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
+    <meta name="description" content="Introduction K-Means is an example of a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
     <meta name="generator" content="Hugo 0.127.0">
     
     
@@ -33,7 +33,7 @@
     
     <meta property="og:url" content="http://localhost:1313/posts/classical_ml/kmeans/">
   <meta property="og:title" content="Understanding K-Means Clustering">
-  <meta property="og:description" content="Introduction K-Means is an example for a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
+  <meta property="og:description" content="Introduction K-Means is an example of a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -46,16 +46,16 @@
     <meta property="og:image" content="http://localhost:1313/images/kmeans/3_clusters.png">
 
   <meta itemprop="name" content="Understanding K-Means Clustering">
-  <meta itemprop="description" content="Introduction K-Means is an example for a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
+  <meta itemprop="description" content="Introduction K-Means is an example of a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
   <meta itemprop="datePublished" content="2024-06-13T21:10:46-03:00">
   <meta itemprop="dateModified" content="2024-06-13T21:10:46-03:00">
-  <meta itemprop="wordCount" content="1071">
+  <meta itemprop="wordCount" content="1688">
   <meta itemprop="image" content="http://localhost:1313/images/kmeans/3_clusters.png">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Clustering,unsupervised">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/images/kmeans/3_clusters.png">
   <meta name="twitter:title" content="Understanding K-Means Clustering">
-  <meta name="twitter:description" content="Introduction K-Means is an example for a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
+  <meta name="twitter:description" content="Introduction K-Means is an example of a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -209,12 +209,12 @@ MathJax = {
 
       
       
-        <span class="f6 mv4 dib tracked"> - 6 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 1071 words </span>
+        <span class="f6 mv4 dib tracked"> - 8 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 1688 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
-<p><em>K-Means</em> is an example for a <em>clustering</em> algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of <a href="http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#unsupervised">unsupervised</a> Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, <em>K-Means</em> stands out for its simplicity and efficiency. In this blog post, we will explain the algorithm behind K-Means, and see how to implement it in Python.</p>
+<p><em>K-Means</em> is an example of a <em>clustering</em> algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of <a href="http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#unsupervised">unsupervised</a> Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, <em>K-Means</em> stands out for its simplicity and efficiency. In this blog post, we will explain the algorithm behind K-Means, and see how to implement it in Python.</p>
 <div id="image-container">
     <button id="prev-btn" class="nav-btn"> &lt;</button>
     <img src="/images/kmeans/2_clusters.png" id="current-image" alt="image">
@@ -275,17 +275,16 @@ showImage(currentIndex);
 
 <p><em>Illustration of clustering.</em></p>
 <h2 id="what-is-k-means-clustering---the-algorithm">What is K-Means Clustering? - The Algorithm</h2>
-<p>K-Means clustering is an unsupervised Machine Learning algorithm used to partition an unlabeled, unsorganised data set into k clusters, where the number k is pre-defined in advance. Each data point is assigned to the cluster with the closest centroid of this cluster, based on a predefined distance metric. The algorithm minimizes the inner-cluster variance. More precisely the algorithm has the following steps</p>
-<p><strong>1. Initialization:</strong> The algorithm starts by selecting k initial centroids. These can be chosen randomly or by using more sophisticated methods like <a href="https://en.wikipedia.org/wiki/K-means%2B%2B">K-Means++</a> to improve convergence. When using the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans">sklearn</a> library the initial method &ldquo;k-means++&rdquo; is the default method.</p>
-<p><strong>2. Assignment Step:</strong> For each data point the distance to each of the centroids is calculated. Each data point is then assigned to the nearest centroid. As distance metric typically the Euclidean distance is chosen. After this step k clusters are formed.</p>
+<p>K-Means clustering is an unsupervised Machine Learning algorithm used to partition an unlabeled, unsorganised data set into k clusters, where the number k is defined in advance. Each data point is assigned to the cluster with the closest centroid, based on a predefined distance metric. The algorithm minimizes the inner-cluster variance of the data. More precisely the algorithm has the following steps</p>
+<p><strong>1. Initialization:</strong> The algorithm starts by selecting k initial centroids. These can be chosen as random points from the data sets or by using more sophisticated methods like <a href="https://en.wikipedia.org/wiki/K-means%2B%2B">K-Means++</a> to improve convergence. When using the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans">sklearn</a> library the initial method &ldquo;k-means++&rdquo; is the default method.</p>
+<p><strong>2. Assignment Step:</strong> For each data point, the distance to each of the centroids is calculated. Each data point is then assigned to the nearest centroid. As distance metric typically the <a href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a> is chosen, which is also the metric used in the sklearn method. After this step k clusters are formed.</p>
 <p><strong>3. Update Step:</strong> The centroids are recalculated as the mean of all data points assigned to each cluster.</p>
 <p><strong>Repeat steps 2 and 3</strong> iteratively until the centroids no longer change significantly or the indicated number of iterations is reached. The k clusters after the convergence criterion is reached is the final result.</p>
-<p>&lt; illustration of the algorithm &gt;</p>
+<p>&lt; ITERATIONS &gt;</p>
 <h2 id="choosing-the-right-number-of-clusters">Choosing the Right Number of Clusters</h2>
-<p>One of the key challenges in K-Means clustering is selecting the optimal number of clusters. A number of methods have been developed to determine the optimal number of clusters. In this post, we will only discuss the most popular ones, which are the <em>Elbow Method</em> and the <em>Silhouette Score</em>.</p>
+<p>One of the key challenges in K-Means clustering is selecting the optimal number of clusters. A number of methods have been developed to determine the optimal number of clusters. In this post, we will only discuss the most popular ones: the <em>Elbow Method</em> and the <em>Silhouette Score</em>.</p>
 <h3 id="elbow-method">Elbow Method</h3>
-<p>The <em>Elbow Method</em> helps in determining the optimal number of clusters by plotting the sum of squared distances (inertia) from each point to its assigned centroid against the number of clusters. As the number of clusters increases, the inertia decreases. The point where the decrease sharply slows down (forming an &ldquo;elbow&rdquo;) indicates the optimal number of clusters.</p>
-<p>&lt; image of ellbow method &gt;</p>
+<p>The <em>Elbow Method</em> helps to determine the optimal number of clusters by plotting the sum of squared distances (inertia) from each point to its assigned centroid against the number of clusters. As the number of clusters increases, the inertia decreases. The point where the decrease sharply slows down (forming an &ldquo;elbow&rdquo;) indicates the optimal number of clusters.</p>
 <p>Its popularity stems from its simplicity and visual appeal. It allows data scientists and analysts to quickly identify a suitable number of clusters by visual inspection.</p>
 <p><strong>Pros:</strong></p>
 <ul>
@@ -297,14 +296,14 @@ showImage(currentIndex);
 <li>The elbow point can sometimes be ambiguous or not very pronounced, making it hard to decide the optimal number of clusters.</li>
 </ul>
 <h3 id="silhouette-method">Silhouette Method</h3>
-<p>The <em>Silhouette Score</em> or <em>Silhouette Coefficient</em> evaluates the consistency within clusters and separation between clusters. It ranges from -1 to 1, with higher values indicating better clustering. The method is in detail described on <a href="https://en.wikipedia.org/wiki/Silhouette_(clustering)#:~:text=The%20silhouette%20score%20is%20specialized,distance%20or%20the%20Manhattan%20distance.">wikipedia</a>. It is calculated as follows:</p>
+<p>The <em>Silhouette Score</em> or <em>Silhouette Coefficient</em> evaluates the consistency within clusters and the separation between clusters. It ranges from -1 to 1, with higher values indicating better clustering. The method is in detail described on <a href="https://en.wikipedia.org/wiki/Silhouette_(clustering)#:~:text=The%20silhouette%20score%20is%20specialized,distance%20or%20the%20Manhattan%20distance.">Wikipedia</a>. The score is calculated as follows:</p>
 <p><strong>1. step:</strong> For each data point $i$ in cluster $C_I$:</p>
 <p><strong>Calculate the mean inner-cluster distance (a):</strong> This is the average distance between the data point $i$ and all other points in the same cluster.</p>
 <p>$$a(i) = \frac{1}{|C_I| - 1} \sum_{j\in C_I, j\neq i} d(i,j),$$</p>
 <p>with $|C_I|$ the total number of data points in cluster $I$, and $d(i, j)$ the distance between data point $i$ and data point $j$.</p>
 <p><strong>Calculate the mean nearest-cluster distance (b):</strong> This is the average distance between the data point $i$ and all points in the nearest neighboring cluster.</p>
 <p>$$b(i) = \min_{J\neq I}\frac{1}{C_J}\sum_{j\in C_J} d(i,j),$$</p>
-<p>where $C_J$ is any other cluster than $C_I$. Since the minimum over all clusters is taken, this results in the average distance of data point $i$ and all data points in the neighboring cluster. The neighboring cluster is the next best fit cluster for point i.</p>
+<p>where $C_J$ is any other cluster than $C_I$. Since the minimum over all clusters is taken, this results in the average distance of data point $i$ and all data points in the neighboring cluster. The neighboring cluster is the next best fit cluster for data point i.</p>
 <p><strong>2. step: Calculate the silhouette coefficient for the data point $i$:</strong></p>
 <p>$$s(i) = \frac{b(i) - a(i)}{\max(a(i), b(i))}.$$</p>
 <p>This equation holds if $|C_I| &gt; 1$, if $|C_I| = 1$, $s(i)$ is defined as $0$.</p>
@@ -325,7 +324,6 @@ $$</p>
 <p><strong>3. step: Calculate the mean silhouette score for all data points:</strong> The overall silhouette score for the clustering is the average silhouette coefficient for all data points.</p>
 <p>$$S = \frac{1}{N}\sum_{i=1}^N s(i)$$</p>
 <p>where $N$ is the total number of data points.</p>
-<p>&lt; image of silhoutte method &gt;</p>
 <p>This method is favored because it provides a more detailed and rigorous evaluation of clustering quality, helping to ensure that the chosen number of clusters truly represents the data structure.</p>
 <p><strong>Pros:</strong></p>
 <ul>
@@ -340,19 +338,150 @@ $$</p>
 <p><strong>Other Methods</strong></p>
 <p>The Elbow method and the Silhouette Score are the most popular and the most straight forward methods. There are however several other methods, that are more complex. We are not going to explain them here, but only name a few and link to a reference.</p>
 <ul>
-<li>Gap Statistic</li>
-<li>Davies-Bouldin Index</li>
-<li>Information Criterion Approaches (BIC/AIC)</li>
+<li><a href="https://datasciencelab.wordpress.com/tag/gap-statistic/">Gap Statistic</a></li>
+<li><a href="https://www.geeksforgeeks.org/davies-bouldin-index/">Davies-Bouldin Index</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bayesian_information_criterion">Information Criterion Approaches (BIC/AIC)</a></li>
 </ul>
-<h2 id="applications">Applications</h2>
-<p>This algorithm is widely used in fields like market segmentation, image compression, and pattern recognition.</p>
 <h2 id="code-example">Code Example</h2>
-<p>´´´
-class sklearn.cluster.KMeans(n_clusters=8, *, init=&lsquo;k-means++&rsquo;, n_init=&lsquo;auto&rsquo;, max_iter=300, tol=0.0001, verbose=0, random_state=None, copy_x=True, algorithm=&lsquo;lloyd&rsquo;)[source]
-´´´</p>
-<p>elbow method</p>
-<p>Silhouette Score</p>
+<p>We consider a simple dataset consisting of 28 data points. The data describes the number of followers and the number of posts in a social media application for 28 persons.</p>
+<p><img src="/images/kmeans/clustering_data.png" alt="data">
+<em>The data set used in this example.</em></p>
+<p>We read this data into a Pandas dataframe and then transform it into a numpy array.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">pandas</span> <span style="color:#8839ef">as</span> <span style="color:#fe640b">pd</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#04a5e5;font-weight:bold">=</span> {<span style="color:#40a02b">&#34;Number of Followers&#34;</span>: [<span style="color:#fe640b">0</span>, <span style="color:#fe640b">10</span>, <span style="color:#fe640b">15</span>, <span style="color:#fe640b">20</span>, <span style="color:#fe640b">5</span>,  <span style="color:#fe640b">38</span>,  <span style="color:#fe640b">20</span>,  <span style="color:#fe640b">15</span>,  <span style="color:#fe640b">210</span>, <span style="color:#fe640b">200</span>, \\
+</span></span><span style="display:flex;"><span>				<span style="color:#fe640b">220</span>, <span style="color:#fe640b">190</span>, <span style="color:#fe640b">0</span>,   <span style="color:#fe640b">6</span>,   <span style="color:#fe640b">15</span>,  <span style="color:#fe640b">10</span>,  <span style="color:#fe640b">200</span>, <span style="color:#fe640b">180</span>, <span style="color:#fe640b">150</span>, \\
+</span></span><span style="display:flex;"><span>				<span style="color:#fe640b">170</span>, <span style="color:#fe640b">8</span>, <span style="color:#fe640b">12</span>, <span style="color:#fe640b">210</span>, <span style="color:#fe640b">230</span>, <span style="color:#fe640b">190</span>, <span style="color:#fe640b">220</span>, <span style="color:#fe640b">210</span>, <span style="color:#fe640b">190</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;Number of Posts&#34;</span>:     [<span style="color:#fe640b">2</span>, <span style="color:#fe640b">5</span>,  <span style="color:#fe640b">7</span>,  <span style="color:#fe640b">5</span>,  <span style="color:#fe640b">20</span>, <span style="color:#fe640b">100</span>, <span style="color:#fe640b">105</span>, <span style="color:#fe640b">145</span>, <span style="color:#fe640b">200</span>, <span style="color:#fe640b">150</span>, \\
+</span></span><span style="display:flex;"><span>				<span style="color:#fe640b">185</span>, <span style="color:#fe640b">155</span>, <span style="color:#fe640b">120</span>, <span style="color:#fe640b">150</span>, <span style="color:#fe640b">170</span>, <span style="color:#fe640b">170</span>, <span style="color:#fe640b">500</span>, <span style="color:#fe640b">550</span>, <span style="color:#fe640b">400</span>, \\
+</span></span><span style="display:flex;"><span>				<span style="color:#fe640b">470</span>, <span style="color:#fe640b">8</span>, <span style="color:#fe640b">10</span>, <span style="color:#fe640b">160</span>, <span style="color:#fe640b">180</span>, <span style="color:#fe640b">165</span>, <span style="color:#fe640b">470</span>, <span style="color:#fe640b">490</span>, <span style="color:#fe640b">450</span>]
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#04a5e5;font-weight:bold">=</span> pd<span style="color:#04a5e5;font-weight:bold">.</span>DataFrame(data)
+</span></span><span style="display:flex;"><span>X <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#34;Number of Followers&#34;</span>, <span style="color:#40a02b">&#34;Number of Posts&#34;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We use the <a href="https://scikit-learn.org/stable/">sklearn</a> method <em>KMeans</em>. We use the default setup for this demonstration, the only parameter we change is the number of clusters (<em>n_clusters</em>). You can however e.g. change the initialization method (<em>init</em>), the maximal number of iterations (<em>max_iter</em>), and the tolerance (<em>tol</em>) that defines the convergence of the algorithm. For all details, please refer to the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans">documentation</a>.</p>
+<p>We use the defined data set to <em>fit</em> the <em>KMeans</em> method. We fit the data using $2$, $4$, and $8$ clusters and plot the results. We can then access the calculated centroids using <em>kmeans.cluster_centers_</em>.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">19
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.cluster</span> <span style="color:#179299">import</span> KMeans
+</span></span><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">matplotlib.pyplot</span> <span style="color:#8839ef">as</span> <span style="color:#fe640b">plt</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>random_state<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">42</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>n_clusters_list <span style="color:#04a5e5;font-weight:bold">=</span> [<span style="color:#fe640b">2</span>, <span style="color:#fe640b">4</span>, <span style="color:#fe640b">8</span>]
+</span></span><span style="display:flex;"><span>fig, axs <span style="color:#04a5e5;font-weight:bold">=</span> plt<span style="color:#04a5e5;font-weight:bold">.</span>subplots(<span style="color:#fe640b">1</span>, <span style="color:#04a5e5">len</span>(n_clusters_list), figsize<span style="color:#04a5e5;font-weight:bold">=</span>(<span style="color:#fe640b">11</span>, <span style="color:#fe640b">4</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> j, n_clusters <span style="color:#04a5e5;font-weight:bold">in</span> <span style="color:#04a5e5">enumerate</span>(n_clusters_list):
+</span></span><span style="display:flex;"><span>    kmeans <span style="color:#04a5e5;font-weight:bold">=</span> KMeans(n_clusters<span style="color:#04a5e5;font-weight:bold">=</span>n_clusters, random_state<span style="color:#04a5e5;font-weight:bold">=</span>random_state, n_init<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">3</span>)
+</span></span><span style="display:flex;"><span>    kmeans<span style="color:#04a5e5;font-weight:bold">.</span>fit(X)
+</span></span><span style="display:flex;"><span>    centers <span style="color:#04a5e5;font-weight:bold">=</span> kmeans<span style="color:#04a5e5;font-weight:bold">.</span>cluster_centers_
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    axs[j]<span style="color:#04a5e5;font-weight:bold">.</span>scatter(X[:, <span style="color:#fe640b">0</span>], X[:, <span style="color:#fe640b">1</span>], s<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">20</span>, c<span style="color:#04a5e5;font-weight:bold">=</span>kmeans<span style="color:#04a5e5;font-weight:bold">.</span>labels_)
+</span></span><span style="display:flex;"><span>    axs[j]<span style="color:#04a5e5;font-weight:bold">.</span>scatter(centers[:, <span style="color:#fe640b">0</span>], centers[:, <span style="color:#fe640b">1</span>], c<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#40a02b">&#34;r&#34;</span>, s<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">40</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    axs[j]<span style="color:#04a5e5;font-weight:bold">.</span>set_title(<span style="color:#d20f39">f</span><span style="color:#40a02b">&#34;</span><span style="color:#40a02b">{</span>n_clusters<span style="color:#40a02b">}</span><span style="color:#40a02b"> clusters&#34;</span>)
+</span></span><span style="display:flex;"><span>    axs[j]<span style="color:#04a5e5;font-weight:bold">.</span>set_xlabel(<span style="color:#40a02b">&#34;Number of Followers&#34;</span>)
+</span></span><span style="display:flex;"><span>    axs[j]<span style="color:#04a5e5;font-weight:bold">.</span>set_ylabel(<span style="color:#40a02b">&#34;Number of Posts&#34;</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/kmeans/clustering_example.png" alt="example">
+<em>Clustering the example data with $2$, $4$m, and $8$ clusters.</em></p>
+<p>In this simple example we can already visiually see that $4$ clusters is the correct number, but let&rsquo;s use the above discussed methods to verify this.</p>
+<p><strong>Elbow Method</strong></p>
+<p>To illustrate the ellbow method we fit the data for an increasing number of clusters ranging from $1$ to $11$ and save the inertias (sum of square distances) and plot the result.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.cluster</span> <span style="color:#179299">import</span> KMeans
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>inertia <span style="color:#04a5e5;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span>K <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#04a5e5">range</span>(<span style="color:#fe640b">1</span>, <span style="color:#fe640b">11</span>)
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> k <span style="color:#04a5e5;font-weight:bold">in</span> K:
+</span></span><span style="display:flex;"><span>    kmeans <span style="color:#04a5e5;font-weight:bold">=</span> KMeans(n_clusters<span style="color:#04a5e5;font-weight:bold">=</span>k, random_state<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">0</span>)<span style="color:#04a5e5;font-weight:bold">.</span>fit(X)
+</span></span><span style="display:flex;"><span>    inertia<span style="color:#04a5e5;font-weight:bold">.</span>append(kmeans<span style="color:#04a5e5;font-weight:bold">.</span>inertia_)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/kmeans/elbow_method.png" alt="elbow_method">
+<em>Elbow curve for the example data.</em></p>
+<p>In this plot w esee that at the beginning the curve is falling steeply and this decrease reduces strongly after reaching $4$ clusters. WHich indicates that this is the best number of clusters for this task.</p>
+<p><strong>Silhouette Score</strong></p>
+<p>The silhouette score is also a method available in sklearn. In this case we fit the KMeans method to a range of $2$ to $11$ clusters. For each fit we calculate the <em>silhouette score</em> and plot the result.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.metrics</span> <span style="color:#179299">import</span> silhouette_score
+</span></span><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.cluster</span> <span style="color:#179299">import</span> KMeans
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>silhouette_scores <span style="color:#04a5e5;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span>K <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#04a5e5">range</span>(<span style="color:#fe640b">2</span>, <span style="color:#fe640b">11</span>)
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> k <span style="color:#04a5e5;font-weight:bold">in</span> K:
+</span></span><span style="display:flex;"><span>    kmeans <span style="color:#04a5e5;font-weight:bold">=</span> KMeans(n_clusters<span style="color:#04a5e5;font-weight:bold">=</span>k, random_state<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">0</span>)<span style="color:#04a5e5;font-weight:bold">.</span>fit(X)
+</span></span><span style="display:flex;"><span>    score <span style="color:#04a5e5;font-weight:bold">=</span> silhouette_score(X, kmeans<span style="color:#04a5e5;font-weight:bold">.</span>labels_)
+</span></span><span style="display:flex;"><span>    silhouette_scores<span style="color:#04a5e5;font-weight:bold">.</span>append(score)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/kmeans/silhouette_score.png" alt="silhouette_score">
+<em>Silhouette Score for the example data.</em></p>
+<p>This plot shows a maximum for $4$ clusters, that is the silhouette score is highest for this number of clusters, which indicates the optimal number of clusters.</p>
 <h2 id="summary">Summary</h2>
+<p>K-Means is an unsupervised machine learning algorithm used for clustering data into k distinct groups based on feature similarity. It works by iteratively assigning data points to the nearest cluster center and then updating the cluster centers to be the mean of the assigned points. The process continues until the cluster assignments no longer change significantly or the maximum number of iterations is reached. It is a popular algorithm due to its simplicity, efficiency with large datasets, and ease of implementation and interpretation.</p>
 <hr>
 <p>If this blog is useful for you, please consider supporting.</p>
 
