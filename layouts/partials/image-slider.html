@@ -1,0 +1,54 @@
+<div class="image-gallery" id="gallery-{{ .Get "id" }}">
+    <button class="prev-btn nav-btn">&lt;</button>
+    <img src="{{ index (.Get "images") 0 }}" class="current-image" alt="Gallery Image">
+    <button class="next-btn nav-btn">&gt;</button>
+    <div class="dot-container"></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var galleryId = '{{ .Get "id" }}';
+    var images = {{ .Get "images" | safeJS  }};
+    var currentIndex = 0;
+
+    var container = document.getElementById('gallery-' + galleryId);
+    var imgElement = container.querySelector('.current-image');
+    var dotContainer = container.querySelector('.dot-container');
+    var dots = [];
+
+    images.forEach(function(image, index) {
+        var dot = document.createElement('span');
+        dot.className = 'dot';
+        dot.addEventListener('click', function() {
+            showImage(index);
+        });
+        dotContainer.appendChild(dot);
+        dots.push(dot);
+    });
+
+    function showImage(index) {
+        imgElement.src = images[index];
+        currentIndex = index;
+        updateDots();
+    }
+
+    function updateDots() {
+        dots.forEach(function(dot, index) {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    container.querySelector('.prev-btn').addEventListener('click', function() {
+        showImage((currentIndex - 1 + images.length) % images.length);
+    });
+
+    container.querySelector('.next-btn').addEventListener('click', function() {
+        showImage((currentIndex + 1) % images.length);
+    });
+
+    // Initialize the first image and dots
+    showImage(currentIndex);
+});
+</script>
+<link rel="stylesheet" href="/css/style.css">
+

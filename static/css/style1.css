@@ -1,14 +1,14 @@
-.image-gallery {
+#image-container {
     position: relative;
-    width: 80%;
-    margin: 20px auto;
+    width: 100%;
+    margin: 0 auto;
     text-align: center;
 }
 
-.image-gallery img {
+#image-container img {
     width: 100%;
     height: auto;
-    max-width: 600px;
+    max-width: 700px;
     border: 2px solid #ddd;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -16,27 +16,28 @@
 
 .nav-btn {
     position: absolute;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.7);
     border: none;
-    padding: 10px;
+    padding: 0px;
     cursor: pointer;
-    font-size: 32px;
-    color: #555;
+    font-size: 50px;
+    width: 60px;
+    height: 60px;
+    font: bold;
+    color: grey;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
-.nav-btn:hover {
-    color: #000;
+#prev-btn {
+    left: -50px;
 }
 
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
+#next-btn {
+    right: -50px;
 }
 
 .dot-container {
@@ -56,4 +57,7 @@
 .dot.active {
     background-color: #555;
 }
+
+
+
 

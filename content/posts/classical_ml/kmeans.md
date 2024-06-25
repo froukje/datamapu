@@ -12,8 +12,7 @@ images = ['/images/kmeans/3_clusters.png']
 
 *K-Means* is an example of a *clustering* algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of [unsupervised]({{< ref "/posts/ml_concepts/supervised_unsupervised#unsupervised">}}) Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, *K-Means* stands out for its simplicity and efficiency. In this blog post, we will explain the algorithm behind K-Means, and see how to implement it in Python.
 
-{{< img-slider-kmeans >}}
-
+{{< img-slider id="kmeans1" images="[\"/images/kmeans/2_clusters.png\", \"/images/kmeans/3_clusters.png\"]" >}}
 
 *Illustration of clustering.*
 
@@ -29,7 +28,7 @@ K-Means clustering is an unsupervised Machine Learning algorithm used to partiti
 
 **Repeat steps 2 and 3** iteratively until the centroids no longer change significantly or the indicated number of iterations is reached. The k clusters after the convergence criterion is reached is the final result. 
 
-< ITERATIONS >
+{{< img-slider id="kmeans2" images="[\"/images/kmeans/iteration_1.png\", \"/images/kmeans/iteration_2.png\", \"/images/kmeans/iteration_3.png\", \"/images/kmeans/iteration_4.png\", \"/images/kmeans/iteration_5.png\"]" >}}
 
 ## Choosing the Right Number of Clusters
 
@@ -170,7 +169,7 @@ for j, n_clusters in enumerate(n_clusters_list):
 ```
 
 ![example](/images/kmeans/clustering_example.png)
-*Clustering the example data with $2$, $4$m, and $8$ clusters.*
+*Clustering the example data with $2$, $4$, and $8$ clusters.*
 
 In this simple example we can already visiually see that $4$ clusters is the correct number, but let's use the above discussed methods to verify this.
 
