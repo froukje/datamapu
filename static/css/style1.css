@@ -1,14 +1,14 @@
-#image-container {
+.image-gallery {
     position: relative;
-    width: 100%;
-    margin: 0 auto;
+    width: 80%;
+    margin: 20px auto;
     text-align: center;
 }
 
-#image-container img {
+.image-gallery img {
     width: 100%;
     height: auto;
-    max-width: 700px;
+    max-width: 600px;
     border: 2px solid #ddd;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -17,27 +17,26 @@
 .nav-btn {
     position: absolute;
     top: 45%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-45%);
+    background-color: transparent;
     border: none;
-    padding: 0px;
+    padding: 10px;
     cursor: pointer;
-    font-size: 50px;
-    width: 60px;
-    height: 60px;
-    font: bold;
-    color: grey;
-    border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 32px;
+    color: #555;
     z-index: 1;
 }
 
-#prev-btn {
-    left: -50px;
+.nav-btn:hover {
+    color: #000;
 }
 
-#next-btn {
-    right: -50px;
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
 }
 
 .dot-container {
@@ -57,7 +56,4 @@
 .dot.active {
     background-color: #555;
 }
-
-
-
 

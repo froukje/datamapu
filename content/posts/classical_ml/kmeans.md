@@ -14,6 +14,7 @@ images = ['/images/kmeans/3_clusters.png']
 
 {{< img-slider id="kmeans1" images="[\"/images/kmeans/2_clusters.png\", \"/images/kmeans/3_clusters.png\"]" >}}
 
+
 *Illustration of clustering.*
 
 ## What is K-Means Clustering? - The Algorithm

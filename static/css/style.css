@@ -1,6 +1,6 @@
 .image-gallery {
     position: relative;
-    width: 80%;
+    width: 90%;
     margin: 20px auto;
     text-align: center;
 }
@@ -14,33 +14,39 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.nav-btn {
+.nav-btn-container {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    background-color: rgba(128, 128, 128, 0.1);
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.prev-btn-container {
+    left: -50px; 
+}
+
+.next-btn-container {
+    right: -50px; 
+}
+
+.nav-btn {
     background-color: transparent;
     border: none;
-    padding: 10px;
     cursor: pointer;
     font-size: 32px;
     color: #555;
-    z-index: 1;
 }
 
 .nav-btn:hover {
     color: #000;
 }
 
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
-}
-
 .dot-container {
     margin-top: 10px;
+    text-align: center;
 }
 
 .dot {

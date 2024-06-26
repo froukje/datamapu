@@ -1,7 +1,11 @@
 <div class="image-gallery" id="gallery-{{ .Get "id" }}">
-    <button class="prev-btn nav-btn">&lt;</button>
+    <span class="nav-btn-container prev-btn-container">
+        <button class="prev-btn nav-btn">&lt;</button>
+    </span>
     <img src="{{ index (.Get "images") 0 }}" class="current-image" alt="Gallery Image">
-    <button class="next-btn nav-btn">&gt;</button>
+    <span class="nav-btn-container next-btn-container">
+        <button class="next-btn nav-btn">&gt;</button>
+    </span>
     <div class="dot-container"></div>
 </div>
 
