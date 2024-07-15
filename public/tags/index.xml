@@ -2,150 +2,150 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on </title>
-    <link>http://localhost:44353/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 13 Jun 2024 21:10:46 -0300</lastBuildDate>
-    <atom:link href="http://localhost:44353/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Clustering</title>
-      <link>http://localhost:44353/tags/clustering/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/clustering/</guid>
+      <link>http://localhost:1313/tags/clustering/</link>
+      <pubDate>Thu, 13 Jun 2024 21:10:46 -0300</pubDate>
+      <guid>http://localhost:1313/tags/clustering/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Science</title>
-      <link>http://localhost:44353/tags/data-science/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/data-science/</guid>
+      <link>http://localhost:1313/tags/data-science/</link>
+      <pubDate>Thu, 13 Jun 2024 21:10:46 -0300</pubDate>
+      <guid>http://localhost:1313/tags/data-science/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine Learning</title>
-      <link>http://localhost:44353/tags/machine-learning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/machine-learning/</guid>
+      <link>http://localhost:1313/tags/machine-learning/</link>
+      <pubDate>Thu, 13 Jun 2024 21:10:46 -0300</pubDate>
+      <guid>http://localhost:1313/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Unsupervised</title>
-      <link>http://localhost:44353/tags/unsupervised/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/unsupervised/</guid>
+      <link>http://localhost:1313/tags/unsupervised/</link>
+      <pubDate>Thu, 13 Jun 2024 21:10:46 -0300</pubDate>
+      <guid>http://localhost:1313/tags/unsupervised/</guid>
       <description></description>
     </item>
     <item>
       <title>Boosting</title>
-      <link>http://localhost:44353/tags/boosting/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/boosting/</guid>
+      <link>http://localhost:1313/tags/boosting/</link>
+      <pubDate>Wed, 08 May 2024 20:55:43 -0300</pubDate>
+      <guid>http://localhost:1313/tags/boosting/</guid>
       <description></description>
     </item>
     <item>
       <title>Tree Methods</title>
-      <link>http://localhost:44353/tags/tree-methods/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/tree-methods/</guid>
+      <link>http://localhost:1313/tags/tree-methods/</link>
+      <pubDate>Wed, 08 May 2024 20:55:43 -0300</pubDate>
+      <guid>http://localhost:1313/tags/tree-methods/</guid>
       <description></description>
     </item>
     <item>
       <title>Classification</title>
-      <link>http://localhost:44353/tags/classification/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/classification/</guid>
+      <link>http://localhost:1313/tags/classification/</link>
+      <pubDate>Sun, 28 Apr 2024 17:01:32 -0300</pubDate>
+      <guid>http://localhost:1313/tags/classification/</guid>
       <description></description>
     </item>
     <item>
       <title>Ensemble</title>
-      <link>http://localhost:44353/tags/ensemble/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/ensemble/</guid>
+      <link>http://localhost:1313/tags/ensemble/</link>
+      <pubDate>Sun, 28 Apr 2024 17:01:32 -0300</pubDate>
+      <guid>http://localhost:1313/tags/ensemble/</guid>
       <description></description>
     </item>
     <item>
       <title>Gradient Boosting</title>
-      <link>http://localhost:44353/tags/gradient-boosting/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/gradient-boosting/</guid>
+      <link>http://localhost:1313/tags/gradient-boosting/</link>
+      <pubDate>Sun, 28 Apr 2024 17:01:32 -0300</pubDate>
+      <guid>http://localhost:1313/tags/gradient-boosting/</guid>
       <description></description>
     </item>
     <item>
       <title>Regression</title>
-      <link>http://localhost:44353/tags/regression/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/regression/</guid>
+      <link>http://localhost:1313/tags/regression/</link>
+      <pubDate>Sun, 14 Apr 2024 20:45:19 -0300</pubDate>
+      <guid>http://localhost:1313/tags/regression/</guid>
       <description></description>
     </item>
     <item>
       <title>Artificial Intelligence</title>
-      <link>http://localhost:44353/tags/artificial-intelligence/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/artificial-intelligence/</guid>
+      <link>http://localhost:1313/tags/artificial-intelligence/</link>
+      <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
+      <guid>http://localhost:1313/tags/artificial-intelligence/</guid>
       <description></description>
     </item>
     <item>
       <title>Backpropagation</title>
-      <link>http://localhost:44353/tags/backpropagation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/backpropagation/</guid>
+      <link>http://localhost:1313/tags/backpropagation/</link>
+      <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
+      <guid>http://localhost:1313/tags/backpropagation/</guid>
       <description></description>
     </item>
     <item>
       <title>Deep Learning</title>
-      <link>http://localhost:44353/tags/deep-learning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/deep-learning/</guid>
+      <link>http://localhost:1313/tags/deep-learning/</link>
+      <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
+      <guid>http://localhost:1313/tags/deep-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Neural Nets</title>
-      <link>http://localhost:44353/tags/neural-nets/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/neural-nets/</guid>
+      <link>http://localhost:1313/tags/neural-nets/</link>
+      <pubDate>Tue, 27 Feb 2024 20:55:28 -0300</pubDate>
+      <guid>http://localhost:1313/tags/neural-nets/</guid>
       <description></description>
     </item>
     <item>
       <title>Random Forest</title>
-      <link>http://localhost:44353/tags/random-forest/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/random-forest/</guid>
+      <link>http://localhost:1313/tags/random-forest/</link>
+      <pubDate>Sun, 14 Jan 2024 09:22:00 -0300</pubDate>
+      <guid>http://localhost:1313/tags/random-forest/</guid>
       <description></description>
     </item>
     <item>
       <title>Bagging</title>
-      <link>http://localhost:44353/tags/bagging/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/bagging/</guid>
+      <link>http://localhost:1313/tags/bagging/</link>
+      <pubDate>Tue, 26 Dec 2023 10:57:13 +0100</pubDate>
+      <guid>http://localhost:1313/tags/bagging/</guid>
       <description></description>
     </item>
     <item>
       <title>Decision Trees</title>
-      <link>http://localhost:44353/tags/decision-trees/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/decision-trees/</guid>
+      <link>http://localhost:1313/tags/decision-trees/</link>
+      <pubDate>Tue, 19 Dec 2023 17:46:29 +0100</pubDate>
+      <guid>http://localhost:1313/tags/decision-trees/</guid>
       <description></description>
     </item>
     <item>
       <title>Logistic Regression</title>
-      <link>http://localhost:44353/tags/logistic-regression/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/logistic-regression/</guid>
+      <link>http://localhost:1313/tags/logistic-regression/</link>
+      <pubDate>Sat, 02 Dec 2023 09:31:24 +0100</pubDate>
+      <guid>http://localhost:1313/tags/logistic-regression/</guid>
       <description></description>
     </item>
     <item>
       <title>Linear Regression</title>
-      <link>http://localhost:44353/tags/linear-regression/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/linear-regression/</guid>
+      <link>http://localhost:1313/tags/linear-regression/</link>
+      <pubDate>Thu, 23 Nov 2023 11:00:02 +0100</pubDate>
+      <guid>http://localhost:1313/tags/linear-regression/</guid>
       <description></description>
     </item>
     <item>
       <title>Metrics</title>
-      <link>http://localhost:44353/tags/metrics/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:44353/tags/metrics/</guid>
+      <link>http://localhost:1313/tags/metrics/</link>
+      <pubDate>Sun, 01 Oct 2023 00:08:49 +0200</pubDate>
+      <guid>http://localhost:1313/tags/metrics/</guid>
       <description></description>
     </item>
   </channel>

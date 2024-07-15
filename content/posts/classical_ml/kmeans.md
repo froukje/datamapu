@@ -191,7 +191,7 @@ for k in K:
 ![elbow_method](/images/kmeans/elbow_method.png)
 *Elbow curve for the example data.*
 
-In this plot w esee that at the beginning the curve is falling steeply and this decrease reduces strongly after reaching $4$ clusters. WHich indicates that this is the best number of clusters for this task.
+In this plot, we see that at the beginning the curve is falling steeply and this decrease reduces strongly after reaching $4$ clusters. Which indicates that this is the best number of clusters for this task.
 
 **Silhouette Score**
 
