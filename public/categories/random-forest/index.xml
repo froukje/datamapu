@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Random Forest on </title>
-    <link>http://localhost:1313/categories/random-forest/</link>
+    <link>http://localhost:46771/categories/random-forest/</link>
     <description>Recent content in Random Forest on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 14 Jan 2024 09:22:00 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/random-forest/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:46771/categories/random-forest/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AdaBoost - Explained</title>
-      <link>http://localhost:1313/posts/classical_ml/adaboost/</link>
+      <link>http://localhost:46771/posts/classical_ml/adaboost/</link>
       <pubDate>Sun, 14 Jan 2024 09:22:00 -0300</pubDate>
-      <guid>http://localhost:1313/posts/classical_ml/adaboost/</guid>
+      <guid>http://localhost:46771/posts/classical_ml/adaboost/</guid>
       <description>Introduction AdaBoost is an example of an ensemble supervised Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the Decision Tree, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using sklearn.</description>
     </item>
     <item>
       <title>Random Forests - Explained</title>
-      <link>http://localhost:1313/posts/classical_ml/random_forest/</link>
+      <link>http://localhost:46771/posts/classical_ml/random_forest/</link>
       <pubDate>Tue, 26 Dec 2023 10:57:13 +0100</pubDate>
-      <guid>http://localhost:1313/posts/classical_ml/random_forest/</guid>
+      <guid>http://localhost:46771/posts/classical_ml/random_forest/</guid>
       <description>Introduction A Random Forest is a supervised Machine Learning model, that is built on Decision Trees. To understand how a Random Forest works, you should be familiar with Decision Trees. You can find an introduction in the separate article Decision Trees - Explained. A major disadvantage of Decision Trees is that they tend to overfit and often have difficulties to generalize to new data. Random Forests try to overcome this weakness.</description>
     </item>
   </channel>

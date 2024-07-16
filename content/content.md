@@ -10,7 +10,7 @@ If you'd like to get an e-mail each time a new post gets published, give feedbac
 **contact.datamapu@gmail.com**, connect via [LinkedIn](https://www.linkedin.com/in/datamapu-ml-91a2622a3/), [twitter](https://twitter.com/datamapu) or subscribe to 
 get an e-mail evertime a new post is online.
 
-{{< newsletter >}}
+{{< newsletter-content >}}
 
 This is what you can already find here:
 

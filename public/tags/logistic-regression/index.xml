@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Logistic Regression on </title>
-    <link>http://localhost:1313/tags/logistic-regression/</link>
+    <link>http://localhost:46771/tags/logistic-regression/</link>
     <description>Recent content in Logistic Regression on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 02 Dec 2023 09:31:24 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/logistic-regression/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:46771/tags/logistic-regression/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Logistic Regression - Explained</title>
-      <link>http://localhost:1313/posts/classical_ml/logistic_regression/</link>
+      <link>http://localhost:46771/posts/classical_ml/logistic_regression/</link>
       <pubDate>Sat, 02 Dec 2023 09:31:24 +0100</pubDate>
-      <guid>http://localhost:1313/posts/classical_ml/logistic_regression/</guid>
+      <guid>http://localhost:46771/posts/classical_ml/logistic_regression/</guid>
       <description>Introduction Logistic Regression is a Supervised Machine Learning algorithm, in which a model is developed, that relates the target variable to one or more input variables (features). However, in contrast to Linear Regression the target (dependent) variable is not numerical, but categorical. That is the target variable can be classified in different categories (e.g.: &amp;rsquo;test passed&amp;rsquo; or &amp;rsquo;test not passed&amp;rsquo;). An idealized example of two categories for the target variable is illustrated in the plot below.</description>
     </item>
   </channel>
