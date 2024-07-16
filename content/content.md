@@ -29,6 +29,7 @@ This is what you can already find here:
 
 ## Classical Machine Learning
 
+### Supervised Machine Learning
 * [Linear Regression]({{< ref "linear_regression.md" >}} "linear_regression.md") 
 * [Linear Regression - Analytical Solution & Example]({{< ref "linear_regression_example.md" >}} "linear_regression_example.md") 
 * [Logistic Regression]({{< ref "logistic_regression.md" >}} "logistic_regression.md") 
@@ -44,6 +45,9 @@ This is what you can already find here:
 * [Gradient Boost for Classification - Explained]({{< ref "gradient_boosting_classification.md" >}} "gradient_boosting_classification.md") 
 * [Gradient Boost for Classification - Example]({{< ref "gradient_boosting_classification_example.md" >}} "gradient_boosting_classification_example.md") 
 * [Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost]({{< ref "gradient_boosting_variants.md" >}} "gradient_boosting_variants.md") 
+
+### Unsupervised Machine Learning
+* [Understanding K-Means Clustering]({{< ref "kmeans.md" >}} "kmeans.md") 
 
 ## Deep Learning
 
