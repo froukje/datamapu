@@ -6,7 +6,7 @@
     
     <title>Understanding K-Means Clustering | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Introduction K-Means is an example of a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
+    <meta name="description" content="Introduction K-Means is an example of a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects so that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
     <meta name="generator" content="Hugo 0.128.2">
     
     
@@ -33,7 +33,7 @@
     
     <meta property="og:url" content="http://localhost:1313/posts/classical_ml/kmeans/">
   <meta property="og:title" content="Understanding K-Means Clustering">
-  <meta property="og:description" content="Introduction K-Means is an example of a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
+  <meta property="og:description" content="Introduction K-Means is an example of a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects so that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -46,16 +46,16 @@
     <meta property="og:image" content="http://localhost:1313/images/kmeans/3_clusters.png">
 
   <meta itemprop="name" content="Understanding K-Means Clustering">
-  <meta itemprop="description" content="Introduction K-Means is an example of a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
+  <meta itemprop="description" content="Introduction K-Means is an example of a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects so that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
   <meta itemprop="datePublished" content="2024-06-13T21:10:46-03:00">
   <meta itemprop="dateModified" content="2024-06-13T21:10:46-03:00">
-  <meta itemprop="wordCount" content="1687">
+  <meta itemprop="wordCount" content="1699">
   <meta itemprop="image" content="http://localhost:1313/images/kmeans/3_clusters.png">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Clustering,unsupervised">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/images/kmeans/3_clusters.png">
   <meta name="twitter:title" content="Understanding K-Means Clustering">
-  <meta name="twitter:description" content="Introduction K-Means is an example of a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
+  <meta name="twitter:description" content="Introduction K-Means is an example of a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects so that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -210,11 +210,11 @@ MathJax = {
       
       
         <span class="f6 mv4 dib tracked"> - 8 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 1687 words </span>
+        <span class="f6 mv4 dib tracked"> - 1699 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
-<p><em>K-Means</em> is an example of a <em>clustering</em> algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of <a href="http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#unsupervised">unsupervised</a> Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, <em>K-Means</em> stands out for its simplicity and efficiency. In this blog post, we will explain the algorithm behind K-Means, and see how to implement it in Python.</p>
+<p><em>K-Means</em> is an example of a <em>clustering</em> algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects so that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of <a href="http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#unsupervised">unsupervised</a> Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, <em>K-Means</em> stands out for its simplicity and efficiency. In this blog post, we will explain the algorithm behind K-Means, and see how to implement it in Python.</p>
 <div class="image-gallery" id="gallery-kmeans1">
     <span class="nav-btn-container prev-btn-container">
         <button class="prev-btn nav-btn">&lt;</button>
@@ -278,11 +278,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <p><em>Illustration of clustering.</em></p>
 <h2 id="what-is-k-means-clustering---the-algorithm">What is K-Means Clustering? - The Algorithm</h2>
-<p>K-Means clustering is an unsupervised Machine Learning algorithm used to partition an unlabeled, unsorganised data set into k clusters, where the number k is defined in advance. Each data point is assigned to the cluster with the closest centroid, based on a predefined distance metric. The algorithm minimizes the inner-cluster variance of the data. More precisely the algorithm has the following steps</p>
-<p><strong>1. Initialization:</strong> The algorithm starts by selecting k initial centroids. These can be chosen as random points from the data sets or by using more sophisticated methods like <a href="https://en.wikipedia.org/wiki/K-means%2B%2B">K-Means++</a> to improve convergence. When using the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans">sklearn</a> library the initial method &ldquo;k-means++&rdquo; is the default method.</p>
+<p>K-Means clustering is an unsupervised Machine Learning algorithm used to partition an unlabeled, unsorganised data set into k clusters, where the number k is defined in advance. Each data point is assigned to the cluster with the closest centroid, based on a predefined distance metric. The algorithm minimizes the inner-cluster variance of the data. More precisely the algorithm follows these steps:</p>
+<p><strong>1. Initialization:</strong> The algorithm starts by selecting k initial centroids. These can be chosen as random points from the data sets or by using more sophisticated methods like <a href="https://en.wikipedia.org/wiki/K-means%2B%2B">K-Means++</a> to improve convergence. When using the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans">sklearn</a> library, the initial method &ldquo;k-means++&rdquo; is the default method.</p>
 <p><strong>2. Assignment Step:</strong> For each data point, the distance to each of the centroids is calculated. Each data point is then assigned to the nearest centroid. As distance metric typically the <a href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a> is chosen, which is also the metric used in the sklearn method. After this step k clusters are formed.</p>
 <p><strong>3. Update Step:</strong> The centroids are recalculated as the mean of all data points assigned to each cluster.</p>
-<p><strong>Repeat steps 2 and 3</strong> iteratively until the centroids no longer change significantly or the indicated number of iterations is reached. The k clusters after the convergence criterion is reached is the final result.</p>
+<p><strong>Repeat steps 2 and 3</strong> iteratively until the centroids no longer change significantly or the indicated number of iterations is reached. The k clusters after reaching the convergence criterion are the final result.</p>
 <div class="image-gallery" id="gallery-kmeans2">
     <span class="nav-btn-container prev-btn-container">
         <button class="prev-btn nav-btn">&lt;</button>
@@ -345,10 +345,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <h2 id="choosing-the-right-number-of-clusters">Choosing the Right Number of Clusters</h2>
-<p>One of the key challenges in K-Means clustering is selecting the optimal number of clusters. A number of methods have been developed to determine the optimal number of clusters. In this post, we will only discuss the most popular ones: the <em>Elbow Method</em> and the <em>Silhouette Score</em>.</p>
+<p>One of the key challenges in K-Means clustering is selecting the optimal number of clusters. Several of methods have been developed to determine the optimal number of clusters. In this post, we will only discuss the most popular ones: the <em>Elbow Method</em> and the <em>Silhouette Score</em>.</p>
 <h3 id="elbow-method">Elbow Method</h3>
 <p>The <em>Elbow Method</em> helps to determine the optimal number of clusters by plotting the sum of squared distances (inertia) from each point to its assigned centroid against the number of clusters. As the number of clusters increases, the inertia decreases. The point where the decrease sharply slows down (forming an &ldquo;elbow&rdquo;) indicates the optimal number of clusters.</p>
-<p>Its popularity stems from its simplicity and visual appeal. It allows data scientists and analysts to quickly identify a suitable number of clusters by visual inspection.</p>
+<p>This method&rsquo;s popularity stems from its simplicity and visual appeal. It allows data scientists and analysts to quickly identify a suitable number of clusters by visual inspection.</p>
 <p><strong>Pros:</strong></p>
 <ul>
 <li>Simple to understand and implement.</li>
@@ -440,7 +440,7 @@ $$</p>
 </span></span><span style="display:flex;"><span>X <span style="color:#04a5e5;font-weight:bold">=</span> df[[<span style="color:#40a02b">&#34;Number of Followers&#34;</span>, <span style="color:#40a02b">&#34;Number of Posts&#34;</span>]]<span style="color:#04a5e5;font-weight:bold">.</span>values
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>We use the <a href="https://scikit-learn.org/stable/">sklearn</a> method <em>KMeans</em>. We use the default setup for this demonstration, the only parameter we change is the number of clusters (<em>n_clusters</em>). You can however e.g. change the initialization method (<em>init</em>), the maximal number of iterations (<em>max_iter</em>), and the tolerance (<em>tol</em>) that defines the convergence of the algorithm. For all details, please refer to the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans">documentation</a>.</p>
+</div><p>We use the <a href="https://scikit-learn.org/stable/">sklearn</a> method <em>KMeans</em> with the default setup. For this demonstration, the only parameter we change is the number of clusters (<em>n_clusters</em>). We can, however, e.g. change the initialization method (<em>init</em>), the maximal number of iterations (<em>max_iter</em>), and the tolerance (<em>tol</em>) that defines the convergence of the algorithm. For all details, please refer to the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans">documentation</a>.</p>
 <p>We use the defined data set to <em>fit</em> the <em>KMeans</em> method. We fit the data using $2$, $4$, and $8$ clusters and plot the results. We can then access the calculated centroids using <em>kmeans.cluster_centers_</em>.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -474,7 +474,7 @@ $$</p>
 </span></span><span style="display:flex;"><span>fig, axs <span style="color:#04a5e5;font-weight:bold">=</span> plt<span style="color:#04a5e5;font-weight:bold">.</span>subplots(<span style="color:#fe640b">1</span>, <span style="color:#04a5e5">len</span>(n_clusters_list), figsize<span style="color:#04a5e5;font-weight:bold">=</span>(<span style="color:#fe640b">11</span>, <span style="color:#fe640b">4</span>))
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> j, n_clusters <span style="color:#04a5e5;font-weight:bold">in</span> <span style="color:#04a5e5">enumerate</span>(n_clusters_list):
-</span></span><span style="display:flex;"><span>    kmeans <span style="color:#04a5e5;font-weight:bold">=</span> KMeans(n_clusters<span style="color:#04a5e5;font-weight:bold">=</span>n_clusters, random_state<span style="color:#04a5e5;font-weight:bold">=</span>random_state, n_init<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">3</span>)
+</span></span><span style="display:flex;"><span>    kmeans <span style="color:#04a5e5;font-weight:bold">=</span> KMeans(n_clusters<span style="color:#04a5e5;font-weight:bold">=</span>n_clusters, random_state<span style="color:#04a5e5;font-weight:bold">=</span>random_state)
 </span></span><span style="display:flex;"><span>    kmeans<span style="color:#04a5e5;font-weight:bold">.</span>fit(X)
 </span></span><span style="display:flex;"><span>    centers <span style="color:#04a5e5;font-weight:bold">=</span> kmeans<span style="color:#04a5e5;font-weight:bold">.</span>cluster_centers_
 </span></span><span style="display:flex;"><span>
@@ -488,9 +488,9 @@ $$</p>
 </div>
 </div><p><img src="/images/kmeans/clustering_example.png" alt="example">
 <em>Clustering the example data with $2$, $4$, and $8$ clusters.</em></p>
-<p>In this simple example we can already visiually see that $4$ clusters is the correct number, but let&rsquo;s use the above discussed methods to verify this.</p>
+<p>In this simple example, we can already visually see that $4$ clusters are the correct number, but let&rsquo;s use the above discussed methods to verify this.</p>
 <p><strong>Elbow Method</strong></p>
-<p>To illustrate the ellbow method we fit the data for an increasing number of clusters ranging from $1$ to $11$ and save the inertias (sum of square distances) and plot the result.</p>
+<p>To illustrate the Elbow Method, we fit the data for an increasing number of clusters ranging from $1$ to $11$, save the inertias (sum of square distances), and plot the result.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
@@ -513,9 +513,9 @@ $$</p>
 </div>
 </div><p><img src="/images/kmeans/elbow_method.png" alt="elbow_method">
 <em>Elbow curve for the example data.</em></p>
-<p>In this plot, we see that at the beginning the curve is falling steeply and this decrease reduces strongly after reaching $4$ clusters. Which indicates that this is the best number of clusters for this task.</p>
+<p>In this plot, we see that at the beginning the curve is falling steeply and this decrease reduces strongly after reaching $4$ clusters. This indicates that this is the best number of clusters for this task.</p>
 <p><strong>Silhouette Score</strong></p>
-<p>The silhouette score is also a method available in sklearn. In this case we fit the KMeans method to a range of $2$ to $11$ clusters. For each fit we calculate the <em>silhouette score</em> and plot the result.</p>
+<p>The silhouette score is also a method available in sklearn. In this case, we fit the KMeans method to a range of $2$ to $11$ clusters. For each fit, we calculate the <em>silhouette score</em> and plot the result.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
@@ -544,7 +544,7 @@ $$</p>
 <em>Silhouette Score for the example data.</em></p>
 <p>This plot shows a maximum for $4$ clusters, that is the silhouette score is highest for this number of clusters, which indicates the optimal number of clusters.</p>
 <h2 id="summary">Summary</h2>
-<p>K-Means is an unsupervised machine learning algorithm used for clustering data into k distinct groups based on feature similarity. It works by iteratively assigning data points to the nearest cluster center and then updating the cluster centers to be the mean of the assigned points. The process continues until the cluster assignments no longer change significantly or the maximum number of iterations is reached. It is a popular algorithm due to its simplicity, efficiency with large datasets, and ease of implementation and interpretation.</p>
+<p>KMeans is an unsupervised machine learning algorithm used for clustering data into k distinct groups based on feature similarity. It works by iteratively assigning data points to the nearest cluster center and then updating the cluster centers to be the mean of the assigned points. The process continues until the cluster assignments no longer change significantly or the maximum number of iterations is reached. It is a popular algorithm due to its simplicity, efficiency with large datasets, and ease of implementation and interpretation. An example of applying KMeans to a more real-world dataset than the simplifies example above can be found on <a href="https://www.kaggle.com/code/pumalin/kmeans-tutorial">kaggle</a>.</p>
 <hr>
 <p>If this blog is useful for you, please consider supporting.</p>
 
