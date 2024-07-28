@@ -10,6 +10,7 @@ images = ['/images/pca/']
 
 ## Introduction
 
+Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm for dimensionality reduction.
 ## Illustration
 
 ## The Algorithm
