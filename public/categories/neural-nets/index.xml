@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Neural Nets on </title>
-    <link>http://localhost:46771/categories/neural-nets/</link>
+    <link>http://localhost:1313/categories/neural-nets/</link>
     <description>Recent content in Neural Nets on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 27 Feb 2024 20:55:28 -0300</lastBuildDate>
-    <atom:link href="http://localhost:46771/categories/neural-nets/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/neural-nets/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Gradient Descent</title>
-      <link>http://localhost:46771/posts/ml_concepts/gradient_descent/</link>
+      <link>http://localhost:1313/posts/ml_concepts/gradient_descent/</link>
       <pubDate>Tue, 27 Feb 2024 20:55:28 -0300</pubDate>
-      <guid>http://localhost:46771/posts/ml_concepts/gradient_descent/</guid>
+      <guid>http://localhost:1313/posts/ml_concepts/gradient_descent/</guid>
       <description>Introduction Gradient Descent is a mathematical optimization technique, which is used to find the local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point.</description>
     </item>
     <item>
       <title>Introduction to Deep Learning</title>
-      <link>http://localhost:46771/posts/deep_learning/intro_dl/</link>
+      <link>http://localhost:1313/posts/deep_learning/intro_dl/</link>
       <pubDate>Thu, 02 Nov 2023 21:44:06 +0100</pubDate>
-      <guid>http://localhost:46771/posts/deep_learning/intro_dl/</guid>
+      <guid>http://localhost:1313/posts/deep_learning/intro_dl/</guid>
       <description>In this article we will learn what Deep Learning is and understand the difference to AI and Machine Learning. Often these three terms are used interchangeable. They are however not the same. The following diagram illustrates how they are related.&#xA;Relation of Artificial Intelligence, Machine Learning and Deep Learning.&#xA;Artificial Intelligence. There are different definitions of Artificial Intelligence, but in general, they involve computers performing tasks that are usually associated with humans or other intelligent living systems.</description>
     </item>
   </channel>
