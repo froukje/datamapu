@@ -10,7 +10,7 @@ images = ['/images/pca/']
 
 ## Introduction
 
-Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as *principal components*. These principal components capture the maximum variance in the data, making it easier to identify patterns, reduce noise, and enhance the efficiency of Machine Learning models.
+Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, often large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as *principal components*. These principal components capture the maximum variance in the data. They are ordered in decreasing order of explaining variance. This makes it easier to identify patterns, reduce noise, and enhance the efficiency of Machine Learning models.
 
 ## Why Use PCA?
 
@@ -31,16 +31,17 @@ When a dataset contains a large number of features, PCA can be a valuable tool f
 
 ## How Does PCA Work? - The Algorithm
 
-
-Principal Component Analysis (PCA) is a linear algebra-based technique that transforms a dataset into a set of linearly uncorrelated variables called principal components. Here's a step-by-step explanation of how the PCA algorithm works:
+The following steps describe how to achieve the transformed dataset.
 
 ### 1. Standardize the Data
 
-Why?: Standardization ensures that each feature contributes equally to the analysis. Features with larger scales could dominate the principal components if not standardized.
+Standardization ensures that each variable contributes equally to the analysis. If the variables have large differences in their ranges, the variables with larger scales could dominate the principal components. Standardization makes sure that all variables have the same contribution.
 
-How?: Subtract the mean and divide by the standard deviation for each feature, so that each feature has a mean of 0 and a standard deviation of 1.
+To standardize the data, for each variable the mean is subtracted and divided is by the standard deviation, so that each feature has a mean of 0 and a standard deviation of 1. Mathematically this is formalated as
 
-Formula: $Z = \frac{X−\mu}{\sigma}$, where $X$ is the original data, $\mu$ is the mean, and $\sigma$ is the standard deviation.
+$$Z = \frac{X−\mu}{\sigma},$$
+
+where $X = (x_1, \dots, x_n)$ is the original variable, $\mu$ is the mean, and $\sigma$ is the standard deviation.
 
 ### 2. Compute the Covariance Matrix
 
@@ -81,14 +82,6 @@ How?: Multiply the standardized data by the matrix of the selected eigenvectors.
 
 Formula: $Z_{new} = Z \times W$, where $Z$ is the standardized data, and $W$ is the matrix of the selected eigenvectors.
 
-### 7. Analyze the Results
-
-Principal Components: The transformed data now consists of the principal components, which are uncorrelated and ordered by the amount of variance they explain.
-
-Explained Variance: Examine the proportion of the total variance explained by each principal component to assess how much information is retained.
-
-Visualization: The reduced dimensionality allows for easier visualization and analysis, often in 2D or 3D space.
-
 ## Summary:
 
 Given a dataset $X$:
@@ -99,7 +92,6 @@ Given a dataset $X$:
 4. **Sort the eigenvalues** and their corresponding eigenvectors in descending order.
 5. **Select the top $k$ eigenvectors** to form a matrix $W$.
 6. **Transform the data** to the new space: $Z_{new} Z \times W$.
-7. **Analyze** the principal components and their explained variance.
 
 Practical Implications:
 

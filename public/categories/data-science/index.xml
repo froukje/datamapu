@@ -9,11 +9,11 @@
     <lastBuildDate>Sun, 28 Jul 2024 19:04:00 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/data-science/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Pricipal Component Analyisi (PCA)</title>
+      <title>Understanding Principal Component Analysis (PCA)</title>
       <link>http://localhost:1313/posts/classical_ml/pca/</link>
       <pubDate>Sun, 28 Jul 2024 19:04:00 +0200</pubDate>
       <guid>http://localhost:1313/posts/classical_ml/pca/</guid>
-      <description>Introduction Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm for dimensionality reduction. In Data Science and Machine Learning often huge datasets with a large set of features are analysed. PCA allows to simplify complex datasets while retaining their essential information. PCA transforms a large set of correlated variables into a smaller set of uncorrelated variables called principal components. These principal components capture the maximum variance in the data, making it easier to identify patterns, reduce noise, and improve the efficiency of machine learning models.</description>
+      <description>Introduction Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as principal components. These principal components capture the maximum variance in the data, making it easier to identify patterns, reduce noise, and enhance the efficiency of Machine Learning models.</description>
     </item>
     <item>
       <title>Understanding K-Means Clustering</title>
