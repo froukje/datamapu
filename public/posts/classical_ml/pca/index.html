@@ -6,8 +6,9 @@
     
     <title>Understanding Principal Component Analysis (PCA) | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Introduction Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, often large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as principal components. These principal components capture the maximum variance in the data.">
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="description" content="Introduction
+Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, often large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as principal components. These principal components capture the maximum variance in the data. They are ordered in decreasing order of explaining variance. This makes it easier to identify patterns, reduce noise, and enhance the efficiency of Machine Learning models.">
+    <meta name="generator" content="Hugo 0.134.1">
     
     
     
@@ -33,7 +34,7 @@
     
     <meta property="og:url" content="http://localhost:1313/posts/classical_ml/pca/">
   <meta property="og:title" content="Understanding Principal Component Analysis (PCA)">
-  <meta property="og:description" content="Introduction Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, often large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as principal components. These principal components capture the maximum variance in the data.">
+  <meta property="og:description" content="Introduction Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, often large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as principal components. These principal components capture the maximum variance in the data. They are ordered in decreasing order of explaining variance. This makes it easier to identify patterns, reduce noise, and enhance the efficiency of Machine Learning models.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -46,16 +47,16 @@
     <meta property="og:image" content="http://localhost:1313/images/pca/">
 
   <meta itemprop="name" content="Understanding Principal Component Analysis (PCA)">
-  <meta itemprop="description" content="Introduction Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, often large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as principal components. These principal components capture the maximum variance in the data.">
+  <meta itemprop="description" content="Introduction Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, often large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as principal components. These principal components capture the maximum variance in the data. They are ordered in decreasing order of explaining variance. This makes it easier to identify patterns, reduce noise, and enhance the efficiency of Machine Learning models.">
   <meta itemprop="datePublished" content="2024-07-28T19:04:00+02:00">
   <meta itemprop="dateModified" content="2024-07-28T19:04:00+02:00">
-  <meta itemprop="wordCount" content="924">
+  <meta itemprop="wordCount" content="1074">
   <meta itemprop="image" content="http://localhost:1313/images/pca/">
   <meta itemprop="keywords" content="Data Science,Machine Learning,unsupervised,dimensionality reduction">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/images/pca/">
   <meta name="twitter:title" content="Understanding Principal Component Analysis (PCA)">
-  <meta name="twitter:description" content="Introduction Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, often large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as principal components. These principal components capture the maximum variance in the data.">
+  <meta name="twitter:description" content="Introduction Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, often large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as principal components. These principal components capture the maximum variance in the data. They are ordered in decreasing order of explaining variance. This makes it easier to identify patterns, reduce noise, and enhance the efficiency of Machine Learning models.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -209,8 +210,8 @@ MathJax = {
 
       
       
-        <span class="f6 mv4 dib tracked"> - 5 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 924 words </span>
+        <span class="f6 mv4 dib tracked"> - 6 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 1074 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -245,28 +246,23 @@ MathJax = {
 <p>$$Z = \frac{X−\mu}{\sigma},$$</p>
 <p>where $X = (x_1, \dots, x_n)$ is the original variable, $\mu$ is the mean, and $\sigma$ is the standard deviation.</p>
 <h3 id="2-compute-the-covariance-matrix">2. Compute the Covariance Matrix</h3>
-<p>Why?: The covariance matrix captures how features vary together, which is essential for identifying the directions in which the data varies the most.</p>
-<p>How?: Calculate the covariance matrix of the standardized data.</p>
-<p>Formula: $C = \frac{1}{n}Z^TZ$, where $C$ is the covariance matrix, $Z$ is the standardized data, and $n$ is the number of observations.</p>
-<h3 id="3-compute-the-eigenvalues-and-eigenvectors">3. Compute the Eigenvalues and Eigenvectors</h3>
-<p>Why?: Eigenvalues indicate the magnitude of variance in the data along the direction of their corresponding eigenvectors. Eigenvectors determine the directions (principal components) in which the data varies.</p>
-<p>How?: Perform eigenvalue decomposition on the covariance matrix to obtain the eigenvalues and eigenvectors.</p>
-<p>Interpretation:</p>
-<ul>
-<li>Eigenvalues: Represent the amount of variance captured by each principal component.</li>
-<li>Eigenvectors: Represent the directions of the principal components.</li>
-</ul>
-<h3 id="4-sort-eigenvalues-and-eigenvectors">4. Sort Eigenvalues and Eigenvectors</h3>
-<p>Why?: To prioritize the principal components that capture the most variance in the data.</p>
-<p>How?: Sort the eigenvalues in descending order, and rearrange the corresponding eigenvectors accordingly. The eigenvector with the highest eigenvalue is the first principal component, and so on.</p>
+<p>The covariance matrix captures how features vary together, which is essential for identifying the directions in which the data varies the most.</p>
+<p>The covariance matrix is calculated as follows:</p>
+<p>$$C = \frac{1}{n}Z^TZ,$$</p>
+<p>where $C$ is the covariance matrix, $Z$ is the standardized data, and $n$ is the number of observations.</p>
+<h3 id="3-compute-and-sort-the-eigenvalues-and-eigenvectors-of-the-covariance-matrix">3. Compute and sort the Eigenvalues and Eigenvectors of the covariance matrix</h3>
+<p>The objective of PCA is to rotate the coordinate system of the feature space such that the new axes point in the direction of the maximum variance. To achieve that we use the <a href="#appendix" title="appendix">Eigenvectors</a> of the covariance matrix.</p>
+<h3 id="4-sort-the-eigenvalues">4. Sort the Eigenvalues</h3>
+<p>The first Eigenvector, which is the one with the largest eigenvalue, points into the direction of the highest variance, the second in the direction of the second large variance and so on. That is, if we sort the Eigenvectors accoring to the magnitude in descending order we get the new feature space sorted by the magnitude of the Eigenvalues, we get the new feature space ordered by the magnitude of the variance. Each Eigenvector represents a feature in the new feature space and since the Eigenvectors are orthogonal, the new features are uncorrelated.</p>
 <h3 id="5-select-the-principal-components">5. Select the Principal Components</h3>
-<p>Why?: To reduce dimensionality while retaining most of the variance in the data.</p>
-<p>How?: Choose the top $k$ eigenvectors corresponding to the largest eigenvalues. These $k$ eigenvectors form the new feature space.
-Variance Explained: The sum of the top $k$ eigenvalues divided by the sum of all eigenvalues gives the proportion of variance explained by the selected components.</p>
+<p>If we use all the Eigenvectors from the covariance matrix we only rotate the coordinate system of the feature space. To reduce the dimensionality, we need to reduce the number of Eigenvalues and Eigenvectors. Since we sorted the Eigenvalues by their magnitude, we can choose the top $k$ Eigenvectors and get a dataset that respresents the maximum amount of the explained variance in the data. The exact number $k$ we choose depend on the amount of variance of the data to be present in the data.  The sum of the top $k$ eigenvalues divided by the sum of all eigenvalues gives the proportion of variance explained by the selected components.</p>
 <h3 id="6-transform-the-data">6. Transform the Data</h3>
-<p>Why?: To represent the original data in the new lower-dimensional space.</p>
-<p>How?: Multiply the standardized data by the matrix of the selected eigenvectors. This projects the original data onto the new feature space defined by the principal components.</p>
-<p>Formula: $Z_{new} = Z \times W$, where $Z$ is the standardized data, and $W$ is the matrix of the selected eigenvectors.</p>
+<p>To represent the original data in the new lower-dimensional space, we multiply the standardized data by the matrix of the selected eigenvectors. This projects the original data onto the new feature space defined by the principal components. Mathematically, this can be formulated as</p>
+<p>$$Z_{new} = Z \times W,$$</p>
+<p>where $Z$ is the standardized data, and $W$ is the matrix of the selected eigenvectors.</p>
+<h2 id="2-d-example">2-D Example</h2>
+<p>calculations and plots</p>
+<h2 id="pca-in-python">PCA in Python</h2>
 <h2 id="summary">Summary:</h2>
 <p>Given a dataset $X$:</p>
 <ol>
@@ -291,6 +287,12 @@ Interpretation: Show how to interpret the results, including the explained varia
 Use Cases and Examples
 Real-World Examples: Provide examples of PCA applications in different domains (e.g., image compression, finance, biology).
 Visualization: Show plots or visualizations that illustrate the impact of PCA.</p>
+<h2 id="appendix">Appendix</h2>
+<p><em>Eigenvector:</em> A non-zero vector that, when multiplied by a matrix, only changes in magnitude (not direction). Mathematically, for a matrix $A$ and eigenvector
+$𝑣$:</p>
+<p>$$𝐴 𝑣= \lambda v,$</p>
+<p>where $\lambda$ is the eigenvalue corresponding to that eigenvector $v$.</p>
+<p><em>Eigenvalue:</em> A scalar that indicates how much the eigenvector is stretched or compressed when multiplied by the matrix.</p>
 <hr>
 <p>If this blog is useful for you, please consider supporting.</p>
 

@@ -45,42 +45,41 @@ where $X = (x_1, \dots, x_n)$ is the original variable, $\mu$ is the mean, and $
 
 ### 2. Compute the Covariance Matrix
 
-Why?: The covariance matrix captures how features vary together, which is essential for identifying the directions in which the data varies the most.
+The covariance matrix captures how features vary together, which is essential for identifying the directions in which the data varies the most.
 
-How?: Calculate the covariance matrix of the standardized data.
+The covariance matrix is calculated as follows:
 
-Formula: $C = \frac{1}{n}Z^TZ$, where $C$ is the covariance matrix, $Z$ is the standardized data, and $n$ is the number of observations.
+$$C = \frac{1}{n}Z^TZ,$$ 
 
-### 3. Compute the Eigenvalues and Eigenvectors
+where $C$ is the covariance matrix, $Z$ is the standardized data, and $n$ is the number of observations.
 
-Why?: Eigenvalues indicate the magnitude of variance in the data along the direction of their corresponding eigenvectors. Eigenvectors determine the directions (principal components) in which the data varies.
+### 3. Compute and sort the Eigenvalues and Eigenvectors of the covariance matrix
 
-How?: Perform eigenvalue decomposition on the covariance matrix to obtain the eigenvalues and eigenvectors.
+The objective of PCA is to rotate the coordinate system of the feature space such that the new axes point in the direction of the maximum variance. To achieve that we use the [Eigenvectors]({{< ref "#appendix">}} "appendix") of the covariance matrix. 
 
-Interpretation:
-* Eigenvalues: Represent the amount of variance captured by each principal component.
-* Eigenvectors: Represent the directions of the principal components.
 
-### 4. Sort Eigenvalues and Eigenvectors
+### 4. Sort the Eigenvalues
 
-Why?: To prioritize the principal components that capture the most variance in the data.
+The first Eigenvector, which is the one with the largest eigenvalue, points into the direction of the highest variance, the second in the direction of the second large variance and so on. That is, if we sort the Eigenvectors accoring to the magnitude in descending order we get the new feature space sorted by the magnitude of the Eigenvalues, we get the new feature space ordered by the magnitude of the variance. Each Eigenvector represents a feature in the new feature space and since the Eigenvectors are orthogonal, the new features are uncorrelated.
 
-How?: Sort the eigenvalues in descending order, and rearrange the corresponding eigenvectors accordingly. The eigenvector with the highest eigenvalue is the first principal component, and so on.
 
 ### 5. Select the Principal Components
 
-Why?: To reduce dimensionality while retaining most of the variance in the data.
-
-How?: Choose the top $k$ eigenvectors corresponding to the largest eigenvalues. These $k$ eigenvectors form the new feature space.
-Variance Explained: The sum of the top $k$ eigenvalues divided by the sum of all eigenvalues gives the proportion of variance explained by the selected components.
+If we use all the Eigenvectors from the covariance matrix we only rotate the coordinate system of the feature space. To reduce the dimensionality, we need to reduce the number of Eigenvalues and Eigenvectors. Since we sorted the Eigenvalues by their magnitude, we can choose the top $k$ Eigenvectors and get a dataset that respresents the maximum amount of the explained variance in the data. The exact number $k$ we choose depend on the amount of variance of the data to be present in the data.  The sum of the top $k$ eigenvalues divided by the sum of all eigenvalues gives the proportion of variance explained by the selected components.
 
 ### 6. Transform the Data
 
-Why?: To represent the original data in the new lower-dimensional space.
+To represent the original data in the new lower-dimensional space, we multiply the standardized data by the matrix of the selected eigenvectors. This projects the original data onto the new feature space defined by the principal components. Mathematically, this can be formulated as
 
-How?: Multiply the standardized data by the matrix of the selected eigenvectors. This projects the original data onto the new feature space defined by the principal components.
+$$Z_{new} = Z \times W,$$ 
 
-Formula: $Z_{new} = Z \times W$, where $Z$ is the standardized data, and $W$ is the matrix of the selected eigenvectors.
+where $Z$ is the standardized data, and $W$ is the matrix of the selected eigenvectors.
+
+## 2-D Example
+
+calculations and plots
+
+## PCA in Python
 
 ## Summary:
 
@@ -110,6 +109,17 @@ Interpretation: Show how to interpret the results, including the explained varia
 Use Cases and Examples
 Real-World Examples: Provide examples of PCA applications in different domains (e.g., image compression, finance, biology).
 Visualization: Show plots or visualizations that illustrate the impact of PCA.
+
+## Appendix
+
+*Eigenvector:* A non-zero vector that, when multiplied by a matrix, only changes in magnitude (not direction). Mathematically, for a matrix $A$ and eigenvector 
+$𝑣$:
+
+$$𝐴 𝑣= \lambda v,$
+
+where $\lambda$ is the eigenvalue corresponding to that eigenvector $v$.
+
+*Eigenvalue:* A scalar that indicates how much the eigenvector is stretched or compressed when multiplied by the matrix.
 
 ---
 If this blog is useful for you, please consider supporting.

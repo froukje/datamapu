@@ -13,14 +13,14 @@
       <link>http://localhost:1313/posts/classical_ml/pca/</link>
       <pubDate>Sun, 28 Jul 2024 19:04:00 +0200</pubDate>
       <guid>http://localhost:1313/posts/classical_ml/pca/</guid>
-      <description>Introduction Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as principal components. These principal components capture the maximum variance in the data, making it easier to identify patterns, reduce noise, and enhance the efficiency of Machine Learning models.</description>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, often large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as &lt;em&gt;principal components&lt;/em&gt;. These principal components capture the maximum variance in the data. They are ordered in decreasing order of explaining variance. This makes it easier to identify patterns, reduce noise, and enhance the efficiency of Machine Learning models.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Understanding K-Means Clustering</title>
       <link>http://localhost:1313/posts/classical_ml/kmeans/</link>
       <pubDate>Thu, 13 Jun 2024 21:10:46 -0300</pubDate>
       <guid>http://localhost:1313/posts/classical_ml/kmeans/</guid>
-      <description>Introduction K-Means is an example of a clustering algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects so that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of unsupervised Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, K-Means stands out for its simplicity and efficiency.</description>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;K-Means&lt;/em&gt; is an example of a &lt;em&gt;clustering&lt;/em&gt; algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects so that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of &lt;a href=&#34;http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#unsupervised&#34;&gt;unsupervised&lt;/a&gt; Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, &lt;em&gt;K-Means&lt;/em&gt; stands out for its simplicity and efficiency. In this blog post, we will explain the algorithm behind K-Means, and see how to implement it in Python.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

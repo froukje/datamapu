@@ -6,8 +6,7 @@ layout: single
 menu: main
 featured_image: ''
 ---
-If you'd like to get an e-mail each time a new post gets published, give feedback or ideas about interesting topics that should be covered in this blog, write an e-mail to
-**contact.datamapu@gmail.com**, connect via [LinkedIn](https://www.linkedin.com/in/datamapu-ml-91a2622a3/), [twitter](https://twitter.com/datamapu) or subscribe to 
+If you'd like to get an e-mail each time a new post gets published, give feedback or ideas about interesting topics that should be covered in this blog, connect via [LinkedIn](https://www.linkedin.com/in/datamapu-ml-91a2622a3/), [twitter](https://twitter.com/datamapu) or subscribe to 
 get an e-mail evertime a new post is online.
 
 {{< newsletter-content >}}

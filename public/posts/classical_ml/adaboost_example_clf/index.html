@@ -6,8 +6,9 @@
     
     <title>AdaBoost for Classification - Example | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Introduction AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail.">
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="description" content="Introduction
+AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail. A detailed example of a regression task is given in the article AdaBoost for Regression - Example.">
+    <meta name="generator" content="Hugo 0.134.1">
     
     
     
@@ -33,7 +34,7 @@
     
     <meta property="og:url" content="http://localhost:1313/posts/classical_ml/adaboost_example_clf/">
   <meta property="og:title" content="AdaBoost for Classification - Example">
-  <meta property="og:description" content="Introduction AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail.">
+  <meta property="og:description" content="Introduction AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail. A detailed example of a regression task is given in the article AdaBoost for Regression - Example.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -48,7 +49,7 @@
     <meta property="og:image" content="http://localhost:1313/images/adaboost/adaboost.png">
 
   <meta itemprop="name" content="AdaBoost for Classification - Example">
-  <meta itemprop="description" content="Introduction AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail.">
+  <meta itemprop="description" content="Introduction AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail. A detailed example of a regression task is given in the article AdaBoost for Regression - Example.">
   <meta itemprop="datePublished" content="2024-01-17T22:08:14-03:00">
   <meta itemprop="dateModified" content="2024-01-17T22:08:14-03:00">
   <meta itemprop="wordCount" content="1589">
@@ -57,7 +58,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/images/adaboost/adaboost.png">
   <meta name="twitter:title" content="AdaBoost for Classification - Example">
-  <meta name="twitter:description" content="Introduction AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail.">
+  <meta name="twitter:description" content="Introduction AdaBoost is an ensemble model that is based on Boosting. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article AdaBoost - Explained. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail. A detailed example of a regression task is given in the article AdaBoost for Regression - Example.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -268,26 +269,26 @@ MathJax = {
 <em>The third stump, i.e. the last weak learner for our AdaBoost algorithm.</em></p>
 <p>Again, one sample is misclassified, which leads to the same influence $\alpha$ as previously. Note, that this is due to the very simplified dataset considered, in a more realistic example the influences of the different models would differ. We now use the individual trees and their calculated values $\alpha$ to determine the final prediction. Let&rsquo;s consider one of the samples in the dataset.</p>
 <table>
-<thead>
-<tr>
-<th style="text-align:center">Feature</th>
-<th style="text-align:center">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">age</td>
-<td style="text-align:center">35</td>
-</tr>
-<tr>
-<td style="text-align:center">likes height</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">likes goats</td>
-<td style="text-align:center">0</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: center">Feature</th>
+          <th style="text-align: center">Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">age</td>
+          <td style="text-align: center">35</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">likes height</td>
+          <td style="text-align: center">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">likes goats</td>
+          <td style="text-align: center">0</td>
+      </tr>
+  </tbody>
 </table>
 <p>We now make predictions for each of the three stumps for this sample.</p>
 <p><img src="/images/adaboost/ab_example_clf_predictions1_.png" alt="adaboost_first_stump">

@@ -6,8 +6,9 @@
     
     <title>Adaboost for Regression - Example | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example.">
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="description" content="Introduction
+AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example. For a general explanation of the algorithm, please refer to AdaBoost - Explained.">
+    <meta name="generator" content="Hugo 0.134.1">
     
     
     
@@ -33,7 +34,7 @@
     
     <meta property="og:url" content="http://localhost:1313/posts/classical_ml/adaboost_example_reg/">
   <meta property="og:title" content="Adaboost for Regression - Example">
-  <meta property="og:description" content="Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example.">
+  <meta property="og:description" content="Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example. For a general explanation of the algorithm, please refer to AdaBoost - Explained.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -48,7 +49,7 @@
     <meta property="og:image" content="http://localhost:1313/images/adaboost/adaboost_reg.png">
 
   <meta itemprop="name" content="Adaboost for Regression - Example">
-  <meta itemprop="description" content="Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example.">
+  <meta itemprop="description" content="Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example. For a general explanation of the algorithm, please refer to AdaBoost - Explained.">
   <meta itemprop="datePublished" content="2024-01-19T23:05:44-03:00">
   <meta itemprop="dateModified" content="2024-01-19T23:05:44-03:00">
   <meta itemprop="wordCount" content="1953">
@@ -57,7 +58,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/images/adaboost/adaboost_reg.png">
   <meta name="twitter:title" content="Adaboost for Regression - Example">
-  <meta name="twitter:description" content="Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example.">
+  <meta name="twitter:description" content="Introduction AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example. For a general explanation of the algorithm, please refer to AdaBoost - Explained.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -281,26 +282,26 @@ $$\alpha =  \frac{1}{2} \ln\Big(\frac{\frac{9}{10}}{\frac{1}{10}}\Big)$$
 $$\alpha =  \frac{1}{2} \ln(9) = 1.099.$$</p>
 <p>Let&rsquo;s now use the model to make a prediction. Consider the following sample.</p>
 <table>
-<thead>
-<tr>
-<th style="text-align:center">Feature</th>
-<th style="text-align:center">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">age</td>
-<td style="text-align:center">45</td>
-</tr>
-<tr>
-<td style="text-align:center">likes height</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td style="text-align:center">likes goats</td>
-<td style="text-align:center">1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: center">Feature</th>
+          <th style="text-align: center">Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">age</td>
+          <td style="text-align: center">45</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">likes height</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">likes goats</td>
+          <td style="text-align: center">1</td>
+      </tr>
+  </tbody>
 </table>
 <p>To make the final prediction, we need to consider all the individual predictions of all the models. The weighted mean of these predictions is then the prediction of the constructed esemble AdaBoost model. As weights the values for the influence is used. Following the decision path of the first tree, results in a prediction of $300m$, the second tree predicts $233.33m$ and the third tree again predicts $300m$. The final prediction is than calculated as</p>
 <p>$$\hat{y} = \frac{0.69\cdot300 m+ 0.42\cdot233.33m + 1.099\cdot300m}{0.60 + 0.42 + 1.099} = 299.53m.$$</p>
@@ -388,26 +389,26 @@ $$\alpha =  \frac{1}{2} \ln(9) = 1.099.$$</p>
 </div>
 </div><p>For this example the weights are $[1.38629436, 1.14072377, 1.26274917]$. These weights are used for the final prediction, which is achieved by calculating the weighted mean of the individual predictions, with the weights being the influences of the underlying models. Let&rsquo;s consider a concrete example and make predictions for one sample of the dataset.</p>
 <table>
-<thead>
-<tr>
-<th style="text-align:center">Feature</th>
-<th style="text-align:center">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">age</td>
-<td style="text-align:center">45</td>
-</tr>
-<tr>
-<td style="text-align:center">likes height</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td style="text-align:center">likes goats</td>
-<td style="text-align:center">1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: center">Feature</th>
+          <th style="text-align: center">Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">age</td>
+          <td style="text-align: center">45</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">likes height</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">likes goats</td>
+          <td style="text-align: center">1</td>
+      </tr>
+  </tbody>
 </table>
 <p>We can visualize the underlying Decision Trees and follow the decision paths. For the first tree the visualization is achieved as follows.</p>
 <div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">

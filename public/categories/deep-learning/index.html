@@ -7,7 +7,7 @@
     <title></title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Data Science and Machine Learning Blog">
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="generator" content="Hugo 0.134.1">
     
     
     
@@ -176,7 +176,8 @@ MathJax = {
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for four simple examples. The first two examples will contain all the calculations, the last two will only illustrate the equations that need to be calculated.
+      <h2 id="introduction">Introduction</h2>
+<p>A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that <em>Backpropagation</em> is used. In this post, we discuss how backpropagation works, and explain it in detail for four simple examples. The first two examples will contain all the calculations, the last two will only illustrate the equations that need to be calculated. Additionally, the general formulation is shown, but without going into details.</p>
     </div>
   </div>
 </div>
@@ -193,7 +194,8 @@ MathJax = {
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that Backpropagation is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, for the last one we will only illustrate the equations that need to be calculated.
+      <h2 id="introduction">Introduction</h2>
+<p>A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that <em>Backpropagation</em> is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, for the last one we will only illustrate the equations that need to be calculated. We will not go into the general formulation of the backpropagation algorithm but will give some further readings at the end.</p>
     </div>
   </div>
 </div>
@@ -210,7 +212,8 @@ MathJax = {
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction Gradient Descent is a mathematical optimization technique, which is used to find the local minima of a function. In Machine Learning it is used in a variety of models such as Gradient Boosting or Neural Networks to minimize the Loss Function. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point.
+      <h2 id="introduction">Introduction</h2>
+<p>Gradient Descent is a mathematical optimization technique, which is used to find the local minima of a function. In Machine Learning it is used in a variety of models such as <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/" title="gradient_boosting">Gradient Boosting</a> or <a href="http://localhost:1313/posts/deep_learning/intro_dl/">Neural Networks</a> to minimize the <a href="http://localhost:1313/posts/ml_concepts/loss_functions/">Loss Function</a>. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point. Then take another small step in the direction of the steepest descent of the next point and so on. The direction of the steepest descent is determined using the gradient of the function, so its name <em>Gradient Descent</em>.</p>
     </div>
   </div>
 </div>
@@ -227,7 +230,8 @@ MathJax = {
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction In Machine Learning loss functions are used to evaluate the model. They compare the true target values with the predicted ones and are directly related to the error of the predictions. During the training of a model, the loss function is aimed to be optimized to minimize the error of the predictions. It is a general convention to define a loss function such that it is minimized rather than maximized.
+      <h2 id="introduction">Introduction</h2>
+<p>In Machine Learning loss functions are used to evaluate the model. They compare the true target values with the predicted ones and are directly related to the error of the predictions. During the training of a model, the loss function is aimed to be optimized to minimize the error of the predictions. It is a general convention to define a loss function such that it is minimized rather than maximized. The specific choice of a loss function depends on the problem we want to solve, e.g. whether a regression or a classification task is considered. In this article, we will discuss the most common ones, which work very well for a lot of tasks. We can, however, also create custom loss functions adapted for specific problems. Custom loss functions help to focus on the specific errors we aim to minimize. We will look at examples of custom loss functions later in this post.</p>
     </div>
   </div>
 </div>
@@ -244,9 +248,11 @@ MathJax = {
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      In this article we will learn what Deep Learning is and understand the difference to AI and Machine Learning. Often these three terms are used interchangeable. They are however not the same. The following diagram illustrates how they are related.
-Relation of Artificial Intelligence, Machine Learning and Deep Learning.
-Artificial Intelligence. There are different definitions of Artificial Intelligence, but in general, they involve computers performing tasks that are usually associated with humans or other intelligent living systems.
+      <p>In this article we will learn what Deep Learning is and understand the difference to AI and Machine Learning. Often these three terms are used interchangeable. They are however not the same. The following diagram illustrates how they are related.</p>
+<p><img src="/images/20231102_ai_ml_dl/ai_ml_dl.png" alt="ai_ml_dl">
+<em>Relation of Artificial Intelligence, Machine Learning and Deep Learning.</em></p>
+<p><strong>Artificial Intelligence.</strong> There are different definitions of Artificial Intelligence, but in general, they involve computers performing tasks that are usually associated with humans or other intelligent living systems. This is the definition given on Wikimedia:
+It says: “[AI is] Mimicking the intelligence or behavioral pattern of humans or any living entity”</p>
     </div>
   </div>
 </div>

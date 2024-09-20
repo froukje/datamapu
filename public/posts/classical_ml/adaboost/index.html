@@ -6,8 +6,9 @@
     
     <title>AdaBoost - Explained | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Introduction AdaBoost is an example of an ensemble supervised Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the Decision Tree, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using sklearn.">
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="description" content="Introduction
+AdaBoost is an example of an ensemble supervised Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the Decision Tree, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using sklearn. For a more detailed exploration of this example - deriving it by hand - please refer to AdaBoost for Classification - Example. A more realistic example with a larger dataset is provided on kaggle. Accordingly, if you are interested in how AdaBoost is developed for a regression task, please check the article AdaBoost for Regression - Example.">
+    <meta name="generator" content="Hugo 0.134.1">
     
     
     
@@ -33,7 +34,7 @@
     
     <meta property="og:url" content="http://localhost:1313/posts/classical_ml/adaboost/">
   <meta property="og:title" content="AdaBoost - Explained">
-  <meta property="og:description" content="Introduction AdaBoost is an example of an ensemble supervised Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the Decision Tree, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using sklearn.">
+  <meta property="og:description" content="Introduction AdaBoost is an example of an ensemble supervised Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the Decision Tree, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using sklearn. For a more detailed exploration of this example - deriving it by hand - please refer to AdaBoost for Classification - Example. A more realistic example with a larger dataset is provided on kaggle. Accordingly, if you are interested in how AdaBoost is developed for a regression task, please check the article AdaBoost for Regression - Example.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -48,7 +49,7 @@
     <meta property="og:image" content="http://localhost:1313/images/adaboost/adaboost.png">
 
   <meta itemprop="name" content="AdaBoost - Explained">
-  <meta itemprop="description" content="Introduction AdaBoost is an example of an ensemble supervised Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the Decision Tree, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using sklearn.">
+  <meta itemprop="description" content="Introduction AdaBoost is an example of an ensemble supervised Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the Decision Tree, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using sklearn. For a more detailed exploration of this example - deriving it by hand - please refer to AdaBoost for Classification - Example. A more realistic example with a larger dataset is provided on kaggle. Accordingly, if you are interested in how AdaBoost is developed for a regression task, please check the article AdaBoost for Regression - Example.">
   <meta itemprop="datePublished" content="2024-01-14T09:22:00-03:00">
   <meta itemprop="dateModified" content="2024-01-14T09:22:00-03:00">
   <meta itemprop="wordCount" content="2030">
@@ -57,7 +58,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/images/adaboost/adaboost.png">
   <meta name="twitter:title" content="AdaBoost - Explained">
-  <meta name="twitter:description" content="Introduction AdaBoost is an example of an ensemble supervised Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the Decision Tree, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using sklearn.">
+  <meta name="twitter:description" content="Introduction AdaBoost is an example of an ensemble supervised Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the Decision Tree, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using sklearn. For a more detailed exploration of this example - deriving it by hand - please refer to AdaBoost for Classification - Example. A more realistic example with a larger dataset is provided on kaggle. Accordingly, if you are interested in how AdaBoost is developed for a regression task, please check the article AdaBoost for Regression - Example.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

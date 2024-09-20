@@ -6,8 +6,23 @@
     
     <title>Breakpoints | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="A breakpoint is a structural change in the data, such as an anomaly, change in trend, &hellip; techniques to identify breakpoints can be classified into two categories: detection: detect one or more breakpoints test if a given point is a breakpoint Python libraries to detect breakpoints: rupture, jenkspy Decide for how many breakpoits we are looking for Ruptures provides six different models to detect breakpoints: Dynp, KernelCPD, Pelt, Binseg, BottomUp, Window.">
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="description" content="
+A breakpoint is a structural change in the data, such as an anomaly, change in trend, &hellip;
+techniques to identify breakpoints can be classified into two categories:
+
+detection: detect one or more breakpoints
+test if a given point is a breakpoint
+
+
+Python libraries to detect breakpoints: rupture, jenkspy
+Decide for how many breakpoits we are looking for
+Ruptures provides six different models to detect breakpoints: Dynp, KernelCPD, Pelt, Binseg, BottomUp, Window.
+
+Each model must be built, trained (through the fit() function) and then used for prediction. The predict() function receives as input the number of breakpoints (minus 1) to be identified.
+
+
+">
+    <meta name="generator" content="Hugo 0.134.1">
     
     
     
@@ -33,7 +48,7 @@
     
     <meta property="og:url" content="http://localhost:1313/posts/time_series/breakpoints/">
   <meta property="og:title" content="Breakpoints">
-  <meta property="og:description" content="A breakpoint is a structural change in the data, such as an anomaly, change in trend, … techniques to identify breakpoints can be classified into two categories: detection: detect one or more breakpoints test if a given point is a breakpoint Python libraries to detect breakpoints: rupture, jenkspy Decide for how many breakpoits we are looking for Ruptures provides six different models to detect breakpoints: Dynp, KernelCPD, Pelt, Binseg, BottomUp, Window.">
+  <meta property="og:description" content=" A breakpoint is a structural change in the data, such as an anomaly, change in trend, … techniques to identify breakpoints can be classified into two categories: detection: detect one or more breakpoints test if a given point is a breakpoint Python libraries to detect breakpoints: rupture, jenkspy Decide for how many breakpoits we are looking for Ruptures provides six different models to detect breakpoints: Dynp, KernelCPD, Pelt, Binseg, BottomUp, Window. Each model must be built, trained (through the fit() function) and then used for prediction. The predict() function receives as input the number of breakpoints (minus 1) to be identified. ">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -42,7 +57,7 @@
     <meta property="og:image" content="http://localhost:1313/static/images/datamapu_logo_schmal.png">
 
   <meta itemprop="name" content="Breakpoints">
-  <meta itemprop="description" content="A breakpoint is a structural change in the data, such as an anomaly, change in trend, … techniques to identify breakpoints can be classified into two categories: detection: detect one or more breakpoints test if a given point is a breakpoint Python libraries to detect breakpoints: rupture, jenkspy Decide for how many breakpoits we are looking for Ruptures provides six different models to detect breakpoints: Dynp, KernelCPD, Pelt, Binseg, BottomUp, Window.">
+  <meta itemprop="description" content=" A breakpoint is a structural change in the data, such as an anomaly, change in trend, … techniques to identify breakpoints can be classified into two categories: detection: detect one or more breakpoints test if a given point is a breakpoint Python libraries to detect breakpoints: rupture, jenkspy Decide for how many breakpoits we are looking for Ruptures provides six different models to detect breakpoints: Dynp, KernelCPD, Pelt, Binseg, BottomUp, Window. Each model must be built, trained (through the fit() function) and then used for prediction. The predict() function receives as input the number of breakpoints (minus 1) to be identified. ">
   <meta itemprop="datePublished" content="2024-01-16T09:48:42-03:00">
   <meta itemprop="dateModified" content="2024-01-16T09:48:42-03:00">
   <meta itemprop="wordCount" content="101">
@@ -50,7 +65,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/static/images/datamapu_logo_schmal.png">
   <meta name="twitter:title" content="Breakpoints">
-  <meta name="twitter:description" content="A breakpoint is a structural change in the data, such as an anomaly, change in trend, … techniques to identify breakpoints can be classified into two categories: detection: detect one or more breakpoints test if a given point is a breakpoint Python libraries to detect breakpoints: rupture, jenkspy Decide for how many breakpoits we are looking for Ruptures provides six different models to detect breakpoints: Dynp, KernelCPD, Pelt, Binseg, BottomUp, Window.">
+  <meta name="twitter:description" content=" A breakpoint is a structural change in the data, such as an anomaly, change in trend, … techniques to identify breakpoints can be classified into two categories: detection: detect one or more breakpoints test if a given point is a breakpoint Python libraries to detect breakpoints: rupture, jenkspy Decide for how many breakpoits we are looking for Ruptures provides six different models to detect breakpoints: Dynp, KernelCPD, Pelt, Binseg, BottomUp, Window. Each model must be built, trained (through the fit() function) and then used for prediction. The predict() function receives as input the number of breakpoints (minus 1) to be identified. ">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

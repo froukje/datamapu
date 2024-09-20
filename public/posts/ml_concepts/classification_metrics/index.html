@@ -6,8 +6,10 @@
     
     <title>Metrics for Classification Problems | </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Classification Problems Supervised Machine Learning projects can be divided into regression and classification problems. In regression problems, we predict a continuous variable (e.g. temperature), while in classification, we classify the data into discrete classes (e.g. classify cat and dog images). A subset of classification problems is the so-called binary classification, where only two classes are considered. An example of this is classifying e-mails as spam and no-spam or cat images versus dog images.">
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="description" content="
+Classification Problems
+Supervised Machine Learning projects can be divided into regression and classification problems. In regression problems, we predict a continuous variable (e.g. temperature), while in classification, we classify the data into discrete classes (e.g. classify cat and dog images). A subset of classification problems is the so-called binary classification, where only two classes are considered. An example of this is classifying e-mails as spam and no-spam or cat images versus dog images. When we consider more than two classes, we speak of multi-class classification. An example of this is the MNIST dataset, where images of handwritten digits are classified, i.e. we have 10 different classes. Depending on the problem we consider, we need different metrics to evaluate our Machine Learning model. Within each of these two types of Machine Learning problems, we have to choose which of the metrics fits our needs best. This post will give an overview of the most common metrics for binary classification problems, what they mean, and when to use them.">
+    <meta name="generator" content="Hugo 0.134.1">
     
     
     
@@ -33,7 +35,8 @@
     
     <meta property="og:url" content="http://localhost:1313/posts/ml_concepts/classification_metrics/">
   <meta property="og:title" content="Metrics for Classification Problems">
-  <meta property="og:description" content="Classification Problems Supervised Machine Learning projects can be divided into regression and classification problems. In regression problems, we predict a continuous variable (e.g. temperature), while in classification, we classify the data into discrete classes (e.g. classify cat and dog images). A subset of classification problems is the so-called binary classification, where only two classes are considered. An example of this is classifying e-mails as spam and no-spam or cat images versus dog images.">
+  <meta property="og:description" content="
+Classification Problems Supervised Machine Learning projects can be divided into regression and classification problems. In regression problems, we predict a continuous variable (e.g. temperature), while in classification, we classify the data into discrete classes (e.g. classify cat and dog images). A subset of classification problems is the so-called binary classification, where only two classes are considered. An example of this is classifying e-mails as spam and no-spam or cat images versus dog images. When we consider more than two classes, we speak of multi-class classification. An example of this is the MNIST dataset, where images of handwritten digits are classified, i.e. we have 10 different classes. Depending on the problem we consider, we need different metrics to evaluate our Machine Learning model. Within each of these two types of Machine Learning problems, we have to choose which of the metrics fits our needs best. This post will give an overview of the most common metrics for binary classification problems, what they mean, and when to use them.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -46,7 +49,8 @@
     <meta property="og:image" content="http://localhost:1313/images/20230920_classification_metrics/classification_metrics.gif">
 
   <meta itemprop="name" content="Metrics for Classification Problems">
-  <meta itemprop="description" content="Classification Problems Supervised Machine Learning projects can be divided into regression and classification problems. In regression problems, we predict a continuous variable (e.g. temperature), while in classification, we classify the data into discrete classes (e.g. classify cat and dog images). A subset of classification problems is the so-called binary classification, where only two classes are considered. An example of this is classifying e-mails as spam and no-spam or cat images versus dog images.">
+  <meta itemprop="description" content="
+Classification Problems Supervised Machine Learning projects can be divided into regression and classification problems. In regression problems, we predict a continuous variable (e.g. temperature), while in classification, we classify the data into discrete classes (e.g. classify cat and dog images). A subset of classification problems is the so-called binary classification, where only two classes are considered. An example of this is classifying e-mails as spam and no-spam or cat images versus dog images. When we consider more than two classes, we speak of multi-class classification. An example of this is the MNIST dataset, where images of handwritten digits are classified, i.e. we have 10 different classes. Depending on the problem we consider, we need different metrics to evaluate our Machine Learning model. Within each of these two types of Machine Learning problems, we have to choose which of the metrics fits our needs best. This post will give an overview of the most common metrics for binary classification problems, what they mean, and when to use them.">
   <meta itemprop="datePublished" content="2023-10-01T00:08:49+02:00">
   <meta itemprop="dateModified" content="2023-10-01T00:08:49+02:00">
   <meta itemprop="wordCount" content="930">
@@ -55,7 +59,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/images/20230920_classification_metrics/classification_metrics.gif">
   <meta name="twitter:title" content="Metrics for Classification Problems">
-  <meta name="twitter:description" content="Classification Problems Supervised Machine Learning projects can be divided into regression and classification problems. In regression problems, we predict a continuous variable (e.g. temperature), while in classification, we classify the data into discrete classes (e.g. classify cat and dog images). A subset of classification problems is the so-called binary classification, where only two classes are considered. An example of this is classifying e-mails as spam and no-spam or cat images versus dog images.">
+  <meta name="twitter:description" content="
+Classification Problems Supervised Machine Learning projects can be divided into regression and classification problems. In regression problems, we predict a continuous variable (e.g. temperature), while in classification, we classify the data into discrete classes (e.g. classify cat and dog images). A subset of classification problems is the so-called binary classification, where only two classes are considered. An example of this is classifying e-mails as spam and no-spam or cat images versus dog images. When we consider more than two classes, we speak of multi-class classification. An example of this is the MNIST dataset, where images of handwritten digits are classified, i.e. we have 10 different classes. Depending on the problem we consider, we need different metrics to evaluate our Machine Learning model. Within each of these two types of Machine Learning problems, we have to choose which of the metrics fits our needs best. This post will give an overview of the most common metrics for binary classification problems, what they mean, and when to use them.">
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
