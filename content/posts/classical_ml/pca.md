@@ -28,6 +28,9 @@ When a dataset contains a large number of features, PCA can be a valuable tool f
 
 6. *Handling multicollinearity:* When features are highly correlated, it can cause issues in regression models (e.g., multicollinearity). PCA transforms the correlated features into a set of uncorrelated principal components.
 
+## Conceptional Ideas
+
+PCA makes use of several concepts of Linear Algebra. Especially the fact that we can think of the dataset as a matrix. If we have tabular data we can think of the features as the columns and the number of samples as the rows of the matrix. If we have images we can think of the pixels as the entries of the matrix. PCA uses matrix transformation to rotate the original coordinate system of the features such that the new coordinates (the new features) are sorted by the amount of the variance they represent in the data. In order to determine these new coordinates the [Eigenvectors]({{<ref "#appendix">}} ("appendix")) and Eigenvalues of the covariance matrix are calculated. The Eigenvectors sorted by the Eigenvalues in descending order represent the new coordinate system. Choosing the most important Eigenvectors permits to reduce the dimensionality while keeping the largest amount of variance possible.
 
 ## How Does PCA Work? - The Algorithm
 
@@ -45,9 +48,9 @@ where $X = (x_1, \dots, x_n)$ is the original variable, $\mu$ is the mean, and $
 
 ### 2. Compute the Covariance Matrix
 
-The covariance matrix captures how features vary together, which is essential for identifying the directions in which the data varies the most.
+The [covariance matrix]({{< ref "#appendix">}} ("appendix")) captures how features vary together, which is essential for identifying the directions in which the data varies the most.
 
-The covariance matrix is calculated as follows:
+The covariance matrix for the centered dataset $Z$ is calculated as follows:
 
 $$C = \frac{1}{n}Z^TZ,$$ 
 
@@ -55,25 +58,32 @@ where $C$ is the covariance matrix, $Z$ is the standardized data, and $n$ is the
 
 ### 3. Compute and sort the Eigenvalues and Eigenvectors of the covariance matrix
 
-The objective of PCA is to rotate the coordinate system of the feature space such that the new axes point in the direction of the maximum variance. To achieve that we use the [Eigenvectors]({{< ref "#appendix">}} "appendix") of the covariance matrix. 
+Next, the Eigenvalues and Eigenvalues of the covariance matrix are calculated. This is also called *Eigenvector decomposition*. Every square matrix, and for that the covariance matrix can be written as
 
+$$C = V \Lambda V^{-1},$$
+
+with $V$ the matrix consising of the Eigenvectors as columns and $\Lambda$ a diagonal matrix of the Eigenvalues. The Eigenvectors determine the directions of the principal components, and the Eigenvalues determine their magnitude (importance).
 
 ### 4. Sort the Eigenvalues
 
-The first Eigenvector, which is the one with the largest eigenvalue, points into the direction of the highest variance, the second in the direction of the second large variance and so on. That is, if we sort the Eigenvectors accoring to the magnitude in descending order we get the new feature space sorted by the magnitude of the Eigenvalues, we get the new feature space ordered by the magnitude of the variance. Each Eigenvector represents a feature in the new feature space and since the Eigenvectors are orthogonal, the new features are uncorrelated.
+The first Eigenvector, which is the one with the largest Eigenvalue, points into the direction of the highest variance, the second in the direction of the second large variance and so on. That is, if we sort the Eigenvectors accoring to the magnitude in descending order we get the new feature space sorted by the magnitude of the Eigenvalues, we get the new feature space ordered by the magnitude of the variance. Each Eigenvector represents a feature in the new feature space and since the Eigenvectors are orthogonal, the new features are uncorrelated.
 
 
 ### 5. Select the Principal Components
 
-If we use all the Eigenvectors from the covariance matrix we only rotate the coordinate system of the feature space. To reduce the dimensionality, we need to reduce the number of Eigenvalues and Eigenvectors. Since we sorted the Eigenvalues by their magnitude, we can choose the top $k$ Eigenvectors and get a dataset that respresents the maximum amount of the explained variance in the data. The exact number $k$ we choose depend on the amount of variance of the data to be present in the data.  The sum of the top $k$ eigenvalues divided by the sum of all eigenvalues gives the proportion of variance explained by the selected components.
+We can use the Eigenvectors from the covariance matrix to rotate the coordinate system of the feature space.  When using all eigenvectors we keep all the information, but the dimension of the new coordinate system is the same as of the original one. To reduce the dimensionality, we need to reduce the number of Eigenvalues and Eigenvectors. Since we sorted the Eigenvalues by their magnitude, we can choose the top $k$ Eigenvectors and get a dataset that respresents the maximum amount of the explained variance in the data. The exact number $k$ we choose depend on the amount of variance of the data to be present in the data.  The sum of the top $k$ eigenvalues divided by the sum of all eigenvalues gives the proportion of variance explained by the selected components.
 
 ### 6. Transform the Data
 
 To represent the original data in the new lower-dimensional space, we multiply the standardized data by the matrix of the selected eigenvectors. This projects the original data onto the new feature space defined by the principal components. Mathematically, this can be formulated as
 
-$$Z_{new} = Z \times W,$$ 
+$$Z_{new} = Z W,$$ 
 
 where $Z$ is the standardized data, and $W$ is the matrix of the selected eigenvectors.
+
+## Explanations
+
+Let's try to understand better, why the Eigenvectors of the covariance matrix can be used to transform the data to keep the highest amount of the variance. For that let's first think about the meaning of the covariance matrix. The covariance matrix contains information about the variances and covariances of the data. It determines how much the data spread in each direction. The variance of a specific direction can be determined by projecting the covariance matrix onto the vector of this direction. Such a projection is defined by the scalarproduct of the data (covariance matrix) and the vector multiplied with the vector and can be written as $v^T C v$. If $v$ is an Eigenvector, $v^T C v$ is the projection of the covariance matrix, i.e. the spread of the variance in the direction of the Eigenvector $v$. If $\lambda$ is the corresponding Eigenvalue of $v,$ the equation $C v = \lambda v$ holds. If now $\lambda$ is the largest Eigenvalue the equation $v^T C v$ maximizes considering all Eigenvectors and thus the largest Eigenvalue determines the direction (Eigenvector) of the largest variance. 
 
 ## 2-D Example
 
@@ -120,6 +130,9 @@ $$𝐴 𝑣= \lambda v,$
 where $\lambda$ is the eigenvalue corresponding to that eigenvector $v$.
 
 *Eigenvalue:* A scalar that indicates how much the eigenvector is stretched or compressed when multiplied by the matrix.
+
+
+*Covariance Matrix:*
 
 ---
 If this blog is useful for you, please consider supporting.
