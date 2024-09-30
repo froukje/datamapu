@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Introduction
 Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, often large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as principal components. These principal components capture the maximum variance in the data. They are ordered in decreasing order of explaining variance. This makes it easier to identify patterns, reduce noise, and enhance the efficiency of Machine Learning models.">
-    <meta name="generator" content="Hugo 0.134.3">
+    <meta name="generator" content="Hugo 0.135.0">
     
     
     
@@ -50,7 +50,7 @@ Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm
   <meta itemprop="description" content="Introduction Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, often large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as principal components. These principal components capture the maximum variance in the data. They are ordered in decreasing order of explaining variance. This makes it easier to identify patterns, reduce noise, and enhance the efficiency of Machine Learning models.">
   <meta itemprop="datePublished" content="2024-07-28T19:04:00+02:00">
   <meta itemprop="dateModified" content="2024-07-28T19:04:00+02:00">
-  <meta itemprop="wordCount" content="1466">
+  <meta itemprop="wordCount" content="1590">
   <meta itemprop="image" content="http://localhost:1313/images/pca/">
   <meta itemprop="keywords" content="Data Science,Machine Learning,unsupervised,dimensionality reduction">
   <meta name="twitter:card" content="summary_large_image">
@@ -210,8 +210,8 @@ MathJax = {
 
       
       
-        <span class="f6 mv4 dib tracked"> - 7 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 1466 words </span>
+        <span class="f6 mv4 dib tracked"> - 8 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 1590 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
@@ -265,41 +265,51 @@ MathJax = {
 <p>$$Z_{new} = Z W,$$</p>
 <p>where $Z$ is the standardized data, and $W$ is the matrix of the selected eigenvectors.</p>
 <h2 id="explanations">Explanations</h2>
-<p>Let&rsquo;s try to understand better, why the Eigenvectors of the covariance matrix can be used to transform the data to keep the highest amount of the variance. For that let&rsquo;s first think about the meaning of the covariance matrix. The covariance matrix contains information about the variances and covariances of the data. It determines how much the data spread in each direction. The variance of a specific direction can be determined by projecting the covariance matrix onto the vector of this direction. Such a projection is defined by the scalarproduct of the data (covariance matrix) and the vector multiplied with the vector and can be written as $v^T C v$. If $v$ is an Eigenvector, $v^T C v$ is the projection of the covariance matrix, i.e. the spread of the variance in the direction of the Eigenvector $v$. If $\lambda$ is the corresponding Eigenvalue of $v,$ the equation $C v = \lambda v$ holds. If now $\lambda$ is the largest Eigenvalue the equation $v^T C v$ maximizes considering all Eigenvectors and thus the largest Eigenvalue determines the direction (Eigenvector) of the largest variance.</p>
-<h2 id="2-d-example">2-D Example</h2>
-<p>calculations and plots</p>
+<p>Let&rsquo;s try to better understand why the eigenvectors of the covariance matrix can be used to transform the data to preserve the highest amount of variance. First, consider the meaning of the covariance matrix. The covariance matrix contains information about the variances and covariances of the data. It determines how much the data spread in each direction. The variance along a specific direction can be determined by projecting the covariance matrix onto the vector corresponding to that direction. This projection is defined by the scalar product of the covariance matrix and the vector, which can be written as $v^T C v$, where $C$ is the covariance matrix and v is the vector.</p>
+<p>If $v$ is an eigenvector, $v^T C v$ represents the variance in the direction of the eigenvector $v$. If $\lambda$ is the corresponding eigenvalue of $v$, the equation $C V = \lambda v$ holds. When
+$\lambda$ is the largest eigenvalue, the expression $v^T C v$ is maximized, meaning the direction of $v$ (the eigenvector) corresponds to the direction of the greatest variance in the data. Thus, the eigenvector associated with the largest eigenvalue indicates the direction in which the data has the most spread (variance).</p>
+<p><strong>2d-example for the rotation of the coordinate system in the direction of the highest variance.</strong></p>
+<p><img src="/images/pca/pca_example.png" alt="pca example">
+<em>PCA Example for 2 features.</em></p>
 <h2 id="pca-in-python">PCA in Python</h2>
-<h2 id="summary">Summary:</h2>
-<p>Given a dataset $X$:</p>
-<ol>
-<li><strong>Standardize</strong> the dataset to get $Z$.</li>
-<li><strong>Compute the covariance matrix</strong> $C$ of $Z$.</li>
-<li><strong>Perform eigenvalue decomposition</strong> on $C$ to get eigenvalues and eigenvectors.</li>
-<li><strong>Sort the eigenvalues</strong> and their corresponding eigenvectors in descending order.</li>
-<li><strong>Select the top $k$ eigenvectors</strong> to form a matrix $W$.</li>
-<li><strong>Transform the data</strong> to the new space: $Z_{new} Z \times W$.</li>
-</ol>
-<p>Practical Implications:</p>
-<ul>
-<li>PCA simplifies the data by reducing the number of variables, making patterns and trends easier to detect.</li>
-<li>The principal components are orthogonal, ensuring that they are uncorrelated, which can improve the performance of machine learning algorithms.</li>
-</ul>
-<p>&lt; image- illustration &gt;</p>
-<p>The data is transformed into a new coordinate system to maximize the variance of the components.</p>
-<h2 id="practical-implementation">Practical Implementation</h2>
-<p>Example Dataset: Introduce a simple dataset for demonstration.
-Step-by-Step Implementation: Provide code snippets (in Python, R, etc.) showing how to perform PCA.
-Interpretation: Show how to interpret the results, including the explained variance and principal components.
-Use Cases and Examples
-Real-World Examples: Provide examples of PCA applications in different domains (e.g., image compression, finance, biology).
-Visualization: Show plots or visualizations that illustrate the impact of PCA.</p>
+<p>To perform a PCA with Python we can use the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html"><em>scikit-learn</em></a> package. with the method <em>PCA</em>, we can define the number of components, we want to keep. This number must be smaller or equal to the number of features. The data can be given as a pandas dataframe or a numpy array. The above plotted example, can be calculated as follows. Assume the data is stored in a dataframe <em>df</em>.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">sklearn.decomposition</span> <span style="color:#179299">import</span> PCA
+</span></span><span style="display:flex;"><span>pca <span style="color:#04a5e5;font-weight:bold">=</span> PCA(n_components<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>)
+</span></span><span style="display:flex;"><span>components <span style="color:#04a5e5;font-weight:bold">=</span> pca<span style="color:#04a5e5;font-weight:bold">.</span>fit_transform(df)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>After calculating the PCs, we can access the explained variances, the singular values (eigenvalues) and the new features (rotated coordinates).</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#04a5e5">print</span>(pca<span style="color:#04a5e5;font-weight:bold">.</span>explained_variance_ratio_)
+</span></span><span style="display:flex;"><span><span style="color:#04a5e5">print</span>(pca<span style="color:#04a5e5;font-weight:bold">.</span>singular_values_)
+</span></span><span style="display:flex;"><span><span style="color:#04a5e5">print</span>(pca<span style="color:#04a5e5;font-weight:bold">.</span>components_)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In this case we are considering an example of only two features, that is using 2 principal components rotates the coordiate system into the direction of the highest variance, but it does not resucte the dimensionality. In general a PCA would be used, when the feature space is large and <em>n_components</em> would be chosen smaller than the number of original features.</p>
+<h2 id="summary">Summary</h2>
+<p>A PCA is used to reduce the dimensionalty and with that the complexity of the data. This dimensionality reduction is done by projecting the data onto the components that reflect the highest amount of variance, which are the eigenvectors of the covariance matrix. Only the components maintaining a certain amount of the variance - which we need to define - are kept and the rest is neglected. The principal components are orthogonal and therfore uncorrelated. PCA can help to identify patterns in the data.</p>
 <h2 id="appendix">Appendix</h2>
 <p><em>Eigenvector:</em> A non-zero vector that, when multiplied by a matrix, only changes in magnitude (not direction). Mathematically, for a matrix $A$ and eigenvector
 $𝑣$:</p>
-<p>$$𝐴 𝑣= \lambda v,$</p>
+<p>$$A 𝑣= \lambda v,$$</p>
 <p>where $\lambda$ is the eigenvalue corresponding to that eigenvector $v$.</p>
 <p><em>Eigenvalue:</em> A scalar that indicates how much the eigenvector is stretched or compressed when multiplied by the matrix.</p>
 <p><em>Covariance Matrix:</em></p>
+<p>The covariance matrix of a random vector $X = (X_1, X_2, \dots, X_n)$, with $n$ random variables $(X_1, X_2, \dots, X_n)$ has the following form</p>
+<p><img src="/images/pca/cov.png" alt="covariance"></p>
 <hr>
 <p>If this blog is useful for you, please consider supporting.</p>
 

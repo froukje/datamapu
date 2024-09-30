@@ -83,49 +83,46 @@ where $Z$ is the standardized data, and $W$ is the matrix of the selected eigenv
 
 ## Explanations
 
-Let's try to understand better, why the Eigenvectors of the covariance matrix can be used to transform the data to keep the highest amount of the variance. For that let's first think about the meaning of the covariance matrix. The covariance matrix contains information about the variances and covariances of the data. It determines how much the data spread in each direction. The variance of a specific direction can be determined by projecting the covariance matrix onto the vector of this direction. Such a projection is defined by the scalarproduct of the data (covariance matrix) and the vector multiplied with the vector and can be written as $v^T C v$. If $v$ is an Eigenvector, $v^T C v$ is the projection of the covariance matrix, i.e. the spread of the variance in the direction of the Eigenvector $v$. If $\lambda$ is the corresponding Eigenvalue of $v,$ the equation $C v = \lambda v$ holds. If now $\lambda$ is the largest Eigenvalue the equation $v^T C v$ maximizes considering all Eigenvectors and thus the largest Eigenvalue determines the direction (Eigenvector) of the largest variance. 
+Let's try to better understand why the eigenvectors of the covariance matrix can be used to transform the data to preserve the highest amount of variance. First, consider the meaning of the covariance matrix. The covariance matrix contains information about the variances and covariances of the data. It determines how much the data spread in each direction. The variance along a specific direction can be determined by projecting the covariance matrix onto the vector corresponding to that direction. This projection is defined by the scalar product of the covariance matrix and the vector, which can be written as $v^T C v$, where $C$ is the covariance matrix and v is the vector. 
 
-## 2-D Example
+If $v$ is an eigenvector, $v^T C v$ represents the variance in the direction of the eigenvector $v$. If $\lambda$ is the corresponding eigenvalue of $v$, the equation $C V = \lambda v$ holds. When 
+$\lambda$ is the largest eigenvalue, the expression $v^T C v$ is maximized, meaning the direction of $v$ (the eigenvector) corresponds to the direction of the greatest variance in the data. Thus, the eigenvector associated with the largest eigenvalue indicates the direction in which the data has the most spread (variance).
 
-calculations and plots
+**2d-example for the rotation of the coordinate system in the direction of the highest variance.**
+
+![pca example](/images/pca/pca_example.png)
+*PCA Example for 2 features.*
 
 ## PCA in Python
 
-## Summary:
+To perform a PCA with Python we can use the [*scikit-learn*](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) package. with the method *PCA*, we can define the number of components, we want to keep. This number must be smaller or equal to the number of features. The data can be given as a pandas dataframe or a numpy array. The above plotted example, can be calculated as follows. Assume the data is stored in a dataframe *df*. 
 
-Given a dataset $X$:
+```Python
+from sklearn.decomposition import PCA
+pca = PCA(n_components=2)
+components = pca.fit_transform(df)
+```
 
-1. **Standardize** the dataset to get $Z$.
-2. **Compute the covariance matrix** $C$ of $Z$.
-3. **Perform eigenvalue decomposition** on $C$ to get eigenvalues and eigenvectors.
-4. **Sort the eigenvalues** and their corresponding eigenvectors in descending order.
-5. **Select the top $k$ eigenvectors** to form a matrix $W$.
-6. **Transform the data** to the new space: $Z_{new} Z \times W$.
+After calculating the PCs, we can access the explained variances, the singular values (eigenvalues) and the new features (rotated coordinates).
 
-Practical Implications:
+```Python
+print(pca.explained_variance_ratio_)
+print(pca.singular_values_)
+print(pca.components_)
+```
 
-* PCA simplifies the data by reducing the number of variables, making patterns and trends easier to detect.
-* The principal components are orthogonal, ensuring that they are uncorrelated, which can improve the performance of machine learning algorithms.
+In this case we are considering an example of only two features, that is using 2 principal components rotates the coordiate system into the direction of the highest variance, but it does not resucte the dimensionality. In general a PCA would be used, when the feature space is large and *n_components* would be chosen smaller than the number of original features.
 
-< image- illustration >
+## Summary
 
-The data is transformed into a new coordinate system to maximize the variance of the components. 
-
-## Practical Implementation
-
-Example Dataset: Introduce a simple dataset for demonstration.
-Step-by-Step Implementation: Provide code snippets (in Python, R, etc.) showing how to perform PCA.
-Interpretation: Show how to interpret the results, including the explained variance and principal components.
-Use Cases and Examples
-Real-World Examples: Provide examples of PCA applications in different domains (e.g., image compression, finance, biology).
-Visualization: Show plots or visualizations that illustrate the impact of PCA.
+A PCA is used to reduce the dimensionalty and with that the complexity of the data. This dimensionality reduction is done by projecting the data onto the components that reflect the highest amount of variance, which are the eigenvectors of the covariance matrix. Only the components maintaining a certain amount of the variance - which we need to define - are kept and the rest is neglected. The principal components are orthogonal and therfore uncorrelated. PCA can help to identify patterns in the data.
 
 ## Appendix
 
 *Eigenvector:* A non-zero vector that, when multiplied by a matrix, only changes in magnitude (not direction). Mathematically, for a matrix $A$ and eigenvector 
 $𝑣$:
 
-$$𝐴 𝑣= \lambda v,$
+$$A 𝑣= \lambda v,$$
 
 where $\lambda$ is the eigenvalue corresponding to that eigenvector $v$.
 
@@ -133,6 +130,10 @@ where $\lambda$ is the eigenvalue corresponding to that eigenvector $v$.
 
 
 *Covariance Matrix:*
+
+The covariance matrix of a random vector $X = (X_1, X_2, \dots, X_n)$, with $n$ random variables $(X_1, X_2, \dots, X_n)$ has the following form
+
+![covariance](/images/pca/cov.png)
 
 ---
 If this blog is useful for you, please consider supporting.
