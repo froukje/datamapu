@@ -6,15 +6,8 @@
     <description>Recent content on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jul 2024 19:04:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 13 Jun 2024 21:10:46 -0300</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Understanding Principal Component Analysis (PCA)</title>
-      <link>http://localhost:1313/posts/classical_ml/pca/</link>
-      <pubDate>Sun, 28 Jul 2024 19:04:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/classical_ml/pca/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm used for dimensionality reduction. In Data Science and Machine Learning, often large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as &lt;em&gt;principal components&lt;/em&gt;. These principal components capture the maximum variance in the data. They are ordered in decreasing order of explaining variance. This makes it easier to identify patterns, reduce noise, and enhance the efficiency of Machine Learning models.&lt;/p&gt;</description>
-    </item>
     <item>
       <title>Understanding K-Means Clustering</title>
       <link>http://localhost:1313/posts/classical_ml/kmeans/</link>
