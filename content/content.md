@@ -47,9 +47,9 @@ This is what you can already find here:
 
 ### Unsupervised Machine Learning
 * [Understanding K-Means Clustering]({{< ref "kmeans.md" >}} "kmeans.md") 
+* [Principal Component Analysis (PCA]({{< ref "pca.md" >}} "pca.md") 
 
 ## Deep Learning
-
 * [Introduction to Deep Learning]({{< ref "intro_dl.md" >}} "intro_dl.md")
 * [Backpropagation - Step by Step]({{< ref "/posts/deep_learning/backpropagation.md" >}} "backpropagation.md")
 
