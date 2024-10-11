@@ -5,7 +5,7 @@ draft = false
 tags = ["Data Science", "Machine Learning", "unsupervised", "dimensionality reduction"]
 categories = ["Data Science", "Machine Learning", "unsupervised"]
 keywords = ["Data Science", "Machine Learning", "unsupervised", "dimensionality reduction"]
-images = ['/images/pca/']
+images = ['/images/pca/pca_example.png']
 +++
 
 ## Introduction
