@@ -14,7 +14,15 @@ Recurrent Neural Networks (RNNs) are a specific type of Neural Networks (NNs) th
 
 ## RNN Architecture
 
-In a standard NN all data is processed in parallel. As discussed in [Introduction to Deep Learning]({{< ref "/posts/deep_learning/intro_dl.md">}} "intro_dl") we have an input layer, an output layer and in between a set of hidden layers. All the outputs are calculated independently and there is no connection beween them. A RNN in contrast uses the output of one step as input of the next step in addition to the input data and in that way creates a connection and a memory to data of previous steps. The difference in the architecture is illustrated in the following plot.
+In a standard Feedforward Neural Net all data is processed in parallel. As discussed in [Introduction to Deep Learning]({{< ref "/posts/deep_learning/intro_dl.md">}} "intro_dl") we have an input layer, an output layer and in between a set of hidden layers. All the outputs are calculated independently and there is no connection beween them. A RNN in contrast uses the output of one step as input of the next step in addition to the input data and in that way creates a connection and a memory to data of previous steps. The difference in the architecture is illustrated in the following plot.
+
+![rnn_vs_ann](/images/rnn/RNN_vs_ANN.png)
+*Illustration of a Recurrent Neural Network vs. a standard Feedforward Artificial Neural Network*
+
+
+hidden state
+
+![rnn_architecture](/images/rnn/RNN_architecture.png)
 
 < plot NN, RNN folded and unfolded >
 
@@ -23,6 +31,12 @@ In a standard NN all data is processed in parallel. As discussed in [Introductio
 kaggle notebook
 
 ## Types of RNNs
+
+* Bidirectural RNN
+
+* GRU
+
+* LSTM
 
 ## Challenges of RNNs
 
@@ -33,3 +47,9 @@ kaggle notebook
 alternative: transformers
 
 kaggle notebook
+
+---
+If this blog is useful for you, please consider supporting.
+
+{{< bmc-button slug="pumaline" >}}
+

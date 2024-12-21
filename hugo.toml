@@ -5,25 +5,31 @@ theme = ['ananke', 'hugo-shortcodes']
 uglyURLs = false
 googleAnalytics = "G-FJQERFPVYS"
 google_tag_manager = "GTM-T6CW23SC"
-tags = ["data science", "machine learning", "deep learning", "python", "artificial intelligence"]
+tags = [
+  "data science",
+  "machine learning",
+  "deep learning",
+  "python",
+  "artificial intelligence",
+]
 features = ["posts", "shortcodes", "related content", "comments"]
-Paginate = 50
+pagination.pagerSize = 50
 pygmentsCodefences = true
 enableRobotsTXT = true
 
 [params]
-  show_reading_time = true
-  socialInHeader = true
-  socialInFooter = false
-  background_color_class = "bg-navy"
-  body_classes = "sans-serif bg-near-white"
-  favicon = "favicon.ico"
-  site_logo = "logo_weiss_qualle.png"
-  description = 'Data Science and Machine Learning Blog'
-  images = ["/static/images/datamapu_logo_schmal.png"]
-  Twitter_Image = "/images/datamapu_logo_schmal.png"
-  Twitter_Site = "@datamapu"
-  Image = "/images/datamapu_loo_schmall.png"
+show_reading_time = true
+socialInHeader = true
+socialInFooter = false
+background_color_class = "bg-navy"
+body_classes = "sans-serif bg-near-white"
+favicon = "favicon.ico"
+site_logo = "logo_weiss_qualle.png"
+description = 'Data Science and Machine Learning Blog'
+images = ["/static/images/datamapu_logo_schmal.png"]
+Twitter_Image = "/images/datamapu_logo_schmal.png"
+Twitter_Site = "@datamapu"
+Image = "/images/datamapu_loo_schmall.png"
 
 [[params.ananke_socials]]
 name = "twitter"
@@ -38,30 +44,30 @@ name = "Newsletter"
 
 [menu]
 [[menu.main]]
-  name = "Articles"
-  url = "/posts/"
-  weight = 2
+name = "Articles"
+url = "/posts/"
+weight = 2
 [[menu.main]]
-  name = "Home"
-  url = "/"
-  weight = 1
+name = "Home"
+url = "/"
+weight = 1
 
 [taxonomies]
-  tag = "tags"
-  category = "categories"
+tag = "tags"
+category = "categories"
 
 [markup]
-  [markup.highlight]
-    anchorLineNos = false
-    codeFences = true
-    guessSyntax = false
-    hl_Lines = ''
-    hl_inline = false
-    lineAnchors = ''
-    lineNoStart = 1
-    lineNos = true
-    lineNumbersInTable = true
-    noClasses = true
-    noHl = false
-    style = 'catppuccin-latte'
-    tabWidth = 4
+[markup.highlight]
+anchorLineNos = false
+codeFences = true
+guessSyntax = false
+hl_Lines = ''
+hl_inline = false
+lineAnchors = ''
+lineNoStart = 1
+lineNos = true
+lineNumbersInTable = true
+noClasses = true
+noHl = false
+style = 'catppuccin-latte'
+tabWidth = 4

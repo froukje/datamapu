@@ -6,8 +6,15 @@
     <description>Recent content in Neural Nets on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Feb 2024 20:55:28 -0300</lastBuildDate>
+    <lastBuildDate>Mon, 21 Oct 2024 02:41:59 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/neural-nets/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding Recurrent Neural Networks (RNN)</title>
+      <link>http://localhost:1313/posts/deep_learning/rnn/</link>
+      <pubDate>Mon, 21 Oct 2024 02:41:59 +0200</pubDate>
+      <guid>http://localhost:1313/posts/deep_learning/rnn/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Recurrent Neural Networks (RNNs) are a specific type of Neural Networks (NNs) that are especially relevant for sequential data like time series, text, or audio data. In standard NNs all data is treated independently. For example they are not able to capture the temporal relationship in a time series. RNNs however, process the data sequentially to remember data from the past.&lt;/p&gt;&#xA;&lt;h2 id=&#34;rnn-architecture&#34;&gt;RNN Architecture&lt;/h2&gt;&#xA;&lt;p&gt;In a standard NN all data is processed in parallel. As discussed in &lt;a href=&#34;http://localhost:1313/posts/deep_learning/intro_dl/&#34; title=&#34;intro_dl&#34;&gt;Introduction to Deep Learning&lt;/a&gt; we have an input layer, an output layer and in between a set of hidden layers. All the outputs are calculated independently and there is no connection beween them. A RNN in contrast uses the output of one step as input of the next step in addition to the input data and in that way creates a connection and a memory to data of previous steps. The difference in the architecture is illustrated in the following plot.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Gradient Descent</title>
       <link>http://localhost:1313/posts/ml_concepts/gradient_descent/</link>

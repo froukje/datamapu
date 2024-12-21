@@ -7,7 +7,7 @@
     <title></title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Data Science and Machine Learning Blog">
-    <meta name="generator" content="Hugo 0.135.0">
+    <meta name="generator" content="Hugo 0.140.0">
     
     
     
@@ -41,8 +41,8 @@
   <meta property="og:type" content="website">
     <meta property="og:image" content="http://localhost:1313/static/images/datamapu_logo_schmal.png">
 
-  <meta itemprop="datePublished" content="2024-06-13T21:10:46-03:00">
-  <meta itemprop="dateModified" content="2024-10-09T19:04:00+02:00">
+  <meta itemprop="datePublished" content="2024-10-21T02:41:59+02:00">
+  <meta itemprop="dateModified" content="2024-10-21T02:41:59+02:00">
   <meta itemprop="image" content="http://localhost:1313/static/images/datamapu_logo_schmal.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/static/images/datamapu_logo_schmal.png">
@@ -188,6 +188,58 @@ Welcome to my blog about Data Science and Machine Learning.-->
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/deep_learning/rnn/" class="color-inherit dim link">
+            Understanding Recurrent Neural Networks (RNN)
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h2 id="introduction">Introduction</h2>
+<p>Recurrent Neural Networks (RNNs) are a specific type of Neural Networks (NNs) that are especially relevant for sequential data like time series, text, or audio data. In standard NNs all data is treated independently. For example they are not able to capture the temporal relationship in a time series. RNNs however, process the data sequentially to remember data from the past.</p>
+<h2 id="rnn-architecture">RNN Architecture</h2>
+<p>In a standard Feedforward Neural Net all data is processed in parallel. As discussed in <a href="http://localhost:1313/posts/deep_learning/intro_dl/" title="intro_dl">Introduction to Deep Learning</a> we have an input layer, an output layer and in between a set of hidden layers. All the outputs are calculated independently and there is no connection beween them. A RNN in contrast uses the output of one step as input of the next step in addition to the input data and in that way creates a connection and a memory to data of previous steps. The difference in the architecture is illustrated in the following plot.</p>
+        </div>
+          <a href="/posts/deep_learning/rnn/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/classical_ml/pca/" class="color-inherit dim link">
+            Understanding Principal Component Analysis (PCA)
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h2 id="introduction">Introduction</h2>
+<p>Principal Component Analysis (PCA) is an unsupervised Machine Learning algorithm for dimensionality reduction. In Data Science and Machine Learning, large datasets with numerous features are often analyzed. PCA simplifies these complex datasets by retaining their essential information while reducing their dimensionality. It transforms a large set of correlated variables into a smaller set of uncorrelated variables known as <em>principal components</em>. These principal components capture the maximum variance in the data. They are ordered in decreasing order of explaining variance. This makes it easier to identify patterns, reduce noise, and enhance the efficiency of Machine Learning models.</p>
+        </div>
+          <a href="/posts/classical_ml/pca/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/classical_ml/kmeans/" class="color-inherit dim link">
             Understanding K-Means Clustering
             </a>
@@ -205,62 +257,24 @@ Welcome to my blog about Data Science and Machine Learning.-->
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/classical_ml/gradient_boosting_variants/" class="color-inherit dim link">
-            Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <h2 id="introduction">Introduction</h2>
-<p>Gradient Boosting is an ensemble model of a sequential series of shallow <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a>. The single trees are weak learners with little predictive skill, but together, they form a strong learner with high predictive skill. For a more detailed explanation, please refer to the post <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boosting for Regression - Explained</a>. In this article, we will discuss different implementations of Gradient Boosting. The focus is to give a high-level overview of different implementations and discuss the differences. For a more in-depth understanding of each framework, further literature is given.</p>
-        </div>
-          <a href="/posts/classical_ml/gradient_boosting_variants/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/classical_ml/gradient_boosting_classification_example/" class="color-inherit dim link">
-            Gradient Boost for Classification Example
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <h2 id="introduction">Introduction</h2>
-<p>In this post, we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each single step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification/">Gradient Boost for Classification - Explained</a> and <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.</p>
-        </div>
-          <a href="/posts/classical_ml/gradient_boosting_classification_example/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/classical_ml/gradient_boosting_variants/" class="link black dim">
+              Gradient Boosting Variants - Sklearn vs. XGBoost vs. LightGBM vs. CatBoost
+            </a>
+          </h2>
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/classical_ml/gradient_boosting_classification_example/" class="link black dim">
+              Gradient Boost for Classification Example
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/classical_ml/gradient_boosting_classification/" class="link black dim">
@@ -271,18 +285,6 @@ Welcome to my blog about Data Science and Machine Learning.-->
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/classical_ml/gradient_boosting_regression_example/" class="link black dim">
               Gradient Boost for Regression - Example
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/posts/deep_learning/backpropagation/" class="link black dim">
-              Backpropagation Step by Step
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/posts/ml_concepts/gradient_descent/" class="link black dim">
-              Gradient Descent
             </a>
           </h2>
         
