@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Clustering on </title>
-    <link>http://localhost:1313/tags/clustering/</link>
+    <link>http://localhost:32875/tags/clustering/</link>
     <description>Recent content in Clustering on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 13 Jun 2024 21:10:46 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/clustering/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:32875/tags/clustering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding K-Means Clustering</title>
-      <link>http://localhost:1313/posts/classical_ml/kmeans/</link>
+      <link>http://localhost:32875/posts/classical_ml/kmeans/</link>
       <pubDate>Thu, 13 Jun 2024 21:10:46 -0300</pubDate>
-      <guid>http://localhost:1313/posts/classical_ml/kmeans/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;K-Means&lt;/em&gt; is an example of a &lt;em&gt;clustering&lt;/em&gt; algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects so that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of &lt;a href=&#34;http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#unsupervised&#34;&gt;unsupervised&lt;/a&gt; Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, &lt;em&gt;K-Means&lt;/em&gt; stands out for its simplicity and efficiency. In this blog post, we will explain the algorithm behind K-Means, and see how to implement it in Python.&lt;/p&gt;</description>
+      <guid>http://localhost:32875/posts/classical_ml/kmeans/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;K-Means&lt;/em&gt; is an example of a &lt;em&gt;clustering&lt;/em&gt; algorithm. Clustering is a fundamental concept in Machine Learning, where the goal is to group a set of objects so that objects in the same group are more similar to each other than to those in other groups. Clustering belongs to the set of &lt;a href=&#34;http://localhost:32875/posts/ml_concepts/supervised_unsupervised/#unsupervised&#34;&gt;unsupervised&lt;/a&gt; Machine Learning algorithms, that is no ground truth is needed. Among the various clustering algorithms, &lt;em&gt;K-Means&lt;/em&gt; stands out for its simplicity and efficiency. In this blog post, we will explain the algorithm behind K-Means, and see how to implement it in Python.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Neural Nets on </title>
-    <link>http://localhost:1313/categories/neural-nets/</link>
+    <link>http://localhost:32875/categories/neural-nets/</link>
     <description>Recent content in Neural Nets on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 21 Oct 2024 02:41:59 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/neural-nets/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:32875/categories/neural-nets/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding Recurrent Neural Networks (RNN)</title>
-      <link>http://localhost:1313/posts/deep_learning/rnn/</link>
+      <link>http://localhost:32875/posts/deep_learning/rnn/</link>
       <pubDate>Mon, 21 Oct 2024 02:41:59 +0200</pubDate>
-      <guid>http://localhost:1313/posts/deep_learning/rnn/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Recurrent Neural Networks (RNNs) are a specific type of Neural Networks (NNs) that are especially relevant for sequential data like time series, text, or audio data. In standard NNs all data is treated independently. For example they are not able to capture the temporal relationship in a time series. RNNs however, process the data sequentially to remember data from the past.&lt;/p&gt;&#xA;&lt;h2 id=&#34;rnn-architecture&#34;&gt;RNN Architecture&lt;/h2&gt;&#xA;&lt;p&gt;In a standard Feedforward Neural Net all data is processed in parallel. As discussed in &lt;a href=&#34;http://localhost:1313/posts/deep_learning/intro_dl/&#34; title=&#34;intro_dl&#34;&gt;Introduction to Deep Learning&lt;/a&gt; we have an input layer, an output layer and in between a set of hidden layers. All the outputs are calculated independently and there is no connection beween them. A RNN in contrast uses the output of one step as input of the next step in addition to the input data and in that way creates a connection and a memory to data of previous steps. The difference in the architecture is illustrated in the following plot.&lt;/p&gt;</description>
+      <guid>http://localhost:32875/posts/deep_learning/rnn/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Recurrent Neural Networks (RNNs) are a specific type of Neural Networks (NNs) that are especially relevant for sequential data like time series, text, or audio data. In standard NNs all data is treated independently. For example they are not able to capture the temporal relationship in a time series. RNNs however, process the data sequentially to remember data from the past.&lt;/p&gt;&#xA;&lt;h2 id=&#34;rnn-architecture&#34;&gt;RNN Architecture&lt;/h2&gt;&#xA;&lt;p&gt;In a standard Feedforward Neural Net all data is processed in parallel. As discussed in &lt;a href=&#34;http://localhost:32875/posts/deep_learning/intro_dl/&#34; title=&#34;intro_dl&#34;&gt;Introduction to Deep Learning&lt;/a&gt; we have an input layer, an output layer and in between a number of hidden layers. All the outputs are calculated independently and there is no connection beween them. A RNN in contrast uses the output of one step as input of the next step in addition to the input data and in that way creates a connection and a memory to data of previous steps. The difference in the architecture is illustrated in the following plot.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Gradient Descent</title>
-      <link>http://localhost:1313/posts/ml_concepts/gradient_descent/</link>
+      <link>http://localhost:32875/posts/ml_concepts/gradient_descent/</link>
       <pubDate>Tue, 27 Feb 2024 20:55:28 -0300</pubDate>
-      <guid>http://localhost:1313/posts/ml_concepts/gradient_descent/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Gradient Descent is a mathematical optimization technique, which is used to find the local minima of a function. In Machine Learning it is used in a variety of models such as &lt;a href=&#34;http://localhost:1313/posts/classical_ml/gradient_boosting_regression/&#34; title=&#34;gradient_boosting&#34;&gt;Gradient Boosting&lt;/a&gt; or &lt;a href=&#34;http://localhost:1313/posts/deep_learning/intro_dl/&#34;&gt;Neural Networks&lt;/a&gt; to minimize the &lt;a href=&#34;http://localhost:1313/posts/ml_concepts/loss_functions/&#34;&gt;Loss Function&lt;/a&gt;. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point. Then take another small step in the direction of the steepest descent of the next point and so on. The direction of the steepest descent is determined using the gradient of the function, so its name &lt;em&gt;Gradient Descent&lt;/em&gt;.&lt;/p&gt;</description>
+      <guid>http://localhost:32875/posts/ml_concepts/gradient_descent/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Gradient Descent is a mathematical optimization technique, which is used to find the local minima of a function. In Machine Learning it is used in a variety of models such as &lt;a href=&#34;http://localhost:32875/posts/classical_ml/gradient_boosting_regression/&#34; title=&#34;gradient_boosting&#34;&gt;Gradient Boosting&lt;/a&gt; or &lt;a href=&#34;http://localhost:32875/posts/deep_learning/intro_dl/&#34;&gt;Neural Networks&lt;/a&gt; to minimize the &lt;a href=&#34;http://localhost:32875/posts/ml_concepts/loss_functions/&#34;&gt;Loss Function&lt;/a&gt;. It is an iterative algorithm that takes small steps towards the minimum in every iteration. The idea is to start at a random point and then take a small step into the direction of the steepest descent of this point. Then take another small step in the direction of the steepest descent of the next point and so on. The direction of the steepest descent is determined using the gradient of the function, so its name &lt;em&gt;Gradient Descent&lt;/em&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Introduction to Deep Learning</title>
-      <link>http://localhost:1313/posts/deep_learning/intro_dl/</link>
+      <link>http://localhost:32875/posts/deep_learning/intro_dl/</link>
       <pubDate>Thu, 02 Nov 2023 21:44:06 +0100</pubDate>
-      <guid>http://localhost:1313/posts/deep_learning/intro_dl/</guid>
-      <description>&lt;p&gt;In this article we will learn what Deep Learning is and understand the difference to AI and Machine Learning. Often these three terms are used interchangeable. They are however not the same. The following diagram illustrates how they are related.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/20231102_ai_ml_dl/ai_ml_dl.png&#34; alt=&#34;ai_ml_dl&#34;&gt;&#xA;&lt;em&gt;Relation of Artificial Intelligence, Machine Learning and Deep Learning.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Artificial Intelligence.&lt;/strong&gt; There are different definitions of Artificial Intelligence, but in general, they involve computers performing tasks that are usually associated with humans or other intelligent living systems. This is the definition given on Wikimedia:&#xA;It says: “[AI is] Mimicking the intelligence or behavioral pattern of humans or any living entity”&lt;/p&gt;</description>
+      <guid>http://localhost:32875/posts/deep_learning/intro_dl/</guid>
+      <description>&lt;p&gt;In this article we will learn what Deep Learning is and understand the difference to AI and Machine Learning. Often these three terms are used interchangeable. They are however not the same. The following diagram illustrates how they are related.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:32875/images/20231102_ai_ml_dl/ai_ml_dl.png&#34; alt=&#34;ai_ml_dl&#34;&gt;&#xA;&lt;em&gt;Relation of Artificial Intelligence, Machine Learning and Deep Learning.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Artificial Intelligence.&lt;/strong&gt; There are different definitions of Artificial Intelligence, but in general, they involve computers performing tasks that are usually associated with humans or other intelligent living systems. This is the definition given on Wikimedia:&#xA;It says: “[AI is] Mimicking the intelligence or behavioral pattern of humans or any living entity”&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

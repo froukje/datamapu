@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Random Forest on </title>
-    <link>http://localhost:1313/tags/random-forest/</link>
+    <link>http://localhost:32875/tags/random-forest/</link>
     <description>Recent content in Random Forest on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 14 Jan 2024 09:22:00 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/random-forest/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:32875/tags/random-forest/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AdaBoost - Explained</title>
-      <link>http://localhost:1313/posts/classical_ml/adaboost/</link>
+      <link>http://localhost:32875/posts/classical_ml/adaboost/</link>
       <pubDate>Sun, 14 Jan 2024 09:22:00 -0300</pubDate>
-      <guid>http://localhost:1313/posts/classical_ml/adaboost/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;AdaBoost is an example of an &lt;a href=&#34;http://localhost:1313/posts/ml_concepts/ensemble/&#34;&gt;ensemble&lt;/a&gt; &lt;a href=&#34;http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#supervised&#34;&gt;supervised&lt;/a&gt; Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the &lt;a href=&#34;http://localhost:1313/posts/classical_ml/decision_trees/&#34;&gt;Decision Tree&lt;/a&gt;, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using &lt;a href=&#34;https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html&#34;&gt;sklearn&lt;/a&gt;. For a more detailed exploration of this example - deriving it by hand - please refer to &lt;a href=&#34;http://localhost:1313/posts/classical_ml/adaboost_example_clf/&#34;&gt;AdaBoost for Classification - Example&lt;/a&gt;. A more realistic example with a larger dataset is provided on &lt;a href=&#34;https://www.kaggle.com/pumalin/adaboost-tutorial&#34;&gt;kaggle&lt;/a&gt;. Accordingly, if you are interested in how AdaBoost is developed for a regression task, please check the article &lt;a href=&#34;http://localhost:1313/posts/classical_ml/adaboost_example_reg/&#34;&gt;AdaBoost for Regression - Example&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid>http://localhost:32875/posts/classical_ml/adaboost/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;AdaBoost is an example of an &lt;a href=&#34;http://localhost:32875/posts/ml_concepts/ensemble/&#34;&gt;ensemble&lt;/a&gt; &lt;a href=&#34;http://localhost:32875/posts/ml_concepts/supervised_unsupervised/#supervised&#34;&gt;supervised&lt;/a&gt; Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the &lt;a href=&#34;http://localhost:32875/posts/classical_ml/decision_trees/&#34;&gt;Decision Tree&lt;/a&gt;, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using &lt;a href=&#34;https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html&#34;&gt;sklearn&lt;/a&gt;. For a more detailed exploration of this example - deriving it by hand - please refer to &lt;a href=&#34;http://localhost:32875/posts/classical_ml/adaboost_example_clf/&#34;&gt;AdaBoost for Classification - Example&lt;/a&gt;. A more realistic example with a larger dataset is provided on &lt;a href=&#34;https://www.kaggle.com/pumalin/adaboost-tutorial&#34;&gt;kaggle&lt;/a&gt;. Accordingly, if you are interested in how AdaBoost is developed for a regression task, please check the article &lt;a href=&#34;http://localhost:32875/posts/classical_ml/adaboost_example_reg/&#34;&gt;AdaBoost for Regression - Example&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Random Forests - Explained</title>
-      <link>http://localhost:1313/posts/classical_ml/random_forest/</link>
+      <link>http://localhost:32875/posts/classical_ml/random_forest/</link>
       <pubDate>Tue, 26 Dec 2023 10:57:13 +0100</pubDate>
-      <guid>http://localhost:1313/posts/classical_ml/random_forest/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;A Random Forest is a &lt;a href=&#34;http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#supervised&#34;&gt;supervised&lt;/a&gt; Machine Learning model, that is built on Decision Trees. To understand how a Random Forest works, you should be familiar with Decision Trees. You can find an introduction in the separate article &lt;a href=&#34;http://localhost:1313/posts/classical_ml/decision_trees/&#34;&gt;Decision Trees - Explained&lt;/a&gt;. A major disadvantage of Decision Trees is that they tend to overfit and often have difficulties to generalize to new data. Random Forests try to overcome this weakness. They are built of a set of Decision Trees, which are combined into an ensemble model, and their outcomes are converted into a single result. As Decision Trees, they can be used for classification and regression tasks.&lt;/p&gt;</description>
+      <guid>http://localhost:32875/posts/classical_ml/random_forest/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;A Random Forest is a &lt;a href=&#34;http://localhost:32875/posts/ml_concepts/supervised_unsupervised/#supervised&#34;&gt;supervised&lt;/a&gt; Machine Learning model, that is built on Decision Trees. To understand how a Random Forest works, you should be familiar with Decision Trees. You can find an introduction in the separate article &lt;a href=&#34;http://localhost:32875/posts/classical_ml/decision_trees/&#34;&gt;Decision Trees - Explained&lt;/a&gt;. A major disadvantage of Decision Trees is that they tend to overfit and often have difficulties to generalize to new data. Random Forests try to overcome this weakness. They are built of a set of Decision Trees, which are combined into an ensemble model, and their outcomes are converted into a single result. As Decision Trees, they can be used for classification and regression tasks.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

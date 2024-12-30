@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=32875&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -32,7 +32,7 @@ In this post, we develop a Gradient Boosting model for a binary classification. 
 
     
     
-    <meta property="og:url" content="http://localhost:1313/posts/classical_ml/gradient_boosting_classification_example/">
+    <meta property="og:url" content="http://localhost:32875/posts/classical_ml/gradient_boosting_classification_example/">
   <meta property="og:title" content="Gradient Boost for Classification Example">
   <meta property="og:description" content="Introduction In this post, we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each single step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to Gradient Boost for Classification - Explained and Gradient Boost for Regression - Explained. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.">
   <meta property="og:locale" content="en_us">
@@ -46,17 +46,17 @@ In this post, we develop a Gradient Boosting model for a binary classification. 
     <meta property="article:tag" content="Ensemble">
     <meta property="article:tag" content="Boosting">
     <meta property="article:tag" content="Tree Methods">
-    <meta property="og:image" content="http://localhost:1313/images/gradient_boosting/gb_example_clf_final.png">
+    <meta property="og:image" content="http://localhost:32875/images/gradient_boosting/gb_example_clf_final.png">
 
   <meta itemprop="name" content="Gradient Boost for Classification Example">
   <meta itemprop="description" content="Introduction In this post, we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each single step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to Gradient Boost for Classification - Explained and Gradient Boost for Regression - Explained. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.">
   <meta itemprop="datePublished" content="2024-04-28T17:01:32-03:00">
   <meta itemprop="dateModified" content="2024-04-28T17:01:32-03:00">
   <meta itemprop="wordCount" content="1548">
-  <meta itemprop="image" content="http://localhost:1313/images/gradient_boosting/gb_example_clf_final.png">
+  <meta itemprop="image" content="http://localhost:32875/images/gradient_boosting/gb_example_clf_final.png">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Gradiend Boosting,Ensemble,Classification,Tree Methods">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:1313/images/gradient_boosting/gb_example_clf_final.png">
+  <meta name="twitter:image" content="http://localhost:32875/images/gradient_boosting/gb_example_clf_final.png">
   <meta name="twitter:title" content="Gradient Boost for Classification Example">
   <meta name="twitter:description" content="Introduction In this post, we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each single step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to Gradient Boost for Classification - Explained and Gradient Boost for Regression - Explained. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.">
 
@@ -183,7 +183,7 @@ MathJax = {
   <div id="sharing" class="mt3 ananke-socials">
     
       
-      <a href="https://twitter.com/share?url=http://localhost:1313/posts/classical_ml/gradient_boosting_classification_example/&amp;text=Gradient%20Boost%20for%20Classification%20Example" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
+      <a href="https://twitter.com/share?url=http://localhost:32875/posts/classical_ml/gradient_boosting_classification_example/&amp;text=Gradient%20Boost%20for%20Classification%20Example" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
         
         <span class="icon"> <svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
 </span>
@@ -191,7 +191,7 @@ MathJax = {
       </a>
     
       
-      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/classical_ml/gradient_boosting_classification_example/&amp;title=Gradient%20Boost%20for%20Classification%20Example" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:32875/posts/classical_ml/gradient_boosting_classification_example/&amp;title=Gradient%20Boost%20for%20Classification%20Example" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
         
         <span class="icon"> <svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
@@ -217,13 +217,13 @@ MathJax = {
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
-<p>In this post, we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each single step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification/">Gradient Boost for Classification - Explained</a> and <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.</p>
+<p>In this post, we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each single step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to <a href="http://localhost:32875/posts/classical_ml/gradient_boosting_classification/">Gradient Boost for Classification - Explained</a> and <a href="http://localhost:32875/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.</p>
 <h2 id="data">Data</h2>
-<p>The dataset used for this example contains 10 samples and describes the task of whether a person should go rock climbing depending on their age, and whether the person likes height and goats. The same dataset was used in the articles <a href="http://localhost:1313/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>, and <a href="http://localhost:1313/posts/classical_ml/adaboost_example_clf/">Adaboost for Classification - Example</a>.</p>
+<p>The dataset used for this example contains 10 samples and describes the task of whether a person should go rock climbing depending on their age, and whether the person likes height and goats. The same dataset was used in the articles <a href="http://localhost:32875/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>, and <a href="http://localhost:32875/posts/classical_ml/adaboost_example_clf/">Adaboost for Classification - Example</a>.</p>
 <p><img src="/images/gradient_boosting/gb_class_data.png" alt="&ldquo;data&rdquo;">
 <em>The data used in this post.</em></p>
 <h2 id="build-the-model">Build the Model</h2>
-<p>We build a Gradient Boosting model using pruned Decision Trees as weak learners for the above dataset. The steps to be performed are summarized in the plot below. For a more detailed explanation please refer to <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification/">Gradient Boost for Classification - Explained</a>.</p>
+<p>We build a Gradient Boosting model using pruned Decision Trees as weak learners for the above dataset. The steps to be performed are summarized in the plot below. For a more detailed explanation please refer to <a href="http://localhost:32875/posts/classical_ml/gradient_boosting_classification/">Gradient Boost for Classification - Explained</a>.</p>
 <p><img src="/images/gradient_boosting/gradient_boosting_class.png" alt="Gradient Boosting for Classification">
 <em>Gradient Boosting Algorithm simplified for a binary classification task.</em></p>
 <h4 id="step-1---initialize-the-model-with-a-constant-value---f_0x--logbigfracp1-pbig">Step 1 - Initialize the model with a constant value - $F_0(X) = \log\Big(\frac{p}{1-p}\Big)$.</h4>
@@ -235,7 +235,7 @@ $$F_0(X) = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]$$</p>
 <p>$$p_0 = \frac{1}{1 + e^{-F_0(X)}} = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]$$</p>
 <p>As a threshold for predicting a $1$ we use $0.5$. In this case, the predictions are</p>
 <p>$$\hat{y}_0 = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]$$.</p>
-<p>The <a href="http://localhost:1313/posts/ml_concepts/classification_metrics/#metrics">accuracy</a> is calculated as the fraction of the correct predicted values and the total number of samples</p>
+<p>The <a href="http://localhost:32875/posts/ml_concepts/classification_metrics/#metrics">accuracy</a> is calculated as the fraction of the correct predicted values and the total number of samples</p>
 <p>$$accuracy = \frac{5}{10} = 0.5$$</p>
 <h4 id="step-2---for-m1-to-m2">Step 2 - For $m=1$ to $M=2$:</h4>
 <p>In this step we sequentially fit weak learners (pruned Decision Trees) to the residuals. The number of loops is the number of weak learners considered. Because the data considered in this post is so simple, we will only loop twice, i.e.
@@ -246,7 +246,7 @@ $$F_0(X) = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]$$</p>
 <p>The residuals are calculated as</p>
 <p>$$r_1 = y - p_0 = [-0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5]$$</p>
 <h4 id="2b-and-2c-fit-a-model-weak-learner-to-the-residuals-and-find-the-optimized-solution">2B. and 2C. Fit a model (weak learner) to the residuals and find the optimized solution.</h4>
-<p>In this step, we use the above calculated residuals to fit a Decision Tree. We prune the tree to use it as a weak learner. We use a maximum depth of two. We don&rsquo;t develop the Decision Tree by hand, but will use the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html">sklearn</a> method <em>DecisionTreeClassifier</em>. For a step-by-step example of building a Decision Tree for Classification, please refer to the article <a href="http://localhost:1313/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>.</p>
+<p>In this step, we use the above calculated residuals to fit a Decision Tree. We prune the tree to use it as a weak learner. We use a maximum depth of two. We don&rsquo;t develop the Decision Tree by hand, but will use the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html">sklearn</a> method <em>DecisionTreeClassifier</em>. For a step-by-step example of building a Decision Tree for Classification, please refer to the article <a href="http://localhost:32875/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a>.</p>
 <p><img src="/images/gradient_boosting/gb_first_tree_clf.png" alt="&ldquo;first tree&rdquo;">
 <em>First Decision Tree, i.e. first weak learner</em></p>
 <p>The resulting predictions are</p>
@@ -361,7 +361,7 @@ $$F_2(X) = [-0.29,  0.29,  0, -0.29, -0.29, 0.29, -0.29,  0.29,  0, 0.29]$$</p>
 </div>
 </div><p>We get the predictions $[0, 1, 0, 0, 0, 1, 0, 1, 0, 1]$ and a score of $0.9$. A more detailed example of applying Gradient Boosting in Python can be found on <a href="https://www.kaggle.com/code/pumalin/gradient-boosting-tutorial">kaggle</a> - this is an example of a regression problem. The application to a classification problem, however, is the same, we only need to change the <em>GradientBoostingRegressor</em> to the <em>GradientBoostingClassifier</em> and change the metrics to evaluate the model.</p>
 <h2 id="summary">Summary</h2>
-<p>In this post, we went through the calculations of the individual steps to build a Gradient Boosting model for a binary classification problem. A simple example was chosen to make explicit calculations feasible. Later, we showed how to fit a model using Python. In real-world examples, libraries like <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">sklearn</a> are used to develop such models. The development is usually not as straightforward as in this simplified example, but a set of hyperparameters are (systematically) tested to optimize the solution. For a more detailed explanation of the algorithm, please refer to the related articles <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification/">Gradient Boost for Classification - Explained</a>, <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>, <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/">Gradient Boost for Regression - Example</a>. For a more practical approach, please check the notebook on <a href="https://www.kaggle.com/code/pumalin/gradient-boosting-tutorial">kaggle</a>, where a Gradient Boosting model for a regression problem is developed.</p>
+<p>In this post, we went through the calculations of the individual steps to build a Gradient Boosting model for a binary classification problem. A simple example was chosen to make explicit calculations feasible. Later, we showed how to fit a model using Python. In real-world examples, libraries like <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">sklearn</a> are used to develop such models. The development is usually not as straightforward as in this simplified example, but a set of hyperparameters are (systematically) tested to optimize the solution. For a more detailed explanation of the algorithm, please refer to the related articles <a href="http://localhost:32875/posts/classical_ml/gradient_boosting_classification/">Gradient Boost for Classification - Explained</a>, <a href="http://localhost:32875/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>, <a href="http://localhost:32875/posts/classical_ml/gradient_boosting_regression_example/">Gradient Boost for Regression - Example</a>. For a more practical approach, please check the notebook on <a href="https://www.kaggle.com/code/pumalin/gradient-boosting-tutorial">kaggle</a>, where a Gradient Boosting model for a regression problem is developed.</p>
 <hr>
 <p>If this blog is useful for you, please consider supporting.</p>
 
@@ -1394,7 +1394,7 @@ $$F_2(X) = [-0.29,  0.29,  0, -0.29, -0.29, 0.29, -0.29,  0.29,  0, 0.29]$$</p>
     </main>
     <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:32875/" >
     &copy; 
   </a>
     <div>

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Logistic Regression on </title>
-    <link>http://localhost:1313/tags/logistic-regression/</link>
+    <link>http://localhost:32875/tags/logistic-regression/</link>
     <description>Recent content in Logistic Regression on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 02 Dec 2023 09:31:24 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/logistic-regression/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:32875/tags/logistic-regression/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Logistic Regression - Explained</title>
-      <link>http://localhost:1313/posts/classical_ml/logistic_regression/</link>
+      <link>http://localhost:32875/posts/classical_ml/logistic_regression/</link>
       <pubDate>Sat, 02 Dec 2023 09:31:24 +0100</pubDate>
-      <guid>http://localhost:1313/posts/classical_ml/logistic_regression/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Logistic Regression is a &lt;a href=&#34;http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#supervised&#34; title=&#34;Supervised Machine Learning&#34;&gt;Supervised Machine Learning&lt;/a&gt; algorithm, in which a model is developed, that relates the target variable to one or more input variables (features). However, in contrast to &lt;a href=&#34;http://localhost:1313/posts/classical_ml/linear_regression/&#34; title=&#34;Linear Regression&#34;&gt;Linear Regression&lt;/a&gt; the target (dependent) variable is not numerical, but &lt;a href=&#34;https://en.wikipedia.org/wiki/Categorical_variable&#34;&gt;categorical&lt;/a&gt;. That is the target variable can be classified in different categories (e.g.: &amp;rsquo;test passed&amp;rsquo; or &amp;rsquo;test not passed&amp;rsquo;). An idealized example of two categories for the target variable is illustrated in the plot below. The relation described in this example is whether a test is passed or not, depending on the amount of hours studied. Note, that in real world examples the border between the two classes depending on the input feature (independ variable) will usually not be as clear as in this plot.&lt;/p&gt;</description>
+      <guid>http://localhost:32875/posts/classical_ml/logistic_regression/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Logistic Regression is a &lt;a href=&#34;http://localhost:32875/posts/ml_concepts/supervised_unsupervised/#supervised&#34; title=&#34;Supervised Machine Learning&#34;&gt;Supervised Machine Learning&lt;/a&gt; algorithm, in which a model is developed, that relates the target variable to one or more input variables (features). However, in contrast to &lt;a href=&#34;http://localhost:32875/posts/classical_ml/linear_regression/&#34; title=&#34;Linear Regression&#34;&gt;Linear Regression&lt;/a&gt; the target (dependent) variable is not numerical, but &lt;a href=&#34;https://en.wikipedia.org/wiki/Categorical_variable&#34;&gt;categorical&lt;/a&gt;. That is the target variable can be classified in different categories (e.g.: &amp;rsquo;test passed&amp;rsquo; or &amp;rsquo;test not passed&amp;rsquo;). An idealized example of two categories for the target variable is illustrated in the plot below. The relation described in this example is whether a test is passed or not, depending on the amount of hours studied. Note, that in real world examples the border between the two classes depending on the input feature (independ variable) will usually not be as clear as in this plot.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
