@@ -6,26 +6,61 @@
     <description>Recent content in Categories on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jul 2024 19:04:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 21 Oct 2024 02:41:59 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Artificial Intelligence</title>
+      <link>http://localhost:1313/categories/artificial-intelligence/</link>
+      <pubDate>Mon, 21 Oct 2024 02:41:59 +0200</pubDate>
+      <guid>http://localhost:1313/categories/artificial-intelligence/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Data Science</title>
       <link>http://localhost:1313/categories/data-science/</link>
-      <pubDate>Sun, 28 Jul 2024 19:04:00 +0200</pubDate>
+      <pubDate>Mon, 21 Oct 2024 02:41:59 +0200</pubDate>
       <guid>http://localhost:1313/categories/data-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deep Learning</title>
+      <link>http://localhost:1313/categories/deep-learning/</link>
+      <pubDate>Mon, 21 Oct 2024 02:41:59 +0200</pubDate>
+      <guid>http://localhost:1313/categories/deep-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine Learning</title>
       <link>http://localhost:1313/categories/machine-learning/</link>
-      <pubDate>Sun, 28 Jul 2024 19:04:00 +0200</pubDate>
+      <pubDate>Mon, 21 Oct 2024 02:41:59 +0200</pubDate>
       <guid>http://localhost:1313/categories/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Neural Nets</title>
+      <link>http://localhost:1313/categories/neural-nets/</link>
+      <pubDate>Mon, 21 Oct 2024 02:41:59 +0200</pubDate>
+      <guid>http://localhost:1313/categories/neural-nets/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Recurrent Neural Nets</title>
+      <link>http://localhost:1313/categories/recurrent-neural-nets/</link>
+      <pubDate>Mon, 21 Oct 2024 02:41:59 +0200</pubDate>
+      <guid>http://localhost:1313/categories/recurrent-neural-nets/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Time Series</title>
+      <link>http://localhost:1313/categories/time-series/</link>
+      <pubDate>Mon, 21 Oct 2024 02:41:59 +0200</pubDate>
+      <guid>http://localhost:1313/categories/time-series/</guid>
       <description></description>
     </item>
     <item>
       <title>Unsupervised</title>
       <link>http://localhost:1313/categories/unsupervised/</link>
-      <pubDate>Sun, 28 Jul 2024 19:04:00 +0200</pubDate>
+      <pubDate>Wed, 09 Oct 2024 19:04:00 +0200</pubDate>
       <guid>http://localhost:1313/categories/unsupervised/</guid>
       <description></description>
     </item>
@@ -76,27 +111,6 @@
       <link>http://localhost:1313/categories/regression/</link>
       <pubDate>Sun, 14 Apr 2024 20:45:19 -0300</pubDate>
       <guid>http://localhost:1313/categories/regression/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Artificial Intelligence</title>
-      <link>http://localhost:1313/categories/artificial-intelligence/</link>
-      <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
-      <guid>http://localhost:1313/categories/artificial-intelligence/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Deep Learning</title>
-      <link>http://localhost:1313/categories/deep-learning/</link>
-      <pubDate>Sun, 31 Mar 2024 20:21:50 -0300</pubDate>
-      <guid>http://localhost:1313/categories/deep-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Neural Nets</title>
-      <link>http://localhost:1313/categories/neural-nets/</link>
-      <pubDate>Tue, 27 Feb 2024 20:55:28 -0300</pubDate>
-      <guid>http://localhost:1313/categories/neural-nets/</guid>
       <description></description>
     </item>
     <item>

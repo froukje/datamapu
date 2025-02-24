@@ -7,12 +7,13 @@
     <title></title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Data Science and Machine Learning Blog">
-    <meta name="generator" content="Hugo 0.135.0">
+    <meta name="generator" content="Hugo 0.144.1">
     
     
     
     
       <meta name="robots" content="noindex, nofollow">
+    
     
 
     
@@ -21,7 +22,7 @@
 
 
     
-    
+
     
       
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
@@ -35,7 +36,11 @@
       <link href="/categories/tree-methods/index.xml" rel="feed" type="application/rss+xml" title="" />
       
     
+
     
+      <link rel="canonical" href="http://localhost:1313/categories/tree-methods/">
+    
+
     <meta property="og:url" content="http://localhost:1313/categories/tree-methods/">
   <meta property="og:title" content="Tree Methods">
   <meta property="og:description" content="Data Science and Machine Learning Blog">
@@ -179,6 +184,7 @@ MathJax = {
       <h2 id="introduction">Introduction</h2>
 <p>Gradient Boosting is an ensemble model of a sequential series of shallow <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a>. The single trees are weak learners with little predictive skill, but together, they form a strong learner with high predictive skill. For a more detailed explanation, please refer to the post <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boosting for Regression - Explained</a>. In this article, we will discuss different implementations of Gradient Boosting. The focus is to give a high-level overview of different implementations and discuss the differences. For a more in-depth understanding of each framework, further literature is given.</p>
     </div>
+    <a href="/posts/classical_ml/gradient_boosting_variants/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -197,6 +203,7 @@ MathJax = {
       <h2 id="introduction">Introduction</h2>
 <p>In this post, we develop a Gradient Boosting model for a binary classification. We focus on the calculations of each single step for a specific example chosen. For a more general explanation of the algorithm and the derivation of the formulas for the individual steps, please refer to <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification/">Gradient Boost for Classification - Explained</a> and <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boost for Regression - Explained</a>. Additionally, we show a simple example of how to apply Gradient Boosting for classification in Python.</p>
     </div>
+    <a href="/posts/classical_ml/gradient_boosting_classification_example/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -216,6 +223,7 @@ MathJax = {
 <h2 id="introduction">Introduction</h2>
 <p>Gradient Boosting is an <a href="http://localhost:1313/posts/ml_concepts/ensemble/">ensemble</a> machine learning model, that - as the name suggests - is based on <a href="http://localhost:1313/posts/ml_concepts/ensemble/#boosting">boosting</a>. An ensemble model based on boosting refers to a model that sequentially builds models, and the new model depends on the previous model. In Gradient Boosting these models are built such that they improve the error of the previous model. These individual models are so-called weak learners, which means they have low predictive skills. The ensemble of these weak learners builds the final model, which is a strong learner with a high predictive skill. In this post, we go through the algorithm of Gradient Boosting in general and then concretize the individual steps for a classification task using <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees</a> as weak learners and the log-loss function. There will be some overlapping with the article <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression/">Gradient Boosting for Regression - Explained</a>, where a detailed explanation of Gradient Boosting is given, which is then applied to a regression problem. However, in this article, do not go into the details of the general formulation, for that please refer to the previously mentioned post. If you are interested in a concrete example with detailed calculations, please refer to <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/">Gradient Boosting for Regression - Example</a> for a regression problem and <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification_example/">Gradient Boosting for Classification - Example</a> for a classification problem.</p>
     </div>
+    <a href="/posts/classical_ml/gradient_boosting_classification/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -236,6 +244,7 @@ MathJax = {
 <h2 id="data">Data</h2>
 <p>We will use a simplified dataset consisting of only 10 samples, which describes how many meters a person has climbed, depending on their age, whether they like height, and whether they like goats. We used that same data in previous posts, such as <a href="http://localhost:1313/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>, and <a href="http://localhost:1313/posts/classical_ml/adaboost_example_reg/">Adaboost for Regression - Example</a>.</p>
     </div>
+    <a href="/posts/classical_ml/gradient_boosting_regression_example/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -254,6 +263,7 @@ MathJax = {
       <h2 id="introduction">Introduction</h2>
 <p><em>Gradient Boosting</em>, also called <em>Gradient Boosting Machine (GBM)</em> is a type of <a href="http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#supervised">supervised</a> Machine Learning algorithm that is based on <a href="http://localhost:1313/posts/ml_concepts/ensemble/">ensemble learning</a>. It consists of a sequential series of models, each one trying to improve the errors of the previous one. It can be used for both regression and classification tasks. In this post, we introduce the algorithm and then explain it in detail for a regression task. We will look at the general formulation of the algorithm and then derive and simplify the individual steps for the most common use case, which uses Decision Trees as underlying models and a variation of the <a href="http://localhost:1313/posts/ml_concepts/regression_metrics/#metrics">Mean Squared Error (MSE)</a> as loss function. Please find a detailed example, where this is applied to a specific dataset in the separate article <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/">Gradient Boosting for Regression - Example</a>. Gradient Boosting can also be applied for classification tasks. This is covered in the articles <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification/">Gradient Boosting for Classification - Explained</a> and <a href="http://localhost:1313/posts/classical_ml/gradient_boosting_classification_example/">Gradient Boosting for Classification - Example</a>.</p>
     </div>
+    <a href="/posts/classical_ml/gradient_boosting_regression/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -272,6 +282,7 @@ MathJax = {
       <h2 id="introduction">Introduction</h2>
 <p>AdaBoost is an ensemble model that sequentially builds new models based on the errors of the previous model to improve the predictions. The most common case is to use Decision Trees as base models. Very often the examples explained are for classification tasks. AdaBoost can, however, also be used for regression problems. This is what we will focus on in this post. This article covers the detailed calculations of a simplified example. For a general explanation of the algorithm, please refer to <a href="http://localhost:1313/posts/classical_ml/adaboost/">AdaBoost - Explained</a>.</p>
     </div>
+    <a href="/posts/classical_ml/adaboost_example_reg/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -290,6 +301,7 @@ MathJax = {
       <h2 id="introduction">Introduction</h2>
 <p>AdaBoost is an <a href="http://localhost:1313/posts/ml_concepts/ensemble/">ensemble</a> model that is based on <a href="http://localhost:1313/posts/ml_concepts/ensemble/#boosting">Boosting</a>. The individual models are so-called weak learners, which means that they have only little predictive skill, and they are sequentially built to improve the errors of the previous one. A detailed description of the Algorithm can be found in the separate article <a href="http://localhost:1313/posts/classical_ml/adaboost/">AdaBoost - Explained</a>. In this post, we will focus on a concrete example for a classification task and develop the final ensemble model in detail. A detailed example of a regression task is given in the article <a href="http://localhost:1313/posts/classical_ml/adaboost_example_reg/">AdaBoost for Regression - Example</a>.</p>
     </div>
+    <a href="/posts/classical_ml/adaboost_example_clf/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -308,6 +320,7 @@ MathJax = {
       <h2 id="introduction">Introduction</h2>
 <p>AdaBoost is an example of an <a href="http://localhost:1313/posts/ml_concepts/ensemble/">ensemble</a> <a href="http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#supervised">supervised</a> Machine Learning model. It consists of a sequential series of models, each one focussing on the errors of the previous one, trying to improve them. The most common underlying model is the <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Tree</a>, other models are however possible. In this post, we will introduce the algorithm of AdaBoost and have a look at a simplified example for a classification task using <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html">sklearn</a>. For a more detailed exploration of this example - deriving it by hand - please refer to <a href="http://localhost:1313/posts/classical_ml/adaboost_example_clf/">AdaBoost for Classification - Example</a>. A more realistic example with a larger dataset is provided on <a href="https://www.kaggle.com/pumalin/adaboost-tutorial">kaggle</a>. Accordingly, if you are interested in how AdaBoost is developed for a regression task, please check the article <a href="http://localhost:1313/posts/classical_ml/adaboost_example_reg/">AdaBoost for Regression - Example</a>.</p>
     </div>
+    <a href="/posts/classical_ml/adaboost/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -326,6 +339,7 @@ MathJax = {
       <h2 id="introduction">Introduction</h2>
 <p>A Random Forest is a <a href="http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#supervised">supervised</a> Machine Learning model, that is built on Decision Trees. To understand how a Random Forest works, you should be familiar with Decision Trees. You can find an introduction in the separate article <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees - Explained</a>. A major disadvantage of Decision Trees is that they tend to overfit and often have difficulties to generalize to new data. Random Forests try to overcome this weakness. They are built of a set of Decision Trees, which are combined into an ensemble model, and their outcomes are converted into a single result. As Decision Trees, they can be used for classification and regression tasks.</p>
     </div>
+    <a href="/posts/classical_ml/random_forest/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -344,6 +358,7 @@ MathJax = {
       <h2 id="introduction">Introduction</h2>
 <p>A Decision Tree is a simple Machine Learning model that can be used for both regression and classification tasks. In the article <a href="http://localhost:1313/posts/classical_ml/decision_tree_classification_example/">Decision Trees for Classification - Example</a> a Decision Tree for a classification problem is developed in detail. In this post, we consider a regression problem and build a Decision Tree step by step for a simplified dataset. Additionally, we use <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html">sklearn</a> to fit a model to the data and compare the results. To learn about Decision Trees in a more general setup, please refer to <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees - Explained</a></p>
     </div>
+    <a href="/posts/classical_ml/decision_tree_regression_example/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -362,6 +377,7 @@ MathJax = {
       <h2 id="introduction">Introduction</h2>
 <p>Decision Trees are a powerful, yet simple Machine Learning Model. An advantage of their simplicity is that we can build and understand them step by step. In this post, we are looking at a simplified example to build an entire Decision Tree by hand for a classification task. After calculating the tree, we will use the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html">sklearn</a> package and compare the results. To learn how to build a Decision Tree for a regression problem, please refer to the article <a href="http://localhost:1313/posts/classical_ml/decision_tree_regression_example/">Decision Trees for Regression - Example</a>. For a general introduction to Decision Trees and how to build them please check the article <a href="http://localhost:1313/posts/classical_ml/decision_trees/">Decision Trees - Explained</a>.</p>
     </div>
+    <a href="/posts/classical_ml/decision_tree_classification_example/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -380,6 +396,7 @@ MathJax = {
       <h2 id="introduction">Introduction</h2>
 <p>A <em>Decision Tree</em> is a <a href="http://localhost:1313/posts/ml_concepts/supervised_unsupervised/#supervised">supervised Machine Learning</a> algorithm that can be used for both regression and classification problems. It is a non-parametric model, which means there is no specific mathematical function underlying to fit the data (in contrast to e.g. <a href="http://localhost:1313/posts/classical_ml/linear_regression/">Linear Regression</a> or <a href="http://localhost:1313/posts/classical_ml/logistic_regression/">Logistic Regression</a>), but the algorithm only learns from the data itself. Decision Trees learn rules for decision making and used to be drawn manually before Machine Learning came up. They are hierarchical models, that have a flow-chart tree structure as the name suggests.</p>
     </div>
+    <a href="/posts/classical_ml/decision_trees/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 

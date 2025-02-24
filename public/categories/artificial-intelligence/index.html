@@ -7,12 +7,13 @@
     <title></title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Data Science and Machine Learning Blog">
-    <meta name="generator" content="Hugo 0.135.0">
+    <meta name="generator" content="Hugo 0.144.1">
     
     
     
     
       <meta name="robots" content="noindex, nofollow">
+    
     
 
     
@@ -21,7 +22,7 @@
 
 
     
-    
+
     
       
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
@@ -35,7 +36,11 @@
       <link href="/categories/artificial-intelligence/index.xml" rel="feed" type="application/rss+xml" title="" />
       
     
+
     
+      <link rel="canonical" href="http://localhost:1313/categories/artificial-intelligence/">
+    
+
     <meta property="og:url" content="http://localhost:1313/categories/artificial-intelligence/">
   <meta property="og:title" content="Artificial Intelligence">
   <meta property="og:description" content="Data Science and Machine Learning Blog">
@@ -45,8 +50,8 @@
 
   <meta itemprop="name" content="Artificial Intelligence">
   <meta itemprop="description" content="Data Science and Machine Learning Blog">
-  <meta itemprop="datePublished" content="2024-03-31T20:21:50-03:00">
-  <meta itemprop="dateModified" content="2024-03-31T20:21:50-03:00">
+  <meta itemprop="datePublished" content="2024-10-21T02:41:59+02:00">
+  <meta itemprop="dateModified" content="2024-10-21T02:41:59+02:00">
   <meta itemprop="image" content="http://localhost:1313/static/images/datamapu_logo_schmal.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/static/images/datamapu_logo_schmal.png">
@@ -169,6 +174,27 @@ MathJax = {
         <div class="relative w-100  mb4 bg-white">
           <div class="relative w-100 mb4 bg-white nested-copy-line-height">
   <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/deep_learning/rnn/" class="link black dim">
+        Understanding Recurrent Neural Networks (RNN)
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="introduction">Introduction</h2>
+<p>Recurrent Neural Networks (RNNs) are a specific type of Neural Networks (NNs) that are especially relevant for sequential data like time series, text, or audio data. In standard NNs all data is treated independently. For example they are not able to capture the temporal relationship in a time series. RNNs however, process the data sequentially, which enables them remember data from the past.</p>
+<h2 id="rnn-architecture">RNN Architecture</h2>
+<p>In a standard NN all data is processed in parallel. As discussed in <a href="http://localhost:1313/posts/deep_learning/intro_dl/" title="intro_dl">Introduction to Deep Learning</a> we have an input layer, an output layer and in between a set of hidden layers. All the outputs are calculated independently and there is no connection beween them. A RNN in contrast uses the output of one step as input of the next step in addition to the input data and in that way creates a connection and a memory to data of previous steps. The difference is illustrated in the following plot.</p>
+    </div>
+    <a href="/posts/deep_learning/rnn/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
+  </div>
+</div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
     
     <h1 class="f3 near-black">
       <a href="/backpropagation/" class="link black dim">
@@ -179,6 +205,7 @@ MathJax = {
       <h2 id="introduction">Introduction</h2>
 <p>A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that <em>Backpropagation</em> is used. In this post, we discuss how backpropagation works, and explain it in detail for four simple examples. The first two examples will contain all the calculations, the last two will only illustrate the equations that need to be calculated. Additionally, the general formulation is shown, but without going into details.</p>
     </div>
+    <a href="/backpropagation/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -197,6 +224,7 @@ MathJax = {
       <h2 id="introduction">Introduction</h2>
 <p>A neural network consists of a set of parameters - the weights and biases - which define the outcome of the network, that is the predictions. When training a neural network we aim to adjust these weights and biases such that the predictions improve. To achieve that <em>Backpropagation</em> is used. In this post, we discuss how backpropagation works, and explain it in detail for three simple examples. The first two examples will contain all the calculations, for the last one we will only illustrate the equations that need to be calculated. We will not go into the general formulation of the backpropagation algorithm but will give some further readings at the end.</p>
     </div>
+    <a href="/posts/deep_learning/backpropagation/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -215,6 +243,7 @@ MathJax = {
       <h2 id="introduction">Introduction</h2>
 <p>In Machine Learning different error sources exist. Some errors cannot be avoided, for example, due to unknown variables in the system analyzed. These errors are called <em>irreducible errors</em>. On the other hand, <em>reducible errors</em>, are errors that can be reduced to improve the model&rsquo;s skill. <em>Bias</em> and <em>Variance</em> are two of the latter. They are concepts used in supervised Machine Learning to evaluate the model&rsquo;s output compared to the true values. For a Machine Learning model to be generalizable to new unseen data with high predictive skill, it is important that bias and variance are balanced.</p>
     </div>
+    <a href="/posts/ml_concepts/bias_variance/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 
@@ -236,6 +265,7 @@ MathJax = {
 <p><strong>Artificial Intelligence.</strong> There are different definitions of Artificial Intelligence, but in general, they involve computers performing tasks that are usually associated with humans or other intelligent living systems. This is the definition given on Wikimedia:
 It says: “[AI is] Mimicking the intelligence or behavioral pattern of humans or any living entity”</p>
     </div>
+    <a href="/posts/deep_learning/intro_dl/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">Read more ...</a>
   </div>
 </div>
 

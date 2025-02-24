@@ -7,7 +7,7 @@ googleAnalytics = "G-FJQERFPVYS"
 google_tag_manager = "GTM-T6CW23SC"
 tags = ["data science", "machine learning", "deep learning", "python", "artificial intelligence"]
 features = ["posts", "shortcodes", "related content", "comments"]
-Paginate = 50
+pagination.pagerSize = 50
 pygmentsCodefences = true
 enableRobotsTXT = true
 
