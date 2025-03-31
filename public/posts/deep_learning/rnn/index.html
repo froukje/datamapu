@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Introduction
 Recurrent Neural Networks (RNNs) are a specific type of Neural Networks (NNs) that are especially relevant for sequential data like time series, text, or audio data. Traditional neural networks process each input independently, meaning they cannot retain information about previous inputs. This makes them ineffective for tasks that require understanding sequences, such as time series forecasting or natural language processing. RNNs however, process the data sequentially, which enables them to remember data from the past.">
-    <meta name="generator" content="Hugo 0.144.1">
+    <meta name="generator" content="Hugo 0.145.0">
     
     
     
@@ -43,8 +43,8 @@ Recurrent Neural Networks (RNNs) are a specific type of Neural Networks (NNs) th
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-10-21T02:41:59+02:00">
-    <meta property="article:modified_time" content="2024-10-21T02:41:59+02:00">
+    <meta property="article:published_time" content="2025-03-21T02:41:59+02:00">
+    <meta property="article:modified_time" content="2025-03-21T02:41:59+02:00">
     <meta property="article:tag" content="Data Science">
     <meta property="article:tag" content="Machine Learning">
     <meta property="article:tag" content="Deep Learning">
@@ -55,9 +55,9 @@ Recurrent Neural Networks (RNNs) are a specific type of Neural Networks (NNs) th
 
   <meta itemprop="name" content="Understanding Recurrent Neural Networks (RNN)">
   <meta itemprop="description" content="Introduction Recurrent Neural Networks (RNNs) are a specific type of Neural Networks (NNs) that are especially relevant for sequential data like time series, text, or audio data. Traditional neural networks process each input independently, meaning they cannot retain information about previous inputs. This makes them ineffective for tasks that require understanding sequences, such as time series forecasting or natural language processing. RNNs however, process the data sequentially, which enables them to remember data from the past.">
-  <meta itemprop="datePublished" content="2024-10-21T02:41:59+02:00">
-  <meta itemprop="dateModified" content="2024-10-21T02:41:59+02:00">
-  <meta itemprop="wordCount" content="1245">
+  <meta itemprop="datePublished" content="2025-03-21T02:41:59+02:00">
+  <meta itemprop="dateModified" content="2025-03-21T02:41:59+02:00">
+  <meta itemprop="wordCount" content="2723">
   <meta itemprop="image" content="http://localhost:1313/images/rnn/rnn_architecture.png">
   <meta itemprop="keywords" content="Data Science,Machine Learning,Deep Learning,Artificial Intelligence,Neural Nets,Recurrent Neural Nets,Time Series">
   <meta name="twitter:card" content="summary_large_image">
@@ -212,67 +212,288 @@ MathJax = {
       
       
       
-      <time class="f6 mv4 dib tracked" datetime="2024-10-21T02:41:59+02:00">October 21, 2024</time>
+      <time class="f6 mv4 dib tracked" datetime="2025-03-21T02:41:59+02:00">March 21, 2025</time>
       
 
       
       
-        <span class="f6 mv4 dib tracked"> - 6 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 1245 words </span>
+        <span class="f6 mv4 dib tracked"> - 13 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 2723 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="introduction">Introduction</h2>
 <p>Recurrent Neural Networks (RNNs) are a specific type of Neural Networks (NNs) that are especially relevant for sequential data like time series, text, or audio data. Traditional neural networks process each input independently, meaning they cannot retain information about previous inputs. This makes them ineffective for tasks that require understanding sequences, such as time series forecasting or natural language processing. RNNs however, process the data sequentially, which enables them to remember data from the past.</p>
 <h2 id="rnn-architecture">RNN Architecture</h2>
-<p>In a standard NN all data is processed in parallel. As discussed in <a href="http://localhost:1313/posts/deep_learning/intro_dl/" title="intro_dl">Introduction to Deep Learning</a> they have an input layer, an output layer and in between a set of hidden layers. All the outputs are calculated independently and there is no connection beween them. An RNN in contrast uses the output of one step as input of the next step additionally to the input data and in that way creates a connection and a memory to data of previous steps. The difference is illustrated in the following plot.</p>
-<p><img src="/images/rnn/rnn_ann.png" alt="rnn">
-<em>Feed-Forwrard Neural Net vs. Recurrent Neural Net</em></p>
-<p>At each time step, the RNN takes in the current input along with the hidden state from the previous step. The hidden state acts as a form of memory, allowing the model to retain information from earlier inputs. The current input may for example be a step in a time series or a word in a sentence and the hidden state provides information from the previous time steps or words in a sentence.  This architecture is known as <em>Recurrent Unit</em> and can be seen in the next plot. Both illustrations show an RNN. The one on the right hand side shows the &ldquo;unfolded&rdquo; network. In this plot the steps are illustrated after each other, which makes the recurrent nature clearer.</p>
+<p>In a standard Feedforward Neural Net (FFNN) all data is processed in parallel. As discussed in <a href="http://localhost:1313/posts/deep_learning/intro_dl/" title="intro_dl">Introduction to Deep Learning</a> a FFNN consists of an input layer, an output layer and in between a number of hidden layers. All the outputs are calculated independently and there is no connection between them. An RNN in contrast uses the output of one step as input of the next step in addition to the input data and in that way creates a connection and a memory to data of previous steps. This way the RNN is able to generate temporal dependencies in a time series or sequential context dependencies. The difference in the architecture is illustrated in the following plot.</p>
+<p><img src="/images/rnn/RNN_vs_ANN.png" alt="rnn_vs_ann">
+<em>Illustration of a Recurrent Neural Network vs. a standard Feedforward Artificial Neural Network</em></p>
+<p>At each time step, the RNN takes in the current input along with the hidden state from the previous step. The hidden state acts as a form of memory, allowing the model to retain information from earlier inputs. For instance, in the context of a time series, the current input could represent a specific time step, and the hidden state would contain information from earlier time steps. Similarly, in a sentence, the current input could be a word, and the hidden state would store information from the words preceding it. This architecture is known as <em>Recurrent Unit</em> and can be seen in the next plot. Both illustrations show an RNN. The one on the right hand side shows the &ldquo;unfolded&rdquo; network. In this plot the steps are illustrated after each other, which makes the recurrent nature clearer.</p>
 <p><img src="/images/rnn/rnn_architecture.png" alt="rnn">
 <em>RNN architecture</em></p>
-<p>Unlike feedforward neural networks, which have distinct weights for each node, RNNs use the same set of weights repeatedly within each layer. That is the number of parameters they need to learn is reduced, making them more efficient for sequential data. In the above plot these are illustrated as $u$ and $w$. However, these shared weights are still updated through <a href="http://localhost:1313/posts/deep_learning/backpropagation/">backpropagation</a> and gradient descent, enabling the network to learn and improve over time.</p>
+<p>Unlike FFNNs, which have distinct weights for each node, RNNs use the same set of weights repeatedly within each layer. That is the number of parameters they need to learn is reduced, making them more efficient for sequential data. In the above plot these are illustrated as $u$ and $w$. However, these shared weights are still updated through <a href="http://localhost:1313/posts/deep_learning/backpropagation/">backpropagation</a> and gradient descent, enabling the network to learn and improve over time.</p>
 <h2 id="the-math-behind-rnns">The Math behind RNNs</h2>
-<p>In the above sections we learned how RNN work conceptionally. It processes sequential data by maintaining a hidden state that carries information from previous time steps. Now we will have acloser look at the calculations that need to be done to achieve this.</p>
+<p>In the above sections we learned how RNN work conceptionally. It processes sequential data by maintaining a hidden state that carries information from previous time steps. Now we will have a closer look at the calculations that need to be done to achieve this.</p>
 <p><strong>1. Hidden State Update</strong></p>
 <p>At each time step $t$, the RNN updates its hidden state using the current input $x_t$ and the previous hidden state $h_{t-1}$</p>
 <p>$$h_t = \sigma(W h_{t-1} + U x_{t} + b_h),$$</p>
 <p>with $h_t$ the hidden state at time $t$, $x_t$ the input at time $t$, $W$ the weight matrix for the hidden state, $U$ the weight matrix for the input, $b_h$ the bias term, and $\sigma$ a non-linear activation function (e.g. tanh or Sigmoid-function).</p>
 <p><strong>2. Output Calculation</strong></p>
-<p>The output $y_t$ at each step is calculated using the hidden state $h_t$(which depends on the input $x_t$).</p>
+<p>The output $y_t$ at each step is calculated using the hidden state $h_t$ (which depends on the input $x_t$).</p>
 <p>$$\hat{y}_t = g(V h_t + b_y),$$</p>
 <p>with $y_t$ the output at time $t$, $V$ the weight matrix for the output layer, $b_y$ the bias term, and $g$ an activation function.
 The hidden state $h_t$ is a vector of values that encode past information, but to make meaningful predictions, we need to transform it into a proper output format. This transformation is done using an activation function $g$. The choice of $g$ depends on whether a classification or a regression is considered.</p>
-<p>For a classification the softmax function is used to map the output onto a probability distribution for each class. The softmax function is defined as</p>
+<p>For any task that needs a probability as an output, the softmax function is used to map the output onto a probability distribution for each class. This might be a classification task or a Natural Language Processing (NLP) task, such as sequence generation (like text generation). In the latter, the output might represent the probability of the next token or word in a sequence rather than a class label. The softmax function is defined as</p>
 <p>$$g(z_i) = softmax(z_i) = \frac{e^z_i}{\sum_j e^z_j}.$$</p>
-<p>Using this transformation ensures that the output data lies between $0$ and $1$ and the sum of all outputs sum to 1. Consider this example: We are performing a sentiment analysis of a text and have three sentiment classes (negative, neutral, positive), softmax might produce outputs like (0.1, 0.3, 0.6), meaning there’s a 10% probability for a negative sentiment, 30% of a neutral sentiment and 60% probability that the sentiment is positive.</p>
+<p>Using this transformation ensures that the output data lies between $0$ and $1$ and the sum of all outputs sum to 1. Consider the following example: We are performing a sentiment analysis of a text and have three sentiment classes (negative, neutral, positive), softmax might produce outputs like (0.1, 0.3, 0.6), meaning there’s a 10% probability for a negative sentiment, 30% of a neutral sentiment and 60% probability that the sentiment is positive.</p>
 <p>For a regression task such a transformation is not necessary. We can skip the activation function and calculate the output as</p>
 <p>$$\hat{y}_t = V h_t + b_y.$$</p>
+<p>The equations can be illustrated in the following diagram.</p>
+<p><img src="/images/rnn/RNN_block.jpg" alt="rnn">
+<em>RNN Cell</em></p>
 <p><strong>3. Backpropagation through time</strong></p>
 <p>To train an RNN, we use a variant of backpropagation called Backpropagation Through Time (BPTT). The loss function $L$ (e.g., mean squared error or cross-entropy loss) is calculated across all time steps</p>
-<p>$$L = \sum_{t=1}^T \L(y_t, \hat{y}_t),$$</p>
-<p>with $\L$ the loss function, $y_t$ the true label at time step $t$, and $\hat{y}_t$ its prediction.     The gradients of the loss with respect to the weights are computed by unrolling the network over time. Unrolling the RNN means we represent it as a feedforward network, where each time step is treated as a layer. This allows us to apply standard <a href="http://localhost:1313/posts/deep_learning/backpropagation/">backpropagation</a>.</p>
+<p>$$L = \sum_{t=1}^T L(y_t, \hat{y}_t),$$</p>
+<p>with $L$ the loss function, $y_t$ the true label at time step $t$, and $\hat{y}_t$ its prediction.     The gradients of the loss with respect to the weights are computed by unrolling the network over time. Unrolling the RNN means we represent it as a feedforward network, where each time step is treated as a layer. This allows us to apply standard <a href="http://localhost:1313/posts/deep_learning/backpropagation/">backpropagation</a>.</p>
 <p>In RNNs, this means computing gradients of the loss with respect to both the output layer weights $V$ and the hidden state weights $W$, since errors propagate backward in time. As a result, each hidden state influences not only the current time step but also multiple previous time steps.</p>
 <p><strong>4. Vanishing and Exploding Gradients</strong></p>
 <p>One challenge in training RNNs is the vanishing and exploding gradients problem. When backpropagating through many time steps, gradients can shrink exponentially (vanishing gradient) or grow uncontrollably (exploding gradient). If gradients become too small, early time steps barely get updated. On the other hand, if gradients become too large, training becomes unstable.</p>
 <p>To mitigate this, techniques like gradient clipping, Long Short-Term Memory (LSTM) networks, or Gated Recurrent Units (GRU) are often used. Explaining these techniques is however not in the scope of this post.</p>
+<h2 id="simple-example">Simple Example</h2>
+<p>Let&rsquo;s consider a simple example to calculate the forward pass for an RNN.</p>
+<p>An RNN cell updates the hidden state ($h_t$) and calculates the output ($\hat{y}_t$). To calculate the next hidden state $h_t$ we need the weights $W$ and $U$, and the bias $b_h$. For the output $\hat{y}$ we need the weight $V$ and the bias $b_y$. Let&rsquo;s consider the following example:</p>
+<p><img src="/images/rnn/rnn4.png" alt="rnn"></p>
+<p><img src="/images/rnn/rnn6.png" alt="rnn"></p>
+<p>$$
+V = \begin{bmatrix} 0.6 &amp; -0.5 \end{bmatrix}
+$$</p>
+<p>$$
+b_h = \begin{bmatrix} 0.1 &amp; -0.1 \end{bmatrix}, \quad
+b_y = 0.2
+$$</p>
+<p>With the previous hidden state</p>
+<p>$$h_{t-1} = \begin{bmatrix} 0.2 &amp; -0.4\end{bmatrix}$$</p>
+<p>and the input at time $t$</p>
+<p>$$x_{t} = \begin{bmatrix}0.5 &amp; 0.3\end{bmatrix}$$</p>
+<p><strong>Step 1: Compute the hidden state</strong></p>
+<p>In this example we use as activation function $\sigma = \tanh$. We can calculate the hidden state as</p>
+<p>$$
+h_t = \tanh \left( W h_{t-1} + U x_t + b_h \right),
+$$</p>
+<p>with the weights defined above, we get</p>
+<p><img src="/images/rnn/rnn1.png" alt="rnn"></p>
+<p><img src="/images/rnn/rnn2.png" alt="rnn"></p>
+<p><img src="/images/rnn/rnn3.png" alt="rnn"></p>
+<p>$$
+h_t = \tanh \left( \begin{bmatrix} 0.49 \ 0.09 \end{bmatrix} \right)
+$$</p>
+<p>$$
+h_t = \begin{bmatrix} 0.45 \ 0.09 \end{bmatrix}
+$$</p>
+<p><strong>Step 2: Compute the output</strong></p>
+<p>The output is calculated as</p>
+<p>$$
+\hat{y}_t = V h_t + b_y,
+$$</p>
+<p>using the weights defined above, we get</p>
+<p>$$
+y_t = \begin{bmatrix} 0.6 &amp; -0.5 \end{bmatrix} \begin{bmatrix} 0.45 \ 0.09 \end{bmatrix} + 0.2
+$$</p>
+<p>$$
+y_t = (0.6 \cdot 0.45) + (-0.5 \cdot 0.09) + 0.2
+$$</p>
+<p>$$
+y_t = 0.27 - 0.045 + 0.2 = 0.425.
+$$</p>
+<p>Which is the next output.</p>
 <h2 id="types-of-rnns">Types of RNNs</h2>
-<p>In this paragraph some variants of RNNs are briefly explained.</p>
+<p>In this paragraph some variants of RNNs are briefly presented without explaining them in detail.</p>
 <p><strong>Bidirectional RNNs</strong></p>
-<p>Instead of processing data only forward in time, Bidirectional RNNs (BiRNNs) pass information both forward and backward, allowing the network to use future context when making predictions. This is particularly useful for NLP tasks like named entity recognition (NER). When using this variant make sure that the future context will be available, when using the model to make predictions. When for example predicting the weather for the next hours, this is not a model variant you can use.</p>
+<p>Instead of processing data only forward in time, Bidirectional RNNs (BiRNNs) pass information both forward and backward, allowing the network to use future context when making predictions. This is particularly useful for NLP tasks like named entity recognition (NER). When using this variant we need to make sure that the future context will be available, when using the model to make predictions. When for example predicting the weather for the next hours, this is not a model variant we can use.</p>
 <p><strong>Long Short-Term Memory (LSTM)</strong></p>
-<p>LSTMs were developed to overcome issues vanilla RNN showed, especially in the context of vanishing gradients. LSTMs introduce gates (input, forget, and output gates) to control information flow and prevent vanishing gradients. This enables a longer memory than vanilla RNN provide, which makes them more effective for tasks like speech recognition and text generation, where a lot of context is needed.</p>
+<p>LSTMs were developed to overcome issues vanilla RNN showed, especially in the context of vanishing gradients. LSTMs introduce gates (input, forget, and output gates) to control information flow and prevent vanishing gradients. This enables a longer memory than vanilla RNNs provide, which makes them more effective for tasks like speech recognition and text generation, where a lot of context is needed.</p>
 <p><strong>Gated Recurrent Units (GRU)</strong></p>
 <p>GRUs were developed after LSTMs and simplify them by combining the forget and input gates into a single update gate, reducing computational cost while still handling long-term dependencies effectively. They are often preferred when training speed is a priority.</p>
-<p><a href="https://www.ibm.com/think/topics/recurrent-neural-networks">https://www.ibm.com/think/topics/recurrent-neural-networks</a></p>
-<h2 id="rrns-in-python">RRNs in Python</h2>
-<p>In this section we will apply what we learned to a simple toy dataset. We develop an RNN in Python and see how we can train it. First, we will code an RNN from scratch to better understand it and then we will see how to use <em>PyTorch</em> to do that. To see this code in action check the notebook on [kaggle]</p>
-<h2 id="applications-of-rnns">Applications of RNNs</h2>
-<ul>
-<li>kaggle notebook</li>
-</ul>
-<h2 id="summary">Summary</h2>
-<p>alternative: transformers</p>
-<p>kaggle notebook</p>
+<h2 id="input-output-structures-in-rnns">Input-Output Structures in RNNs</h2>
+<p>RNNs are versatile and can handle a variety of input-output structures depending on the task. The main types are:</p>
+<p><strong>One-to-One</strong></p>
+<p>This is the simplest structure, where one input produces one output. In this case, the RNN behaves similarly to a feedforward neural network since it does not leverage sequential dependencies across multiple time steps. An example would be time series prediction, where a single time step is used to predict the next time step.</p>
+<p>Example: Basic time series forecasting where only the previous value is used to predict the next (though most real-world models use multiple past values, making it many-to-one).</p>
+<p><strong>One-to-Many</strong></p>
+<p>A single input generates a sequence of outputs. This structure is useful in applications where a single source must produce a series of predictions.</p>
+<p>Example: Image captioning, where a single image is processed, and the RNN generates a sequence of words to describe it. Typically, a Convolutional Neural Network (CNN) extracts features from the image, which are then fed into an RNN (such as an LSTM) to produce a descriptive caption.</p>
+<p><strong>Many-to-One</strong></p>
+<p>In this structure, a sequence of inputs produces a single output. This is common in tasks that require analyzing an entire sequence before making a final prediction.</p>
+<p>Example: Sentiment analysis, where an RNN processes a sequence of words in a customer review and outputs a sentiment classification (e.g., positive, negative, or neutral).</p>
+<p><strong>Many-to-Many</strong></p>
+<p>This structure maps a sequence of inputs to a sequence of outputs. It can either be synchronized (where input and output lengths match) or asynchronous (where the input and output lengths may differ).</p>
+<p>Example: Machine translation, where an RNN translates a sentence from one language to another, producing a sequence of words in the target language.</p>
+<p>The following table summarizes the different types of input-output structures in RNNs:</p>
+<p><img src="/images/rnn/RNN_types_tabelle.png" alt="rnn">
+<em>RNN types summarized</em></p>
+<p>The different input and output types can be illustrated as follows.</p>
+<p><img src="/images/rnn/RNN_types.jpg" alt="rnn">
+<em>RNN types illustrated</em></p>
+<p>By choosing the appropriate RNN architecture and input-output structure, it is possible to tackle a wide range of complex sequence-based problems, from time series prediction to natural language processing.</p>
+<h2 id="rnns-in-python">RNNs in Python</h2>
+<p>Finaly, we will create a Recurrent Neural Network (RNN) in Python. For this demonstration, we will use <a href="https://pytorch.org/"><em>PyTorch</em></a>, a widely used deep learning framework. The concepts we&rsquo;ve covered so far will be applied to a simple toy dataset.</p>
+<p>The training data consists of a basic sequence of numbers, and the task is to predict the next number in the sequence. The following code outlines how to build and train an RNN using PyTorch to accomplish this task. We will implement a basic RNN with a single hidden layer. The RNN model is defined by inheriting from the <a href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html"><em>nn.Module</em></a> class, and the <a href="https://pytorch.org/docs/stable/generated/torch.nn.RNN.html"><em>nn.RNN</em></a> class is used to create the RNN unit.</p>
+<p>The code appears longer than it actually is due to the detailed comments, which are provided within the code for further clarification. The code snipped although a very simplified dataset, is a full working example.</p>
+<div class="highlight"><div style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#8c8fa1">69
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">torch</span>
+</span></span><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">torch.nn</span> <span style="color:#8839ef">as</span> <span style="color:#fe640b">nn</span>
+</span></span><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">torch.optim</span> <span style="color:#8839ef">as</span> <span style="color:#fe640b">optim</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Generate a simple sequence dataset</span>
+</span></span><span style="display:flex;"><span>n <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#fe640b">10</span>  <span style="color:#9ca0b0;font-style:italic"># Length of the sequence</span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># X_train is the input sequence, which is a range of numbers from 0 to n. </span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># It is reshaped to be of shape [n+1, 1, 1] to represent a sequence of 1 step at a time.</span>
+</span></span><span style="display:flex;"><span>X_train <span style="color:#04a5e5;font-weight:bold">=</span> torch<span style="color:#04a5e5;font-weight:bold">.</span>arange(n<span style="color:#04a5e5;font-weight:bold">+</span><span style="color:#fe640b">1</span>, dtype<span style="color:#04a5e5;font-weight:bold">=</span>torch<span style="color:#04a5e5;font-weight:bold">.</span>float32)<span style="color:#04a5e5;font-weight:bold">.</span>view(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>)  <span style="color:#9ca0b0;font-style:italic"># Shape: [n+1, 1, 1]</span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># y_train is the target sequence, which is the next number in the sequence.</span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># It is reshaped similarly to X_train.</span>
+</span></span><span style="display:flex;"><span>y_train <span style="color:#04a5e5;font-weight:bold">=</span> torch<span style="color:#04a5e5;font-weight:bold">.</span>arange(<span style="color:#fe640b">1</span>, n<span style="color:#04a5e5;font-weight:bold">+</span><span style="color:#fe640b">2</span>, dtype<span style="color:#04a5e5;font-weight:bold">=</span>torch<span style="color:#04a5e5;font-weight:bold">.</span>float32)<span style="color:#04a5e5;font-weight:bold">.</span>view(<span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>, <span style="color:#fe640b">1</span>)  <span style="color:#9ca0b0;font-style:italic"># Shape: [n+1, 1, 1]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Define RNN model</span>
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">class</span> <span style="color:#df8e1d">SimpleRNN</span>(nn<span style="color:#04a5e5;font-weight:bold">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">def</span> <span style="color:#1e66f5">__init__</span>(<span style="color:#04a5e5">self</span>, input_size, hidden_size, output_size):
+</span></span><span style="display:flex;"><span>        <span style="color:#04a5e5">super</span>()<span style="color:#04a5e5;font-weight:bold">.</span><span style="color:#1e66f5">__init__</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#9ca0b0;font-style:italic"># The RNN layer expects input of shape (batch_size, seq_length, input_size)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9ca0b0;font-style:italic"># The hidden size is the number of neurons in the hidden layer</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9ca0b0;font-style:italic"># batch_first=True ensures that the input/output will have shape </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9ca0b0;font-style:italic"># (batch_size, seq_length, features)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#04a5e5">self</span><span style="color:#04a5e5;font-weight:bold">.</span>rnn <span style="color:#04a5e5;font-weight:bold">=</span> nn<span style="color:#04a5e5;font-weight:bold">.</span>RNN(input_size, hidden_size, batch_first<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">True</span>)  
+</span></span><span style="display:flex;"><span>        <span style="color:#9ca0b0;font-style:italic"># A fully connected layer that takes the hidden state output and maps it to the desired output size</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#04a5e5">self</span><span style="color:#04a5e5;font-weight:bold">.</span>fc <span style="color:#04a5e5;font-weight:bold">=</span> nn<span style="color:#04a5e5;font-weight:bold">.</span>Linear(hidden_size, output_size)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">def</span> <span style="color:#1e66f5">forward</span>(<span style="color:#04a5e5">self</span>, x):
+</span></span><span style="display:flex;"><span>        <span style="color:#9ca0b0;font-style:italic"># Initialize the hidden state to zeros </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9ca0b0;font-style:italic"># (1 layer, </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9ca0b0;font-style:italic"># batch size x sequence length, i.e. the entire length of the sequence for this simple example, </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9ca0b0;font-style:italic"># hidden size)</span>
+</span></span><span style="display:flex;"><span>        h0 <span style="color:#04a5e5;font-weight:bold">=</span> torch<span style="color:#04a5e5;font-weight:bold">.</span>zeros(<span style="color:#fe640b">1</span>, x<span style="color:#04a5e5;font-weight:bold">.</span>size(<span style="color:#fe640b">0</span>), hidden_size)  
+</span></span><span style="display:flex;"><span>        <span style="color:#9ca0b0;font-style:italic"># Pass the input through the RNN layer</span>
+</span></span><span style="display:flex;"><span>        out, _ <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#04a5e5">self</span><span style="color:#04a5e5;font-weight:bold">.</span>rnn(x, h0)  <span style="color:#9ca0b0;font-style:italic"># &#39;out&#39; is the output from the RNN</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9ca0b0;font-style:italic"># Pass the RNN output through the fully connected layer to generate the final output</span>
+</span></span><span style="display:flex;"><span>        out <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#04a5e5">self</span><span style="color:#04a5e5;font-weight:bold">.</span>fc(out)
+</span></span><span style="display:flex;"><span>        <span style="color:#8839ef">return</span> out
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Define the hidden layer size</span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># The hidden size is the number of neurons in the hidden layer</span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># It is set to 5 in this example, </span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># usually determined through trial and error or based on problem complexity</span>
+</span></span><span style="display:flex;"><span>hidden_size <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#fe640b">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Initialize the model with input size 1 (since each input is a single number), </span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># hidden size 5, and output size 1 (predicting a single value)</span>
+</span></span><span style="display:flex;"><span>model <span style="color:#04a5e5;font-weight:bold">=</span> SimpleRNN(input_size<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">1</span>, hidden_size<span style="color:#04a5e5;font-weight:bold">=</span>hidden_size, output_size<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Loss function (Mean Squared Error) </span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># to measure the difference between predicted and actual values</span>
+</span></span><span style="display:flex;"><span>criterion <span style="color:#04a5e5;font-weight:bold">=</span> nn<span style="color:#04a5e5;font-weight:bold">.</span>MSELoss()
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Optimizer (Adam) to update the model&#39;s weights based on the computed gradients</span>
+</span></span><span style="display:flex;"><span>optimizer <span style="color:#04a5e5;font-weight:bold">=</span> optim<span style="color:#04a5e5;font-weight:bold">.</span>Adam(model<span style="color:#04a5e5;font-weight:bold">.</span>parameters(), lr<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">0.01</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Training loop</span>
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> epoch <span style="color:#04a5e5;font-weight:bold">in</span> <span style="color:#04a5e5">range</span>(<span style="color:#fe640b">1000</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#9ca0b0;font-style:italic"># Zero the gradients for the optimizer to prevent accumulation</span>
+</span></span><span style="display:flex;"><span>    optimizer<span style="color:#04a5e5;font-weight:bold">.</span>zero_grad()
+</span></span><span style="display:flex;"><span>    <span style="color:#9ca0b0;font-style:italic"># Forward pass: Compute model&#39;s output given the input sequence</span>
+</span></span><span style="display:flex;"><span>    output <span style="color:#04a5e5;font-weight:bold">=</span> model(X_train)
+</span></span><span style="display:flex;"><span>    <span style="color:#9ca0b0;font-style:italic"># Compute the loss between predicted output and actual target</span>
+</span></span><span style="display:flex;"><span>    loss <span style="color:#04a5e5;font-weight:bold">=</span> criterion(output, y_train)
+</span></span><span style="display:flex;"><span>    <span style="color:#9ca0b0;font-style:italic"># Backward pass: </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#9ca0b0;font-style:italic"># Compute the gradients of the loss with respect to the model&#39;s parameters</span>
+</span></span><span style="display:flex;"><span>    loss<span style="color:#04a5e5;font-weight:bold">.</span>backward()
+</span></span><span style="display:flex;"><span>    <span style="color:#9ca0b0;font-style:italic"># Update the model&#39;s parameters using the optimizer and computed gradients</span>
+</span></span><span style="display:flex;"><span>    optimizer<span style="color:#04a5e5;font-weight:bold">.</span>step()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#9ca0b0;font-style:italic"># Print the loss every 100 epochs to monitor training progress</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">if</span> epoch <span style="color:#04a5e5;font-weight:bold">%</span> <span style="color:#fe640b">100</span> <span style="color:#04a5e5;font-weight:bold">==</span> <span style="color:#fe640b">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#04a5e5">print</span>(<span style="color:#d20f39">f</span><span style="color:#40a02b">&#34;Epoch </span><span style="color:#40a02b">{</span>epoch<span style="color:#40a02b">}</span><span style="color:#40a02b">, Loss: </span><span style="color:#40a02b">{</span>loss<span style="color:#04a5e5;font-weight:bold">.</span>item()<span style="color:#40a02b">}</span><span style="color:#40a02b">&#34;</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="summary">Summary</h2>
+<p>In summary, RNNs are powerful tools for handling sequential data. They are a class of artificial neural networks designed to process sequences by maintaining a memory of previous inputs. Unlike traditional feedforward networks, RNNs have loops that allow information to persist, making them suitable for tasks where context from earlier steps is essential. While effective for many applications, RNNs face challenges like vanishing gradients, which hinder learning long-term dependencies. Variants such as Long Short-Term Memory (LSTM) networks and Gated Recurrent Units (GRUs) address these issues with improved memory mechanisms.</p>
+<p>Transformers have emerged as a dominant alternative to RNNs. By using a self-attention mechanism instead of sequential processing, transformers can model long-range dependencies more efficiently and support parallel computation. This makes them faster to train and more effective for tasks like natural language processing, where they have largely replaced RNN-based models. This is however out of the scope of this article.</p>
+<hr>
+<p>If this blog is useful for you, please consider supporting.</p>
+
+
+
+<a class="hugo-shortcodes-bmc-button" href="https://www.buymeacoffee.com/pumaline">
+    <img src="https://img.buymeacoffee.com/button-api/?button_colour=ffdd00&amp;coffee_colour=ffffff&amp;emoji=&amp;font_colour=000000&amp;font_family=Cookie&amp;outline_colour=000000&amp;slug=pumaline&amp;text=Buy&#43;me&#43;a&#43;coffee" alt="Buy me a coffee" />
+</a>
+
 <ul class="pa0">
   
    <li class="list di">

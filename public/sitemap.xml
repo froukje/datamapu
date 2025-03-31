@@ -5,55 +5,55 @@
     <loc>http://localhost:1313/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/artificial-intelligence/</loc>
+    <loc>http://localhost:1313/categories/artificial-intelligence/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/artificial-intelligence/</loc>
+    <loc>http://localhost:1313/tags/artificial-intelligence/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/data-science/</loc>
-    <lastmod>2024-10-21T02:41:59+02:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/categories/data-science/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/deep-learning/</loc>
+    <loc>http://localhost:1313/tags/data-science/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/deep-learning/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/machine-learning/</loc>
+    <loc>http://localhost:1313/tags/deep-learning/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/machine-learning/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/neural-nets/</loc>
+    <loc>http://localhost:1313/tags/machine-learning/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/neural-nets/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>http://localhost:1313/tags/neural-nets/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/recurrent-neural-nets/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/recurrent-neural-nets/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/recurrent-neural-nets/</loc>
+    <lastmod>2024-10-21T02:41:59+02:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/time-series/</loc>
+    <loc>http://localhost:1313/categories/time-series/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/time-series/</loc>
+    <loc>http://localhost:1313/tags/time-series/</loc>
     <lastmod>2024-10-21T02:41:59+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/deep_learning/rnn/</loc>
@@ -65,25 +65,25 @@
     <loc>http://localhost:1313/posts/classical_ml/pca/</loc>
     <lastmod>2024-10-09T19:04:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/unsupervised/</loc>
-    <lastmod>2024-10-09T19:04:00+02:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/categories/unsupervised/</loc>
     <lastmod>2024-10-09T19:04:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/clustering/</loc>
-    <lastmod>2024-06-13T21:10:46-03:00</lastmod>
+    <loc>http://localhost:1313/tags/unsupervised/</loc>
+    <lastmod>2024-10-09T19:04:00+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/clustering/</loc>
+    <lastmod>2024-06-13T21:10:46-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/clustering/</loc>
     <lastmod>2024-06-13T21:10:46-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/classical_ml/kmeans/</loc>
     <lastmod>2024-06-13T21:10:46-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/boosting/</loc>
+    <loc>http://localhost:1313/categories/boosting/</loc>
     <lastmod>2024-05-08T20:55:43-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/boosting/</loc>
+    <loc>http://localhost:1313/tags/boosting/</loc>
     <lastmod>2024-05-08T20:55:43-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/ensemble/</loc>
@@ -92,16 +92,16 @@
     <loc>http://localhost:1313/posts/classical_ml/gradient_boosting_variants/</loc>
     <lastmod>2024-05-08T20:55:43-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/tree-methods/</loc>
-    <lastmod>2024-05-08T20:55:43-03:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/categories/tree-methods/</loc>
     <lastmod>2024-05-08T20:55:43-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/classification/</loc>
-    <lastmod>2024-04-28T17:01:32-03:00</lastmod>
+    <loc>http://localhost:1313/tags/tree-methods/</loc>
+    <lastmod>2024-05-08T20:55:43-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/classification/</loc>
+    <lastmod>2024-04-28T17:01:32-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/classification/</loc>
     <lastmod>2024-04-28T17:01:32-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/ensemble/</loc>
@@ -110,19 +110,19 @@
     <loc>http://localhost:1313/posts/classical_ml/gradient_boosting_classification_example/</loc>
     <lastmod>2024-04-28T17:01:32-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/gradient-boosting/</loc>
+    <loc>http://localhost:1313/categories/gradient-boosting/</loc>
     <lastmod>2024-04-28T17:01:32-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/gradient-boosting/</loc>
+    <loc>http://localhost:1313/tags/gradient-boosting/</loc>
     <lastmod>2024-04-28T17:01:32-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/classical_ml/gradient_boosting_classification/</loc>
     <lastmod>2024-04-14T20:45:19-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/regression/</loc>
+    <loc>http://localhost:1313/categories/regression/</loc>
     <lastmod>2024-04-14T20:45:19-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/regression/</loc>
+    <loc>http://localhost:1313/tags/regression/</loc>
     <lastmod>2024-04-14T20:45:19-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/classical_ml/gradient_boosting_regression_example/</loc>
@@ -158,10 +158,10 @@
     <loc>http://localhost:1313/posts/classical_ml/adaboost/</loc>
     <lastmod>2024-01-14T09:22:00-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/random-forest/</loc>
+    <loc>http://localhost:1313/categories/random-forest/</loc>
     <lastmod>2024-01-14T09:22:00-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/random-forest/</loc>
+    <loc>http://localhost:1313/tags/random-forest/</loc>
     <lastmod>2024-01-14T09:22:00-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/ml_concepts/bias_variance/</loc>
@@ -170,19 +170,19 @@
     <loc>http://localhost:1313/posts/ml_concepts/ensemble/</loc>
     <lastmod>2023-12-26T11:24:29+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/bagging/</loc>
+    <loc>http://localhost:1313/categories/bagging/</loc>
     <lastmod>2023-12-26T10:57:13+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/bagging/</loc>
+    <loc>http://localhost:1313/tags/bagging/</loc>
     <lastmod>2023-12-26T10:57:13+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/classical_ml/random_forest/</loc>
     <lastmod>2023-12-26T10:57:13+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/decision-trees/</loc>
+    <loc>http://localhost:1313/categories/decision-trees/</loc>
     <lastmod>2023-12-19T17:46:29+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/decision-trees/</loc>
+    <loc>http://localhost:1313/tags/decision-trees/</loc>
     <lastmod>2023-12-19T17:46:29+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/classical_ml/decision_tree_regression_example/</loc>
